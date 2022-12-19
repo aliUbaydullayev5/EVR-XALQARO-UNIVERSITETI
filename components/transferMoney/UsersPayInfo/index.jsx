@@ -18,11 +18,6 @@ import AppelsinMobile from "../../../assets/mobile/icon/Apelsin.png"
 import PaymeMobile from "../../../assets/mobile/icon/payme.png"
 import OsonMobile from "../../../assets/mobile/icon/Oson.png"
 
-
-
-
-
-
 import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
 import { AntModal } from '../../reception/OqishniKochirishComponent/style.js'
@@ -49,34 +44,34 @@ export const UsersPayInfo = () => {
         <BoxCon>
           <InputCon mawidth={'290px'} mheight={'290px'}>
             <p>FiO</p>
-            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} width={'459px'} height={'33px'} padding={'0px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} width={'459px'} height={'33px'} padding={'0px 30px'} disabled={true} />
           </InputCon>
 
           <InputCon>
             <p>Pasport seriyangiz</p>
-            <Input  mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'AA 222 33 44'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input  mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'AA 222 33 44'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
           <InputCon>
             <p>Ta’lim tilingiz</p>
-            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'O‘zbek'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'O‘zbek'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
 
           <InputCon>
             <p>Ta’lim yo‘nalishingiz </p>
-            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'Iqtisodiyot'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'Iqtisodiyot'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
 
           <InputCon>
             <p>Ta’lim shakli</p>
-            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'Kunduzgi'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'Kunduzgi'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
           <InputCon>
             <p>Asosiya Raqamingiz</p>
-            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'+998 99 999 99 99'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'+998 99 999 99 99'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
 
           <BtnCon>
-            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy' margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
+            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy' margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
             <Orqaga className={'BtnCon'} />
           </BtnCon>
         </BoxCon>

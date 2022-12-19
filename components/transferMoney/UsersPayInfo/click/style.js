@@ -7,6 +7,11 @@ const Container = styled.div`
     grid-template-columns: auto;
     height: 100%;
     padding: 0px 0px 0px 50px;
+    @media only screen and (max-width: 1000px) {
+    padding: 0px 0px 0px 20px;
+
+    }
+
 `
 const TextCon = styled.div`
     width: 100%;
@@ -22,6 +27,21 @@ const TextCon = styled.div`
     letter-spacing: -0.025em;
     color: #FFFFFF;
 }
+@media only screen and (max-width: 1000px) {
+  >h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 105.9%;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.025em;
+    color: #FFFFFF;
+  }
+}
+
+
 `
 const BoxCon = styled.div`
   display: flex;
@@ -29,6 +49,10 @@ const BoxCon = styled.div`
   margin-top: 30px;
   position: relative;
   align-items: center;
+  align-items:center;
+  gap: 5px;
+  
+  /* gap: 10px; */
   .formatMain{
     position: relative;
   }
@@ -39,36 +63,82 @@ const BoxCon = styled.div`
     letter-spacing: -0.025em;
     color: white;
     font-size: 30px;
-    bottom: 10px;
+    bottom: 12px;
     left: 10px;
-
+@media only screen and (max-width: 1000px) {
+   position: absolute;
+    z-index: 999;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: white;
+    font-size: 17px;
+    bottom: 2px;
+    left: 8px;
+}
   }
   .InputLeft{
     margin-left: 20px;
+    @media only screen and (max-width: 1000px) {
+    margin-left: 0px;     
+    }
   }
   .BtnCon{
     position: absolute;
     bottom: 10px;
     left:20px;
-    top: 22px;
+    top: 14px;
+    @media only screen and (max-width: 1000px) {
+    position: absolute;
+    bottom: 10px;
+    left:20px;
+    top: 2px;
+    }
   }
   .btnEnd{
     margin-left: 170px;
+@media only screen and (max-width: 1000px) {
+     margin-left: 0px;
+    }
+
   }
   
 `
 const ImgBox = styled.div`
-  position: relative;
-  .border{
-    position: absolute; 
-    top: 22px;
-    left: 75px;
-    right: 0px;
+    width: 178px; 
+    height: 65px;
+    background-color: #ffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 19px;
     cursor: pointer;
-    transition: 0.2s;
-    :hover {
-      transform: scale(1.02);
-    }
+    display:grid;
+    margin-top: 10px;
+
+@media only screen and (max-width: 1000px) {
+  .border{
+    display: none;
+  }
+}
+@media only screen and (min-width: 1000px) {
+.ClickMobile{
+display: none;
+}
+}
+@media only screen and (max-width: 1000px) {
+    width: 138px;
+    height: 35px;
+    background-color: #ffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+   border-radius:5px;
+   cursor: pointer;
+
 }
 `
 export { TextCon, BoxCon, ImgBox }

@@ -10,7 +10,9 @@ import {useState} from "react";
 import PersonComponent from "../PersonComponent";
 import HamburgerMenu from "../../HamburgerMenu";
 
-import MobileLogo from '../../../assets/mobile/icon/logoMobile.svg'
+import MobileLogo from '../../../assets/mobile/image/logo.svg'
+// import MobileLogo from '../../../assets/mobile/image/MobileLogo.svg'
+
 
 
 import MobilNotif from '../../../assets/mobile/icon/notif.svg'
@@ -34,10 +36,8 @@ const Navbar = () => {
     return(
         <Container className={'nocopy'}>
             <Container.Logo onClick={()=> query.push('/homePage')}>
-                <div>
-                    <Logo className={'logo'} />
-                    <MobileLogo className={'mobileLogo logo'}  />
-                </div>
+                <Logo className={'logo'} />
+                <MobileLogo className={'mobileLogo logo'}  />
                 <Container.LogoText>
                     EVR XALQARO <br/>
                     universiteti

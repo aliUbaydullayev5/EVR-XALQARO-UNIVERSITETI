@@ -76,8 +76,8 @@ Container.Logo = styled.div`
     }
     .mobileLogo{
       display: block;
-      //width: 40px !important;
-      //height: 40px !important;
+      width: 40px !important;
+      height: 40px !important;
       max-width: 95px;
     }
   }

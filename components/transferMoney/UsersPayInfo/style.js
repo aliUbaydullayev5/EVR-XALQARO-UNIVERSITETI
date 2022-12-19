@@ -4,11 +4,13 @@ const Container = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: 84px 1fr;
+  height: 530px;
 @media only screen and (max-width: 1000px) {
   display: flex;
   flex-direction:column ;
   margin: 0 auto ;
   grid-template-rows: 84px 1fr;
+  height: 500px;
   }
 `
 
@@ -28,14 +30,17 @@ const HerBox = styled.div`
   
 `
 const BoxCon = styled.div`
-  padding: 21px 40px 0 40px;
+  padding: 5px 40px 0 40px;
   display: flex;
   flex-direction: column;
-  gap: 7px;  
+  gap:15px;
   @media only screen and (max-width: 1000px) {
   display: flex;
   flex-direction:column;
   margin: 0 auto;
+  gap: 0px;
+
+
 
   }
   .btnEnd{
@@ -87,7 +92,7 @@ font-family: 'Montserrat';
 const InputCon = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  /* gap: 3px; */
   >p {
     font-weight: 400;
     font-size: 16px;
@@ -96,33 +101,47 @@ const InputCon = styled.div`
     align-items: center;
     letter-spacing: -0.025em;
     color: #FFFFFF;
-  }
+  }   
+@media only screen and (max-width: 1000px) {
+ >p{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 105.9%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+ } 
+}
+
 
 `
 const BtnCon = styled.div`
   position: relative ;
-  margin-top: 15px;  
+  /* margin-top: 15px;   */
   margin: 0 auto;
+@media only screen and (max-width: 1000px) {
+    display: none;
+  }
   .BtnCon{
     position: absolute ;
     bottom: 10px ;
     left:20px ;
     top: 17px ;
   }
-   @media only screen and (max-width: 1000px) {
-    .BtnCon{
-    position: absolute ;
-    bottom: 10px ;
-    left:50px ;
-    top: 2px ;
-  }
-   }
+
 `
 const TextBox = styled.div`
   display: flex ;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+   @media only screen and (min-width: 1000px) {
+    margin-top: 20px;
+   }
+
+ 
   >p{
     font-family: 'Montserrat';
     font-style: normal;
@@ -148,16 +167,15 @@ const TextBox = styled.div`
     letter-spacing: 0.055em;
     width: 70%;
     margin: 0 auto;
-
-color: #FFFFFF;
+   color: #FFFFFF;
    }
-
+/* margin: 10px 0px; */
  } 
 `
 const ConTainerImg = styled.div`
   display: grid;
   grid-template-columns: 177px 178px;
-  gap: 20px;
+  gap: 10px;
   margin:  0 auto;
   margin-top: 10px;
     @media only screen and (max-width: 1000px) {
