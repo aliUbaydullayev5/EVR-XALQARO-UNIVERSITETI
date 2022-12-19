@@ -7,7 +7,9 @@ import Paynet from "../../../assets/icons/paynet.png"
 import Tolov from "../../../assets/icons/tolov.svg"
 import Apelsin from "../../../assets/icons/Apelsin-01 2.png"
 import Payme from "../../../assets/icons/payme.png"
-import Oson from "../../../assets/icons/oson.png"
+import oson from "../../../assets/icons/oson.png"
+import osonMobile from '../../../assets/mobile/icon/Oson.png'
+
 import Image from 'next/image.js'
 
 // Mobile Img 
@@ -105,8 +107,8 @@ export const UsersPayInfo = () => {
               </AntModal>
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
-              <Image src={Oson} alt='click' className='Oson'/>
-              <Image src={OsonMobile} alt='click' className='OsonMobile' />
+              <Image src={oson} alt='click' className='Oson'/>
+              <Image src={osonMobile} alt='click' className='OsonMobile' />
             </div>
           </ConTainerImg>
           <div className='btnEnd'>
