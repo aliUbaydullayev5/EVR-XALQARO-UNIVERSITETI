@@ -1,5 +1,6 @@
 import Container, { BoxCon, ImgBox, TextCon } from './style.js'
-import Paynet from "../../../../assets/icons/Paynet.png"
+
+import Paynet from "../../../../assets/icons/paynet.png"
 
 import { Button, Input } from '../../../generic'
 import Orqaga from "../../../../assets/icons/orqaga.svg"
@@ -9,7 +10,7 @@ import Image from 'next/image.js'
 
 // mobile Img 
 import PaynetMobile from "../../../../assets/mobile/image/paynet.png"
-// import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
+
 
 
 export const Paynetpay = () => {

@@ -1,5 +1,5 @@
 import Container, { BoxCon, ImgBox, TextCon } from './style.js'
-import Oson from "../../../../assets/icons/Oson.png"
+import Alif from "../../../../assets/icons/Alif.png"
 
 import { Button, Input } from '../../../generic'
 import Orqaga from "../../../../assets/icons/orqaga.svg"
@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Image from 'next/image.js'
 
 // mobile Img 
-import OsonMobile from "../../../../assets/mobile/image/Oson.png"
+import AlifMobile from "../../../../assets/mobile/image/Alif.png"
 // import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
 
 
@@ -62,8 +62,8 @@ export const Osonpay = () => {
             </TextCon>
             <BoxCon>
                 <ImgBox>
-                    <Image alt='rasm' src={Oson} className={'border'} />
-                    <Image alt='rasm' src={OsonMobile} className={'ClickMobile'} />
+                    <Image alt='rasm' src={Alif} className={'border'} />
+                    <Image alt='rasm' src={AlifMobile} className={'ClickMobile'} />
                 </ImgBox>
                 <div>
                     <p className='textSmall'>To‘lov miqdori</p>

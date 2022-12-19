@@ -1,5 +1,5 @@
 import Container, { BoxCon, ImgBox, TextCon } from './style.js'
-import Payme from "../../../../assets/icons/click.png"
+import Payme from "../../../../assets/icons/payme.png"
 
 import { Button, Input } from '../../../generic'
 import Orqaga from "../../../../assets/icons/orqaga.svg"
