@@ -7,7 +7,7 @@ import Paynet from "../../../assets/icons/paynet.png"
 import Tolov from "../../../assets/icons/tolov.svg"
 import Apelsin from "../../../assets/icons/Apelsin-01 2.png"
 import Payme from "../../../assets/icons/payme.png"
-import oson from "../../../assets/icons/oson.png"
+import Alif from "../../../assets/icons/Alif.png"
 import osonMobile from '../../../assets/mobile/icon/Oson.png'
 
 import Image from 'next/image.js'
@@ -18,7 +18,7 @@ import PaynetMobile from "../../../assets/mobile/icon/paynet.png"
 import NaqtTulov from "../../../assets/mobile/icon/NaqtTulov.svg"
 import AppelsinMobile from "../../../assets/mobile/icon/Apelsin.png"
 import PaymeMobile from "../../../assets/mobile/icon/payme.png"
-import OsonMobile from "../../../assets/mobile/icon/Oson.png"
+import AlifMobile from "../../../assets/mobile/icon/Oson.png"
 
 import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
@@ -107,8 +107,8 @@ export const UsersPayInfo = () => {
               </AntModal>
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
-              <Image  src={oson} alt='click' className='Oson'/>
-              <Image  src={osonMobile} alt='click' className='OsonMobile' />
+              <Image src={Alif} alt='click' className='Oson'/>
+              <Image src={AlifMobile} alt='click' className='OsonMobile' />
             </div>
           </ConTainerImg>
           <div className='btnEnd'>
