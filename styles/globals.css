@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  background: #211E51;
+
+}
+
+a{
+  text-decoration: none;
+}
+
+.nocopy {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+
+
+/*  Carousel styles  */
+
+.control-dots{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 200px;
+  justify-content: space-around;
+  height: 30% !important;
+  left: -20px;
+ 
+}
+
+.carousel-status{
+  display: none;
+}
+.control-arrow, .control-prev{
+  display: none !important;
+}
+.dot{
+  width: 16px !important;
+  height: 16px !important;
+  border: 3px solid #FFFFFF !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  opacity: 1 !important;
+}
+.control-dots>.selected{
+    background-color: #fff !important;
+}
+.previous{
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+
+
+/*  Safari  */
+input, textarea {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  padding: 2pt 4pt;
+  padding-top: 8pt;
+  font-family: "Helvetica Neue";
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+::-webkit-input-placeholder {
+  color: lightgrey;
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-transition-property: top, color;
+  -webkit-transition-duration: .1s;
+  transition-property: top, color;
+  transition-duration: .1s;
+}
+
+
+::-webkit-input-placeholder[style*=hidden] {
+  color: rgb(16,124,246);
+  font-size: 8pt;
+  font-weight: normal;
+  top: -8pt;
+  opacity: 1;
+  visibility: visible !important;
+}
+
+[name=title] {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 1px;
+}
+
+
+[name=location] {
+  width: 70%;
+  border-bottom: 1px solid lightgrey;
+}
+
+[name=desc] {
+  width: 100%;
+}
+
+/* andt input */
+
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-select:not(:where(.css-dev-only-do-not-override-1s3dcof).ant-select-customize-input) .ant-select-selector {
+  background: none;
+}
+
+.ant-select-selector {
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  width: 500px;
+  height: 40px;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 15px !important;
+   
+}
+@media only screen and (max-width: 800px) {
+  .ant-select-selector {
+   width: 290px !important;
+   height: 27px !important; 
+   font-size: 13px!important;
+  border-radius: 5px !important;
+  }
+}
+
+
+
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  width: 100%;
+  height: 46px;
+  padding: 0 11px !important;
+}
+.delete {
+  text-align:  end;
+  display: flex;
+  margin-left: auto;
+
+}
+.delete:hover {
+  cursor: pointer;
+
+}
+
+.ant-select-dropdows, .css-dev-only-do-not-everride-ls3dcof, .ant-select-dropdown-placement-bottomLeft{
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+}
+.ant-select-item-option-content{
+  font-size: 21px !important;
+  font-weight: 200 !important;
+  font-size: 32px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 !important;
+  line-height: 105.9%;
+  letter-spacing: -0.025em;
+  color: white;
+  transition: .2s ;
+}
+
+.ant-select-item, .ant-select-item-option, .ant-select-item-option-active, .ant-select-item-option-selected{
+  background: linear-gradient(90deg, #264273 0%, #254173 1%, #395e9f 100%) !important;
+}
+/* /application/UsersCardInfo/click  bir hill text css    */
+.textSmall{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 105.9%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.025em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ant-modal .ant-modal-content {
+display: flex;
+flex-direction: column;
+  background: rgba(34, 31, 81, 0.95);
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 15px;
+ 
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .control-dots{
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0px;
+    height: 53% !important;
+    justify-content: space-around;
+    width: 200px !important;
+    left: 20%;
+  }
+}
+
+
+
+
+.ant-table-wrapper .css-dev-only-do-not-override-1s3dcof{
+background-color: #1E3C72;
+  background-color: #294f94 !important;
+background: #25225d !important;
+}
+ .ant-table-cell{
+  background-color: #294f94!important;
+  background-color: #294f94 !important;
+  color: #ffff;
+background: #25225d !important;
+
+ }
+:where(.css-dev-only-do-not-override-1s3dcof).ant-table-wrapper .ant-table{
+background: #25225d!important;
+}
+.ant-table-thead{
+  color: #fff;
+  color: #FFFFFF;
+
+}
+
+.css-dev-only-do-not-override-1s3dcof.ant-table-wrapper .ant-table-thead>tr>th{
+  color: #dddd;
+  color: #ffff;
+  gap: 10px;
+}
+.css-dev-only-do-not-override-1s3dcof.ant-table-wrapper .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+  border: 1px solid white;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
