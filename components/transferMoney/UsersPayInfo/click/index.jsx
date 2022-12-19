@@ -62,8 +62,8 @@ export const Clickpay = () => {
       </TextCon>
       <BoxCon>
           <ImgBox>
-            <Image src={Click} className={'border'} />
-            <Image src={ClickMobile} className={'ClickMobile'} />
+            <Image alt='rasm' src={Click} className={'border'} />
+            <Image alt='rasm' src={ClickMobile} className={'ClickMobile'} />
           </ImgBox>
         <div>
           <p className='textSmall'>To‘lov miqdori</p>
