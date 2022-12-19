@@ -41,6 +41,7 @@ export const Input = forwardRef(({
   mweight,
   mmaxlength = 999999999,
   mdefaultValue,
+  minwidth,
 
 }, ref) => {
   return <Container
@@ -73,7 +74,8 @@ export const Input = forwardRef(({
    type={type}
    mweight={mweight}
    maxLength={maxlength}
-   defaultValue={defaultValue}
+    defaultValue={defaultValue}
+    minwidth={minwidth}
   />
 })
 export default Input;

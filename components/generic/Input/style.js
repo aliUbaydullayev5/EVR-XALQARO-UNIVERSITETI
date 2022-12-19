@@ -29,7 +29,8 @@ const Container = styled.input`
   }
 
   @media only screen and (max-width: 800px) {
-    min-width: 124.72px;
+    /* min-width: 124.72px; */
+    min-width: ${({ minwidth }) => (minwidth ? `${minwidth}` : '100%')};
     width: ${({ mwidth }) => (mwidth ? `${mwidth}` : '100%')};
     height: ${({ mheight }) => mheight ? mheight : '80px'};
     font-size: ${({ msize }) => (msize ? `${msize}` : '32px')};

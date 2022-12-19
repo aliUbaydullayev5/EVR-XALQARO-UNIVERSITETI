@@ -64,7 +64,7 @@ const BoxCon = styled.div`
     color: white;
     font-size: 30px;
     bottom: 12px;
-    left: 10px;
+    left: 33px;
 @media only screen and (max-width: 1000px) {
    position: absolute;
     z-index: 999;
@@ -73,7 +73,7 @@ const BoxCon = styled.div`
     color: white;
     font-size: 17px;
     bottom: 2px;
-    left: 8px;
+    left: 17px;
 }
   }
   .InputLeft{

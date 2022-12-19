@@ -84,20 +84,20 @@ export const UsersPayInfo = () => {
           </TextBox>
           <ConTainerImg>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>
-              <Image src={Click} alt='click'  className='Click' />
-              <Image src={CilckMobile} alt='click' className='CilckMobile' />
+              <Image  src={Click} alt='click'  className='Click' />
+              <Image  src={CilckMobile} alt='click' className='CilckMobile' />
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/payme')}>
-              < Image src={Payme} alt='click' className='Payme'/>
-              <Image src={PaymeMobile} alt='click' className='PaymeMobile' />
+              < Image  src={Payme} alt='click' className='Payme'/>
+              <Image  src={PaymeMobile} alt='click' className='PaymeMobile' />
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
-              <Image src={Paynet} alt='click' className='Paynet'/>
-              <Image src={PaynetMobile} alt='click' className='PaynetMobile' />
+              <Image  src={Paynet} alt='click' className='Paynet'/>
+              <Image  src={PaynetMobile} alt='click' className='PaynetMobile' />
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/appelsin')}>
-              < Image src={Apelsin} alt='click' className='Apelsin'/>
-              <Image src={AppelsinMobile} alt='click' className='ApelsinMobile' />
+              < Image  src={Apelsin} alt='click' className='Apelsin'/>
+              <Image  src={AppelsinMobile} alt='click' className='ApelsinMobile' />
             </div>
             <div>
               <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
@@ -107,8 +107,8 @@ export const UsersPayInfo = () => {
               </AntModal>
             </div>
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
-              <Image src={oson} alt='click' className='Oson'/>
-              <Image src={osonMobile} alt='click' className='OsonMobile' />
+              <Image  src={oson} alt='click' className='Oson'/>
+              <Image  src={osonMobile} alt='click' className='OsonMobile' />
             </div>
           </ConTainerImg>
           <div className='btnEnd'>

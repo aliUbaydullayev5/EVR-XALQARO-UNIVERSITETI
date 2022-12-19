@@ -69,7 +69,7 @@ export const Clickpay = () => {
           <p className='textSmall'>To‘lov miqdori</p>
             <Input mradius='5px' mpadding='0px 0px 0px 20px' mwidth="136px" mheight="36px" msize='13px' width="410px" disabled={true} defaultValue="150 000 so’m" height="48px"  />
         </div>
-      </BoxCon>
+      </BoxCon> 
 
       <BoxCon>
         <div>
@@ -78,14 +78,14 @@ export const Clickpay = () => {
         </div>
         <div className='InputLeft'>
           <p className='textSmall'>Amal qilish muddati</p>
-            <Input  mradius='5px' msize="16px" mpadding='0px 0px 0px 20px' mwidth='84px'  mheight="21px" height='36px' placeholder="мм/гг"   maxlength={'7'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
+            <Input mradius='5px' msize="16px" minwidth={'84px'} mpadding='0px 0px 0px 20px' mwidth='84px' width='234px' mheight="21px" height='36px' placeholder="мм/гг"   maxlength={'7'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
         </div>
       </BoxCon>
       <BoxCon>
         <div className={'formatMain'}>
           <p className='textSmall'>Telefon raqamingiz</p>
             <p className={'format'}>+998</p>
-            <Input msize="16px" mradius='5px' mwidth="166px" mheight="21px" mpadding='0px 0px 2px 50px' size="30px" width="410px" height="55px" disabled={true} margin='10px 0px 0px 0px' defaultValue={'99 999 99 99'} padding={'0 0 0 90px'}  />
+            <Input msize="16px" mradius='5px' mwidth="166px" mheight="21px" mpadding='0px 0px 2px 60px' size="30px" width="410px" height="55px" disabled={true} margin='10px 0px 0px 0px' defaultValue={'99 999 99 99'} padding={'0 0 0 110px'}  />
         </div>
         <div className='InputLeft'>
           <p className='textSmall'>Pasport seriyangiz</p>
