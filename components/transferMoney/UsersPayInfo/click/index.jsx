@@ -1,4 +1,4 @@
-import Container, { AntModal, BoxCon, ImgBox, TextCon } from './style.js'
+import Container, { AntModal, BoxCon, BtnText, ImgBox, TextCon } from './style.js'
 import Click from "../../../../assets/icons/click.png"
 
 import { Button, Input } from '../../../generic'
@@ -120,18 +120,15 @@ export const Clickpay = () => {
             <Button onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='nocopy'  mpadding={'0px 0px 0px 30px'} mheight={"30px"} mwidth={'143.47px'} msize={'13px'} mradius='5px' height={"40px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
             <Orqaga className={'BtnCon'} />
         </div>
-          {/* <div type="primary" alt='click' onClick={showModal} className='Tolov btnEnd'>
-            <AntModal open={isModalOpen} onOk={handleOk} onCancel={"refresh"}   > 
-               <Input placeholder='_ _ _ _ _ _' maxlength={'6 '}>  </Input>
-            </AntModal>
-            <Button mheight={"30px"} mradius='5px' mwidth={'127.47px'} msize={'16px'} width={'290px'} height='45px' margin={'10px 0px 0px 0px'}>To’lash</Button> 
-          </div>  */}
 
           <div>
             <AntModal open={isModalOpen} onOk={changeHidden} onCancel={changeHidden}>
-             <Input width='379px' height='100px' padding="0px 0px 0px 25px" placeholder={'_ _ _ _ _ _'}></Input>
+              <Input align={'center'} width='379px' height='100px' padding="0px 0px 0px 25px" placeholder={'_ _ _ _ _ _'} maxlength='6'></Input>
+              <Button mheight={'25px'} mmargin={'10px 0px 0px 0px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo/click/arizafinaly')} height={'41px'} margin="20px 0px 0px 0px" bc={'#ffff'}>
+                <BtnText>tasdiqlash</BtnText>
+              </Button>
             </AntModal>
-            <Button type="primary" alt='click' onclick={showModal} className='Tolov' >
+            <Button mradius={'5px'} width={'344px'} mwidth={'74px'} msize={'19px'} mheight={'30px'} height={'40px'} type="primary" alt='click' onclick={showModal} className='Tolov' >
               Tolov              
             </Button>
           </div>
@@ -142,4 +139,3 @@ export const Clickpay = () => {
 export default Clickpay
 
 
-// onclick={() => query.push('/receptionPage/application/UsersCardInfo/click/arizafinaly')} 

@@ -125,7 +125,7 @@ const IconBox = styled.div`
     display: none;
   }
   @media only screen and (max-width: 1000px) {
-    width: 290px !important;
+    width: 100% !important;
     display: flex;
     justify-content: center;
     .UploadFileMobile{

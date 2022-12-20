@@ -22,6 +22,7 @@ const Container = styled.input`
     letter-spacing: -0.025em;
     color: white;
     transition: .2s ;
+    text-align: ${({align})=> align && align};
     :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);
@@ -48,6 +49,7 @@ const Container = styled.input`
     letter-spacing: -0.025em;
     color: white;
     transition: .2s ;
+    text-align: ${({malign})=> malign && malign};
     :active{transform: scale(${({ mscale }) => (mscale ? `${mscale}` : '1.02')})}
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);

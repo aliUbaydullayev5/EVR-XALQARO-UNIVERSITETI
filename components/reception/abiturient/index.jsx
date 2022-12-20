@@ -128,20 +128,18 @@ export const AbiturientQabul = () => {
                 </div>
 
                 <Container.Number className='row5'>
-                    <div>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'290px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __'} padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                        <Input className='inputPhone' mradius={'5px'} mwidth={'100% '} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 2px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __'} padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <Container.FormatNumber className=''>+998</Container.FormatNumber>
-                    </div>
+
                 </Container.Number>
                 <div className='row3'>
-                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} />
+                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} />
                 </div>
 
                 <Container.Number className='row6'>
-                    <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'}  mwidth={'290px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'}  mwidth={'100%'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
                         <Container.FormatNumber>+998</Container.FormatNumber>
-                    </div>
+
                 </Container.Number>
                 <div className='row4'>
                     <Input  placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
@@ -187,9 +185,6 @@ export const AbiturientQabul = () => {
                         <UploadMobile className={'UploadFileMobile2'} />
                     </IconBox>
                 </div>
-
-               
-
                 <IconBox className='row7'>
                     <AntSelect 
                         showSearch

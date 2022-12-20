@@ -86,12 +86,12 @@ const BoxCon = styled.div`
   .BtnCon{
     position: absolute;
     bottom: 10px;
-    left:20px;
-    top: 14px;
+     left:19px;
+    top: 12 px;
     @media only screen and (max-width: 1000px) {
     position: absolute;
     bottom: 10px;
-    left:20px;
+    left:15px;
     top: 2px;
     }
   }
@@ -145,6 +145,10 @@ const AntModal = styled(Modal)`
 box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
 border-radius: 15px;
 padding:  50px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin:  0 auto;
 
 .ant-modal-body {
   >p{
@@ -161,6 +165,29 @@ padding:  50px;
   }
 }
 `
+const BtnText = styled.p`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #221F51;
+ @media only screen and (max-width: 1000px) {
+    font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #221F51;
+ } 
+`
 
-export { TextCon, BoxCon, ImgBox, AntModal }
+
+export { TextCon, BoxCon, ImgBox, AntModal, BtnText }
 export default Container

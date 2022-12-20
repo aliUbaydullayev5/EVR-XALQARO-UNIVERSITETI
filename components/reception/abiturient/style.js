@@ -56,9 +56,9 @@ const TextCon = styled.div`
 `
 Container.Number = styled.div`
   width: 100%;
-  >div{
+  
     position: relative;
-  }
+
 `
 Container.FormatNumber = styled.div`
   position: absolute;
@@ -85,7 +85,7 @@ const InputCont = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap:6px;
-    padding:0px 0px 0px 13px;
+    padding:0px 10px ;
 
 
   >div{
@@ -218,8 +218,7 @@ const IconBox = styled.div`
         } 
 
 @media only screen and (max-width: 800px) {
-          max-width: 290px;
-          min-width: 260px;
+          max-width: 100% ;
           display:flex ;
           align-items: center;
           justify-content: center;

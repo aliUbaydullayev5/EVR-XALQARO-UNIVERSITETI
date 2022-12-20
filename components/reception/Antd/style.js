@@ -2,7 +2,7 @@ import { Select } from 'antd';
 import styled from 'styled-components';
 
 const AntSelect = styled(Select)`
-/* Ant selector */
+
 .ant-select-selection-item{
   color: white !important;
   padding: 0px 20px !important ;
@@ -26,7 +26,9 @@ const AntSelect = styled(Select)`
   display: none !important;
 
    
-  
+  @media only screen and (max-width: 800px) {
+      width: 100%;
+  }
   
  }
  .ant-select-selection-placeholder{
