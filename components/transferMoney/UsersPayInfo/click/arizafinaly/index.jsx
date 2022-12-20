@@ -16,11 +16,12 @@ export const ArizafinalyComponent = () => {
               <Input mwidth='100%' mheight={'45px'} mradius={'5px'} disabled={true} height={'61px'} width={'500px'} placeholder='№: 101004 ' />
               <p>Parolingizni eslab qoling.</p>
               <Input mwidth='100%' mheight={'45px'} mradius={'5px'} disabled={true} height={'61px'} width={'500px'} placeholder='AA2223344' margin={'10px 0px 15px 0px'} />
-              <Button mwidth='100%' width={'344px'} mheight={'45px'} mradius={'5px'} height={'48px'} >yuklab olish</Button>
-              < BtnCon >
-                  <Button mwidth='100%'  width={'267.47px'} mheight={'45px'} mradius={'5px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='btnEnd nocopy' height={"40px"}  size={'22px'}>Ortga qaytish</Button>
+              <Button mwidth='100%' width={'344px'} mheight={'45px'} msize={"25px"} mradius={'5px'} height={'48px'} >yuklab olish</Button>
+              <BtnCon>
+                  <Button mwidth='100%' width={'267.47px'} mheight={'45px'} msize={"25px"} mradius={'5px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='btnEnd nocopy' height={"40px"} size={'22px'}>Ortga qaytish</Button>
                   <Orqaga className='Orqaga' />
               </BtnCon >
+
           </BoxCon>
       </Container>
   )

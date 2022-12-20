@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   display: grid ;
-  grid-template-columns: auto;
+  grid-template-columns: auto ;
   >div{
     display: flex;
     justify-content: end;
@@ -77,6 +77,11 @@ position: relative;
   position: absolute;
   right: 220px;
   top:10px ;
+  @media only screen and (max-width: 800px) {
+ right: 0px;
+ left: 30px;
+  top:10px ;
+  }
 }
 `
 const AntModal = styled(Modal)`
