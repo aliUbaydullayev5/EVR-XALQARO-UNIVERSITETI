@@ -28,8 +28,8 @@ const Navbar = () => {
 
     const [hiddenMenu, setHiddenMenu] = useState(false)
 
-    const changeHidden = () => setHidden(!hidden)
-    const changeHiddenMenu = () => setHiddenMenu(!hiddenMenu)
+    const changeHidden = () => setHidden(!hidden);
+    const changeHiddenMenu = () => setHiddenMenu(!hiddenMenu);
 
 
     return(

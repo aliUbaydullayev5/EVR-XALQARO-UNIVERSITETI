@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -54,10 +55,29 @@ position: relative;
   position: absolute;
   right: 220px;
   top:10px ;
-
-
 }
 `
+const AntModal = styled(Modal)`
+box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+border-radius: 15px;
+padding:  50px;
 
-export { BoxCon, BtnCon }
+.ant-modal-body {
+  >p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 105.9%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: -0.085em;
+    color: #FFFFFF;
+  }
+}
+
+`
+
+export { BoxCon, BtnCon, AntModal }
 export default Container

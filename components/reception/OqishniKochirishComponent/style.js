@@ -203,7 +203,6 @@ padding:  50px;
     color: #FFFFFF;
   }
 }
-
 `
 
 InputCont.Section1 = styled.div``

@@ -28,9 +28,11 @@ import { AntModal } from '../../reception/OqishniKochirishComponent/style.js'
 export const UsersPayInfo = () => {
   const query = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -99,6 +101,7 @@ export const UsersPayInfo = () => {
               < Image  src={Apelsin} alt='click' className='Apelsin'/>
               <Image  src={AppelsinMobile} alt='click' className='ApelsinMobile' />
             </div>
+
             <div>
               <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
               <NaqtTulov type="primary" alt='click' onClick={showModal} className='TolovMobile'/>
@@ -106,8 +109,9 @@ export const UsersPayInfo = () => {
                 <p>Hurmatli talaba, agar naqd pul ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa  ilovalar orqali to'lashingiz mumkin.</p>
               </AntModal>
             </div>
+
             <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
-              <Image src={Alif} alt='click' className='Oson'/>
+              <Image  src={AlifMobile} alt='click' className='Oson'/>
               <Image src={AlifMobile} alt='click' className='OsonMobile' />
             </div>
           </ConTainerImg>

@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router.js'
 import React, {useState} from 'react'
 import { Input } from '../../../../generic/index.jsx'
-import Container, { BoxCon, BtnCon } from './style.js'
+import Container, { AntModal, BoxCon, BtnCon } from './style.js'
 import Orqaga from "../../../../../assets/icons/orqaga.svg"
 import Button from "../../../../generic/Button";
 
 export const ArizafinalyComponent = () => {
     const query = useRouter()
+
+
 
   return (
       <Container>
