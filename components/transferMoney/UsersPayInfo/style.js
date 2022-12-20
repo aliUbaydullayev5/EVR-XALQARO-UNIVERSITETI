@@ -34,11 +34,12 @@ const BoxCon = styled.div`
   display: flex;
   flex-direction: column;
   gap:15px;
-  @media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   display: flex;
   flex-direction:column;
   margin: 0 auto;
   gap: 0px;
+  padding: 5px 0px 0 0px;
 
   }
   .btnEnd{
@@ -61,6 +62,7 @@ const TextCon = styled.div`
     line-height: 49px;
     color: #FFFFFF;
 }
+
 
 @media only screen and (max-width: 1000px) {
 
@@ -173,11 +175,13 @@ const TextBox = styled.div`
 const ConTainerImg = styled.div`
   display: grid;
   grid-template-columns: 177px 178px;
-  gap: 10px;
+  gap: 20px 30px;
   margin:  0 auto;
   margin-top: 10px;
-    @media only screen and (max-width: 1000px) {
-        grid-template-columns: 133px 133px;
+@media only screen and (max-width: 1000px) {
+  grid-template-columns: 133px 133px;
+  gap: 10px 40px;
+  
     }
   >div{
     width:  100%;
@@ -188,6 +192,7 @@ const ConTainerImg = styled.div`
     display: flex;
     justify-content: center;
     cursor: pointer;  
+
   @media only screen and (max-width: 1000px) {
     .Click{
     display: none;

@@ -55,8 +55,6 @@ export const AbiturientQabul = () => {
         return setNumState1(event)
     }
 
-
-
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
@@ -122,7 +120,7 @@ export const AbiturientQabul = () => {
                 </div>
                 <Container.Number className='row5'>
                     <div>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'360px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __ Telfon Raqamingiz'}  padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                        <Input className='inputPhone' mradius={'5px'} mwidth={'360px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'Telfon Raqamingiz'}  padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <Container.FormatNumber className=''>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
