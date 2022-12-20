@@ -7,26 +7,21 @@ import Button from "../../../../generic/Button";
 
 export const ArizafinalyComponent = () => {
     const query = useRouter()
-
-
-
   return (
       <Container>
           <BoxCon>
               <h1>To’lovingiz muvaffaqiyatli</h1>
               <h1> amalga oshirildi.</h1>
               <p>ID raqamingizni eslab qoling.</p>
-              <Input disabled={true} height={'61px'} width={'500px'} placeholder='№: 101004 ' />
+              <Input mwidth='100%' mheight={'45px'} mradius={'5px'} disabled={true} height={'61px'} width={'500px'} placeholder='№: 101004 ' />
               <p>Parolingizni eslab qoling.</p>
-              <Input disabled={true} height={'61px'} width={'500px'} placeholder='AA2223344'   margin={'10px 0px 15px 0px'} />
-              <Button width={'344px'} height={'48px'} >yuklab olish</Button>
+              <Input mwidth='100%' mheight={'45px'} mradius={'5px'} disabled={true} height={'61px'} width={'500px'} placeholder='AA2223344' margin={'10px 0px 15px 0px'} />
+              <Button mwidth='100%' width={'344px'} mheight={'45px'} mradius={'5px'} height={'48px'} >yuklab olish</Button>
+              < BtnCon >
+                  <Button mwidth='100%'  width={'267.47px'} mheight={'45px'} mradius={'5px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='btnEnd nocopy' height={"40px"}  size={'22px'}>Ortga qaytish</Button>
+                  <Orqaga className='Orqaga' />
+              </BtnCon >
           </BoxCon>
-          <div></div>
-          <div></div>
-          <BtnCon>
-              <Button onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='btnEnd nocopy' height={"40px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
-              <Orqaga className='Orqaga' />
-          </BtnCon>
       </Container>
   )
 }

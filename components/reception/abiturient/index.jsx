@@ -178,8 +178,6 @@ export const AbiturientQabul = () => {
                     </IconBox>
                 </div>
 
-
-
                 <IconBox className='row7'>
                     <AntSelect
                         showSearch
