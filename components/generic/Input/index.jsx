@@ -80,6 +80,7 @@ export const Input = forwardRef(({
     defaultValue={defaultValue}
     minwidth={minwidth}
     align={align}
+    malign={malign}
   />
 })
 export default Input;

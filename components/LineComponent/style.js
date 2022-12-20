@@ -24,7 +24,7 @@ Container.Inset = styled.div`
     animation: lineAnim 19s infinite ease-out;
     white-space: nowrap;
     @media only screen and (max-width: 1000px) {
-      top: 0;
+      top: 2px;
     }
       @keyframes lineAnim {
       0%{
