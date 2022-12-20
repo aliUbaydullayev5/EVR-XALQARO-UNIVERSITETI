@@ -4,12 +4,9 @@ import { Input, Button } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg"
 import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
-
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 
-
 export const AbiturientQabul = () => {
-
     const router = useRouter()
 
     const [numState, setNumState] = useState('')
@@ -82,8 +79,6 @@ export const AbiturientQabul = () => {
         }
         return setNumPasSeriya(event)
     }
-
-
     return (
         <Container>
             <TextCon>
@@ -94,7 +89,7 @@ export const AbiturientQabul = () => {
                     <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-                <IconBox className='row9'  > 
+                <IconBox className='row9'  >
                     <AntSelect
                         showSearch
                         style={{
@@ -122,39 +117,38 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
-
                 <div className='row2'>
-                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}/>
+                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
-
                 <Container.Number className='row5'>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'100% '} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 2px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __'} padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                    <div>
+                        <Input className='inputPhone' mradius={'5px'} mwidth={'360px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __ Telfon Raqamingiz'}  padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <Container.FormatNumber className=''>+998</Container.FormatNumber>
-
+                    </div>
                 </Container.Number>
                 <div className='row3'>
                     <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} />
                 </div>
 
                 <Container.Number className='row6'>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'}  mwidth={'100%'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                    <div>
+                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'360px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
                         <Container.FormatNumber>+998</Container.FormatNumber>
-
+                    </div>
                 </Container.Number>
                 <div className='row4'>
-                    <Input  placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
                 <div className='row11'>
                     <IconBox>
                         <Container.InputCustom2 type={'file'} />
                         <UploadFiler className={'UploadFile2'} />
-                        <UploadMobile className={'UploadFileMobile'}/>
+                        <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
                 </div>
                 <IconBox className='row8'>
                     <AntSelect
-
                         showSearch
                         style={{
                             width: 513,
@@ -185,8 +179,11 @@ export const AbiturientQabul = () => {
                         <UploadMobile className={'UploadFileMobile2'} />
                     </IconBox>
                 </div>
+
+
+
                 <IconBox className='row7'>
-                    <AntSelect 
+                    <AntSelect
                         showSearch
                         style={{
                             width: 513,
@@ -209,10 +206,10 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
-                    <BtnCon className='row12'>
-                        <div className='mobileNone'></div>
-                    <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'}  width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
-                    </BtnCon>
+                <BtnCon className='row12'>
+                    <div className='mobileNone'></div>
+                    <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
+                </BtnCon>
                 <div className='mobileNone'></div>
             </InputCont>
         </Container>

@@ -22,7 +22,7 @@ const HerBox = styled.div`
   border-bottom-right-radius: 30px;
   @media only screen and (max-width: 1000px) {
   display: flex;
-  flex-direction:column ;
+  flex-direction:column-reverse ;
   margin: 0 auto;
    box-shadow: 0px 0px 0px 0px;
   }
@@ -39,8 +39,6 @@ const BoxCon = styled.div`
   flex-direction:column;
   margin: 0 auto;
   gap: 0px;
-
-
 
   }
   .btnEnd{
@@ -107,7 +105,7 @@ const InputCon = styled.div`
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 105.9%;
   display: flex;
   align-items: center;
@@ -159,13 +157,13 @@ const TextBox = styled.div`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 13px;
     line-height: 12px;
     display: flex;
     align-items: center;
     text-align: justify;
     letter-spacing: 0.055em;
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
    color: #FFFFFF;
    }

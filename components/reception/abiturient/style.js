@@ -12,7 +12,6 @@ const Container = styled.div`
      grid-template-rows: 35px 1fr;
       box-shadow: none;
   }
-
 `
 const TextCon = styled.div`
   width: 100%;
@@ -38,7 +37,6 @@ const TextCon = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-
 @media only screen and (max-width: 800px) {
       font-family: 'Montserrat';
       font-style: normal;
@@ -51,14 +49,12 @@ const TextCon = styled.div`
     }
  
   }
-
-
 `
 Container.Number = styled.div`
   width: 100%;
-  
+  >div{
     position: relative;
-
+  }
 `
 Container.FormatNumber = styled.div`
   position: absolute;
@@ -85,9 +81,7 @@ const InputCont = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap:6px;
-    padding:0px 10px ;
-
-
+    padding: 0px 10px;
   >div{
     display: flex;
     align-items: center;
@@ -140,7 +134,6 @@ const InputCont = styled.div`
        grid-row: 12/13;
     }
   }
-
   
 `
 InputCont.Section1 = styled.div``
@@ -154,12 +147,9 @@ const BtnCon = styled.div`
   >div{
     width: 100%;
   }
-
       @media only screen and (max-width: 1000px) {
-
            margin: 0 auto ;
       }
-
 `
 const IconBox = styled.div`
   position: relative;
@@ -168,14 +158,12 @@ const IconBox = styled.div`
     right: 30px;
     top: 35px;
     cursor: pointer;
-
   }
   .UploadFile2{
     position: absolute;
     left: 22px ;
     top: 6px;
     cursor: pointer;
-
     @media only screen and (max-width: 800px) {
     position: absolute;
     left: 22px ;
@@ -184,7 +172,6 @@ const IconBox = styled.div`
     display: none;
       
     }
-
   }
   .UploadFile1{
     position: absolute;
@@ -203,9 +190,7 @@ const IconBox = styled.div`
 @media only screen and (min-width: 800px) {
       display: none;
      }
-
  }
-
    .UploadFileMobile{
     position: absolute;
     left: 30px ;
@@ -216,9 +201,9 @@ const IconBox = styled.div`
             display: none;
           }
         } 
-
 @media only screen and (max-width: 800px) {
-          max-width: 100% ;
+          max-width: 360px;
+          min-width: 360px;
           display:flex ;
           align-items: center;
           justify-content: center;
@@ -248,7 +233,6 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
    @media only screen and (max-width: 800px) {
        padding: 0px 0px 0px 55px;
        font-size:16px;
@@ -258,11 +242,9 @@ Container.InputCustom1 = styled.input`
        height: 27px;
        border-radius: 5px;
    }
-
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -303,14 +285,13 @@ Container.InputCustom2 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
    @media only screen and (max-width: 800px) {
        padding: 0px 0px 0px 55px;
        font-size:13px;
        display: flex;
        align-items: center;
        justify-content: center;
-       width: 290px;
+       width: 360px;
        height: 27px;
        border-radius: 5px;
    }
@@ -318,7 +299,6 @@ Container.InputCustom2 = styled.input`
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -336,7 +316,6 @@ Container.InputCustom2 = styled.input`
   }
 `
 IconBox.Mobile = styled.div`
-
   @media only screen and (min-width: 1000px) {
       .UploadMobile{
         display: none;
@@ -344,7 +323,6 @@ IconBox.Mobile = styled.div`
         left: 0px;
       }
 }
-
 `
 
 export { TextCon, InputCont, BtnCon, IconBox }
