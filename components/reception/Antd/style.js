@@ -5,9 +5,13 @@ const AntSelect = styled(Select)`
 
 .ant-select-selection-item{
   color: white !important;
-  padding: 0px 20px !important ;
+  padding:  6px 20px !important ;
   height: 50px  !important;
   font-size: 28px !important ;
+    @media only screen and (max-width: 1000px) {
+      font-size: 16px !important;
+      padding: 0px 12px !important ;
+    }
  }
  .ant-select-arrow{
   color: white !important;
@@ -37,7 +41,7 @@ const AntSelect = styled(Select)`
    padding: 10px 20px  !important;
    font-family: 'Montserrat' !important;
    font-size: 22px !important;
-   color: rgba(255, 255, 255, 0.7);
+   color: #ffff;
 @media only screen and (max-width: 800px) {
    font-size: 16px !important;
    padding: 0px 8px  !important;

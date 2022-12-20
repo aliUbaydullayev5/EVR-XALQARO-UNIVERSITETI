@@ -202,8 +202,8 @@ const IconBox = styled.div`
           }
         } 
 @media only screen and (max-width: 800px) {
-          max-width: 360px;
-          min-width: 360px;
+          max-width: 352px;
+          min-width: 352px;
           display:flex ;
           align-items: center;
           justify-content: center;
@@ -291,7 +291,7 @@ Container.InputCustom2 = styled.input`
        display: flex;
        align-items: center;
        justify-content: center;
-       width: 360px;
+       width: 352px;
        height: 27px;
        border-radius: 5px;
    }
