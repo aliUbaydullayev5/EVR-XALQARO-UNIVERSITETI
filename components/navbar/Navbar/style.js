@@ -26,7 +26,9 @@ const Container = styled.div`
       transform: scale(1.1);
     }
   }
-  
+  .noneMobile{
+    display: none;
+  }
   @media only screen and (max-width: 1000px) {
     width: 100%;
     height: 86px;
@@ -40,7 +42,11 @@ const Container = styled.div`
       grid-column: 1/4;
       grid-row: 2/3;
       gap: 3vw !important;
-      
+    }
+    .noneMobile{
+      display: block;
+      grid-row: 1/2; 
+      grid-column: 2/3;
     }
   }
 `
@@ -76,8 +82,6 @@ Container.Logo = styled.div`
     }
     .mobileLogo{
       display: block;
-      //width: 40px !important;
-      //height: 40px !important;
       max-width: 95px;
     }
   }

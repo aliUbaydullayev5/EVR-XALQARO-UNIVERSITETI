@@ -22,7 +22,8 @@ export const Input = forwardRef(({
   maxlength = 999999999,
   defaultValue,
   align,
-
+  border,
+  error,
 //    ---------
 
   mwidth,
@@ -44,7 +45,9 @@ export const Input = forwardRef(({
   mmaxlength = 999999999,
   mdefaultValue,
   minwidth,
-  malign
+  malign,
+  mborder,
+  merror
 
 }, ref) => {
   return <Container
@@ -81,6 +84,10 @@ export const Input = forwardRef(({
     minwidth={minwidth}
     align={align}
     malign={malign}
+    border={border}
+    mborder={mborder}
+    error={error}
+    merror={merror}
   />
 })
 export default Input;
