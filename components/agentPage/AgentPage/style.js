@@ -26,12 +26,28 @@ Container.Top = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 1000px) {
+     background: #221F51;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0px 0px;
+    height: 31px;
+  }
 `
 Container.TopTitle = styled.div`
   font-weight: 500;
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
+  @media only screen and (max-width: 1000px) {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+  }
 
 `
 

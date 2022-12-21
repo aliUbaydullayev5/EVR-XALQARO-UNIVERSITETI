@@ -111,7 +111,7 @@ const AgentFormComponent = () => {
 
                 <div className='mainForm'>
                     <div>
-                        <Input placeholder={'Firma rahbarining qo’shimcha raqami'} width={'513px'} height={'46px'} maxlength={'9'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2} maxlength={'12'} />
+                        <Input placeholder={'Firma rahbarining qo’shimcha raqami'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
                         <p>+998</p>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ const AgentFormComponent = () => {
 
                 <div className='mainForm'>
                     <div>
-                        <Input placeholder={'Firmaning telefon raqami'} width={'513px'} height={'46px'} maxlength={'9'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
+                        <Input placeholder={'Firmaning telefon raqami'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
                         <p>+998</p>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ const AgentFormComponent = () => {
 
                 <div className={'mainForm'}>
                     <div>
-                        <Input placeholder={'Firma rahbarining telefon raqami'} width={'513px'} height={'46px'} maxlength={'9'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                        <Input placeholder={'Firma rahbarining telefon raqami'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <p>+998</p>
                     </div>
                 </div>
