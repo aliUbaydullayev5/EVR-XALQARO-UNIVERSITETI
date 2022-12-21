@@ -80,9 +80,9 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   gap:6px;
-    padding: 0px 10px;
+  padding: 0px 10px;
+  height: 55px;
   >div{
     display: flex;
     align-items: center;
