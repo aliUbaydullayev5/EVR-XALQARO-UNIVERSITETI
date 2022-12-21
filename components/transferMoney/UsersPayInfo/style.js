@@ -191,7 +191,8 @@ const ConTainerImg = styled.div`
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    cursor: pointer;  
+    cursor: pointer; 
+
 
   @media only screen and (max-width: 1000px) {
     .Click{
