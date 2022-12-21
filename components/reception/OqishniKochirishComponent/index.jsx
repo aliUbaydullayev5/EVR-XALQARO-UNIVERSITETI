@@ -3,7 +3,7 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import { Button, Input } from "../../generic";
 import AntSelect from "../Antd/style";
 import { useRouter } from "next/router.js";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 
 const OqishniKochirishComponent = () => {
@@ -32,6 +32,15 @@ const OqishniKochirishComponent = () => {
         return setNumPasSeriya(event)
     }
 
+    const [width, setWidth] = useState(null)
+    useEffect(()=> {
+        if(window.innerWidth < 1000){
+            setWidth('100%')
+        }else{
+            setWidth('513px')
+        }
+    })
+
     return (
         <Container>
             <TextCon>
@@ -48,7 +57,7 @@ const OqishniKochirishComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                                 borderRadius: '5px'
                             }}
                             placeholder='Talim shaklingiz'
@@ -86,7 +95,7 @@ const OqishniKochirishComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                             }}
                             placeholder='Uqishingizni qaysi kursga kuchiryabsiz'
                             optionFilterProp="children"
@@ -119,7 +128,7 @@ const OqishniKochirishComponent = () => {
 
                 <div className={'row5'}>
                     <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'___ __ __'} mheight={'26px'} mwidth={'290px'} maxlength={'9'} padding={'0 0 0 95px'} size={'24px'} />
+                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={9} padding={'0 0 0 95px'} size={'24px'} />
                         <p className='phoNumbers'>+998</p>
                     </div>
                 </div>
@@ -137,7 +146,7 @@ const OqishniKochirishComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                             }}
                             placeholder='Talim tilingiz'
                             optionFilterProp="children"
@@ -172,7 +181,7 @@ const OqishniKochirishComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                             }}
                             placeholder='Talim yunalishingiz'
                             optionFilterProp="children"

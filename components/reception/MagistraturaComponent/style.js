@@ -47,6 +47,7 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
   >div{
     display: flex;
     align-items: center;
@@ -105,6 +106,7 @@ const BtnCon = styled.div`
 
 const IconBox = styled.div`
   position: relative;
+  height: 46px;
   .ArrowTop {
     position: absolute;
     right: 30px;
