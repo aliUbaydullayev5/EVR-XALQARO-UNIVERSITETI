@@ -148,6 +148,7 @@ const BtnCon = styled.div`
 `
 
 const IconBox = styled.div`
+  height: 46px;
   position: relative;
   .ArrowTop {
     position: absolute;
