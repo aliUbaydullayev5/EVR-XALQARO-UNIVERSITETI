@@ -80,14 +80,13 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap:6px;
-  padding: 0px 10px;
+  gap: 10px;
+  padding: 23px 10px;
   height: 55px;
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
   }
  .inputPhone{
       border: 1px solid yellow;
@@ -95,6 +94,7 @@ const InputCont = styled.div`
   @media only screen and (max-width: 1000px){
     grid-template-columns: auto;
     grid-template-rows: repeat(auto, 12);
+    padding: 0px 10px;
     .mobileNone{
       display: none;
     }
@@ -154,9 +154,8 @@ const BtnCon = styled.div`
 `
 const IconBox = styled.div`
   position: relative;
-  border: 1px solid red;
+  height: 46px;
   padding: 0 !important;
-  height: 63px !important;
   display: flex;
   justify-content: center;
   align-items: center;

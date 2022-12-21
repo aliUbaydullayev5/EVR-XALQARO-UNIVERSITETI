@@ -169,7 +169,6 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
-
                 <div className='row10'>
                     <IconBox>
                         <Container.InputCustom1 type={'file'} />
@@ -207,6 +206,7 @@ export const AbiturientQabul = () => {
                     <div className='mobileNone'></div>
                     <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
                 </BtnCon>
+
                 <div className='mobileNone'></div>
             </InputCont>
         </Container>
