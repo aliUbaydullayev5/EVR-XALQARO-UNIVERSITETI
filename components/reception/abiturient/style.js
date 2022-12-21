@@ -51,9 +51,15 @@ const TextCon = styled.div`
   }
 `
 Container.Number = styled.div`
-  width: 100%;
+  width: 100% !important;
   >div{
     position: relative;
+  }
+  @media only screen and (max-width: 800px){
+    >div{
+      position: relative;
+      width: 100%;
+    }
   }
 `
 Container.FormatNumber = styled.div`
@@ -66,13 +72,13 @@ Container.FormatNumber = styled.div`
   letter-spacing: -0.025em;
   color: white;
   @media only screen and (max-width: 800px) {
- position: absolute;
-  top: 5px;
-  left: 20px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 105.9%;
-  letter-spacing: -0.025em;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
   }
 `
 const InputCont = styled.div`
@@ -86,14 +92,14 @@ const InputCont = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-   
   }
- .inputPhone{
-      border: 1px solid yellow;
-    }
+ .inputPhone{}
   @media only screen and (max-width: 1000px){
     grid-template-columns: 1fr;
     grid-template-rows: repeat(1fr, 12);
+    >div{
+      width: 100%;
+    }
     .mobileNone{
       display: none;
     }
@@ -140,16 +146,14 @@ InputCont.Section1 = styled.div``
 InputCont.Section2 = styled.div``
 
 const BtnCon = styled.div`
-  display: flex;
-  justify-content: end !important;
   display: grid;
   grid-template-columns: 1fr 0.5fr;
   >div{
     width: 100%;
   }
-      @media only screen and (max-width: 1000px) {
-           margin: 0 auto ;
-      }
+  @media only screen and (max-width: 1000px) {
+    margin: 0 auto;
+  }
 `
 const IconBox = styled.div`
   position: relative;
@@ -178,40 +182,41 @@ const IconBox = styled.div`
     left: 22px ;
     top: 6px;
     cursor: pointer;
- @media only screen and (max-width: 800px) {
-  display: none;
- }
-}
- .UploadFileMobile2 {
-   position: absolute;
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+  .UploadFileMobile2 { 
+    position: absolute;
     left: 30px ;
     top: 9px;
     cursor: pointer;
-@media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 800px) {
       display: none;
-     }
- }
-   .UploadFileMobile{
+    }
+  }
+  .UploadFileMobile{
     position: absolute;
     left: 30px ;
     top: 8px;
     bottom: 5px;
     cursor: pointer;
-@media only screen and (min-width: 800px) {
-            display: none;
-          }
-        } 
-@media only screen and (max-width: 800px) {
-          max-width: 352px;
-          min-width: 352px;
-          display:flex ;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          margin: auto;
-          min-height: 26px;
-      
-} 
+    @media only screen and (min-width: 800px) {
+      display: none;
+    }
+  } 
+  @media only screen and (max-width: 1000px) {
+    //max-width: 352px;
+    //min-width: 352px;
+    width: 100% !important;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: auto;
+    min-height: 26px;
+  }
+  
 `
 
 Container.InputCustom1 = styled.input`
@@ -233,14 +238,15 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 800px) {
-       padding: 0px 0px 0px 55px;
-       font-size:16px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       height: 27px;
-       border-radius: 5px;
+   @media only screen and (max-width: 1000px) {
+     padding: 0px 0px 0px 55px;
+     font-size:16px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 27px;
+     border-radius: 5px;
+     width: 100% !important;
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -266,6 +272,7 @@ Container.InputCustom1 = styled.input`
 
 
 Container.InputCustom2 = styled.input`
+  font-weight: 400;
   cursor: pointer;
   min-width: 124.72px;
   width: 513px;
@@ -285,15 +292,15 @@ Container.InputCustom2 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 800px) {
-       padding: 0px 0px 0px 55px;
-       font-size:13px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       width: 352px;
-       height: 27px;
-       border-radius: 5px;
+   @media only screen and (max-width: 1000px) {
+     padding: 0px 0px 0px 55px;
+     font-size:13px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 27px;
+     border-radius: 5px;
    }
    
   ::-webkit-calendar-picker-indicator {
@@ -314,6 +321,7 @@ Container.InputCustom2 = styled.input`
     -webkit-user-select: none;
     margin: 8px 0 0 0;
   }
+  
 `
 IconBox.Mobile = styled.div`
   @media only screen and (min-width: 1000px) {
