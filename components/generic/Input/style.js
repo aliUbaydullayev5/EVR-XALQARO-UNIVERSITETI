@@ -13,8 +13,9 @@ const Container = styled.input`
     background: ${({bc})=> bc ? bc : 'linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%)'};
     border-bottom: ${({borderBoT})=> borderBoT ? borderBoT : '0px'};
     border-radius: ${({ radius }) => (radius ? `${radius}` : '15px')};
+    border: ${({border})=> border && border};
     outline: none;
-    box-shadow: ${({shadowOff})=> shadowOff ? '' : '0px 4px 17px rgba(0, 0, 0, 0.25)'};
+    box-shadow: ${({shadowOff})=> shadowOff ? shadowOff : '0px 4px 17px rgba(0, 0, 0, 0.25)'};
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: ${({weight})=> weight ? weight : '400'};
@@ -27,6 +28,8 @@ const Container = styled.input`
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);
     }
+    border: ${({error})=> error && '3px solid red'};
+    box-shadow: ${({error})=> error && '0 0 5px 3px red'};
   }
 
   @media only screen and (max-width: 800px) {
@@ -40,6 +43,7 @@ const Container = styled.input`
     background: ${({bc})=> bc ? bc : 'linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%)'};
     border-bottom: ${({mborderBoT})=> mborderBoT ? mborderBoT : '0px'};
     border-radius: ${({ mradius }) => (mradius ? `${mradius}` : '15px')};
+    border: ${({mborder})=> mborder && mborder};
     outline: none;
     box-shadow: ${({mshadowOff})=> mshadowOff ? '' : '0px 4px 17px rgba(0, 0, 0, 0.25)'};
     font-family: 'Montserrat';
@@ -54,6 +58,8 @@ const Container = styled.input`
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);
     }
+    border: ${({merror})=> merror && '3px solid red'};
+    box-shadow: ${({merror})=> merror && '0 0 5px 3px red'};
   }
 `;
 
