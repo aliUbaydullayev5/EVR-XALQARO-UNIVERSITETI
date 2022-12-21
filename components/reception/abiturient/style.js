@@ -80,20 +80,21 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   gap:6px;
     padding: 0px 10px;
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
-   
+    border: 1px solid red;
   }
  .inputPhone{
       border: 1px solid yellow;
     }
   @media only screen and (max-width: 1000px){
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(1fr, 12);
+    grid-template-columns: auto;
+    grid-template-rows: repeat(auto, 12);
     .mobileNone{
       display: none;
     }
@@ -147,12 +148,18 @@ const BtnCon = styled.div`
   >div{
     width: 100%;
   }
-      @media only screen and (max-width: 1000px) {
-           margin: 0 auto ;
-      }
+  @media only screen and (max-width: 1000px) {
+    margin: 0 auto;
+  }
 `
 const IconBox = styled.div`
   position: relative;
+  border: 1px solid red;
+  padding: 0 !important;
+  height: 63px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .ArrowTop {
     position: absolute;
     right: 30px;
@@ -165,12 +172,11 @@ const IconBox = styled.div`
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
-    position: absolute;
-    left: 22px ;
-    top: 6px;
-    cursor: pointer;
-    display: none;
-      
+      position: absolute;
+      left: 22px ;
+      top: 6px;
+      cursor: pointer;
+      display: none; 
     }
   }
   .UploadFile1{
@@ -178,9 +184,9 @@ const IconBox = styled.div`
     left: 22px ;
     top: 6px;
     cursor: pointer;
- @media only screen and (max-width: 800px) {
-  display: none;
- }
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
 }
  .UploadFileMobile2 {
    position: absolute;

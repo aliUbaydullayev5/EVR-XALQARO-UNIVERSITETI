@@ -84,7 +84,7 @@ export const AbiturientQabul = () => {
             </TextCon>
             <InputCont>
                 <div className='row1'>
-                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}  />
                 </div>
 
                 <IconBox className='row9'  >
@@ -171,7 +171,7 @@ export const AbiturientQabul = () => {
                 </IconBox>
 
                 <div className='row10'>
-                    <IconBox >
+                    <IconBox>
                         <Container.InputCustom1 type={'file'} />
                         <UploadFiler className={'UploadFile1'} />
                         <UploadMobile className={'UploadFileMobile2'} />
@@ -202,6 +202,7 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
+    
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
                     <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
