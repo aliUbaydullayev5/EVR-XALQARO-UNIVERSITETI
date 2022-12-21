@@ -101,6 +101,7 @@ const InputCont = styled.div`
     grid-template-rows: repeat(1fr, 12);
     >div{
       width: 100%;
+      height: 26px;
     }
     .mobileNone{
       display: none;
@@ -176,6 +177,7 @@ const IconBox = styled.div`
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
+      height: 26px;
       position: absolute;
       left: 22px ;
       top: 6px;
@@ -218,7 +220,7 @@ const IconBox = styled.div`
     justify-content: center;
     font-size: 22px;
     margin: auto;
-    min-height: 26px;
+    height: 26px;
   }
   
 `
@@ -248,7 +250,7 @@ Container.InputCustom1 = styled.input`
      display: flex;
      align-items: center;
      justify-content: center;
-     height: 27px;
+     height: 26px;
      border-radius: 5px;
      width: 100% !important;
    }
@@ -303,7 +305,7 @@ Container.InputCustom2 = styled.input`
      align-items: center;
      justify-content: center;
      width: 100%;
-     height: 27px;
+     height: 26px;
      border-radius: 5px;
    }
    

@@ -125,6 +125,7 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
+
                 <div className='row2'>
                     <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
@@ -146,6 +147,7 @@ export const AbiturientQabul = () => {
                         <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
+
                 <div className='row4'>
                     <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
@@ -182,6 +184,7 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
+                
                 <div className='row10'>
                     <IconBox>
                         <Container.InputCustom1 type={'file'} />
