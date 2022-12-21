@@ -38,6 +38,7 @@ Container.TopTitle = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
+  
   @media only screen and (max-width: 1000px) {
     font-family: 'Montserrat';
     font-style: normal;

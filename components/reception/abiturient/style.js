@@ -96,17 +96,12 @@ const InputCont = styled.div`
   }
  .inputPhone{}
   @media only screen and (max-width: 1000px){
-<<<<<<< HEAD
-    grid-template-columns: auto;
-    grid-template-rows: repeat(auto, 12);
-    padding: 0px 10px;
-=======
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(1fr, 12);
     >div{
       width: 100%;
     }
->>>>>>> origin/main
     .mobileNone{
       display: none;
     }
@@ -196,15 +191,9 @@ const IconBox = styled.div`
     @media only screen and (max-width: 800px) {
       display: none;
     }
-<<<<<<< HEAD
 }
- .UploadFileMobile2 {
-   position: absolute;
-=======
-  }
   .UploadFileMobile2 { 
     position: absolute;
->>>>>>> origin/main
     left: 30px ;
     top: 9px;
     cursor: pointer;
@@ -223,8 +212,6 @@ const IconBox = styled.div`
     }
   } 
   @media only screen and (max-width: 1000px) {
-    //max-width: 352px;
-    //min-width: 352px;
     width: 100% !important;
     display:flex ;
     align-items: center;
