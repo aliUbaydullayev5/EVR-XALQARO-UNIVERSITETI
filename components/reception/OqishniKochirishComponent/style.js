@@ -48,11 +48,12 @@ const InputCont = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 6px;
   
-  
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid red;
+    
   }
 
   .phoNumber{
