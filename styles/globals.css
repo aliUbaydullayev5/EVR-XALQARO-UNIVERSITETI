@@ -222,7 +222,7 @@ input, textarea {
 }
 @media only screen and (max-width: 1000px) {
 .ant-modal .ant-modal-content{
-  margin-top: 100px !important;
+  margin-top: 40px !important;
 
 }
 
