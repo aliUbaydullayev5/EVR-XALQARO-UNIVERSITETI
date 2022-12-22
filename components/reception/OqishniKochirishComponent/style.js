@@ -205,6 +205,9 @@ padding:  50px;
     text-align: justify;
     letter-spacing: -0.085em;
     color: #FFFFFF;
+      @media only screen and (max-width: 1000px) {
+            font-size: 14px;
+      }
   }
 }
 `

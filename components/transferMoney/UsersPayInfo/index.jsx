@@ -75,7 +75,7 @@ export const UsersPayInfo = () => {
           </InputCon>
 
           <BtnCon>
-            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy' margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
+            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy'  margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
             <Orqaga className={'BtnCon'} />
           </BtnCon>
         </BoxCon>
@@ -106,7 +106,7 @@ export const UsersPayInfo = () => {
                 <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
                 <NaqtTulov type="primary" alt='click' onClick={showModal} className='TolovMobile' />
                 <AntModal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                  <p>Hurmatli talaba, agar naqd pul ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa  ilovalar orqali to'lashingiz mumkin.</p>
+                  <p className='talaba'>Hurmatli talaba, agar naqd pul ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa  ilovalar orqali to'lashingiz mumkin.</p>
                 </AntModal>
               </div>
 

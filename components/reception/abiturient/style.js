@@ -86,8 +86,10 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   gap: 6px;
   padding: 0px 10px;
+
   >div{
     display: flex;
     align-items: center;
@@ -95,10 +97,12 @@ const InputCont = styled.div`
   }
  .inputPhone{}
   @media only screen and (max-width: 1000px){
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(1fr, 12);
     >div{
       width: 100%;
+      height: 26px;
     }
     .mobileNone{
       display: none;
@@ -158,6 +162,11 @@ const BtnCon = styled.div`
 `
 const IconBox = styled.div`
   position: relative;
+  height: 46px;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .ArrowTop {
     position: absolute;
     right: 30px;
@@ -170,12 +179,12 @@ const IconBox = styled.div`
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
-    position: absolute;
-    left: 22px ;
-    top: 6px;
-    cursor: pointer;
-    display: none;
-      
+      height: 26px;
+      position: absolute;
+      left: 22px ;
+      top: 6px;
+      cursor: pointer;
+      display: none; 
     }
   }
   .UploadFile1{
@@ -186,7 +195,7 @@ const IconBox = styled.div`
     @media only screen and (max-width: 800px) {
       display: none;
     }
-  }
+}
   .UploadFileMobile2 { 
     position: absolute;
     left: 30px ;
@@ -207,15 +216,13 @@ const IconBox = styled.div`
     }
   } 
   @media only screen and (max-width: 1000px) {
-    //max-width: 352px;
-    //min-width: 352px;
     width: 100% !important;
     display:flex ;
     align-items: center;
     justify-content: center;
     font-size: 22px;
     margin: auto;
-    min-height: 26px;
+    height: 26px;
   }
   
 `
@@ -245,7 +252,7 @@ Container.InputCustom1 = styled.input`
      display: flex;
      align-items: center;
      justify-content: center;
-     height: 27px;
+     height: 26px;
      border-radius: 5px;
      width: 100% !important;
    }
@@ -300,7 +307,7 @@ Container.InputCustom2 = styled.input`
      align-items: center;
      justify-content: center;
      width: 100%;
-     height: 27px;
+     height: 26px;
      border-radius: 5px;
    }
    
