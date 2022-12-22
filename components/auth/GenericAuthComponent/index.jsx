@@ -20,15 +20,15 @@ const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
                 <Container.Bottom>
                     <Container.InputArea>
                         <PersonIcon className={'personIcon'} />
-                        <Input borderBoT={'2px solid #fff'} radius={'0px'} placeholder={'ID raqamingiz'} width={'333px'} height={'32px'} bc={'rgba(255,255,255,0)'} shadowOff={true} size={'24px'} padding={'0 0 0 40px'} />
+                        <Input mwidth={'200px'} mheight={'30px'} mborderBoT={'2px solid #fff'} mradius={'0px'} borderBoT={'2px solid #fff'} mradius={'0px'} radius={'0px'} placeholder={'ID raqamingiz'} width={'333px'} height={'32px'} mbc={'rgba(255,255,255,0)'} bc={'rgba(255,255,255,0)'} mshadowOff={true} shadowOff={true} msize={'16px'} size={'24px'} mpadding={'0 0 0 40px'} padding={'0 0 0 40px'} />
                     </Container.InputArea>
                     <Container.InputArea>
                         <BlockIcon className={'blockIcon'} />
-                        <Input borderBoT={'2px solid #fff'} radius={'0px'} placeholder={'Pasport seriyangiz'} width={'333px'} height={'32px'} bc={'rgba(255,255,255,0)'} shadowOff={true} size={'24px'} padding={'0 0 0 40px'} />
+                        <Input mwidth={'200px'} mheight={'30px'} borderBoT={'2px solid #fff'} mborderBoT={'2px solid #fff'} mradius={'0px'} radius={'0px'} placeholder={'Pasport seriyangiz'} width={'333px'} height={'32px'} mbc={'rgba(255,255,255,0)'} bc={'rgba(255,255,255,0)'} mshadowOff={true} shadowOff={true} msize={'16px'} size={'24px'} mpadding={'0 0 0 40px'} padding={'0 0 0 40px'} />
                     </Container.InputArea>
                     <Container.ButtonArea>
                         <div>
-                            <Button color={'#221F51'} bc={'#fff'} radius={'6px'} width={'333px'} height={'52px'} onclick={()=> pushFunc()}>KIRISH</Button>
+                            <Button mwidth={'200px'} mheight={'30px'} msize={'24px'} mradius={'6px'} color={'#221F51'} bc={'#fff'} radius={'6px'} width={'333px'} height={'52px'} onclick={()=> pushFunc()}>KIRISH</Button>
                         </div>
                         <Container.Desc className={'nocopy'}>ID raqamingizni esdan chiqardingizmi?</Container.Desc>
                         {

@@ -8,12 +8,15 @@ const Container = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 84px 1fr;
-  
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 31px 1fr;
+  }
 `
 Container.Top = styled.div`
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;font-weight: 500;
+  border-radius: 30px 30px 0px 0px;
+  font-weight: 500;
   font-size: 40px;
   line-height: 49px;
   display: flex;
@@ -27,7 +30,16 @@ Container.Top = styled.div`
     right: 23px;
     cursor: pointer;
   }
-
+  @media only screen and (max-width: 1000px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    .closeIcon{
+      display: none;
+      right: 20px;
+    }
+  }
 
 `
 Container.Bottom = styled.div`
@@ -35,7 +47,12 @@ Container.Bottom = styled.div`
   grid-template-columns: 305px 1fr;
   grid-gap: 96px;
   padding: 20px 85px;
-
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 126px 1fr;
+    grid-gap: 0;
+    padding: 20px 23px;
+  }
 `
 
 Container.Left = styled.div`
@@ -46,6 +63,16 @@ Container.Left = styled.div`
   >div{
     display: flex;
     justify-content: center;
+  }
+  @media only screen and (max-width: 1000px) { 
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 110px 1fr;
+    .person{
+      width: 20vw;
+      height: 20vw;
+      max-width: 190px;
+    }
   }
 `
 Container.LeftMenu = styled.div`
@@ -61,18 +88,41 @@ Container.LeftMenu = styled.div`
     top: 5px;
     left: 39px;
   }
-
+  .mobileIcon{
+    display: none;
+  }
+  @media only screen and (max-width: 1000px) {
+    .icon{
+      position: absolute;
+      z-index: 999;
+      top: 3px;
+      left: 10px;
+    }
+    .laptopIcon{
+      display: none;
+    }
+    .mobileIcon{
+      display: block;
+    }
+  }
 `
 
 Container.Right = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  
+  @media only screen and (max-width: 1000px) {
+    grid-gap: 6px;
+  }
 `
 Container.Row = styled.div`
   display: grid;
   grid-template-columns: ${({columns})=> columns ? columns : '1fr'};
-  grid-gap: ${({gap})=> gap ? gap : '0px'};
+  @media only screen and (min-width: 1000px) {
+    grid-gap: ${({gap})=> gap ? gap : '0px'};
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-gap: ${({mgap})=> mgap ? mgap : '0px'};
+  }
   align-items: center;
   >div{
     position: relative;
@@ -88,6 +138,13 @@ Container.Row = styled.div`
     position: absolute;
     bottom: 5px;
     right: 31px;
+  }
+  @media only screen and (max-width: 1000px){
+    .icon{
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+    }
   }
 `
 
@@ -127,6 +184,28 @@ Container.InputCustom1 = styled.input`
     color: rgb(211, 211, 211);
   }
   cursor: pointer;
+  @media only screen and (max-width: 1000px){
+    height: 33px;
+    padding: 0px 0px 0px 20px;
+    font-size: 16px;
+    ::before {
+      content: 'Yuklab olish';
+      display: inline-block;
+      outline: none;
+      -webkit-user-select: none;
+      margin: 8px 0 0 0;
+      white-space: nowrap;
+
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 105.9%;
+      letter-spacing: -0.025em;
+      color: rgb(211, 211, 211);
+    }
+  }
+  
 `
 
 

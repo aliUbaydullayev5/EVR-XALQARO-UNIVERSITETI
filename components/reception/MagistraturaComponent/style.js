@@ -377,6 +377,7 @@ Container.InputCustom2 = styled.input`
   cursor: pointer;
   
   
+  
 `
 
 export { TextCon, InputCont, BtnCon, IconBox }

@@ -6,7 +6,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
   background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   @media only screen and (max-width: 800px) {
      grid-template-rows: 35px 1fr;
@@ -20,16 +20,15 @@ const TextCon = styled.div`
   align-items: center;
   justify-content: center;
   background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   @media only screen and (max-width: 800px) {
     height: 31px;
     background: #221F51;
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 30px 30px 0px 0px;
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0 0;
   }
   >h1{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 48px;
@@ -38,7 +37,6 @@ const TextCon = styled.div`
     align-items: center;
     color: #FFFFFF;
     @media only screen and (max-width: 800px) {
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -49,6 +47,7 @@ const TextCon = styled.div`
     }
   }
 `
+
 Container.Number = styled.div`
   width: 100% !important;
   >div{
@@ -88,7 +87,7 @@ const InputCont = styled.div`
   grid-template-columns: 1fr 1fr;
 
   gap: 6px;
-  padding: 0px 10px;
+  padding: 0 10px;
 
   >div{
     display: flex;
@@ -231,14 +230,13 @@ Container.InputCustom1 = styled.input`
   min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
+  padding: 0 0 0 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   font-style: normal;
   font-weight: 400;
   line-height: 105.9%;
@@ -247,7 +245,7 @@ Container.InputCustom1 = styled.input`
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
    @media only screen and (max-width: 1000px) {
-     padding: 0px 0px 0px 55px;
+     padding: 0 0 0 55px;
      font-size:16px;
      display: flex;
      align-items: center;
@@ -285,23 +283,21 @@ Container.InputCustom2 = styled.input`
   min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
+  padding: 0 0 0 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   font-style: normal;
-  font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
    @media only screen and (max-width: 1000px) {
-     padding: 0px 0px 0px 55px;
+     padding: 0 0 0 55px;
      font-size:13px;
      display: flex;
      align-items: center;
@@ -336,7 +332,7 @@ IconBox.Mobile = styled.div`
       .UploadMobile{
         display: none;
         position: absolute;
-        left: 0px;
+        left: 0;
       }
 }
 `
