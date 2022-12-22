@@ -15,6 +15,15 @@ Container.Block = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 135px 1fr;
+  @media only screen and (max-width: 1000px) {
+    max-width: 290px;
+    max-height: 312px;
+    background: #221F51;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+    border-radius: 30px;
+    display: grid;
+    grid-template-rows: 77px 1fr;
+  }
 `
 
 Container.Top = styled.div`
@@ -30,8 +39,10 @@ Container.Title = styled.div`
   font-size: 64px;
   line-height: 78px;
   color: #FFFFFF;
-
-
+  @media only screen and (max-width: 1000px) {
+    font-size: 40px;
+    line-height: 49px;
+  }
 `
 
 Container.Bottom = styled.div`
@@ -40,6 +51,9 @@ Container.Bottom = styled.div`
   align-items: center;
   padding: 32px 0 0 0;
   gap: 30px;
+  @media only screen and (max-width: 1000px) {
+    gap: 14px;
+  }
 `
 
 Container.InputArea = styled.div`
@@ -73,6 +87,19 @@ Container.Desc = styled.div`
   :active{
     transform: scale(1.05);
   }
+  @media only screen and (max-width: 1000px) {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    max-width: 160px;
+    :hover{
+      transform: none;
+    }
+    :active{
+      transform: none;
+    }
+  }
 `
 Container.SubDesc = styled.div`
   font-weight: 400;
@@ -88,6 +115,20 @@ Container.SubDesc = styled.div`
   }
   :active{
     transform: scale(1.05);
+  }
+  @media only screen and (max-width: 1000px) {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 10px 0 0 0;
+    :hover{
+      transform: none;
+    }
+    :active{
+      transform: none;
+    }
   }
 `
 Container.ButtonArea = styled.div`

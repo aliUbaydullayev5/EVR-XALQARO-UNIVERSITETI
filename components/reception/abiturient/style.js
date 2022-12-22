@@ -6,7 +6,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
   background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   @media only screen and (max-width: 800px) {
      grid-template-rows: 35px 1fr;
@@ -20,16 +20,15 @@ const TextCon = styled.div`
   align-items: center;
   justify-content: center;
   background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
-@media only screen and (max-width: 800px) {
-      height: 31px;
-      background: #221F51;
-      box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-      border-radius: 30px 30px 0px 0px;
-}
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
+  @media only screen and (max-width: 800px) {
+    height: 31px;
+    background: #221F51;
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0 0;
+  }
   >h1{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 48px;
@@ -37,8 +36,7 @@ const TextCon = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-@media only screen and (max-width: 800px) {
-      font-family: 'Montserrat';
+    @media only screen and (max-width: 800px) {
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -47,15 +45,22 @@ const TextCon = styled.div`
       align-items: center;
       color: #FFFFFF;
     }
- 
   }
 `
+
 Container.Number = styled.div`
-  width: 100%;
+  width: 100% !important;
   >div{
     position: relative;
   }
+  @media only screen and (max-width: 800px){
+    >div{
+      position: relative;
+      width: 100%;
+    }
+  }
 `
+
 Container.FormatNumber = styled.div`
   position: absolute;
   top: 15px;
@@ -66,13 +71,13 @@ Container.FormatNumber = styled.div`
   letter-spacing: -0.025em;
   color: white;
   @media only screen and (max-width: 800px) {
- position: absolute;
-  top: 5px;
-  left: 20px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 105.9%;
-  letter-spacing: -0.025em;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
   }
 `
 const InputCont = styled.div`
@@ -80,21 +85,24 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 23px 10px;
-  height: 55px;
+
+  gap: 6px;
+  padding: 0 10px;
+
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
   }
- .inputPhone{
-      border: 1px solid yellow;
-    }
+ .inputPhone{}
   @media only screen and (max-width: 1000px){
-    grid-template-columns: auto;
-    grid-template-rows: repeat(auto, 12);
-    padding: 0px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr, 12);
+    >div{
+      width: 100%;
+      height: 26px;
+    }
     .mobileNone{
       display: none;
     }
@@ -131,9 +139,10 @@ const InputCont = styled.div`
     .row11{
        grid-row: 11/12;
     }
-      .row12{
-       grid-row: 12/13;
+    .row12{
+      grid-row: 12/13;
     }
+    
   }
   
 `
@@ -141,8 +150,6 @@ InputCont.Section1 = styled.div``
 InputCont.Section2 = styled.div``
 
 const BtnCon = styled.div`
-  display: flex;
-  justify-content: end !important;
   display: grid;
   grid-template-columns: 1fr 0.5fr;
   >div{
@@ -171,6 +178,7 @@ const IconBox = styled.div`
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
+      height: 26px;
       position: absolute;
       left: 22px ;
       top: 6px;
@@ -187,50 +195,48 @@ const IconBox = styled.div`
       display: none;
     }
 }
- .UploadFileMobile2 {
-   position: absolute;
+  .UploadFileMobile2 { 
+    position: absolute;
     left: 30px ;
     top: 9px;
     cursor: pointer;
-@media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 800px) {
       display: none;
-     }
- }
-   .UploadFileMobile{
+    }
+  }
+  .UploadFileMobile{
     position: absolute;
     left: 30px ;
     top: 8px;
     bottom: 5px;
     cursor: pointer;
-@media only screen and (min-width: 800px) {
-            display: none;
-          }
-        } 
-@media only screen and (max-width: 800px) {
-          max-width: 352px;
-          min-width: 352px;
-          display:flex ;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          margin: auto;
-          min-height: 26px;
-      
-} 
+    @media only screen and (min-width: 800px) {
+      display: none;
+    }
+  } 
+  @media only screen and (max-width: 1000px) {
+    width: 100% !important;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: auto;
+    height: 26px;
+  }
+  
 `
 
 Container.InputCustom1 = styled.input`
   min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
+  padding: 0 0 0 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   font-style: normal;
   font-weight: 400;
   line-height: 105.9%;
@@ -238,14 +244,15 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 800px) {
-       padding: 0px 0px 0px 55px;
-       font-size:16px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       height: 27px;
-       border-radius: 5px;
+   @media only screen and (max-width: 1000px) {
+     padding: 0 0 0 55px;
+     font-size:16px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 26px;
+     border-radius: 5px;
+     width: 100% !important;
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -271,34 +278,33 @@ Container.InputCustom1 = styled.input`
 
 
 Container.InputCustom2 = styled.input`
+  font-weight: 400;
   cursor: pointer;
   min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
+  padding: 0 0 0 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   font-style: normal;
-  font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 800px) {
-       padding: 0px 0px 0px 55px;
-       font-size:13px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       width: 352px;
-       height: 27px;
-       border-radius: 5px;
+   @media only screen and (max-width: 1000px) {
+     padding: 0 0 0 55px;
+     font-size:13px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 26px;
+     border-radius: 5px;
    }
    
   ::-webkit-calendar-picker-indicator {
@@ -319,13 +325,14 @@ Container.InputCustom2 = styled.input`
     -webkit-user-select: none;
     margin: 8px 0 0 0;
   }
+  
 `
 IconBox.Mobile = styled.div`
   @media only screen and (min-width: 1000px) {
       .UploadMobile{
         display: none;
         position: absolute;
-        left: 0px;
+        left: 0;
       }
 }
 `

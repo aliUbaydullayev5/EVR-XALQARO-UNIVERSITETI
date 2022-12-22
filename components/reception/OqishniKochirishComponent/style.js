@@ -46,14 +46,12 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 6px;
+  grid-gap: 10px;
   
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
-    
   }
 
   .phoNumber{
@@ -73,7 +71,8 @@ const InputCont = styled.div`
   }
   
   @media only screen and (max-width: 1000px) {
-    padding: 13px 0 0 0;
+    grid-gap: 10px;
+    padding: 13px 20px 0 20px;
     box-shadow: none;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -85,9 +84,11 @@ const InputCont = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 26px;
+      width: 100% !important;
     }
     .phoNumber{
-      width: 290px;
+      width: 100%;
     }
     .phoNumbers{
       left: 20px;
@@ -165,12 +166,13 @@ const IconBox = styled.div`
       left: 20px ;
       top: 8px;
     }
-    }
+  }
   .UploadFileMobile{
     display: none;
   }
   @media only screen and (max-width: 1000px) {
-    width: 290px !important;
+    height: 26px;
+    width: 100% !important;
     display: flex;
     justify-content: center;
     .UploadFileMobile{
@@ -203,6 +205,9 @@ padding:  50px;
     text-align: justify;
     letter-spacing: -0.085em;
     color: #FFFFFF;
+      @media only screen and (max-width: 1000px) {
+            font-size: 14px;
+      }
   }
 }
 `
@@ -213,7 +218,6 @@ InputCont.Section2 = styled.div``
 
 
 Container.InputCustom1 = styled.input`
-  min-width: 124.72px;
   width: 513px;
   height: 46px;
   padding: 0px 0px 0px 70px;
@@ -253,7 +257,7 @@ Container.InputCustom1 = styled.input`
   cursor: pointer;
   @media only screen and (max-width: 1000px) {
     min-width: 124.72px;
-    width: 290px;
+    width: 100%;
     height: 26px;
     padding: 0px 0px 0px 40px;
     font-size: 16px;
@@ -302,7 +306,9 @@ Container.InputCustom2 = styled.input`
   }
   @media only screen and (max-width: 1000px) {
     min-width: 124.72px;
-    width: 290px;
+    //width: 290px;
+    width: 100% !important;
+    max-width: 100%;
     height: 26px;
     padding: 0px 0px 0px 40px;
     font-size: 16px;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js'
 import { Input, Button } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg"
@@ -58,6 +58,7 @@ export const AbiturientQabul = () => {
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
+
     const changeMumPass = (event) => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)
@@ -77,6 +78,15 @@ export const AbiturientQabul = () => {
         }
         return setNumPasSeriya(event)
     }
+
+    const [width, setWidth] = useState(null)
+    useEffect(()=> {
+        if(window.innerWidth < 1000){
+            setWidth('100%')
+        }else{
+            setWidth('513px')
+        }
+    })
     return (
         <Container>
             <TextCon>
@@ -91,7 +101,7 @@ export const AbiturientQabul = () => {
                     <AntSelect
                         showSearch
                         style={{
-                            width: 513,
+                            width,
                         }}
                         placeholder='Talim shaklingiz'
                         optionFilterProp="children"
@@ -115,15 +125,18 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
+
                 <div className='row2'>
                     <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
+
                 <Container.Number className='row5'>
                     <div>
                         <Input className='inputPhone' mradius={'5px'} mwidth={'352px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'Telfon Raqamingiz'}  padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <Container.FormatNumber className=''>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
+
                 <div className='row3'>
                     <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} />
                 </div>
@@ -134,6 +147,7 @@ export const AbiturientQabul = () => {
                         <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
+
                 <div className='row4'>
                     <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
@@ -145,11 +159,12 @@ export const AbiturientQabul = () => {
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
                 </div>
+
                 <IconBox className='row8'>
                     <AntSelect
                         showSearch
                         style={{
-                            width: 513,
+                            width,
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
@@ -169,6 +184,7 @@ export const AbiturientQabul = () => {
                         ]}
                     />
                 </IconBox>
+                
                 <div className='row10'>
                     <IconBox>
                         <Container.InputCustom1 type={'file'} />
@@ -181,7 +197,7 @@ export const AbiturientQabul = () => {
                     <AntSelect
                         showSearch
                         style={{
-                            width: 513,
+                            width,
                         }}
                         placeholder='Talim tilingiz'
                         optionFilterProp="children"

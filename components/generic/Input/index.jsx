@@ -19,13 +19,12 @@ export const Input = forwardRef(({
   inputType,
   disabled,
   weight,
-  maxlength = 999999999,
+  maxlength=999999999,
   defaultValue,
   align,
   border,
   error,
 //    ---------
-
   mwidth,
   mheight,
   msize,

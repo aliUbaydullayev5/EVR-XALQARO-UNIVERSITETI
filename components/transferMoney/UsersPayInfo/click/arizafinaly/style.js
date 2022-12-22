@@ -88,7 +88,6 @@ const AntModal = styled(Modal)`
 box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
 border-radius: 15px;
 padding:  50px;
-
 .ant-modal-body {
   >p{
     font-family: 'Montserrat';
@@ -101,6 +100,22 @@ padding:  50px;
     text-align: justify;
     letter-spacing: -0.085em;
     color: #FFFFFF;
+    @media only screen and (max-width: 800px) {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 105.9%;
+      /* or 11px */
+
+      display: flex;
+      align-items: center;
+      text-align: justify;
+      letter-spacing: -0.085em;
+
+      color: #FFFFFF;
+
+     }
   }
 }
 

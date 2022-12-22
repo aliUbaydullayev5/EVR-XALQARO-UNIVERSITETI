@@ -9,6 +9,10 @@ import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
 import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg";
 
+import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
+import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
+import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
+
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
@@ -22,20 +26,23 @@ const ShaxsiyKabinetComponent = () => {
             <Container.Bottom>
                 <Container.Left>
                     <div>
-                        <Image src={personImg} alt={'icons person'} />
+                        <Image src={personImg} alt={'icons person'} className={'person'} />
                     </div>
                     <Container.LeftMenu>
                         <div>
-                            <Button justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>
-                            <FileIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>
+                            <FileIcon className={'icon laptopIcon'} />
+                            <MobileFile className={'mobileIcon icon'} />
                         </div>
                         <div>
-                            <Button onclick={()=> query.push('/personalAccount/talaba/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
-                            <BlockIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} onclick={()=> query.push('/personalAccount/talaba/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
+                            <BlockIcon className={'icon laptopIcon'} />
+                            <MobileRestor className={'mobileIcon icon'} />
                         </div>
                         <div>
-                            <Button justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
-                            <ExitIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
+                            <ExitIcon className={'icon laptopIcon'} />
+                            <MobileExit className={'mobileIcon icon'} />
                         </div>
                     </Container.LeftMenu>
                 </Container.Left>
@@ -43,40 +50,44 @@ const ShaxsiyKabinetComponent = () => {
                     <Container.Row>
                         <div>
                             <p>FIO</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} />
                         </div>
                     </Container.Row>
-                    <Container.Row columns={'1fr 1fr 1fr'} gap={'31px'}>
+
+                    <Container.Row columns={'1fr 1fr 1fr'} gap={'31px'} mgap={'15px'}>
                         <div>
                             <p>Test natijasi</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'87.6 %'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'87.6 %'} />
                         </div>
                         <div>
                             <p>Kursingiz</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'3-kurs'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'3-kurs'} />
                         </div>
                         <div>
                             <p>ID raqam</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
                         </div>
                     </Container.Row>
-                    <Container.Row disabled={true} columns={'1fr 1fr'} gap={'31px'}>
+
+                    <Container.Row columns={'1fr 1fr'} gap={'31px'} mgap={'15px'}>
                         <div>
                             <p>Ta’lim turi</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Bakalavr'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Bakalavr'} />
                         </div>
                         <div>
                             <p>Yo‘nalishingiz</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Iqtisodiyot'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Iqtisodiyot'} />
                         </div>
                     </Container.Row>
+
                     <Container.Row>
                         <div>
                             <p>Ta’lim shakli</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Kunduzgi'} />
+                            <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Kunduzgi'} />
                         </div>
                     </Container.Row>
-                    <Container.Row columns={'1fr 1fr'} gap={'31px'}>
+
+                    <Container.Row columns={'1fr 1fr'} gap={'31px'} mgap={'15px'}>
                         <div>
                             <p>Shartnoma</p>
                             <Container.InputCustom1 type={'file'} />
@@ -88,7 +99,8 @@ const ShaxsiyKabinetComponent = () => {
                             <DownIcon className={'icon'} />
                         </div>
                     </Container.Row>
-                    <Container.Row columns={'1fr 1fr'} gap={'31px'}>
+
+                    <Container.Row columns={'1fr 1fr'} gap={'31px'} mgap={'15px'}>
                         <div>
                             <p>Aloqa xati</p>
                             <Container.InputCustom1 type={'file'} />
@@ -100,10 +112,10 @@ const ShaxsiyKabinetComponent = () => {
                             <DownIcon className={'icon'} />
                         </div>
                     </Container.Row>
-                    <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'}>
-                        <Button height={'31px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/personalAccount/talaba/tolovlar')}>To’lovlar</Button>
-                        <Button height={'31px'} size={'24px'} color={'#fff'}>EK-101</Button>
-                        <Button height={'31px'} size={'24px'} color={'#fff'}>Xabarlar</Button>
+                    <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'} mgap={'15px'}>
+                        <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/personalAccount/talaba/tolovlar')}>To’lovlar</Button>
+                        <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>EK-101</Button>
+                        <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>Xabarlar</Button>
                     </Container.Row>
                 </Container.Right>
             </Container.Bottom>
