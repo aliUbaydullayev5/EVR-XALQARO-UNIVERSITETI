@@ -10,6 +10,7 @@ const Container = styled.div`
   grid-template-rows: 84px 1fr;
   @media only screen and (max-width: 1000px) {
     grid-template-rows: 31px 1fr;
+    box-shadow: none;
   }
 `
 Container.Top = styled.div`
@@ -49,9 +50,9 @@ Container.Bottom = styled.div`
   padding: 20px 85px;
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 126px 1fr;
+    grid-template-rows: 100px 1fr;
     grid-gap: 0;
-    padding: 20px 23px;
+    padding: 10px 23px 0 23px;
   }
 `
 
