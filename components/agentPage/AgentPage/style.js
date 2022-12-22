@@ -16,16 +16,20 @@ Container.Inset = styled.div`
   height: 474px;
   display: grid;
   grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 31px 1fr;
+  }
+
 
 `
 Container.Top = styled.div`
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
-  height: 84px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   @media only screen and (max-width: 1000px) {
      background: #221F51;
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
@@ -38,17 +42,11 @@ Container.TopTitle = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
-  
   @media only screen and (max-width: 1000px) {
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    display: flex;
-    align-items: center;
-    color: #FFFFFF;
-  }
+  } 
 
 `
 
@@ -57,6 +55,9 @@ Container.Bottom = styled.div`
   display: grid;
   grid-template-rows: 1fr 57px 48px;
   grid-gap: 8px;
+  @media only screen and (max-width: 1000px) {
+    padding: 25px 15px;
+  }
   
 `
 
@@ -65,7 +66,9 @@ Container.BottomDesc = styled.div`
   border: 1px solid #FFFFFF;
   height: 100%;
   padding: 15px;
-
+  @media only screen and (max-width: 1000px) {
+    height: 310px !important;
+  }
 `
 Container.BottomDescInset = styled.div`
   width: 100%;
@@ -81,7 +84,15 @@ Container.BottomDescInset = styled.div`
     text-align: justify;
     letter-spacing: -0.025em;
     color: #FFFFFF;
-
+  }
+  @media only screen and (max-width: 1000px) {
+    height: 290px !important;
+    >p{
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 105.9%;
+    }
   }
   ::-webkit-scrollbar {
     width: 5px;

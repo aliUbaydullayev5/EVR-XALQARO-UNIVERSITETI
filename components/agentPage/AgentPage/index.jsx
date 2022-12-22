@@ -33,7 +33,7 @@ const AgentPage = () => {
                     <Container.ButtonSection>
                         <div></div>
                         <div>
-                            <Button height={'30px'} width={'144px'} size={'20px'} onclick={()=> router.push('/receptionPage/agent/agentForm')}>KEYINGISI</Button>
+                            <Button mheight={'20px'} msize={'13px'} height={'30px'} width={'144px'} size={'20px'} onclick={()=> router.push('/receptionPage/agent/agentForm')}>KEYINGISI</Button>
                         </div>
                     </Container.ButtonSection>
                 </Container.Bottom>
