@@ -83,7 +83,6 @@ Container.BottomDescInset = styled.div`
     color: #FFFFFF;
 
   }
-  
   ::-webkit-scrollbar {
     width: 5px;
   }
