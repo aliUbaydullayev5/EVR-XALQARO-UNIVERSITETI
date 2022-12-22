@@ -22,12 +22,12 @@ const TextCon = styled.div`
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
-@media only screen and (max-width: 800px) {
-      height: 31px;
-      background: #221F51;
-      box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-      border-radius: 30px 30px 0px 0px;
-}
+  @media only screen and (max-width: 800px) {
+    height: 31px;
+    background: #221F51;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0px 0px;
+  }
   >h1{
     font-family: 'Montserrat';
     font-style: normal;
@@ -37,7 +37,7 @@ const TextCon = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-@media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 800px) {
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 500;
@@ -47,7 +47,6 @@ const TextCon = styled.div`
       align-items: center;
       color: #FFFFFF;
     }
- 
   }
 `
 Container.Number = styled.div`
@@ -62,6 +61,7 @@ Container.Number = styled.div`
     }
   }
 `
+
 Container.FormatNumber = styled.div`
   position: absolute;
   top: 15px;
@@ -86,8 +86,8 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap:6px;
-    padding: 0px 10px;
+  gap: 6px;
+  padding: 0px 10px;
   >div{
     display: flex;
     align-items: center;
@@ -136,9 +136,10 @@ const InputCont = styled.div`
     .row11{
        grid-row: 11/12;
     }
-      .row12{
-       grid-row: 12/13;
+    .row12{
+      grid-row: 12/13;
     }
+    
   }
   
 `

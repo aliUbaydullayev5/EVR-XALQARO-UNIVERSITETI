@@ -4,7 +4,7 @@ import { Button, Input } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import AntSelect from "../Antd/style";
 import { useRouter } from "next/router.js";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg";
 
 
@@ -34,7 +34,16 @@ const MagistraturaComponent = () => {
         return setNumPasSeriya(event)
     }
 
-    
+
+    const [width, setWidth] = useState(null)
+    useEffect(()=> {
+        if(window.innerWidth < 1000){
+            setWidth('100%')
+        }else{
+            setWidth('513px')
+        }
+    })
+
     return (
         <Container>
 
@@ -53,7 +62,7 @@ const MagistraturaComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                             }}
                             placeholder='Talim shaklingiz'
                             optionFilterProp="children"
@@ -83,12 +92,12 @@ const MagistraturaComponent = () => {
                     <Input placeholder={'Ismingiz'} msize={'16px'} mheight={'26px'} mradius={'5px'} mwidth={'290px'} mpadding={'0 19px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-                <div>
-                    <div className='phNumber'>
-                        <Input width={'513px'} mheight={'26px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mpadding={'2px 19px 0 60px'} height={'46px'} placeholder={'__ ___ __ __'} maxlength={'12'} padding={'0 0 0 95px'} size={'24px'} />
-                        <p className='phNumbers'>+998</p>
+                <Container.Number>
+                    <div>
+                        <Input placeholder={'__ ___ __ __'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} />
+                        <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
-                </div>
+                </Container.Number>
 
                 <div>
                     <Input placeholder={'Otangizni ismi'} msize={'16px'} mheight={'26px'} mradius={'5px'} mwidth={'290px'} mpadding={'0 19px'} width={'513px'} height={'46px'} size={'24px'} />
@@ -105,8 +114,8 @@ const MagistraturaComponent = () => {
                 <div>
                     <IconBox>
                         <Container.InputCustom1 type={'file'} />
-                        <UploadFiler className={'UploadFile'} />
-                        <UploadMobile className={'UploadFileMobile'} />
+                        <UploadFiler className={'UploadFile1'} />
+                        <UploadMobile className={'UploadFileMobile2'} />
                     </IconBox>
                 </div>
 
@@ -115,7 +124,7 @@ const MagistraturaComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width,
                             }}
                             placeholder='Talim yunalishingiz'
                             optionFilterProp="children"
@@ -144,8 +153,8 @@ const MagistraturaComponent = () => {
                 <div>
                     <IconBox>
                         <Container.InputCustom2 type={'file'} />
-                        <UploadFiler className={'UploadFile'} />
-                        <UploadMobile className={'UploadFileMobile'} />
+                        <UploadFiler className={'UploadFile2'} />
+                        <UploadMobile className={'UploadFileMobile2'} />
                     </IconBox>
                 </div>
 
@@ -155,7 +164,7 @@ const MagistraturaComponent = () => {
                         <AntSelect
                             showSearch
                             style={{
-                                width: 513,
+                                width
                             }}
                             placeholder='Talim tilingiz'
                             optionFilterProp="children"
