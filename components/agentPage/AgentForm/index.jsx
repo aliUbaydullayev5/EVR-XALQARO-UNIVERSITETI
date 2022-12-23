@@ -103,22 +103,20 @@ const AgentFormComponent = () => {
                 <h1>Agent</h1>
             </TextCon>
             <InputCont>
-
-
                 <div>
-                    <Input placeholder={'Firma nomi'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firma nomi'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
                 <div className='mainForm'>
                     <div>
-                        <Input placeholder={'Firma rahbarining qo’shimcha raqami'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
+                        <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
                         <p>+998</p>
                     </div>
                 </div>
 
 
                 <div>
-                    <Input placeholder={'Firma Rahbari FIO'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firma Rahbari FIO'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
                 <div>
                     <IconBox>
@@ -128,7 +126,7 @@ const AgentFormComponent = () => {
                 </div>
 
                 <div>
-                    <Input placeholder={'Firma rahbarining pasport seriyasi'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
 
@@ -145,14 +143,14 @@ const AgentFormComponent = () => {
 
                 <div className='mainForm'>
                     <div>
-                        <Input placeholder={'Firmaning telefon raqami'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
+                        <Input placeholder={'Firmaning telefon raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
                         <p>+998</p>
                     </div>
                 </div>
 
 
                 <div>
-                    <Input placeholder={'Firmaning nechta filiali mavjud'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firmaning nechta filiali mavjud'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
 
@@ -160,7 +158,7 @@ const AgentFormComponent = () => {
 
                 <div className={'mainForm'}>
                     <div>
-                        <Input placeholder={'Firma rahbarining telefon raqami'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                        <Input placeholder={'Firma rahbarining telefon raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <p>+998</p>
                     </div>
                 </div>
@@ -173,7 +171,7 @@ const AgentFormComponent = () => {
                 <BtnCon>
                     <div></div>
                     <div>
-                        <Button width={'177px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
+                        <Button width={'177px'} height={'43px'} size={'21px'} mwidth={'100%'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
                     </div>
                 </BtnCon>
 

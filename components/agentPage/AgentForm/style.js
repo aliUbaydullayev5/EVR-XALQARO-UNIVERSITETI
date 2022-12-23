@@ -18,6 +18,9 @@ const TextCon = styled.div`
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
+ @media only screen and (max-width: 1000px) {
+   height: 31px;
+ }
   >h1{
     font-family: 'Montserrat';
     font-style: normal;
@@ -27,6 +30,12 @@ const TextCon = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
+   @media only screen and (max-width: 1000px) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+   }
   }
 `
 
@@ -36,6 +45,11 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media only screen and (max-width: 1000px) {
+     display: flex;
+     flex-direction:column;
+     padding: 0px 25px;
+ }
   >div{
     display: flex;
     align-items: center;
@@ -109,6 +123,16 @@ Container.InputCustom1 = styled.input`
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
 
+  @media only screen and (max-width: 1000px) {
+     padding: 0 0 0 55px;
+     font-size:13px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 26px;
+     border-radius: 5px;
+   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
@@ -153,6 +177,16 @@ Container.InputCustom2 = styled.input`
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
 
+  @media only screen and (max-width: 1000px) {
+     padding: 0 0 0 55px;
+     font-size:13px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 26px;
+     border-radius: 5px;
+   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
