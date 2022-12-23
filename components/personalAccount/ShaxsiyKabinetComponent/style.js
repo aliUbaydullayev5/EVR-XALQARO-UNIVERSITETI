@@ -93,6 +93,8 @@ Container.LeftMenu = styled.div`
     display: none;
   }
   @media only screen and (max-width: 1000px) {
+    display: flex;
+    align-items: center;
     .icon{
       position: absolute;
       z-index: 999;

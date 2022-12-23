@@ -41,6 +41,54 @@ const OqishniKochirishComponent = () => {
         }
     })
 
+
+    const [numState, setNumState] = useState('')
+    const [length, setLength] = useState(0)
+
+    const changeNumState = (event) => {
+        if (length < event.length) {
+            setLength(event.length - 1)
+            if (event.length == 2) {
+                return setNumState(event + ' ')
+            }
+            if (event.length == 6) {
+                return setNumState(event + ' ')
+            }
+            if (event.length == 9) {
+                return setNumState(event + ' ')
+            }
+        }
+        if (length >= event.length) {
+            setLength(event.length)
+            setNumState(event)
+        }
+        return setNumState(event)
+    }
+
+
+    const [numState1, setNumState1] = useState('')
+    const [length1, setLength1] = useState(0)
+
+    const changeNumState1 = (event) => {
+        if (length1 < event.length) {
+            setLength1(event.length - 1)
+            if (event.length == 2) {
+                return setNumState1(event + ' ')
+            }
+            if (event.length == 6) {
+                return setNumState1(event + ' ')
+            }
+            if (event.length == 9) {
+                return setNumState1(event + ' ')
+            }
+        }
+        if (length1 >= event.length) {
+            setLength1(event.length)
+            setNumState1(event)
+        }
+        return setNumState1(event)
+    }
+
     return (
         <Container>
             <TextCon>
@@ -128,7 +176,7 @@ const OqishniKochirishComponent = () => {
 
                 <div className={'row5'}>
                     <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={9} padding={'0 0 0 95px'} size={'24px'} />
+                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'__ ___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
                         <p className='phoNumbers'>+998</p>
                     </div>
                 </div>
@@ -138,7 +186,10 @@ const OqishniKochirishComponent = () => {
                 </div>
 
                 <div className={'row6'}>
-                    <Input placeholder={'Otangiz yoki onangizni raqami'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mheight={'26px'} mwidth={'290px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <div className='phoNumber'>
+                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'Otangiz yoki onangizni raqami'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
+                        <p className='phoNumbers'>+998</p>
+                    </div>
                 </div>
 
                 <div className={'row7'}>

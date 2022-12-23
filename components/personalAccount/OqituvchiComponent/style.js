@@ -7,6 +7,10 @@ const Container = styled.div`
   background: #221F51;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
+  @media only screen and (max-width: 1000px) {
+    box-shadow: none;
+    grid-template-rows: 31px 1fr;
+  }
 `
 Container.Top = styled.div`
   background: #221F51;
@@ -26,6 +30,14 @@ Container.Top = styled.div`
     right: 23px;
     cursor: pointer;
   }
+  @media only screen and (max-width: 1000px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .closeIcon{
+      display: none;
+    }
+  }
 `
 
 
@@ -34,7 +46,13 @@ Container.Bottom = styled.div`
   grid-template-columns: 305px 1fr;
   grid-gap: 96px;
   padding: 20px 85px;
-
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-gap: 0px;
+    padding: 10px 23px 0 23px;
+    
+  }
 `
 
 Container.Left = styled.div`
@@ -45,6 +63,18 @@ Container.Left = styled.div`
   >div{
     display: flex;
     justify-content: center;
+  }
+  @media only screen and (max-width: 1000px) {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 110px 1fr;
+    align-items: center;
+    justify-content: center;
+    .person{
+      width: 20vw;
+      height: 20vw;
+      max-width: 190px;
+    }
   }
 `
 Container.LeftMenu = styled.div`
@@ -60,7 +90,25 @@ Container.LeftMenu = styled.div`
     top: 5px;
     left: 39px;
   }
-
+  .mobileIcon{
+    display: none;
+  }
+  @media only screen and (max-width: 1000px) {
+    display: flex;
+    align-items: center;
+    .icon{
+      position: absolute;
+      z-index: 999;
+      top: 3px;
+      left: 10px;
+    }
+    .laptopIcon{
+      display: none;
+    }
+    .mobileIcon{
+      display: block;
+    }
+  }
 `
 
 Container.Right = styled.div`

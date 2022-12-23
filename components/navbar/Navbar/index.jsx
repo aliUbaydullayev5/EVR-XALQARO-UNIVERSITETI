@@ -51,13 +51,13 @@ const Navbar = () => {
 
             <div className={'forMobileCenter'}>
                 <div>
-                    <Button mhover={false} mweight={'400'} wrap={true} mheight={'22px'} msize={'12px'} mwidth={'105px'} weidth={'400'} size={'24px'} height={'32px'} width={'245px'} onclick={()=> query.push('/aboutUsPage')}>Biz haqimizda</Button>
+                    <Button mhover={false} mweight={'400'} wrap={'true'} mheight={'22px'} msize={'12px'} mwidth={'105px'} weidth={'400'} size={'24px'} height={'32px'} width={'245px'} onclick={()=> query.push('/aboutUsPage')}>Biz haqimizda</Button>
                 </div>
                 <div>
                     <Button mheight={'31px'} msize={'22px'} mwidth={'101px'} weight={'400'} size={'40px'} height={'49px'} width={'225px'} wight={'900'} onclick={()=> query.push('/receptionPage')}>Qabul</Button>
                 </div>
                 <div>
-                    <Button mhover={false} mweight={'400'} wrap={true} mline={'7px'} mheight={'22px'} msize={'12px'}  mwidth={'105px'} weidth={'400'} size={'24px'} height={'32px'} width={'245px'}>Ta’lim yo’nalishlari</Button>
+                    <Button mhover={false} mweight={'400'} wrap={'true'} mline={'7px'} mheight={'22px'} msize={'12px'}  mwidth={'105px'} weidth={'400'} size={'24px'} height={'32px'} width={'245px'}>Ta’lim yo’nalishlari</Button>
                 </div>
             </div>
 

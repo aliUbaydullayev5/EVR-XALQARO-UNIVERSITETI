@@ -21,6 +21,7 @@ import MobilePhone from '../../assets/mobile/icon/phone.svg'
 import MobileVoise from '../../assets/mobile/icon/voise.svg'
 
 import MassageComponent from "../MessageComponent";
+import {useRouter} from "next/router";
 
 
 const SideBar = () => {
@@ -29,33 +30,56 @@ const SideBar = () => {
 
     const changeHidden = () => setHidden(!hidden)
 
-
-
-
-
-
-
-
   return (
     <Container>
         <div className={'main'}>
             <SideNav className={'nocopy'}>
-                <Instagram className={'icon mobileIcon'} />
-                <Telagram className={'icon mobileIcon'} />
-                <Yotube className={'icon mobileIcon'} />
-                <Tictoce className={'icon mobileIcon'} />
-                <Facebook className={'icon mobileIcon'} />
-                <Whatsapp className={'icon mobileIcon'} />
-                <Location className={'icon mobileIcon'} />
+                <a href={'https://www.instagram.com/exuedu_uz/'} target={'_blank'}>
+                    <Instagram className={'icon mobileIcon'} />
+                </a>
+                <a href={'https://t.me/exuedu_uz'} target={'_blank'}>
+                    <Telagram className={'icon mobileIcon'} />
+                </a>
+                <a href={'https://www.youtube.com/'} target={'_blank'}>
+                    <Yotube className={'icon mobileIcon'} />
+                </a>
+                <a href={'https://www.tiktok.com/'} target={'_blank'}>
+                    <Tictoce className={'icon mobileIcon'} />
+                </a>
+                <a href={'https://www.facebook.com/'} target={'_blank'}>
+                    <Facebook className={'icon mobileIcon'} />
+                </a>
+                <a href={'tel:997777575'} target={'_blank'}>
+                    <Whatsapp className={'icon mobileIcon'} />
+                </a>
+                <a href={'#'} target={'_blank'}>
+                    <Location className={'icon mobileIcon'} />
+                </a>
 
-                <MobileInstagram className={'icon laptopIcon'} />
-                <MobileTelagram className={'icon laptopIcon'} />
-                <MobileYotube className={'icon laptopIcon'} />
-                <MobileTictoce className={'icon laptopIcon'} />
-                <MobileFacebook className={'icon laptopIcon'} />
-                <MobilePhone className={'icon laptopIcon'} />
-                <MobileLocation className={'icon laptopIcon'} />
 
+
+                <a href={'https://www.instagram.com/exuedu_uz/'} target={'_blank'}>
+                    <MobileInstagram className={'icon laptopIcon'} />
+                </a>
+
+                <a href={'https://t.me/exuedu_uz'} target={'_blank'}>
+                    <MobileTelagram className={'icon laptopIcon'} />
+                </a>
+                <a href={'https://www.youtube.com/'} target={'_blank'}>
+                    <MobileYotube className={'icon laptopIcon'} />
+                </a>
+                <a href={'https://www.tiktok.com/'} target={'_blank'}>
+                    <MobileTictoce className={'icon laptopIcon'} />
+                </a>
+                <a href={'https://www.facebook.com/'} target={'_blank'}>
+                    <MobileFacebook className={'icon laptopIcon'} />
+                </a>
+                <a href={'tel:997777575'} target={'_blank'}>
+                    <MobilePhone className={'icon laptopIcon'} />
+                </a>
+                <a href={'#'} target={'_blank'}>
+                    <MobileLocation className={'icon laptopIcon'} />
+                </a>
             </SideNav>
             <Container.Messanger>
                 <Voise className={'voice mobileIcon'} />
