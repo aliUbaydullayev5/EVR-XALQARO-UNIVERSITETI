@@ -10,7 +10,7 @@ const Container = styled.div`
   border-radius: 30px;
  @media only screen and (max-width: 1000px) {
   grid-template-rows: 64px 1fr;
-  box-shadow: 0px 4px 30px rgba(0,0,0);
+  box-shadow: 0px 0px 0px rgba(0,0,0);
 
    }
 `
@@ -98,6 +98,18 @@ InputCont.Section2 = styled.div``
 const BtnCon = styled.div`
   display: grid !important;
   grid-template-columns: 1fr 0.5fr;
+ @media only screen and (max-width: 1000px) {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  grid-template-columns: 1fr ;
+.btnEnd{
+    display: none;
+  }
+ }  
+  
 `
 const IconBox = styled.div`
   position: relative;

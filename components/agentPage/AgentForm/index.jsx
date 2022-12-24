@@ -157,7 +157,7 @@ const AgentFormComponent = () => {
                 <div></div>
 
                 <BtnCon>
-                    <div></div>
+                    <div className='btnEnd'></div>
                     <div>
                         <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
                     </div>
