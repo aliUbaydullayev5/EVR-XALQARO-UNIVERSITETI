@@ -49,7 +49,7 @@ const SideBar = () => {
                 <a href={'https://www.facebook.com/'} target={'_blank'}>
                     <Facebook className={'icon mobileIcon'} />
                 </a>
-                <a href={'tel:997777575'} target={'_blank'}>
+                <a href={'tel:+998997777575'} target={'_blank'}>
                     <Whatsapp className={'icon mobileIcon'} />
                 </a>
                 <a href={'#'} target={'_blank'}>
@@ -74,7 +74,7 @@ const SideBar = () => {
                 <a href={'https://www.facebook.com/'} target={'_blank'}>
                     <MobileFacebook className={'icon laptopIcon'} />
                 </a>
-                <a href={'tel:997777575'} target={'_blank'}>
+                <a href={'tel:+998997777575'} target={'_blank'}>
                     <MobilePhone className={'icon laptopIcon'} />
                 </a>
                 <a href={'#'} target={'_blank'}>
