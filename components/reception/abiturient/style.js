@@ -85,16 +85,15 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   gap: 6px;
   padding: 0 10px;
-
+  align-items: center;
+  justify-content: center;
   >div{
     display: flex;
     align-items: center;
     justify-content: center;
   }
- .inputPhone{}
   @media only screen and (max-width: 1000px){
     display: grid;
     grid-template-columns: 1fr;
@@ -227,16 +226,16 @@ const IconBox = styled.div`
 `
 
 Container.InputCustom1 = styled.input`
-  min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0 0 0 70px;
+  padding: 0px 0px 0px 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0;
+  border-bottom: 0px;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   line-height: 105.9%;
@@ -244,16 +243,7 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 55px;
-     font-size:16px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: 26px;
-     border-radius: 5px;
-     width: 100% !important;
-   }
+
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
@@ -273,40 +263,47 @@ Container.InputCustom1 = styled.input`
     margin: 8px 0 0 0;
   }
   cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    min-width: 124.72px;
+    width: 100%;
+    height: 26px;
+    padding: 0px 0px 0px 40px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 `
 
 
 Container.InputCustom2 = styled.input`
-  font-weight: 400;
   cursor: pointer;
   min-width: 124.72px;
   width: 513px;
   height: 46px;
-  padding: 0 0 0 70px;
+  padding: 0px 0px 0px 70px;
   font-size: 24px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0;
+  border-bottom: 0px;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  font-family: 'Montserrat';
   font-style: normal;
+  font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-   @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 55px;
-     font-size:13px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-     height: 26px;
-     border-radius: 5px;
-   }
-   
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
@@ -325,6 +322,16 @@ Container.InputCustom2 = styled.input`
     -webkit-user-select: none;
     margin: 8px 0 0 0;
   }
+  @media only screen and (max-width: 1000px) {
+    min-width: 124.72px;
+    width: 100% !important;
+    max-width: 100%;
+    height: 26px;
+    padding: 0px 0px 0px 40px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
   
 `
 IconBox.Mobile = styled.div`
