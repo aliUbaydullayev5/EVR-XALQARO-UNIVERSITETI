@@ -6,10 +6,11 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
   background: #221F51;
-  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81); */
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
  @media only screen and (max-width: 1000px) {
   grid-template-rows: 64px 1fr;
+  box-shadow: 0px 4px 30px rgba(0,0,0);
 
    }
 `
@@ -62,27 +63,33 @@ const InputCont = styled.div`
     justify-content: center;
   }
   .mainForm{
-   
-      position: relative;
-    
+     position: relative;
+
     p{
       position: absolute;
-      left: 10px;
+      left: 18px;
       top: 10px;
       font-size: 24px;
       font-weight: 400;
       line-height: 105.9%;
       letter-spacing: -0.025em;
       color: white;
-   @media only screen and (max-width: 1000px) {
-      font-size: 16px;
-      font-weight: 400;
-      left: 10px;
-      top: 14px;
 
-   }
+      @media only screen and (max-width: 1000px) {
+        font-size: 16px;
+        font-weight: 400;
+        left: 10px;
+        top: 10px;
+      }
     }
   }
+  @media only screen and (max-width: 1000px) {
+    .mainForm{
+      width: 100%;
+    }
+
+    }
+  
   
 `
 InputCont.Section1 = styled.div``
@@ -103,16 +110,37 @@ const IconBox = styled.div`
   .UploadFile2{
     position: absolute;
     left: 12px ;
-    top: 6px;
+    top: 15px;
     cursor: pointer;
+
+
   }
   .UploadFile1{
     position: absolute;
-    left: 12px ;
-    top: 6px;
+    left: 62px ;
+    top: 20px;
     cursor: pointer;
   }
-  
+ @media only screen and (max-width: 1000px) {
+   .UploadFile1{
+    display: none;
+       position: absolute;
+      left: 2px ;
+      top: 12px; 
+      cursor: pointer;
+   }
+ 
+    }
+ @media only screen and (min-width: 1000px) {
+  .UploadFile2{
+    display: none;
+    position: absolute;
+    left: 2px ;
+    top: 12px; 
+    cursor: pointer;
+    
+   }
+ }
 `
 
 
@@ -137,7 +165,7 @@ Container.InputCustom1 = styled.input`
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
 
   @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 55px;
+     padding: 0 0 0 30px;
      font-size:13px;
      display: flex;
      align-items: center;
@@ -145,6 +173,7 @@ Container.InputCustom1 = styled.input`
      width: 100%;
      height: 36px;
      border-radius: 5px;
+
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -194,7 +223,7 @@ Container.InputCustom2 = styled.input`
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
 
   @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 55px;
+     padding: 0 0 0 30px;
      font-size:13px;
      display: flex;
      align-items: center;
@@ -202,6 +231,7 @@ Container.InputCustom2 = styled.input`
      width: 100%;
      height: 36px;
      border-radius: 5px;
+  
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);

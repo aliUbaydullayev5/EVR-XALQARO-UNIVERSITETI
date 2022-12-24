@@ -3,7 +3,8 @@ import {Button, Input} from "../../generic";
 import AntSelect from "../../reception/Antd/style";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import {useRouter} from "next/router";
-import {useState} from "react";
+import { useState } from "react";
+import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 
 const AgentFormComponent = () => {
 
@@ -104,13 +105,14 @@ const AgentFormComponent = () => {
             </TextCon>
             <InputCont>
                 <div>
-                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-
-                <div className='mainForm'>
-                    <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
+                <div>
+                 <div className='mainForm'>
+                    <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
                     <p>+998</p>
+                 </div>
                 </div>
 
                 <div>
@@ -120,6 +122,7 @@ const AgentFormComponent = () => {
                 <IconBox>
                     <Container.InputCustom1 type={'file'} />
                     <UploadFiler className={'UploadFile1'} />
+                    <UploadMobile className={'UploadFile2'} />
                 </IconBox>
 
                 <div>
@@ -129,22 +132,26 @@ const AgentFormComponent = () => {
                 <IconBox>
                     <Container.InputCustom2 type={'file'} />
                     <UploadFiler className={'UploadFile1'} />
+                    <UploadMobile className={'UploadFile2'} />
                 </IconBox>
-
-                <div className='mainForm'>
-                    <Input placeholder={'Firmaning telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
-                    <p>+998</p>
+                
+                <div>
+                    <div className='mainForm'>
+                        <Input placeholder={'Firmaning telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
+                        <p>+998</p>
+                    </div>
                 </div>
-
                 <div>
                     <Input placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
-
-                <div className={'mainForm'}> 
-                    <Input placeholder={'Firma rahbarining telefon raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
-                    <p>+998</p>
+                <div>
+                    <div className='mainForm'>
+                        <Input placeholder={'Firma rahbarining telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
+                        <p>+998</p>
+                    </div>
                 </div>
-
+              
+                
                 <div></div>
 
                 <div></div>
