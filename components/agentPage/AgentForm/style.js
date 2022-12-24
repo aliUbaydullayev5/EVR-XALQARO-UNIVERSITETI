@@ -6,8 +6,12 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
   background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81); */
   border-radius: 30px;
+ @media only screen and (max-width: 1000px) {
+  grid-template-rows: 64px 1fr;
+
+   }
 `
 const TextCon = styled.div`
   width: 100%;
@@ -49,6 +53,8 @@ const InputCont = styled.div`
      display: flex;
      flex-direction:column;
      padding: 0px 25px;
+     display: grid;
+  grid-template-columns: 1fr ;
  }
   >div{
     display: flex;
@@ -56,9 +62,9 @@ const InputCont = styled.div`
     justify-content: center;
   }
   .mainForm{
-    >div{
+   
       position: relative;
-    }
+    
     p{
       position: absolute;
       left: 10px;
@@ -68,6 +74,13 @@ const InputCont = styled.div`
       line-height: 105.9%;
       letter-spacing: -0.025em;
       color: white;
+   @media only screen and (max-width: 1000px) {
+      font-size: 16px;
+      font-weight: 400;
+      left: 10px;
+      top: 14px;
+
+   }
     }
   }
   
@@ -130,7 +143,7 @@ Container.InputCustom1 = styled.input`
      align-items: center;
      justify-content: center;
      width: 100%;
-     height: 26px;
+     height: 36px;
      border-radius: 5px;
    }
   ::-webkit-calendar-picker-indicator {
@@ -151,6 +164,9 @@ Container.InputCustom1 = styled.input`
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
+    @media only screen and (max-width: 1000px) {
+      margin: 12px 0 0 0;
+    }
   }
   cursor: pointer;
 `
@@ -184,7 +200,7 @@ Container.InputCustom2 = styled.input`
      align-items: center;
      justify-content: center;
      width: 100%;
-     height: 26px;
+     height: 36px;
      border-radius: 5px;
    }
   ::-webkit-calendar-picker-indicator {
@@ -205,6 +221,10 @@ Container.InputCustom2 = styled.input`
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
+    @media only screen and (max-width: 1000px) {
+      margin: 12px 0 0 0;
+    }
+
   }
 `
 

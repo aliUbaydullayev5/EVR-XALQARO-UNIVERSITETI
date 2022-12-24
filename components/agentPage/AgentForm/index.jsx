@@ -104,65 +104,46 @@ const AgentFormComponent = () => {
             </TextCon>
             <InputCont>
                 <div>
-                    <Input placeholder={'Firma nomi'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
-
-                <div className='mainForm'>
-                    <div>
-                        <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
-                        <p>+998</p>
-                    </div>
-                </div>
-
-
-                <div>
-                    <Input placeholder={'Firma Rahbari FIO'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
-                </div>
-                <div>
-                    <IconBox>
-                        <Container.InputCustom1 type={'file'} />
-                        <UploadFiler className={'UploadFile1'} />
-                    </IconBox>
-                </div>
-
-                <div>
-                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
-                </div>
-
-
-
-
-                <div>
-                    <IconBox>
-                        <Container.InputCustom2 type={'file'} />
-                        <UploadFiler className={'UploadFile1'} />
-                    </IconBox>
-                </div>
-
 
 
                 <div className='mainForm'>
-                    <div>
-                        <Input placeholder={'Firmaning telefon raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
-                        <p>+998</p>
-                    </div>
+                    <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
+                    <p>+998</p>
                 </div>
-
 
                 <div>
-                    <Input placeholder={'Firmaning nechta filiali mavjud'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
+                <IconBox>
+                    <Container.InputCustom1 type={'file'} />
+                    <UploadFiler className={'UploadFile1'} />
+                </IconBox>
 
-
-
-                <div className={'mainForm'}>
-                    <div>
-                        <Input placeholder={'Firma rahbarining telefon raqami'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
-                        <p>+998</p>
-                    </div>
+                <div>
+                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
+                <IconBox>
+                    <Container.InputCustom2 type={'file'} />
+                    <UploadFiler className={'UploadFile1'} />
+                </IconBox>
+
+                <div className='mainForm'>
+                    <Input placeholder={'Firmaning telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
+                    <p>+998</p>
+                </div>
+
+                <div>
+                    <Input placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                </div>
+
+                <div className={'mainForm'}> 
+                    <Input placeholder={'Firma rahbarining telefon raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                    <p>+998</p>
+                </div>
 
                 <div></div>
 
@@ -171,7 +152,7 @@ const AgentFormComponent = () => {
                 <BtnCon>
                     <div></div>
                     <div>
-                        <Button width={'177px'} height={'43px'} size={'21px'} mwidth={'100%'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
+                        <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
                     </div>
                 </BtnCon>
 
