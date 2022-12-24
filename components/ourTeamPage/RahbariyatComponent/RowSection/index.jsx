@@ -34,10 +34,10 @@ const RowSection = ({img, status, name, workday, phone, email, id}) => {
                         <Container.Text grey={true}>&nbsp;&nbsp; {email}</Container.Text>
                     </div>
                     <div>
-                        <Button size={'16px'} width={'142px'} height={'20px'} >Xabar qoldirish</Button>
+                        <Button mheight={'13px'} mwidth={'84px'} msize={'8px'} size={'16px'} width={'142px'} height={'20px'} >Xabar qoldirish</Button>
                     </div>
                     <div>
-                        <Button size={'16px'} width={'142px'} height={'20px'} onclick={()=> otherToFunc()} >Batafsil</Button>
+                        <Button mheight={'13px'} mwidth={'48px'} msize={'8px'} size={'16px'} width={'142px'} height={'20px'} onclick={()=> otherToFunc()} >Batafsil</Button>
                     </div>
                 </Container.EmailSection>
             </Container.RightBlock>

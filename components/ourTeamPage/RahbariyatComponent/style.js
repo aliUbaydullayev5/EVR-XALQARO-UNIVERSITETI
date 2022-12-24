@@ -3,6 +3,9 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 31px 1fr;
+  }
 `
 Container.Top = styled.div`
   background: #221F51;
@@ -22,6 +25,15 @@ Container.Top = styled.div`
     right: 25px;
     cursor: pointer;
   }
+  @media only screen and (max-width: 1000px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .closeIcon{
+      display: none;
+    }
+    
+  }
 `
 
 Container.BottomInset = styled.div`
@@ -33,13 +45,13 @@ Container.Bottom = styled.div`
   padding: 15px 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   overflow-y: scroll;
-
-  display: flex;
-  flex-direction: column;
   gap: 21px;
   height: 450px;
+
+  @media only screen and (max-width: 1000px) {
+    height: 470px;
+  }
 
 
   ::-webkit-scrollbar {
