@@ -8,6 +8,10 @@ const Container = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 31px 1fr;
+    box-shadow: none;
+  }
 
 `
 Container.Top = styled.div`
@@ -27,7 +31,14 @@ Container.Top = styled.div`
     right: 23px;
     cursor: pointer;
   }
-
+  @media only screen and (max-width: 1000px) {
+    .closeIcon{
+      display: none;
+    }
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+  }
 
 `
 Container.Bottom = styled.div`
@@ -35,6 +46,12 @@ Container.Bottom = styled.div`
   grid-template-columns: 305px 1fr;
   grid-gap: 96px;
   padding: 20px 85px;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 106px 1fr;
+    grid-gap: 10px;
+    padding: 34px 26px 15px 26px;
+  }
 
 `
 
@@ -47,7 +64,31 @@ Container.Left = styled.div`
     display: flex;
     justify-content: center;
   }
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 1fr;
+    .personIcon{
+      width: 106px;
+      height: 106px;
+    }
+  }
+
 `
+
+
+Container.CanselButtonMobile = styled.div`
+  display: none;
+  position: relative;
+  .icon{
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    left: 39px;
+  }
+  @media only screen and (max-width: 1000px) {
+    display: block;
+  }
+`
+
 Container.LeftMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -61,6 +102,10 @@ Container.LeftMenu = styled.div`
     top: 5px;
     left: 39px;
   }
+  
+  @media only screen and (max-width: 1000px) {
+    display: none !important; 
+  }
 
 `
 
@@ -69,7 +114,9 @@ Container.Right = styled.div`
   flex-direction: column;
   gap: 21px;
   padding: 20px 0 0 0;
-  
+  @media only screen and (max-width: 1000px) {
+    gap: 12px;
+  }
 `
 Container.Row = styled.div`
   display: grid;
@@ -90,6 +137,9 @@ Container.Row = styled.div`
     position: absolute;
     bottom: 5px;
     right: 31px;
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: ${({mcolumns})=> mcolumns ? mcolumns : '1fr'};
   }
 `
 

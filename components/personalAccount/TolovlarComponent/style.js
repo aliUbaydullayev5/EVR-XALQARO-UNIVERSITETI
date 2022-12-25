@@ -7,9 +7,13 @@ const Container = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    box-shadow: none;
+    grid-template-rows: 31px 1fr;
+  }
+  
 `
 Container.Top = styled.div`
-  height: 84px;
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
@@ -27,13 +31,23 @@ Container.Top = styled.div`
     right: 23px;
     cursor: pointer;
   }
+  @media only screen and (max-width: 1000px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .closeIcon{
+      display: none;
+    }
+  }
 `
 
 Container.Bottom= styled.div`
   padding: 20px 63px;
   display: grid;
   grid-template-rows: 1fr 1.1fr;
-
+  @media only screen and (max-width: 1000px) {
+    padding: 20px 15px;
+  }
 `
 
 
@@ -51,11 +65,25 @@ Container.Row = styled.div`
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #FFFFFF;
+    @media only screen and (max-width: 1000px) {
+      letter-spacing: -0.025em;
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 105.9%;
+      height: 12px;
+      width: 80px;
+    }
   }
   .icon{
     position: absolute;
     bottom: 5px;
     right: 31px;
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-gap: ${({mgap})=> mgap ? mgap : '0px'};
+    .mobile{
+      display: none;
+    }
   }
 `
 
@@ -73,7 +101,14 @@ Container.InsetPerson = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 15px;
-    
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 106px 1fr;
+    .personIcon{
+      width: 106px;
+      height: 106px;
+    }
+    gap: 12px;
   }
 
 `

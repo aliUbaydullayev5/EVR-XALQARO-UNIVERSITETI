@@ -16,9 +16,10 @@ const ParolniOzgartirishComponent = ({name, backPath, savePath}) => {
                 Shaxsiy kabinet
             </Container.Top>
             <Container.Bottom>
+
                 <Container.Left>
                     <div>
-                        <Image src={personImg} alt={'icons person'} />
+                        <Image src={personImg} alt={'icons person'} className={'personIcon'} />
                     </div>
                     <Container.LeftMenu>
                         <div>
@@ -27,42 +28,42 @@ const ParolniOzgartirishComponent = ({name, backPath, savePath}) => {
                         </div>
                     </Container.LeftMenu>
                 </Container.Left>
+
                 <Container.Right>
                     <Container.Row>
                         <div>
                             <p>FIO</p>
-                            <Input width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} />
+                            <Input mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} />
                         </div>
                     </Container.Row>
                     <Container.Row>
                         <div>
                             <p>Hozirgi Parol</p>
-                            <Input type={'password'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
+                            <Input mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} type={'password'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
                         </div>
                     </Container.Row>
                     <Container.Row>
                         <div>
                             <p>Yangi Parol</p>
-                            <Input type={'password'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
+                            <Input mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} type={'password'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
                         </div>
                     </Container.Row>
                     <Container.Row>
                         <div>
                             <p>Parolni takrorlang</p>
-                            <Input type={'password'}  width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
+                            <Input mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} type={'password'}  width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'******'} />
                         </div>
                     </Container.Row>
-                    <Container.Row>
-
-                    </Container.Row>
-                    <Container.Row>
-
-                    </Container.Row>
-                    <Container.Row justofy={'end'} columns={'1fr 0.5fr'}>
-                        <div></div>
-                        <Button color={'rgba(255, 255, 255, 0.5);'} height={'37px'} width={'194px'} size={'20px'}>Saqlash</Button>
+                    <Container.Row justofy={'end'} columns={'1fr 0.85fr'} mcolumns={'1fr 0.5fr'}>
+                        <div>
+                            <Container.CanselButtonMobile>
+                                <Button mwidth={'155px'} mheight={'23px'} mradius={'5px'} msize={'16px'} onclick={()=> query.push(backPath)} justify={'start'} padding={'0 0 0 82px'} height={'37px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Ortga qaytish</Button>
+                            </Container.CanselButtonMobile>
+                        </div>
+                        <Button mwidth={'110px'} mheight={'23px'} mpadding={'13px'} mradius={'5px'} msize={'16px'} color={'rgba(255, 255, 255, 0.5);'} height={'37px'} width={'194px'} size={'20px'}>Saqlash</Button>
                     </Container.Row>
                 </Container.Right>
+
             </Container.Bottom>
         </Container>
     )
