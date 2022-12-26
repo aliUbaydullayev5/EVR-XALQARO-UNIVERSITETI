@@ -4,6 +4,10 @@ const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1.1fr 2fr;
+@media only screen and (max-width: 800px) {
+ grid-template-columns: auto;
+
+}
 `
 
 Container.Inset = styled.div`
@@ -52,12 +56,23 @@ Container.Bottom = styled.div`
   /* padding: 0px 25px; */
   display: grid;
   grid-gap: 8px;
+  padding: 20px 0px;
   @media only screen and (max-width: 1000px) {
     padding: 25px 0px;
   }
   
 `
 
+Container.BottomCopy = styled.div`
+  /* padding: 0px 25px; */
+  display: grid;
+  grid-gap: 8px;
+  padding: 20px 0px;
+  @media only screen and (max-width: 1000px) {
+    padding: 25px 0px;
+    display: none;
+  }
+`
 Container.BottomDesc = styled.div`
   height: 247px !important;
   height: 100% !important;
@@ -66,18 +81,25 @@ Container.BottomDesc = styled.div`
     height: 430px !important;
   }
 `
+Container.BottomDescCopy = styled.div`
+  height: 247px !important;
+  height: 100% !important;
+  border-bottom: 3px solid #ffffff !important;
+  @media only screen and (max-width: 1000px) {
+    height: 430px !important;
+  }
+`
+
 Container.BottomDescInset = styled.div`
   width: 100%;
-  height: 410px !important;
+  height: 470px !important;
   overflow-y: scroll;
-  padding: 20px;
   display: flex;
   flex-direction:column;
   gap:10px;
-
+  padding: 10px;
   @media only screen and (max-width: 1000px) {
     height: 390px !important;
-  
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -94,9 +116,45 @@ Container.BottomDescInset = styled.div`
     transform: matrix(-1, 0, 0, 1, 0, 0);
     transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px !important;
+  }
+  /* Handle */
 
+  ::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 30px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  /* Handle on hover */
+`
+
+
+Container.BottomDescInsetCopy = styled.div`
+  width: 100%;
+  height: 470px !important;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction:column;
+  gap:10px;
+  padding: 10px;
+  @media only screen and (max-width: 1000px) {
+    height: 390px !important;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
   }
 
+  /* Track */
+
+  ::-webkit-scrollbar-track {
+    width: 10px !important;
+    padding: 0 5px 0 0;
+    background: #9a9a9a;
+    opacity: 0.5;
+    border-radius: 30px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    padding: 10px !important;
+  }
   /* Handle */
 
   ::-webkit-scrollbar-thumb {
@@ -266,8 +324,21 @@ ChatAtvet.Main = styled.div`
   display: flex;
   justify-content: ${({ position }) =>  position === 'admin' ? 'start' : 'end'};
 `
+const ChatContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`
+ChatContainer.Send = styled.div`
+ position: relative;
+ .Send{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 
-
-export { UserCon, ChatCont, ChatAtvet }
+ }
+`
+export { UserCon, ChatCont, ChatAtvet, ChatContainer }
 
 export default Container

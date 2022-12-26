@@ -1,16 +1,19 @@
-import Container, { ChatAtvet, ChatCont, UserCon } from "./style"
-import {Button} from "../../generic";
+import Container, { ChatAtvet, ChatCont, ChatContainer, UserCon } from "./style"
+import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
 import chatData from "../../Mock/chatData/index.js";
 import { useState } from "react";
 import Image from "next/image.js";
-
+import Send from "../../../assets/mobile/icon/send.svg"
 const ChatComponents = () => {
     const router = useRouter()
     const [data, setData] = useState(chatData)
-    
+
     const [idChat, setIdChat] = useState(0)
     const [message, setMessage] = useState([])
+
+// chat 
+    const [chat, setChat] = useState('')
 
     const findId = (id) => {
         setIdChat(id)
@@ -18,13 +21,13 @@ const ChatComponents = () => {
         setMessage(messageConst)
     }
 
+
+
     return (
         <> 
          <Container.Top>
                 <Container.TopTitle>Shaxsiy xabarlar</Container.TopTitle>
           </Container.Top>
-
-            
         <Container>
                 <Container.Bottom>
                     <Container.BottomDesc>
@@ -49,10 +52,12 @@ const ChatComponents = () => {
                           })}  
                         </Container.BottomDescInset>
                     </Container.BottomDesc>
-                 </Container.Bottom>
-                <Container.Bottom>
-                    <Container.BottomDesc>
-                        <Container.BottomDescInset>
+                </Container.Bottom>
+                
+                <Container.BottomCopy>
+                    <Container.BottomDescCopy>
+                        <Container.BottomDescInsetCopy>
+                            <ChatContainer>
                             <ChatCont>
                                 <Image alt={'img of person'} src={message?.img} />
                               <ChatCont.Text>
@@ -60,6 +65,7 @@ const ChatComponents = () => {
                                     <p>{message.status}</p>
                               </ChatCont.Text>
                             </ChatCont>
+                         
                             {message?.messanger?.map(({ id, by, messege }) => (
                                 <ChatAtvet.Main position={by}>
                                     <ChatAtvet key={id}>
@@ -67,9 +73,16 @@ const ChatComponents = () => {
                                     </ChatAtvet>
                                 </ChatAtvet.Main>
                             ))}
-                        </Container.BottomDescInset>
-                    </Container.BottomDesc>
-                </Container.Bottom>
+                               <ChatContainer.Send>
+                                    <Input placeholder={'| Type here...'} msize={'12px'} size={'16px'} mradius={'border-radius: 4px;'} radius={'border-radius: 4px;'} bc={' #2E2A6F;'} height={'35px'} mheight={'26px'}
+                                        onChange={(e) => setChat(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && ''} /> 
+                                    <Send className='Send' />
+                                </ChatContainer.Send> 
+                            </ChatContainer>
+                        </Container.BottomDescInsetCopy>
+                    </Container.BottomDescCopy>
+                </Container.BottomCopy>
+                
                 <div></div>
               </Container>
             
