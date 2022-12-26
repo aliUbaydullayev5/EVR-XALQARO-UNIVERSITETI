@@ -70,10 +70,10 @@ const Navbar = () => {
                     }
                 </Container.UserBlock>
                 <MobilNotif className={'scale iconMobile'} />
-                <MobileChat className={'scale iconMobile'} />
+                <MobileChat className={'scale iconMobile'} onClick={() => query.push('/chat')} />
 
-                <Notif className={'scale iconLaptop'} />
-                <Chat className={'scale iconLaptop'} />
+                <Notif className={'scale iconLaptop'}  />
+                <Chat className={'scale iconLaptop'} onClick={() => query.push('/chat')} />
 
                 <Container.MenuArea>
                     <MenuIcon onClick={()=> changeHiddenMenu()} className={'scale iconLaptop'} />

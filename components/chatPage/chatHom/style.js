@@ -2,9 +2,8 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100%;
-  border: 1px solid red;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.1fr 2fr;
 `
 
 Container.Inset = styled.div`
@@ -72,6 +71,9 @@ Container.BottomDescInset = styled.div`
   height: 410px !important;
   overflow-y: scroll;
   padding: 20px;
+  display: flex;
+  flex-direction:column;
+  gap:10px;
 
   @media only screen and (max-width: 1000px) {
     height: 390px !important;
@@ -106,14 +108,166 @@ Container.BottomDescInset = styled.div`
 `
 
 
-
-
+const UserCon = styled.div`
+  width: 100%;
+  max-width:412px;
+  background: #221F51;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  padding:0px 0px 0px 10px ;
+  align-items: center;
+  display: flex;
+  gap: 10px;
 
  
+  `
+UserCon.Image = styled.div`
+  >img{
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.4 ease-in-out ;
+    :hover{
+    transform: scale(1.05);
+}
+
+  } 
+`
+UserCon.Box = styled.div`
+display:flex;
+align-items: center;
+width: 100%;
+justify-content:space-between;
+`
+UserCon.Name = styled.div`
+display: flex;
+align-self: center;
+flex-direction:column;
+      cursor: pointer;
+    transition: all 0.4 ease-in-out ;
+    :hover{
+    transform: scale(1.05);
+}
 
 
+>h1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  color: #FFFFFF;
+  
+}
+>p{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  opacity: 0.7;
+}
+`
+UserCon.Notif = styled.div`
+  width: 26px;
+  height: 17px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 42px;
+  margin-right: 10px;
+>p{
+  text-align: center;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+`
 
 
+const ChatCont = styled.div`
+  width: 99%;
+  height: 75px;
+  background: #221F51;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  display: flex;
+  align-items: center;  
+  margin:  0px auto;
+  gap:20px;
+  padding:0px 20px ;
+  >img{
+    border-radius: 50%;
+    width: 55px;
+    height: 55px; 
+  }
+`
+ChatCont.Text = styled.div`
+display: flex;
+flex-direction: column;
+  >h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+  >p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    opacity: 0.7;
+  }
+`
 
+const ChatAtvet = styled.div`
+  display: flex;
+  flex-direction:column ;
+  justify-content: space-between;
+  background: #2E2A6E;
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 15px 15px 15px;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  min-height: 200px;
+  min-height: 35px;
+  >h3{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    text-align: center;
+  }
+`
+ChatAtvet.Main = styled.div`
+  display: flex;
+  justify-content: ${({ position }) =>  position === 'admin' ? 'start' : 'end'};
+`
+
+
+export { UserCon, ChatCont, ChatAtvet }
 
 export default Container
