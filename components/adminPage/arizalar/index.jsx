@@ -17,7 +17,7 @@ export const ArizalarCom = () => {
           {data.map((value) => {
             const Img = value.img
             return(
-              <ConTable>
+              <ConTable key={value.id}>
               <ConTable.ChecBox>
                 <Img className={'checbox'} />
               </ConTable.ChecBox>

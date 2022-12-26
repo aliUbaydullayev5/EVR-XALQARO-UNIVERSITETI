@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const Container = styled.input`
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     min-width: 124.72px;
     width: ${({ width }) => (width ? `${width}` : '100%')};
     height: ${({ height }) => (height ? `${height}` : '80px')};
@@ -32,7 +32,7 @@ const Container = styled.input`
     box-shadow: ${({error})=> error && '0 0 5px 3px red'};
   }
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1000px) {
     /* min-width: 124.72px; */
     min-width: ${({ minwidth }) => (minwidth ? `${minwidth}` : '100%')};
     width: ${({ mwidth }) => (mwidth ? `${mwidth}` : '100%')};

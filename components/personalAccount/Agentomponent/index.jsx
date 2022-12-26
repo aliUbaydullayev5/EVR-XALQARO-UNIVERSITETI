@@ -9,6 +9,12 @@ import ExitIcon from "../../../assets/icon/personalAcauntExit.svg";
 import DownIcon from "../../../assets/icon/personDown.svg";
 import {useRouter} from "next/router";
 
+
+import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
+import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
+import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
+
+
 const Agentomponent = () => {
 
     const query = useRouter()
@@ -22,20 +28,23 @@ const Agentomponent = () => {
             <Container.Bottom>
                 <Container.Left>
                     <div>
-                        <Image src={personImg} alt={'icons person'} />
+                        <Image src={personImg} alt={'icons person'} className={'personIcon'} />
                     </div>
                     <Container.LeftMenu>
                         <div>
-                            <Button justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>
-                            <FileIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>
+                            <FileIcon className={'icon laptopIcon'} />
+                            <MobileFile className={'mobileIcon icon'} />
                         </div>
                         <div>
-                            <Button onclick={()=> query.push('/personalAccount/agent/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
-                            <BlockIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} onclick={()=> query.push('/personalAccount/agent/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
+                            <BlockIcon className={'icon laptopIcon'} />
+                            <MobileRestor className={'mobileIcon icon'} />
                         </div>
                         <div>
-                            <Button justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
-                            <ExitIcon className={'icon'} />
+                            <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
+                            <ExitIcon className={'icon laptopIcon'} />
+                            <MobileExit className={'mobileIcon icon'} />
                         </div>
                     </Container.LeftMenu>
                 </Container.Left>
@@ -43,29 +52,29 @@ const Agentomponent = () => {
                     <Container.Row>
                         <div>
                             <p>Agentlik nomi</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'EVR Consulting'} />
+                            <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'EVR Consulting'} />
                         </div>
                     </Container.Row>
                     <Container.Row>
                         <div>
                             <p>Manzil</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Uzbekistan, Tashkent'} />
+                            <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Uzbekistan, Tashkent'} />
                         </div>
                     </Container.Row>
                     <Container.Row disabled={true} columns={'1fr 1fr'} gap={'31px'}>
                         <div>
                             <p>ID raqam</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
+                            <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
                         </div>
                         <div>
                             <p>Litsenziya raqami</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'123 456 789'} />
+                            <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'123 456 789'} />
                         </div>
                     </Container.Row>
                     <Container.Row>
                         <div>
                             <p>Telefon raqam</p>
-                            <Input disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'+998'} />
+                            <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'+998'} />
                         </div>
                     </Container.Row>
                     <Container.Row columns={'1fr 1fr'} gap={'31px'}>
@@ -82,7 +91,7 @@ const Agentomponent = () => {
                     </Container.Row>
                     <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'}>
                         <div></div>
-                        <Button height={'36px'} size={'20px'} width={'240px'} color={'#fff'}>Ro’yxatdan o’tkazish</Button>
+                        <Button mheight={'31px'} msize={'16px'} mpadding={'0 5px'} wrap={true} height={'36px'} size={'20px'} width={'240px'} color={'#fff'}>Ro’yxatdan o’tkazish</Button>
                         <div></div>
                     </Container.Row>
                 </Container.Right>

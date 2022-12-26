@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import {Button} from "../../../generic";
 
 const Container = styled.div`
   height: 135px;
@@ -13,6 +12,7 @@ const Container = styled.div`
     grid-template-columns: 100px 1fr;
     box-shadow: none;
     height: 175px;
+    border: 1px solid red;
   }
 `
 

@@ -57,7 +57,7 @@ const MassageComponent = ({changeHidden}) => {
                             return <p className="data">{select?.data}</p>
                         }
                         if(select.type === 'chat'){
-                            return <Container.Messages who={select.who}>
+                            return <Container.Messages who={select.who} key={select.id}>
                                 <Container.Message who={select.who}>
                                     {select.chat}
                                 </Container.Message>

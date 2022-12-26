@@ -8,6 +8,10 @@ const Container = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    box-shadow: none;
+    grid-template-rows: 31px 1fr;
+  }
 
 `
 Container.Top = styled.div`
@@ -27,7 +31,14 @@ Container.Top = styled.div`
     right: 23px;
     cursor: pointer;
   }
-
+  @media only screen and (max-width: 1000px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .closeIcon{
+      display: none;
+    }
+  }
 
 `
 Container.Bottom = styled.div`
@@ -35,7 +46,12 @@ Container.Bottom = styled.div`
   grid-template-columns: 305px 1fr;
   grid-gap: 96px;
   padding: 20px 85px;
-
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 106px 1fr;
+    grid-gap: 20px;
+    padding: 10px 25px 0 25px;
+  }
 `
 
 Container.Left = styled.div`
@@ -46,6 +62,14 @@ Container.Left = styled.div`
   >div{
     display: flex;
     justify-content: center;
+  }
+  @media only screen and (max-width: 1000px){
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    .personIcon{
+      width: 106px;
+      height: 106px;
+    }
   }
 `
 Container.LeftMenu = styled.div`
@@ -61,13 +85,35 @@ Container.LeftMenu = styled.div`
     top: 5px;
     left: 39px;
   }
+  .mobileIcon{
+    display: none;
+  }
+  @media only screen and (max-width: 1000px) {
+    display: flex;
+    align-items: center;
+    .icon{
+      position: absolute;
+      z-index: 999;
+      top: 3px;
+      left: 10px;
+    }
+    .laptopIcon{
+      display: none;
+    }
+    .mobileIcon{
+      display: block;
+    }
+  }
 
 `
 
 Container.Right = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  
+  @media only screen and (max-width: 1000px){
+    grid-gap: 10px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 `
 Container.Row = styled.div`
   display: grid;
@@ -88,6 +134,14 @@ Container.Row = styled.div`
     position: absolute;
     bottom: 5px;
     right: 31px;
+  }
+  @media only screen and (max-width: 1000px){
+    grid-gap: ${({mgap, gap})=> mgap ? mgap : gap};
+    .icon{
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+    }
   }
 `
 
@@ -125,8 +179,14 @@ Container.InputCustom1 = styled.input`
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: rgb(211, 211, 211);
+    @media only screen and (max-width: 1000px){
+      font-size: 16px;
+    }
   }
   cursor: pointer;
+  @media only screen and (max-width: 1000px){
+    padding: 0px 0px 0px 10px;
+  }
 `
 
 
