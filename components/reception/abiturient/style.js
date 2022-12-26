@@ -196,7 +196,7 @@ const IconBox = styled.div`
 }
   .UploadFileMobile2 { 
     position: absolute;
-    left: 30px ;
+    left: 20px ;
     top: 9px;
     cursor: pointer;
     @media only screen and (min-width: 800px) {
@@ -205,7 +205,7 @@ const IconBox = styled.div`
   }
   .UploadFileMobile{
     position: absolute;
-    left: 30px ;
+    left: 20px ;
     top: 8px;
     bottom: 5px;
     cursor: pointer;

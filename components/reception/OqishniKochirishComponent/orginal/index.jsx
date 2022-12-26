@@ -100,7 +100,7 @@ const OqishniKochirishComponent = () => {
                     <Input placeholder={'Familyangiz'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-                <div className={'row7'}>
+                <div className={'row8'}>
                     <IconBox>
                         <AntSelect
                             showSearch
@@ -138,7 +138,7 @@ const OqishniKochirishComponent = () => {
                     <Input placeholder={'Ismingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-                <div className={'row8'}>
+                <div className={'row9'}>
                     <IconBox>
                         <AntSelect
                             showSearch
@@ -176,7 +176,7 @@ const OqishniKochirishComponent = () => {
 
 
 
-                <div>
+                <div className={'row5'}>
                     <div className='phoNumber'>
                         <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'__ ___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState} onchange={(e) => changeNumState(e.target.value)} />
                         <p className='phoNumbers'>+998</p>
@@ -187,7 +187,7 @@ const OqishniKochirishComponent = () => {
                     <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
-                <div className={'row10'}>
+                <div className={'row6'}>
                     <div className='phoNumber'>
                         <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'Otangiz yoki onangizni raqami'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
                         <p className='phoNumbers'>+998</p>
@@ -195,7 +195,7 @@ const OqishniKochirishComponent = () => {
                 </div>
 
 
-                <div className={'row5'}>
+                <div className={'row7'}>
                     <IconBox>
                         <AntSelect
                             showSearch
@@ -230,7 +230,7 @@ const OqishniKochirishComponent = () => {
                     </IconBox>
                 </div>
 
-                <div className={'row6'}>
+                <div className={'row10'}>
                     <IconBox>
                         <AntSelect
                             showSearch

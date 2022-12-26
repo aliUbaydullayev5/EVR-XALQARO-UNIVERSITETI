@@ -135,6 +135,8 @@ const InputCont = styled.div`
     .row12{
       grid-row: 12/13;
     }
+    
+    
   }
 
 `
@@ -242,7 +244,7 @@ Container.InputCustom1 = styled.input`
     visibility: hidden;
   }
   ::before {
-    content: 'Pasport nusxangizni yuklang';
+    content: 'Deplom yoki atistatingizni yuklang';
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #d3d3d3;
@@ -292,7 +294,7 @@ Container.InputCustom2 = styled.input`
     visibility: hidden;
   }
   ::before {
-    content: 'Transkripingizni yuklang';
+    content: 'Pasport nusxasini yuklang';
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #d3d3d3;
