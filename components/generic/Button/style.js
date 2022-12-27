@@ -25,6 +25,7 @@ const Container = styled.button`
     transition: .2s;
     position: ${({position})=> position && position};
     white-space: nowrap;
+    cursor: ${({cursor})=> cursor ? cursor : 'pointer'};
     :active{
       transform: scale(1.1);
     }
@@ -57,6 +58,7 @@ const Container = styled.button`
     transition: .2s;
     font-weight: unset;
     transition: .2s;
+    cursor: ${({mcursor})=> mcursor ? mcursor : 'pointer'};
     position: ${({position})=> position && position};
     white-space: ${({wrap})=> wrap && 'nowrap'};
     

@@ -9,7 +9,6 @@ import Sms from "../../../assets/icons/Sms.svg"
 
 export const ArizalarCom = () => {
   const [data, setData] = useState(DataAriza);
-  console.log(data,'xasa')
   return (
     <Container>
       <div className='scrollCon' style={{overflowY: 'scroll', maxHeight: '550px'}}>

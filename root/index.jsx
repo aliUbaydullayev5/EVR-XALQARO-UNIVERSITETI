@@ -3,10 +3,27 @@ import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/SideBar";
 import Container from "./style.js";
 import LineComponent from "../components/LineComponent";
+import {useSelector} from "react-redux";
+import {useEffect} from "react";
 
 const Root = ({ children }) => {
 
     const { pathname } = useRouter()
+
+    const {pushToHome} = useSelector((store)=> store.firstSmsCodeFetch)
+
+    const router = useRouter()
+
+    useEffect(()=> {
+        if(pushToHome){
+            router.push('/homePage')
+        }
+        if(localStorage.getItem('firstToken')){
+            router.push('/homePage')
+        }else{
+            router.push('/firstPage')
+        }
+    }, [pushToHome])
 
     return (
         <Container>
