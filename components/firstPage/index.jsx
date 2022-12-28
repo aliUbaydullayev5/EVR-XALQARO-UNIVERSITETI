@@ -1,13 +1,12 @@
 import Container from './style'
 import Logo from '../../assets/icon/firstlogo.svg'
-
-
-import {Input, Button} from "../generic";
-import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
-
+import {Input, Button} from "../generic"
+import {useRouter} from "next/router"
+import {useEffect, useState} from "react"
 import LogoMobile from '../../assets/icon/download.svg'
-
+import {firstVerifyFetch, resetTimerVerify} from "../../redux/slices/firstVerify"
+import {useSelector, useDispatch} from 'react-redux'
+import {firstSmsCodeFetch} from "../../redux/slices/firstSmsVerifyCode"
 
 const FirstPageMainCom = () => {
 
@@ -16,21 +15,48 @@ const FirstPageMainCom = () => {
     const [numState, setNumState] = useState('')
     const [length, setLength] = useState(0)
 
+    const [numState1, setNumState1] = useState('')
+    const [length1, setLength1] = useState(0)
 
+    const [timeLeft, setTimeLeft] = useState(2 * 60)
+    const [isCounting, setIsCounting] = useState(false)
+    const [minut, setMinut] = useState()
+    const [secund, setSecund] = useState()
+
+    const [hidden, setHidden] = useState(false)
+
+    const [nameState, setNameState] = useState('')
+    const [numberState, setNumberState] = useState('')
+
+    const [errorRed, setErrorRed] = useState(true)
+
+    const [smsState, setSmsState] = useState('')
+
+    // ---------------------- Redux ----------------------
+
+    const dispatch = useDispatch()
+    const {verifyCode} = useSelector((store) => store.firstVerify)
+    const {pushToHome} = useSelector((store)=> store.firstSmsCodeFetch)
+
+    // ---------------------- Empty area for input Logic ----------------------
 
     const changeNumState = (event) => {
         setNumberState(event)
         if(length < event.length){
+
             setLength(event.length-1)
             if(event.length == 2){
                 return setNumState(event+' ')
             }
+
             if(event.length == 6){
                 return setNumState(event+' ')
             }
+
             if(event.length == 9){
                 return setNumState(event+' ')
             }
+
         }
         if(length >= event.length){
             setLength(event.length)
@@ -42,71 +68,11 @@ const FirstPageMainCom = () => {
         consloe.log(setNumState ,'d')
     }
 
-    const [hidden, setHidden] = useState(false)
-    const getParTime = (time) => time.toString().padStart(2, '0')
-    const [timeLeft, setTimeLeft] = useState(2 * 60)
-    const [isCounting, setIsCounting] = useState(false)
-    const [minut, setMinut] = useState()
-    const [secund, setSecund] = useState()
-    useEffect(()=> {
-        setMinut(getParTime(Math.floor(timeLeft / 60)))
-        setSecund(getParTime(timeLeft - minut * 60))
-    })
-    useEffect(()=> {
-        const interval = setInterval(()=> {
-            if(isCounting) setTimeLeft((timeLeft)=> (timeLeft >= 1 ? timeLeft - 1 : 0))
-        }, 1000)
-        if(timeLeft === 0) setIsCounting(false)
-        return ()=> clearInterval(interval)
-    }, [isCounting])
-
-    const handleStart = () => {
-        if(timeLeft === 0) setTimeLeft(2 * 60)
-        setIsCounting(true)
-    }
-    const handleStop = () => setIsCounting(false)
-    const handleReset = () => {
-        setIsCounting(false)
-        setTimeLeft(2 * 60)
-    }
-
-
-    const [errorRed, setErrorRed] = useState(true)
-    const [nameState, setNameState] = useState('')
-    const [numberState, setNumberState] = useState('')
-
-    useEffect(()=> {
-        setErrorRed(true)
-    }, [nameState, numberState])
-
-
-    const pushFunc = () => {
-        if(nameState.length >= 3 && numberState.length == 12){
-            setHidden(!hidden)
-            handleStart()
-            if(hidden === true){
-                router.push('/homePage')
-            }
-        }else{
-            setErrorRed(false)
-        }
-    }
-
-
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
-
     const changeNumState1 = (event) => {
         setNumberState(event)
         if(length1 < event.length){
             setLength1(event.length-1)
-            if(event.length == 2){
-                return setNumState1(event+' ')
-            }
-            if(event.length == 6){
-                return setNumState1(event+' ')
-            }
-            if(event.length == 9){
+            if(event.length == 3){
                 return setNumState1(event+' ')
             }
         }
@@ -119,6 +85,110 @@ const FirstPageMainCom = () => {
 
     }
   
+
+
+
+
+    // ---------------------- Timer Logic ----------------------
+
+
+
+    const getParTime = (time) => time.toString().padStart(2, '0')
+
+    useEffect(()=> {
+        setMinut(getParTime(Math.floor(timeLeft / 60)))
+        setSecund(getParTime(timeLeft - minut * 60))
+        if(minut == '00' && secund == '00' ){
+            setHidden(false)
+            dispatch(resetTimerVerify())
+        }
+    })
+
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            if(isCounting) setTimeLeft((timeLeft)=> (timeLeft >= 1 ? timeLeft - 1 : 0))
+        }, 1000)
+        if(timeLeft === 0) {
+            setIsCounting(false)
+        }
+        return ()=> clearInterval(interval)
+    }, [isCounting])
+
+
+
+    //------------ Timer Start Func
+    const handleStart = () => {
+        if(timeLeft === 0) setTimeLeft(2 * 60)
+        setIsCounting(true)
+    }
+
+
+    //------------ Timer Stop Func
+    const handleStop = () => {
+        setIsCounting(false)
+    }
+
+
+    //------------ Timer Reset Func
+    const handleReset = () => {
+        setIsCounting(false)
+        setTimeLeft(2 * 60)
+    }
+
+
+
+    // ---------------------- Input filter Logic ----------------------
+
+
+
+    // for check input filters
+    useEffect(()=> {
+        setErrorRed(true)
+    }, [nameState, numberState])
+
+
+    useEffect(()=> {
+        if(nameState.length >= 3 && numberState.length == 12 || verifyCode){
+            handleStart()
+            setHidden(true)
+        }
+    }, [verifyCode])
+
+    // for change hidden state
+    useEffect(()=> {
+        if(nameState.length >= 3 && numberState.length == 12 || verifyCode){
+            handleStart()
+            setHidden(true)
+        }
+    }, [verifyCode])
+
+
+    // push request
+    const pushFunc = () => {
+        if(nameState.length >= 3 && numberState.length == 12){
+            dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: '998'+numberState.split(' ').join('')}))
+        }else{
+            setErrorRed(false)
+        }
+    }
+
+
+
+
+    // ---------------------- Sms Code Logic ----------------------
+
+    const pushSmsToBackend = () => {
+        dispatch(firstSmsCodeFetch({verifyCode: numState1.split(' ').join(''), phoneNumber: '998'+numState.split(' ').join('')}))
+    }
+
+    useEffect(()=> {
+        if(pushToHome){
+            router.push('/homePage')
+        }
+        if(localStorage.getItem('firstToken')){
+            router.push('/homePage')
+        }
+    }, [pushToHome])
 
 
     return(
@@ -158,14 +228,17 @@ const FirstPageMainCom = () => {
                 {
                     hidden ?
                         <>
+<<<<<<< HEAD
                             <Input  malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
+=======
+                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} maxlength={7} onchange={(e)=> changeNumState1(e.target.value)} />
+>>>>>>> origin/testProduction
                             <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
 
                         <>
-                            <Input merror={!errorRed} error={!errorRed} mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
-                            {/*<input style={ errorRed ? {} : {border: '5px solid red'}} type={'text'} onChange={(e)=> setNameState(e.target.value)} />*/}
+                            <Input merror={!errorRed} error={!errorRed} mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             <Container.Number>
                                 <Input  merror={!errorRed} error={!errorRed} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
                                 <Container.FormatNumber>+998</Container.FormatNumber>
@@ -174,7 +247,12 @@ const FirstPageMainCom = () => {
                 }
             </Container.Row>
             <Container.Row js={'end'} mjs={'center'}>
-                <Button mradius={'5px'} msize={'32px'}  mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={()=> pushFunc()}>KIRISH</Button>
+                {
+                    hidden ?
+                        <Button mradius={'5px'} msize={'32px'}  mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={()=> pushSmsToBackend()}>KIRISH</Button>
+                        :
+                        <Button mradius={'5px'} msize={'32px'}  mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={()=> pushFunc()}>KIRISH</Button>
+                }
             </Container.Row>
         </Container>
     )

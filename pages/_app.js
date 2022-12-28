@@ -1,10 +1,12 @@
 import '../styles/globals.css'
-
+import {Provider, useSelector} from 'react-redux'
+import store from '../redux/store/index'
 function MyApp({ Component, pageProps }) {
 
-
   return (
-    <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
   )
 }
 

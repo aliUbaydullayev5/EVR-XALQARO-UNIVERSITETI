@@ -14,22 +14,12 @@ import ClickMobile from "../../../../assets/mobile/icon/click.png"
 import Tolov from "../../../../assets/icons/tolov.svg"
 
 export const Clickpay = () => {
-  // tolov Modal sms tasdiqlash
-  // const [isModal, setModal] = useState(false)
   const [time, setTime] = useState("00:000")
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    console.log(setIsModalOpen(!isModalOpen),'open');
-  };
-
-  const handleCancel = () => {
-  
   };
 
   const changeHidden = () => setIsModalOpen(!isModalOpen)

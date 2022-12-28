@@ -27,7 +27,9 @@ export const Button = ({
  position,
  mline,
  wrap,
- mhover
+ mhover,
+    cursor,
+    mcursor
 }) => {
   return (
     <Container
@@ -57,8 +59,8 @@ export const Button = ({
       mradius={mradius}
       mweight={mweight}
       mjustify={mjustify}
-
-
+      cursor={cursor}
+      mcursor={mcursor}
 
     >
       {children || 'generic Button'}

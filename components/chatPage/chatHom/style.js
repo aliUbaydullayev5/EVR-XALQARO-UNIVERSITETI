@@ -340,5 +340,4 @@ ChatContainer.Send = styled.div`
  }
 `
 export { UserCon, ChatCont, ChatAtvet, ChatContainer }
-
 export default Container
