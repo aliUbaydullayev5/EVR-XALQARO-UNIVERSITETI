@@ -38,8 +38,9 @@ const FirstPageMainCom = () => {
         }
         return setNumState(event)
     }
-
-
+    const numberType=()=>{
+        consloe.log(setNumState ,'d')
+    }
 
     const [hidden, setHidden] = useState(false)
     const getParTime = (time) => time.toString().padStart(2, '0')
@@ -113,8 +114,12 @@ const FirstPageMainCom = () => {
             setLength1(event.length)
             setNumState1(event)
         }
+        if(nameState)
         return setNumState1(event)
+
     }
+  
+
 
     return(
         <Container>
@@ -153,7 +158,7 @@ const FirstPageMainCom = () => {
                 {
                     hidden ?
                         <>
-                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
+                            <Input  malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
                             <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
@@ -162,7 +167,7 @@ const FirstPageMainCom = () => {
                             <Input merror={!errorRed} error={!errorRed} mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             {/*<input style={ errorRed ? {} : {border: '5px solid red'}} type={'text'} onChange={(e)=> setNameState(e.target.value)} />*/}
                             <Container.Number>
-                                <Input merror={!errorRed} error={!errorRed} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
+                                <Input  merror={!errorRed} error={!errorRed} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
                                 <Container.FormatNumber>+998</Container.FormatNumber>
                             </Container.Number>
                         </>
