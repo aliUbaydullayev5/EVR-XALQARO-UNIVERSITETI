@@ -173,8 +173,6 @@ const FirstPageMainCom = () => {
     }
 
 
-
-
     // ---------------------- Sms Code Logic ----------------------
 
     const pushSmsToBackend = () => {
@@ -228,11 +226,7 @@ const FirstPageMainCom = () => {
                 {
                     hidden ?
                         <>
-<<<<<<< HEAD
-                            <Input  malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} onchange={(e)=> changeNumState1(e.target.value)} />
-=======
                             <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} maxlength={7} onchange={(e)=> changeNumState1(e.target.value)} />
->>>>>>> origin/testProduction
                             <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
