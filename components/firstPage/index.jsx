@@ -64,9 +64,7 @@ const FirstPageMainCom = () => {
         }
         return setNumState(event)
     }
-    const numberType=()=>{
-        consloe.log(setNumState ,'d')
-    }
+
 
     const changeNumState1 = (event) => {
         setNumberState(event)

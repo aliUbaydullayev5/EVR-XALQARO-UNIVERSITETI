@@ -18,9 +18,7 @@ const Root = ({ children }) => {
         if(pushToHome){
             router.push('/homePage')
         }
-        if(localStorage.getItem('firstToken')){
-            router.push('/homePage')
-        }else{
+        if(!localStorage.getItem('firstToken')){
             router.push('/firstPage')
         }
     }, [pushToHome])

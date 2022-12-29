@@ -27,6 +27,13 @@ Container.Top = styled.div`
     right: 25px;
     cursor: pointer;
   }
+@media only screen and (max-width: 1000px) { 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+}
 
 `
 Container.Bottom = styled.div`
@@ -70,6 +77,13 @@ Container.BottomInset = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 16px;
   grid-row-gap: 9px;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+    
+
+  }
   
 `
 
@@ -81,11 +95,17 @@ Container.Section = styled.div`
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  
-  height: 48px;
+    height: 48px;
   background: #241F69;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
+  @media only screen and (max-width: 1000px) {
+    width: 94px;
+    height: 29px;
+    background: #241F69;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 5px;
+   }
 
 `
 
@@ -115,6 +135,16 @@ Container.Select = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+ @media only screen and (max-width: 1000px) {
+    font-size: 12px;
+    height: 13px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 7px;
+    width: ${({mwidth})=> mwidth && mwidth};
+    
+ }
   >option{
     background-color: #1E3C72 !important;
   }
@@ -133,7 +163,12 @@ Container.Input = styled.input`
   padding: 0 15px;
   display: flex;
   align-items: center;
-  
+ @media only screen and (max-width: 1000px) {
+  width: 49px;
+  font-size: 7px;
+  height:13px 
+
+ }  
 `
 
 

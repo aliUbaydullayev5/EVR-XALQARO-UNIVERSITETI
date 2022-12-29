@@ -60,7 +60,7 @@ const GuruhlarComponent = () => {
             </Container.Top>
             <Container.Center>
                 <div>
-                    <Container.Select width={'204px'}>
+                    <Container.Select  mwidth={'62px'} width={'204px'}>
                         <option value="">Ta’lim shakli</option>
                         <option value="">Kechki</option>
                         <option value="">Kunduzgi</option>
@@ -68,7 +68,7 @@ const GuruhlarComponent = () => {
                     </Container.Select>
                 </div>
                 <div>
-                    <Container.Select width={'183px'}>
+                    <Container.Select mwidth={'52px'} width={'183px'}>
                         <option value="">Ta’lim shakli</option>
                         <option value="">Kechki</option>
                         <option value="">Kunduzgi</option>
@@ -76,7 +76,7 @@ const GuruhlarComponent = () => {
                     </Container.Select>
                 </div>
                 <div>
-                    <Container.Select width={'124px'}>
+                    <Container.Select mwidth={'44px'} width={'124px'}>
                         <option value="">Kurs</option>
                         <option value="">Kechki</option>
                         <option value="">Kunduzgi</option>
@@ -84,7 +84,7 @@ const GuruhlarComponent = () => {
                     </Container.Select>
                 </div>
                 <div>
-                    <Container.Select width={'200px'}>
+                    <Container.Select mwidth={'65px'}  width={'200px'}>
                         <option value="">Ta’lim yo’nalishi</option>
                         <option value="">Kechki</option>
                         <option value="">Kunduzgi</option>
@@ -92,7 +92,7 @@ const GuruhlarComponent = () => {
                     </Container.Select>
                 </div>
                 <div>
-                    <Container.Input type="text" placeholder={'Qidiruv'}  />
+                    <Container.Input mwidth={'49px'} type="text" placeholder={'Qidiruv'}  />
                 </div>
             </Container.Center>
             <Container.Bottom>
