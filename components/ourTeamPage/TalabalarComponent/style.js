@@ -21,12 +21,20 @@ Container.Top = styled.div`
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
   position: relative;
+
   .closeIcon{
     position: absolute;
     top: 0px;
     right: 25px;
     cursor: pointer;
   }
+@media only screen and (max-width: 1000px) { 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+}
 
 `
 Container.Bottom = styled.div`
@@ -94,6 +102,20 @@ Container.Section = styled.div`
   :active{
     transform: scale(1.1);
   }
+  @media only screen and (max-width: 1000px) {
+   
+    background: #241F69;
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+   }
 `
 
 Container.Center = styled.div`
@@ -119,7 +141,15 @@ Container.Select = styled.select`
   line-height: 105.9% !important;
   letter-spacing: -0.025em !important;
   color: #FFFFFF !important;
+ @media only screen and (max-width: 1000px) {
+    font-size: 12px!important;
+    height: 13px!important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 7px !important; 
+    width: ${({ mwidth }) => mwidth && mwidth};
 
+ }
 
 
   -webkit-appearance: none;
@@ -128,6 +158,7 @@ Container.Select = styled.select`
   >option{
     background-color: #1E3C72 !important;
   }
+
 `
 Container.Input = styled.input`
   width: 240px;
@@ -143,7 +174,15 @@ Container.Input = styled.input`
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: #FFFFFF;
-
+ @media only screen and (max-width: 1000px) {
+    font-size: 12px!important;
+    height: 13px!important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 7px !important;
+    width: ${({ mwidth }) => mwidth && mwidth};
+    width: 65px !important;
+ }
 `
 
 

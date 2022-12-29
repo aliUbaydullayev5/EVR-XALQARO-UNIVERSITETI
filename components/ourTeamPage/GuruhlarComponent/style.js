@@ -79,10 +79,6 @@ Container.BottomInset = styled.div`
   grid-row-gap: 9px;
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1fr 1fr;
-
-
-    
-
   }
   
 `
@@ -143,7 +139,6 @@ Container.Select = styled.select`
     font-weight: 400;
     font-size: 7px;
     width: ${({mwidth})=> mwidth && mwidth};
-    
  }
   >option{
     background-color: #1E3C72 !important;
