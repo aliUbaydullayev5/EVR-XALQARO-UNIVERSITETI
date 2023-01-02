@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 90px;
-  height: 70vh;
+  gap: 35px;
 
 `
 Container.Logo = styled.div`
