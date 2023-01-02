@@ -19,7 +19,7 @@ const HamburgerMenu = ({changeHidden}) => {
             </Container.ButtonArea>
             <ul className={'nocopy'}>
                 <li onClick={()=> query.push('/ourTeamPage')}>Bizning jamoa</li>
-                <li>Test topshirish</li>
+                <li onClick={() => query.push('/testTopshirish')}>Test topshirish</li>
                 <li>Test natijalari</li>
                 <li>Shartnoma yuklab olish</li>
                 <li>Biz bilan aloqa</li>
