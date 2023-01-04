@@ -4,7 +4,8 @@ const Container = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  border: 1px solid red;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 30px 30px;
 `
 
 Container.Text = styled.div`
@@ -26,7 +27,6 @@ Container.Text = styled.div`
 `
 Container.Box = styled.div`
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border: 1px solid red;
  
 `
 
@@ -62,6 +62,7 @@ const Questions = styled.div`
    letter-spacing: -0.025em;
    color: #FFFFFF;
    gap: 10px;
+   cursor: pointer;
 
   }
 `
@@ -84,8 +85,7 @@ Container.Bottom = styled.div`
 `
 
 Container.BottomDesc = styled.div`
-  height: 447px !important;
-  border: 1px solid #FFFFFF;
+  height: 380px !important;
   height: 100%;
   padding: 15px;
   @media only screen and (max-width: 1000px) {
@@ -94,9 +94,9 @@ Container.BottomDesc = styled.div`
 `
 Container.BottomDescInset = styled.div`
   width: 100%;
-  height: 415px !important;
+  height: 360px !important;
   overflow-y: scroll;
-  padding: 0 10px 0 0;
+  padding: 0 20px 0 0;
   >p{
     font-weight: 400;
     font-size: 16px;
@@ -145,7 +145,7 @@ Container.BottomDescInset = styled.div`
 `
 
 Questions.Box = styled.div`
-  width: 1096px;
+
   height: 75.16px;
   background: #241F69;
   border-radius: 15px;
@@ -154,6 +154,7 @@ Questions.Box = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 10px 0px 0px 0px;
  
 
   >h3{
@@ -169,13 +170,13 @@ Questions.Box = styled.div`
 
   }
 `
-Questions.Con = styled.div`
-  display: flex;
-  gap: 30px;;
-`
+
 
 Questions.Radio = styled.div`
- 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 80%;
+
  .Text{
    font-family: 'Montserrat';
     font-style: normal;
@@ -183,9 +184,26 @@ Questions.Radio = styled.div`
     font-size: 20px;
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #FFFFFF;    
+    color: #FFFFFF;  
 }
 `
+const TextSmall = styled.span`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 105.9%;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  white-space: nowrap;
+`
 
-export { NavbarSection, Questions, WidthWiet }
+const BtnCon = styled.div`
+ display: flex;
+ justify-content: end;
+ margin-right: 30px;
+
+`
+
+export { NavbarSection, Questions, WidthWiet, TextSmall, BtnCon }
 export default Container

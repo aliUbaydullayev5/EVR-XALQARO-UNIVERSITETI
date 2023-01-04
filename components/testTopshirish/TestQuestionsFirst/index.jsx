@@ -1,13 +1,16 @@
 import React from 'react'
-import Container, { NavbarSection, Questions, WidthWiet } from './style.js'
+import Container, { BtnCon, NavbarSection, Questions, TextSmall, WidthWiet } from './style.js'
+import Button from "../../generic/Button/index.jsx"
+
 
 export const TestQuestionsFirstCom = () => {
 
+ 
 
   const data = [
     {
       id: 1,
-      question: 'Savol',
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
       answer: null,
       variants: [
         {
@@ -30,69 +33,115 @@ export const TestQuestionsFirstCom = () => {
     },
     {
       id: 2,
-      question: 'Savol',
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
       answer: null,
       variants: [
         {
-          id: 11,
-          title: 'Variant 1'
+          id: 21,
+          title: 'Variant 1 Variant 1'
         },
         {
-          id: 12,
-          title: 'Variant 2'
+          id: 22,
+          title: 'Variant 2 Variant 1'
         },
         {
-          id: 13,
+          id: 23,
           title: 'Variant 3'
         },
         {
-          id: 14,
+          id: 24,
           title: 'Variant 4'
         },
       ]
     },
     {
       id: 3,
-      question: 'Savol',
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
       answer: null,
       variants: [
         {
-          id: 11,
+          id: 31,
           title: 'Variant 1'
         },
         {
-          id: 12,
+          id: 32,
           title: 'Variant 2'
         },
         {
-          id: 13,
+          id: 33,
           title: 'Variant 3'
         },
         {
-          id: 14,
+          id: 34,
           title: 'Variant 4'
         },
       ]
     },
     {
       id: 4,
-      question: 'Savol',
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
       answer: null,
       variants: [
         {
-          id: 11,
+          id: 41,
           title: 'Variant 1'
         },
         {
-          id: 12,
+          id: 42,
           title: 'Variant 2'
         },
         {
-          id: 13,
+          id: 43,
           title: 'Variant 3'
         },
         {
-          id: 14,
+          id: 44,
+          title: 'Variant 4'
+        },
+      ]
+    },
+    {
+      id: 5,
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
+      answer: null,
+      variants: [
+        {
+          id: 51,
+          title: 'Variant 1'
+        },
+        {
+          id: 52,
+          title: 'Variant 2'
+        },
+        {
+          id: 53,
+          title: 'Variant 3'
+        },
+        {
+          id: 54,
+          title: 'Variant 4'
+        },
+      ]
+    },
+    {
+      id: 6,
+      question: '1. A friend of mine likes _____ on picnic at weekends.',
+      answer: null,
+      variants: [
+        {
+          id: 61,
+          title: 'Variant 1'
+        },
+        {
+          id: 62,
+          title: 'Variant 2'
+        },
+        {
+          id: 63,
+          title: 'Variant 3'
+        },
+        {
+          id: 64,
           title: 'Variant 4'
         },
       ]
@@ -144,7 +193,7 @@ export const TestQuestionsFirstCom = () => {
 
           <div>
             <Questions>
-              Time
+              00:00
             </Questions>
           </div>
         </NavbarSection>
@@ -154,50 +203,31 @@ export const TestQuestionsFirstCom = () => {
       <WidthWiet></WidthWiet>
       <Container.BottomDesc>
         <Container.BottomDescInset>
-
-          <>
-   
-          </>
+          {data.map((value) => (
           <Questions.Box>
-            <h3>1. A friend of mine likes _____ on picnic at weekends.</h3>
-            {data.map((val) => (
-
-                <Questions.Con key={val.id}>
-                  <Questions.Radio>
-                    <label htmlFor="go">
-                      <input type="radio" id="go" name='radio' />
-                      <span className='Text'> &nbsp; go</span>
-                    </label>
+              <h3> {value.question }</h3>
+                <Questions.Radio>
+                  {value.variants.map((insetValue) => (
+                    <div>
+                      <div>
+                        <input type="radio" id={insetValue.id} name={value.id} />
+                        <label htmlFor={insetValue.id}>
+                          <TextSmall>  {insetValue.title}</TextSmall>
+                        </label>
+                      </div>
+                    </div>
+                ))}
                   </Questions.Radio>
-
-                  <Questions.Radio>
-                    <label htmlFor="going">
-                      <input type="radio" id="going" name='radio' />
-                      <span className='Text'> &nbsp; going</span>
-                    </label>
-                  </Questions.Radio>
-
-                  <Questions.Radio>
-                    <label htmlFor="togo">
-                      <input type="radio" id="togo" name='radio' />
-                      <span className='Text'> &nbsp; to go</span>
-                    </label>
-                  </Questions.Radio>
-
-                  <Questions.Radio>
-                    <label htmlFor="togos">
-                      <input type="radio" id="togos" name='radio' />
-                      <span className='Text'> &nbsp; to gos</span>
-                    </label>
-                  </Questions.Radio>
-                </Questions.Con>
-
-            ))}
-           
           </Questions.Box>
-
+          ))}
         </Container.BottomDescInset>
       </Container.BottomDesc>
+
+      <BtnCon>
+        <Button width={'158px'} height={'32px'} size={'18px;'} margin={'15px 0px 10px 0px'}>
+          Oldinga →
+        </Button>
+      </BtnCon>
     </Container>
   )
 }
