@@ -1,5 +1,5 @@
 
-import TestTopshirishComp from "../../components/testTopshirish/index.jsx";
+import TestTopshirishComp from "../../components/testTopshirish/TestTopshirish/index.jsx";
 import Root from "../../root";
 
 export const TtestTopshirish = () => {
