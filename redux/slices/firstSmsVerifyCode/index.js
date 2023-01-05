@@ -13,11 +13,6 @@ export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (pay
     }).then((res)=> res.json())
 })
 
-// {
-//     "success": true,
-//     "message": "OK"
-// }
-
 const firstSmsCode = createSlice({
     name: 'postSmsCode',
     initialState: {

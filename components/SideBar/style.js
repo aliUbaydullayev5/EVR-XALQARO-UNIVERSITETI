@@ -30,7 +30,6 @@ const Container = styled.div`
       box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
       border-radius: 94px;
     }
-
   }
   .message{
     transition: .15s;

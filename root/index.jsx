@@ -10,18 +10,18 @@ const Root = ({ children }) => {
 
     const { pathname } = useRouter()
 
-    const {pushToHome} = useSelector((store)=> store.firstSmsCodeFetch)
+    const { pushToHome } = useSelector((store)=> store.firstSmsCodeFetch)
 
     const router = useRouter()
 
-    // useEffect(()=> {
-    //     if(pushToHome){
-    //         router.push('/homePage')
-    //     }
-    //     if(!localStorage.getItem('firstToken')){
-    //         router.push('/firstPage')
-    //     }
-    // }, [pushToHome])
+    useEffect(()=> {
+        if(pushToHome){
+            router.push('/homePage')
+        }
+        if(!localStorage.getItem('firstToken')){
+            router.push('/firstPage')
+        }
+    }, [pushToHome])
 
     return (
         <Container>
