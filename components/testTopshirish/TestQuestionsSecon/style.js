@@ -230,8 +230,8 @@ const TextSmall = styled.span`
 
 const BtnCon = styled.div`
  display: flex;
- justify-content: end;
- margin-right: 30px;
+ justify-content: space-between;
+ margin: 0px 30px;
 .arrowLeft{
   margin-left: 10px;
 }

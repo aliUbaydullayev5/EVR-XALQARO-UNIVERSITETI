@@ -8,6 +8,5 @@ export default configureStore({
     reducer: {
         firstVerify,
         firstSmsCodeFetch,
-
     }
 })

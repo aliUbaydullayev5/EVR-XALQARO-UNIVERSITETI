@@ -6,9 +6,11 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router.js'
 import ArrowLeft from "../../../assets/icons/leftArrow.svg"
+import ArrowRigth from "../../../assets/icons/rigthArrow.svg"
 
 
-export const TestQuestionsFirstCom = () => {
+
+export const TestQuestionsSeconCom = () => {
 
   const quaery =useRouter()
 
@@ -281,14 +283,20 @@ export const TestQuestionsFirstCom = () => {
 
       <BtnCon>
         
-        <Button onclick={() => quary.push('/testTopshirish/testBoshlash/TestQuestionsSecond')} width={'158px'} height={'32px'} size={'18px;'} margin={'15px 0px 10px 0px'}>
-          Oldinga <ArrowLeft className='arrowLeft'/>
+        <Button onclick={() => quary.push('/testTopshirish/testBoshlash/TestQuestionsFirst')} width={'158px'} height={'32px'} size={'18px;'} margin={'15px 0px 10px 0px'}>
+          <ArrowRigth /> &nbsp; Orqaga 
+        </Button>
+
+        <Button onclick={() => quary.push('/testTopshirish/testBoshlash/testResalt')} width={'158px'} height={'32px'} size={'18px;'} margin={'15px 0px 10px 0px'}>
+          Oldinga <ArrowLeft className='arrowLeft' />
         </Button>
       </BtnCon>
+
+      
     </Container>
   )
 }
-export default TestQuestionsFirstCom
+export default TestQuestionsSeconCom
 
 
 
