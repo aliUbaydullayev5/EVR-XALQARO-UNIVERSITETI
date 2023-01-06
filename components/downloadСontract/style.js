@@ -26,6 +26,7 @@ Container.Bottom = styled.div`
   padding: 15px 102px;  
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `
 
 Container.LogoSection = styled.div`
@@ -51,10 +52,32 @@ Container.LogoSection = styled.div`
 
 Container.ButtonLine = styled.div`
   border: 1px solid red;
-  
+  display: flex;
+  align-items: center;
+  gap: 30px;
 `
 Container.Button = styled.div`
-  border: 1px solid red;
+  width: 282px;
+  height: 53.04px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  border: 0;
+
+  font-size: 20px;
+  line-height: 105.9%;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s;
+  
+  :hover{
+    
+  }
+  :active{
+    
+  }
+  
 `
 
 export default Container

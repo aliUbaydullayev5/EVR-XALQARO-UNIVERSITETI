@@ -17,9 +17,15 @@ const DownloadContractComponent = () => {
                     </div>
                 </Container.LogoSection>
                 <Container.ButtonLine>
-
+                    <Container.Button className={'nocopy'}>
+                        Ikki tomonlama <br />
+                        shartnoma
+                    </Container.Button>
+                    <Container.Button className={'nocopy'}>
+                        Uch tomonlama <br />
+                        shartnoma
+                    </Container.Button>
                 </Container.ButtonLine>
-                <video src="" ></video>
             </Container.Bottom>
         </Container>
     )

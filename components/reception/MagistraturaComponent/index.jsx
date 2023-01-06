@@ -143,7 +143,7 @@ export const MagistraturaComponent = () => {
 
                 <Container.Number className='row6'>
                     <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
                         <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
