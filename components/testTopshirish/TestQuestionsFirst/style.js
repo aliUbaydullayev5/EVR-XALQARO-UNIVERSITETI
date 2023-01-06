@@ -32,12 +32,13 @@ Container.Box = styled.div`
 
 const NavbarSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 10px 0px;
+  padding:  10px  0px;
   >div{
     display: flex;
-    gap: 10px;
+    gap: 20px;
+   
   }
 
 `
@@ -63,8 +64,23 @@ const Questions = styled.div`
    color: #FFFFFF;
    gap: 10px;
    cursor: pointer;
-
   }
+
+  .input {
+    -webkit-appearance: none;
+    width: 16px !important;
+    height: 12px !important;
+    border-radius: 25px !important;
+    cursor: pointer;
+    background-color: rgba(232, 232, 232, 0);
+    border: 2px solid #fff;
+  }
+
+  .input:checked {
+    background-color: #fff;
+    border: 2px solid #fff;
+  }
+
 `
 const WidthWiet = styled.div`
 height: 2px;
@@ -176,6 +192,20 @@ Questions.Radio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 80%;
+  .input {
+    -webkit-appearance: none;
+    width: 16px !important;
+    height: 12px !important;
+    border-radius: 25px !important;
+    cursor: pointer;
+    background-color: rgba(232, 232, 232, 0);
+    border: 2px solid #fff;
+  }
+
+  .input:checked {
+    background-color: #fff;
+    border: 2px solid #fff;
+  }
 
  .Text{
    font-family: 'Montserrat';

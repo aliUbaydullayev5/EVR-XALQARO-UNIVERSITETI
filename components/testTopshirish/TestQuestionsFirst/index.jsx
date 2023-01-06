@@ -1,11 +1,66 @@
 import React from 'react'
 import Container, { BtnCon, NavbarSection, Questions, TextSmall, WidthWiet } from './style.js'
 import Button from "../../generic/Button/index.jsx"
+import { Input } from '../../generic/index.jsx'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/router.js'
 
 
 export const TestQuestionsFirstCom = () => {
 
+  const quaery =useRouter()
+
+  const [timeLeft, setTimeLeft] = useState(60 * 60)
+  const [isCounting, setIsCounting] = useState(false)
+  const [minut, setMinut] = useState()
+  const [secund, setSecund] = useState()
+
+  
+  // ---------------------- Timer Logic ----------------------
+
+  const getParTime = (time) => time.toString().padStart(2, '0')
+
+  useEffect(() => {
+    setMinut(getParTime(Math.floor(timeLeft / 60)))
+    setSecund(getParTime(timeLeft - minut * 60))
+    if (minut == '00' && secund == '00') {
+      quaery.push('/homePage')
+    }
+  })
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isCounting) setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+    }, 1000)
+    if (timeLeft === 0) {
+      setIsCounting(false)
+    }
+    return () => clearInterval(interval)
+  }, [isCounting])
+
+
+  //------------ Timer Start Func
+  const handleStart = () => {
+    if (timeLeft === 0) setTimeLeft(60 * 60)
+    setIsCounting(true)
+  }
+
+  //------------ Timer Stop Func
+  const handleStop = () => {
+    setIsCounting(false)
+  }
+
+  //------------ Timer Reset Func
+  const handleReset = () => {
+    setIsCounting(false)
+    setTimeLeft(60 * 60)
+  }
+
+  useEffect(() => {
+    handleStart()
  
+  }, [])
 
   const data = [
     {
@@ -38,7 +93,7 @@ export const TestQuestionsFirstCom = () => {
       variants: [
         {
           id: 21,
-          title: 'Variant 1 Variant 1'
+          title: 'Variant 1 Variant '
         },
         {
           id: 22,
@@ -161,12 +216,12 @@ export const TestQuestionsFirstCom = () => {
           <div>
             <Questions>
               <label htmlFor="Ingliz">1.Ingliz tili (3.1 ball)
-                <input type="radio" id="Ingliz" name='radio' />
+                <input className='input' type="radio" id="Ingliz" name='radio' />
               </label>
             </Questions>
             <Questions>
               <label htmlFor="Matematika">2.Matematika (3.1 ball)
-                <input type="radio" id="Matematika" name='radio' />
+                <input className='input' type="radio" id="Matematika" name='radio' />
               </label>
             </Questions>
           </div>
@@ -174,26 +229,26 @@ export const TestQuestionsFirstCom = () => {
           <div>
             <Questions>
               <label htmlFor="radio">1.Matematika (1.1 ball)
-                <input type="radio" id="radio" name='radio' />
+                <input className='input' type="radio" id="radio" name='radio' />
               </label>
             </Questions>
 
             <Questions>
               <label htmlFor="Ona">2. Ona tili (1,1 ball)
-                <input type="radio" id="Ona" name='radio' />
+                <input className='input' type="radio" id="Ona" name='radio' />
               </label>
             </Questions>
 
             <Questions>
               <label htmlFor="Tarix">3. Tarix (1,1 ball)
-                <input type="radio" id="Tarix" name='radio' />
+                <input className='input' type="radio" id="Tarix" name='radio' />
               </label>
             </Questions>
           </div>
 
           <div>
             <Questions>
-              00:00
+              <Input align={'center'} size={'20px'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'37px'} mheight={'52px'} placeholder={`${minut} : ${secund}`} maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
             </Questions>
           </div>
         </NavbarSection>
@@ -210,7 +265,7 @@ export const TestQuestionsFirstCom = () => {
                   {value.variants.map((insetValue) => (
                     <div>
                       <div>
-                        <input type="radio" id={insetValue.id} name={value.id} />
+                        <input className='input' type="radio" id={insetValue.id} name={value.id} />
                         <label htmlFor={insetValue.id}>
                           <TextSmall>  {insetValue.title}</TextSmall>
                         </label>

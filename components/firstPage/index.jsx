@@ -89,8 +89,6 @@ const FirstPageMainCom = () => {
 
     // ---------------------- Timer Logic ----------------------
 
-
-
     const getParTime = (time) => time.toString().padStart(2, '0')
 
     useEffect(()=> {
