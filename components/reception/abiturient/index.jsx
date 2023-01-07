@@ -87,6 +87,10 @@ export const AbiturientQabul = () => {
             setWidth('513px')
         }
     })
+    const handleChange = event => {
+        console.log(event);
+        // setSelected(event.target.value);
+    };
     return (
         <Container>
             <TextCon>
@@ -161,7 +165,7 @@ export const AbiturientQabul = () => {
                 </div>
 
                 <IconBox className='row8'>
-                    <AntSelect
+                    <AntSelect  onChange={handleChange}
                         showSearch
                         style={{
                             width,
@@ -170,11 +174,11 @@ export const AbiturientQabul = () => {
                         optionFilterProp="children"
                         options={[
                             {
-                                value: '1',
+                                value: 'Not Identified',
                                 label: 'Not Identified',
                             },
                             {
-                                value: '2',
+                                value: 'Closed',
                                 label: 'Closed',
                             },
                             {

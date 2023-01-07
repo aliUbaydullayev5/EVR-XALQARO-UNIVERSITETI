@@ -4,7 +4,7 @@ import Click from "../../../../assets/icons/click.png"
 import { Button, Input } from '../../../generic'
 import Orqaga from "../../../../assets/icons/orqaga.svg"
 import { useRouter } from 'next/router.js'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from 'next/image.js'
 
 // mobile Img 
@@ -12,6 +12,7 @@ import ClickMobile from "../../../../assets/mobile/icon/click.png"
 // import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
 
 import Tolov from "../../../../assets/icons/tolov.svg"
+import { AntTimeCon } from '../../../reception/abiturient/style.js'
 
 export const Clickpay = () => {
   const [time, setTime] = useState("00:000")
@@ -65,7 +66,61 @@ export const Clickpay = () => {
         }
         return setNumState1(event)
     }
-    // onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'}
+  
+  // Time
+  const [timeLeft, setTimeLeft] = useState(2 * 60)
+  const [isCounting, setIsCounting] = useState(false)
+  const [minut, setMinut] = useState()
+  const [secund, setSecund] = useState()
+
+
+  // ---------------------- Timer Logic ----------------------
+
+  const getParTime = (time) => time.toString().padStart(2, '0')
+
+  useEffect(() => {
+    setMinut(getParTime(Math.floor(timeLeft / 60)))
+    setSecund(getParTime(timeLeft - minut * 60))
+    if (minut == '00' && secund == '00') {
+      query.push('/receptionPage/application/UsersCardInfo/click')
+    }
+  })
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isCounting) setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+    }, 1000)
+    if (timeLeft === 0) {
+      setIsCounting(false)
+    }
+    return () => clearInterval(interval)
+  }, [isCounting])
+
+
+  //------------ Timer Start Func
+  const handleStart = () => {
+    if (timeLeft === 0) setTimeLeft(2 * 60)
+    setIsCounting(true)
+  }
+
+  //------------ Timer Stop Func
+  const handleStop = () => {
+    setIsCounting(false)
+  }
+
+  //------------ Timer Reset Func
+  const handleReset = () => {
+    setIsCounting(false)
+    setTimeLeft(2 * 60)
+  }
+
+  useEffect(() => {
+    handleStart()
+
+  }, [])
+  // onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'}
+  
     return (
     <Container>
       <TextCon>
@@ -117,8 +172,16 @@ export const Clickpay = () => {
               <Button mheight={'25px'} mmargin={'10px 0px 0px 0px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo/click/arizafinaly')} height={'41px'} margin="20px 0px 0px 0px" bc={'#ffff'}>
                 <BtnText>tasdiqlash</BtnText>
               </Button>
+              <AntTimeCon>
+                <div>
+                  <Input align={'center'} size={'20px'} malign={'center'} mradius={'5px'} width={'160px'} mwidth={'80vw'} msize={'26px'} height={'37px'} mheight={'39px'} placeholder={`${minut} : ${secund}`} maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
+                </div>
+                <div>
+                  <Button mradius={'5px'} width={'130px'} mwidth={'74px'} msize={'19px'} mheight={'30px'} height={'40px'} size={'16px'} radius={"5px"} onclick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>Qayta yuborish</Button>
+                </div>
+              </AntTimeCon>
             </AntModal>
-            <Button mradius={'5px'} width={'344px'} mwidth={'74px'} msize={'19px'} mheight={'30px'} height={'40px'} type="primary" alt='click' onclick={showModal} className='Tolov' >
+            <Button mradius={'5px'} width={'130px'} mwidth={'74px'} msize={'19px'} mheight={'30px'} height={'40px'} type="primary" alt='click' onclick={showModal} className='Tolov' >
               Tolov              
             </Button>
           </div>

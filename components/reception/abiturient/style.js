@@ -343,6 +343,11 @@ IconBox.Mobile = styled.div`
       }
 }
 `
+const AntTimeCon = styled.div`
+ display: flex;
+ justify-content: space-between;
+ margin-top: 10px;
+`
 
-export { TextCon, InputCont, BtnCon, IconBox }
+export { TextCon, InputCont, BtnCon, IconBox, AntTimeCon }
 export default Container

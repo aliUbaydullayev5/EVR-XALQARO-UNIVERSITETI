@@ -327,4 +327,14 @@ background: #25225d!important;
 }
 
 
-
+.anticon svg {
+  display: inline-block;
+  margin: 0px 20px;
+  color: white;
+}
+:where(.css-dev-only-do-not-override-1s3dcof).ant-modal .ant-modal-footer {
+  text-align: end;
+  background: transparent;
+  margin-top: 12px;
+  display: none;
+}
