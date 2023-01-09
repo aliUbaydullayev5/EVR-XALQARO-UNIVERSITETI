@@ -1,6 +1,5 @@
 import { Button, Input } from '../../generic/index.jsx'
 import Container, { BoxCon, BtnCon, ConTainerImg, HerBox, ImgBox,  InputCon, TextBox, TextCon } from './style.js'
-
 import Orqaga from "../../../assets/icons/orqaga.svg"
 import Click from "../../../assets/icons/click.png"
 import Paynet from "../../../assets/icons/paynet.png"
@@ -11,7 +10,6 @@ import Alif from "../../../assets/icons/Alif.png"
 import osonMobile from '../../../assets/mobile/icon/Oson.png'
 
 import Image from 'next/image.js'
-
 // Mobile Img 
 import CilckMobile from "../../../assets/mobile/icon/click.png"
 import PaynetMobile from "../../../assets/mobile/icon/paynet.png"
@@ -21,24 +19,26 @@ import PaymeMobile from "../../../assets/mobile/icon/payme.png"
 import AlifMobile from "../../../assets/mobile/icon/Oson.png"
 
 import { useRouter } from 'next/router.js'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AntModal } from '../../reception/OqishniKochirishComponent/style.js'
 
 
 export const UsersPayInfo = () => {
   const query = useRouter()
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
   const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
+
+
   return (
     <Container>
       <TextCon>

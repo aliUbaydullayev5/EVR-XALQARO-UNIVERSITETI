@@ -1,10 +1,10 @@
-import Container, { BoxCon, ImgBox, TextCon } from './style.js'
+import Container, { AntModal, AntTimeCon, BoxCon, BtnText, ImgBox, TextCon } from './style.js'
 import Apelsin from "../../../../assets/icons/Apelsin-01 2.png"
 
 import { Button, Input } from '../../../generic'
 import Orqaga from "../../../../assets/icons/orqaga.svg"
 import { useRouter } from 'next/router.js'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from 'next/image.js'
 
 // mobile Img 
@@ -12,7 +12,7 @@ import ApelsinMobile from "../../../../assets/mobile/image/Apelsin.png"
 // import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
 
 
-export const Clickpay = () => {
+export const Appelsinpay = () => {
   const query = useRouter()
   const [numState, setNumState] = useState('')
   const [length, setLength] = useState(0)
@@ -52,7 +52,69 @@ export const Clickpay = () => {
     }
     return setNumState1(event)
   }
-  // onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'}
+// {(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'}
+  // AntModal 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const changeHidden = () => setIsModalOpen(!isModalOpen)
+// Time 
+  // Time
+  const [timeLeft, setTimeLeft] = useState(2 * 60)
+  const [isCounting, setIsCounting] = useState(false)
+  const [minut, setMinut] = useState()
+  const [secund, setSecund] = useState()
+
+
+  // ---------------------- Timer Logic ----------------------
+
+  const getParTime = (time) => time.toString().padStart(2, '0')
+
+  useEffect(() => {
+    setMinut(getParTime(Math.floor(timeLeft / 60)))
+    setSecund(getParTime(timeLeft - minut * 60))
+    if (minut == '00' && secund == '00') {
+      query.push('/receptionPage/application/UsersCardInfo/appelsin')
+    }
+  })
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isCounting) setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+    }, 1000)
+    if (timeLeft === 0) {
+      setIsCounting(false)
+    }
+    return () => clearInterval(interval)
+  }, [isCounting])
+
+
+  //------------ Timer Start Func
+  const handleStart = () => {
+    if (timeLeft === 0) setTimeLeft(2 * 60)
+    setIsCounting(true)
+  }
+
+  //------------ Timer Stop Func
+  const handleStop = () => {
+    setIsCounting(false)
+  }
+
+  //------------ Timer Reset Func
+  const handleReset = () => {
+    setIsCounting(false)
+    setTimeLeft(2 * 60)
+  }
+  const showModal = () => {
+    setIsModalOpen(true);
+    handleStart()
+  };
+  useEffect(() => {
+    if (minut == '00' && secund == '00') {
+      setIsModalOpen(false)
+    }
+  }, [secund])
+  
   return (
     <Container>
       <TextCon>
@@ -97,8 +159,21 @@ export const Clickpay = () => {
           <Button onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='nocopy' mpadding={'0px 0px 0px 30px'} mheight={"30px"} mwidth={'143.47px'} msize={'13px'} mradius='5px' height={"40px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
           <Orqaga className={'BtnCon'} />
         </div>
-        <div className='btnEnd'>
-          <Button onclick={() => query.push('/receptionPage/application/UsersCardInfo/click/arizafinaly')} mheight={"30px"} mradius='5px' mwidth={'127.47px'} msize={'16px'} width={'290px'} height='45px' margin={'10px 0px 0px 0px'}>
+        <div>
+          <AntModal open={isModalOpen} onOk={changeHidden} onCancel={changeHidden}>
+            <Input align={'center'} width='379px' height='100px' padding="0px 0px 0px 25px" placeholder={'_ _ _ _ _ _'} maxlength='6'></Input>
+            <Button mheight={'25px'} mmargin={'10px 0px 0px 0px'} onclick={() => query.push('/receptionPage/application/UsersCardInfo/click/arizafinaly')} height={'41px'} margin="20px 0px 0px 0px" bc={'#ffff'}>
+              <BtnText>tasdiqlash</BtnText>
+            </Button>
+            <AntTimeCon>
+              <div>
+                <Input align={'center'} size={'20px'} malign={'center'} mradius={'5px'} width={'160px'} mwidth={'80vw'} msize={'26px'} height={'37px'} mheight={'39px'} placeholder={`${minut} : ${secund}`} maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
+              </div>
+              <div>
+              </div>
+            </AntTimeCon>
+          </AntModal>
+          <Button mradius={'5px'} width={'130px'} mwidth={'74px'} msize={'19px'} mheight={'30px'} height={'40px'} type="primary" alt='click' onclick={showModal} className='Tolov' >
             To’lash
           </Button>
         </div>
@@ -106,7 +181,7 @@ export const Clickpay = () => {
     </Container>
   )
 }
-export default Clickpay
+export default Appelsinpay
 
   
   

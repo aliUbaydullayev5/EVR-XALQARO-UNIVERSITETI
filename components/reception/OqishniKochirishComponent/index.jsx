@@ -273,7 +273,8 @@ const OqishniKochirishComponent = () => {
 
                 <BtnCon>
                     <div className={'mobileDivNone'}></div>
-                    <Button mwidth={'187px'} mradius={'5px'} msize={'20px'} mheight={'28px'} width={'200px'} height={'28px'} size={'21px'} margin={'10px 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
+                    <Button mwidth={'187px'} mradius={'5px'} msize={'20px'} mheight={'28px'} width={'200px'} height={'28px'} size={'21px'} margin={'10px 60px 0 0'}
+                        onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
                 </BtnCon>
 
             </InputCont>
