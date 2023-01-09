@@ -119,22 +119,27 @@ const AgentFormComponent = () => {
                     <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
 
-                <IconBox>
-                    <Container.InputCustom1 type={'file'} />
-                    <UploadFiler className={'UploadFile1'} />
-                    <UploadMobile className={'UploadFile2'} />
-                </IconBox>
+                <div>
+                    <IconBox>
+                        <Container.InputCustom1 type={'file'} />
+                        <UploadFiler className={'UploadFile1'} />
+                        <UploadMobile className={'UploadFile2'} />
+                    </IconBox>
+                </div>
 
                 <div>
                     <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
-                <IconBox>
-                    <Container.InputCustom2 type={'file'} />
-                    <UploadFiler className={'UploadFile1'} />
-                    <UploadMobile className={'UploadFile2'} />
-                </IconBox>
-                
+                <div>
+                    <IconBox>
+                        <Container.InputCustom2 type={'file'} />
+                        <UploadFiler className={'UploadFile1'} />
+                        <UploadMobile className={'UploadFile2'} />
+                    </IconBox>
+                </div>
+
+
                 <div>
                     <div className='mainForm'>
                         <Input placeholder={'Firmaning telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />

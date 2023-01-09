@@ -5,12 +5,19 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg"
 import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
+import {useDispatch, useSelector} from "react-redux";
+import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile";
+import homeAllData, {homeAllDataFetch} from "../../../redux/slices/homeAllData";
+import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost";
+import {startMessage} from "../../../redux/slices/message";
 
-export const AbiturientQabul = () => {
+export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
+    const dispatch = useDispatch()
 
     const [numState, setNumState] = useState('')
     const [length, setLength] = useState(0)
+
     const changeNumState = (event) => {
         if (length < event.length) {
             setLength(event.length - 1)
@@ -28,6 +35,7 @@ export const AbiturientQabul = () => {
             setLength(event.length)
             setNumState(event)
         }
+        changeAllDataFunc({type: 'phoneNumber', value: event.split(' ').join('')})
         return setNumState(event)
     }
 
@@ -52,6 +60,7 @@ export const AbiturientQabul = () => {
             setLength1(event.length)
             setNumState1(event)
         }
+        changeAllDataFunc({type: 'extraPhoneNumber', value: event.split(' ').join('')})
         return setNumState1(event)
     }
 
@@ -65,17 +74,12 @@ export const AbiturientQabul = () => {
             if (event.length == 2) {
                 return setNumPasSeriya(event + ' ')
             }
-            if (event.length == 6) {
-                return setNumPasSeriya(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumPasSeriya(event + ' ')
-            }
         }
         if (pasSerLength >= event.length) {
             setPasSerLength(event.length)
             setNumPasSeriya(event)
         }
+        changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
         return setNumPasSeriya(event)
     }
 
@@ -87,10 +91,142 @@ export const AbiturientQabul = () => {
             setWidth('513px')
         }
     })
-    const handleChange = event => {
-        console.log(event);
-        // setSelected(event.target.value);
-    };
+
+
+
+    const [allData, setAllData] = useState({
+        lastName: '',
+        admissionName: '',
+        firstName: '',
+        patron: '',
+        password: '',
+        prePassword: '',
+        passportSeries: '',
+        phoneNumber: '',
+        extraPhoneNumber: '',
+        courseLevel: 0,
+        studyLanguage: '',
+        educationType: '',
+        facultyId: 0,
+        diplomaId: '',
+        passportId: ''
+    })
+
+    const findFileFunc = ({file, by}) => {
+        if(file.target.files[0]) dispatch(deployFileFetch({file, by}))
+    }
+
+    useEffect(()=> {
+        dispatch(homeAllDataFetch())
+    }, [])
+
+    const {educationTypes, faculties, studyLanguages} = useSelector((store)=> store.homeAllData.data)
+
+    const changeAllDataFunc = ({type, value}) => {
+        const fakeData = allData
+        fakeData[type] = value
+        setAllData(fakeData)
+        setAllData({...allData, [type]: value})
+    }
+
+    const {fileId, status, by} = useSelector((store)=> store.deployFile)
+
+    useEffect(()=> {
+        changeAllDataFunc({type: by, value: fileId})
+    }, [fileId])
+
+    useEffect(()=> {
+        changeAllDataFunc({type: 'admissionName', value: 'BACHELOR'})
+    }, [])
+
+    const checkAllInputs = () => {
+        if(!(allData.lastName.length > 3)) {
+            dispatch(startMessage({time: 5, message: 'Isim no togri kiritilgan'}))
+            return false
+        }
+        if(!(allData.firstName.length > 3)) {
+            dispatch(startMessage({time: 5, message: 'Isim no togri kiritilgan'}))
+            return false
+        }
+        if(!(allData.patron.length > 3)) {
+            dispatch(startMessage({time: 5, message: 'Isim no togri kiritilgan'}))
+            return false
+        }
+        if(!(allData.passportSeries.length == 9)) {
+            dispatch(startMessage({time: 5, message: 'Passport seriya rakami no togri kiritilgan'}))
+            return false
+        }
+
+        if(!(allData.phoneNumber.length == 9)) {
+            dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilgan'}))
+            return false
+        }
+        if(!(allData.extraPhoneNumber.length == 9)) {
+            dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilgan'}))
+            return false
+        }
+        if(!(allData.diplomaId.length > 3)) {
+            dispatch(startMessage({time: 5, message: 'Diplomingizni yulang'}))
+            return false
+        }
+        if(!(allData.passportId.length > 3)) {
+            dispatch(startMessage({time: 5, message: 'Passportingizni yuklang'}))
+            return false
+        }
+        if(!(allData.password.length > 8)) {
+            dispatch(startMessage({time: 5, message: 'Parolni kiriting'}))
+            return false
+        }
+        if(!(allData.prePassword.length > 8)) {
+            dispatch(startMessage({time: 5, message: 'Parolni kiriting'}))
+            return false
+        }
+
+        if(!(allData.studyLanguage.length)) {
+            dispatch(startMessage({time: 5, message: 'Oqish tilini tallang'}))
+            return false
+        }
+        if(!(allData.facultyId)) {
+            dispatch(startMessage({time: 5, message: 'Oqish turini tallang'}))
+            return false
+        }
+        if(!(allData.educationType.length)) {
+            dispatch(startMessage({time: 5, message: 'Oqish shaklini tallang'}))
+            return false
+        }
+
+
+        return true
+    }
+    const pushAllInfo = () => {
+        if(checkAllInputs()){
+            dispatch(receptionPostFetch(allData))
+        }
+
+    }
+
+    const receptionData = useSelector((store)=> store.receptionPost)
+
+    useEffect(()=> {
+        if(receptionData?.status === 'error'){
+            dispatch(startMessage({time: 5, type:'error', message: receptionData.message}))
+        }
+    }, [receptionData])
+
+
+    if(receptionData.pushAnswer){
+        router.push('/receptionPage/application/UsersCardInfo')
+        if(receptionData.status === 'success'){
+            dispatch(startMessage({time: 5, type:'success', message: receptionData.message}))
+        }
+        setTimeout(()=> {
+            dispatch(resetVerify())
+        }, 2000)
+
+
+
+    }
+
     return (
         <Container>
             <TextCon>
@@ -98,7 +234,7 @@ export const AbiturientQabul = () => {
             </TextCon>
             <InputCont>
                 <div className='row1'>
-                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}  />
+                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({type: 'lastName', value: e.target.value})} />
                 </div>
 
                 <IconBox className='row9'  >
@@ -110,28 +246,16 @@ export const AbiturientQabul = () => {
                         placeholder='Talim shaklingiz'
                         optionFilterProp="children"
                         filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                        filterSort={(optionA, optionB) =>
-                            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-                        }
-                        options={[
-                            {
-                                value: '1',
-                                label: 'Kunduzgi',
-                            },
-                            {
-                                value: '2',
-                                label: 'Kechki',
-                            },
-                            {
-                                value: '3',
-                                label: 'Sirtqi ta`lim',
-                            }
-                        ]}
+                        options={educationTypes?.map((value)=> ({
+                            value,
+                            label: value
+                        })) || []}
+                        onChange={(e)=> changeAllDataFunc({type: 'educationType', value: e})}
                     />
                 </IconBox>
 
                 <div className='row2'>
-                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({type: 'firstName', value: e.target.value})} />
                 </div>
 
                 <Container.Number className='row5'>
@@ -142,59 +266,70 @@ export const AbiturientQabul = () => {
                 </Container.Number>
 
                 <div className='row3'>
-                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} />
+                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} onchange={(e)=> changeAllDataFunc({type: 'patron', value: e.target.value})} />
                 </div>
 
                 <Container.Number className='row6'>
                     <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'8px 0 0 85px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'16px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
                         <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
 
                 <div className='row4'>
-                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
                 </div>
 
                 <div className='row11'>
-                    <IconBox>
-                        <Container.InputCustom2 type={'file'} />
-                        <UploadFiler className={'UploadFile2'} />
-                        <UploadMobile className={'UploadFileMobile'} />
-                    </IconBox>
+                    <div>
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
+                                <UploadFiler className={'UploadFile2'} />
+                                <UploadMobile className={'UploadFileMobile'} />
+                            </IconBox>
+                        </div>
+                        <div>
+                            <IconBox>
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'}  height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e)=> changeAllDataFunc({type: 'password', value: e.target.value})} />
+                            </IconBox>
+                        </div>
+                    </div>
                 </div>
 
                 <IconBox className='row8'>
-                    <AntSelect  onChange={handleChange}
+                    <AntSelect 
                         showSearch
                         style={{
                             width,
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
-                        options={[
-                            {
-                                value: 'Not Identified',
-                                label: 'Not Identified',
-                            },
-                            {
-                                value: 'Closed',
-                                label: 'Closed',
-                            },
-                            {
-                                value: '3',
-                                label: 'Communicated',
-                            }
-                        ]}
+
+                        options={faculties?.map((value)=> ({
+                            value: value.id,
+                            label: value.name
+                        })) || []}
+                        onChange={(e)=> changeAllDataFunc({type: 'facultyId', value: e})}
+
                     />
                 </IconBox>
-                
+
                 <div className='row10'>
-                    <IconBox>
-                        <Container.InputCustom1 type={'file'} />
-                        <UploadFiler className={'UploadFile1'} />
-                        <UploadMobile className={'UploadFileMobile2'} />
-                    </IconBox>
+                    <div>
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'passportId'})} />
+                                <UploadFiler className={'UploadFile1'} />
+                                <UploadMobile className={'UploadFileMobile2'} />
+                            </IconBox>
+                        </div>
+                        <div>
+                            <IconBox>
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'}  height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e)=> changeAllDataFunc({type: 'prePassword', value: e.target.value})} />
+                            </IconBox>
+                        </div>
+                    </div>
                 </div>
 
                 <IconBox className='row7'>
@@ -209,22 +344,21 @@ export const AbiturientQabul = () => {
                         filterSort={(optionA, optionB) =>
                             (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                         }
-                        options={[
-                            {
-                                value: '1',
-                                label: 'Rus ',
-                            },
-                            {
-                                value: '2',
-                                label: 'Uzbek',
-                            },
-                        ]}
+                        options={studyLanguages?.map((value)=> ({
+                            value: value,
+                            label: value
+                        })) || []}
+                        onChange={(e)=> changeAllDataFunc({type: 'studyLanguage', value: e})}
                     />
                 </IconBox>
     
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
-                    <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
+                    {receptionData.status !== 'loading' && receptionData.status !== 'success'  ?
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
+                        :
+                        <div></div>
+                    }
                 </BtnCon>
 
                 <div className='mobileNone'></div>

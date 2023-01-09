@@ -98,16 +98,16 @@ InputCont.Section2 = styled.div``
 const BtnCon = styled.div`
   display: grid !important;
   grid-template-columns: 1fr 0.5fr;
- @media only screen and (max-width: 1000px) {
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  grid-template-columns: 1fr ;
-.btnEnd{
-    display: none;
-  }
+  @media only screen and (max-width: 1000px) {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    grid-template-columns: 1fr ;
+    .btnEnd{
+      display: none;
+    }
  }  
   
 `
@@ -121,36 +121,34 @@ const IconBox = styled.div`
   }
   .UploadFile2{
     position: absolute;
-    left: 12px ;
-    top: 15px;
+    left: 30px;
+    top: 7px;
     cursor: pointer;
-
-
   }
   .UploadFile1{
     position: absolute;
-    left: 62px ;
-    top: 20px;
+    left: 30px;
+    top: 7px;
     cursor: pointer;
   }
+  
  @media only screen and (max-width: 1000px) {
    .UploadFile1{
-    display: none;
-       position: absolute;
-      left: 2px ;
-      top: 12px; 
-      cursor: pointer;
+     display: none;
+     position: absolute;
+     left: 2px;
+     top: 12px; 
+     cursor: pointer;
    }
  
-    }
+ }
  @media only screen and (min-width: 1000px) {
   .UploadFile2{
     display: none;
     position: absolute;
-    left: 2px ;
+    left: 2px;
     top: 12px; 
     cursor: pointer;
-    
    }
  }
 `

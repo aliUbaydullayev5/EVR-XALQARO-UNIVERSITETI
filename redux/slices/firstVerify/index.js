@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload) => {
-    return await fetch('http://192.168.12.61:1010/api/v1/auth/check-phone', {
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
+    return await fetch('http://192.168.20.61:1010/api/v1/auth/check-phone', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

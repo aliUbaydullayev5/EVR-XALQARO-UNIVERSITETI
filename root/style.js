@@ -14,8 +14,11 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 `
+
+
 Container.Inset = styled.div`
   height: ${({firstPage})=> firstPage ? '700px' : '700px'};
   max-width: 1440px;

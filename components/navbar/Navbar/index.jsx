@@ -9,19 +9,18 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import PersonComponent from "../PersonComponent";
 import HamburgerMenu from "../../HamburgerMenu";
-
 import MobileLogo from '../../../assets/mobile/icon/logoMobile.svg'
-
-
-
 import MobilNotif from '../../../assets/mobile/icon/notif.svg'
 import MobileChat from '../../../assets/mobile/icon/chat.svg'
 import MobilProfile from '../../../assets/mobile/icon/profile.svg'
 import MobileHamburgerIcon from '../../../assets/mobile/icon/menu.svg'
+import {useDispatch} from "react-redux";
+import {startMessage} from "../../../redux/slices/message";
 
 
 const Navbar = () => {
 
+    const dispatch = useDispatch()
     const query = useRouter()
 
     const [hidden, setHidden] = useState(false)
@@ -30,7 +29,6 @@ const Navbar = () => {
 
     const changeHidden = () => setHidden(!hidden);
     const changeHiddenMenu = () => setHiddenMenu(!hiddenMenu);
-
 
     return(
         <Container className={'nocopy'}>

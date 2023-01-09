@@ -154,15 +154,19 @@ const OqishniKochirishComponent = () => {
                             options={[
                                 {
                                     value: '1',
-                                    label: 'Not Identified',
+                                    label: '1',
                                 },
                                 {
                                     value: '2',
-                                    label: 'Closed',
+                                    label: '2',
                                 },
                                 {
                                     value: '3',
-                                    label: 'Communicated',
+                                    label: '3',
+                                },
+                                {
+                                    value: '4',
+                                    label: '4',
                                 }
 
                             ]}

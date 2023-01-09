@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (payload)=> {
-    return await fetch('http://192.168.12.61:1010/api/v1/auth/verify-phone', {
+    return await fetch('http://192.168.20.61:1010/api/v1/auth/verify-phone', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -12,11 +12,6 @@ export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (pay
         }),
     }).then((res)=> res.json())
 })
-
-// {
-//     "success": true,
-//     "message": "OK"
-// }
 
 const firstSmsCode = createSlice({
     name: 'postSmsCode',
@@ -31,7 +26,7 @@ const firstSmsCode = createSlice({
         },
         [firstSmsCodeFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
-            if(action.payload.message == 'OK' && action.payload.success == true){
+            if(action.payload.success == true){
                 state.firstToken = 'success'
                 state.pushToHome = true
                 if(localStorage.getItem('firstToken')){
