@@ -52,6 +52,7 @@ const InputCont = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
   }
 
   .phoNumber{
@@ -128,9 +129,11 @@ const InputCont = styled.div`
     }
     .row10{
       grid-row: 10/11;
+
     }
     .row11{
-      grid-row: 11/12;
+      grid-row: 12/13;
+
     }
     .row12{
       grid-row: 12/13;
@@ -157,7 +160,7 @@ const IconBox = styled.div`
   }
   .UploadFile{
     position: absolute;
-    left: 20px;
+    left: 0px;
     top: 8px;
     cursor: pointer;
     @media only screen and (max-width: 1000px) {
@@ -176,7 +179,7 @@ const IconBox = styled.div`
     .UploadFileMobile{
       display: block;
       position: absolute;
-      left: 20px;
+      left: 10px;
       top: 8px;
       cursor: pointer;
     }
@@ -216,24 +219,23 @@ InputCont.Section2 = styled.div``
 
 
 Container.InputCustom1 = styled.input`
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  
   font-style: normal;
   font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
-  color: transparent;
-  transition: .2s ;
+  font-size: 22px;
+  transition: .2s;
+  
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
@@ -242,22 +244,24 @@ Container.InputCustom1 = styled.input`
     visibility: hidden;
   }
   ::before {
-    content: 'Pasport nusxangizni yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Pasport nusxasini';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
+    width: 200px;
   }
   cursor: pointer;
   @media only screen and (max-width: 1000px) {
-    min-width: 124.72px;
-    width: 100%;
+    min-width: 124.72px !important;
+    width: 100% !important;
     height: 26px;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 30px;
     font-size: 16px;
     border-radius: 5px;
   }
@@ -265,10 +269,10 @@ Container.InputCustom1 = styled.input`
 Container.InputCustom2 = styled.input`
   cursor: pointer;
   min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-bottom: 0px;
   border-radius: 15px;
@@ -282,20 +286,19 @@ Container.InputCustom2 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
   ::before {
-    content: 'Transkripingizni yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom yoki atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
@@ -303,15 +306,13 @@ Container.InputCustom2 = styled.input`
     margin: 8px 0 0 0;
   }
   @media only screen and (max-width: 1000px) {
-    min-width: 124.72px;
-    //width: 290px;
     width: 100% !important;
-    max-width: 100%;
     height: 26px;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 30px;
     font-size: 16px;
     border-radius: 5px;
   }
+  
 `
 
 

@@ -80,9 +80,6 @@ const OqishniKochirishComponent = () => {
     }
 
 
-
-
-
     const changeMumPass = (event) => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)
@@ -105,7 +102,7 @@ const OqishniKochirishComponent = () => {
     }
     const [allData, setAllData] = useState({
         lastName: '',
-        admissionName: '',
+        studyType: '',
         firstName: '',
         patron: '',
         password: '',
@@ -233,7 +230,8 @@ const OqishniKochirishComponent = () => {
             <InputCont>
 
                 <div className={'row1'}>
-                    <Input placeholder={'Familyangiz'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Familyangiz'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
                 </div>
 
                 <div className={'row7'}>
@@ -250,28 +248,18 @@ const OqishniKochirishComponent = () => {
                             filterSort={(optionA, optionB) =>
                                 (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                             }
-                            options={[
-
-                                {
-                                    value: '1',
-                                    label: 'Kunduzgi',
-                                },
-                                {
-                                    value: '2',
-                                    label: 'Kechki',
-                                },
-                                {
-                                    value: '3',
-                                    label: 'Sirtqi ta`lim',
-                                },
-
-                            ]}
+                            options={educationTypes?.map((value) => (
+                            {    value,
+                                label:value }
+                            ))  || []}
+                            onChange={(e)=>changeAllDataFunc({type:'edicetionType',value: e})}
                         />
                     </IconBox>
                 </div>
 
                 <div className={'row2'}>
-                    <Input placeholder={'Ismingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Ismingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })}/>
                 </div>
 
                 <div className={'row8'}>
@@ -289,47 +277,36 @@ const OqishniKochirishComponent = () => {
                             }
                             options={[
                                 {
-                                    value: '1',
-                                    label: '1',
+                                    value: 1,
+                                    label: 'No Data',
                                 },
-                                {
-                                    value: '2',
-                                    label: '2',
-                                },
-                                {
-                                    value: '3',
-                                    label: '3',
-                                },
-                                {
-                                    value: '4',
-                                    label: '4',
-                                }
-
                             ]}
                         />
                     </IconBox>
                 </div>
 
                 <div className={'row3'}>
-                    <Input placeholder={'Otangizni ismi'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'} />
+                    <Input placeholder={'Otangizni ismi'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} mwidth={'290px'} mheight={'26px'} width={'513px'} height={'46px'} size={'24px'}
+                    onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })}/>
                 </div>
-
-
 
                 <div>
                     <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'__ ___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState} onchange={(e) => changeNumState(e.target.value)} />
+                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'__ ___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState}
+                            onchange={(e) => changeNumState(e.target.value)} />
                         <p className='phoNumbers'>+998</p>
                     </div>
                 </div>
 
                 <div className={'row4'}>
-                    <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                    <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
                 <div className={'row10'}>
                     <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'Otangiz yoki onangizni raqami'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'Otangiz yoki onangizni raqami'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState1}
+                            onchange={(e) => changeNumState1(e.target.value)} />
                         <p className='phoNumbers'>+998</p>
                     </div>
                 </div>
@@ -348,16 +325,11 @@ const OqishniKochirishComponent = () => {
                             filterSort={(optionA, optionB) =>
                                 (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                             }
-                            options={[
-                                {
-                                    value: '1',
-                                    label: 'Rus tili',
-                                },
-                                {
-                                    value: '2',
-                                    label: 'Uzbek tili',
-                                },
-                            ]}
+                            options={studyLanguages?.map((value) => ({
+                                value: value,
+                                label:value
+                            }))|| []}
+                            onchange={() => changeAllDataFunc({ type: 'studyLanguage',val})}
                         />
                     </IconBox>
                 </div>
@@ -368,6 +340,9 @@ const OqishniKochirishComponent = () => {
                         <UploadFiler className={'UploadFile'} />
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
+                    <div>
+                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                    </div>
                 </div>
 
                 <div className={'row6'}>
@@ -401,13 +376,16 @@ const OqishniKochirishComponent = () => {
                     </IconBox>
                 </div>
 
-                <div>
+                <div >
                     <IconBox>
                         <Container.InputCustom2 type={'file'} />
                         <UploadFiler className={'UploadFile'} />
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
-                </div>
+               <div>
+                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta...'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+               </div>
+               </div>
 
                 <div className={'mobileDivNone'}></div>
 
@@ -420,5 +398,5 @@ const OqishniKochirishComponent = () => {
         </Container>
     )
 }
-
+                                                                                                    
 export default OqishniKochirishComponent

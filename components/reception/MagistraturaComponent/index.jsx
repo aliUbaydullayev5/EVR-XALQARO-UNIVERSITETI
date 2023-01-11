@@ -229,10 +229,11 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
             </TextCon>
             <InputCont>
                 <div className='row1'>
-                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
+                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
                 </div>
 
-                <IconBox className='row9'  >
+                <IconBox className='row9'>
                     <AntSelect
                         showSearch
                         style={{
@@ -250,29 +251,34 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
                 </IconBox>
 
                 <div className='row2'>
-                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })} />
+                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })} />
                 </div>
 
                 <Container.Number className='row5'>
                     <div>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'352px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'Telfon Raqamingiz'} padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
+                        <Input className='inputPhone' mradius={'5px'} mwidth={'352px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __'} padding={'7px 0px 0px 90px'} size={'24px'}
+                            onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
                         <Container.FormatNumber className=''>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
 
                 <div className='row3'>
-                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })} />
+                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'}
+                        onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })} />
                 </div>
 
                 <Container.Number className='row6'>
                     <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'16px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
+                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'16px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1}
+                            onchange={(e) => changeNumState1(e.target.value)} />
                         <Container.FormatNumber>+998</Container.FormatNumber>
                     </div>
                 </Container.Number>
 
                 <div className='row4'>
-                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
+                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}
+                        onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
                 </div>
 
                 <div className='row11'>
