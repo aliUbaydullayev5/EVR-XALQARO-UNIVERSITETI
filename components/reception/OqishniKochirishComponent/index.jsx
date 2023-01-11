@@ -61,7 +61,12 @@ const OqishniKochirishComponent = () => {
         if (length >= event.length) {
             setLength(event.length)
             setNumState(event)
+       
         }
+      
+ if (length.typeOf===Number) {
+     console.log(length.typeOf === Number);
+ }
         return setNumState(event)
     }
 
