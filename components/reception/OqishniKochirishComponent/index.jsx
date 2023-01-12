@@ -122,7 +122,7 @@ const OqishniKochirishComponent = () => {
         dispatch(homeAllDataFetch())
     }, [])
     const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
-    console.log(educationTypes,'sdds');
+
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
         fakeData[type] = value
@@ -341,7 +341,7 @@ const OqishniKochirishComponent = () => {
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
                     <div>
-                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'170px'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
                     </div>
                 </div>
 
@@ -383,17 +383,20 @@ const OqishniKochirishComponent = () => {
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
                <div>
-                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta...'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'}  mheight={'26px'} msize={'16px'} mwidth={'170px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
                </div>
                </div>
 
                 <div className={'mobileDivNone'}></div>
 
-                <BtnCon>
-                    <div className={'mobileDivNone'}></div>
-                    <Button mwidth={'187px'} mradius={'5px'} msize={'20px'} mheight={'28px'} width={'200px'} height={'28px'} size={'21px'} margin={'10px 60px 0 0'} onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
+                <BtnCon >
+                    <div className='mobileNone'></div>
+                    {receptionData.status !== 'loading' && receptionData.status !== 'success' ?
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
+                        :
+                        <div></div>
+                    }
                 </BtnCon>
-
             </InputCont>
         </Container>
     )

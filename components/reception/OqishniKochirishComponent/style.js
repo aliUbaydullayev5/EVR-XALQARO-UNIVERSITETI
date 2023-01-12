@@ -295,7 +295,7 @@ Container.InputCustom2 = styled.input`
   }
   ::before {
     font-family: 'Montserrat', sans-serif;
-    content: 'Deplom yoki atistat';
+    content: 'Deplom  atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #fff;

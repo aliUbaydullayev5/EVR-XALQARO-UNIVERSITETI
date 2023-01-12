@@ -117,6 +117,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 
     useEffect(() => {
         dispatch(homeAllDataFetch())
+        console.log(allData,'ds');
     }, [])
 
     const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
@@ -344,7 +345,9 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         options={studyLanguages?.map((value) => ({
                             value: value,
                             label: value
-                        })) || []}
+                        })) || [{
+                        
+                            }]}
                         onChange={(e) => changeAllDataFunc({ type: 'studyLanguage', value: e })}
                     />
                 </IconBox>
