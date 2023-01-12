@@ -5,11 +5,11 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg"
 import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
-import {useDispatch, useSelector} from "react-redux";
-import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile";
-import homeAllData, {homeAllDataFetch} from "../../../redux/slices/homeAllData";
-import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost";
-import {startMessage} from "../../../redux/slices/message";
+import {useDispatch, useSelector} from "react-redux"
+import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile"
+import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost"
+import {startMessage} from "../../../redux/slices/message"
+import getStudyTypes, {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes"
 
 export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
@@ -80,7 +80,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             setNumPasSeriya(event)
         }
         changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
-        return setNumPasSeriya(event)
+        return setNumPasSeriya(event.toUpperCase())
     }
 
     const [width, setWidth] = useState(null)
@@ -92,11 +92,10 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         }
     })
 
-
-
+    
     const [allData, setAllData] = useState({
         lastName: '',
-        admissionName: '',
+        studyType: '',
         firstName: '',
         patron: '',
         password: '',
@@ -113,14 +112,16 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     })
 
     const findFileFunc = ({file, by}) => {
-        if(file.target.files[0]) dispatch(deployFileFetch({file, by}))
+        if(file.target.files[0]) {
+            dispatch(deployFileFetch({file, by}))
+        }
     }
 
     useEffect(()=> {
-        dispatch(homeAllDataFetch())
+        dispatch(getStudyTypesFetch({type: 'MASTERS'}))
     }, [])
 
-    const {educationTypes, faculties, studyLanguages} = useSelector((store)=> store.homeAllData.data)
+    const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
 
     const changeAllDataFunc = ({type, value}) => {
         const fakeData = allData
@@ -136,7 +137,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }, [fileId])
 
     useEffect(()=> {
-        changeAllDataFunc({type: 'admissionName', value: 'BACHELOR'})
+        changeAllDataFunc({type: 'studyType', value: 'BACHELOR'})
     }, [])
 
     const checkAllInputs = () => {
@@ -156,7 +157,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             dispatch(startMessage({time: 5, message: 'Passport seriya rakami no togri kiritilgan'}))
             return false
         }
-
         if(!(allData.phoneNumber.length == 9)) {
             dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilgan'}))
             return false
@@ -194,15 +194,14 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             dispatch(startMessage({time: 5, message: 'Oqish shaklini tallang'}))
             return false
         }
-
-
         return true
     }
+
     const pushAllInfo = () => {
+        console.log(allData)
         if(checkAllInputs()){
             dispatch(receptionPostFetch(allData))
         }
-
     }
 
     const receptionData = useSelector((store)=> store.receptionPost)
@@ -222,10 +221,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         setTimeout(()=> {
             dispatch(resetVerify())
         }, 2000)
-
-
-
     }
+
 
     return (
         <Container>
@@ -283,8 +280,9 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                 <div className='row11'>
                     <div>
                         <div>
+                            {/*<input type="file" onMouseUp={} />*/}
                             <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
+                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
                                 <UploadFiler className={'UploadFile2'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>
@@ -306,7 +304,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
 
-                        options={faculties?.map((value)=> ({
+                        options={facultyDTOForHomeList?.map((value)=> ({
                             value: value.id,
                             label: value.name
                         })) || []}
@@ -354,7 +352,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
-                    {receptionData.status !== 'loading' && receptionData.status !== 'success'  ?
+                    {receptionData.status !== 'loading'  ?
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
                         :
                         <div></div>

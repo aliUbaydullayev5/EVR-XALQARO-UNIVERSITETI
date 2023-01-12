@@ -6,7 +6,7 @@ import homeAllData from '../slices/homeAllData'
 import deployFile from '../slices/deployFile'
 import receptionPost from '../slices/receptionPost'
 import messageSlice from '../slices/message'
-
+import getStudyTypes from '../slices/getStudyTypes'
 
 export default configureStore({
     reducer: {
@@ -15,7 +15,7 @@ export default configureStore({
         homeAllData,
         deployFile,
         receptionPost,
-        messageSlice
+        messageSlice,
+        getStudyTypes
     },
-
 })
