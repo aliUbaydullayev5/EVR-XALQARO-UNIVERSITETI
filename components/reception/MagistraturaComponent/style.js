@@ -94,6 +94,22 @@ const InputCont = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .row10{
+    >div{
+      width: 512px;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
+  .row11{
+    >div{
+      width: 512px;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
   @media only screen and (max-width: 1000px){
     display: grid;
     grid-template-columns: 1fr;
@@ -133,10 +149,22 @@ const InputCont = styled.div`
        grid-row: 9/10;
     }
     .row10{
-       grid-row: 10/11;
+      grid-row: 11/12;
+      >div{
+        width: 100%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-gap: 10px !important;
+      }
     }
     .row11{
-       grid-row: 11/12;
+      grid-row: 10/11;
+      >div{
+        width: 100%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-gap: 10px !important;
+      }
     }
     .row12{
       grid-row: 12/13;
@@ -173,7 +201,7 @@ const IconBox = styled.div`
   }
   .UploadFile2{
     position: absolute;
-    left: 22px ;
+    left: 5px;
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
@@ -187,7 +215,7 @@ const IconBox = styled.div`
   }
   .UploadFile1{
     position: absolute;
-    left: 22px ;
+    left: 5px;
     top: 6px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
@@ -196,8 +224,8 @@ const IconBox = styled.div`
 }
   .UploadFileMobile2 { 
     position: absolute;
-    left: 20px ;
-    top: 9px;
+    left: 7px ;
+    top: 8px;
     cursor: pointer;
     @media only screen and (min-width: 800px) {
       display: none;
@@ -205,7 +233,7 @@ const IconBox = styled.div`
   }
   .UploadFileMobile{
     position: absolute;
-    left: 20px ;
+    left: 7px ;
     top: 8px;
     bottom: 5px;
     cursor: pointer;
@@ -226,24 +254,23 @@ const IconBox = styled.div`
 `
 
 Container.InputCustom1 = styled.input`
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  border-bottom: 0px;
+  border-bottom: 0;
   border-radius: 15px;
   outline: none;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  font-family: 'Montserrat';
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  
   font-style: normal;
   font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
-  color: transparent;
-  transition: .2s ;
+  font-size: 22px;
+  transition: .2s;
+  
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
@@ -252,45 +279,36 @@ Container.InputCustom1 = styled.input`
     visibility: hidden;
   }
   ::before {
-    content: 'Pasport nusxasini yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Pasport nusxasini';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
+    width: 200px;
   }
   cursor: pointer;
   @media only screen and (max-width: 1000px) {
-    min-width: 124.72px;
-    width: 100%;
+    min-width: 124.72px !important;
+    width: 100% !important;
     height: 26px;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 30px;
     font-size: 16px;
     border-radius: 5px;
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 `
-
 
 Container.InputCustom2 = styled.input`
   cursor: pointer;
   min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-bottom: 0px;
   border-radius: 15px;
@@ -312,10 +330,11 @@ Container.InputCustom2 = styled.input`
     visibility: hidden;
   }
   ::before {
-    content: 'Deplom yoki atistatingizni yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom yoki atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
@@ -323,15 +342,12 @@ Container.InputCustom2 = styled.input`
     margin: 8px 0 0 0;
   }
   @media only screen and (max-width: 1000px) {
-    min-width: 124.72px;
     width: 100% !important;
-    max-width: 100%;
     height: 26px;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 30px;
     font-size: 16px;
     border-radius: 5px;
   }
-  
   
 `
 IconBox.Mobile = styled.div`
@@ -343,6 +359,8 @@ IconBox.Mobile = styled.div`
       }
 }
 `
+
+
 
 export { TextCon, InputCont, BtnCon, IconBox }
 export default Container

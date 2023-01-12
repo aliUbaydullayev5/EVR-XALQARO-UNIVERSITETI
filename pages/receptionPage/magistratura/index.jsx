@@ -1,11 +1,10 @@
 import Root from "../../../root";
-import MagistraturaComponent from "../../../components/reception/MagistraturaComponent";
-
+import MagistraturaComponent from "../../../components/reception/MagistraturaComponent/index.jsx";
 
 const Magistratura = () => {
     return(
         <Root>
-            <MagistraturaComponent />
+            <MagistraturaComponent/>
         </Root>
     )
 }
