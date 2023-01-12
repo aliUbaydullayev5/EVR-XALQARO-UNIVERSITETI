@@ -5,19 +5,11 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg"
 import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
-<<<<<<< HEAD
 import {useDispatch, useSelector} from "react-redux"
 import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile"
 import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost"
 import {startMessage} from "../../../redux/slices/message"
 import getStudyTypes, {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes"
-=======
-import { useDispatch, useSelector } from "react-redux";
-import deployFile, { deployFileFetch } from "../../../redux/slices/deployFile";
-import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
-import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
-import { startMessage } from "../../../redux/slices/message";
->>>>>>> origin/magistratura/v1
 
 export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
@@ -87,13 +79,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             setPasSerLength(event.length)
             setNumPasSeriya(event)
         }
-<<<<<<< HEAD
         changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
         return setNumPasSeriya(event.toUpperCase())
-=======
-        changeAllDataFunc({ type: 'passportSeries', value: event.split(' ').join('') })
-        return setNumPasSeriya(event)
->>>>>>> origin/magistratura/v1
     }
 
     const [width, setWidth] = useState(null)
@@ -124,7 +111,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         passportId: ''
     })
 
-<<<<<<< HEAD
     const findFileFunc = ({file, by}) => {
         if(file.target.files[0]) {
             dispatch(deployFileFetch({file, by}))
@@ -136,18 +122,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }, [])
 
     const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
-=======
-    const findFileFunc = ({ file, by }) => {
-        if (file.target.files[0]) dispatch(deployFileFetch({ file, by }))
-    }
-
-    useEffect(() => {
-        dispatch(homeAllDataFetch())
-        console.log(allData,'ds');
-    }, [])
-
-    const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
->>>>>>> origin/magistratura/v1
 
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
@@ -162,13 +136,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         changeAllDataFunc({ type: by, value: fileId })
     }, [fileId])
 
-<<<<<<< HEAD
     useEffect(()=> {
         changeAllDataFunc({type: 'studyType', value: 'BACHELOR'})
-=======
-    useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'BACHELOR' })
->>>>>>> origin/magistratura/v1
     }, [])
 
     const checkAllInputs = () => {
@@ -188,14 +157,9 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             dispatch(startMessage({ time: 5, message: 'Passport seriya rakami no togri kiritilgan' }))
             return false
         }
-<<<<<<< HEAD
         if(!(allData.phoneNumber.length == 9)) {
             dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilgan'}))
-=======
 
-        if (!(allData.phoneNumber.length == 9)) {
-            dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
->>>>>>> origin/magistratura/v1
             return false
         }
         if (!(allData.extraPhoneNumber.length == 9)) {
@@ -235,12 +199,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }
 
     const pushAllInfo = () => {
-<<<<<<< HEAD
         console.log(allData)
         if(checkAllInputs()){
-=======
-        if (checkAllInputs()) {
->>>>>>> origin/magistratura/v1
             dispatch(receptionPostFetch(allData))
         }
     }
@@ -321,13 +281,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                 <div className='row11'>
                     <div>
                         <div>
-                            {/*<input type="file" onMouseUp={} />*/}
                             <IconBox>
-<<<<<<< HEAD
                                 <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
-=======
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
->>>>>>> origin/magistratura/v1
                                 <UploadFiler className={'UploadFile2'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>
@@ -348,21 +303,11 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
-<<<<<<< HEAD
-
                         options={facultyDTOForHomeList?.map((value)=> ({
                             value: value.id,
                             label: value.name
                         })) || []}
                         onChange={(e)=> changeAllDataFunc({type: 'facultyId', value: e})}
-
-=======
-                        options={faculties?.map((value) => ({
-                            value: value.id,
-                            label: value.name
-                        })) || []}
-                        onChange={(e) => changeAllDataFunc({ type: 'facultyId', value: e })}
->>>>>>> origin/magistratura/v1
                     />
                 </IconBox>
 
@@ -407,11 +352,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
-<<<<<<< HEAD
                     {receptionData.status !== 'loading'  ?
-=======
-                    {receptionData.status !== 'loading' && receptionData.status !== 'success' ?
->>>>>>> origin/magistratura/v1
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
                         :
                         <div></div>
