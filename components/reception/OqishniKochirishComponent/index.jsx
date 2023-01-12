@@ -281,7 +281,7 @@ const OqishniKochirishComponent = () => {
                             options={[
                                 {
                                     value: 1,
-                                    label: 'No Data',
+                                    label: '1',
                                 },
                                 {
                                     value: '2',
@@ -342,8 +342,10 @@ const OqishniKochirishComponent = () => {
                             }
                             options={studyLanguages?.map((value) => ({
                                 value: value,
-                                label:value
-                            }))|| []}
+                                label: value
+                            })) || [{
+
+                            }]}
                             onchange={() => changeAllDataFunc({ type: 'studyLanguage',val})}
                         />
                     </IconBox>

@@ -11,7 +11,7 @@ const AntSelect = styled(Select)`
     height: 50px  !important;
     font-size: 24px !important;
     font-weight: 400 !important;
-    line-height: 105.9% !important;
+
     font-family: 'Montserrat' !important;
     @media only screen and (max-width: 1000px) {
       font-size: 16px !important;
@@ -49,6 +49,13 @@ const AntSelect = styled(Select)`
       padding: 0px 8px  !important;
     }
   }
+
+ .ant-select-item-option-content{
+  font-size: 17px !important;
+ } 
+ .ant-select-item .ant-select-item-option .ant-select-item-option-active{
+font-size: 17px !important;
+ }
 `
 
 export default AntSelect

@@ -18,7 +18,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-    const [numState, setNumState] = useState('')
+    const [numState, setNumState] = useState()
     const [length, setLength] = useState(0)
 
     const changeNumState = (event) => {
