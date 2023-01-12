@@ -168,7 +168,6 @@ const OqishniKochirishComponent = () => {
                                     value: '4',
                                     label: '4',
                                 }
-
                             ]}
                         />
                     </IconBox>
