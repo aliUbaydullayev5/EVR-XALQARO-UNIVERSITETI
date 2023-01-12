@@ -280,6 +280,18 @@ const OqishniKochirishComponent = () => {
                                     value: 1,
                                     label: 'No Data',
                                 },
+                                {
+                                    value: '2',
+                                    label: '2',
+                                },
+                                {
+                                    value: '3',
+                                    label: '3',
+                                },
+                                {
+                                    value: '4',
+                                    label: '4',
+                                }
                             ]}
                         />
                     </IconBox>
@@ -389,12 +401,7 @@ const OqishniKochirishComponent = () => {
 
                 <div className={'mobileDivNone'}></div>
 
-<<<<<<< HEAD
-                <BtnCon>
-                    <div className={'mobileDivNone'}></div>
-                    <Button mwidth={'187px'} mradius={'5px'} msize={'20px'} mheight={'28px'} width={'200px'} height={'28px'} size={'21px'} margin={'10px 60px 0 0'}
-                        onclick={() => router.push('/receptionPage/application/UsersCardInfo')}>QOLDIRISH</Button>
-=======
+
                 <BtnCon >
                     <div className='mobileNone'></div>
                     {receptionData.status !== 'loading' && receptionData.status !== 'success' ?
@@ -402,7 +409,6 @@ const OqishniKochirishComponent = () => {
                         :
                         <div></div>
                     }
->>>>>>> origin/magistratura/v1
                 </BtnCon>
             </InputCont>
         </Container>
