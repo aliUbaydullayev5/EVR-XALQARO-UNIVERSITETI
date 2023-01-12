@@ -6,6 +6,7 @@ import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 
+
 import {useDispatch, useSelector} from "react-redux"
 import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile"
 import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost"
@@ -81,7 +82,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             setPasSerLength(event.length)
             setNumPasSeriya(event)
         }
-  
+
 
         changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
         return setNumPasSeriya(event.toUpperCase())
@@ -116,6 +117,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     })
 
 
+
     const findFileFunc = ({file, by}) => {
         if(file.target.files[0]) {
             dispatch(deployFileFetch({file, by}))
@@ -144,7 +146,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 
     useEffect(()=> {
         changeAllDataFunc({type: 'studyType', value: 'BACHELOR'})
-
     }, [])
 
     const checkAllInputs = () => {
@@ -206,10 +207,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }
 
     const pushAllInfo = () => {
-
-        console.log(allData)
         if(checkAllInputs()){
-
             dispatch(receptionPostFetch(allData))
         }
     }
@@ -290,7 +288,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                 <div className='row11'>
                     <div>
                         <div>
-                            {/*<input type="file" onMouseUp={} />*/}
                             <IconBox>
 
                                 <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
@@ -316,13 +313,11 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
 
-
                         options={facultyDTOForHomeList?.map((value)=> ({
                             value: value.id,
                             label: value.name
                         })) || []}
                         onChange={(e)=> changeAllDataFunc({type: 'facultyId', value: e})}
-
                     />
                 </IconBox>
 
@@ -369,7 +364,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <div className='mobileNone'></div>
 
                     {receptionData.status !== 'loading'  ?
-
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
                         :
                         <div></div>
