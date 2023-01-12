@@ -158,7 +158,26 @@ Container.MobileText = styled.div`
 Container.Number = styled.div`
   width: 100%;
   position: relative;
+  .customPhoneInput{
+    border-radius: 15px !important;
+    height: 60px !important;
+    width: 100% !important;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
+    padding: 0 20px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 105.9%;
 
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.025em;
+    color: #fff;
+
+  }
 `
 Container.FormatNumber = styled.div`
   position: absolute;
