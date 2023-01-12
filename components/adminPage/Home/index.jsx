@@ -7,7 +7,7 @@ const Home = () => {
 
     return(
         <Container >
-            <div onClick={() => router.push('homePage/boshqaruv')}>
+            <div onClick={() => router.push('homePage/management')}>
                     <p>Boshqaruv</p>
                     <p>bo’limi</p>
            </div>

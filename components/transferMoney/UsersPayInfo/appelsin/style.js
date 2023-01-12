@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -141,5 +142,57 @@ display: none;
 
 }
 `
-export { TextCon, BoxCon, ImgBox }
+
+const AntModal = styled(Modal)`
+box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+border-radius: 15px;
+padding:  50px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin:  0 auto;
+
+.ant-modal-body {
+  >p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 105.9%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: -0.085em;
+    color: #FFFFFF;
+  }
+}
+`
+const BtnText = styled.p`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #221F51;
+ @media only screen and (max-width: 1000px) {
+    font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #221F51;
+ } 
+`
+const AntTimeCon = styled.div`
+ display: flex;
+ justify-content: space-between;
+ margin-top: 10px;
+`
+export { TextCon, BoxCon, BtnText, ImgBox, AntModal, AntTimeCon }
 export default Container

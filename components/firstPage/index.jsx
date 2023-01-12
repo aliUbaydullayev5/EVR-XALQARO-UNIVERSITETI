@@ -7,6 +7,7 @@ import LogoMobile from '../../assets/icon/download.svg'
 import {firstVerifyFetch, resetTimerVerify} from "../../redux/slices/firstVerify"
 import {useSelector, useDispatch} from 'react-redux'
 import {firstSmsCodeFetch} from "../../redux/slices/firstSmsVerifyCode"
+import {startMessage} from "../../redux/slices/message";
 
 const FirstPageMainCom = () => {
 
@@ -30,7 +31,6 @@ const FirstPageMainCom = () => {
 
     const [errorRed, setErrorRed] = useState(true)
 
-    const [smsState, setSmsState] = useState('')
 
     // ---------------------- Redux ----------------------
 
@@ -88,8 +88,6 @@ const FirstPageMainCom = () => {
 
 
     // ---------------------- Timer Logic ----------------------
-
-
 
     const getParTime = (time) => time.toString().padStart(2, '0')
 
@@ -152,20 +150,13 @@ const FirstPageMainCom = () => {
         }
     }, [verifyCode])
 
-    // for change hidden state
-    useEffect(()=> {
-        if(nameState.length >= 3 && numberState.length == 12 || verifyCode){
-            handleStart()
-            setHidden(true)
-        }
-    }, [verifyCode])
-
 
     // push request
     const pushFunc = () => {
         if(nameState.length >= 3 && numberState.length == 12){
             dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: '998'+numberState.split(' ').join('')}))
         }else{
+            dispatch(startMessage({time: '3', message: 'The phone number is incorrect'}))
             setErrorRed(false)
         }
     }
@@ -228,11 +219,10 @@ const FirstPageMainCom = () => {
                             <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
-
                         <>
-                            <Input merror={!errorRed} error={!errorRed} mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
+                            <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             <Container.Number>
-                                <Input  merror={!errorRed} error={!errorRed} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
+                                <Input mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
                                 <Container.FormatNumber>+998</Container.FormatNumber>
                             </Container.Number>
                         </>

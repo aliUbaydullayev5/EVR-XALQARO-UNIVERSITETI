@@ -93,6 +93,8 @@ Container.Btn = styled.div`
     letter-spacing: -0.025em;
     text-transform: uppercase;
     color: #FFFFFF;
+    
+    
   }
 `
 

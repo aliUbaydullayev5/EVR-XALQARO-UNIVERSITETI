@@ -3,7 +3,7 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const deployFileFetch = createAsyncThunk('deployFetchData', async (payload)=> {
     let formData = new FormData()
     formData.append('file', payload.file.target.files[0])
-    return await fetch('http://192.168.20.61:1010/api/v1/attachment/upload', {
+    return await fetch('http://192.168.60.61:1010/api/v1/attachment/upload', {
         headers: {
           Secret: 'eyJhbGciOiJIUzI1NiJ9.e30.ZRrHA1JJJW8opsbCGfG_HACGpVUMN_a9IV7pAx'
         },
@@ -29,11 +29,12 @@ const deployFile = createSlice({
         },
         [deployFileFetch.fulfilled]: (state, {payload})=> {
             const {success, data, by} = payload
-            state.status = 'success'
             if(success == true){
+                state.status = 'success'
                 state.fileId = data
                 state.by = by
             }
+            console.log(payload)
         },
         [deployFileFetch.rejected]: (state)=> {
             state.status = 'error'

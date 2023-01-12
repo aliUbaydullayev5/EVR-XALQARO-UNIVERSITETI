@@ -4,7 +4,7 @@ import OqishniKochirishComponent from "../../../components/reception/OqishniKoch
 const OqishniKochirish = () => {
     return(
         <Root>
-            <OqishniKochirishComponent />
+            <OqishniKochirishComponent props='/receptionPage/oqishnikochirish oqishni kuchirish'/>
         </Root>
     )
 }
