@@ -118,6 +118,9 @@ const OqishniKochirishComponent = () => {
         passportId: ''
     })
 
+    const findFileFunc = ({ file, by }) => {
+        if (file.target.files[0]) dispatch(deployFileFetch({ file, by }))
+    }
     useEffect(() => {
         dispatch(homeAllDataFetch())
     }, [])
@@ -336,7 +339,7 @@ const OqishniKochirishComponent = () => {
 
                 <div>
                     <IconBox>
-                        <Container.InputCustom1 type={'file'} />
+                        <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
                         <UploadFiler className={'UploadFile'} />
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
@@ -358,27 +361,17 @@ const OqishniKochirishComponent = () => {
                             filterSort={(optionA, optionB) =>
                                 (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                             }
-                            options={[
-                                {
-                                    value: '1',
-                                    label: 'Not Identified',
-                                },
-                                {
-                                    value: '2',
-                                    label: 'Closed',
-                                },
-                                {
-                                    value: '3',
-                                    label: 'Communicated',
-                                }
-                            ]}
+                            options={faculties?.map((value) => ({
+                                value: value.id,
+                                label: value.name
+                            })) || []}
                         />
                     </IconBox>
                 </div>
 
                 <div >
                     <IconBox>
-                        <Container.InputCustom2 type={'file'} />
+                        <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
                         <UploadFiler className={'UploadFile'} />
                         <UploadMobile className={'UploadFileMobile'} />
                     </IconBox>
