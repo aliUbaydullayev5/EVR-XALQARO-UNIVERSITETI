@@ -25,7 +25,7 @@ const transformPushThunk = createSlice({
             state.loading = 'loading'
         },
         [getAllTransformFetch.fulfilled]: (state, action) => {
-            state.loading = 'Succes'
+            state.loading = 'Success'
             if (state?.data) {
               state.data = [...action.payload]
             }

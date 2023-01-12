@@ -22,7 +22,6 @@ const Root = ({ children }) => {
 
     return (
         <Container>
-
             <Container.Inset firstPage={pathname === '/firstPage' ? true : false}>
                 <Container.MainOfInset>
                     {

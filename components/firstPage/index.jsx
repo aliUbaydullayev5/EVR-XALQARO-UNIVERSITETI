@@ -8,7 +8,7 @@ import {firstVerifyFetch, resetTimerVerify} from "../../redux/slices/firstVerify
 import {useSelector, useDispatch} from 'react-redux'
 import {firstSmsCodeFetch} from "../../redux/slices/firstSmsVerifyCode"
 import {startMessage} from "../../redux/slices/message";
-
+import CustomInput from 'react-phone-number-input/input';
 const FirstPageMainCom = () => {
 
     const router = useRouter()
@@ -27,7 +27,7 @@ const FirstPageMainCom = () => {
     const [hidden, setHidden] = useState(false)
 
     const [nameState, setNameState] = useState('')
-    const [numberState, setNumberState] = useState('')
+    const [numberState, setNumberState] = useState('+998')
 
     const [errorRed, setErrorRed] = useState(true)
 
@@ -39,31 +39,6 @@ const FirstPageMainCom = () => {
     const {pushToHome} = useSelector((store)=> store.firstSmsCodeFetch)
 
     // ---------------------- Empty area for input Logic ----------------------
-
-    const changeNumState = (event) => {
-        setNumberState(event)
-        if(length < event.length){
-
-            setLength(event.length-1)
-            if(event.length == 2){
-                return setNumState(event+' ')
-            }
-
-            if(event.length == 6){
-                return setNumState(event+' ')
-            }
-
-            if(event.length == 9){
-                return setNumState(event+' ')
-            }
-
-        }
-        if(length >= event.length){
-            setLength(event.length)
-            setNumState(event)
-        }
-        return setNumState(event)
-    }
 
 
     const changeNumState1 = (event) => {
@@ -118,30 +93,14 @@ const FirstPageMainCom = () => {
         setIsCounting(true)
     }
 
-
-    //------------ Timer Stop Func
-    const handleStop = () => {
-        setIsCounting(false)
-    }
-
-
-    //------------ Timer Reset Func
-    const handleReset = () => {
-        setIsCounting(false)
-        setTimeLeft(2 * 60)
-    }
-
-
-
     // ---------------------- Input filter Logic ----------------------
 
 
-
     // for check input filters
-    useEffect(()=> {
-        setErrorRed(true)
-    }, [nameState, numberState])
 
+    // useEffect(()=> {
+    //     setErrorRed(true)
+    // }, [nameState, numberState])
 
     useEffect(()=> {
         if(nameState.length >= 3 && numberState.length == 12 || verifyCode){
@@ -154,11 +113,12 @@ const FirstPageMainCom = () => {
     // push request
     const pushFunc = () => {
         if(nameState.length >= 3 && numberState.length == 12){
-            dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: '998'+numberState.split(' ').join('')}))
+            dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: numberState.split(' ').join('')}))
         }else{
             dispatch(startMessage({time: '3', message: 'The phone number is incorrect'}))
             setErrorRed(false)
         }
+        console.log(numberState)
     }
 
 
@@ -169,12 +129,8 @@ const FirstPageMainCom = () => {
     }
 
     useEffect(()=> {
-        if(pushToHome){
-            router.push('/homePage')
-        }
-        if(localStorage.getItem('firstToken')){
-            router.push('/homePage')
-        }
+        if(pushToHome) router.push('/homePage')
+        if(localStorage.getItem('firstToken')) router.push('/homePage')
     }, [pushToHome])
 
 
@@ -222,8 +178,15 @@ const FirstPageMainCom = () => {
                         <>
                             <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             <Container.Number>
-                                <Input mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'__ ___ __ __'} maxlength={'12'} mpadding={'3px 0px 0px 77px'} padding={'3px 0px 0px 97px'} value={numState} onchange={(e)=> changeNumState(e.target.value)} />
-                                <Container.FormatNumber>+998</Container.FormatNumber>
+
+                                <CustomInput
+                                    placeholder="Enter phone number"
+                                    value={numberState}
+                                    onChange={setNumberState}
+                                    maxLength={17}
+                                    className={'customPhoneInput'}
+                                />
+
                             </Container.Number>
                         </>
                 }
