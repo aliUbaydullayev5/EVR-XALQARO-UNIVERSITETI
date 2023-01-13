@@ -79,11 +79,45 @@ const InputCont = styled.div`
     justify-content: center;
     gap: 10px;
   }
+  .row11{
+    >div{
+      width: 512px;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
+  .row12{
+    >div{
+      width: 512px;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
+
 
   .phoNumber{
-    position: relative;
-    width: 513px;
-  }
+    border-radius: 15px !important;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    width: 513px !important;
+    padding: 0px 0px 0px 20px !important;
+    height: 46px;
+ @media only screen and (max-width: 800px) {
+  width: 100% !important;
+  font-size: 16px;
+  height:26px !important;
+  border-radius: 5px !important;
+ }
+ }
   .phoNumbers{
     position: absolute;
     left: 30px;
@@ -157,11 +191,14 @@ const InputCont = styled.div`
 
     }
     .row11{
-      grid-row: 12/13;
+      grid-row: 11/12;
 
     }
     .row12{
       grid-row: 12/13;
+    }
+    .row13{
+      grid-row: 13/14;
     }
   }
 

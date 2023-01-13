@@ -48,18 +48,6 @@ const TextCon = styled.div`
   }
 `
 
-// Container.Number = styled.div`
-//   width: 100% !important;
-//   >div{
-//     position: relative;
-//   }
-//   @media only screen and (max-width: 800px){
-//     >div{
-//       position: relative;
-//       width: 100%;
-//     }
-//   }
-// `
 Container.Number = styled.div`
   width: 100% !important;
   .customPhoneInput{
