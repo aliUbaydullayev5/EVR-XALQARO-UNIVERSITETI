@@ -62,10 +62,6 @@ const TextCon = styled.div`
 // `
 Container.Number = styled.div`
   width: 100% !important;
- 
-  >div{
-  
-  }
   .customPhoneInput{
     border-radius: 15px !important;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
@@ -86,8 +82,7 @@ Container.Number = styled.div`
   height:26px !important;
   border-radius: 5px !important;
  }
-  }
-
+ }
 `
 
 Container.FormatNumber = styled.div`

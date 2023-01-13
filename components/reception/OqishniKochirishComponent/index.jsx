@@ -139,7 +139,7 @@ const OqishniKochirishComponent = () => {
     }, [fileId])
 
     useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'BACHELOR' })
+        changeAllDataFunc({ type: 'admissionName', value: 'MASTERS' })
     }, [])
     const checkAllInputs = () => {
         if (!(allData.lastName.length > 3)) {

@@ -11,6 +11,7 @@ const AntSelect = styled(Select)`
     height: 50px  !important;
     font-size: 24px !important;
     font-weight: 400 !important;
+    height: 40px !important;
 
     font-family: 'Montserrat' !important;
     @media only screen and (max-width: 1000px) {
@@ -26,12 +27,6 @@ const AntSelect = styled(Select)`
     }
   }
   .ant-select-selection-search-input{
-    height: 50px !important;
-    display: flex;
-    width: 100%;
-    padding: 0px 20px !important; 
-    margin: 0px 0px  !important;
-    font-weight: 400 !important;
     display: none !important;
        
     @media only screen and (max-width: 800px) {

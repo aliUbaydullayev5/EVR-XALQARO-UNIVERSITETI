@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const receptionPostFetch = createAsyncThunk('receptionPostFetch', async (payload)=> {
-    return await fetch('http://192.168.60.61:1010/api/v1/auth/admission', {
+    return await fetch('http://192.168.122.61:1010/api/v1/auth/admission', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

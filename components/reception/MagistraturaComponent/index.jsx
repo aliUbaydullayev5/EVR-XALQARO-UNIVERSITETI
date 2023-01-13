@@ -11,6 +11,7 @@ import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
 import CustomInput from 'react-phone-number-input/input';
+import getStudyTypes, { getStudyTypesFetch } from "../../../redux/slices/getStudyTypes"
 
 
 export const MagistraturaComponent = () => {
@@ -52,7 +53,7 @@ export const MagistraturaComponent = () => {
 
     const [allData, setAllData] = useState({
         lastName: '',
-        admissionName: '',
+        studyType: '',
         firstName: '',
         patron: '',
         password: '',
@@ -73,10 +74,10 @@ export const MagistraturaComponent = () => {
     }
 
     useEffect(() => {
-        dispatch(homeAllDataFetch())
+        dispatch(getStudyTypesFetch({ type: 'MASTERS' }))
     }, [])
 
-    const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
+    const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector((store) => store.getStudyTypes.data)
 
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
@@ -92,7 +93,7 @@ export const MagistraturaComponent = () => {
     }, [fileId])
 
     useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'BACHELOR' })
+        changeAllDataFunc({ type: 'studyType', value: 'MASTERS' })
     }, [])
 
     const checkAllInputs = () => {
@@ -113,11 +114,12 @@ export const MagistraturaComponent = () => {
             return false
         }
 
-        if (!(allData.phoneNumber.length == 16)) {
+        if (!(allData.phoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
+            console.log(allData.phoneNumber.length)
             return false
         }
-        if (!(allData.extraPhoneNumber.length == 16)) {
+        if (!(allData.extraPhoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
             return false
         }
@@ -155,8 +157,6 @@ export const MagistraturaComponent = () => {
 
     const pushAllInfo = () => {
         if (checkAllInputs()) dispatch(receptionPostFetch(allData))
-        console.log(allData)
-        // changeAllDataFunc({ type: '' })
     }
 
     const receptionData = useSelector((store) => store.receptionPost)
@@ -178,13 +178,11 @@ export const MagistraturaComponent = () => {
     const funForPhoneinput = ({value, type}) => {
         setphonePatron(value)
         changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type }) 
-
     }
     const funPhoneNumber = ({ value, type }) => {
-    setNumState(value)
-    changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+        setNumState(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
     }
-
     return (
         <Container>
             <TextCon>
@@ -273,7 +271,7 @@ export const MagistraturaComponent = () => {
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
-                        options={faculties?.map((value) => ({
+                        options={facultyDTOForHomeList?.map((value) => ({
                             value: value.id,
                             label: value.name
                         })) || []}
