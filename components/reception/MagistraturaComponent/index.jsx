@@ -7,7 +7,6 @@ import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import { useDispatch, useSelector } from "react-redux";
 import deployFile, { deployFileFetch } from "../../../redux/slices/deployFile";
-import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
 import CustomInput from 'react-phone-number-input/input';
