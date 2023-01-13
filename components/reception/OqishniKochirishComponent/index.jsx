@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 
 import { useDispatch, useSelector } from "react-redux";
-import deployFile, { deployFileFetch } from "../../../redux/slices/deployFile";
-import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
+import  { deployFileFetch } from "../../../redux/slices/deployFile";
+import { homeAllDataFetch } from "../../../redux/slices/homeAllData";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
 import CustomInput from 'react-phone-number-input/input';
@@ -269,30 +269,30 @@ const OqishniKochirishComponent = () => {
                     onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })}/>
                 </div>
 
-                    <Container.Number className='row5'>
+                <div>
                         <CustomInput
                             placeholder="Enter phone number"
-                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                            onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
                             maxLength={17}
-                            value={numState}
-                            className={'customPhoneInput'}
+                            value={phonePatron}
+                            className={'phoNumber'}
                         />
-                    </Container.Number>
+                </div>
 
                 <div className={'row4'}>
                     <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'}
                         onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
-                    <Container.Number className='row10'>
+                <div className={'row10'}>
                         <CustomInput
                             placeholder="Enter phone number"
-                            onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
+                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
                             maxLength={17}
-                            value={phonePatron}
-                            className={'customPhoneInput'}
+                            value={numState}
+                            className={'phoNumber'}
                         />
-                    </Container.Number>
+                </div>
 
 
                 <div className={'row5'}>
@@ -319,14 +319,20 @@ const OqishniKochirishComponent = () => {
                     </IconBox>
                 </div>
 
-                <div>
-                    <IconBox>
-                        <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-                        <UploadFiler className={'UploadFile'} />
-                        <UploadMobile className={'UploadFileMobile'} />
-                    </IconBox>
+                <div className='row11'>
                     <div>
-                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'170px'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
+                                <UploadFiler className={'UploadFile'} />
+                                <UploadMobile className={'UploadFileMobile'} />
+                            </IconBox>
+                        </div>
+                        <div>
+                            <IconBox>
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                            </IconBox>
+                        </div>
                     </div>
                 </div>
 
@@ -351,16 +357,22 @@ const OqishniKochirishComponent = () => {
                     </IconBox>
                 </div>
 
-                <div >
-                    <IconBox>
-                        <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
-                        <UploadFiler className={'UploadFile'} />
-                        <UploadMobile className={'UploadFileMobile'} />
-                    </IconBox>
-               <div>
-                        <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'}  mheight={'26px'} msize={'16px'} mwidth={'170px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
-               </div>
-               </div>
+                <div className='row12'>
+                    <div>
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
+                                <UploadFiler className={'UploadFile'} />
+                                <UploadMobile className={'UploadFileMobile'} />
+                            </IconBox>
+                        </div>
+                        <div>
+                            <IconBox>
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />
+                            </IconBox>
+                        </div>
+                    </div>
+                </div>
 
                 <div className={'mobileDivNone'}></div>
 

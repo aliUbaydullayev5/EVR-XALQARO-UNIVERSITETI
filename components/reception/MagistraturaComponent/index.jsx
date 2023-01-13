@@ -6,11 +6,8 @@ import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import { useDispatch, useSelector } from "react-redux";
-import { deployFileFetch } from "../../../redux/slices/deployFile"
+import { deployFileFetch } from "../../../redux/slices/deployFile";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
-import { startMessage } from "../../../redux/slices/message";
-import CustomInput from 'react-phone-number-input/input';
-import { getStudyTypesFetch } from "../../../redux/slices/getStudyTypes"
 
 
 export const MagistraturaComponent = () => {
