@@ -1,5 +1,5 @@
 import React from 'react'
-import Container, { Dean, Founder, Dekan, Rector, Prorektor, Center, Bolim1, Bolim2,     } from './stayle.js'
+import Container, { Dean, Founder,  Rector, Prorektor, Center, Bolim1, Bolim2,     } from './stayle.js'
 
 export const ManagementCom = () => {
 
@@ -21,87 +21,87 @@ export const ManagementCom = () => {
             title: 'Bolim'
         },
         {
-            id: 1,
+            id: 5,
             title: 'Bolim'
         },
         {
-            id: 2,
+            id: 6,
             title: 'Bolim'
         },
         {
-            id: 3,
+            id: 7,
             title: 'Bolim'
         },
         {
-            id: 4,
+            id: 8,
             title: 'Bolim'
         },
         {
-            id: 1,
+            id: 9,
             title: 'Bolim'
         },
         {
-            id: 2,
+            id: 10,
             title: 'Bolim'
         },
         {
-            id: 3,
+            id: 11,
             title: 'Bolim'
         },
         {
-            id: 4,
+            id: 12,
             title: 'Bolim'
         },
         {
-            id: 1,
+            id: 13,
             title: 'Bolim'
         },
         {
-            id: 2,
+            id: 14,
             title: 'Bolim'
         },
         {
-            id: 3,
+            id: 15,
             title: 'Bolim'
         },
         {
-            id: 4,
+            id: 16,
             title: 'Bolim'
         },
         {
-            id: 1,
+            id: 17,
             title: 'Bolim'
         },
         {
-            id: 2,
+            id: 18,
             title: 'Bolim'
         },
         {
-            id: 3,
+            id: 19,
             title: 'Bolim'
         },
         {
-            id: 4,
+            id: 20,
             title: 'Bolim'
         },
         {
-            id: 1,
+            id: 21,
             title: 'Bolim'
         },
         {
-            id: 2,
+            id: 22,
             title: 'Bolim'
         },
         {
-            id: 3,
+            id: 23,
             title: 'Bolim'
         },
         {
-            id: 4,
+            id: 24,
             title: 'Bolim'
-        },
-
+        }
     ]
+
   return (
       <Container>
           <Founder>
@@ -120,16 +120,16 @@ export const ManagementCom = () => {
           <Dean>
               <div><p>Dekan</p></div>
               <div><p>Dekan</p></div>
-              <div><p>Dekan</p></div>
+              <div><p>Dean</p></div>
           </Dean>
 
           <Center>
-              {data.map((value) => (        
-              <Bolim1>
-                      <div><p>{value.title}</p></div>
-                      <div><p>{value.title}</p></div>
-                  </Bolim1>
-              ))}
+                {data?.map((value) => value && (        
+                    <Bolim1 key={value?.id}>
+                        <div><p>{value?.title}</p></div>
+                        <div><p>{value?.title}</p></div>
+                    </Bolim1>
+                ))}
           </Center>
 
       </Container>

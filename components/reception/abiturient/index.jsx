@@ -5,68 +5,22 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg"
 import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
+import CustomInput from 'react-phone-number-input/input';
 import {useDispatch, useSelector} from "react-redux"
 import deployFile, {deployFileFetch} from "../../../redux/slices/deployFile"
 import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost"
 import {startMessage} from "../../../redux/slices/message"
 import getStudyTypes, {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes"
 
+
 export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-    const [numState, setNumState] = useState('')
-    const [length, setLength] = useState(0)
-
-    const changeNumState = (event) => {
-        if (length < event.length) {
-            setLength(event.length - 1)
-            if (event.length == 2) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState(event + ' ')
-            }
-        }
-        if (length >= event.length) {
-            setLength(event.length)
-            setNumState(event)
-        }
-        changeAllDataFunc({ type: 'phoneNumber', value: event.split(' ').join('') })
-        return setNumState(event)
-    }
-
-
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
-
-    const changeNumState1 = (event) => {
-        if (length1 < event.length) {
-            setLength1(event.length - 1)
-            if (event.length == 2) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState1(event + ' ')
-            }
-        }
-        if (length1 >= event.length) {
-            setLength1(event.length)
-            setNumState1(event)
-        }
-        changeAllDataFunc({ type: 'extraPhoneNumber', value: event.split(' ').join('') })
-        return setNumState1(event)
-    }
+  
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
-
 
     const changeMumPass = (event) => {
         if (pasSerLength < event.length) {
@@ -79,6 +33,8 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             setPasSerLength(event.length)
             setNumPasSeriya(event)
         }
+
+
         changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
         return setNumPasSeriya(event.toUpperCase())
     }
@@ -92,7 +48,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         }
     })
 
-    
     const [allData, setAllData] = useState({
         lastName: '',
         studyType: '',
@@ -122,7 +77,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }, [])
 
     const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
-
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
         fakeData[type] = value
@@ -154,16 +108,16 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             return false
         }
         if (!(allData.passportSeries.length == 9)) {
+            console.log(allData.passportSeries.length)
             dispatch(startMessage({ time: 5, message: 'Passport seriya rakami no togri kiritilgan' }))
             return false
         }
-        if(!(allData.phoneNumber.length == 9)) {
-            dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilgan'}))
-
+        if(!(allData.phoneNumber.length == 12)) {
+            dispatch(startMessage({time: 5, message: 'Telefon raqamni togri kiritilganmagan'}))
             return false
         }
-        if (!(allData.extraPhoneNumber.length == 9)) {
-            dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
+        if (!(allData.extraPhoneNumber.length == 12)) {
+            dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilganMaGan' }))
             return false
         }
         if (!(allData.diplomaId.length > 3)) {
@@ -201,6 +155,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     const pushAllInfo = () => {
         if(checkAllInputs()){
             dispatch(receptionPostFetch(allData))
+            console.log(allData, 'push')
         }
     }
 
@@ -222,8 +177,17 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             dispatch(resetVerify())
         }, 2000)
     }
+    const [phonePatron, setphonePatron] = useState('+998')
+    const [numState, setNumState] = useState('+998')
 
-
+    const funForPhoneinput = ({ value, type }) => {
+        setphonePatron(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+    const funPhoneNumber = ({ value, type }) => {
+        setNumState(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
     return (
         <Container>
             <TextCon>
@@ -256,10 +220,13 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                 </div>
 
                 <Container.Number className='row5'>
-                    <div>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'352px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'Telfon Raqamingiz'} padding={'7px 0px 0px 90px'} size={'24px'} onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
-                        <Container.FormatNumber className=''>+998</Container.FormatNumber>
-                    </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                        maxLength={17}
+                        value={numState}
+                        className={'customPhoneInput'}
+                    />
                 </Container.Number>
 
                 <div className='row3'>
@@ -267,10 +234,13 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                 </div>
 
                 <Container.Number className='row6'>
-                    <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'16px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1} onchange={(e) => changeNumState1(e.target.value)} />
-                        <Container.FormatNumber>+998</Container.FormatNumber>
-                    </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
+                        maxLength={17}
+                        value={phonePatron}
+                        className={'customPhoneInput'}
+                    />
                 </Container.Number>
 
                 <div className='row4'>
@@ -281,7 +251,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <div>
                         <div>
                             <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
+                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
                                 <UploadFiler className={'UploadFile2'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>
@@ -293,7 +263,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         </div>
                     </div>
                 </div>
-
                 <IconBox className='row8'>
                     <AntSelect 
                         showSearch
@@ -302,6 +271,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
+
                         options={facultyDTOForHomeList?.map((value)=> ({
                             value: value.id,
                             label: value.name
@@ -309,7 +279,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         onChange={(e)=> changeAllDataFunc({type: 'facultyId', value: e})}
                     />
                 </IconBox>
-
                 <div className='row10'>
                     <div>
                         <div>
@@ -326,7 +295,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         </div>
                     </div>
                 </div>
-
                 <IconBox className='row7'>
                     <AntSelect
                         showSearch
@@ -351,6 +319,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
+
                     {receptionData.status !== 'loading'  ?
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
                         :
@@ -363,5 +332,4 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         </Container>
     )
 }
-
 export default AbiturientQabul

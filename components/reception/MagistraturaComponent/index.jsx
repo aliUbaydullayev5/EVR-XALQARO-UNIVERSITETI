@@ -6,63 +6,21 @@ import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import { useDispatch, useSelector } from "react-redux";
-import deployFile, { deployFileFetch } from "../../../redux/slices/deployFile";
+import { deployFileFetch } from "../../../redux/slices/deployFile";
 import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
+import CustomInput from 'react-phone-number-input/input';
+import getStudyTypes, { getStudyTypesFetch } from "../../../redux/slices/getStudyTypes"
 
-export const MagistraturaComponent = (searchElement, fromIndex) => {
+
+export const MagistraturaComponent = () => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-    const [numState, setNumState] = useState('')
-    const [length, setLength] = useState(0)
 
-    const changeNumState = (event) => {
-        if (length < event.length) {
-            setLength(event.length - 1)
-            if (event.length == 2) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState(event + ' ')
-            }
-        }
-        if (length >= event.length) {
-            setLength(event.length)
-            setNumState(event)
-        }
-        changeAllDataFunc({ type: 'phoneNumber', value: event.split(' ').join('') })
-        return setNumState(event)
-    }
-
-
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
-
-    const changeNumState1 = (event) => {
-        if (length1 < event.length) {
-            setLength1(event.length - 1)
-            if (event.length == 2) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState1(event + ' ')
-            }
-        }
-        if (length1 >= event.length) {
-            setLength1(event.length)
-            setNumState1(event)
-        }
-        changeAllDataFunc({ type: 'extraPhoneNumber', value: event.split(' ').join('') })
-        return setNumState1(event)
-    }
+    const [phonePatron, setphonePatron] = useState('+998')
+    const [numState, setNumState] = useState('+998')
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
@@ -95,7 +53,7 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
 
     const [allData, setAllData] = useState({
         lastName: '',
-        admissionName: '',
+        studyType: '',
         firstName: '',
         patron: '',
         password: '',
@@ -116,10 +74,10 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
     }
 
     useEffect(() => {
-        dispatch(homeAllDataFetch())
+        dispatch(getStudyTypesFetch({ type: 'MASTERS' }))
     }, [])
 
-    const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
+    const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector((store) => store.getStudyTypes.data)
 
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
@@ -135,7 +93,7 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
     }, [fileId])
 
     useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'BACHELOR' })
+        changeAllDataFunc({ type: 'studyType', value: 'MASTERS' })
     }, [])
 
     const checkAllInputs = () => {
@@ -156,11 +114,12 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
             return false
         }
 
-        if (!(allData.phoneNumber.length == 9)) {
+        if (!(allData.phoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
+            console.log(allData.phoneNumber.length)
             return false
         }
-        if (!(allData.extraPhoneNumber.length == 9)) {
+        if (!(allData.extraPhoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
             return false
         }
@@ -197,30 +156,33 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
     }
 
     const pushAllInfo = () => {
-        if (checkAllInputs()) {
-            dispatch(receptionPostFetch(allData))
-        }
+        if (checkAllInputs()) dispatch(receptionPostFetch(allData))
     }
 
     const receptionData = useSelector((store) => store.receptionPost)
 
     useEffect(() => {
-        if (receptionData?.status === 'error') {
-            dispatch(startMessage({ time: 5, type: 'error', message: receptionData.message }))
-        }
+        if (receptionData?.status === 'error') dispatch(startMessage({ time: 5, type: 'error', message: receptionData.message }))
+
     }, [receptionData])
 
 
     if (receptionData.pushAnswer) {
         router.push('/receptionPage/application/UsersCardInfo')
-        if (receptionData.status === 'success') {
-            dispatch(startMessage({ time: 5, type: 'success', message: receptionData.message }))
-        }
+        if (receptionData.status === 'success') dispatch(startMessage({ time: 5, type: 'success', message: receptionData.message }))
         setTimeout(() => {
             dispatch(resetVerify())
         }, 2000)
     }
 
+    const funForPhoneinput = ({value, type}) => {
+        setphonePatron(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type }) 
+    }
+    const funPhoneNumber = ({ value, type }) => {
+        setNumState(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
     return (
         <Container>
             <TextCon>
@@ -255,11 +217,13 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
                 </div>
 
                 <Container.Number className='row5'>
-                    <div>
-                        <Input className='inputPhone' mradius={'5px'} mwidth={'352px'} mheight={'27px'} msize={'16px'} mpadding={'0px 0px 0px 60px'} width={'513px'} height={'46px'} placeholder={'__ ___ __ __'} padding={'7px 0px 0px 90px'} size={'24px'}
-                            onchange={(e) => changeNumState(e.target.value)} value={numState} maxlength={'12'} />
-                        <Container.FormatNumber className=''>+998</Container.FormatNumber>
-                    </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                        maxLength={17}
+                        value={numState}
+                        className={'customPhoneInput'}
+                    />
                 </Container.Number>
 
                 <div className='row3'>
@@ -268,11 +232,13 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
                 </div>
 
                 <Container.Number className='row6'>
-                    <div>
-                        <Input placeholder={'Otangiz yoki onangizni raqami'} mradius={'5px'} mwidth={'352px'} mheight={'26px'} mpadding={'0px 0 0 60px'} msize={'16px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'7px 0 0 90px'} size={'24px'} value={numState1}
-                            onchange={(e) => changeNumState1(e.target.value)} />
-                        <Container.FormatNumber>+998</Container.FormatNumber>
-                    </div>
+                    <CustomInput 
+                        placeholder="Enter phone number"
+                        onChange={(value) => funForPhoneinput({value, type: 'extraPhoneNumber'})}
+                        maxLength={17}
+                        value={phonePatron}
+                        className={'customPhoneInput'}
+                        />
                 </Container.Number>
 
                 <div className='row4'>
@@ -305,7 +271,7 @@ export const MagistraturaComponent = (searchElement, fromIndex) => {
                         }}
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
-                        options={faculties?.map((value) => ({
+                        options={facultyDTOForHomeList?.map((value) => ({
                             value: value.id,
                             label: value.name
                         })) || []}

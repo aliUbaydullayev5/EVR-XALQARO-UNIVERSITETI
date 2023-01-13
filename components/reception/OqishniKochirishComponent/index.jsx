@@ -139,7 +139,7 @@ const OqishniKochirishComponent = () => {
     }, [fileId])
 
     useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'BACHELOR' })
+        changeAllDataFunc({ type: 'admissionName', value: 'MASTERS' })
     }, [])
     const checkAllInputs = () => {
         if (!(allData.lastName.length > 3)) {
@@ -280,7 +280,7 @@ const OqishniKochirishComponent = () => {
                             options={[
                                 {
                                     value: 1,
-                                    label: 'No Data',
+                                    label: '1',
                                 },
                                 {
                                     value: '2',
@@ -341,8 +341,10 @@ const OqishniKochirishComponent = () => {
                             }
                             options={studyLanguages?.map((value) => ({
                                 value: value,
-                                label:value
-                            }))|| []}
+                                label: value
+                            })) || [{
+
+                            }]}
                             onchange={() => changeAllDataFunc({ type: 'studyLanguage',val})}
                         />
                     </IconBox>
@@ -394,6 +396,7 @@ const OqishniKochirishComponent = () => {
                 <div className={'mobileDivNone'}></div>
 
 
+
                 <BtnCon >
                     <div className='mobileNone'></div>
                     {receptionData.status !== 'loading' && receptionData.status !== 'success' ?
@@ -401,6 +404,7 @@ const OqishniKochirishComponent = () => {
                         :
                         <div></div>
                     }
+
                 </BtnCon>
             </InputCont>
         </Container>

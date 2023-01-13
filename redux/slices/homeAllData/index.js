@@ -16,9 +16,7 @@ const homeAllData = createSlice({
         },
         [homeAllDataFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
-            if(action?.payload?.success == true){
-                state.data = action?.payload?.data
-            }
+            if(action?.payload?.success == true) state.data = action?.payload?.data
         },
         [homeAllDataFetch.rejected]: (state)=> {
             state.status = 'error'
