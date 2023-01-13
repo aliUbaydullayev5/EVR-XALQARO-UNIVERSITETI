@@ -178,7 +178,6 @@ const FirstPageMainCom = () => {
                         <>
                             <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             <Container.Number>
-
                                 <CustomInput
                                     placeholder="Enter phone number"
                                     value={numberState}

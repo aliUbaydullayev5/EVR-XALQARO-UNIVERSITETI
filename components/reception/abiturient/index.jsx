@@ -289,7 +289,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <div>
                         <div>
                             <IconBox>
-
                                 <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
 
                                 <UploadFiler className={'UploadFile2'} />
