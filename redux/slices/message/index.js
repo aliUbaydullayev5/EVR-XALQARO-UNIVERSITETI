@@ -11,12 +11,11 @@ const messageSlice = createSlice({
     },
     reducers:{
         startMessage(state, action){
-
             const {message, time, type} = action.payload
             const timeSeconds = time * 1000
             state.hiddenBool = true
             state.type = 'warning'
-            if(state.type){
+            if(state.type) {
                 state.type = type
             }
             if(state.hiddenBool){

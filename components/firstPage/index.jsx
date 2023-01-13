@@ -1,23 +1,24 @@
-import Container from './style'
-import Logo from '../../assets/icon/firstlogo.svg'
+import Container from "./style"
+import Logo from "../../assets/icon/firstlogo.svg"
 import {Input, Button} from "../generic"
-import {useRouter} from "next/router"
 import {useEffect, useState} from "react"
-import LogoMobile from '../../assets/icon/download.svg'
+import LogoMobile from "../../assets/icon/download.svg"
 import {firstVerifyFetch, resetTimerVerify} from "../../redux/slices/firstVerify"
-import {useSelector, useDispatch} from 'react-redux'
 import {firstSmsCodeFetch} from "../../redux/slices/firstSmsVerifyCode"
-import {startMessage} from "../../redux/slices/message";
-import CustomInput from 'react-phone-number-input/input';
+import {startMessage} from "../../redux/slices/message"
+import CustomInput from "react-phone-number-input/input"
+
+
+import {useSelector, useDispatch} from "react-redux"
+import {useRouter} from "next/router"
+
+
+
 const FirstPageMainCom = () => {
 
     const router = useRouter()
 
-    const [numState, setNumState] = useState('')
-    const [length, setLength] = useState(0)
-
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
+    const [smsState, setSmsState] = useState('')
 
     const [timeLeft, setTimeLeft] = useState(2 * 60)
     const [isCounting, setIsCounting] = useState(false)
@@ -29,110 +30,69 @@ const FirstPageMainCom = () => {
     const [nameState, setNameState] = useState('')
     const [numberState, setNumberState] = useState('+998')
 
-    const [errorRed, setErrorRed] = useState(true)
-
-
     // ---------------------- Redux ----------------------
 
     const dispatch = useDispatch()
     const {verifyCode} = useSelector((store) => store.firstVerify)
-    const {pushToHome} = useSelector((store)=> store.firstSmsCodeFetch)
+    const {pushToHome, status, message} = useSelector((store) => store.firstSmsCodeFetch)
 
-    // ---------------------- Empty area for input Logic ----------------------
+    useEffect(()=> {
+        if(pushToHome) router.push('/homePage')
+        if(status === 'error') dispatch(startMessage({time: 3, message}))
+    }, [pushToHome, status])
 
-
-    const changeNumState1 = (event) => {
-        setNumberState(event)
-        if(length1 < event.length){
-            setLength1(event.length-1)
-            if(event.length == 3){
-                return setNumState1(event+' ')
-            }
-        }
-        if(length1 >= event.length){
-            setLength1(event.length)
-            setNumState1(event)
-        }
-        if(nameState)
-        return setNumState1(event)
-
-    }
-  
-
-
+    useEffect(()=> {
+        if(localStorage.getItem('firstToken')) router.push('/homePage')
+    }, [])
 
 
     // ---------------------- Timer Logic ----------------------
 
-    const getParTime = (time) => time.toString().padStart(2, '0')
 
+
+    const getParTime = (time) => time.toString().padStart(2, '0')
     useEffect(()=> {
         setMinut(getParTime(Math.floor(timeLeft / 60)))
         setSecund(getParTime(timeLeft - minut * 60))
-        if(minut == '00' && secund == '00' ){
+        if(minut == '00' && secund == '00' && verifyCode){
+            handleStop()
             setHidden(false)
             dispatch(resetTimerVerify())
         }
     })
 
-    useEffect(()=> {
-        const interval = setInterval(()=> {
-            if(isCounting) setTimeLeft((timeLeft)=> (timeLeft >= 1 ? timeLeft - 1 : 0))
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isCounting) setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
         }, 1000)
-        if(timeLeft === 0) {
-            setIsCounting(false)
-        }
-        return ()=> clearInterval(interval)
+        if (timeLeft === 0) setIsCounting(false)
+        return () => clearInterval(interval)
     }, [isCounting])
 
-
-
-    //------------ Timer Start Func
     const handleStart = () => {
-        if(timeLeft === 0) setTimeLeft(2 * 60)
+        if (timeLeft === 0) setTimeLeft(2 * 60)
         setIsCounting(true)
     }
 
-    // ---------------------- Input filter Logic ----------------------
+    //------------ Timer Stop Func
 
-
-    // for check input filters
-
-    // useEffect(()=> {
-    //     setErrorRed(true)
-    // }, [nameState, numberState])
+    const handleStop = () => setIsCounting(false)
 
     useEffect(()=> {
-        if(nameState.length >= 3 && numberState.length == 12 || verifyCode){
-            handleStart()
-            setHidden(true)
-        }
-    }, [verifyCode])
+        if(verifyCode == true) setHidden(true)
+    }, [verifyCode, status])
 
-
-    // push request
     const pushFunc = () => {
-        if(nameState.length >= 3 && numberState.length == 12){
-            dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: numberState.split(' ').join('')}))
-        }else{
-            dispatch(startMessage({time: '3', message: 'The phone number is incorrect'}))
-            setErrorRed(false)
-        }
-        console.log(numberState)
+        handleStart()
+        if(nameState.length >= 3 && (numberState.match(/[0-9]+/g) || []).join('').length == 12) dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: (numberState.match(/[0-9]+/g) || []).join('')}))
+        else dispatch(startMessage({time: '3', message: 'The phone number is incorrect'}))
     }
-
-
-    // ---------------------- Sms Code Logic ----------------------
-
     const pushSmsToBackend = () => {
-        dispatch(firstSmsCodeFetch({verifyCode: numState1.split(' ').join(''), phoneNumber: '998'+numState.split(' ').join('')}))
+        dispatch(firstSmsCodeFetch({
+            verifyCode: smsState.split(' ').join(''),
+            phoneNumber: (numberState.match(/[0-9]+/g) || []).join('')
+        }))
     }
-
-    useEffect(()=> {
-        if(pushToHome) router.push('/homePage')
-        if(localStorage.getItem('firstToken')) router.push('/homePage')
-    }, [pushToHome])
-
 
     return(
         <Container>
@@ -167,26 +127,25 @@ const FirstPageMainCom = () => {
                 Saytga kirish uchun ismingiz va telefon <br />
                 raqamingizni qoldiring.
             </Container.SubTitle>
+
             <Container.Row mjs={'center'}>
                 {
                     hidden ?
                         <>
-                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={numState1} maxlength={7} onchange={(e)=> changeNumState1(e.target.value)} />
+                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={smsState} maxlength={6} onchange={(e)=> setSmsState(e.target.value)} />
                             <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
                         <>
                             <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
                             <Container.Number>
-
                                 <CustomInput
-                                    placeholder="Enter phone number"
+                                    placeholder="+998 __ ___ __ __"
                                     value={numberState}
                                     onChange={setNumberState}
                                     maxLength={17}
                                     className={'customPhoneInput'}
                                 />
-
                             </Container.Number>
                         </>
                 }

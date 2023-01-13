@@ -118,7 +118,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }
 
     useEffect(()=> {
-        dispatch(getStudyTypesFetch({type: 'MASTERS'}))
+        dispatch(getStudyTypesFetch({type: 'BACHELOR'}))
     }, [])
 
     const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
@@ -199,7 +199,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     }
 
     const pushAllInfo = () => {
-        console.log(allData)
         if(checkAllInputs()){
             dispatch(receptionPostFetch(allData))
         }
@@ -282,7 +281,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <div>
                         <div>
                             <IconBox>
-                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
+                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
                                 <UploadFiler className={'UploadFile2'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>

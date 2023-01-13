@@ -200,7 +200,6 @@ const OqishniKochirishComponent = () => {
         if (checkAllInputs()) {
             dispatch(receptionPostFetch(allData))
         }
-        console.log(allData)
     }
 
     const receptionData = useSelector((store) => store.receptionPost)

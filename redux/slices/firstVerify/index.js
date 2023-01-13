@@ -1,7 +1,7 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
-    return await fetch('http://192.168.60.61:1010/api/v1/auth/check-phone', {
+    return await fetch('http://192.168.122.61:1010/api/v1/auth/check-phone', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -36,6 +36,7 @@ const firstVerify = createSlice({
     reducers: {
         resetTimerVerify(state) {
             state.verifyCode = false
+            state.status = null
         }
     }
 })

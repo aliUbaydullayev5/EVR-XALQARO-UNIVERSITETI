@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const getStudyTypesFetch = createAsyncThunk('fetchGetStudyTypes', async (payload)=> {
-    return await fetch(`http://192.168.60.61:1010/api/v1/faculty/get-study-type?studyType=BACHELOR`).then((res)=> res.json())
+    return await fetch(`http://192.168.122.61:1010/api/v1/faculty/get-study-type?studyType=${payload.type}`).then((res)=> res.json())
 })
 
 const getStudyTypes = createSlice({

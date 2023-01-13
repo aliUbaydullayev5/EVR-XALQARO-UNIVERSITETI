@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (payload)=> {
-    return await fetch('http://192.168.60.61:1010/api/v1/auth/verify-phone', {
+    return await fetch('http://192.168.122.61:1010/api/v1/auth/verify-phone', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,8 +17,8 @@ const firstSmsCode = createSlice({
     name: 'postSmsCode',
     initialState: {
         status: null,
-        firstToken: null,
-        pushToHome: false
+        pushToHome: false,
+        message: ''
     },
     extraReducers: {
         [firstSmsCodeFetch.pending]: (state)=> {
@@ -27,14 +27,15 @@ const firstSmsCode = createSlice({
         [firstSmsCodeFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
             if(action.payload.success == true){
-                state.firstToken = 'success'
                 state.pushToHome = true
-                if(localStorage.getItem('firstToken')){
-                    state.pushToHome = true
-                    state.firstToken = 'success'
-                }else{
-                    localStorage.setItem('firstToken', 'success')
-                }
+                state.message = 'Siz muvofiyaqatli ottingiz'
+
+                if(localStorage.getItem('firstToken')) state.pushToHome = true
+                else localStorage.setItem('firstToken', 'success')
+            }
+            if(action?.payload?.success == false){
+                state.status = 'error'
+                state.message = action?.payload?.errors[0]?.errorMsg
             }
         },
         [firstSmsCodeFetch.rejected]: (state)=> {
