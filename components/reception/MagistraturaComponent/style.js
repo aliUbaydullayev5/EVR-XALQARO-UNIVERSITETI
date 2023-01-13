@@ -74,7 +74,7 @@ Container.Number = styled.div`
     letter-spacing: -0.025em;
     color: #fff;
     width: 513px !important;
-    padding: 0px 0px 0px 30px !important;
+    padding: 0px 0px 0px 20px !important;
     height: 46px;
  @media only screen and (max-width: 800px) {
   width: 100% !important;

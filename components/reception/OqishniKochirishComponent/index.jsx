@@ -11,6 +11,8 @@ import deployFile, { deployFileFetch } from "../../../redux/slices/deployFile";
 import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
+import CustomInput from 'react-phone-number-input/input';
+
 const OqishniKochirishComponent = () => {
     const router = useRouter()
     const dispatch = useDispatch()
@@ -19,9 +21,9 @@ const OqishniKochirishComponent = () => {
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
+    const [phonePatron, setphonePatron] = useState('+998')
+    const [numState, setNumState] = useState('+998')
 
-    const [numState, setNumState] = useState('')
-    const [length, setLength] = useState(0)
 
     const [width, setWidth] = useState(null)
     useEffect(() => {
@@ -224,6 +226,15 @@ const OqishniKochirishComponent = () => {
         }, 2000)
     }
 
+    const funForPhoneinput = ({ value, type }) => {
+        setphonePatron(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+    const funPhoneNumber = ({ value, type }) => {
+        setNumState(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+
     return (
         <Container>
             <TextCon>
@@ -304,26 +315,30 @@ const OqishniKochirishComponent = () => {
                     onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })}/>
                 </div>
 
-                <div>
-                    <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'__ ___ __ __'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState}
-                            onchange={(e) => changeNumState(e.target.value)} />
-                        <p className='phoNumbers'>+998</p>
-                    </div>
-                </div>
+                    <Container.Number className='row5'>
+                        <CustomInput
+                            placeholder="Enter phone number"
+                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={numState}
+                            className={'customPhoneInput'}
+                        />
+                    </Container.Number>
 
                 <div className={'row4'}>
                     <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'}
                         onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
                 </div>
 
-                <div className={'row10'}>
-                    <div className='phoNumber'>
-                        <Input width={'513px'} height={'46px'} mpadding={'4px 19px 0 62px'} msize={'16px'} mradius={'5px'} placeholder={'Otangiz yoki onangizni raqami'} mheight={'26px'} mwidth={'100%'} maxlength={12} padding={'0 0 0 95px'} size={'24px'} value={numState1}
-                            onchange={(e) => changeNumState1(e.target.value)} />
-                        <p className='phoNumbers'>+998</p>
-                    </div>
-                </div>
+                    <Container.Number className='row10'>
+                        <CustomInput
+                            placeholder="Enter phone number"
+                            onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
+                            maxLength={17}
+                            value={phonePatron}
+                            className={'customPhoneInput'}
+                        />
+                    </Container.Number>
 
 
                 <div className={'row5'}>

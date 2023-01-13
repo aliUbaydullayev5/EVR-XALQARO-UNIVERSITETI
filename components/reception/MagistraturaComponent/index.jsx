@@ -6,20 +6,18 @@ import { useRouter } from 'next/router.js';
 import AntSelect from "../Antd/style.js"
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import { useDispatch, useSelector } from "react-redux";
-import { deployFileFetch } from "../../../redux/slices/deployFile";
-import homeAllData, { homeAllDataFetch } from "../../../redux/slices/homeAllData";
+import { deployFileFetch } from "../../../redux/slices/deployFile"
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
 import CustomInput from 'react-phone-number-input/input';
-import getStudyTypes, { getStudyTypesFetch } from "../../../redux/slices/getStudyTypes"
+import { getStudyTypesFetch } from "../../../redux/slices/getStudyTypes"
 
 
 export const MagistraturaComponent = () => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-
-    const [phonePatron, setphonePatron] = useState('+998')
+    const [phonePatron, setPhonePatron] = useState('+998')
     const [numState, setNumState] = useState('+998')
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
@@ -176,7 +174,7 @@ export const MagistraturaComponent = () => {
     }
 
     const funForPhoneinput = ({value, type}) => {
-        setphonePatron(value)
+        setPhonePatron(value)
         changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type }) 
     }
     const funPhoneNumber = ({ value, type }) => {
