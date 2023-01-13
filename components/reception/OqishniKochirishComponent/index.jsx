@@ -33,53 +33,7 @@ const OqishniKochirishComponent = () => {
             setWidth('513px')
         }
     })
-    
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
 
-    const changeNumState1 = (event) => {
-        if (length1 < event.length) {
-            setLength1(event.length - 1)
-            if (event.length == 2) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState1(event + ' ')
-            }
-        }
-        if (length1 >= event.length) {
-            setLength1(event.length)
-            setNumState1(event)
-        }
-        changeAllDataFunc({ type: 'extraPhoneNumber', value: event.split(' ').join('') })
-        return setNumState1(event)
-    }
-
-
-    const changeNumState = (event) => {
-        if (length < event.length) {
-            setLength(event.length - 1)
-            if (event.length == 2) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState(event + ' ')
-            }
-        }
-        if (length >= event.length) {
-            setLength(event.length)
-            setNumState(event)
-        }
-
-        changeAllDataFunc({ type: 'phoneNumber', value: event.split(' ').join('') })
-        return setNumState(event)
-    }
 
 
     const changeMumPass = (event) => {
