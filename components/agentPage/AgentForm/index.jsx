@@ -5,33 +5,14 @@ import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import {useRouter} from "next/router";
 import { useState } from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
+import CustomInput from 'react-phone-number-input/input';
 
 const AgentFormComponent = () => {
 
 
     const router = useRouter()
 
-    const [numState1, setNumState1] = useState('')
-    const [length1, setLength1] = useState(0)
-    const changeNumState1 = (event) => {
-        if (length1 < event.length) {
-            setLength1(event.length - 1)
-            if (event.length == 2) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumState1(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumState1(event + ' ')
-            }
-        }
-        if (length1 >= event.length) {
-            setLength1(event.length)
-            setNumState1(event)
-        }
-        return setNumState1(event)
-    }
+
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
@@ -109,10 +90,13 @@ const AgentFormComponent = () => {
                 </div>
 
                 <div>
-                 <div className='mainForm'>
-                    <Input placeholder={'Firma rahbarining qo’shimcha raqami'} mradius={'5px'} mpadding={'0px 50px'} mwidth={'100%'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} maxlength={'12'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState2(e.target.value)} value={numState2}  />
-                    <p>+998</p>
-                 </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                        maxLength={17}
+                        value={numState}
+                        className={'customPhoneInput'}
+                    />
                 </div>
 
                 <div>
@@ -141,19 +125,25 @@ const AgentFormComponent = () => {
 
 
                 <div>
-                    <div className='mainForm'>
-                        <Input placeholder={'Firmaning telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'}  padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
-                        <p>+998</p>
-                    </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
+                        maxLength={17}
+                        value={phonePatron}
+                        className={'customPhoneInput'}
+                    />
                 </div>
                 <div>
                     <Input placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
                 </div>
                 <div>
-                    <div className='mainForm'>
-                        <Input placeholder={'Firma rahbarining telefon raqami'} mradius={'5px'} mpadding={'10px 50px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} padding={'0 0 0 75px'} size={'24px'} onchange={(e) => changeNumState1(e.target.value)} value={numState1} maxlength={'12'} />
-                        <p>+998</p>
-                    </div>
+                    <CustomInput
+                        placeholder="Enter phone number"
+                        onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
+                        maxLength={17}
+                        value={phonePatron}
+                        className={'customPhoneInput'}
+                    />
                 </div>
               
                 

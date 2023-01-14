@@ -14,6 +14,30 @@ const Container = styled.div`
 
    }
 `
+Container.Number = styled.div`
+  width: 100% !important;
+  .customPhoneInput{
+    border-radius: 15px !important;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    width: 513px !important;
+    padding: 0px 0px 0px 20px !important;
+    height: 46px;
+ @media only screen and (max-width: 800px) {
+  width: 100% !important;
+  font-size: 16px;
+  height:26px !important;
+  border-radius: 5px !important;
+ }
+ }
+`
 const TextCon = styled.div`
   width: 100%;
   height: 84px;
@@ -121,8 +145,8 @@ const IconBox = styled.div`
   }
   .UploadFile2{
     position: absolute;
-    left: 30px;
-    top: 7px;
+    left: 10px;
+    top: 11px;
     cursor: pointer;
   }
   .UploadFile1{
