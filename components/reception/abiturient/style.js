@@ -10,7 +10,7 @@ const Container = styled.div`
   border-radius: 30px;
   @media only screen and (max-width: 800px) {
      grid-template-rows: 35px 1fr;
-      box-shadow: none;
+     box-shadow: none;
   }
 `
 const TextCon = styled.div`
@@ -91,25 +91,6 @@ Container.Number = styled.div`
  }
 `
 
-Container.FormatNumber = styled.div`
-  position: absolute;
-  top: 15px;
-  left: 30px;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 105.9%;
-  letter-spacing: -0.025em;
-  color: white;
-  @media only screen and (max-width: 800px) {
-    position: absolute;
-    top: 5px;
-    left: 20px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 105.9%;
-    letter-spacing: -0.025em;
-  }
-`
 const InputCont = styled.div`
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;

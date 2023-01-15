@@ -17,11 +17,10 @@ const Container = styled.div`
 Container.Number = styled.div`
   width: 100% !important;
   position: relative;
-
   .customPhoneInput{
     border-radius: 15px !important;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
-    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -30,22 +29,23 @@ Container.Number = styled.div`
     letter-spacing: -0.025em;
     color: #fff;
     width: 513px !important;
-    padding: 0px 0px 0px 10px !important;
+    padding: 0px 0px 0px 20px !important;
     height: 46px;
-
-  @media only screen and (max-width: 800px) {
-    width: 100% !important;
-    font-size: 16px;
-    height:36px !important;
-    border-radius: 5px !important;
-  }
+ @media only screen and (max-width: 800px) {
+  width: 100% !important;
+  font-size: 16px;
+  height:26px !important;
+  border-radius: 5px !important;
+ }
  }
 `
 Container.NumberText = styled.div`
   position: absolute;
   top: -16px;
-  left: 90px;
+  left: 100px;
   z-index: 999999;
+  width: 100%;
+
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -54,6 +54,9 @@ Container.NumberText = styled.div`
   align-items: center;
   letter-spacing: -0.025em;
   color: rgba(194, 191, 191, 0.442);
+@media only screen and (max-width: 1000px) {
+ left: 20px; 
+}
 `
 
 const TextCon = styled.div`
@@ -94,14 +97,11 @@ const InputCont = styled.div`
   justify-content: center;
   align-items: center;
 
->div{
-gap: 10px;
-margin: 10px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
+  >div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 .row5{
   display: flex;
   align-items: center;
@@ -121,15 +121,29 @@ align-items: center;
   margin:  0 auto;
 }
 
+ .row9{
+    >div{
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
+  .row8{
+     >div{
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+    }
 
   @media only screen and (max-width: 1000px) {
-     display: flex;
-     flex-direction:column;
-     padding: 0px 25px;
-     display: grid;
-     grid-template-columns: 1fr ;
-
-
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr, 12);
+    >div{
+      width: 100%;
+      height: 26px;
+    }
     .row1{
        grid-row: 1/2;
     }
@@ -214,53 +228,127 @@ const BtnCon = styled.div`
 `
 const IconBox = styled.div`
   position: relative;
+  height: 46px;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .ArrowTop {
     position: absolute;
     right: 30px;
     top: 35px;
     cursor: pointer;
   }
+    .UploadFile1{
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: none;
+      }
+    }
   .UploadFile2{
     position: absolute;
     left: 10px;
     top: 11px;
     cursor: pointer;
+   @media only screen and (max-width: 800px) {
+      display: none;
+    }
   }
-  .UploadFile1{
-    position: absolute;
-    left: 30px;
-    top: 7px;
-    cursor: pointer;
-  }
+
   
- @media only screen and (max-width: 1000px) {
-   .UploadFile1{
-     display: none;
-     position: absolute;
-     left: 2px;
-     top: 12px; 
-     cursor: pointer;
-   }
- 
- }
+
  @media only screen and (min-width: 1000px) {
-  .UploadFile2{
-    display: none;
+ .UploadFile1{
     position: absolute;
-    left: 2px;
-    top: 12px; 
+    left: 5px;
+    top: 6px;
     cursor: pointer;
-   }
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
+}
+  .UploadFile2{
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: none; 
+    }
  }
+}
+  .UploadFileMobile{
+    position: absolute;
+    left: 7px ;
+    top: 18px;
+    bottom: 5px;
+    cursor: pointer;
+    @media only screen and (min-width: 800px) {
+      display: none;
+    }
+  } 
 `
 
 
 Container.InputCustom1 = styled.input`
-  min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  border-bottom: 0;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105.9%;
+  letter-spacing: -0.025em;
+  font-size: 22px;
+  transition: .2s;
+  
+  :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  color: ${({ inputType }) => inputType && 'transparent'};
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  ::before {
+    font-family: 'Montserrat', sans-serif;
+    content: 'Pasport nusxasini';
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    display: inline-block;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    margin: 8px 0 0 0;
+    width: 200px;
+  }
+  cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    min-width: 124.72px !important;
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+`
+
+Container.InputCustom2 = styled.input`
+  cursor: pointer;
+  min-width: 124.72px;
+  width: 251px;
+  height: 46px;
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-bottom: 0px;
   border-radius: 15px;
@@ -274,51 +362,42 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
-  @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 30px;
-     font-size:13px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-     height: 36px;
-     border-radius: 5px;
-
-   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
   ::before {
-    content: 'Firma guvohnomasini yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
-    @media only screen and (max-width: 1000px) {
-      margin: 12px 0 0 0;
-    }
   }
-  cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
 `
-
 
 Container.InputCustom2 = styled.input`
   cursor: pointer;
   min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0px 0px 0px 70px;
-  font-size: 24px;
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-bottom: 0px;
   border-radius: 15px;
@@ -329,45 +408,38 @@ Container.InputCustom2 = styled.input`
   font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
-  color:transparent;
+  color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
-  @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 30px;
-     font-size:13px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-     height: 36px;
-     border-radius: 5px;
-  
-   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
   ::before {
-    content: 'Firma raxbarining pasportini yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
-    @media only screen and (max-width: 1000px) {
-      margin: 12px 0 0 0;
-    }
-
   }
+  @media only screen and (max-width: 1000px) {
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
 `
+
 
 
 

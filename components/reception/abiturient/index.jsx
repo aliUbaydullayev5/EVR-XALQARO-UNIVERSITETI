@@ -194,7 +194,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             </TextCon>
             <InputCont>
                 <div className='row1'>
-                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
+                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
                 </div>
 
                 <IconBox className='row9'  >
