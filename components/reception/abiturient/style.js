@@ -183,7 +183,6 @@ const InputCont = styled.div`
     }
     
   }
-  
 `
 InputCont.Section1 = styled.div``
 InputCont.Section2 = styled.div``

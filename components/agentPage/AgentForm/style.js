@@ -16,6 +16,8 @@ const Container = styled.div`
 `
 Container.Number = styled.div`
   width: 100% !important;
+  position: relative;
+
   .customPhoneInput{
     border-radius: 15px !important;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
@@ -28,16 +30,32 @@ Container.Number = styled.div`
     letter-spacing: -0.025em;
     color: #fff;
     width: 513px !important;
-    padding: 0px 0px 0px 20px !important;
+    padding: 0px 0px 0px 10px !important;
     height: 46px;
- @media only screen and (max-width: 800px) {
-  width: 100% !important;
-  font-size: 16px;
-  height:26px !important;
-  border-radius: 5px !important;
- }
+
+  @media only screen and (max-width: 800px) {
+    width: 100% !important;
+    font-size: 16px;
+    height:36px !important;
+    border-radius: 5px !important;
+  }
  }
 `
+Container.NumberText = styled.div`
+  position: absolute;
+  top: -16px;
+  left: 90px;
+  z-index: 999999;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 105.9%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.025em;
+  color: rgba(194, 191, 191, 0.442);
+`
+
 const TextCon = styled.div`
   width: 100%;
   height: 84px;
@@ -69,22 +87,81 @@ const TextCon = styled.div`
 `
 
 const InputCont = styled.div`
-  
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+
+>div{
+gap: 10px;
+margin: 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.row5{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+.row6{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+.row4{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+
+
   @media only screen and (max-width: 1000px) {
      display: flex;
      flex-direction:column;
      padding: 0px 25px;
      display: grid;
-  grid-template-columns: 1fr ;
- }
-  >div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+     grid-template-columns: 1fr ;
+
+
+    .row1{
+       grid-row: 1/2;
+    }
+    .row2{
+       grid-row: 2/3;
+    }
+    .row3{
+       grid-row: 3/4;
+    }
+    .row4{
+       grid-row: 4/5;
+    }
+    .row5{
+       grid-row: 5/6;
+      
+    }
+    .row6{
+       grid-row: 6/7;
+    }
+    .row7{
+       grid-row: 7/8;
+    }
+    .row8{
+       grid-row: 8/9;
+    }
+    .row9{
+       grid-row: 9/10;
+    }
+    .row10{
+      grid-row: 11/12;
+      margin: 0 auto;
+    }
   }
   .mainForm{
      position: relative;
@@ -114,8 +191,8 @@ const InputCont = styled.div`
 
     }
   
-  
 `
+
 InputCont.Section1 = styled.div``
 InputCont.Section2 = styled.div``
 
