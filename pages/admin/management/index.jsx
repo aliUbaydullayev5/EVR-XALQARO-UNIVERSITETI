@@ -1,5 +1,5 @@
 import React from 'react'
-import ManagementCom from '../../../../components/adminPage/management/index.jsx'
+import ManagementCom from '../../../components/adminPage/management/index.jsx'
 
 export const boshqaruvPage = () => {
   return (

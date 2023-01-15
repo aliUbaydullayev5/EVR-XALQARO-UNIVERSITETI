@@ -8,18 +8,20 @@ import Sms from "../../../assets/icons/Sms.svg"
 
 
 export const ArizalarCom = () => {
+
+
   const [data, setData] = useState(DataAriza);
+
+
   return (
     <Container>
-      <div className='scrollCon' style={{overflowY: 'scroll', maxHeight: '550px'}}>
+      <div className='scrollCon' style={{ overflowY: 'scroll', maxHeight: '550px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
           {data.map((value) => {
-            const Img = value.img
             return(
               <ConTable key={value.id}>
-              <ConTable.ChecBox>
-                <Img className={'checbox'} />
-              </ConTable.ChecBox>
+
+                <input type="checkbox"/>
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>

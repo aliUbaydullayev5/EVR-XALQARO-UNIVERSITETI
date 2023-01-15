@@ -1,11 +1,12 @@
 import React from 'react'
-import QabuldanOtganCom from '../../../../components/adminPage/qabuldanotgan/index.jsx'
+
 import Root from "../../../../root";
+import QabuldanOtganCom from '../../../components/adminPage/qabuldanotgan/index.jsx';
 
 export const QabuldanOtganlar = () => {
   return (
       <Root>
-          <QabuldanOtganCom/>
+      <QabuldanOtganCom />
       </Root>
   )
 }
