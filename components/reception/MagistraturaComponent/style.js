@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -50,6 +51,7 @@ const TextCon = styled.div`
 
 Container.Number = styled.div`
   width: 100% !important;
+  position: relative;
   .customPhoneInput{
     border-radius: 15px !important;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
@@ -64,12 +66,12 @@ Container.Number = styled.div`
     width: 513px !important;
     padding: 0px 0px 0px 20px !important;
     height: 46px;
- @media only screen and (max-width: 800px) {
-  width: 100% !important;
-  font-size: 16px;
-  height:26px !important;
-  border-radius: 5px !important;
- }
+    @media only screen and (max-width: 800px) {
+      width: 100% !important;
+      font-size: 16px;
+      height:26px !important;
+      border-radius: 5px !important;
+    }
  }
 `
 

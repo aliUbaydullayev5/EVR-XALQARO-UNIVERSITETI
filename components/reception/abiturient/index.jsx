@@ -12,7 +12,6 @@ import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPo
 import {startMessage} from "../../../redux/slices/message"
 import {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes"
 
-
 export const AbiturientQabul = (searchElement, fromIndex) => {
     const router = useRouter()
     const dispatch = useDispatch()
@@ -26,16 +25,17 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)
             if (event.length == 2) {
-                return setNumPasSeriya(event + ' ')
+                return setNumPasSeriya(event.toUpperCase() + ' ')
             }
         }
+
         if (pasSerLength >= event.length) {
             setPasSerLength(event.length)
-            setNumPasSeriya(event)
+            setNumPasSeriya(event.toUpperCase())
         }
 
 
-        changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('')})
+        changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('').toUpperCase()})
         return setNumPasSeriya(event.toUpperCase())
     }
 
@@ -67,9 +67,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     })
 
     const findFileFunc = ({file, by}) => {
-        if(file.target.files[0]) {
-            dispatch(deployFileFetch({file, by}))
-        }
+        dispatch(deployFileFetch({file: file, by}))
     }
 
     useEffect(()=> {
@@ -152,11 +150,10 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         return true
     }
 
+
     const pushAllInfo = () => {
-        if(checkAllInputs()){
-            dispatch(receptionPostFetch(allData))
-            console.log(allData, 'push')
-        }
+        if(checkAllInputs()) dispatch(receptionPostFetch(allData))
+        console.log(allData)
     }
 
     const receptionData = useSelector((store) => store.receptionPost)
@@ -177,6 +174,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
             dispatch(resetVerify())
         }, 2000)
     }
+
     const [phonePatron, setphonePatron] = useState('+998')
     const [numState, setNumState] = useState('+998')
 
@@ -188,6 +186,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
         setNumState(value)
         changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
     }
+
     return (
         <Container>
             <TextCon>
@@ -219,15 +218,20 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })} />
                 </div>
 
-                <Container.Number className='row5'>
-                    <CustomInput
-                        placeholder="Enter phone number"
-                        onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
-                        maxLength={17}
-                        value={numState}
-                        className={'customPhoneInput'}
-                    />
-                </Container.Number>
+                <div className='row5'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Enter phone number"
+                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={numState}
+                            className={'customPhoneInput'}
+                        />
+                        <Container.NumberText>
+                            Enter phone number
+                        </Container.NumberText>
+                    </Container.Number>
+                </div>
 
                 <div className='row3'>
                     <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })} />
@@ -251,7 +255,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                     <div>
                         <div>
                             <IconBox>
-                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
+                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
                                 <UploadFiler className={'UploadFile2'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>

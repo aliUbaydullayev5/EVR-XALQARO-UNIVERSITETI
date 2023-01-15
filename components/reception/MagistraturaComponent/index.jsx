@@ -8,6 +8,9 @@ import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { deployFileFetch } from "../../../redux/slices/deployFile";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
+import CustomInput from "react-phone-number-input/input";
+import {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes";
+import {startMessage} from "../../../redux/slices/message";
 
 
 export const MagistraturaComponent = () => {
@@ -25,15 +28,15 @@ export const MagistraturaComponent = () => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)
             if (event.length == 2) {
-                return setNumPasSeriya(event + ' ')
+                return setNumPasSeriya(event.toUpperCase() + ' ')
             }
         }
         if (pasSerLength >= event.length) {
             setPasSerLength(event.length)
-            setNumPasSeriya(event)
+            setNumPasSeriya(event.toUpperCase())
         }
-        changeAllDataFunc({ type: 'passportSeries', value: event.split(' ').join('') })
-        return setNumPasSeriya(event)
+        changeAllDataFunc({ type: 'passportSeries', value: event.split(' ').join('').toUpperCase() })
+        return setNumPasSeriya(event.toUpperCase())
     }
 
     const [width, setWidth] = useState(null)
@@ -151,6 +154,7 @@ export const MagistraturaComponent = () => {
     }
 
     const pushAllInfo = () => {
+        console.log(allData)
         if (checkAllInputs()) dispatch(receptionPostFetch(allData))
     }
 
@@ -158,7 +162,6 @@ export const MagistraturaComponent = () => {
 
     useEffect(() => {
         if (receptionData?.status === 'error') dispatch(startMessage({ time: 5, type: 'error', message: receptionData.message }))
-
     }, [receptionData])
 
 
@@ -313,7 +316,7 @@ export const MagistraturaComponent = () => {
 
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
-                    {receptionData.status !== 'loading' && receptionData.status !== 'success' ?
+                    {receptionData.status !== 'loading' && ?
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
                         :
                         <div></div>
