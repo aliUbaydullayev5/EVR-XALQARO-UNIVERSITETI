@@ -29,12 +29,12 @@ const deployFile = createSlice({
         },
         [deployFileFetch.fulfilled]: (state, {payload})=> {
             const {success, data, by} = payload
+            console.log(payload)
             if(success == true){
                 state.status = 'success'
                 state.fileId = data
                 state.by = by
             }
-            console.log(payload)
         },
         [deployFileFetch.rejected]: (state)=> {
             state.status = 'error'

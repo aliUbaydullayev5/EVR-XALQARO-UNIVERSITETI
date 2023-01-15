@@ -29,7 +29,6 @@ const receptionPost = createSlice({
             if(action?.payload?.success == false){
                 state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg
-                console.log(action.payload)
             }
         },
         [receptionPostFetch.rejected]: (state)=> {

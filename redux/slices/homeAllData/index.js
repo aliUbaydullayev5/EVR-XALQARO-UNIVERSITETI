@@ -1,9 +1,13 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const homeAllDataFetch = createAsyncThunk('homeAllData', async (payload)=> {
+<<<<<<< HEAD
 
     return await fetch('http://192.168.122.61:1010/api/v1/home').then((res)=> res.json())
 
+=======
+    return await fetch('http://192.168.122.61:1010/api/v1/home').then((res)=> res.json())
+>>>>>>> main
 })
 
 const homeAllData = createSlice({
@@ -21,10 +25,12 @@ const homeAllData = createSlice({
             if(action?.payload?.success == true){
 
                 state.data = action?.payload?.data
+<<<<<<< HEAD
                 console.log(action?.payload)
 
+=======
+>>>>>>> main
             }
-            console.log(action.payload.data.faculties,'dsds')
         },
         [homeAllDataFetch.rejected]: (state)=> {
             state.status = 'error'

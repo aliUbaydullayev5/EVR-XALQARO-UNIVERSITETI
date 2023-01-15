@@ -8,17 +8,13 @@ import {useEffect} from "react";
 
 const Root = ({ children }) => {
     const { pathname } = useRouter()
-    const { pushToHome } = useSelector((store)=> store.firstSmsCodeFetch)
+    const { status, pushToHome } = useSelector((store)=> store.firstSmsCodeFetch)
     const router = useRouter()
 
-    const dispatch = useDispatch()
 
     useEffect(()=> {
-        if(pushToHome) router.push('/homePage')
         if(!localStorage.getItem('firstToken')) router.push('/firstPage')
-    }, [pushToHome])
-
-
+    }, [])
 
     return (
         <Container>

@@ -165,7 +165,7 @@ Container.Number = styled.div`
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
     box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
     padding: 0 20px;
-    
+
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -177,6 +177,13 @@ Container.Number = styled.div`
     letter-spacing: -0.025em;
     color: #fff;
 
+    @media only screen and (max-width: 1000px) {
+      height: 52px !important;
+      border-radius: 5px !important;
+      font-size: 26px;
+      padding: 0 10px;
+    }
+    
   }
 `
 Container.FormatNumber = styled.div`
