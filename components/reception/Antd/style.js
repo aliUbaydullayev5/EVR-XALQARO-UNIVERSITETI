@@ -12,8 +12,6 @@ const AntSelect = styled(Select)`
     padding: 0 20px !important;
     font-size: 24px !important;
     font-weight: 400 !important;
-    height: 40px !important;
-
     font-family: 'Montserrat' !important;
     @media only screen and (max-width: 1000px) {
       font-size: 16px !important;
@@ -46,7 +44,7 @@ const AntSelect = styled(Select)`
   font-size: 17px !important;
  } 
  .ant-select-item .ant-select-item-option .ant-select-item-option-active{
-font-size: 17px !important;
+   font-size: 17px !important;
  }
 `
 
