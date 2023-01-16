@@ -2,6 +2,14 @@ import img from "../../../assets/icons/succus.svg"
 
 const DataAriza = [
     {
+        id: "№",
+        ismi: 'FIO',
+        phone: 'Telefon raqam',
+        data: 'Kun',
+        clicked: false,
+        img: img
+    },
+    {
         id: 1,
         ismi: 'Gulomov Elbek',
         phone: '+998997590480',
