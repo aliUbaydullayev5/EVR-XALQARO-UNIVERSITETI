@@ -12,6 +12,7 @@ import { homeAllDataFetch } from "../../../redux/slices/homeAllData";
 import { receptionPostFetch, resetVerify } from "../../../redux/slices/receptionPost";
 import { startMessage } from "../../../redux/slices/message";
 import CustomInput from 'react-phone-number-input/input';
+import {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes";
 
 const OqishniKochirishComponent = () => {
     const router = useRouter()
@@ -40,21 +41,15 @@ const OqishniKochirishComponent = () => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)
             if (event.length == 2) {
-                return setNumPasSeriya(event + ' ')
-            }
-            if (event.length == 6) {
-                return setNumPasSeriya(event + ' ')
-            }
-            if (event.length == 9) {
-                return setNumPasSeriya(event + ' ')
+                return setNumPasSeriya(event.toUpperCase() + ' ')
             }
         }
         if (pasSerLength >= event.length) {
             setPasSerLength(event.length)
             setNumPasSeriya(event)
         }
-        changeAllDataFunc({ type: 'passportSeries', value: event.split(' ').join('') })
-        return setNumPasSeriya(event)
+        changeAllDataFunc({ type: 'passportSeries', value: event.split(' ').join('').toUpperCase() })
+        return setNumPasSeriya(event.toUpperCase())
     }
     const [allData, setAllData] = useState({
         lastName: '',
@@ -74,13 +69,14 @@ const OqishniKochirishComponent = () => {
         passportId: ''
     })
 
-    const findFileFunc = ({ file, by }) => {
-        if (file.target.files[0]) dispatch(deployFileFetch({ file, by }))
+    const findFileFunc = ({file, by}) => {
+        dispatch(deployFileFetch({file: file, by}))
     }
+
     useEffect(() => {
-        dispatch(homeAllDataFetch())
+        dispatch(getStudyTypesFetch({type: 'BACHELOR'}))
     }, [])
-    const { educationTypes, faculties, studyLanguages } = useSelector((store) => store.homeAllData.data)
+    const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store) => store.getStudyTypes.data)
 
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
@@ -93,9 +89,8 @@ const OqishniKochirishComponent = () => {
     useEffect(() => {
         changeAllDataFunc({ type: by, value: fileId })
     }, [fileId])
-
-    useEffect(() => {
-        changeAllDataFunc({ type: 'admissionName', value: 'MASTERS' })
+    useEffect(()=> {
+        changeAllDataFunc({type: 'studyType', value: 'BACHELOR'})
     }, [])
     const checkAllInputs = () => {
         if (!(allData.lastName.length > 3)) {
@@ -115,11 +110,11 @@ const OqishniKochirishComponent = () => {
             return false
         }
 
-        if (!(allData.phoneNumber.length == 9)) {
+        if (!(allData.phoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
             return false
         }
-        if (!(allData.extraPhoneNumber.length == 9)) {
+        if (!(allData.extraPhoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
             return false
         }
@@ -211,15 +206,11 @@ const OqishniKochirishComponent = () => {
                             }}
                             placeholder='Talim shaklingiz'
                             optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-                            }
                             options={educationTypes?.map((value) => (
                             {    value,
                                 label:value }
                             ))  || []}
-                            onChange={(e)=>changeAllDataFunc({type:'edicetionType',value: e})}
+                            onChange={(e)=>changeAllDataFunc({type:'educationType',value: e})}
                         />
                     </IconBox>
                 </div>
@@ -238,10 +229,7 @@ const OqishniKochirishComponent = () => {
                             }}
                             placeholder='Uqishingizni qaysi kursga kuchiryabsiz'
                             optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-                            }
+                            onChange={(e) => changeAllDataFunc({ type: 'courseLevel',value: e})}
                             options={[
                                 {
                                     value: 1,
@@ -270,6 +258,7 @@ const OqishniKochirishComponent = () => {
                 </div>
 
                 <div>
+                    <Container.Number>
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
@@ -277,14 +266,19 @@ const OqishniKochirishComponent = () => {
                             value={phonePatron}
                             className={'phoNumber'}
                         />
+                        <Container.NumberText>
+                            Enter phone number
+                        </Container.NumberText>
+                    </Container.Number>
                 </div>
 
                 <div className={'row4'}>
                     <Input placeholder={'Pasport seriyasingiz'} mpadding={'0 19px'} msize={'16px'} mradius={'5px'} width={'513px'} mwidth={'290px'} mheight={'26px'} height={'46px'} size={'24px'}
-                        onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                        onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
                 </div>
 
                 <div className={'row10'}>
+                    <Container.Number>
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
@@ -292,6 +286,10 @@ const OqishniKochirishComponent = () => {
                             value={numState}
                             className={'phoNumber'}
                         />
+                        <Container.NumberText>
+                            Enter phone number
+                        </Container.NumberText>
+                    </Container.Number>
                 </div>
 
 
@@ -311,10 +309,8 @@ const OqishniKochirishComponent = () => {
                             options={studyLanguages?.map((value) => ({
                                 value: value,
                                 label: value
-                            })) || [{
-
-                            }]}
-                            onchange={() => changeAllDataFunc({ type: 'studyLanguage',val})}
+                            })) || []}
+                            onChange={(e) => changeAllDataFunc({ type: 'studyLanguage',value: e})}
                         />
                     </IconBox>
                 </div>
@@ -323,7 +319,7 @@ const OqishniKochirishComponent = () => {
                     <div>
                         <div>
                             <IconBox>
-                                <Container.InputCustom2 type={'file'} onMouseUp={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
+                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
                                 <UploadFiler className={'UploadFile'} />
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>
@@ -345,14 +341,11 @@ const OqishniKochirishComponent = () => {
                             }}
                             placeholder='Talim yunalishingiz'
                             optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-                            }
-                            options={faculties?.map((value) => ({
+                            options={facultyDTOForHomeList?.map((value) => ({
                                 value: value.id,
                                 label: value.name
                             })) || []}
+                            onChange={(e) => changeAllDataFunc({ type: 'facultyId',value: e})}
                         />
                     </IconBox>
                 </div>
@@ -378,10 +371,14 @@ const OqishniKochirishComponent = () => {
 
                 <BtnCon >
                     <div className='mobileNone'></div>
-                    {receptionData.status !== 'loading' ?
+                    {receptionData.status == 'loading' &&
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} cursor={'none'} disabled={true}>JONATILYAPTI</Button>
+                    }
+                    {receptionData.status == null || receptionData.status == 'error' &&
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
-                        :
-                        <div></div>
+                    }
+                    {receptionData.status == 'success' &&
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>YANGILASH</Button>
                     }
                 </BtnCon>
             </InputCont>

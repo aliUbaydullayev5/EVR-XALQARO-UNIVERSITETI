@@ -145,6 +145,7 @@ const FirstPageMainCom = () => {
                                     onChange={setNumberState}
                                     maxLength={17}
                                     className={'customPhoneInput'}
+                                    onKeyDown={(e)=> e.key === 'Enter' && pushSmsToBackend()}
                                 />
                             </Container.Number>
                         </>

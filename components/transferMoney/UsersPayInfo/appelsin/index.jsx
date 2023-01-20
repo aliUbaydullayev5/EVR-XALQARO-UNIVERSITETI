@@ -9,7 +9,6 @@ import Image from 'next/image.js'
 
 // mobile Img 
 import ApelsinMobile from "../../../../assets/mobile/image/Apelsin.png"
-// import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
 
 
 export const Appelsinpay = () => {
@@ -52,8 +51,7 @@ export const Appelsinpay = () => {
     }
     return setNumState1(event)
   }
-// {(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'}
-  // AntModal 
+  // AntModal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const changeHidden = () => setIsModalOpen(!isModalOpen)

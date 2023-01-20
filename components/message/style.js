@@ -38,9 +38,8 @@ const typeMessageFunc = (type) => {
 const Container = styled.div`
   position: absolute;
   width: 400px;
-  height: 100px;
+  min-height: 100px;
   border-radius: 13px;
-  //background: rgba(90, 68, 150, 0.8);
   background: #fff;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   transition: .3s;
@@ -51,6 +50,11 @@ const Container = styled.div`
   display: grid;
   gap: 7px;
   grid-template-columns: 45px 1fr;
+  @media only screen and (max-width: 800px) {
+    width: 80%;
+    max-width: 400px;
+    padding: 5px 10px;
+  }
   
 `
 Container.Left = styled.div`

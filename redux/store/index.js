@@ -7,7 +7,8 @@ import deployFile from '../slices/deployFile'
 import receptionPost from '../slices/receptionPost'
 import messageSlice from '../slices/message'
 import getStudyTypes from '../slices/getStudyTypes'
-
+import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
+import receptionSmsVerify from '../slices/receptionSmsVerify'
 export default configureStore({
     reducer: {
         firstVerify,
@@ -16,6 +17,8 @@ export default configureStore({
         deployFile,
         receptionPost,
         messageSlice,
-        getStudyTypes
+        getStudyTypes,
+        reseptionCheckPhoneSlice,
+        receptionSmsVerify
     },
 })
