@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const homeAllDataFetch = createAsyncThunk('homeAllData', async (payload)=> {
-    return await fetch('http://192.168.122.61:1010/api/v1/home').then((res)=> res.json())
+    return await fetch('https://7915-84-54-84-207.eu.ngrok.io/api/v1/home').then((res)=> res.json())
 })
 
 const homeAllData = createSlice({

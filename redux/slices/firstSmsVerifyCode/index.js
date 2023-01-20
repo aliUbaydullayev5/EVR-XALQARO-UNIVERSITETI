@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (payload)=> {
-    return await fetch(`https://dd4a-84-54-84-207.eu.ngrok.io/api/v1/auth/verify-phone`, {
+    return await fetch(`https://7915-84-54-84-207.eu.ngrok.io/api/v1/auth/verify-phone`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
