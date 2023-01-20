@@ -213,30 +213,40 @@ export const MagistraturaComponent = () => {
                         onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })} />
                 </div>
 
-                <Container.Number className='row5'>
-                    <CustomInput
-                        placeholder="Enter phone number"
-                        onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
-                        maxLength={17}
-                        value={numState}
-                        className={'customPhoneInput'}
-                    />
-                </Container.Number>
+                <div className='row5'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Enter phone number"
+                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={numState}
+                            className={'customPhoneInput'}
+                        />
+                        <Container.NumberText>
+                            Enter phone number
+                        </Container.NumberText>
+                    </Container.Number>
+                </div>
 
                 <div className='row3'>
                     <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'}
                         onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })} />
                 </div>
 
-                <Container.Number className='row6'>
-                    <CustomInput 
-                        placeholder="Enter phone number"
-                        onChange={(value) => funForPhoneinput({value, type: 'extraPhoneNumber'})}
-                        maxLength={17}
-                        value={phonePatron}
-                        className={'customPhoneInput'}
+                <div  className='row6'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Enter phone number"
+                            onChange={(value) => funForPhoneinput({value, type: 'extraPhoneNumber'})}
+                            maxLength={17}
+                            value={phonePatron}
+                            className={'customPhoneInput'}
                         />
-                </Container.Number>
+                        <Container.NumberText>
+                            Enter phone number
+                        </Container.NumberText>
+                    </Container.Number>
+                </div>
 
                 <div className='row4'>
                     <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'}
@@ -315,10 +325,14 @@ export const MagistraturaComponent = () => {
 
                 <BtnCon className='row12'>
                     <div className='mobileNone'></div>
-                    {receptionData.status !== 'loading' ?
+                    {receptionData.status == 'loading' &&
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} cursor={'none'} disabled={true}>JONATILYAPTI</Button>
+                    }
+                    {receptionData.status == null || receptionData.status == 'error' &&
                         <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>QOLDIRISH</Button>
-                        :
-                        <div></div>
+                    }
+                    {receptionData.status == 'success' &&
+                        <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={() => pushAllInfo()}>YANGILASH</Button>
                     }
                 </BtnCon>
 

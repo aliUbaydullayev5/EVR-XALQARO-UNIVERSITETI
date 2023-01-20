@@ -9,11 +9,13 @@ const Container = styled.div`
   }
 `
 Container.Number = styled.div`
-  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  position: relative;
   .customPhoneInput{
     border-radius: 15px !important;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
-    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -22,16 +24,41 @@ Container.Number = styled.div`
     letter-spacing: -0.025em;
     color: #fff;
     width: 513px !important;
-    padding: 0px 0px 0px 20px !important;
+    padding: 0 0 0 20px !important;
     height: 46px;
- @media only screen and (max-width: 800px) {
-  width: 100% !important;
-  font-size: 16px;
-  height:26px !important;
-  border-radius: 5px !important;
- }
- }
+    @media only screen and (max-width: 800px) {
+      width: 100% !important;
+      font-size: 16px;
+      height:26px !important;
+      border-radius: 5px !important;
+      border: 1px solid red;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+  }
 `
+Container.NumberText = styled.div`
+  position: absolute;
+  top: -16px;
+  left: 90px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 105.9%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.025em;
+  color: rgba(194, 191, 191, 0.442);
+  @media only screen and (max-width: 800px) {
+    top: -12px;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 105.9%;
+  }
+`
+
 
 const TextCon = styled.div`
   width: 100%;
@@ -71,7 +98,7 @@ const InputCont = styled.div`
   border-bottom-right-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 13px;
   
   >div{
     display: flex;
@@ -81,7 +108,6 @@ const InputCont = styled.div`
   }
   .row11{
     >div{
-      width: 512px;
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
       grid-gap: 10px !important;
@@ -89,7 +115,6 @@ const InputCont = styled.div`
   }
   .row12{
     >div{
-      width: 512px;
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
       grid-gap: 10px !important;
@@ -188,7 +213,6 @@ const InputCont = styled.div`
     }
     .row10{
       grid-row: 10/11;
-
     }
     .row11{
       grid-row: 11/12;
@@ -252,27 +276,26 @@ const IconBox = styled.div`
 `
 
 const AntModal = styled(Modal)`
-box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-border-radius: 15px;
-padding:  50px;
-
-.ant-modal-body {
-  >p{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 105.9%;
-    display: flex;
-    align-items: center;
-    text-align: justify;
-    letter-spacing: -0.085em;
-    color: #FFFFFF;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 15px;
+  padding:  50px;
+  .ant-modal-body {
+    >p{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 105.9%;
+      display: flex;
+      align-items: center;
+      text-align: justify;
+      letter-spacing: -0.085em;
+      color: #FFFFFF;
       @media only screen and (max-width: 1000px) {
-            font-size: 14px;
+        font-size: 14px;
       }
+    }
   }
-}
 `
 
 InputCont.Section1 = styled.div``

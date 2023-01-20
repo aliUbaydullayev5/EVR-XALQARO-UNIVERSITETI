@@ -38,6 +38,7 @@ const receptionPost = createSlice({
     reducers:{
         resetVerify(state){
             state.pushAnswer = false
+            state.status = null
         }
     }
 })

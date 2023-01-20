@@ -15,9 +15,9 @@ const Container = styled.div`
 
 `
 const TextCon = styled.div`
-    width: 100%;
-    margin: 0 auto;
->h1{
+  width: 100%;
+  margin: 0 auto;
+  >h1{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -27,20 +27,20 @@ const TextCon = styled.div`
     align-items: center;
     letter-spacing: -0.025em;
     color: #FFFFFF;
-}
-@media only screen and (max-width: 1000px) {
-  >h1{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 105.9%;
-    display: flex;
-    align-items: center;
-    letter-spacing: -0.025em;
-    color: #FFFFFF;
   }
-}
+  @media only screen and (max-width: 1000px) {
+    >h1{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 105.9%;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+    }
+  }
 
 
 `
@@ -131,7 +131,6 @@ display: none;
 @media only screen and (max-width: 1000px) {
     width: 138px;
     height: 35px;
-    background-color: #ffff;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -144,28 +143,28 @@ display: none;
 `
 
 const AntModal = styled(Modal)`
-box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-border-radius: 15px;
-padding:  50px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin:  0 auto;
-
-.ant-modal-body {
-  >p{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 105.9%;
-    display: flex;
-    align-items: center;
-    text-align: justify;
-    letter-spacing: -0.085em;
-    color: #FFFFFF;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 15px;
+  padding:  50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:  0 auto;
+  
+  .ant-modal-body {
+    >p{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 105.9%;
+      display: flex;
+      align-items: center;
+      text-align: justify;
+      letter-spacing: -0.085em;
+      color: #FFFFFF;
+    }
   }
-}
 `
 const BtnText = styled.p`
   font-family: 'Montserrat';
@@ -177,17 +176,17 @@ const BtnText = styled.p`
   align-items: center;
   text-transform: uppercase;
   color: #221F51;
- @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1000px) {
     font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: #221F51;
- } 
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #221F51;
+  } 
 `
 const AntTimeCon = styled.div`
  display: flex;
