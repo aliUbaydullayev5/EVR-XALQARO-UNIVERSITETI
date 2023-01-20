@@ -1,11 +1,13 @@
 
 import QabuldanOtganCom from '../../../components/adminPage/qabuldanotgan/index.jsx';
+import RootAdmin from '../../../components/adminPage/RootAdmin/index.jsx';
+
 
 export const QabuldanOtganlar = () => {
   return (
-      <div>
+      <RootAdmin>
       <QabuldanOtganCom />
-      </div>
+    </RootAdmin>
   )
 }
 

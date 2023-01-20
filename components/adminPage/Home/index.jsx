@@ -18,7 +18,7 @@ const HomeComponent = () => {
             <div>
                 <p>Buxgalteriya</p>
             </div>
-            <div>
+            <div onClick={() => router.push('admin/setting')}>
                 <p>Sozlamalar</p>
             </div>
             <div onClick={() => router.push('admin/arizalar')} >

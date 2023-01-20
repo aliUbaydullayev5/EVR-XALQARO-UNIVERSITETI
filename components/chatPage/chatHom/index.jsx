@@ -85,7 +85,6 @@ const ChatComponents = () => {
                 
                 <div></div>
               </Container>
-            
         </>
     )
 }

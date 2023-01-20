@@ -1,11 +1,12 @@
 
 import ArizalarCom from "../../../components/adminPage/arizalar/index.jsx";
+import RootAdmin from "../../../components/adminPage/RootAdmin/index.jsx";
 
 const arzalar = () => {
   return (
-    <div>
+    <RootAdmin>
       <ArizalarCom />
-    </div>
+    </RootAdmin>
   )
 }
 
