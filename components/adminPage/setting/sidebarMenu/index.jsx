@@ -128,6 +128,7 @@ export const SidebarAdmin = () => {
     if (id === 4) {
       quarey.push('/admin/setting/test')
     }
+
   }
 
   return (

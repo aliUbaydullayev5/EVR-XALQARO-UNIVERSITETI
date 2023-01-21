@@ -7,7 +7,7 @@ const HomeComponent = () => {
 
     return(
         <Container >
-            <div onClick={() => router.push('admin/management')}>
+            <div onClick={() => router.push('/admin//management')}>
                     <p>Boshqaruv</p>
                     <p>bo’limi</p>
            </div>
@@ -18,13 +18,13 @@ const HomeComponent = () => {
             <div>
                 <p>Buxgalteriya</p>
             </div>
-            <div onClick={() => router.push('admin/setting')}>
+            <div onClick={() => router.push('/admin/setting')}>
                 <p>Sozlamalar</p>
             </div>
-            <div onClick={() => router.push('admin/arizalar')} >
+            <div onClick={() => router.push('/admin//arizalar')} >
                 <p>Arizalar</p>
             </div>
-            <div onClick={() => router.push('admin/qabuldanotganlar')}>
+            <div onClick={() => router.push('/admin//qabuldanotganlar')}>
                 
                 <p>Qabuldan</p>
                 <p>o’tganlar</p>

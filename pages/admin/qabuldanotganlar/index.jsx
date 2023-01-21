@@ -1,7 +1,7 @@
 
-import QabuldanOtganCom from '../../../components/adminPage/qabuldanotgan/index.jsx';
-import RootAdmin from '../../../components/adminPage/RootAdmin/index.jsx';
 
+import QabuldanOtganCom from "../../../components/adminPage/qabuldanotgan/index.jsx"
+import  RootAdmin from "../../../components/adminPage/RootLogo/index.jsx"
 
 export const QabuldanOtganlar = () => {
   return (

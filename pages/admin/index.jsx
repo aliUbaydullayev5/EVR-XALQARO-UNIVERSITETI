@@ -1,11 +1,9 @@
-import HomeComponent from "../../components/adminPage/Home/index.jsx";
-import Root from "../../root";
-
+import LoginCom from "../../components/adminPage/login/index.jsx";
 const HomePage = () => {
-    return(
-        <Root>
-            <HomeComponent />
-        </Root>
+    return (
+    <div>
+        <LoginCom /> 
+    </div>
     )
 }
 
