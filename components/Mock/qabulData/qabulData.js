@@ -4,7 +4,6 @@ import img from "../../../assets/icons/succus.svg"
 const dataQabul = [
 
     {
-        img: img,
         id: '100001',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',
@@ -22,7 +21,6 @@ const dataQabul = [
         tahrirlash: "✏️"
     },
     {
-        img: img,
         id: '100002',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',
@@ -40,7 +38,6 @@ const dataQabul = [
         tahrirlash: "✏️"
     },
     {
-        img: img,
         id: '100003',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',
@@ -58,7 +55,6 @@ const dataQabul = [
         tahrirlash: "✏️"
     },
     {
-        img: img,
         id: '100004',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',
@@ -76,7 +72,6 @@ const dataQabul = [
         tahrirlash: "✏️"
     },
     {
-        img: img,
         id: '100005',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',
@@ -94,7 +89,6 @@ const dataQabul = [
         tahrirlash: "✏️"
     },
     {
-        img: img,
         id: '100006',
         num: "1",
         ismi: 'Gulomov Elbek Ilg’or o’g’li',

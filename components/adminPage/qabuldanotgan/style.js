@@ -275,31 +275,31 @@ const ContainerSort = styled.div`
  }
 `
 const SelectSms = styled.div`
-position: relative;
-border: none;
->select{
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
-  border-radius: 20px;
-  width: 115.42px;
-  height: 30.97px;
-  color: white;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  padding:0px 0px 0px 67px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);   
-  border-radius: 20px;
-  width: 201px;
-  height: 42px;     
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap:10px;
-}
+  position: relative;
+  border: none;
+  >select{
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
+    border-radius: 20px;
+    width: 115.42px;
+    height: 30.97px;
+    color: white;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    padding:0px 0px 0px 67px;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);   
+    border-radius: 20px;
+    width: 201px;
+    height: 42px;     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+  }
 .Sms {
     position: absolute;
     right: 20px;
@@ -329,8 +329,8 @@ const ConTable = styled.div`
 Container.Bottom = styled.div`
   overflow-y: scroll;
   overflow-x: scroll;
-
   max-height: 400px;
+  width: 1300px;
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -366,20 +366,74 @@ Container.Bottom = styled.div`
 `
 Container.BottomInset = styled.div`
   display: grid;
-  grid-template-columns:1fr 1fr  1fr 1fr;
   grid-row-gap: 9px;
-  @media only screen and (max-width: 1000px) {
+  width: 100%;
+
+
+`
+Container.Nav = styled.div`
+display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+
+
+`
+Container.Box = styled.div`
+  display: flex;
+  display: grid;
+  grid-template-columns: 40px 96px 288px 90px 135px 198px 162px 240px 115px 191px 170px 240px 187px  182px 200px 205px 163px 196px 180px 185px 170px 230px 230px 149px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  >div{
+    border-right: 2px solid rgba(255, 255, 255, 0.5);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
 `
 
 Container.Section = styled.div`
   display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 10px;
+
+`
+
+Container.Map = styled.div`
+  display: flex;
+  display: grid;
   grid-template-columns: 40px 96px 288px 90px 135px 198px 162px 240px 115px 191px 170px 240px 187px  182px 200px 205px 163px 196px 180px 185px 170px 230px 230px 149px;
-@media only screen and (max-width: 1000px) {
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  >div{
+    border-right: 2px solid rgba(255, 255, 255, 0.5);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+  }
+  @media only screen and (max-width: 1000px) {
    
    }
 
 `
+
 export { ConTable, SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul, ConExel, ConSms, ConDate, TalimY, TalimTu }
 export default Container

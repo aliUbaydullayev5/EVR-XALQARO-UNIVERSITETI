@@ -4,214 +4,10 @@ import Down from "../../../assets/icons/admin/selectdown.svg"
 import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
 import Exel from "../../../assets/icons/admin/adminExel.svg"
 import Sms from "../../../assets/icons/admin/adminSms.svg"
-import data from "../../Mock/rahbariyat/data.js"
-
-
-// import { Checkbox, Divider, Radio, Table } from 'antd';
-// import { useState } from 'react'
-
+import dataQabul from '../../Mock/qabulData/qabulData.js'
 
 
 export const QabuldanOtganCom = () => {
-  // const [selectionType, setSelectionType] = useState('checkbox');
-  // const rowSelection = {
-  //   onChange: (selectedRowKeys, selectedRows) => {
-  //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  //   },
-  //   getCheckboxProps: (record) => ({
-  //     disabled: record.name === 'Disabled User',
-  //     // Column configuration not to be checked
-  //     name: record.name,
-  //   }),
-  // };
-  const data = [
-    {
-    name: '№',
-    id: 1,
-    },
-    {
-      serie: 'ID',
-      id: 2,
-    },
-    {
-      kurs: 'Kurs',
-      id: 3,
-    },
-    {
-      talimtili: 'Ta’lim tili',
-      id: 4,
-    },
-    {
-      talimyunalish: 'Ta’lim yo’nalishi',
-      id: 5,
-    },
-
-    {
-      talimshakli: 'Ta’lim shakli',
-      id: 6,
-    },
-    {
-      qoshilgansana: 'Qo’shilgan sanasi',
-      id: 7,
-    },
-    {
-      status: 'Status',
-      id: 8,
-    },
-
-    {
-      imtihon: 'Imtihon natijasi',
-      id: 9,
-    },
-    {
-      kontrakt: 'Kontrakt turi',
-      id: 10,
-    },
-
-    {
-      shartnoma: 'Shartnoma summasi',
-      id: 11,
-    },
-    {
-      tolagansum: 'To’lagan summa',
-      id: 14,
-    },
-    {
-      qolgansum: 'Qolgan summa',
-      id: 15,
-    },
-    {
-      shartnomakod: 'Shartnoma kodi',
-      id: 16,
-    },
-
-    {
-      hujjat: 'Hujjat',
-      id: 17,
-    },
-    {
-      shartnomayuk: 'Shartnoma.yuk',
-      id: 18,
-    },
-    {
-      malumotnoma: 'Ma’lumotnoma',
-      id: 19,
-    },
-    {
-      chaqiruvxati: 'Chaqiruv xati',
-      id: 20,
-    },
-    {
-      zapros: '  Zapros',
-      id: 21,
-    },
-    {
-      telefon1: 'Telefon raqam 1',
-      id: 22,
-    },
-    {
-      telefon2: 'Telefon raqam 2',
-      id: 23,
-    },
-    {
-      tahrirlash: 'Tahrirlash',
-      id: 24,
-    },
-
-    {
-      name: '1',
-      id: 25,
-    },
-    {
-      serie: '100102',
-      id: 26,
-    },
-    {
-      kurs: '3',
-      id: 27,
-    },
-    {
-      talimtili: 'O’zbek tili',
-      id: 28,
-    },
-    {
-      talimyunalish: 'Iqtisodiyot',
-      id: 29,
-    },
-
-    {
-      talimshakli: 'Kunduzgi',
-      id: 30,
-    },
-    {
-      qoshilgansana: '10.12.2022',
-      id: 31,
-    },
-    {
-      status: 'qwerty',
-      id: 32,
-    },
-
-    {
-      imtihon: '83%',
-      id: 33,
-    },
-    {
-      kontrakt: 'Stipendiyasi',
-      id: 34,
-    },
-
-    {
-      shartnoma: '9 000 000',
-      id: 35,
-    },
-    {
-      tolagansum: '6 000 000',
-      id: 36,
-    },
-    {
-      qolgansum: '3 000 000',
-      id: 37,
-    },
-    {
-      shartnomakod: 'AA 101 000 ',
-      id: 38,
-    },
-
-    {
-      hujjat: 'Elbek Gulomov',
-      id: 39,
-    },
-    {
-      shartnomayuk: 'yukalangan',
-      id: 40,
-    },
-    {
-      malumotnoma: 'yuklangan',
-      id: 41,
-    },
-    {
-      chaqiruvxati: 'yuklangan',
-      id: 42,
-    },
-    {
-      zapros: '  yuklangan',
-      id: 43,
-    },
-    {
-      telefon1: '+998 99 759 04 80',
-      id: 44,
-    },
-    {
-      telefon2: '+998 99 759 04 80',
-      id: 45,
-    },
-    {
-      tahrirlash: '🖊',
-      id: 46,
-    },
-
-  ]
 
 
   return (
@@ -334,67 +130,71 @@ export const QabuldanOtganCom = () => {
       </ContainerSort>
     
       </Container>
-      {/* <ConTable>
-      <Con
-        <div>
-          <Radio.Group
-            onChange={({ target: { value } }) => {
-              setSelectionType(value);
-            }}
-            value={selectionType}
-          >
-          
-          </Radio.Group>
-
-          <Divider />
-          <Table
-            rowSelection={{
-              type: selectionType,
-              ...rowSelection,
-            }}
-            columns={columns}
-            dataSource={data}
-            scroll={{
-              x: 1500,
-              y: 400,
-            }}
-          />
-        </div>
-   </ConTable> */}
       <div>
       <ConTable>
-           <input type="checkbox" />
-      <Container.Bottom>
-        <Container.BottomInset>
-          {
-            data?.map((value) => (
-              <Container.Section key={value.id}>
-  
-                <div>{value?.name}</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-                
+          <Container.Bottom>
+            <Container.BottomInset>
+              <Container.Nav>
+                    <input type="checkbox" />
+                <Container.Box>
+                  <div>№</div>
+                  <div>ID</div>
+                  <div>FIO</div>
+                  <div>Kurs</div>
+                  <div>Ta’lim tili</div>
+                  <div>Ta’lim yo’nalishi</div>
+                  <div>Ta’lim shakli</div>
+                  <div>Qo’shilgan sanasi</div>
+                  <div>Status</div>
+                  <div>Imtihon natijasi</div>
+                  <div>Kontrakt turi</div>
+                  <div>Shartnoma summasi</div>
+                  <div>To’lagan summa</div>
+                  <div>Qolgan summa</div>
+                  <div>Shartnoma kodi</div>
+                  <div>Agent</div>
+                  <div>Hujjat</div>
+                  <div>Shartnoma.yuk</div>
+                  <div>Ma’lumotnoma</div>
+                  <div>Chaqiruv xati</div>
+                  <div>Zapros</div>
+                  <div>Telefon raqam 1</div>
+                  <div>Telefon raqam 2</div>
+                  <div>Tahrirlash </div>
+                </Container.Box>
+              </Container.Nav>
+              {
+                dataQabul?.map((value) => (
+
+                  <Container.Section key={value.id}>
+                    <input type="checkbox" />
+                    <Container.Map>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>  
+
+                    </Container.Map>
               </Container.Section>
             ))
           }
@@ -407,6 +207,3 @@ export const QabuldanOtganCom = () => {
 }
 
 export default QabuldanOtganCom
-
-
-
