@@ -33,7 +33,9 @@ const query=useRouter()
     if (phonePatron === phonecheck && message === phonePassword  ) {
       query.push('admin/home')
     }
-
+    else if (message.length === 0) {
+      <p>password kiri</p>
+    }
     else { 
       query.push('/homePage')
     }

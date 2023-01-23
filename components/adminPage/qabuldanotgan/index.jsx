@@ -4,118 +4,216 @@ import Down from "../../../assets/icons/admin/selectdown.svg"
 import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
 import Exel from "../../../assets/icons/admin/adminExel.svg"
 import Sms from "../../../assets/icons/admin/adminSms.svg"
+import data from "../../Mock/rahbariyat/data.js"
 
-import { Checkbox, Table } from 'antd';
-const columns = [
-  {
-    width: 50,
-    dataIndex: 'name',
-    key: 'name',
-    fixed: 'left',
-    name: <Checkbox/>
-  },
-  {
-    title: '№',
-    width: 100,
-    dataIndex: 'number',
-    key: 'number',
-    fixed: 'left',
-  },
-  {
-    title: 'FIO',
-    dataIndex: 'address',
-    key: '1',
-    width: 150,
-  },
-  {
-    title: 'Agent',
-    dataIndex: 'address',
-    key: '2',
-    width: 150,
-  },
-  {
-    title: 'Pasport seriya',
-    dataIndex: 'address',
-    key: '3',
-    width: 150,
-  },
-  {
-    title: 'Kurs',
-    dataIndex: 'address',
-    key: '4',
-    width: 150,
-  },
-  {
-    title: 'Ta’lim tili',
-    dataIndex: 'address',
-    key: '5',
-    width: 150,
-  },
-  {
-    title: 'Ta’lim yo’nalishi',
-    dataIndex: 'address',
-    key: '6',
-    width: 150,
-  },
-  {
-    title: 'Ta’lim shakli',
-    dataIndex: 'address',
-    key: '7',
-    width: 150,
-  },
-  {
-    title: 'Telefon raqam',
-    dataIndex: 'address',
-    key: '8',
-    width: 150,
 
-  },
-  {
-    title: 'Qo’shimcha raqam',
-    dataIndex: 'address',
-    key: '9',
-    width: 170,
+// import { Checkbox, Divider, Radio, Table } from 'antd';
+// import { useState } from 'react'
 
-  },
-  {
-    title: 'Pasport nusxasi',
-    dataIndex: 'address',
-    key: '10',
-    width: 170,
 
-  },
-  {
-    title: 'Transcrip / Diplom nusxasi',
-    dataIndex: 'address',
-    key: '11',
-    width: 220,
-  },
-  {
-    title: 'Sana',
-    dataIndex: 'address',
-    key: '12',
-    width: 120,
-  },
-  {
-    title: 'Tahrirlash',
-    key: 'operation',
-    fixed: 'right',
-    width: 100,
-    render: () => <a>action</a>,
-  },
-];
-
-const data = [];
-for (let i = 0; i < 1000; i++) {
-  data.push({
-    key: i,
-    name: <Checkbox/>,
-    number: `000${i}`,
-    address: `Gulomov Elbek . ${i}`,
-  });
-}
 
 export const QabuldanOtganCom = () => {
+  // const [selectionType, setSelectionType] = useState('checkbox');
+  // const rowSelection = {
+  //   onChange: (selectedRowKeys, selectedRows) => {
+  //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  //   },
+  //   getCheckboxProps: (record) => ({
+  //     disabled: record.name === 'Disabled User',
+  //     // Column configuration not to be checked
+  //     name: record.name,
+  //   }),
+  // };
+  const data = [
+    {
+    name: '№',
+    id: 1,
+    },
+    {
+      serie: 'ID',
+      id: 2,
+    },
+    {
+      kurs: 'Kurs',
+      id: 3,
+    },
+    {
+      talimtili: 'Ta’lim tili',
+      id: 4,
+    },
+    {
+      talimyunalish: 'Ta’lim yo’nalishi',
+      id: 5,
+    },
+
+    {
+      talimshakli: 'Ta’lim shakli',
+      id: 6,
+    },
+    {
+      qoshilgansana: 'Qo’shilgan sanasi',
+      id: 7,
+    },
+    {
+      status: 'Status',
+      id: 8,
+    },
+
+    {
+      imtihon: 'Imtihon natijasi',
+      id: 9,
+    },
+    {
+      kontrakt: 'Kontrakt turi',
+      id: 10,
+    },
+
+    {
+      shartnoma: 'Shartnoma summasi',
+      id: 11,
+    },
+    {
+      tolagansum: 'To’lagan summa',
+      id: 14,
+    },
+    {
+      qolgansum: 'Qolgan summa',
+      id: 15,
+    },
+    {
+      shartnomakod: 'Shartnoma kodi',
+      id: 16,
+    },
+
+    {
+      hujjat: 'Hujjat',
+      id: 17,
+    },
+    {
+      shartnomayuk: 'Shartnoma.yuk',
+      id: 18,
+    },
+    {
+      malumotnoma: 'Ma’lumotnoma',
+      id: 19,
+    },
+    {
+      chaqiruvxati: 'Chaqiruv xati',
+      id: 20,
+    },
+    {
+      zapros: '  Zapros',
+      id: 21,
+    },
+    {
+      telefon1: 'Telefon raqam 1',
+      id: 22,
+    },
+    {
+      telefon2: 'Telefon raqam 2',
+      id: 23,
+    },
+    {
+      tahrirlash: 'Tahrirlash',
+      id: 24,
+    },
+
+    {
+      name: '1',
+      id: 25,
+    },
+    {
+      serie: '100102',
+      id: 26,
+    },
+    {
+      kurs: '3',
+      id: 27,
+    },
+    {
+      talimtili: 'O’zbek tili',
+      id: 28,
+    },
+    {
+      talimyunalish: 'Iqtisodiyot',
+      id: 29,
+    },
+
+    {
+      talimshakli: 'Kunduzgi',
+      id: 30,
+    },
+    {
+      qoshilgansana: '10.12.2022',
+      id: 31,
+    },
+    {
+      status: 'qwerty',
+      id: 32,
+    },
+
+    {
+      imtihon: '83%',
+      id: 33,
+    },
+    {
+      kontrakt: 'Stipendiyasi',
+      id: 34,
+    },
+
+    {
+      shartnoma: '9 000 000',
+      id: 35,
+    },
+    {
+      tolagansum: '6 000 000',
+      id: 36,
+    },
+    {
+      qolgansum: '3 000 000',
+      id: 37,
+    },
+    {
+      shartnomakod: 'AA 101 000 ',
+      id: 38,
+    },
+
+    {
+      hujjat: 'Elbek Gulomov',
+      id: 39,
+    },
+    {
+      shartnomayuk: 'yukalangan',
+      id: 40,
+    },
+    {
+      malumotnoma: 'yuklangan',
+      id: 41,
+    },
+    {
+      chaqiruvxati: 'yuklangan',
+      id: 42,
+    },
+    {
+      zapros: '  yuklangan',
+      id: 43,
+    },
+    {
+      telefon1: '+998 99 759 04 80',
+      id: 44,
+    },
+    {
+      telefon2: '+998 99 759 04 80',
+      id: 45,
+    },
+    {
+      tahrirlash: '🖊',
+      id: 46,
+    },
+
+  ]
+
+
   return (
     <>
     <Container>
@@ -236,17 +334,74 @@ export const QabuldanOtganCom = () => {
       </ContainerSort>
     
       </Container>
+      {/* <ConTable>
+      <Con
+        <div>
+          <Radio.Group
+            onChange={({ target: { value } }) => {
+              setSelectionType(value);
+            }}
+            value={selectionType}
+          >
+          
+          </Radio.Group>
+
+          <Divider />
+          <Table
+            rowSelection={{
+              type: selectionType,
+              ...rowSelection,
+            }}
+            columns={columns}
+            dataSource={data}
+            scroll={{
+              x: 1500,
+              y: 400,
+            }}
+          />
+        </div>
+   </ConTable> */}
+      <div>
       <ConTable>
-        <Table
-          columns={columns}
-          dataSource={data}
-          scroll={{
-            x: 1500,
-            y: 300,
-          }}
-        />
-   </ConTable>
-     
+           <input type="checkbox" />
+      <Container.Bottom>
+        <Container.BottomInset>
+          {
+            data?.map((value) => (
+              <Container.Section key={value.id}>
+  
+                <div>{value?.name}</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+                
+              </Container.Section>
+            ))
+          }
+        </Container.BottomInset>
+      </Container.Bottom>
+        </ConTable>
+      </div>
     </>
   )
 }

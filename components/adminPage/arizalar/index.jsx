@@ -6,12 +6,13 @@ import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 
-
 export const ArizalarCom = () => {
-
-
   const [data, setData] = useState(DataAriza);
+  const [checkAll, setCheckAll] = useState(false);
 
+  const selectAll = () => {
+    setCheckAll(!checkAll);
+  };
 
   return (
     <Container>
@@ -20,8 +21,7 @@ export const ArizalarCom = () => {
           {data.map((value) => {
             return(
               <ConTable key={value.id}>
-
-                <input type="checkbox"/>
+            <input type="checkbox" onChange={selectAll} checked={checkAll} />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>

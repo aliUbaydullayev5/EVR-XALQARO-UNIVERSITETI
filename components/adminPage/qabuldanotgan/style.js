@@ -318,9 +318,67 @@ border: none;
 const ConTable = styled.div`
   width: 100%;
   max-width: 1440px;
-  margin: 0px auto;
   padding: 30px 50px;
- 
+  align-items: center;
+  display: grid;
+  grid-template-columns: 40px 1fr ;
+`
+
+
+// Table
+Container.Bottom = styled.div`
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+  max-height: 400px;
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Track */
+
+  ::-webkit-scrollbar-track {
+    width: 10px !important;
+    padding: 0 5px 0 0;
+    background: #9a9a9a;
+    opacity: 0.5;
+    border-radius: 30px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    padding: 10px !important;
+  }
+
+
+  /* Handle */
+
+  ::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 30px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+
+  /* Handle on hover */
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+`
+Container.BottomInset = styled.div`
+  display: grid;
+  grid-template-columns:1fr 1fr  1fr 1fr;
+  grid-row-gap: 9px;
+  @media only screen and (max-width: 1000px) {
+  }
+  
+`
+
+Container.Section = styled.div`
+  display: grid;
+  grid-template-columns: 40px 96px 288px 90px 135px 198px 162px 240px 115px 191px 170px 240px 187px  182px 200px 205px 163px 196px 180px 185px 170px 230px 230px 149px;
+@media only screen and (max-width: 1000px) {
+   
+   }
 
 `
 export { ConTable, SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul, ConExel, ConSms, ConDate, TalimY, TalimTu }
