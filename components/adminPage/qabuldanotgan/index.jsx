@@ -193,7 +193,6 @@ export const QabuldanOtganCom = () => {
                       <div>{value.id}</div>
                       <div>{value.ismi}</div>
                       <div>{value.kurs}</div>  
-
                     </Container.Map>
               </Container.Section>
             ))
