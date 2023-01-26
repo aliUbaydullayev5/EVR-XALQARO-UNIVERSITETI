@@ -9,6 +9,8 @@ import messageSlice from '../slices/message'
 import getStudyTypes from '../slices/getStudyTypes'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
+import loginAdminThunk from "../slices/loginAdmin"
+
 export default configureStore({
     reducer: {
         firstVerify,
@@ -19,6 +21,7 @@ export default configureStore({
         messageSlice,
         getStudyTypes,
         reseptionCheckPhoneSlice,
-        receptionSmsVerify
+        receptionSmsVerify,
+        loginAdminThunk,
     },
 })

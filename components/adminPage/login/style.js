@@ -99,5 +99,12 @@ Container.Number = styled.div`
     }
   }
 `
+
+Container.ButtonLoader = styled.div`
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+`
+
 export default Container
 

@@ -5,10 +5,16 @@ import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
 import Exel from "../../../assets/icons/admin/adminExel.svg"
 import Sms from "../../../assets/icons/admin/adminSms.svg"
 import dataQabul from '../../Mock/qabulData/qabulData.js'
+import { useState } from 'react'
 
 
 export const QabuldanOtganCom = () => {
+  const [checkAll, setCheckAll] = useState(false);
 
+  const selectAll = () => {
+    setCheckAll(!checkAll);
+  };
+  console.log(checkAll,'FD');
 
   return (
     <>
@@ -135,7 +141,7 @@ export const QabuldanOtganCom = () => {
           <Container.Bottom>
             <Container.BottomInset>
               <Container.Nav>
-                    <input type="checkbox" />
+                <input type="checkbox" onChange={selectAll} checked={checkAll} />
                 <Container.Box>
                   <div>№</div>
                   <div>ID</div>
@@ -167,7 +173,7 @@ export const QabuldanOtganCom = () => {
                 dataQabul?.map((value) => (
 
                   <Container.Section key={value.id}>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={selectAll} checked={checkAll}/>
                     <Container.Map>
                       <div>{value.num}</div>
                       <div>{value.id}</div>

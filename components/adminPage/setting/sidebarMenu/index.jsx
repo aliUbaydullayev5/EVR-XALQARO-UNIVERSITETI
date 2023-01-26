@@ -20,8 +20,9 @@ export const SidebarAdmin = () => {
     },
     {
       id: 3,
-      name: 'Ta’lim yo’nalishlari',
+      name: 'Ta’lim yo’nalishlari ',
       clicked: false,
+
     },
     {
       id: 4,
@@ -37,6 +38,11 @@ export const SidebarAdmin = () => {
       id: 6,
       name: 'Ta’lim yo’nalishlari',
       clicked: false,
+      chilid: [{
+        add: 'Qo`shish',
+        delete: '`Ochirish',
+        edit:'Taxrirlash'
+     }],
     },
     {
       id: 7,
@@ -127,6 +133,9 @@ export const SidebarAdmin = () => {
    }
     if (id === 4) {
       quarey.push('/admin/setting/test')
+    }
+    else if (id == 3) {
+      quarey.push
     }
 
   }

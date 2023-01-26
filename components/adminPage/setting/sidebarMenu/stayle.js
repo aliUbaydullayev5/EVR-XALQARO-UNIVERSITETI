@@ -8,6 +8,7 @@ const Container = styled.div`
   min-width: 350px;
    background: #221F51;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  margin-left: 20px;
 @media only screen and (max-width: 800px) {
  grid-template-columns: auto;
 
@@ -48,10 +49,12 @@ Container.TopTitle = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
+
   @media only screen and (max-width: 1000px) {
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
+    border-radius: 5px ;
   } 
 
 `
@@ -60,7 +63,6 @@ Container.Bottom = styled.div`
   /* padding: 0px 25px; */
   display: grid;
   grid-gap: 8px;
-  padding: 20px 0px;
   @media only screen and (max-width: 1000px) {
     padding: 25px 0px;
   }

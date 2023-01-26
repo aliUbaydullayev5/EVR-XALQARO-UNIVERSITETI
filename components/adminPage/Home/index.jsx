@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router.js'
+
 import Container from './style'
 
 
 const HomeComponent = () => {
-    const router = useRouter()
-
+const router =useRouter()
     return(
         <Container >
             <div onClick={() => router.push('/admin//management')}>
@@ -21,10 +21,10 @@ const HomeComponent = () => {
             <div onClick={() => router.push('/admin/setting')}>
                 <p>Sozlamalar</p>
             </div>
-            <div onClick={() => router.push('/admin//arizalar')} >
+            <div onClick={() => router.push('/admin/arizalar')} >
                 <p>Arizalar</p>
             </div>
-            <div onClick={() => router.push('/admin//qabuldanotganlar')}>
+            <div onClick={() => router.push('/admin/qabuldanotganlar')}>
                 
                 <p>Qabuldan</p>
                 <p>o’tganlar</p>
@@ -33,7 +33,7 @@ const HomeComponent = () => {
                 <p>Imtihondan</p>
                 <p> o’tganlar</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/agent')}>
                 <p>Agent</p>
             </div>
         </Container>
