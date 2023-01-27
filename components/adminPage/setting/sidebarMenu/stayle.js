@@ -56,44 +56,8 @@ Container.TopTitle = styled.div`
     line-height: 20px;
     border-radius: 5px ;
   } 
-
 `
 
-Container.Bottom = styled.div`
-  /* padding: 0px 25px; */
-  display: grid;
-  grid-gap: 8px;
-  @media only screen and (max-width: 1000px) {
-    padding: 25px 0px;
-  }
-  
-`
-
-Container.BottomCopy = styled.div`
-  /* padding: 0px 25px; */
-  display: grid;
-  grid-gap: 8px;
-  padding: 20px 0px;
-  @media only screen and (max-width: 1000px) {
-    padding: 25px 0px;
-    display: none;
-  }
-`
-Container.BottomDesc = styled.div`
-  height: 247px !important;
-  height: 100% !important;
-  @media only screen and (max-width: 1000px) {
-    height: 430px !important;
-  }
-`
-Container.BottomDescCopy = styled.div`
-  height: 247px !important;
-  height: 100% !important;
-  border-bottom: 3px solid #ffffff !important;
-  @media only screen and (max-width: 1000px) {
-    height: 430px !important;
-  }
-`
 
 Container.BottomDescInset = styled.div`
   width: 100%;
@@ -108,6 +72,7 @@ Container.BottomDescInset = styled.div`
   }
   ::-webkit-scrollbar {
     width: 5px;
+
   }
 
   /* Track */
@@ -128,10 +93,10 @@ Container.BottomDescInset = styled.div`
     background: #FFFFFF;
     border-radius: 30px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
+
   }
   /* Handle on hover */
 `
-
 
 Container.BottomDescInsetCopy = styled.div`
   width: 100%;
@@ -195,6 +160,11 @@ UserCon.Name = styled.div`
   align-items: center;
   height:50px;
   background: #221F51;
+  display: flex;
+  justify-content: space-between;
+  >img{
+  }
+  width: 100%;
       cursor: pointer;
     transition: all 0.4 ease-in-out ;
     :hover{

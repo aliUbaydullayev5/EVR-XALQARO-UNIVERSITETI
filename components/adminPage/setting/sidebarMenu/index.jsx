@@ -3,6 +3,7 @@ import React from 'react'
 import Container, { UserCon } from './stayle.js';
 import { useRouter } from "next/router"
 
+
 export const SidebarAdmin = () => {
 
   const quarey = useRouter()
@@ -22,7 +23,6 @@ export const SidebarAdmin = () => {
       id: 3,
       name: 'Ta’lim yo’nalishlari ',
       clicked: false,
-
     },
     {
       id: 4,
@@ -38,11 +38,7 @@ export const SidebarAdmin = () => {
       id: 6,
       name: 'Ta’lim yo’nalishlari',
       clicked: false,
-      chilid: [{
-        add: 'Qo`shish',
-        delete: '`Ochirish',
-        edit:'Taxrirlash'
-     }],
+
     },
     {
       id: 7,
@@ -55,18 +51,18 @@ export const SidebarAdmin = () => {
       clicked: false,
     },
 
-     {
+    {
       id: 9,
       name: 'Ta’lim yo’nalishlari',
       clicked: false,
-     },
-     {
+    },
+    {
       id: 10,
       name: 'Ta’lim yo’nalishlari',
       clicked: false,
     },
     {
-      id: 12,
+      id: 11,
       name: 'Boshqaruv bo’limi',
       clicked: false,
     },
@@ -128,39 +124,37 @@ export const SidebarAdmin = () => {
     }
   ]
   const CheckId = (id) => {
-   if (id===1) {
-     quarey.push('/admin/setting/menagement')
-   }
+    if (id === 1) {
+      quarey.push('/admin/setting/menagement')
+    }
     if (id === 4) {
       quarey.push('/admin/setting/test')
     }
     else if (id == 3) {
-      quarey.push
+      quarey.push('/admin/setting/talimyunalish')
     }
 
   }
 
   return (
     <>
-        <Container>
-                <Container.Bottom>
-                    <Container.BottomDesc>
-                        <Container.BottomDescInset>
-                        {FaceMenu?.map((val) => {
-                                return (
-                                    <UserCon onClick={()=> CheckId(val.id)} key={val.id}>
-                                        <UserCon.Box>
-                                         <UserCon.Name>
-                                            <h1>{val.name}</h1>
-                                            </UserCon.Name>
-                                     </UserCon.Box>
-                                    </UserCon> 
-                              )
-                          })}  
-                        </Container.BottomDescInset>
-                    </Container.BottomDesc>
-                </Container.Bottom>
-              </Container>
+      <Container>
+            <Container.BottomDescInset>
+              {FaceMenu?.map((val) => {
+                var Imgs = val?.img
+                return (
+                  <UserCon onClick={() => CheckId(val.id)} key={val.id}>
+                    <UserCon.Box>
+                      <UserCon.Name>
+                        <h1>{val.name}</h1>
+                        {Imgs}
+                      </UserCon.Name>
+                    </UserCon.Box>
+                  </UserCon>
+                )
+              })}
+            </Container.BottomDescInset>
+      </Container>
     </>
   )
 }

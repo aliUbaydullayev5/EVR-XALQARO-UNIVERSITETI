@@ -5,7 +5,6 @@ import { useEffect } from "react"
 const AdminRootToken = ({ children }) => {
     const query = useRouter()
 
-
     useEffect(() => {
         if (!localStorage.getItem('token') && !localStorage.getItem('refreshToken')) {
             query.push('/admin')
