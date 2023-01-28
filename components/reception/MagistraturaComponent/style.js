@@ -206,10 +206,9 @@ const InputCont = styled.div`
     .row12{
       grid-row: 12/13;
     }
-    
   }
-  
 `
+
 InputCont.Section1 = styled.div``
 InputCont.Section2 = styled.div``
 
@@ -324,7 +323,6 @@ Container.InputCustom1 = styled.input`
     display: inline-block;
     outline: none;
     white-space: nowrap;
-    -webkit-user-select: none;
     margin: 8px 0 0 0;
     width: 200px;
   }
@@ -375,7 +373,6 @@ Container.InputCustom2 = styled.input`
     display: inline-block;
     outline: none;
     white-space: nowrap;
-    -webkit-user-select: none;
     margin: 8px 0 0 0;
   }
   @media only screen and (max-width: 1000px) {
@@ -397,6 +394,24 @@ IconBox.Mobile = styled.div`
 }
 `
 
+Container.Model = styled.div`
+	margin: 0 !important;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	> p {
+		font-size: 18px;
+		color: #fff;
+	}
+`;
+
+Container.ButtonLoader = styled.div`
+	text-align: center;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+`;
 
 
 export { TextCon, InputCont, BtnCon, IconBox }
