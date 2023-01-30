@@ -131,7 +131,7 @@ export const SidebarAdmin = () => {
       quarey.push('/admin/setting/test')
     }
     else if (id == 3) {
-      quarey.push('/admin/setting/talimyunalish')
+      quarey.push('/admin/setting/facultets')
     }
 
   }

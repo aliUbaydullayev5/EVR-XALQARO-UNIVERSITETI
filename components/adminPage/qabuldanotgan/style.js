@@ -368,8 +368,6 @@ Container.BottomInset = styled.div`
   display: grid;
   grid-row-gap: 9px;
   width: 100%;
-
-
 `
 Container.Nav = styled.div`
 display: grid;

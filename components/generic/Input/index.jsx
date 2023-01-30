@@ -24,6 +24,7 @@ export const Input = forwardRef(({
   align,
   border,
   error,
+  name,
 //    ---------
   mwidth,
   mheight,
@@ -87,6 +88,8 @@ export const Input = forwardRef(({
     mborder={mborder}
     error={error}
     merror={merror}
+    name={name}
+
   />
 })
 export default Input;
