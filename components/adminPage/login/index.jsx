@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { foundToken, getAallLoginFetch } from '../../../redux/slices/loginAdmin'
 import { startMessage } from '../../../redux/slices/message/index.js'
 import { Spin } from "antd"
+import { getAdminArizalar, getAdminArizalarFetch } from '../../../redux/sliceAdmin/arizalar/index.jsx'
 
 export const LoginCom = () => {
   const query = useRouter()
@@ -33,12 +34,14 @@ export const LoginCom = () => {
   }
 
 
+  const getAdminArizalar = useSelector((store) => store.getAdminArizalar)
 
   const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
-
-
+  console.log(loginAdminThunk,'ad');
   useEffect(() => {
     dispatch(foundToken())
+  
+
   }, [])
 
   useEffect(() => {
@@ -48,7 +51,6 @@ export const LoginCom = () => {
     } else if (loginAdminThunk.status === 'notFound') {
       dispatch(startMessage({ time: 2, message: 'phone number, yoki password xato kiritilgan' }))
     }
-    console.log(loginAdminThunk,'token logic')
   }, [loginAdminThunk])
 
   const loginFunc = () => {

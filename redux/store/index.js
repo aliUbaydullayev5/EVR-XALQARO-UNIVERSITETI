@@ -10,7 +10,7 @@ import getStudyTypes from '../slices/getStudyTypes'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
-
+import  getAdminArizalar  from '../sliceAdmin/arizalar'
 export default configureStore({
     reducer: {
         firstVerify,
@@ -23,5 +23,8 @@ export default configureStore({
         reseptionCheckPhoneSlice,
         receptionSmsVerify,
         loginAdminThunk,
+        getAdminArizalar,
+
+
     },
 })

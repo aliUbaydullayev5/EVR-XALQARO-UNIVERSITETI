@@ -8,7 +8,7 @@ export const QuationPage = () => {
   return (
       <RootAdmin>
       <RootSidebarMenu>
-      <AdminRootToken>
+       <AdminRootToken>
           <QuationCom/>
         </AdminRootToken>
         </RootSidebarMenu>
