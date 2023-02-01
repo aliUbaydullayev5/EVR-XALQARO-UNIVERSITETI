@@ -6,7 +6,8 @@ import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
-
+import { useSelector } from 'react-redux'
+import { getAdminArizalar, getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
 export const ArizalarCom = () => {
   const [data, setData] = useState(DataAriza);
   const [checkAll, setCheckAll] = useState(false);
@@ -14,11 +15,19 @@ export const ArizalarCom = () => {
   const selectAll = () => {
     setCheckAll(!checkAll);
   };
+  const [arzia, setArizalar]=useState()
 
   useEffect(() => {
-  fetch('http://localhost:8080/api/users').then((res) => res.json()).then((res) => console.log(res,'sd'))  
+    fetch('http://localhost:8080/api/users')
+      .then((res) => res.json()) 
+      .then((json) => setArizalar(json.data) )
   }, [])
-  
+  const getAdminArizalarFetch = useSelector((store) => store.getAdminArizalarFetch)
+  console.log(getAdminArizalarFetch,'zx');
+  // console.log(arzia,'asd');
+  // const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
+  const getAdminArizalar = useSelector((store) => store.getAdminArizalar)
+  console.log(getAdminArizalar,'ds');
   return (
     <Container>
       <div className='scrollCon' style={{ overflowY: 'scroll', maxHeight: '550px' }}>

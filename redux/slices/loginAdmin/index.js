@@ -25,7 +25,6 @@ const loginAdminThunk = createSlice({
             state.status = 'loading'
         },
         [getAallLoginFetch.fulfilled]: (state, { payload }) => {
-            console.log('Slice success')
             if (payload.success === true) {
                 state.status = 'success'
                 state.message = 'Siz muvofiyaqatli kirdingiz'

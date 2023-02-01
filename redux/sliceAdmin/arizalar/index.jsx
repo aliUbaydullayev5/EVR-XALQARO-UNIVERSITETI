@@ -2,7 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 export const getAdminArizalarFetch = createAsyncThunk('getAdminArizalar', async (payload) => {
-    return await fetch(`http://localhost:8080/api/users`).then((res)=>res.json()).then((res)=>console.log(res))
+    return await fetch(`http://localhost:8080/api/users`)
+   , {
+        method: 'GET',
+            headers: {
+            'Content-Type': 'application/json'}
+      }.then((res) => res.json())
 })
 
 
@@ -16,10 +21,9 @@ export const getAdminArizalar = createSlice({
         [getAdminArizalarFetch.pending]: (state) => {
             state.status='loading'
         },
-        [getAdminArizalarFetch.fulfilled]: (state, action) => {
-            state.state = 'success'   
-            if (action?.payload?.success==true) {
-               state.data =  action?.payload?.data 
+        [getAdminArizalarFetch.fulfilled]: (state, { payload }) => {
+            if (payload?.state) {
+                state.data = action?.payload
             }
         },
         [getAdminArizalarFetch.rejected]: (state) => {

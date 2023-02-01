@@ -32,14 +32,10 @@ export const LoginCom = () => {
     setPhonecheck(event);
   }
 
-
-
   const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
   console.log(loginAdminThunk,'ad');
   useEffect(() => {
     dispatch(foundToken())
-  
-
   }, [])
 
   useEffect(() => {
