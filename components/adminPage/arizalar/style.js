@@ -63,8 +63,6 @@ const ConTable = styled.div`
     margin: 0px 0px 0px 10px;
     border-radius: 5px;
   }
-  /* ten */
-
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
   .colum{
@@ -74,33 +72,42 @@ const ConTable = styled.div`
 
 `
 Container.Nav = styled.div`
-display: grid;
-grid-template-columns: 40px 1fr;
-gap: 10px;
-margin-bottom: 10px;
->input{
-  width: 50px;
-  height: 40px;
-}
-
-`
-Container.NavBar = styled.div`
   display: grid;
-  grid-template-columns: 52px 1fr 1fr 0.7fr;
-  padding-left: 15px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  margin: 0px 0px 0px 10px;
-  border-radius: 5px;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 5px;
- .colum{
+  grid-template-columns: 40px 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+  >input{
+    width: 50px;
+    height: 40px;
+  }
+  >div{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+  }
+  .row{
+    display: grid;
+    grid-template-columns: 52px 1fr 1fr 0.7fr;
+    padding-left: 15px;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+    margin: 0px 0px 0px 10px;
+    border-radius: 5px;
+  }
+    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 5px;
+  .colum{
     border-left:  2px solid white;
     padding-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
+
 `
+
 
 ConTable.Center = styled.div`
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);

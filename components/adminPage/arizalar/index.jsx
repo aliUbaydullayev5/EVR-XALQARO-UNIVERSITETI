@@ -5,49 +5,62 @@ import { Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
+import { useEffect } from 'react'
 
-
-import { useSelector } from 'react-redux'
-import { getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
 
 export const ArizalarCom = () => {
-  const [data, setData] = useState(DataAriza);
-  const [checkAll, setCheckAll] = useState(false);
+  const [data, setData] = useState(DataAriza)
+  const [selectAllState, setSelectAllState] = useState(false)
 
 
-  const [arzia, setArizalar]=useState()
+  useEffect(() => {
+    setData(data.map((value) => (
+      {
+      id: value.id,
+      ismi: value.ismi,
+      phone: value.phone,
+      data: value.data,
+      img: value.img,
+      checked: selectAllState
+      }
+    )))
+  }, [selectAllState])
 
 
-
-  // const getAdminArizalarFetch = useSelector((store) => store.getAdminArizalarFetch)
-
-  // const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
-  const handelId = (id) => {
-console.log(id,'ds');
+  const selectOne = (id = false) => {
+    setData(data.map((value) => (
+      {
+        id: value.id,
+        ismi: value.ismi,
+        phone: value.phone,
+        data: value.data,
+        img: value.img,
+        checked: value.id === id ? !value.checked : value.checked
+      } 
+    )))
   }
-  const selectAll = () => {
-    setCheckAll(!checkAll);
-  };
+
+
 
   return (
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-              <ConTable>
-                <input type="checkbox" checked={checkAll} />
+              <Container.Nav>
+            <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
                 <div className='row'>
-                  <div >1</div>
-                  <div className='colum'>2</div>
-                  <div className='colum'>3</div>
-                  <div className='colum'>4</div>
+                  <div >№</div>
+              <div className='colum'>FIO</div>
+              <div className='colum'>Telefon raqam</div>
+              <div className='colum'>Kun</div>
                 </div>
-              </ConTable>
+           </Container.Nav>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
           {data.map((value) => {
             return(
               <ConTable key={value.id}>
-                <input type="checkbox" checked={checkAll} />
+                <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>
@@ -72,7 +85,7 @@ console.log(id,'ds');
           </div>
           <div>
            
-            <Sms /> <p className='TextPsamal'>Excelga chiqarish</p>
+            <Sms/> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
             <Exel />  <p className='TextPsamal'>SMS yuborish</p> 
