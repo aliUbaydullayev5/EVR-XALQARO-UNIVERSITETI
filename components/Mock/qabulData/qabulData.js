@@ -18,7 +18,8 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
     {
         id: '100002',
@@ -35,7 +36,8 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
     {
         id: '100003',
@@ -52,7 +54,8 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
     {
         id: '100004',
@@ -69,7 +72,8 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
     {
         id: '100005',
@@ -86,7 +90,8 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
     {
         id: '100006',
@@ -103,8 +108,9 @@ const dataQabul = [
         pasportnusxasi: "Image01",
         diplomnusxasi: "Image02",
         sana: "12.12.2022",
-        tahrirlash: "✏️"
+        tahrirlash: "✏️",
+        checked: false
     },
-       
-] 
+
+]
 export default dataQabul

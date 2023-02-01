@@ -7,14 +7,12 @@ import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getAdminArizalar, getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
+import {  getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
 export const ArizalarCom = () => {
   const [data, setData] = useState(DataAriza);
   const [checkAll, setCheckAll] = useState(false);
 
-  const selectAll = () => {
-    setCheckAll(!checkAll);
-  };
+
   const [arzia, setArizalar]=useState()
 
   useEffect(() => {
@@ -22,12 +20,17 @@ export const ArizalarCom = () => {
       .then((res) => res.json()) 
       .then((json) => setArizalar(json.data) )
   }, [])
-  const getAdminArizalarFetch = useSelector((store) => store.getAdminArizalarFetch)
-  console.log(getAdminArizalarFetch,'zx');
-  // console.log(arzia,'asd');
+
+  // const getAdminArizalarFetch = useSelector((store) => store.getAdminArizalarFetch)
+
   // const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
-  const getAdminArizalar = useSelector((store) => store.getAdminArizalar)
-  console.log(getAdminArizalar,'ds');
+  const handelId = (id) => {
+console.log(id,'ds');
+  }
+  const selectAll = () => {
+    setCheckAll(!checkAll);
+  };
+
   return (
     <Container>
       <div className='scrollCon' style={{ overflowY: 'scroll', maxHeight: '550px' }}>
@@ -35,7 +38,7 @@ export const ArizalarCom = () => {
           {data.map((value) => {
             return(
               <ConTable key={value.id}>
-            <input type="checkbox" onChange={selectAll} checked={checkAll} />
+            <input type="checkbox" onChange={selectAll} onClick={()=>handelId(value.id)} checked={checkAll} />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>

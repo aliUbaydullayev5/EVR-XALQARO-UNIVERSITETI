@@ -130,7 +130,6 @@ export const QabuldanOtganCom = () => {
           <Down className={'Down'} />
         </TalimTu>
       </ConSelect>
-
       <ContainerSort>
         <div>Sana orqali tartiblash </div>
       </ContainerSort>
@@ -171,9 +170,8 @@ export const QabuldanOtganCom = () => {
               </Container.Nav>
               {
                 dataQabul?.map((value) => (
-
                   <Container.Section key={value.id}>
-                    <input type="checkbox" onChange={selectAll} checked={checkAll}/>
+                    <input type="checkbox" onChange={selectAll} checked={checkAll} />
                     <Container.Map>
                       <div>{value.num}</div>
                       <div>{value.id}</div>
