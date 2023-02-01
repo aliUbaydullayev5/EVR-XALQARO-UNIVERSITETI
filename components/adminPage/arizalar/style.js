@@ -3,18 +3,20 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  display: flex;
   display: grid;
   max-width: 1440px;
   grid-template-columns: 1fr 0.7fr;
   padding: 0px 40px;
-
-  .scrollCon{
-    width: 100%;
-    height: 615px !important;
-    overflow-y: scroll;
-    padding: 0 15px 0 0;
-    height: 100%;
-    ::-webkit-scrollbar {
+`
+Container.Scrool = styled.div`
+   width: 100%;
+   height: 615px !important;
+   overflow-y: scroll;
+   padding: 0 15px 0 0;
+   height: 100%;
+   display: grid;
+   ::-webkit-scrollbar {
       width: 5px;
     }
     ::-webkit-scrollbar-track {
@@ -33,11 +35,15 @@ const Container = styled.div`
       border-radius: 30px;
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
-  }
 `
 const ConTable = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
+  gap: 10px;
+  >input{
+    width: 50px;
+    height: 40px;
+  }
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -67,18 +73,35 @@ const ConTable = styled.div`
   }
 
 `
-ConTable.ChecBox = styled.div`
-  opacity: 0.5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px;
-  opacity: 0.5;
-  border-radius: 5px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+Container.Nav = styled.div`
+display: grid;
+grid-template-columns: 40px 1fr;
+gap: 10px;
+margin-bottom: 10px;
+>input{
+  width: 50px;
+  height: 40px;
+}
 
 `
+Container.NavBar = styled.div`
+  display: grid;
+  grid-template-columns: 52px 1fr 1fr 0.7fr;
+  padding-left: 15px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  margin: 0px 0px 0px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+ .colum{
+    border-left:  2px solid white;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
 ConTable.Center = styled.div`
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;

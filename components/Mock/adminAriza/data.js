@@ -2,14 +2,6 @@ import img from "../../../assets/icons/succus.svg"
 
 const DataAriza = [
     {
-        id: "№",
-        ismi: 'FIO',
-        phone: 'Telefon raqam',
-        data: 'Kun',
-        clicked: false,
-        img: img
-    },
-    {
         id: 1,
         ismi: 'Gulomov Elbek',
         phone: '+998997590480',
@@ -132,6 +124,30 @@ const DataAriza = [
     },
     {
         id: 16,
+        ismi: 'Gulomov Elbek',
+        phone: '+998997590480',
+        data: '01.12.2022',
+        clicked: false,
+        img: img
+    },
+    {
+        id: 17,
+        ismi: 'Gulomov Elbek',
+        phone: '+998997590480',
+        data: '01.12.2022',
+        clicked: false,
+        img: img
+    },
+    {
+        id: 18,
+        ismi: 'Gulomov Elbek',
+        phone: '+998997590480',
+        data: '01.12.2022',
+        clicked: false,
+        img: img
+    },
+    {
+        id: 19,
         ismi: 'Gulomov Elbek',
         phone: '+998997590480',
         data: '01.12.2022',

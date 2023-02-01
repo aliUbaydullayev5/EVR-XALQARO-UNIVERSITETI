@@ -5,9 +5,11 @@ import { Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
-import { useEffect } from 'react'
+
+
 import { useSelector } from 'react-redux'
-import {  getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
+import { getAdminArizalarFetch, } from '../../../redux/sliceAdmin/arizalar/index.jsx'
+
 export const ArizalarCom = () => {
   const [data, setData] = useState(DataAriza);
   const [checkAll, setCheckAll] = useState(false);
@@ -15,11 +17,7 @@ export const ArizalarCom = () => {
 
   const [arzia, setArizalar]=useState()
 
-  useEffect(() => {
-    fetch('http://localhost:8080/api/users')
-      .then((res) => res.json()) 
-      .then((json) => setArizalar(json.data) )
-  }, [])
+
 
   // const getAdminArizalarFetch = useSelector((store) => store.getAdminArizalarFetch)
 
@@ -33,12 +31,23 @@ console.log(id,'ds');
 
   return (
     <Container>
-      <div className='scrollCon' style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+              <ConTable>
+                <input type="checkbox" checked={checkAll} />
+                <div className='row'>
+                  <div >1</div>
+                  <div className='colum'>2</div>
+                  <div className='colum'>3</div>
+                  <div className='colum'>4</div>
+                </div>
+              </ConTable>
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
           {data.map((value) => {
             return(
               <ConTable key={value.id}>
-            <input type="checkbox" onChange={selectAll} onClick={()=>handelId(value.id)} checked={checkAll} />
+                <input type="checkbox" checked={checkAll} />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>
@@ -48,7 +57,7 @@ console.log(id,'ds');
             </ConTable>
           )})}
         </div>
-      </div>
+      </Container.Scrool>
       <ConHero>
         <ConHero.Date>
             <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
