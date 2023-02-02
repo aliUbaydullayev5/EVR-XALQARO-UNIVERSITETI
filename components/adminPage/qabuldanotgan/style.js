@@ -278,38 +278,36 @@ const ContainerSort = styled.div`
 const SelectSms = styled.div`
   position: relative;
   border: none;
-  >select{
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
-    border-radius: 20px;
-    width: 115.42px;
-    height: 30.97px;
-    color: white;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    padding:0px 0px 0px 67px;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);   
-    border-radius: 20px;
-    width: 201px;
-    height: 42px;     
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
+  width: 201px;
+  height: 42px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54); 
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  >p{
+   font-family: 'Montserrat';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 20px;
+   display: flex;
+   align-items: center;
+   text-align: center;
+
+color: #FFFFFF;
   }
 .Sms {
-    position: absolute;
+    /* position: absolute; */
     right: 20px;
     bottom: 12px;
     left: 20px;
     top: 9px;
 }
  .Down{
-    position: absolute;
+    /* position: absolute;   */
     right: 30px;
     bottom: 12px;
     
@@ -372,7 +370,7 @@ Container.BottomInset = styled.div`
 `
 Container.Nav = styled.div`
 display: grid;
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 38px 1fr;
     gap: 10px;
 
 
@@ -406,7 +404,10 @@ Container.Section = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 10px;
-
+.chcxboxInput{
+  width: 30px;
+  height: 30px;
+}
 `
 
 Container.Map = styled.div`
@@ -428,9 +429,7 @@ Container.Map = styled.div`
     line-height: 24px;
     color: #FFFFFF;
   }
-  @media only screen and (max-width: 1000px) {
-   
-   }
+  @media only screen and (max-width: 1000px) {}
 `
 const AntSelect = styled (Select)`
    .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{

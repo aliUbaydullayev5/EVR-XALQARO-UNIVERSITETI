@@ -66,7 +66,7 @@ export const QabuldanOtganCom = () => {
         <ContainerRith>
           <ConW>
             <Woomen />
-            <p>Arizalar soni: 3054</p>
+            <p>Arizalar soni: {data?.length}</p>
           </ConW>
           <Conpul>
             <b>＄</b>
@@ -80,37 +80,25 @@ export const QabuldanOtganCom = () => {
             <p>Excelga chiqarish</p>
           </ConExel>
           <SelectSms>
-            <select name="pets" id="pet-select">
-              <option value="">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-            </select>
-            <Down className={'Down'} />
             <Sms className={'Sms'} />
+            <p> SMS yuborish</p>
+            <Down className={'Down'} />
           </SelectSms>
         </ContainerRith>
 
         <ConDate>
           <input type="date" id="start" name="trip-start"
-            value="2018-07-22"
-            min="2018-01-01" max="2018-12-31" />
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
           <input type="date" id="start" name="trip-start"
-            value="2018-07-22"
-            min="2018-01-01" max="2018-12-31" />
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
         </ConDate>
 
         <ConSelect>
           <Agent>
             <select name="pets" id="pet-select">
               <option value="">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </Agent>
@@ -118,11 +106,6 @@ export const QabuldanOtganCom = () => {
           <Agent>
             <select name="pets" id="pet-select">
               <option value="">Kurs</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </Agent>
@@ -130,11 +113,6 @@ export const QabuldanOtganCom = () => {
           <TalimY>
             <select name="pets" id="pet-select">
               <option value="">Ta’lim yo’nalishi</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </TalimY>
@@ -142,11 +120,6 @@ export const QabuldanOtganCom = () => {
           <TalimSh>
             <select name="pets" id="pet-select">
               <option value="">Ta’lim shakli</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </TalimSh>
@@ -154,22 +127,12 @@ export const QabuldanOtganCom = () => {
           <TalimT>
             <select name="pets" id="pet-select">
               <option value="">Ta’lim tili</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </TalimT>
           <TalimTu>
             <select name="pets" id="pet-select">
               <option value="">To’lov turi</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
-              <option value="Agent">Agent</option>
             </select>
             <Down className={'Down'} />
           </TalimTu>
@@ -177,7 +140,6 @@ export const QabuldanOtganCom = () => {
         <ContainerSort>
           <div>Sana orqali tartiblash </div>
         </ContainerSort>
-
       </Container>
       <div>
         <ConTable>
@@ -215,7 +177,7 @@ export const QabuldanOtganCom = () => {
               {
                 data?.map((value) => (
                   <Container.Section key={value.id}>
-                    <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
+                  <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                     <Container.Map>
                       <div>{value.num}</div>
                       <div>{value.id}</div>
