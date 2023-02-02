@@ -81,7 +81,7 @@ export const ArizalarCom = () => {
         </div>
         <ConHero.Exel>
           <div>
-            <PeoupleGroup/>  <p className='TextPsamal'>Arizalar soni: {data.length }</p>
+            <PeoupleGroup />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
           </div>
           <div>
            

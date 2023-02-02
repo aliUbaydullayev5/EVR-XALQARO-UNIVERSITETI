@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js'
+import Container, { BtnCon, IconBox,  InputCont, TextCon } from './style.js'
 import AntSelect from "../Antd/style.js"
 import { Modal, Spin } from "antd"
 import { Input, Button } from "../../generic";
