@@ -29,7 +29,7 @@ const router =useRouter()
                 <p>Qabuldan</p>
                 <p>o’tganlar</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/imthonotganlar')}>
                 <p>Imtihondan</p>
                 <p> o’tganlar</p>
             </div>

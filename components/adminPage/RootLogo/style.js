@@ -15,7 +15,6 @@ Container.Text = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px 0px;
-
 `
 
 export default Container

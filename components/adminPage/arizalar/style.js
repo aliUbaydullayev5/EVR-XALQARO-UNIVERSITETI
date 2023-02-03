@@ -40,11 +40,9 @@ const ConTable = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 10px;
-  
-  >input{
-    width: 50px;
-    height: 40px;
-  }
+>input{
+  height: 35px;
+}
   >div{
     font-family: 'Montserrat';
     font-style: normal;
