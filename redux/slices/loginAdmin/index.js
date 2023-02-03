@@ -7,7 +7,7 @@ export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (p
          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            userName: payload.userName,
+            phoneNumber: payload.userName,
             password: payload.password,
         }),
     }).then((res) => res.json())

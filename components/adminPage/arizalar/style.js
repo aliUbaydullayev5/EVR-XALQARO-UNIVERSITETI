@@ -40,6 +40,7 @@ const ConTable = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 10px;
+  
   >input{
     width: 50px;
     height: 40px;
@@ -126,15 +127,21 @@ Container.BottomDescInset = styled.div`
 const ConHero = styled.div`
   width: 100%;
   margin-left: 30px ;
+ 
 .TextCenter{
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
   border-radius: 20px;
   max-width:510px;
-  min-width:510px;
+  min-width:510px; 
   max-height:65px;
   min-height:65px;
-  margin:20px auto ;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin:30px 0px 0px 30px;
+  cursor: pointer; 
+
 }
 .TextPsamal{
   font-family: 'Montserrat';
@@ -153,7 +160,7 @@ const ConHero = styled.div`
 ConHero.Date = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `
 ConHero.Exel = styled.div`
   display:flex;
@@ -177,8 +184,8 @@ ConHero.Exel = styled.div`
     border-radius: 20px;
     gap: 10px;
     padding-left:25px;
+    cursor: pointer;
   }
-
 `
 
 export { ConTable, ConHero }

@@ -60,7 +60,7 @@ export const ArizalarCom = () => {
           {data.map((value) => {
             return(
               <ConTable key={value.id}>
-                <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
+                <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked}  />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>
@@ -73,8 +73,8 @@ export const ArizalarCom = () => {
       </Container.Scrool>
       <ConHero>
         <ConHero.Date>
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
+          <Input height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" />
+          <Input height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" />
         </ConHero.Date>
         <div className='TextCenter'>
           <p className='TextPsamal'>Sana orqali tartiblash</p>
@@ -84,11 +84,11 @@ export const ArizalarCom = () => {
             <PeoupleGroup />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
           </div>
           <div>
-           
             <Sms/> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
-            <Exel />  <p className='TextPsamal'>SMS yuborish</p> 
+            <Exel/>
+            <p className='TextPsamal'>SMS yuborish</p> 
           </div>
         </ConHero.Exel>
       </ConHero>
