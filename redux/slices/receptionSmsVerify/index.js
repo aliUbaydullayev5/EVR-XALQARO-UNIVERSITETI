@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const receptionSmsVerifyFetch = createAsyncThunk('receptionSmsVerifyFetch', async (payload)=> {
+    console.log(payload)
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/verify-phone`, {
         method: 'POST',
         headers: {

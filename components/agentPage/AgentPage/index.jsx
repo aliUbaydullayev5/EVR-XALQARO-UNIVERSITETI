@@ -1,11 +1,32 @@
 import Container from "./style"
 import {Button} from "../../generic";
 import {useRouter} from "next/router";
+import {useDispatch} from "react-redux";
+import {startMessage} from "../../../redux/slices/message";
 
 
 const AgentPage = () => {
-    const router = useRouter()
 
+    const router = useRouter()
+    const dispatch = useDispatch()
+
+    let firstCheck = false
+    let secondCheck = false
+
+    console.log(firstCheck, secondCheck)
+
+    const pushFunc = () => {
+        if(firstCheck && secondCheck){
+            router.push('/receptionPage/agent/agentForm')
+        }else{
+            dispatch(
+                startMessage({
+                    time: 3,
+                    message: 'Toliq oqib chiking',
+                }),
+            );
+        }
+    }
 
     return(
         <Container>
@@ -22,18 +43,18 @@ const AgentPage = () => {
 
                     <Container.SelectSection className={'nocopy'}>
                         <div>
-                            <input type={'checkbox'} id={'firstInput'} name={'value'} className={'input'} />
+                            <input type={'checkbox'} id={'firstInput'} name={'value'} className={'input'} onChange={(e)=> firstCheck = e.target.checked} />
                             <label for={'firstInput'}>Qonun-qoidalarni to’liq o’qib chiqdim</label>
                         </div>
                         <div>
-                            <input type={'checkbox'} id={'secoondInput'} name={'value'} className={'input'} />
+                            <input type={'checkbox'} id={'secoondInput'} name={'value'} className={'input'} onChange={(e)=> secondCheck = e.target.checked} />
                             <label for={'secoondInput'}>Barcha shartlarga roziman</label>
                         </div>
                     </Container.SelectSection>
                     <Container.ButtonSection>
                         <div></div>
                         <div>
-                            <Button mheight={'20px'} msize={'13px'} height={'30px'} width={'144px'} size={'20px'} onclick={()=> router.push('/receptionPage/agent/agentForm')}>KEYINGISI</Button>
+                            <Button mheight={'20px'} msize={'13px'} height={'30px'} width={'144px'} size={'20px'} onclick={()=> pushFunc()}>KEYINGISI</Button>
                         </div>
                     </Container.ButtonSection>
                 </Container.Bottom>

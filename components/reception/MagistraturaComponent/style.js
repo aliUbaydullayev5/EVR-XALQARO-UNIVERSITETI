@@ -305,7 +305,7 @@ Container.InputCustom1 = styled.input`
   letter-spacing: -0.025em;
   font-size: 22px;
   transition: .2s;
-  
+  color: rgba(255, 255, 255, 0);
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -355,15 +355,23 @@ Container.InputCustom2 = styled.input`
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: transparent;
-  transition: .2s ;
-  :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+  transition: .2s;
+  color: rgba(255, 255, 255, 0);
+
+  :active {
+    transform: scale(${({scale}) => (scale ? `${scale}` : '1.02')})
+  }
+
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-  color: ${({ inputType }) => inputType && 'transparent'};
+
+  color: ${({inputType}) => inputType && 'transparent'};
+
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
+
   ::before {
     font-family: 'Montserrat', sans-serif;
     content: 'Deplom yoki atistat';
@@ -375,6 +383,7 @@ Container.InputCustom2 = styled.input`
     white-space: nowrap;
     margin: 8px 0 0 0;
   }
+
   @media only screen and (max-width: 1000px) {
     width: 100% !important;
     height: 26px;
@@ -382,7 +391,7 @@ Container.InputCustom2 = styled.input`
     font-size: 16px;
     border-radius: 5px;
   }
-  
+
 `
 IconBox.Mobile = styled.div`
   @media only screen and (min-width: 1000px) {

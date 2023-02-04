@@ -18,9 +18,11 @@ import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes';
 import { startMessage } from '../../../redux/slices/message';
 import { Modal, Spin } from 'antd';
 import { checkAllInputs2 } from './checkAllInputs';
-import { reseptionSmsCheckSliceFetch } from '../../../redux/slices/receptionVerifyPhone/index.js';
+import { reseptionSmsCheckSliceFetch, resetTimerVerify } from '../../../redux/slices/receptionVerifyPhone/index.js';
+import { receptionSmsVerifyFetch, resetSmsVerify } from '../../../redux/slices/receptionSmsVerify'
 
 export const MagistraturaComponent = () => {
+
 	const router = useRouter();
 	const dispatch = useDispatch();
 
@@ -31,6 +33,9 @@ export const MagistraturaComponent = () => {
 	const [pasSerLength, setPasSerLength] = useState(0);
 
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
+	const reseptionCheckPhoneSlice = useSelector(
+		(store) => store.reseptionCheckPhoneSlice,
+	);
 
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
@@ -85,9 +90,7 @@ export const MagistraturaComponent = () => {
 		dispatch(getStudyTypesFetch({ type: 'MASTERS' }));
 	}, []);
 
-	const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector(
-		(store) => store.getStudyTypes.data,
-	);
+	const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector((store) => store.getStudyTypes.data);
 
 	const changeAllDataFunc = ({ type, value }) => {
 		const fakeData = allData;
@@ -121,6 +124,7 @@ export const MagistraturaComponent = () => {
 	};
 
 	const [modelHidden, setModalHidden] = useState(false);
+	const [smsInput, setSmsInput] = useState('');
 
 	const pushAllInfo = () => {
 		if (checkAllInputs()) dispatch(receptionPostFetch(allData));
@@ -154,7 +158,7 @@ export const MagistraturaComponent = () => {
 		}, 2000);
 	}
 
-    const smsFunc = () => {
+	const smsFunc = () => {
 		if (checkAllInputs())
 			dispatch(
 				reseptionSmsCheckSliceFetch({
@@ -163,6 +167,10 @@ export const MagistraturaComponent = () => {
 				}),
 			);
 	};
+
+	useEffect(() => {
+		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true)
+	}, [reseptionCheckPhoneSlice])
 
 	const verifyCodeFunc = () => {
 		if (smsInput.length === 6)
@@ -178,15 +186,38 @@ export const MagistraturaComponent = () => {
 			);
 	};
 
+	useEffect(() => {
+		receptionSmsVerify?.status === 'success' && setModalHidden(false);
+		receptionSmsVerify?.status === 'error' &&
+			dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
+	}, [receptionSmsVerify])
+
 	const funForPhoneinput = ({ value, type }) => {
 		setPhonePatron(value);
 		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-	};
+	}
 	const funPhoneNumber = ({ value, type }) => {
-		setNumState(value);
+		setNumState(value)
 		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-    };
-    
+	}
+
+	useEffect(() => {
+		if (receptionData.status === 'success') {
+			router.push('/receptionPage/application/UsersCardInfo');
+			setTimeout(() => {
+				dispatch(resetVerify());
+				dispatch(resetTimerVerify());
+				dispatch(resetSmsVerify());
+			}, 4000)
+		}
+	})
+
+
+	useEffect(()=> {
+		dispatch(resetSmsVerify());
+		setSmsInput('')
+	}, [allData.phoneNumber])
+
 	return (
 		<Container>
 			<TextCon>
@@ -489,6 +520,7 @@ export const MagistraturaComponent = () => {
 				</BtnCon>
 				<div className='mobileNone'></div>
 			</InputCont>
+
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -501,6 +533,7 @@ export const MagistraturaComponent = () => {
 						malign={'center'}
 						maxlength={6}
 						onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
+						value={smsInput}
 						onchange={(e) => {
 							setSmsInput(e.target.value);
 							changeAllDataFunc({
@@ -529,6 +562,7 @@ export const MagistraturaComponent = () => {
 								Tastiqlash
 							</Button>
 						</>
+
 					)}
 				</Container.Model>
 			</Modal>

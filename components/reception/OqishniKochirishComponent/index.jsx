@@ -193,14 +193,14 @@ const OqishniKochirishComponent = () => {
 
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false);
+		receptionSmsVerify?.status === null && setModalHidden(false);
 		receptionSmsVerify?.status === 'error' &&
 			dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
-		console.log(receptionSmsVerify.status);
-	}, [receptionSmsVerify]);
+	}, [receptionSmsVerify])
 
 	useEffect(() => {
 		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
-	}, [reseptionCheckPhoneSlice]);
+	}, [reseptionCheckPhoneSlice])
 
 	const smsFunc = () => {
 		if (checkAllInputs())
@@ -209,8 +209,8 @@ const OqishniKochirishComponent = () => {
 					firstName: allData.firstName,
 					phoneNumber: allData.phoneNumber,
 				}),
-			);
-	};
+			)
+	}
 
 	useEffect(() => {
 		if (receptionData.status === 'success') {
@@ -219,9 +219,18 @@ const OqishniKochirishComponent = () => {
 				dispatch(resetVerify());
 				dispatch(resetTimerVerify());
 				dispatch(resetSmsVerify());
-			}, 4000);
+			}, 2000);
 		}
-	});
+	})
+
+
+	console.log(allData.phoneNumber)
+
+	useEffect(()=> {
+		dispatch(resetSmsVerify());
+		setSmsInput('')
+	}, [allData.phoneNumber])
+
 
 	return (
 		<Container>
@@ -334,20 +343,22 @@ const OqishniKochirishComponent = () => {
 					/>
 				</div>
 
-				<div>
+
+				<div className={'row10'}>
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
 							onChange={(value) =>
-								funForPhoneinput({ value, type: 'extraPhoneNumber' })
+								funPhoneNumber({ value, type: 'phoneNumber' })
 							}
 							maxLength={17}
-							value={phonePatron}
+							value={numState}
 							className={'phoNumber'}
 						/>
 						<Container.NumberText>Enter phone number</Container.NumberText>
 					</Container.Number>
 				</div>
+
 
 				<div className={'row4'}>
 					<Input
@@ -366,20 +377,22 @@ const OqishniKochirishComponent = () => {
 					/>
 				</div>
 
-				<div className={'row10'}>
+				<div className={'row9'}>
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
 							onChange={(value) =>
-								funPhoneNumber({ value, type: 'phoneNumber' })
+								funForPhoneinput({ value, type: 'extraPhoneNumber' })
 							}
 							maxLength={17}
-							value={numState}
+							value={phonePatron}
 							className={'phoNumber'}
 						/>
-						<Container.NumberText>Enter phone number</Container.NumberText>
+						<Container.NumberText>Enter phone number 1</Container.NumberText>
 					</Container.Number>
 				</div>
+
+
 
 				<div className={'row5'}>
 					<IconBox>
@@ -511,8 +524,7 @@ const OqishniKochirishComponent = () => {
 
 				<div className={'mobileDivNone'}></div>
 
-				<BtnCon className='row12'>
-					<div className='mobileNone'></div>
+				<BtnCon className='row13'>
 					{receptionSmsVerify.status === 'success' ? (
 						<>
 							{receptionData.status == 'loading' && (
@@ -524,7 +536,6 @@ const OqishniKochirishComponent = () => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
-									margin={'0 60px 0 0'}
 									cursor={'none'}
 									disabled={true}>
 									<Container.ButtonLoader>
@@ -541,7 +552,6 @@ const OqishniKochirishComponent = () => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
-									margin={'0 60px 0 0'}
 									onclick={() => pushAllInfo()}>
 									QOLDIRISH
 								</Button>
@@ -550,14 +560,14 @@ const OqishniKochirishComponent = () => {
 					) : (
 						<Button
 							mradius={'5px'}
-							mwidth={'250px'}
 							mheight={'26px'}
 							msize={'16px'}
 							width={'300px'}
 							height={'43px'}
 							size={'21px'}
-							margin={'0 60px 0 0'}
-							onclick={() => smsFunc()}>
+							onclick={() => smsFunc()}
+							mpadding={'0 5px'}
+							wrap={true}>
 							Telefon raqamni tastiqlash
 						</Button>
 					)}
@@ -576,6 +586,7 @@ const OqishniKochirishComponent = () => {
 						malign={'center'}
 						maxlength={6}
 						onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
+						value={smsInput}
 						onchange={(e) => {
 							setSmsInput(e.target.value);
 							changeAllDataFunc({ type: 'verifyCode', value: e.target.value });

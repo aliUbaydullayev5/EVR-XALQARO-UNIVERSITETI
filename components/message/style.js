@@ -43,7 +43,7 @@ const Container = styled.div`
   background: #fff;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   transition: .3s;
-  z-index: 999999;
+  z-index: 9999999999999;
   ${({hiddenState}) => hiddenFunc(hiddenState)}
   ${({typeMessage})=> typeMessageFunc(typeMessage)}
   padding: 15px 25px;

@@ -58,6 +58,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 	};
 
 	const [width, setWidth] = useState(null);
+
 	useEffect(() => {
 		if (window.innerWidth < 1000) setWidth('100%');
 		else setWidth('513px');
@@ -79,11 +80,10 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 		facultyId: 0,
 		diplomaId: '',
 		passportId: '',
-		verifyCode: '',
+		verifyCode: ''
 	});
 
-	const findFileFunc = ({ file, by }) =>
-		dispatch(deployFileFetch({ file: file, by }));
+	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
 		dispatch(getStudyTypesFetch({ type: 'BACHELOR' }));
@@ -206,9 +206,14 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 				dispatch(resetVerify());
 				dispatch(resetTimerVerify());
 				dispatch(resetSmsVerify());
-			}, 4000);
+			}, 2000);
 		}
 	});
+
+	useEffect(()=> {
+		dispatch(resetSmsVerify());
+		setSmsInput('')
+	}, [allData.phoneNumber])
 
 	return (
 		<Container>
@@ -331,6 +336,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						maxlength={'10'}
 					/>
 				</div>
+
 				<div className='row11'>
 					<div>
 						<div>
@@ -368,6 +374,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						</div>
 					</div>
 				</div>
+
 				<IconBox className='row8'>
 					<AntSelect
 						showSearch
@@ -450,7 +457,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 					/>
 				</IconBox>
 				<BtnCon className='row12'>
-					<div className='mobileNone'></div>
 					{receptionSmsVerify.status === 'success' ? (
 						<>
 							{receptionData.status == 'loading' && (
@@ -462,7 +468,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
-									margin={'0 60px 0 0'}
 									cursor={'none'}
 									disabled={true}>
 									<Container.ButtonLoader>
@@ -479,7 +484,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
-									margin={'0 60px 0 0'}
 									onclick={() => pushAllInfo()}>
 									QOLDIRISH
 								</Button>
@@ -494,13 +498,13 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 							width={'300px'}
 							height={'43px'}
 							size={'21px'}
-							margin={'0 60px 0 0'}
+							padding={'0 10px'}
 							onclick={() => smsFunc()}>
 							Telefon raqamni tastiqlash
 						</Button>
 					)}
 				</BtnCon>
-				<div className='mobileNone'></div>
+
             </InputCont>
             
 			<Modal
@@ -515,6 +519,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						malign={'center'}
 						maxlength={6}
 						onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
+						value={smsInput}
 						onchange={(e) => {
 							setSmsInput(e.target.value);
 							changeAllDataFunc({ type: 'verifyCode', value: e.target.value });

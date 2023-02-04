@@ -58,15 +58,33 @@ Container.Bottom = styled.div`
 
 Container.InputArea = styled.div`
   position: relative;
-  .personIcon{
+
+  .personIcon {
     position: absolute;
     left: 5px;
     top: 0;
   }
-  .blockIcon{
+
+  .blockIcon {
     position: absolute;
     left: 5px;
     top: 0;
+  }
+
+  .customPhoneInput {
+    height: 30px;
+    background: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid #fff;
+    width: 333px;
+    font-size: 24px;
+    color: #fff;
+    padding: 0 0 0 40px;
+    font-weight: 400;
+    @media only screen and (max-width: 1000px) {
+      width: 200px;
+      height: 30px;
+      font-size: 16px;
+    }
   }
 `
 
