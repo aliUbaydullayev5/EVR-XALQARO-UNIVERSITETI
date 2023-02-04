@@ -19,6 +19,7 @@ const getStudyTypes = createSlice({
         },
         [getStudyTypesFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
+            console.log(action.payload)
             if(action?.payload?.success == true) state.data = action?.payload?.data
         },
         [getStudyTypesFetch.rejected]: (state)=> {
