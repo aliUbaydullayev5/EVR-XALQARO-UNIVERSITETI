@@ -11,6 +11,7 @@ const Root = ({ children }) => {
     const { status, pushToHome } = useSelector((store)=> store.firstSmsCodeFetch)
     const router = useRouter()
 
+    console.log(process.env)
 
     useEffect(()=> {
         if(!localStorage.getItem('firstToken')) router.push('/firstPage')
