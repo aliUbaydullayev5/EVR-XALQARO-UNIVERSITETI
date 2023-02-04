@@ -1,15 +1,16 @@
-import React from 'react'
-import Container, { ConText, Header } from './style.js'
+import React, { useEffect, useState } from 'react'
+import Container, { ConTable, ConText, Header } from './style.js'
 import Logo from "../../../assets/icon/download.svg"
 import { useRouter } from 'next/router.js'
 import Button from '../../generic/Button/index.jsx'
-
 
 import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
 import Money from "../../../assets/icons/admin/admin$.svg"
 import Exel from "../../../assets/icons/admin/adminExel.svg"
 import Sms from "../../../assets/icons/admin/adminSms.svg"
 import Select from "../../../assets/icons/admin/selectdown.svg"
+
+import dataQabul from '../../Mock/qabulData/qabulData.js'
 
 
 const data = [
@@ -132,7 +133,58 @@ const data = [
 
 export const ImhonotganlarComp = () => {
   const query = useRouter()
+
+  const [dataImt, setDataImt]=useState(dataQabul)
+  const [selectAllState, setSelectAllState] = useState(false)
+
+  useEffect(() => {
+    setDataImt(dataImt.map((value) => (
+      {
+        id: value.id,
+        num: value.num,
+        ismi: value.ismi,
+        agent: value.agent,
+        pasport: value.pasport,
+        kurs: value.kurs,
+        tili: value.tili,
+        yonalishi: value.yonalishi,
+        shakli: value.shakli,
+        phone: value.phone,
+        qoshimcharaqam: value.qoshimcharaqam,
+        pasportnusxasi: value.pasportnusxasi,
+        diplomnusxasi: value.diplomnusxasi,
+        sana: value.sana,
+        tahrirlash: value.tahrirlash,
+        checked: selectAllState
+      }
+    )))
+  }, [selectAllState])
+
+  const selectOne = (id = false) => {
+    setDataImt(dataImt.map((value) => (
+      {
+        id: value.id,
+        num: value.num,
+        ismi: value.ismi,
+        agent: value.agent,
+        pasport: value.pasport,
+        kurs: value.kurs,
+        tili: value.tili,
+        yonalishi: value.yonalishi,
+        shakli: value.shakli,
+        phone: value.phone,
+        qoshimcharaqam: value.qoshimcharaqam,
+        pasportnusxasi: value.pasportnusxasi,
+        diplomnusxasi: value.diplomnusxasi,
+        sana: value.sana,
+        tahrirlash: value.tahrirlash,
+        checked: value.id === id ? !value.checked : value.checked
+      }
+    )))
+  }
+
   return (
+    <>
     <Container>
       <Container.Navbar>
         <div>
@@ -174,7 +226,79 @@ export const ImhonotganlarComp = () => {
               </Header.Con>)})}
         </Header>
       </Container.Header>
-    </Container>
+      </Container>
+
+      <div>
+        <ConTable>
+          <Container.Bottom>
+            <Container.BottomInset>
+              <Container.Nav>
+                <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
+                <Container.Box>
+                  <div>№</div>
+                  <div>ID</div>
+                  <div>FIO</div>
+                  <div>Kurs</div>
+                  <div>Ta’lim tili</div>
+                  <div>Ta’lim yo’nalishi</div>
+                  <div>Ta’lim shakli</div>
+                  <div>Qo’shilgan sanasi</div>
+                  <div>Status</div>
+                  <div>Imtihon natijasi</div>
+                  <div>Kontrakt turi</div>
+                  <div>Shartnoma summasi</div>
+                  <div>To’lagan summa</div>
+                  <div>Qolgan summa</div>
+                  <div>Shartnoma kodi</div>
+                  <div>Agent</div>
+                  <div>Hujjat</div>
+                  <div>Shartnoma.yuk</div>
+                  <div>Ma’lumotnoma</div>
+                  <div>Chaqiruv xati</div>
+                  <div>Zapros</div>
+                  <div>Telefon raqam 1</div>
+                  <div>Telefon raqam 2</div>
+                  <div>Tahrirlash </div>
+                </Container.Box>
+              </Container.Nav>
+              {
+                dataImt?.map((value) => (
+                  <Container.Section key={value.id}>
+                    <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
+                    <Container.Map>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                      <div>{value.tili}</div>
+                      <div>{value.num}</div>
+                      <div>{value.id}</div>
+                      <div>{value.ismi}</div>
+                      <div>{value.kurs}</div>
+                    </Container.Map>
+                  </Container.Section>
+                ))
+              }
+            </Container.BottomInset>
+          </Container.Bottom>
+        </ConTable>
+      </div>
+    </>
   )
 }
 export default ImhonotganlarComp

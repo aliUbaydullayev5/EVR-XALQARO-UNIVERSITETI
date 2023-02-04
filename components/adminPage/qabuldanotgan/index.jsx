@@ -57,7 +57,6 @@ export const QabuldanOtganCom = () => {
         checked: value.id === id ? !value.checked : value.checked
       }
     )))
-
   }
 
   return (
