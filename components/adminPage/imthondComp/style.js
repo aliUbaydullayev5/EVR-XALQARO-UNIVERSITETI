@@ -36,8 +36,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-
-   >div{
+ >div{
     display: flex;
     gap: 10px;
     >input{
@@ -68,10 +67,9 @@ Container.Header = styled.div`
 const Header = styled.div`
   display: grid; 
   /* grid-template-columns: 240px 249px 174px 174px 233px 200px; */
-  grid-template-columns: repeat(7 ,1fr) ;
- justify-content: center;
+  grid-template-columns: repeat(7 ,3fr) ;
+ justify-content:space-around;
  gap: 10px;
- background-color: red;
  width: 100%;
  text-align: center;
 

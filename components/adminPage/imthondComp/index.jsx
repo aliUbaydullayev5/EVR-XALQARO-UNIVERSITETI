@@ -3,8 +3,14 @@ import Container, { ConText, Header } from './style.js'
 import Logo from "../../../assets/icon/download.svg"
 import { useRouter } from 'next/router.js'
 import Button from '../../generic/Button/index.jsx'
+
+
 import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
 import Money from "../../../assets/icons/admin/admin$.svg"
+import Exel from "../../../assets/icons/admin/adminExel.svg"
+import Sms from "../../../assets/icons/admin/adminSms.svg"
+import Select from "../../../assets/icons/admin/selectdown.svg"
+
 
 const data = [
   {
@@ -33,91 +39,91 @@ const data = [
   },
   {
     id: 5,
-    img: Woomen,
+    img: Exel,
     title: 'Excelga chiqarish',
     sena: ''
   },
   {
     id: 6,
-    img: Woomen,
+    img: Sms,
     title: 'SMS yuborish',
     sena: ''
   },
   {
     id: 7,
-    img: Woomen,
+    img: Select,
     title: 'Ma’lumotnoma',
     sena: '3455'
   },
   {
     id: 8,
-    img: Woomen,
+    img: Select,
     title: 'Ta’lim yo’nalishi',
     sena: ''
   },
   {
     id: 9,
-    img: Woomen,
+    img: Select,
     title: 'Ta’lim shakli',
     sena: ''
   },
   {
     id: 11,
-    img: Woomen,
+    img: Select,
     title: 'Kontrakt turi',
     sena: ''
   },
   {
     id: 12,
-    img: Woomen,
+    img: Select,
     title: 'Uch tomonlama',
     sena: ''
   },
   {
     id: 13,
-    img: Woomen,
+    img: Select,
     title: 'Shartnoma yuk',
     sena: ''
   },
   {
     id: 13,
-    img: Woomen,
+    img: Select,
     title: 'Chaqiruv hati',
     sena: ''
   },
   {
     id: 14,
-    img: Woomen,
+    img: Select,
     title: 'Ta’lim tili',
     sena: ''
   },
   {
     id: 15,
-    img: Woomen,
+    img: Select,
     title: 'Kurs',
     sena: ''
   },
   {
     id: 16,
-    img: Woomen,
+    img: Select,
     title: 'Status',
     sena: ''
   },
   {
     id: 17,
-    img: Woomen,
+    img: Select,
     title: 'Zapros',
     sena: ''
   },
   {
     id: 18,
-    img: Woomen,
+    img: Select,
     title: 'Agent',
     sena: ''
   },
   {
     id: 19,
-    img: Woomen,
+    img: Select,
     title: 'Hujjat',
     sena: ''
   },
