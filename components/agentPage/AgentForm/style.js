@@ -113,34 +113,41 @@ const InputCont = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    }
-    .row5{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin:  0 auto;
-    }
-    .row6{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin:  0 auto;
-    }
-    .row4{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin:  0 auto;
-    }
-  .row7 {
+  }
+  .row5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:  0 auto;
+  }
+  .row6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:  0 auto;
+  }
+  .row4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:  0 auto;
+  } 
+  .row7 { 
     > div {
       width: 512px;
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
-      grid-gap: 10px !important;
     }
   }
 
+  .row8 {
+    > div {
+      width: 512px;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+  
   @media only screen and (max-width: 1000px) {
     flex-direction:column;
     padding: 0 25px;
@@ -164,7 +171,6 @@ const InputCont = styled.div`
     }
     .row5{
        grid-row: 5/6;
-      
     }
     .row6{
        grid-row: 6/7;
@@ -175,11 +181,20 @@ const InputCont = styled.div`
         width: 100%;
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        grid-gap: 10px !important;
+        grid-column-gap: 10px !important;
+        height: 36px;
       }
     }
     .row8{
        grid-row: 8/9;
+      >div {
+        width: 100%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        height: 36px;
+        grid-column-gap: 10px !important;
+        
+      }
     }
     .row9{
        grid-row: 9/10;
@@ -242,7 +257,7 @@ Container.ButtonLoader = styled.div`
 
 const IconBox = styled.div`
   position: relative;
-  height: 46px;
+  //height: 46px;
   padding: 0 !important;
   display: flex;
   justify-content: center;
@@ -302,7 +317,6 @@ const IconBox = styled.div`
     justify-content: center;
     font-size: 22px;
     margin: auto;
-    height: 26px;
   }
 `;
 
