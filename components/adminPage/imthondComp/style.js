@@ -3,8 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 1440px;
-  border: 1px solid red;
-  padding: 20px 50px;
+  padding: 10px 50px;
 `
 Container.Navbar = styled.div`
   display: flex;
@@ -110,6 +109,8 @@ const ConTable = styled.div`
   align-items: center;
   display: grid;
   grid-template-columns: 40px 1fr ;
+  gap: 10px;
+
 `
 
 
@@ -158,11 +159,12 @@ Container.BottomInset = styled.div`
   width: 100%;
 `
 Container.Nav = styled.div`
-display: grid;
-    grid-template-columns: 38px 1fr;
-    gap: 10px;
-
-
+   display: grid;
+   grid-template-columns: 40px 1fr;
+   gap: 10px;
+  >input{
+  height: 49px;
+}
 `
 Container.Box = styled.div`
   display: flex;
@@ -194,7 +196,6 @@ Container.Section = styled.div`
   grid-template-columns: 40px 1fr;
   gap: 10px;
 .chcxboxInput{
-  width: 30px;
   height: 30px;
 }
 `

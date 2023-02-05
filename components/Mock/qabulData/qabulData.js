@@ -6,7 +6,7 @@ const dataQabul = [
     {
         id: '100001',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',
@@ -24,7 +24,7 @@ const dataQabul = [
     {
         id: '100002',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',
@@ -42,7 +42,7 @@ const dataQabul = [
     {
         id: '100003',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',
@@ -60,7 +60,7 @@ const dataQabul = [
     {
         id: '100004',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',
@@ -78,7 +78,7 @@ const dataQabul = [
     {
         id: '100005',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',
@@ -96,7 +96,7 @@ const dataQabul = [
     {
         id: '100006',
         num: "1",
-        ismi: 'Gulomov Elbek Ilg’or o’g’li',
+        ismi: 'Gulomov Elbek ',
         agent: 'Gulomov Elbek',
         pasport: "AC 222 33 44",
         kurs: '3',

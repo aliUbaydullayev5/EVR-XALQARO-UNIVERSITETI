@@ -8,6 +8,10 @@ const Container = styled.div`
   max-width: 1440px;
   grid-template-columns: 1fr 0.7fr;
   padding: 0px 40px;
+ @media only screen and (max-width: 1000px) {
+   padding: 0px 20px;
+  }
+
 `
 Container.Scrool = styled.div`
    width: 100%;
@@ -39,9 +43,8 @@ Container.Scrool = styled.div`
 const ConTable = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
-  gap: 10px;
 >input{
-  height: 35px;
+  height: 30px;
 }
   >div{
     font-family: 'Montserrat';
@@ -59,7 +62,6 @@ const ConTable = styled.div`
     grid-template-columns: 52px 1fr 1fr 0.7fr;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    margin: 0px 0px 0px 10px;
     border-radius: 5px;
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
@@ -76,8 +78,7 @@ Container.Nav = styled.div`
   gap: 10px;
   margin-bottom: 10px;
   >input{
-    width: 50px;
-    height: 40px;
+    height: 49px;
   }
   >div{
     font-family: 'Montserrat';
@@ -95,7 +96,6 @@ Container.Nav = styled.div`
     grid-template-columns: 52px 1fr 1fr 0.7fr;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    margin: 0px 0px 0px 10px;
     border-radius: 5px;
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
@@ -124,23 +124,18 @@ Container.BottomDescInset = styled.div`
 // 2 Container Hero Data filter 
 const ConHero = styled.div`
   width: 100%;
-  margin-left: 30px ;
- 
-.TextCenter{
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
-  border-radius: 20px;
-  max-width:510px;
-  min-width:510px; 
-  max-height:65px;
-  min-height:65px;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin:30px 0px 0px 30px;
-  cursor: pointer; 
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+ @media only screen and (max-width: 1000px) {
+  padding: 10px;
+  justify-content: space-evenly;
+.UserImg{
+  display: none;
+}}
 
-}
+
 .TextPsamal{
   font-family: 'Montserrat';
   font-style: normal;
@@ -152,37 +147,52 @@ const ConHero = styled.div`
   color: #FFFFFF;
   justify-content:center;
   align-items:center;
-
+  @media only screen and (max-width: 1000px) {
+  font-size: 20px;
+  }
 }
 `
+ConHero.Tartiblash = styled.div`
+  display: flex;
+  justify-content: center;
+  
+`
+
 ConHero.Date = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  @media only screen and (max-width: 1000px) {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+  }
 `
 ConHero.Exel = styled.div`
   display:flex;
   flex-direction:column;
-  margin: 50px 0px ;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap: 15px;
+  justify-content: space-around;
+ 
+  gap: 10px;
   >div{
     display:flex;
     align-items:center;
     gap:10px;
-    max-width: 510px;
-    min-width: 510px;
-    max-height: 103.89px; 
-    min-height: 103.89px;  
+    width: 510px; 
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
     border-radius: 20px;
-    gap: 10px;
     padding-left:25px;
     cursor: pointer;
+  }
+  @media only screen and (max-width: 1000px) {
+   gap: 20px;
+  >div{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left:15px;
+  }
   }
 `
 

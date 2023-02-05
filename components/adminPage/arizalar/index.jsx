@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DataAriza from '../../Mock/adminAriza/data.js'
 import Container, { ConHero, ConTable } from './style.js'
-import { Input } from "../../generic"
+import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
@@ -39,9 +39,6 @@ export const ArizalarCom = () => {
       } 
     )))
   }
-
-
-
   return (
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
@@ -73,21 +70,21 @@ export const ArizalarCom = () => {
       </Container.Scrool>
       <ConHero>
         <ConHero.Date>
-          <Input height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" />
-          <Input height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" />
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
         </ConHero.Date>
-        <div className='TextCenter'>
-          <p className='TextPsamal'>Sana orqali tartiblash</p>
-        </div>
+        <ConHero.Tartiblash>
+          <Button mwidth={'210px'} msize={'18px'} mheight={"45px"} size={'29px'} width={'510px'} height={"90px"} radius={'20px'}  mradius={'10px'}> Sana orqali tartiblash</Button>
+        </ConHero.Tartiblash>
         <ConHero.Exel>
           <div>
-            <PeoupleGroup />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
+            <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
           </div>
           <div>
-            <Sms/> <p className='TextPsamal'>Excelga chiqarish</p>
+            <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
-            <Exel/>
+            <Exel className={'UserImg'} />
             <p className='TextPsamal'>SMS yuborish</p> 
           </div>
         </ConHero.Exel>

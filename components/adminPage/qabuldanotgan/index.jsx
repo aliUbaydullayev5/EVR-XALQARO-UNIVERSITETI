@@ -9,7 +9,7 @@ import { useState } from 'react'
 
 
 export const QabuldanOtganCom = () => {
-  const [checkAll, setCheckAll] = useState(false);
+
   const [data, setData] = useState(dataQabul)
   const [selectAllState, setSelectAllState] = useState(false)
 

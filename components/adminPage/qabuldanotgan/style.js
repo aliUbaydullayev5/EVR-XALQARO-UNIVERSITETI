@@ -369,10 +369,11 @@ Container.BottomInset = styled.div`
   width: 100%;
 `
 Container.Nav = styled.div`
-display: grid;
-    grid-template-columns: 38px 1fr;
-    gap: 10px;
-
+    display: grid;
+    grid-template-columns: 40px 1fr;
+  >input{
+    height: 48px;
+  }
 
 `
 Container.Box = styled.div`
@@ -385,6 +386,7 @@ Container.Box = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-left: 10px;
   >div{
     border-right: 2px solid rgba(255, 255, 255, 0.5);
     font-family: 'Montserrat';
@@ -405,8 +407,8 @@ Container.Section = styled.div`
   grid-template-columns: 40px 1fr;
   gap: 10px;
 .chcxboxInput{
-  width: 30px;
   height: 30px;
+  background-color: red;
 }
 `
 
