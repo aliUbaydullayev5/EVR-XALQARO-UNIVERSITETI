@@ -118,8 +118,9 @@ const ConTable = styled.div`
 Container.Bottom = styled.div`
   overflow-y: scroll;
   overflow-x: scroll;
-  max-height: 400px;
+  max-height: 450px;
   width: 1350px;
+  overflow-x: scroll;
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
