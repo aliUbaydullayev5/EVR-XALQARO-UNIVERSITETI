@@ -26,14 +26,15 @@ export const SidebarAdmin = () => {
     },
     {
       id: 4,
-      name: 'Testlar',
+      name: 'Ta’lim yo’nalish turlari',
       clicked: false,
     },
     {
       id: 5,
-      name: 'Ta’lim yo’nalishlari',
+      name: 'Testlar',
       clicked: false,
     },
+
     {
       id: 6,
       name: 'Ta’lim yo’nalishlari',
@@ -77,15 +78,16 @@ export const SidebarAdmin = () => {
       clicked: false,
     },
     {
+      id: 15,
+      name: 'Ta’lim yo’nalish Turlari',
+      clicked: false,
+    },
+    {
       id: 14,
       name: 'Testlar',
       clicked: false,
     },
-    {
-      id: 15,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
+
     {
       id: 16,
       name: 'Ta’lim yo’nalishlari',
@@ -127,13 +129,15 @@ export const SidebarAdmin = () => {
     if (id === 1) {
       quarey.push('/admin/setting/menagement')
     }
-    if (id === 4) {
-      quarey.push('/admin/setting/test')
-    }
     else if (id == 3) {
       quarey.push('/admin/setting/facultets')
     }
-
+    else if (id == 4) {
+      quarey.push('/admin/setting/facultetsType')
+    }
+    if (id === 5) {
+      quarey.push('/admin/setting/test')
+    }
   }
 
   return (
@@ -153,7 +157,7 @@ export const SidebarAdmin = () => {
                   </UserCon>
                 )
               })}
-            </Container.BottomDescInset>
+        </Container.BottomDescInset>
       </Container>
     </>
   )

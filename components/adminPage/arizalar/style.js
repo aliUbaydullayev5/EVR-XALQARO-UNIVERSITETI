@@ -43,6 +43,7 @@ Container.Scrool = styled.div`
 const ConTable = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
+  gap:10px;
 >input{
   height: 30px;
 }
@@ -78,7 +79,7 @@ Container.Nav = styled.div`
   gap: 10px;
   margin-bottom: 10px;
   >input{
-    height: 49px;
+    height: 45px;
   }
   >div{
     font-family: 'Montserrat';

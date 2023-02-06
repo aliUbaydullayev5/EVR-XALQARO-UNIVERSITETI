@@ -1,5 +1,8 @@
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils.js'
+
 import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
 import Input from '../../../../../generic/Input/index.jsx'
 import Container from './style.js'
 
@@ -48,6 +51,7 @@ const data = [
 
 
 export const TalimYunlishAddCom = () => {
+    const dispatch = useDispatch()
 
     const [datas, Setdatas] = useState(data);
     const [adduser, Setadduser] = useState()
@@ -56,6 +60,11 @@ export const TalimYunlishAddCom = () => {
     const handleDelete = (id) => {
         Setdatas(datas.filter((val) => val.id  !== id));
     }
+    useEffect(() => {
+        console.log(dispatch(getStudyTypesFetch({ type: 'Talim Yunalish Qoshish Abuturent' })));
+
+    }, [])
+
 
     const onChange = (e, id) => {
         const {name,value}= e.target

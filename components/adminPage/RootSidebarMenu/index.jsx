@@ -5,8 +5,8 @@ import Container from './style.js'
 export const RootSidebarMenu  = ({children}) => {
   return (
       <Container>
-          <SidebarAdmin />
-          {children}
+      <SidebarAdmin />
+      {children}
       </Container>
   )
 }
