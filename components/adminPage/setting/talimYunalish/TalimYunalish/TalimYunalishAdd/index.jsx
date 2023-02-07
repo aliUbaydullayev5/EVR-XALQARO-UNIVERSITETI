@@ -1,56 +1,54 @@
 
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTalimYunalishFetch, reset } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
+import { startMessage } from '../../../../../../redux/slices/message/index.js'
+import Button from '../../../../../generic/Button/index.jsx'
 import Input from '../../../../../generic/Input/index.jsx'
 import DataAriza from '../../../../../Mock/adminAriza/data.js'
 import Container, { ConTable } from './style.js'
 
-
 export const TalimYunlishAddCom = () => {
+
     const dispatch = useDispatch()
-
     const [data, setData] = useState(DataAriza)
-    const [selectAllState, setSelectAllState] = useState(false)
+    const [name, setName] = useState('')
+
+    const talimYunalishAdmin = useSelector((store) => store.talimYunalishAdmin)
+
+    useEffect(() => {
+        if (talimYunalishAdmin.status === 'success') {
+            dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli qoshildi', type: 'success' }))
+            setName('')
+        } else if (talimYunalishAdmin.status === 'notFound') {
+            dispatch(startMessage({ time: 3, message: 'Try again'}))
+        }
+        setTimeout(() => {
+            dispatch(reset())
+        }, 500);
+    }, [talimYunalishAdmin])
 
 
     useEffect(() => {
-        setData(data.map((value) => (
-            {
-                id: value.id,
-                ismi: value.ismi,
-                phone: value.phone,
-                data: value.data,
-                img: value.img,
-                checked: selectAllState
-            }
-        )))
-    }, [selectAllState])
-
-
-    const selectOne = (id = false) => {
-        setData(data.map((value) => (
-            {
-                id: value.id,
-                ismi: value.ismi,
-                phone: value.phone,
-                data: value.data,
-                img: value.img,
-                checked: value.id === id ? !value.checked : value.checked
-            }
-        )))
-    }
-
-
-    useEffect(() => {
-       dispatch(getStudyTypesFetch({ type: 'Talim Yunalish Qoshish Abuturent' }));
-
+        dispatch(getStudyTypesFetch({ type: 'Abuturent' }));
     }, [])
 
+    const addFacultet = () => {
+        dispatch(getTalimYunalishFetch({
+            name: name,
+        }));
+
+
+    }
     return (
         <Container>
             <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+                <Container.Add>
+                    <Input onchange={(e) => setName(e.target.value)} value={name} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
+                    <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} > Add</Button>
+                </Container.Add>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
                     <Container.Nav>
                         <div className='row'>

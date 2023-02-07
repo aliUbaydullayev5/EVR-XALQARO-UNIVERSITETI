@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/personal-cabinet/admin`, {
-        method :'POST',
+        method: 'POST',
         headers: {
-         'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             phoneNumber: payload.userName,
@@ -15,7 +15,7 @@ export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (p
 
 const initialState = {
     status: null,
-    message: ''
+    message: '',
 }
 const loginAdminThunk = createSlice({
     name: 'allTransFromPush',
@@ -32,7 +32,7 @@ const loginAdminThunk = createSlice({
                 localStorage.setItem('refreshToken', payload.data.refreshToken)
             } else if (payload.success === false) {
                 state.status = 'notFound'
-                state.message = 'Not Found' 
+                state.message = 'Not Found'
             }
         },
         [getAallLoginFetch.rejected]: (state) => {
@@ -40,7 +40,7 @@ const loginAdminThunk = createSlice({
         }
     },
     reducers: {
-        resetData({status, message}) {
+        resetData({ status, message }) {
             status = null
             message = ''
         },

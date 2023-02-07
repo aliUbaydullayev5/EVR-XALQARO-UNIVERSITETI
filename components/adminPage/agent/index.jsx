@@ -9,7 +9,6 @@ export const AgentComponent = () => {
   const hendelChange = (e) => {
     setSearch(e.target.value);
   }
-  console.log(serch,'FDS');
   return (
     <>
       <Container>

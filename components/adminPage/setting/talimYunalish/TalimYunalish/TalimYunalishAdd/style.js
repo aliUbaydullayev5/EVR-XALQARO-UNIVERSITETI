@@ -40,6 +40,13 @@ Container.Scrool = styled.div`
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
 `
+
+Container.Add = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+`
 const ConTable = styled.div`
   display: grid;
   grid-template-columns:  1fr;
