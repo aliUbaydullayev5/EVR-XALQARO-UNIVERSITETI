@@ -1,4 +1,5 @@
 
+import { Spin } from 'antd'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +16,7 @@ export const TalimYunlishAddCom = () => {
     const dispatch = useDispatch()
     const [data, setData] = useState(DataAriza)
     const [name, setName] = useState('')
+
 
     const talimYunalishAdmin = useSelector((store) => store.talimYunalishAdmin)
 
@@ -39,15 +41,42 @@ export const TalimYunlishAddCom = () => {
         dispatch(getTalimYunalishFetch({
             name: name,
         }));
-
-
     }
+
+    console.log(talimYunalishAdmin, 'Redux')
+
     return (
         <Container>
             <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
                 <Container.Add>
                     <Input onchange={(e) => setName(e.target.value)} value={name} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
-                    <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} > Add</Button>
+              
+                    {/* 
+                    {talimYunalishAdmin.success === 'loading'?
+                        <Container.ButtonLoader>
+                            <Button width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} disabled={true}>
+                                <Spin  />
+                            </Button>
+                        </Container.ButtonLoader>
+                        :
+                        <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} > Add</Button>
+                    }
+                     */}
+
+                    {
+                        talimYunalishAdmin.status === 'loading' &&
+                        <Container.ButtonLoader>
+                            <Button width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} disabled={true}>
+                                <Spin />
+                            </Button>
+                        </Container.ButtonLoader>
+                    }
+
+                    {
+                        talimYunalishAdmin.status !== 'loading' &&
+                        <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} > Add</Button>
+                    }
+                    
                 </Container.Add>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
                     <Container.Nav>

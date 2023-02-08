@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/v1/faculty/create`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/add`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5OTM4OTA5MjciLCJpYXQiOjE2NzU2ODA3MzMsImV4cCI6MTY3NjI4NTUzM30.0TwgQ_6sKBbDYH5EJEsWGaKCRkxGsNsp93LQGXiwbPNUvWeYoDqp86wh5eiNpDZhHtE6WVnnD99es0RftBIwgg'}`
+            Authorization: `Bearer ${localStorage.getItem('acsesToken')}`
         },
         body: JSON.stringify({
             name: payload.name,
@@ -25,7 +25,7 @@ const talimYunalishAdmin = createSlice({
     initialState,
     extraReducers: {
         [getTalimYunalishFetch.pending]: (state) => {
-            state.success = 'loading'
+            state.status = 'loading'
         },
         [getTalimYunalishFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {

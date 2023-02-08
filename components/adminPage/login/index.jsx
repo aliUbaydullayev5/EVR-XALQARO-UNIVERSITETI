@@ -33,9 +33,12 @@ export const LoginCom = () => {
   }
 
   const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
-  console.log(loginAdminThunk,'ad');
+
   useEffect(() => {
     dispatch(foundToken())
+    if (localStorage.getItem('acsesToken')) {
+      query.push('admin/home')
+    }
   }, [])
 
   useEffect(() => {

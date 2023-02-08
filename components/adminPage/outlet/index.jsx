@@ -6,7 +6,7 @@ const AdminRootToken = ({ children }) => {
     const query = useRouter()
 
     useEffect(() => {
-        if (!localStorage.getItem('token') && !localStorage.getItem('refreshToken')) {
+        if (!localStorage.getItem('acsesToken')) {
             query.push('/admin')
         }
     }, [])
@@ -14,7 +14,7 @@ const AdminRootToken = ({ children }) => {
     const [securety, setSecurety] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem('token')) setSecurety(true)
+        if (localStorage.getItem('acsesToken')) setSecurety(true)
         else setSecurety(false)
     }, [])
 
