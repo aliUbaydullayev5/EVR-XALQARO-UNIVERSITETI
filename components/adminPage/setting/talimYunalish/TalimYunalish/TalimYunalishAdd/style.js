@@ -75,14 +75,18 @@ const ConTable = styled.div`
     border-left:  2px solid white;
     padding-left: 10px;
   }
+  .action{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+
+  }
 
 `
 Container.Nav = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 10px;
-
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -100,6 +104,7 @@ Container.Nav = styled.div`
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
+    height: 50px;
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;

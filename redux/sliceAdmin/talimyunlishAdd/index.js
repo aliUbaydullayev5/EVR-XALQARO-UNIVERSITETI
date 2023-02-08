@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+
 export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async (payload) => {
+    
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/add`, {
         method: 'POST',
         headers: {
@@ -17,7 +19,6 @@ export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async
 const initialState = {
     status: null,
     message: '',
-    data: {},
 }
 
 const talimYunalishAdmin = createSlice({
@@ -29,7 +30,6 @@ const talimYunalishAdmin = createSlice({
         },
         [getTalimYunalishFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
-                state.data = action.data
                 state.status = 'success'
                 state.message = 'Malumot qo`shildi'
             }
@@ -39,7 +39,7 @@ const talimYunalishAdmin = createSlice({
             }
         },
         [getTalimYunalishFetch.rejected]: (state) => {
-            state.loading = 'Error';
+            state.loading = 'Error'
         }
     },
     reducers: {

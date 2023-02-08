@@ -27,7 +27,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     const { fileId, by } = useSelector((store) => store.deployFile)
     const receptionSmsVerify = useSelector((store)=> store.receptionSmsVerify)
     const receptionData = useSelector((store) => store.receptionPost)
-
     const changeMumPass = (event) => {
         if (pasSerLength < event.length) {
             setPasSerLength(event.length - 1)

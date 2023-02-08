@@ -9,7 +9,9 @@ const AdminRootToken = ({ children }) => {
         if (!localStorage.getItem('acsesToken')) {
             query.push('/admin')
         }
+
     }, [])
+
 
     const [securety, setSecurety] = useState(false)
 

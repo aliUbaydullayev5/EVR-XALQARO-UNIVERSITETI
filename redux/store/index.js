@@ -12,6 +12,8 @@ import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
 import getAdminArizalar from '../sliceAdmin/arizalar'
 import talimYunalishAdmin from "../sliceAdmin/talimyunlishAdd"
+import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
+import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
 
 export default configureStore({
     reducer: {
@@ -27,5 +29,7 @@ export default configureStore({
         loginAdminThunk,
         getAdminArizalar,
         talimYunalishAdmin,
+        getStudyTypesAbuturent,
+        deleteAbuturentId,
     },
 })
