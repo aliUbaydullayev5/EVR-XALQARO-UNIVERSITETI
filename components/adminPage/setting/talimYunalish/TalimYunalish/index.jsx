@@ -17,5 +17,4 @@ export const TalimYunalishCom = () => {
       </Container>
   )
 }
-// /admin/setting / facultets
 export default TalimYunalishCom

@@ -39,7 +39,7 @@ const talimYunalishAdmin = createSlice({
             }
         },
         [getTalimYunalishFetch.rejected]: (state) => {
-            state.loading = 'Error'
+            state.loading = 'error'
         }
     },
     reducers: {
