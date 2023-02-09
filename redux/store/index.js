@@ -14,6 +14,7 @@ import getAdminArizalar from '../sliceAdmin/arizalar'
 import talimYunalishAdmin from "../sliceAdmin/talimyunlishAdd"
 import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
 import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
+import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 
 export default configureStore({
     reducer: {
@@ -31,5 +32,7 @@ export default configureStore({
         talimYunalishAdmin,
         getStudyTypesAbuturent,
         deleteAbuturentId,
+        editAbuturentId,
+
     },
 })

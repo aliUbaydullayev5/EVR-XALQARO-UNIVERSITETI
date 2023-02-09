@@ -1,27 +1,30 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const deleteAbuturentFetch = createAsyncThunk('deleteAbuturentFetch', async ({ id }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/delete/${id}`, {
-        method: 'DELETE',
+export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async ({ id, value }) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/edit/${id}`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
+        body: JSON.stringify({
+            name: value,
+            studyType: "BACHELOR"
+        }),
     }).then((res) => res.json())
 })
-
 const initialState = {
     status: null,
     message: '',
 }
-const deleteAbuturentId = createSlice({
-    name: 'deleteAbuturentId',
+const editAbuturentId = createSlice({
+    name: 'editAbuturentId',
     initialState,
     extraReducers: {
-        [deleteAbuturentFetch.pending]: (state) => {
+        [editAbuturentFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [deleteAbuturentFetch.fulfilled]: (state, { payload }) => {
+        [editAbuturentFetch.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
                 state.status = 'success'
 
@@ -30,11 +33,11 @@ const deleteAbuturentId = createSlice({
                 state.message = 'Not Found'
             }
         },
-        [deleteAbuturentFetch.rejected]: (state) => {
+        [editAbuturentFetch.rejected]: (state) => {
             state.loading = 'error';
         }
     },
 })
 
 
-export default deleteAbuturentId.reducer
+export default editAbuturentId.reducer

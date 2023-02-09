@@ -19,7 +19,6 @@ const getStudyTypesAbuturent = createSlice({
         [getAbuturentTypeFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
-            console.log(action.payload,'pyload');
         },
         [getAbuturentTypeFetch.rejected]: (state)=> {
             state.status = 'error'

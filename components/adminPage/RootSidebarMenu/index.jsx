@@ -2,12 +2,12 @@ import React from 'react'
 import SidebarAdmin from '../setting/sidebarMenu/index.jsx'
 import Container from './style.js'
 
-export const RootSidebarMenu  = ({children}) => {
+export const RootSidebarMenu = ({ children }) => {
   return (
-      <Container>
+    <Container>
       <SidebarAdmin />
       {children}
-      </Container>
+    </Container>
   )
 }
 

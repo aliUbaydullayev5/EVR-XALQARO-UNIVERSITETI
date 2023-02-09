@@ -114,7 +114,6 @@ export const MagistraturaComponent = () => {
 
         if (!(allData.phoneNumber.length == 12)) {
             dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
-            console.log(allData.phoneNumber.length)
             return false
         }
         if (!(allData.extraPhoneNumber.length == 12)) {

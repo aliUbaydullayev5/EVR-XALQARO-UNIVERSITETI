@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async (payload) => {
-    
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/add`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
