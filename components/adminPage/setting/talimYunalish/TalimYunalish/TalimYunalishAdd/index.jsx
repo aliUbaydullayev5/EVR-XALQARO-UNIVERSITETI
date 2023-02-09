@@ -19,37 +19,39 @@ export const TalimYunlishAddCom = () => {
     const dispatch = useDispatch()
     const [data, setData] = useState(DataAriza)
     const [name, setName] = useState('')
-
+    const [dataList, setDataList] = useState([])
 
     const talimYunalishAdmin = useSelector((store) => store.talimYunalishAdmin)
     useEffect(() => {
         if (talimYunalishAdmin.status === 'success') {
             dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli qoshildi', type: 'success' }))
             setName('')
-        } else if (talimYunalishAdmin.status === 'notFound') {
-            dispatch(startMessage({ time: 3, message: 'Bu Talim Yunalish oldin Qo`shilgan'}))
-        }
+        } else if (talimYunalishAdmin.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Bu Talim Yunalish oldin Qo`shilgan'}))
         else if (talimYunalishAdmin.loading === 'Error') {
         }
         setTimeout(() => {
             dispatch(reset())
         }, 500);
-       
-
     }, [talimYunalishAdmin])
 
 
     useEffect(() => {
         dispatch(getStudyTypesFetch({ type: 'BACHELOR' }));
     }, [])
+    const addFacultet = () => dispatch(getTalimYunalishFetch({name: name}));
+    const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
+    const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId)
 
-    const addFacultet = () => {
-        dispatch(getTalimYunalishFetch({
-            name: name,
-        }));
-    }
-    
-    const { educationTypes, facultyDTOList } = useSelector((store) => store.getStudyTypesAbuturent.data)
+    const findDeleteID = (deleteId) => dispatch(deleteAbuturentFetch({ id: deleteId }))
+
+
+    useEffect(() => {
+        if (deleteAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
+    }, [deleteAbuturentId])
+
+    useEffect(() => {
+        if (getStudyTypesAbuturent.status === 'success') setDataList(getStudyTypesAbuturent.data.facultyDTOList)
+    }, [getStudyTypesAbuturent])
 
     return (
         <Container>
@@ -81,15 +83,14 @@ export const TalimYunlishAddCom = () => {
                     </Container.Nav>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-                    {facultyDTOList?.map((value) => {
+                    {dataList.map((value) => {
                         return (
                             <ConTable key={value.id}>
                                 <div className='row'>
                                     <div >{value.id}</div>
                                     <div className='colum'>{value.name}</div>
                                     <div className='action'><Button width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
-
-                                        <Button onclick={() => console.log(dispatch(deleteAbuturentFetch(value.id)))} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
+                                        <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
                                     </div>
                                 </div>
                             </ConTable>

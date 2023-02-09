@@ -28,7 +28,7 @@ const loginAdminThunk = createSlice({
             if (payload.success === true) {
                 state.status = 'success'
                 state.message = 'Siz muvofiyaqatli kirdingiz'
-                localStorage.setItem('acsesToken', payload.data.accessToken)
+                localStorage.setItem('accessToken', payload.data.accessToken)
                 localStorage.setItem('refreshToken', payload.data.refreshToken)
             } else if (payload.success === false) {
                 state.status = 'notFound'
@@ -45,7 +45,7 @@ const loginAdminThunk = createSlice({
             message = ''
         },
         foundToken({ status, message }) {
-            if (localStorage.getItem('acsesToken')) {
+            if (localStorage.getItem('accessToken')) {
                 status = 'success'
                 message = ''
             } else {

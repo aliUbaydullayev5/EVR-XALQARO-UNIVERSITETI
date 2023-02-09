@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const deleteAbuturentFetch = createAsyncThunk('postLoginformFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/personal-cabinet/admin${payload.id}`, {
+export const deleteAbuturentFetch = createAsyncThunk('deleteAbuturentFetch', async ({ id }) => {
+    console.log(id)
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/delete/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
-        body: JSON.stringify({  }),
-    }).then((res) => res.json())
+    })
+        .then((res) => res.json())
 })
 
 const initialState = {
@@ -15,17 +17,16 @@ const initialState = {
     message: '',
 }
 const deleteAbuturentId = createSlice({
-    name: 'allTransFromPush',
+    name: 'deleteAbuturentId',
     initialState,
     extraReducers: {
         [deleteAbuturentFetch.pending]: (state) => {
             state.status = 'loading'
         },
         [deleteAbuturentFetch.fulfilled]: (state, { payload }) => {
+            console.log(payload)
             if (payload.success === true) {
                 state.status = 'success'
-                state.message = `Facultet Turi ${id}`
-
             } else if (payload.success === false) {
                 state.status = 'notFound'
                 state.message = 'Not Found'
