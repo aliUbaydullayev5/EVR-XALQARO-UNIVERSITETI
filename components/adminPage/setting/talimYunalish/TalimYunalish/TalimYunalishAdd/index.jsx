@@ -61,7 +61,7 @@ export const TalimYunlishAddCom = () => {
         if (deleteAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
     }, [deleteAbuturentId])
     useEffect(() => {
-        if ((getStudyTypesAbuturent.status === 'success') || (getStudyTypes.status === 'success')) setDataList(getStudyTypesAbuturent.data.facultyDTOList)
+        if ((getStudyTypesAbuturent.status === 'success') || (getStudyTypes.status === 'success')) setDataList(getStudyTypesAbuturent.data.faculties)
     }, [getStudyTypesAbuturent || getStudyTypes])
     useEffect(() => {
         if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
@@ -99,7 +99,7 @@ export const TalimYunlishAddCom = () => {
                     </Container.Nav>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-                    {dataList.map((value, index) => {
+                    {dataList?.map((value, index) => {
                         return (
                             <ConTable key={value.id}>
                                 <div className='row'>

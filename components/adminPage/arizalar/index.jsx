@@ -16,12 +16,12 @@ export const ArizalarCom = () => {
   useEffect(() => {
     setData(data.map((value) => (
       {
-      id: value.id,
-      ismi: value.ismi,
-      phone: value.phone,
-      data: value.data,
-      img: value.img,
-      checked: selectAllState
+        id: value.id,
+        ismi: value.ismi,
+        phone: value.phone,
+        data: value.data,
+        img: value.img,
+        checked: selectAllState
       }
     )))
   }, [selectAllState])
@@ -36,7 +36,7 @@ export const ArizalarCom = () => {
         data: value.data,
         img: value.img,
         checked: value.id === id ? !value.checked : value.checked
-      } 
+      }
     )))
   }
   return (

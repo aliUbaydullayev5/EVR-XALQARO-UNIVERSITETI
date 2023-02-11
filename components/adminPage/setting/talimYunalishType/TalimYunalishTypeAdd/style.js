@@ -71,7 +71,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 10fr  200px;
+    grid-template-columns: 50px 200px  150px 167px 200px 400px 100px 100px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -107,7 +107,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  50px 10fr  200px;
+    grid-template-columns: 50px 200px  150px 167px 200px 400px 100px 100px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
