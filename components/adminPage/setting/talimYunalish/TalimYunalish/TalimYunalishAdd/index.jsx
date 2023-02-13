@@ -60,13 +60,15 @@ export const TalimYunlishAddCom = () => {
     useEffect(() => {
         if (deleteAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
     }, [deleteAbuturentId])
+
     useEffect(() => {
         if ((getStudyTypesAbuturent.status === 'success') || (getStudyTypes.status === 'success')) setDataList(getStudyTypesAbuturent.data.faculties)
     }, [getStudyTypesAbuturent || getStudyTypes])
+
     useEffect(() => {
         if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
     }, [editAbuturentId])
-
+    console.log(dataList,'dataUse');
 
     return (
         <Container>

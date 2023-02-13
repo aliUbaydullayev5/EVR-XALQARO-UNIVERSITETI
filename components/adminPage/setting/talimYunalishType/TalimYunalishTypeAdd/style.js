@@ -1,3 +1,4 @@
+import { Select } from "antd";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -7,9 +8,10 @@ const Container = styled.div`
   padding:  0px 40px;
 `
 
+
 Container.Scrool = styled.div`
    width: 100%;
-   height: 615px !important;
+   height: 600px !important;
    overflow-y: scroll;
    padding: 0 15px 0 0;
    height: 100%;
@@ -71,7 +73,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 200px  150px 167px 200px 400px 100px 100px;
+    grid-template-columns: 50px 200px  150px 167px 200px  100px 100px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -115,7 +117,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 200px  150px 167px 200px 400px 100px 100px;
+    grid-template-columns: 50px 200px  150px 167px 200px  100px 100px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -134,7 +136,53 @@ Container.ButtonLoader = styled.div`
   background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 `
+const AntSelect = styled(Select)`
+ .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
+   background-color: transparent !important;
+  }
+  .ant-select-selection-item{
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    padding: 0 10px !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    font-family: 'Montserrat' !important;
+    @media only screen and (max-width: 1000px) {
+      font-size: 16px !important;
+      padding: 0 12px !important;
+    }
+  }
+  .ant-select-arrow{
+    color: white !important;
+    font-size: 20px;
+    @media only screen and (max-width: 1000px) {
+      font-size: 13px;
+    }
+  }
+  .ant-select-selection-search-input{
+    display: none !important;
+  }
+  .ant-select-selection-placeholder{
+    display: flex;
+    align-items: center;
+    padding: 0 20px !important;
+    font-size: 22px !important;
+    color: #ffff;
+    @media only screen and (max-width: 800px) {
+      font-size: 16px !important;
+      padding: 0 8px !important;
+    }
+  }
 
+ .ant-select-item-option-content{
+  font-size: 17px !important;
+ } 
+ .ant-select-item .ant-select-item-option .ant-select-item-option-active{
+   font-size: 17px !important;
+ }
 
-export { ConTable }
+`
+
+export { ConTable, AntSelect }
 export default Container

@@ -1,16 +1,40 @@
-import React, { useState } from 'react'
+import { Select } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { postTalimYunalishTurlariFetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
+import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import DataAriza from '../../../../Mock/adminAriza/data.js'
-import Container, { ConTable } from './style.js'
+import Container, { AntSelect, ConTable } from './style.js'
 
 export const TalimYunalishTypeAddCom = () => {
+ 
+  const dispatch = useDispatch()
+
   const [data, setData] = useState(DataAriza)
   const [checked, setChecked] = useState(true)
+
+  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+
+  const { faculties, } = useSelector((store) => store.getStudyTypes.data)
   
+  const findPostID = (deleteId) => dispatch(postTalimYunalishTurlariFetch({ id: deleteId }))
+
   return (
     <Container>
-      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px', overflowX: "scroll", maxWidth: '950px' }}>
+      <AntSelect
+        style={{width:'500px',marginBottom:'20px'}}
+        placeholder='Facultet Turilar'
+        optionFilterProp="children"
+        options={faculties?.map((value) => ({
+          value: value.id,
+          label: value.name
+        })) || []}
+        onclick={() => findPostID(value.id)}
+      />
+
+      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '500px', overflowX: "scroll", maxWidth: '990px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
             <Container.Nav>
               <div className='row'>
@@ -19,7 +43,6 @@ export const TalimYunalishTypeAddCom = () => {
               <div className='colum'>Student soni</div>
               <div className='colum'>O`qish tili</div>
               <div className='colum'>Ta`lim turi</div>
-              <div className='colum'>FIO</div>
               <div className='colum'>Action</div>
               <div className='colum'>Status</div>
 
@@ -32,7 +55,6 @@ export const TalimYunalishTypeAddCom = () => {
                 <ConTable key={value.id}>
                     <div className='row'>
                     <div >{value.id}</div>
-                    <div className='colum'>{value.id}</div>
                     <div className='colum'>{value.id}</div>
                     <div className='colum'>{value.id}</div>
                     <div className='colum'>{value.id}</div>

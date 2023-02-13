@@ -23,7 +23,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
     const reseptionCheckPhoneSlice = useSelector((store)=> store.reseptionCheckPhoneSlice)
-    const {educationTypes, facultyDTOForHomeList, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
+    const { educationTypes, faculties, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
     const { fileId, by } = useSelector((store) => store.deployFile)
     const receptionSmsVerify = useSelector((store)=> store.receptionSmsVerify)
     const receptionData = useSelector((store) => store.receptionPost)
@@ -178,7 +178,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         }}
                         placeholder='Talim shaklingiz'
                         optionFilterProp="children"
-                        filterOption={(input, option) => (option?.label ?? '').includes(input)}
                         options={educationTypes?.map((value) => ({
                             value,
                             label: value
@@ -248,7 +247,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
                         placeholder='Talim yunalishingiz'
                         optionFilterProp="children"
 
-                        options={facultyDTOForHomeList?.map((value)=> ({
+                        options={faculties?.map((value)=> ({
                             value: value.id,
                             label: value.name
                         })) || []}
