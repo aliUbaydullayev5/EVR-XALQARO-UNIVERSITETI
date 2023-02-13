@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Button from '../../../../generic/Button/index.jsx'
+import Input from '../../../../generic/Input/index.jsx'
 import DataAriza from '../../../../Mock/adminAriza/data.js'
 import Container, { ConTable } from './style.js'
-Input
 
 export const TalimYunalishTypeAddCom = () => {
   const [data, setData] = useState(DataAriza)
@@ -19,7 +19,9 @@ export const TalimYunalishTypeAddCom = () => {
               <div className='colum'>O`qish tili</div>
               <div className='colum'>Ta`lim turi</div>
               <div className='colum'>FIO</div>
-               <div className='colum'>Action</div>
+              <div className='colum'>Action</div>
+              <div className='colum'>Status</div>
+
               </div>
             </Container.Nav>
           </div>

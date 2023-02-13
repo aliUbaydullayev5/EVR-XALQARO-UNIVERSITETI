@@ -81,6 +81,15 @@ const ConTable = styled.div`
   .colum{
     border-left:  2px solid white;
     padding-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    >input{
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+    
+    }
   }
   .action{
     display: flex;
