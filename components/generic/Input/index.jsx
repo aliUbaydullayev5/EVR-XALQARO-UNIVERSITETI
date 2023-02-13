@@ -25,6 +25,7 @@ export const Input = forwardRef(({
   border,
   error,
   name,
+  defaultChecked,
 //    ---------
   mwidth,
   mheight,
@@ -89,6 +90,7 @@ export const Input = forwardRef(({
     error={error}
     merror={merror}
     name={name}
+    defaultChecked={defaultChecked}
 
   />
 })

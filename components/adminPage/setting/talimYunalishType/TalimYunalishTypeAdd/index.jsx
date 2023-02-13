@@ -6,7 +6,8 @@ import Container, { ConTable } from './style.js'
 
 export const TalimYunalishTypeAddCom = () => {
   const [data, setData] = useState(DataAriza)
-
+  const [checked, setChecked] = useState(true)
+  
   return (
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px', overflowX: "scroll", maxWidth: '950px' }}>
@@ -42,10 +43,9 @@ export const TalimYunalishTypeAddCom = () => {
                       </div>
                     </div>
                     <div className='colum'>
-                      <Input type="checkbox"/>
+                      <Input type="checkbox" defaultChecked={true}
+                        onChange={() => setChecked(!checked)} />
                     </div>
-
-
                   </div>
                 </ConTable>
               )

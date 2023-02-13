@@ -85,8 +85,7 @@ const ConTable = styled.div`
       justify-content: center;
       align-items: center;
     >input{
-      width: 40px;
-      height: 40px;
+      height: 30px;
       padding: 5px;
     
     }
