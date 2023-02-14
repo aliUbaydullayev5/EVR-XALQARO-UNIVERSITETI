@@ -6,7 +6,7 @@ import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { AntSelect, ConTable } from './style.js'
 import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx"
-import { getfacultyIdfetch, postTalimYunalishTurlariFetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
+import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
 
 
@@ -16,10 +16,7 @@ export const TalimYunalishTypeAddCom = () => {
 
   const [checked, setChecked] = useState(true)
   const [dataList, setDataList] = useState([])
-
   const [data, setData] = useState([])
-
-  const [getId, setgetId] = useState()
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
