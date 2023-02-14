@@ -24,7 +24,6 @@ const deleteAbuturentId = createSlice({
         [deleteAbuturentFetch.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
                 state.status = 'success'
-
             } else if (payload.success === false) {
                 state.status = 'notFound'
                 state.message = 'Not Found'

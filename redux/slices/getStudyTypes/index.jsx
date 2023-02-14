@@ -15,7 +15,7 @@ const getStudyTypes = createSlice({
         [getStudyTypesFetch.pending]: (state)=> {
             state.status = 'loading'
         },
-        [getStudyTypesFetch.fulfilled]: (state, action)=> {
+        [getStudyTypesFetch.fulfilled]: (state, action) => {
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
         },
