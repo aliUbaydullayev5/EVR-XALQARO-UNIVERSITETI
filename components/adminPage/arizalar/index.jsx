@@ -1,25 +1,63 @@
 import React, { useState } from 'react'
 import DataAriza from '../../Mock/adminAriza/data.js'
 import Container, { ConHero, ConTable } from './style.js'
-import { Input } from "../../generic"
+import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
+import { useEffect } from 'react'
 
 
 export const ArizalarCom = () => {
-  const [data, setData] = useState(DataAriza);
+  const [data, setData] = useState(DataAriza)
+  const [selectAllState, setSelectAllState] = useState(false)
+
+
+  useEffect(() => {
+    setData(data.map((value) => (
+      {
+        id: value.id,
+        ismi: value.ismi,
+        phone: value.phone,
+        data: value.data,
+        img: value.img,
+        checked: selectAllState
+      }
+    )))
+  }, [selectAllState])
+
+
+  const selectOne = (id = false) => {
+    setData(data.map((value) => (
+      {
+        id: value.id,
+        ismi: value.ismi,
+        phone: value.phone,
+        data: value.data,
+        img: value.img,
+        checked: value.id === id ? !value.checked : value.checked
+      }
+    )))
+  }
   return (
     <Container>
-      <div className='scrollCon' style={{overflowY: 'scroll', maxHeight: '550px'}}>
+      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+              <Container.Nav>
+            <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
+                <div className='row'>
+                  <div >№</div>
+              <div className='colum'>FIO</div>
+              <div className='colum'>Telefon raqam</div>
+              <div className='colum'>Kun</div>
+                </div>
+           </Container.Nav>
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
           {data.map((value) => {
-            const Img = value.img
             return(
               <ConTable key={value.id}>
-              <ConTable.ChecBox>
-                <Img className={'checbox'} />
-              </ConTable.ChecBox>
+                <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked}  />
               <div className='row'>
                 <div >{value.id}</div>
                 <div className='colum'>{value.ismi}</div>
@@ -29,25 +67,25 @@ export const ArizalarCom = () => {
             </ConTable>
           )})}
         </div>
-      </div>
+      </Container.Scrool>
       <ConHero>
         <ConHero.Date>
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
         </ConHero.Date>
-        <div className='TextCenter'>
-          <p className='TextPsamal'>Sana orqali tartiblash</p>
-        </div>
+        <ConHero.Tartiblash>
+          <Button mwidth={'210px'} msize={'18px'} mheight={"45px"} size={'29px'} width={'510px'} height={"90px"} radius={'20px'}  mradius={'10px'}> Sana orqali tartiblash</Button>
+        </ConHero.Tartiblash>
         <ConHero.Exel>
           <div>
-            <PeoupleGroup/>  <p className='TextPsamal'>Arizalar soni: {data.length }</p>
+            <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
           </div>
           <div>
-           
-            <Sms /> <p className='TextPsamal'>Excelga chiqarish</p>
+            <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
-            <Exel />  <p className='TextPsamal'>SMS yuborish</p> 
+            <Exel className={'UserImg'} />
+            <p className='TextPsamal'>SMS yuborish</p> 
           </div>
         </ConHero.Exel>
       </ConHero>

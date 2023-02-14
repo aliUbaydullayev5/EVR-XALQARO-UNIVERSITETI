@@ -13,6 +13,7 @@ const Container = styled.div`
   }
 `
 Container.Number = styled.div`
+<<<<<<< HEAD
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -51,6 +52,39 @@ Container.NumberText = styled.div`
   position: absolute;
   top: -16px;
   left: 90px;
+=======
+  width: 100% !important;
+  position: relative;
+  .customPhoneInput{
+    border-radius: 15px !important;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    width: 513px !important;
+    padding: 0px 0px 0px 20px !important;
+    height: 46px;
+ @media only screen and (max-width: 800px) {
+  width: 100% !important;
+  font-size: 16px;
+  height:26px !important;
+  border-radius: 5px !important;
+ }
+ }
+`
+Container.NumberText = styled.div`
+  position: absolute;
+  top: -16px;
+  left: 100px;
+  z-index: 999999;
+  width: 100%;
+
+>>>>>>> admin/login
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -59,6 +93,7 @@ Container.NumberText = styled.div`
   align-items: center;
   letter-spacing: -0.025em;
   color: rgba(194, 191, 191, 0.442);
+<<<<<<< HEAD
   @media only screen and (max-width: 800px) {
     top: -12px;
     letter-spacing: -0.025em;
@@ -67,6 +102,12 @@ Container.NumberText = styled.div`
     line-height: 105.9%;
   }
 `;
+=======
+@media only screen and (max-width: 1000px) {
+ left: 20px; 
+}
+`
+>>>>>>> admin/login
 
 const TextCon = styled.div`
   width: 100%;
@@ -140,6 +181,7 @@ const InputCont = styled.div`
     }
   }
 
+<<<<<<< HEAD
   .row8 {
     > div {
       width: 512px;
@@ -156,6 +198,54 @@ const InputCont = styled.div`
     grid-gap: 13px;
     >div{
       width: 100%;
+=======
+  >div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.row5{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+.row6{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+.row4{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:  0 auto;
+}
+
+ .row9{
+    >div{
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+  }
+  .row8{
+     >div{
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-gap: 10px !important;
+    }
+    }
+
+  @media only screen and (max-width: 1000px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr, 12);
+    >div{
+      width: 100%;
+      height: 26px;
+>>>>>>> admin/login
     }
     .row1{
        grid-row: 1/2;
@@ -257,7 +347,11 @@ Container.ButtonLoader = styled.div`
 
 const IconBox = styled.div`
   position: relative;
+<<<<<<< HEAD
   //height: 46px;
+=======
+  height: 46px;
+>>>>>>> admin/login
   padding: 0 !important;
   display: flex;
   justify-content: center;
@@ -268,11 +362,25 @@ const IconBox = styled.div`
     top: 35px;
     cursor: pointer;
   }
+<<<<<<< HEAD
   .UploadFile2 {
+=======
+    .UploadFile1{
     position: absolute;
     left: 5px;
     top: 6px;
     cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: none;
+      }
+    }
+  .UploadFile2{
+>>>>>>> admin/login
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    cursor: pointer;
+<<<<<<< HEAD
     @media only screen and (max-width: 800px) {
       height: 26px;
       position: absolute;
@@ -304,11 +412,45 @@ const IconBox = styled.div`
     position: absolute;
     left: 7px;
     top: 8px;
+=======
+   @media only screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  
+
+ @media only screen and (min-width: 1000px) {
+ .UploadFile1{
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
+}
+  .UploadFile2{
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: none; 
+    }
+ }
+}
+  .UploadFileMobile{
+    position: absolute;
+    left: 7px ;
+    top: 18px;
+>>>>>>> admin/login
     bottom: 5px;
     cursor: pointer;
     @media only screen and (min-width: 800px) {
       display: none;
     }
+<<<<<<< HEAD
   }
   @media only screen and (max-width: 1000px) {
     width: 100% !important;
@@ -320,14 +462,73 @@ const IconBox = styled.div`
   }
 `;
 
+=======
+  } 
+`
+>>>>>>> admin/login
 
 
 Container.InputCustom1 = styled.input`
-  min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
+<<<<<<< HEAD
   padding: 0 0 0 70px;
   font-size: 24px;
+=======
+  padding: 3px 0 3px 40px;
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  border-bottom: 0;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105.9%;
+  letter-spacing: -0.025em;
+  font-size: 22px;
+  transition: .2s;
+  
+  :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  color: ${({ inputType }) => inputType && 'transparent'};
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  ::before {
+    font-family: 'Montserrat', sans-serif;
+    content: 'Pasport nusxasini';
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    display: inline-block;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    margin: 8px 0 0 0;
+    width: 200px;
+  }
+  cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    min-width: 124.72px !important;
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+`
+
+Container.InputCustom2 = styled.input`
+  cursor: pointer;
+  min-width: 124.72px;
+  width: 251px;
+  height: 46px;
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
+>>>>>>> admin/login
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-bottom: 0;
   border-radius: 15px;
@@ -340,6 +541,7 @@ Container.InputCustom1 = styled.input`
   color: transparent;
   transition: .2s ;
   :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+<<<<<<< HEAD
 
   @media only screen and (max-width: 1000px) {
     padding: 0 0 0 30px;
@@ -352,31 +554,36 @@ Container.InputCustom1 = styled.input`
     border-radius: 5px;
     width: 100%;
    }
+=======
+>>>>>>> admin/login
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
   ::before {
-    content: 'Firma guvohnomasini yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
-    @media only screen and (max-width: 1000px) {
-      margin: 12px 0 0 0;
-    }
   }
-  cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
 `
-
 
 Container.InputCustom2 = styled.input`
   //cursor: pointer;
@@ -406,8 +613,13 @@ Container.InputCustom2 = styled.input`
   height: 46px;
   padding: 3px 0 3px 40px;
   font-size: 22px;
+<<<<<<< HEAD
   background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
   border-bottom: 0;
+=======
+  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  border-bottom: 0px;
+>>>>>>> admin/login
   border-radius: 15px;
   outline: none;
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
@@ -415,6 +627,7 @@ Container.InputCustom2 = styled.input`
   font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
+<<<<<<< HEAD
   transition: 0.2s;
   color: rgba(255, 255, 255, 0);
   
@@ -430,30 +643,40 @@ Container.InputCustom2 = styled.input`
      border-radius: 5px;
   
    }
+=======
+  color: transparent;
+  transition: .2s ;
+  :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+>>>>>>> admin/login
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
   ::before {
-    content: 'Firma raxbarining pasportini yuklang';
+    font-family: 'Montserrat', sans-serif;
+    content: 'Deplom atistat';
     line-height: 105.9%;
     letter-spacing: -0.025em;
-    color: #d3d3d3;
+    color: #fff;
     display: inline-block;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     margin: 8px 0 0 0;
-    @media only screen and (max-width: 1000px) {
-      margin: 12px 0 0 0;
-    }
-
   }
+  @media only screen and (max-width: 1000px) {
+    width: 100% !important;
+    height: 26px;
+    padding: 0px 0px 0px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
 `
+
 
 
 

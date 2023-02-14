@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  padding: 50px 80px;
+  padding: 20px 80px;
   max-width: 1440px;
   margin: 0 auto;
   select {

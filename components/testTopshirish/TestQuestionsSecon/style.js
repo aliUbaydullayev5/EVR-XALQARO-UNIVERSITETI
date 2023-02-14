@@ -80,7 +80,6 @@ const Questions = styled.div`
     background-color: #fff;
     border: 2px solid #fff;
   }
-
 `
 const WidthWiet = styled.div`
 height: 2px;

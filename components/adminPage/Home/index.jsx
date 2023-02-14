@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router.js'
+
 import Container from './style'
 
 
-const Home = () => {
-    const router = useRouter()
-
+const HomeComponent = () => {
+const router =useRouter()
     return(
         <Container >
-            <div onClick={() => router.push('homePage/management')}>
+            <div onClick={() => router.push('/admin//management')}>
                     <p>Boshqaruv</p>
                     <p>bo’limi</p>
            </div>
@@ -18,26 +18,26 @@ const Home = () => {
             <div>
                 <p>Buxgalteriya</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/setting')}>
                 <p>Sozlamalar</p>
             </div>
-            <div onClick={() => router.push('homePage/arizalar')} >
+            <div onClick={() => router.push('/admin/arizalar')} >
                 <p>Arizalar</p>
             </div>
-            <div onClick={() => router.push('homePage/qabuldanotganlar')}>
+            <div onClick={() => router.push('/admin/qabuldanotganlar')}>
                 
                 <p>Qabuldan</p>
                 <p>o’tganlar</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/imthonotganlar')}>
                 <p>Imtihondan</p>
                 <p> o’tganlar</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/agent')}>
                 <p>Agent</p>
             </div>
         </Container>
     )
 }
 
-export default Home
+export default HomeComponent

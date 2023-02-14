@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100%;
- 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -16,6 +15,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     margin: 0 auto;
     justify-content:center ;
+    padding: 20px 30px;
   }
 
   >div{
@@ -28,6 +28,10 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column ;
+    @media only screen and (max-width: 1000px) {
+      min-width: 150px;
+      min-height:140px ;
+      }
     cursor: pointer;
     :hover {
       transform: scale(1.02);
@@ -42,8 +46,11 @@ const Container = styled.div`
     align-items: center;
     text-align: center;
     color: #FFFFFF; 
+       @media only screen and (max-width: 1000px) {
+        font-size: 19px;
+      }
     }
-
+   
   }
 `
 
