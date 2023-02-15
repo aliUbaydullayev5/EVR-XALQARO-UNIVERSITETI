@@ -10,6 +10,7 @@ import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlish
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
 import { useRef } from 'react'
+import { postaFacultyTypeAdd } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd/index.js'
 
 export const TalimYunalishTypeAddCom = () => {
 
@@ -18,15 +19,15 @@ export const TalimYunalishTypeAddCom = () => {
   const [checked, setChecked] = useState(true)
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
-  const [educationType, setEducationType] = useState()
-
-  const admissionStudentCount = useRef()
-  const contractPrice = useRef()
-  const [educationTypeadd, setEdicationadd] = useState()
-  const [studyLanguage, setStudyLanguage] = useState()
 
 
+  const [datapush, setDatapush] = useState({
+    contractPrice: '',
+    admissionStudentCount: '',
+    studyLanguage: '',
+    educationType: ''
 
+  })
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
@@ -52,6 +53,18 @@ export const TalimYunalishTypeAddCom = () => {
     dispatch(getfacultyIdfetch({ id: 1 }))
   }, [getfacultyIdfetch])
 
+
+
+  const pushFunc = () => {
+    dispatch(postaFacultyTypeAdd({
+      id: facultytypesId.id,
+      contractPrice: datapush.contractPrice,
+      admissionStudentCount: datapush.admissionStudentCount,
+      studyLanguage: datapush.studyLanguage,
+      educationType: datapush.educationType,
+    }))
+
+  }
   return (
     <Container>
       <AntSelect
@@ -70,8 +83,8 @@ export const TalimYunalishTypeAddCom = () => {
           <Container.Nav>
             <div className='row'>
               <div > {facultytypesId.id}</div>
-              <div className='columAdd'>  <Input className="inputFaculty" ref={admissionStudentCount} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
-              <div className='columAdd'>  <Input className="inputFaculty" ref={contractPrice} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
+              <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, contractPrice: e.target.value }))} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
+              <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, admissionStudentCount: e.target.value }))} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
               <div className='columAdd'>
                 <AntSelect
                   style={{ width: '167px' }}
@@ -81,7 +94,7 @@ export const TalimYunalishTypeAddCom = () => {
                     label: value.name,
                     value: value.name,
                   })) || []}
-                  onChange={(e) => setStudyLanguage(e)} />
+                  onChange={(e) => setDatapush({ ...datapush, studyLanguage: e })} />
               </div>
               <div className='columAdd'>
                 <AntSelect
@@ -89,13 +102,13 @@ export const TalimYunalishTypeAddCom = () => {
                   placeholder='Talim Turi'
                   optionFilterProp="children"
                   options={facultySirtqi?.map((value) => ({
-                    value: value.id,
+                    value: value.name,
                     label: value.name,
                   })) || []}
-                  onChange={() => setEdicationadd(e)}
+                  onChange={(e) => setDatapush({ ...datapush, educationType: e })}
                 />
               </div>
-              <div className='columAdd'><Button width={'100px'} height={'50px'} radius={'5px'} size={'16px'} >Add</Button></div>
+              <div className='columAdd'><Button onclick={() => pushFunc()} width={'100px'} height={'50px'} radius={'5px'} size={'16px'} >Add</Button></div>
               <div className='columAdd'></div>
             </div>
 
