@@ -15,7 +15,7 @@ export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (p
 
 const initialState = {
     status: null,
-    message: '',
+    message: '', 
 }
 const loginAdminThunk = createSlice({
     name: 'allTransFromPush',

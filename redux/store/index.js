@@ -16,6 +16,7 @@ import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesA
 import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
+import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 
 export default configureStore({
     reducer: {
@@ -35,5 +36,6 @@ export default configureStore({
         deleteAbuturentId,
         editAbuturentId,
         facultytypesId,
+        facultyTypeAdd,
     },
 })

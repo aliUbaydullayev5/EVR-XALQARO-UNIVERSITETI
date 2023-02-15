@@ -7,7 +7,11 @@ export const getfacultyIdfetch = createAsyncThunk('getfacultyIdfetch', async (pa
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then((res) => res.json())
+    })
+        .then((res) => res.json())
+        .then((json) => {
+            return { ...json, sectionId: payload.id }
+        })
 })
 
 const facultytypesId = createSlice({
@@ -16,6 +20,7 @@ const facultytypesId = createSlice({
         status: null,
         data: [],
         message: '',
+        id: null,
     },
     extraReducers: {
         [getfacultyIdfetch.pending]: (state) => {
@@ -25,6 +30,7 @@ const facultytypesId = createSlice({
             if (payload.success === true) {
                 state.data = payload.data
                 state.status = 'success'
+                state.id =payload.sectionId
             } else if (payload.success === true) {
                 state.status = 'not found, try again please'
             }
@@ -34,5 +40,6 @@ const facultytypesId = createSlice({
         }
     }
 })
+
 
 export default facultytypesId.reducer

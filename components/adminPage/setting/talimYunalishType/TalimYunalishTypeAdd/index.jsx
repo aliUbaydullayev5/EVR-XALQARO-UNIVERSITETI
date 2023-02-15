@@ -19,23 +19,29 @@ export const TalimYunalishTypeAddCom = () => {
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
 
-  const [oncgenge, SetOnchange] = useState()
+  const [contractPrice, setContractPrice] = useState()
+  const [admissionStudentCount, setAdmissionStudentCount] = useState()
+  const [educationType, setEducationType] = useState()
+  const [studyLanguage, setStudyLanguage] = useState()
+
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
 
-  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))  }, [])
+  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
+  console.log(facultytypesId.id,'idd');
   useEffect(() => {
     setData(facultytypesId.data)
   }
     , [facultytypesId.data])
 
   const handelChangeId = (e) => {
-    dispatch(getfacultyIdfetch({ id: e }))
+    dispatch(getfacultyIdfetch({ id: e })) 
+  
   }
   useEffect(() => {
     dispatch(getfacultyIdfetch({ id: 1 }))
@@ -60,7 +66,7 @@ export const TalimYunalishTypeAddCom = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           <Container.Nav>
             <div className='row'>
-              <div > </div>
+              <div > {facultytypesId.id }</div>
               <div className='columAdd'>  <Input className="inputFaculty" type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
               <div className='columAdd'>  <Input className="inputFaculty" type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
               <div className='columAdd'>
