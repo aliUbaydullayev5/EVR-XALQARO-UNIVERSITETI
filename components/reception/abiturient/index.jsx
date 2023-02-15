@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/** @format */
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js';
@@ -27,25 +24,7 @@ import {
 	resetSmsVerify,
 } from '../../../redux/slices/receptionSmsVerify';
 import { checkAllInputs2 } from './checkAllInputs';
-=======
-import React, { useEffect, useState } from 'react'
-import {useDispatch, useSelector} from "react-redux"
-import Container, { BtnCon, IconBox,  InputCont, TextCon } from './style.js'
-import AntSelect from "../Antd/style.js"
-import { Modal, Spin } from "antd"
-import { Input, Button } from "../../generic";
-import UploadFiler from "../../../assets/icons/uploadeFile.svg"
-import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
-import { useRouter } from 'next/router.js'
-import CustomInput from 'react-phone-number-input/input'
-import {deployFileFetch} from "../../../redux/slices/deployFile"
-import {startMessage} from "../../../redux/slices/message"
-import {getStudyTypesFetch} from "../../../redux/slices/getStudyTypes"
-import {receptionPostFetch, resetVerify} from "../../../redux/slices/receptionPost"
-import {reseptionSmsCheckSliceFetch, resetTimerVerify} from "../../../redux/slices/receptionVerifyPhone"
-import {receptionSmsVerifyFetch, resetSmsVerify} from "../../../redux/slices/receptionSmsVerify"
-import {checkAllInputs2} from "./checkAllInputs"
->>>>>>> admin/login
+
 
 export const AbiturientQabul = (searchElement, fromIndex) => {
 	const router = useRouter();
@@ -62,7 +41,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
 	const receptionData = useSelector((store) => store.receptionPost);
 
-<<<<<<< HEAD
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
 			setPasSerLength(event.length - 1);
@@ -79,30 +57,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 	};
 
 	const [width, setWidth] = useState(null);
-=======
-    const router = useRouter()
-    const dispatch = useDispatch()
-    const [numPasSeriya, setNumPasSeriya] = useState('')
-    const [pasSerLength, setPasSerLength] = useState(0)
-    const reseptionCheckPhoneSlice = useSelector((store)=> store.reseptionCheckPhoneSlice)
-    const { educationTypes, faculties, studyLanguages} = useSelector((store)=> store.getStudyTypes.data)
-    const { fileId, by } = useSelector((store) => store.deployFile)
-    const receptionSmsVerify = useSelector((store)=> store.receptionSmsVerify)
-    const receptionData = useSelector((store) => store.receptionPost)
-    const changeMumPass = (event) => {
-        if (pasSerLength < event.length) {
-            setPasSerLength(event.length - 1)
-            if (event.length == 2) return setNumPasSeriya(event.toUpperCase() + ' ')
-        }
-        else if (pasSerLength >= event.length) {
-            setPasSerLength(event.length)
-            setNumPasSeriya(event.toUpperCase())
-        }
-        changeAllDataFunc({type: 'passportSeries', value: event.split(' ').join('').toUpperCase()})
-        return setNumPasSeriya(event.toUpperCase())
-    }
->>>>>>> admin/login
-
 	useEffect(() => {
 		if (window.innerWidth < 1000) setWidth('100%');
 		else setWidth('513px');
@@ -254,7 +208,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 		}
 	});
 
-<<<<<<< HEAD
 	useEffect(()=> {
 		dispatch(resetSmsVerify());
 		setSmsInput('')
@@ -550,161 +503,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 					)}
 				</BtnCon>
 
-=======
-    return (
-        <Container>
-            <TextCon>
-                <h1>Abiturient</h1>
-            </TextCon>
-            <InputCont>
-                <div className='row1'>
-                    <Input placeholder={'Familyangiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'lastName', value: e.target.value })} />
-                </div>
-                <IconBox className='row9' >
-                    <AntSelect
-                        showSearch
-                        style={{
-                            width,
-                        }}
-                        placeholder='Talim shaklingiz'
-                        optionFilterProp="children"
-                        options={educationTypes?.map((value) => ({
-                            value,
-                            label: value
-                        })) || []}
-                        onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e })}
-                    />
-                </IconBox>
-                <div className='row2'>
-                    <Input placeholder={'Ismingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'100%'} mheight={'27px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })} />
-                </div>
-                <div className='row5'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Enter phone number"
-                            onChange={(value) => funPhoneNumber({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={numState}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Enter phone number
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
-                <div className='row3'>
-                    <Input mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} placeholder={'Otangizni ismi'} padding={'7px 0px 0px 30px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'patron', value: e.target.value })} />
-                </div>
-                <div className='row6'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Enter phone number"
-                            onChange={(value) => funForPhoneinput({ value, type: 'extraPhoneNumber' })}
-                            maxLength={17}
-                            value={phonePatron}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Enter phone number
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
-                <div className='row4'>
-                    <Input placeholder={'Pasport seriyasingiz'} mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'26px'} msize={'16px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
-                </div>
-                <div className='row11'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({file: e, by: 'diplomaId'})} />
-                                <UploadFiler className={'UploadFile2'} />
-                                <UploadMobile className={'UploadFileMobile'} />
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
-                <IconBox className='row8'>
-                    <AntSelect 
-                        showSearch
-                        style={{
-                            width,
-                        }}
-                        placeholder='Talim yunalishingiz'
-                        optionFilterProp="children"
 
-                        options={faculties?.map((value)=> ({
-                            value: value.id,
-                            label: value.name
-                        })) || []}
-                        onChange={(e)=> changeAllDataFunc({type: 'facultyId', value: e})}
-                    />
-                </IconBox>
-                <div className='row10'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-                                <UploadFiler className={'UploadFile1'} />
-                                <UploadMobile className={'UploadFileMobile2'} />
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
-                <IconBox className='row7'>
-                    <AntSelect
-                        showSearch
-                        style={{
-                            width,
-                        }}
-                        placeholder='Talim tilingiz'
-                        optionFilterProp="children"
-                        filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                        filterSort={(optionA, optionB) =>
-                            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-                        }
-                        options={studyLanguages?.map((value) => ({
-                            value: value,
-                            label: value
-                        })) || []}
-                        onChange={(e) => changeAllDataFunc({ type: 'studyLanguage', value: e })}
-                    />
-                </IconBox>
-                <BtnCon className='row12'>
-                    <div className='mobileNone'></div>
-                    {
-                        receptionSmsVerify.status === 'success' ?
-                            <>
-                                {receptionData.status == 'loading' &&
-                                    <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} cursor={'none'} disabled={true}>
-                                        <Container.ButtonLoader>
-                                            <Spin />
-                                        </Container.ButtonLoader>
-                                    </Button>
-                                }
-                                {receptionData.status !== 'loading'&&
-                                    <Button mradius={'5px'} mwidth={'177px'} mheight={'26px'} msize={'16px'} width={'250px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={()=> pushAllInfo()}>
-                                        QOLDIRISH
-                                    </Button>
-                                }
-                            </>
-                            :
-                            <Button mradius={'5px'} mwidth={'250px'} mheight={'26px'} msize={'16px'} width={'300px'} height={'43px'} size={'21px'} margin={'0 60px 0 0'} onclick={()=> smsFunc()}>
-                                Telefon raqamni tastiqlash
-                            </Button>
-                    }
-                </BtnCon>
-                <div className='mobileNone'></div>
->>>>>>> admin/login
             </InputCont>
             
 			<Modal

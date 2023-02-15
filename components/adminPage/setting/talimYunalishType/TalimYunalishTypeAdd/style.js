@@ -50,12 +50,6 @@ Container.Scrool = styled.div`
   }
 `
 
-Container.Add = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-`
 const ConTable = styled.div`
   display: grid;
   grid-template-columns:  1fr;
@@ -101,9 +95,12 @@ const ConTable = styled.div`
 
 `
 Container.Nav = styled.div`
-  display: grid;
   gap: 10px;
   margin-bottom: 10px;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -181,7 +178,20 @@ const AntSelect = styled(Select)`
  .ant-select-item .ant-select-item-option .ant-select-item-option-active{
    font-size: 17px !important;
  }
+`
+Container.FacultyTypeAdd = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+   margin: 0;
+  }
 
+input[type=number] {
+  -moz-appearance: textfield;
+}
 `
 
 export { ConTable, AntSelect }

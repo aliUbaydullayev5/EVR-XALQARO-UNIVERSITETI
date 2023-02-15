@@ -5,6 +5,7 @@ import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { AntSelect, ConTable } from './style.js'
+
 import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx"
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
@@ -17,22 +18,21 @@ export const TalimYunalishTypeAddCom = () => {
   const [checked, setChecked] = useState(true)
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
+  const [value, setValue] = useState()
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
 
-
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
-
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
-  const handelChangeId = (e) => dispatch(getfacultyIdfetch({ id: e }))
-
   useEffect(() => {
     setData(facultytypesId.data)
   }, [facultytypesId.data])
+
+  const handelChangeId = (e) => dispatch(getfacultyIdfetch({ id: e }))
 
   console.log(data, 'data');
   return (
@@ -52,7 +52,9 @@ export const TalimYunalishTypeAddCom = () => {
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '450px', overflowX: "scroll", maxWidth: '990px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           <Container.Nav>
-              <Input width={'200px'} height={'45px'} size={'19px'} radius={'5px'} padding={'0px 10px'} />
+            <Container.FacultyTypeAdd>
+              <Input className="inputFaculty" type={'Number'} width={'80px'} height={'40px'} radius={'5px'} size={'14px'} padding={'0px 10px'} placeholder={'Contract summasi'} />
+            </Container.FacultyTypeAdd>
             <div className='row'>
               <div >№</div>
               <div className='colum'>Kantirakt Narxi</div>
