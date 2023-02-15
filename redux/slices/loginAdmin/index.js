@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/personal-cabinet/admin`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

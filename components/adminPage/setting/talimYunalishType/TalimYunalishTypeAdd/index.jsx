@@ -9,7 +9,7 @@ import facultyTypeUz, { facultySirtqi } from "../../../../Mock/facultyType/index
 import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx"
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
-
+import { useRef } from 'react'
 
 export const TalimYunalishTypeAddCom = () => {
 
@@ -18,37 +18,40 @@ export const TalimYunalishTypeAddCom = () => {
   const [checked, setChecked] = useState(true)
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
-
-  const [contractPrice, setContractPrice] = useState()
-  const [admissionStudentCount, setAdmissionStudentCount] = useState()
   const [educationType, setEducationType] = useState()
+
+  const admissionStudentCount = useRef()
+  const contractPrice = useRef()
+  const [educationTypeadd, setEdicationadd] = useState()
   const [studyLanguage, setStudyLanguage] = useState()
+
+
 
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
+
+
 
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
-  console.log(facultytypesId.id,'idd');
   useEffect(() => {
     setData(facultytypesId.data)
   }
     , [facultytypesId.data])
 
+
   const handelChangeId = (e) => {
-    dispatch(getfacultyIdfetch({ id: e })) 
-  
+    dispatch(getfacultyIdfetch({ id: e }))
+
   }
   useEffect(() => {
     dispatch(getfacultyIdfetch({ id: 1 }))
   }, [getfacultyIdfetch])
 
-  const hendelUz = (e) => {
-  }
   return (
     <Container>
       <AntSelect
@@ -66,9 +69,9 @@ export const TalimYunalishTypeAddCom = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           <Container.Nav>
             <div className='row'>
-              <div > {facultytypesId.id }</div>
-              <div className='columAdd'>  <Input className="inputFaculty" type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
-              <div className='columAdd'>  <Input className="inputFaculty" type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
+              <div > {facultytypesId.id}</div>
+              <div className='columAdd'>  <Input className="inputFaculty" ref={admissionStudentCount} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
+              <div className='columAdd'>  <Input className="inputFaculty" ref={contractPrice} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
               <div className='columAdd'>
                 <AntSelect
                   style={{ width: '167px' }}
@@ -78,7 +81,7 @@ export const TalimYunalishTypeAddCom = () => {
                     label: value.name,
                     value: value.name,
                   })) || []}
-                  onChange={(e) => hendelUz(e)} />
+                  onChange={(e) => setStudyLanguage(e)} />
               </div>
               <div className='columAdd'>
                 <AntSelect
@@ -89,7 +92,7 @@ export const TalimYunalishTypeAddCom = () => {
                     value: value.id,
                     label: value.name,
                   })) || []}
-                  onChange={() => handelChangeId()}
+                  onChange={() => setEdicationadd(e)}
                 />
               </div>
               <div className='columAdd'><Button width={'100px'} height={'50px'} radius={'5px'} size={'16px'} >Add</Button></div>

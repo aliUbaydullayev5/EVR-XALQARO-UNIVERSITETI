@@ -3,7 +3,6 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-<<<<<<< HEAD
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -16,20 +15,7 @@ const Container = styled.div`
 		box-shadow: none;
 	}
 `;
-=======
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 84px 1fr;
-  background: #221F51;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
-  border-radius: 30px;
-  @media only screen and (max-width: 800px) {
-     grid-template-rows: 35px 1fr;
-     box-shadow: none;
-  }
-`
->>>>>>> admin/login
+
 const TextCon = styled.div`
 	width: 100%;
 	height: 84px;
@@ -120,7 +106,6 @@ Container.Number = styled.div`
 	}
 `;
 
-<<<<<<< HEAD
 Container.FormatNumber = styled.div`
 	position: absolute;
 	top: 15px;
@@ -140,8 +125,7 @@ Container.FormatNumber = styled.div`
 		letter-spacing: -0.025em;
 	}
 `;
-=======
->>>>>>> admin/login
+
 const InputCont = styled.div`
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
