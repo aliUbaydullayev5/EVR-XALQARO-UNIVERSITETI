@@ -97,7 +97,6 @@ const ConTable = styled.div`
 Container.Nav = styled.div`
   gap: 10px;
   margin-bottom: 10px;
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -119,14 +118,31 @@ Container.Nav = styled.div`
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
     height: 50px;
+    gap: 5px;
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
   .colum{
     border-left:  2px solid white;
     padding-left: 10px;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
-
+  input[type=number] {
+  -moz-appearance: textfield;
+}
+}
+  .columAdd{
+    border-left:  2px solid white;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type=number] {
+  -moz-appearance: textfield;
+}
+}
 `
 Container.ButtonLoader = styled.div`
   text-align: center;
@@ -163,7 +179,7 @@ const AntSelect = styled(Select)`
   .ant-select-selection-placeholder{
     display: flex;
     align-items: center;
-    padding: 0 20px !important;
+    padding: 0 0px !important;
     font-size: 22px !important;
     color: #ffff;
     @media only screen and (max-width: 800px) {
@@ -178,20 +194,21 @@ const AntSelect = styled(Select)`
  .ant-select-item .ant-select-item-option .ant-select-item-option-active{
    font-size: 17px !important;
  }
+ .ant-select-selector {
+  border-radius: 0px !important;
+}
+
 `
 Container.FacultyTypeAdd = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-   margin: 0;
-  }
+    display: grid;
+    grid-template-columns: 50px 200px  150px 167px 200px  100px 100px;
+    padding-left: 15px;
+    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+    border-radius: 5px;
+    height: 50px;
+    gap: 10px;
 
-input[type=number] {
-  -moz-appearance: textfield;
-}
+
 `
 
 export { ConTable, AntSelect }
