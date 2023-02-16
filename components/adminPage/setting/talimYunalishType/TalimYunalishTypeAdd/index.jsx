@@ -12,6 +12,7 @@ import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari
 import { useRef } from 'react'
 import { postaFacultyTypeAdd } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd/index.js'
 
+
 export const TalimYunalishTypeAddCom = () => {
 
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ export const TalimYunalishTypeAddCom = () => {
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
-
+  const facultyTypeAdd = useSelector((store) => store.facultyTypeAdd)
 
 
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
@@ -44,16 +45,15 @@ export const TalimYunalishTypeAddCom = () => {
   }
     , [facultytypesId.data])
 
-
+  console.log(facultyTypeAdd.data);
   const handelChangeId = (e) => {
     dispatch(getfacultyIdfetch({ id: e }))
-
   }
   useEffect(() => {
     dispatch(getfacultyIdfetch({ id: 1 }))
   }, [getfacultyIdfetch])
 
-
+  // facultyTypeAdd
 
   const pushFunc = () => {
     dispatch(postaFacultyTypeAdd({
@@ -62,9 +62,12 @@ export const TalimYunalishTypeAddCom = () => {
       admissionStudentCount: datapush.admissionStudentCount,
       studyLanguage: datapush.studyLanguage,
       educationType: datapush.educationType,
-    }))
-
+    })) 
   }
+  
+  // useEffect(() => {
+  //   if (facultyTypeAdd.status === 'success') 
+  // }, [facultyTypeAdd])
   return (
     <Container>
       <AntSelect

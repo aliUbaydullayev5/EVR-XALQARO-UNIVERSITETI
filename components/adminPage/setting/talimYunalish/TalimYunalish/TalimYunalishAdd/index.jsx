@@ -32,7 +32,7 @@ export const TalimYunlishAddCom = () => {
         if (talimYunalishAdmin.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli qoshildi', type: 'success' })), setName('')
         else if (talimYunalishAdmin.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Bu Talim Yunalish oldin Qo`shilgan' }))
         setTimeout(() => { dispatch(reset()) }, 500);
-    }, [talimYunalishAdmin])
+    }, [talimYunalishAdmin || deleteAbuturentId])
 
 
     useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
@@ -54,16 +54,17 @@ export const TalimYunlishAddCom = () => {
         const uniqInputValue = dataList.filter((value) => value.id === id)[0].name
         setInputValue(uniqInputValue)
     }
-    const editPush = (id) => dispatch(editAbuturentFetch({ id: id, value: inputValue}));
+    const editPush = (id) => dispatch(editAbuturentFetch({ id: id, value: inputValue }));
 
 
     useEffect(() => {
         if (deleteAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
+        else if (deleteAbuturentId.status === 'success') dispatch(startMessage({ time: 3, message: 'Bu Talim `Ochirildi' }))
     }, [deleteAbuturentId])
 
     useEffect(() => {
-        if ((getStudyTypesAbuturent.status === 'success') || (getStudyTypes.status === 'success')) setDataList(getStudyTypesAbuturent.data)
-    }, [getStudyTypesAbuturent || getStudyTypes])
+        if ((getStudyTypesAbuturent.status === 'success') ) setDataList(getStudyTypesAbuturent.data)
+    }, [getStudyTypesAbuturent])
 
     useEffect(() => {
         if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
