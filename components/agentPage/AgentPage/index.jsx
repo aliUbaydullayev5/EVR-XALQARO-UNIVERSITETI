@@ -13,7 +13,6 @@ const AgentPage = () => {
     let firstCheck = false
     let secondCheck = false
 
-    console.log(firstCheck, secondCheck)
 
     const pushFunc = () => {
         if(firstCheck && secondCheck){

@@ -45,6 +45,7 @@ export const TalimYunlishAddCom = () => {
     const findDeleteID = (deleteId) => dispatch(deleteAbuturentFetch({ id: deleteId }))
 
     const findEditID = (id) => {
+        console.log(id,'idd');
         setDataList(dataList.map((value) => ({
             id: value.id,
             name: value.name,

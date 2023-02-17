@@ -28,7 +28,6 @@ const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
         dispatch(fetchAuthLogin({phoneNumber: '+998', password: ''}))
     }
 
-    console.log(logPas)
 
 
     return(

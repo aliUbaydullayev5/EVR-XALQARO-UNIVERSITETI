@@ -224,7 +224,6 @@ const OqishniKochirishComponent = () => {
 	})
 
 
-	console.log(allData.phoneNumber)
 
 	useEffect(()=> {
 		dispatch(resetSmsVerify());

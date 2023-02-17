@@ -9,11 +9,13 @@ export const postaFacultyTypeAdd = createAsyncThunk('postaFacultyTypeAdd', async
 
         },
         body: JSON.stringify({
-            facultyId: payload.id,
+            id: payload.id,
+            facultyId: payload.facultytypesId,
             contractPrice: payload.contractPrice,
             admissionStudentCount: payload.admissionStudentCount,
             studyLanguage: payload.studyLanguage,
             educationType: payload.educationType,
+
         })
     }).then((res) => res.json())
 })
