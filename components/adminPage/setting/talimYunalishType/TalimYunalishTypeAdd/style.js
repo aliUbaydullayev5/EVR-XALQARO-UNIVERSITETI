@@ -33,18 +33,13 @@ Container.Scrool = styled.div`
     transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px !important;
   }
-
-
   /* Handle */
-
   ::-webkit-scrollbar-thumb {
     background: #FFFFFF;
     border-radius: 30px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
   }
-
   /* Handle on hover */
-
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
@@ -81,8 +76,7 @@ const ConTable = styled.div`
       justify-content: center;
       align-items: center;
     >input{
-      height: 30px;
-      padding: 5px;
+      border: 2px solid white;
     
     }
   }

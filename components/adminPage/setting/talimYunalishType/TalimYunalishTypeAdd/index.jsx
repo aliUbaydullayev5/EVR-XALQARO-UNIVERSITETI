@@ -10,11 +10,13 @@ import { editAbuturentFetch } from '../../../../../redux/sliceAdmin/talimyunlish
 import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx"
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import facultytypesId from "../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
+import { useRef } from 'react'
 import { postaFacultyTypeAdd } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd/index.js'
+import { startMessage } from '../../../../../redux/slices/message/index.js'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 
 
 export const TalimYunalishTypeAddCom = () => {
-
 
   const dispatch = useDispatch()
 
@@ -22,13 +24,10 @@ export const TalimYunalishTypeAddCom = () => {
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
 
-  const [inputValue, setInputValue] = useState({
-    contractPrice: '',
-    admissionStudentCount: '',
+  const [select, setSelect] = useState({
     studyLanguage: '',
     educationType: ''
   })
-
 
   const [datapush, setDatapush] = useState({
     contractPrice: '',
@@ -42,20 +41,20 @@ export const TalimYunalishTypeAddCom = () => {
   const facultyTypeAdd = useSelector((store) => store.facultyTypeAdd)
 
 
-
-  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
   useEffect(() => {
     setData(facultytypesId.data)
-  }
-    , [facultytypesId.data])
+  }, [facultytypesId.data])
+
 
   const handelChangeId = (e) => {
     dispatch(getfacultyIdfetch({ id: e }))
+ 
   }
+
   useEffect(() => {
     dispatch(getfacultyIdfetch({ id: 1 }))
   }, [getfacultyIdfetch])
@@ -73,28 +72,48 @@ export const TalimYunalishTypeAddCom = () => {
   }
 
   const findEditID = (id) => {
-    setData(data?.map((value) => ({
-      id: value.id,
-      contractPrice: value.contractPrice,
-      admissionStudentCount: value.admissionStudentCount,
-      studyLanguage: value.studyLanguage,
-      educationType: value.educationType,
-      checkInput: id === value.id ? (!value.id || true) : false
-    })))
-    const uniqInputValue = data?.filter((value) => value.id === id)[0].contractPrice
-    setInputValue(uniqInputValue)
+    setData(
+      data?.map((value) => ({
+        id: value.id,
+        contractPrice: value.contractPrice,
+        admissionStudentCount: value.admissionStudentCount,
+        studyLanguage: value.studyLanguage,
+        educationType: value.educationType,
+        checkInput: id === value.id ? (!value.id || true) : false
+      })))
   }
 
   const editPush = (id) => dispatch(postaFacultyTypeAdd({
     id: id,
     facultytypesId: facultytypesId.id,
-    contractPrice: inputValue.contractPrice,
-    admissionStudentCount: inputValue.admissionStudentCount ,
-    studyLanguage: inputValue.studyLanguage,
-    educationType: inputValue.educationType,
+    contractPrice: data[0]?.contractPrice,
+    admissionStudentCount: data[0]?.admissionStudentCount,
+    studyLanguage: select.studyLanguage,
+    educationType: select.educationType,
   }));
 
-  console.log(inputValue, 'inputValue');
+  useEffect(() => {
+    if (facultyTypeAdd.status === 'success') {
+      setData(
+        data?.map((value) => ({
+          id: value.id,
+          contractPrice: value.contractPrice,
+          admissionStudentCount: value.admissionStudentCount,
+          studyLanguage: value.studyLanguage,
+          educationType: value.educationType,
+          checkInput: false
+        })))}
+  }, [facultyTypeAdd])
+  
+  useEffect(() => {
+    if (facultyTypeAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakunlandi', type: 'success' }))
+    else if (facultyTypeAdd.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Hatolik Bor Qayta tekshirib ko`ring !!!' }))
+    setTimeout(() => { dispatch(reset()) }, 500);
+  }, [facultyTypeAdd])
+
+  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+
+
   return (
     <Container>
       <AntSelect
@@ -159,10 +178,16 @@ export const TalimYunalishTypeAddCom = () => {
               <ConTable key={value.id}>
                 <div className='row'>
                   <div >{index + 1}</div>
-
                   <div className='colum'>
                     {value?.checkInput ?
-                      <input value={inputValue?.contractPrice} onChange={(e) => setInputValue({ ...inputValue, contractPrice: e.target.value })} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.contractPrice} onchange={(e) => setData(data.map((v) => ({
+                        id: v.id,
+                        contractPrice: value.id === v.id ? e.target.value : v.contractPrice,
+                        admissionStudentCount: v.admissionStudentCount,
+                        studyLanguage: v.studyLanguage,
+                        educationType: v.educationType,
+                        checkInput: v.checkInput
+                      })))} />
                       :
                       <>
                         {value.contractPrice || '9998'}
@@ -171,13 +196,21 @@ export const TalimYunalishTypeAddCom = () => {
                   </div>
                   <div className='colum'>
 
-                    {value.checkInput ?
-                      <input value={inputValue?.admissionStudentCount} onChange={(e) => setInputValue({ ...inputValue, admissionStudentCount: e.target.value })} />
+                    {value?.checkInput ?
+                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.admissionStudentCount} onchange={(e) => setData(data.map((v) => ({
+                        id: v.id,
+                        admissionStudentCount: value.id === v.id ? e.target.value : v.admissionStudentCount,
+                        contractPrice: v.contractPrice,
+                        studyLanguage: v.studyLanguage,
+                        educationType: v.educationType,
+                        checkInput: v.checkInput
+                      })))} />
                       :
                       <>
-                        {value.admissionStudentCount || 0}
+                        {value.admissionStudentCount || '0'}
                       </>
                     }
+
                   </div>
                   <div className='colum'>
 
@@ -191,29 +224,33 @@ export const TalimYunalishTypeAddCom = () => {
                             label: value.name,
                             value: value.name,
                           })) || []}
-                          onChange={(e) => setInputValue({ ...inputValue, studyLanguage: e })} />
+                          onChange={(e) => setSelect({ ...select, studyLanguage: e })}
+                        />
                         :
                         <>
                           {value?.studyLanguage}
                         </>
                     }
-
                   </div>
                   <div className='colum'>
                     {
-                      value.checkInput?
+                      value.checkInput ?
+
+
                         <AntSelect
-                          style={{ width: '200px' }}
+                          style={{ width: '167px' }}
                           placeholder='Talim Turi'
                           optionFilterProp="children"
                           options={facultySirtqi?.map((value) => ({
-                            value: value.name,
                             label: value.name,
+                            value: value.name,
                           })) || []}
-                          onChange={(e) => setInputValue({ ...inputValue, educationType: e })} />
+                          onChange={(e) => setSelect({ ...select, educationType: e })}
+                        />
                         :
                         <>
                           {value.educationType}
+
                         </>
                     }
                   </div>
@@ -231,8 +268,7 @@ export const TalimYunalishTypeAddCom = () => {
                     </div>
                   </div>
                   <div className='colum'>
-                    <Input type="checkbox" defaultChecked={true}
-                      onChange={() => setChecked(!checked)} />
+                    <Input height={'30px'} padding={'15px'} type="checkbox" defaultChecked={true} onChange={() => setChecked(!checked)} />
                   </div>
                 </div>
               </ConTable>

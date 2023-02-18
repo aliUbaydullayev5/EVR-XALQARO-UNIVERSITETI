@@ -31,13 +31,13 @@ export const SidebarAdmin = () => {
     },
     {
       id: 5,
-      name: 'Testlar',
+      name: 'Imtxon Fanlar',
       clicked: false,
     },
 
     {
       id: 6,
-      name: 'Ta’lim yo’nalishlari',
+      name: 'Fcultet Imtxon Fanlari',
       clicked: false,
 
     },
@@ -137,6 +137,9 @@ export const SidebarAdmin = () => {
     }
     if (id === 5) {
       quarey.push('/admin/setting/test')
+    }
+    if (id === 6) {
+      quarey.push('/admin/setting/facultyImtxonselect')
     }
   }
 

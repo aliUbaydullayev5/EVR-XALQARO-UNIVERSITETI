@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const postaFacultyTypeAdd = createAsyncThunk('postaFacultyTypeAdd', async (payload) => {
+export const facultetsselectAddPost = createAsyncThunk('facultetsselectAddPost', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty-type/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-
         },
         body: JSON.stringify({
             id: payload.id,
@@ -26,15 +25,15 @@ const initialState = {
     data: [],
 }
 
-const facultyTypeAdd = createSlice({
-    name: 'facultyTypeAdd',
+const facultetsselectAdd = createSlice({
+    name: 'facultetsselectAdd',
     initialState,
     extraReducers: {
-        [postaFacultyTypeAdd.pending]: (state) => {
+        [facultetsselectAddPost.pending]: (state) => {
             state.status === 'loading'
         },
 
-        [postaFacultyTypeAdd.fulfilled]: (state, { payload }) => {
+        [facultetsselectAddPost.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
                 state.status = 'success'
                 state.data = payload.data
@@ -42,13 +41,12 @@ const facultyTypeAdd = createSlice({
             else if (payload.success === false) {
                 state.status = 'notFound'
                 state.message = 'Not Found Edication Type'
-
             }
         },
-        [postaFacultyTypeAdd.rejected]: (state) => {
+        [facultetsselectAddPost.rejected]: (state) => {
             state.status === 'erorr'
         },
     }
 })
 
-export default facultyTypeAdd.reducer
+export default facultetsselectAdd.reducer

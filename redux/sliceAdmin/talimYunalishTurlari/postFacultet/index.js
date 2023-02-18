@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getfacultyIdfetch = createAsyncThunk('getfacultyIdfetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty-type/get-all?facultyId=${payload.id}`, {
+
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

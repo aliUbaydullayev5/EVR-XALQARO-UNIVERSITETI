@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const Container = styled.div`
   width: 100%;
@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   display: grid;
   max-width: 1440px;
-  grid-template-columns: 1fr 0.7fr;
+  grid-template-columns: 5fr 0.7fr;
   padding: 0px 40px;
  @media only screen and (max-width: 1000px) {
    padding: 0px 20px;
@@ -40,13 +40,17 @@ Container.Scrool = styled.div`
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
 `
+
+Container.Add = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+`
 const ConTable = styled.div`
   display: grid;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns:  1fr;
   gap:10px;
->input{
-  height: 30px;
-}
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -60,7 +64,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 52px 1fr 1fr;
+    grid-template-columns: 50px 10fr  200px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -70,17 +74,19 @@ const ConTable = styled.div`
   .colum{
     border-left:  2px solid white;
     padding-left: 10px;
+  }
+  .action{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+
   }
 
 `
 Container.Nav = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 10px;
-  >input{
-    height: 45px;
-  }
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -94,10 +100,11 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 52px 1fr 1fr ;
+    grid-template-columns:  50px 10fr  200px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
+    height: 50px;
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
@@ -105,96 +112,14 @@ Container.Nav = styled.div`
     border-left:  2px solid white;
     padding-left: 10px;
   }
+
+`
+Container.ButtonLoader = styled.div`
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
 `
 
 
-ConTable.Center = styled.div`
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 5px;
-  width: 100%;
-`
-Container.BottomDesc = styled.div`
-  height: 247px !important;
-  border: 1px solid #FFFFFF;
-  height: 100%;
-  padding: 15px;
-`
-Container.BottomDescInset = styled.div`
-`
-// 2 Container Hero Data filter 
-const ConHero = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
- @media only screen and (max-width: 1000px) {
-  padding: 10px;
-  justify-content: space-evenly;
-.UserImg{
-  display: none;
-}}
-
-
-.TextPsamal{
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 49px;
-  display: flex;
-  align-items: center;
-  color: #FFFFFF;
-  justify-content:center;
-  align-items:center;
-  @media only screen and (max-width: 1000px) {
-  font-size: 20px;
-  }
-}
-`
-ConHero.Tartiblash = styled.div`
-  display: flex;
-  justify-content: center;
-  
-`
-
-ConHero.Date = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media only screen and (max-width: 1000px) {
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-  }
-`
-ConHero.Exel = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content: space-around;
- 
-  gap: 10px;
-  >div{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    width: 510px; 
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
-    border-radius: 20px;
-    padding-left:25px;
-    cursor: pointer;
-  }
-  @media only screen and (max-width: 1000px) {
-   gap: 20px;
-  >div{
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-    padding-left:15px;
-  }
-  }
-`
-
-export { ConTable, ConHero }
+export { ConTable }
 export default Container

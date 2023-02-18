@@ -18,6 +18,9 @@ import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
 import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 import editTalimYunalishType from "../sliceAdmin/talimYunalishTurlari/editTalimYunalishType"
+import examsubjectcreate from "../sliceAdmin/exam/exsamsubjectcreate"
+import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject"
+import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 
 export default configureStore({
     reducer: {
@@ -39,5 +42,8 @@ export default configureStore({
         facultytypesId,
         facultyTypeAdd,
         editTalimYunalishType,
+        examsubjectcreate,
+        getAllexamsubject,
+        examdeleteId,
     },
 })
