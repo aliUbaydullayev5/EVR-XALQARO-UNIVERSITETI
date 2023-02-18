@@ -111,15 +111,17 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  300px  300px 300px 210px 210px 100px;
+    grid-template-columns:  400px  300px 300px 200px 200px 100px 100px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
     >div{
-    height: 50px;
+    height: 40px;
     border-left:  2px solid white;
     padding-left: 15px;
     display: flex;
     align-items: center;
+    font-size: 15px;
+    border: red 2px solid black;
     }
   }
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
@@ -158,7 +160,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  300px  300px 300px 210px  210px 100px;
+    grid-template-columns:  400px  300px 300px 200px 200px 100px 100px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;

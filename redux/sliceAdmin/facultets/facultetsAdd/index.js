@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const facultetsselectAddPost = createAsyncThunk('facultetsselectAddPost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty-type/create`, {
+    return await fetch(`http://185.196.213.87:8088/api/v1/faculty-exam-subject/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -9,11 +9,11 @@ export const facultetsselectAddPost = createAsyncThunk('facultetsselectAddPost',
         },
         body: JSON.stringify({
             id: payload.id,
-            facultyId: payload.facultytypesId,
-            contractPrice: payload.contractPrice,
-            admissionStudentCount: payload.admissionStudentCount,
-            studyLanguage: payload.studyLanguage,
-            educationType: payload.educationType,
+            facultyId: payload.facultyId,
+            firstExamSubjectId: payload.firstExamSubjectId,
+            secondExamSubjectId: payload.secondExamSubjectId,
+            firstExamSubjectBall: payload.firstExamSubjectBall,
+            secondExamSubjectBall: payload.secondExamSubjectBall
 
         })
     }).then((res) => res.json())
@@ -37,6 +37,7 @@ const facultetsselectAdd = createSlice({
             if (payload.success === true) {
                 state.status = 'success'
                 state.data = payload.data
+                state.message = 'Muyofiyaqadli Yakulandi'
             }
             else if (payload.success === false) {
                 state.status = 'notFound'

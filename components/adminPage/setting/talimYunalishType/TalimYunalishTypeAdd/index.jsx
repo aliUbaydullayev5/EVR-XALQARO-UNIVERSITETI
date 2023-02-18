@@ -264,7 +264,6 @@ export const TalimYunalishTypeAddCom = () => {
                           :
                           <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
                       }
-
                     </div>
                   </div>
                   <div className='colum'>

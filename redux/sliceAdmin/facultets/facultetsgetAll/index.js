@@ -1,36 +1,37 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const getAllexamsubjectFetch = createAsyncThunk('getAllexamsubjectFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/exam-subject/get-all`,
+export const facultetsgetAllFetch = createAsyncThunk('facultetsgetAllFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty-exam-subject/get-all`,
         {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify()
-    })
+            }, body: JSON.stringify()
+        })
         .then((res) => res.json())
+    
 })
 
-const getAllexamsubject = createSlice({
-    name: 'getAllexamsubject',
+const facultetsgetAll = createSlice({
+    name: 'facultetsgetAll',
     initialState: {
         data: {},
         status: null,
     },
     extraReducers: {
-        [getAllexamsubjectFetch.pending]: (state) => {
+        [facultetsgetAllFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [getAllexamsubjectFetch.fulfilled]: (state, action) => {
+        [facultetsgetAllFetch.fulfilled]: (state, action) => {
+            console.log(action.payload.data, 'action');
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
         },
-        [getAllexamsubjectFetch.rejected]: (state) => {
+        [facultetsgetAllFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
 })
 
-export default getAllexamsubject.reducer
+export default facultetsgetAll.reducer

@@ -9,48 +9,80 @@ import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlish
 import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes/index.jsx'
 import exsamsubjectcreate, { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate/index.js'
 import getAllexamsubject, { getAllexamsubjectFetch } from "../../../../../redux/sliceAdmin/exam/getAllexamsubject"
+import { facultetsselectAddPost } from '../../../../../redux/sliceAdmin/facultets/facultetsAdd/index.js'
+import facultetsgetAll, { facultetsgetAllFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsgetAll/index.js'
+import facultetsdeleteId, { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId/index.js'
 
 const FacultetsImthonCom = () => {
-
   const [datalist, setDataList] = useState([])
   const [datafan, setDatafFan] = useState([])
+  const [data, setData] = useState([])
   const [facul, setFacul] = useState({
     facultet: '',
     firstExamSubjectId: '',
     secondExamSubjectId: '',
     firstExamSubjectBall: '',
-    secondExamSubjectId: '',
+    secondExamSubjectBall: '',
 
   })
+  const [inputValue, setInputValue] = useState('')
+
 
   const dispatch = useDispatch()
   const quarey = useRouter()
 
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
   const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
-  const facultytypesId = useSelector((store) => store.facultytypesId)
+  const facultetsselectAdd = useSelector((store) => store.facultetsselectAdd)
+  const facultetsgetAll = useSelector((store) => store.facultetsgetAll)
+
+  const facultetsdeleteId = useSelector((store) => store.facultetsdeleteId)
+
 
 
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+
   useEffect(() => {
-    dispatch(getAllexamsubjectFetch())
+    (dispatch(getAllexamsubjectFetch()))
     if ((getAllexamsubject.status === 'success')) setDatafFan(getAllexamsubject.data)
+
   }, [])
 
+  useEffect(() => {
+    dispatch(facultetsgetAllFetch())
+    if (facultetsgetAll.status === 'success') {
+      setData(facultetsgetAll.data)
+    }
+  }, [])
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
+  const findEditID = (id) => {
+    setData(data.map((value) => ({
+      id: value.id,
+      name: value.name,
+      studyType: value.studyType,
+      status: id === value.id ? (!value.id || true) : false
+    })))
+    const uniqInputValue = data.filter((value) => value.id === id)[0].name
+    setInputValue(uniqInputValue)
+  }
   const addFunc = () => {
-    dispatch(facultetsselectAdd(
+    dispatch(facultetsselectAddPost(
       {
-        facultet: facul.facultet,
+        id: 0,
+        facultyId: facul.facultet,
         firstExamSubjectId: facul.firstExamSubjectId,
         secondExamSubjectId: facul.secondExamSubjectId,
         firstExamSubjectBall: facul.firstExamSubjectBall,
-        secondExamSubjectId: facul.secondExamSubjectId, }
+        secondExamSubjectBall: facul.secondExamSubjectBall,
+      }
     ))
   }
+
+  const findDeleteID = (deleteId) => dispatch(facultetsdeleteIdFetch({ id: deleteId }))
+
   return (
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '500px', overflowX: 'scroll', maxWidth: '1000px' }}>
@@ -59,14 +91,14 @@ const FacultetsImthonCom = () => {
             <div className='row'>
               <div className='colum'>
                 <AntSelect
-                  style={{ width: '300px', }}
+                  style={{ width: '400px', }}
                   placeholder='Facultet Turilar '
                   optionFilterProp="children"
                   options={datalist?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
-                  onChange={(e) => setFacul({ facul, facultet: e })}
+                  onChange={(e) => setFacul({ ...facul, facultet: e })}
                 />
               </div>
               <div className='colum'>
@@ -78,7 +110,7 @@ const FacultetsImthonCom = () => {
                     value: value.id,
                     label: value.name,
                   })) || []}
-                  onChange={(e) => setFacul({ facul, firstExamSubjectId: e })}
+                  onChange={(e) => setFacul({ ...facul, firstExamSubjectId: e })}
                 />
               </div>
               <div className='colum'>
@@ -90,32 +122,44 @@ const FacultetsImthonCom = () => {
                     value: value.id,
                     label: value.name,
                   })) || []}
-                  onChange={(e) => setFacul({ facul, secondExamSubjectId: e })}
+                  onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
                 />
               </div>
               <div className='colum'>
-                <Input onchange={(e) => setFacul({ facul, firstExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'210px'} height={'50px'} radius={'5px'} size={'17px'} placeholder={'birinchi blog uchun ball'} />
+                <Input onchange={(e) => setFacul({ ...facul, firstExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'200px'} height={'50px'} radius={'5px'} size={'16px'} placeholder={'birinchi blog uchun ball'} />
               </div>
               <div className='colum'>
-                <Input onchange={(e) => setFacul({ facul, secondExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'210px'} height={'50px'} radius={'5px'} size={'17px'} placeholder={'ikkinchi blog uchun ball'} />
+                <Input onchange={(e) => setFacul({ ...facul, secondExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'200px'} height={'50px'} radius={'5px'} size={'16px'} placeholder={'ikkinchi blog uchun ball'} />
               </div>
               <div className='colum'>
                 <Button onclick={() => addFunc()} width={'100px'} height={'50px'} radius={'5px'} size={'19px'}>Add</Button>
               </div>
+              <div></div>
             </div>
           </Container.Nav>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-          {data.map((value) => {
+          {data?.map((value) => {
             return (
               <ConTable key={value.id}>
                 <div className='row'>
-                  <div >{value.id}</div>
-                  <div >{value.id}</div>
-                  <div >{value.id}</div>
-                  <div >{value.id}</div>
-                  <div >{value.id}</div>
-                  <div >{value.id}</div>
+                  <div >{value?.faculty?.name}</div>
+                  <div >{value?.firstExamSubject?.name}</div>
+                  <div >{value?.secondExamSubject?.name}</div>
+                  <div >{value?.firstExamSubjectBall}</div>
+                  <div >{value?.secondExamSubjectBall}</div>
+                  <div className='action'>
+                    {
+                      value?.status ?
+                        <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                        :
+                        <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
+                    }
+                  </div>
+                  <div>
+                    <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
+                  </div>
+
                 </div>
               </ConTable>
             )
