@@ -22,7 +22,7 @@ const HamburgerMenu = ({changeHidden}) => {
                 <li onClick={() => query.push('/testTopshirish')}>Test topshirish</li>
                 <li>Test natijalari</li>
                 <li onClick={()=> query.push('/contractDown')}>Shartnoma yuklab olish</li>
-                <li>Biz bilan aloqa</li>
+                <li onClick={()=> query.push('/contactUs')}>Biz bilan aloqa</li>
                 <li>Elektron kutubxona</li>
                 <li>Yangiliklar</li>
                 <li>Savol-javoblar</li>
