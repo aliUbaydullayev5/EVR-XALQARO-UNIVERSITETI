@@ -8,12 +8,11 @@ import { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsa
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
-import getAllexamsubject, { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
+import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import examsubjectcreate from "../../../../../redux/sliceAdmin/exam/exsamsubjectcreate"
 import examdeleteId, { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-
 export const ExamSubjectCreate = () => {
 
     const quary = useRouter()
@@ -34,19 +33,23 @@ export const ExamSubjectCreate = () => {
     useEffect(() => {
         if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({ ...name, createAd: '' })
 
-        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Bu Talim Yunalish oldin Qo`shilgan !!!' }))
+        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Bu Talim   oldin Qo`shilgan !!!' }))
         setTimeout(() => { dispatch(reset()) }, 500);
-
     }, [examsubjectcreate])
 
     useEffect(() => {
         if (examsubjectcreate.status === 'success') dispatch(getAllexamsubjectFetch())
     }, [])
 
+
     useEffect(() => {
-        dispatch(getAllexamsubjectFetch())
-        if ((getAllexamsubject.status === 'success')) setDataList(getAllexamsubject.data)
-    }, [])
+        dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
+    }, [getAllexamsubjectFetch])
+
+    useEffect(() => {
+        if ((getAllexamsubject.status === 'success'))
+            setDataList(getAllexamsubject.data)
+    }, [getAllexamsubject])
 
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
@@ -58,14 +61,12 @@ export const ExamSubjectCreate = () => {
         const uniqInputValue = dataList.filter((value) => value.id === id)[0].name
         setInputValue(uniqInputValue)
     }
-
     const editPush = (id) => dispatch(examsubjectCreatePost({ id: id, name: inputValue }))
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
-        id: 0,
         name: name?.createAd,
     }))
-
+    console.log(getAllexamsubject.data, 'dataList');
     return (
         <Container>
             <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>

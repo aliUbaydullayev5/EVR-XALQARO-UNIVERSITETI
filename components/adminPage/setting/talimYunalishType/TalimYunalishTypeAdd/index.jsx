@@ -5,7 +5,6 @@ import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { AntSelect, ConTable } from './style.js'
 import facultyTypeUz, { facultySirtqi } from "../../../../Mock/facultyType/index.js"
-
 import { editAbuturentFetch } from '../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent'
 import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx"
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
@@ -113,7 +112,6 @@ export const TalimYunalishTypeAddCom = () => {
 
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
 
-
   return (
     <Container>
       <AntSelect
@@ -122,7 +120,7 @@ export const TalimYunalishTypeAddCom = () => {
         optionFilterProp="children"
         options={dataList?.map((value) => ({
           value: value.id,
-          label: value.name,
+          label: value.nameUz,
         })) || []}
         onChange={(e) => handelChangeId(e)}
       />

@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async ({ id, value }) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/edit/${id}`, {
         method: 'PUT',
@@ -8,7 +7,8 @@ export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async (
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({
-            name: value,
+            name: payload.nameUz,
+            name: payload.nameUz,
             studyType: "BACHELOR"
         }),
     }).then((res) => res.json())

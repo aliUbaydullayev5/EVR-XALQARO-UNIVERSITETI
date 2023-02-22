@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-
-export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async (payload) => {
+export const getTalimYunalishFetch = createAsyncThunk('getTalimYunalishFetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/create`, {
         method: 'POST',
         headers: {
@@ -9,7 +8,9 @@ export const getTalimYunalishFetch = createAsyncThunk('postTalimYunalish', async
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({
-            name: payload.name,
+            id: payload.id,
+            nameUz: payload.nameUz,
+            nameRu: payload.nameRu,
             studyType: "BACHELOR"
         }),
     }).then((res) => res.json())
@@ -20,8 +21,8 @@ const initialState = {
     message: '',
 }
 
-const talimYunalishAdmin = createSlice({
-    name: 'allTalimYunalish',
+const getTalimYunalish = createSlice({
+    name: 'getTalimYunalish',
     initialState,
     extraReducers: {
         [getTalimYunalishFetch.pending]: (state) => {
@@ -50,5 +51,5 @@ const talimYunalishAdmin = createSlice({
 })
 
 
-export const { reset } = talimYunalishAdmin.actions
-export default talimYunalishAdmin.reducer
+export const { reset } = getTalimYunalish.actions
+export default getTalimYunalish.reducer

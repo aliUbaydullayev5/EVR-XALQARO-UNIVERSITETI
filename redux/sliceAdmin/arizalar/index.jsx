@@ -1,37 +1,65 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
-export const getAdminArizalarFetch = createAsyncThunk('getAdminArizalar', async (payload) => {
-    return await fetch(`http://localhost:8080/api/users`)
-   , {
+export const getAllDataArizaFetch = createAsyncThunk('getAllDataFetch', async ({ page = 0, query = '', search = false }) => {
+    return await fetch(`https://evrtourback.uz/api/v1/user/get?page=${page}&q=${query}`, {
         method: 'GET',
-            headers: {
-            'Content-Type': 'application/json'}
-      }.then((res) => res.json())
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Content-Type': 'application/json',
+        }
+    }).then((res) => res.json())
+        .then((json) => {
+            return {
+                ...json,
+                search
+            }
+        })
+
 })
 
-
-export const getAdminArizalar = createSlice({
-    name: 'getAdminArizalar',
+const getAllDataAriza = createSlice({
+    name: 'getAllData',
     initialState: {
-        data: {},
         status: null,
+        message: '',
+        pageCount: 0,
+        data: []
     },
     extraReducers: {
-        [getAdminArizalarFetch.pending]: (state) => {
-            state.status='loading'
+        [getAllDataArizaFetch.pending]: (state) => {
+            state.status = 'loading'
         },
-        [getAdminArizalarFetch.fulfilled]: (state, { payload }) => {
-            if (payload?.state) {
-                state.data = action?.payload
+        [getAllDataArizaFetch.fulfilled]: (state, { payload }) => {
+            if (payload.search) {
+                if (payload.success === true && payload.data.length) {
+                    state.status = 'success'
+                    state.data = payload.data
+                }
+                else if (payload?.success === false) {
+                    state.status = 'warning'
+                }
+            } else {
+                if (payload.success === true && payload.data.length) {
+                    state.status = 'success'
+                    state.data = [...state.data, ...payload.data]
+                }
+                else if (payload?.success === false) {
+                    state.status = 'warning'
+                }
             }
         },
-        [getAdminArizalarFetch.rejected]: (state) => {
+        [getAllDataArizaFetch.rejected]: (state) => {
             state.status = 'error'
         }
-
+    },
+    reducers: {
+        addPageCount(state, action) {
+            state.pageCount = state.pageCount + 1
+        }
     }
-
 })
 
-export default getAdminArizalar.reducer
+
+
+export const { addPageCount } = getAllDataAriza.actions
+export default getAllDataAriza.reducer

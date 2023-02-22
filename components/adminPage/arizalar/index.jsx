@@ -6,11 +6,15 @@ import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
-
+import { useSelector } from 'react-redux'
 
 export const ArizalarCom = () => {
   const [data, setData] = useState(DataAriza)
   const [selectAllState, setSelectAllState] = useState(false)
+
+  const [inView, setInView] = useState(false);
+
+  const getAllData = useSelector((store) => store.getAllData)
 
 
   useEffect(() => {
@@ -25,6 +29,14 @@ export const ArizalarCom = () => {
       }
     )))
   }, [selectAllState])
+  useEffect(() => {
+    if (inView) {
+      if (getAllData.data.length == 20 || getAllData.data.length == 0) {
+        dispatch(addPageCount())
+        dispatch(getAllDataFetch({ page: getAllData?.pageCount, query: '' }))
+      }
+    }
+  }, [inView])
 
 
   const selectOne = (id = false) => {
@@ -39,12 +51,21 @@ export const ArizalarCom = () => {
       }
     )))
   }
+
+  const searchFunc = (eventValue) => {
+    setTimeout(() => {
+      dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))
+    }, 1000)
+  }
+
   return (
+    <>
+
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
               <Container.Nav>
-            <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
+              <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
                 <div className='row'>
                   <div >№</div>
               <div className='colum'>FIO</div>
@@ -90,6 +111,8 @@ export const ArizalarCom = () => {
         </ConHero.Exel>
       </ConHero>
     </Container>
+    {getAllData?.status === 'loading' && <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>}
+    </>
   )
 }
 export default ArizalarCom

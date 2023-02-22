@@ -11,7 +11,6 @@ const Container = styled.div`
  @media only screen and (max-width: 1000px) {
    padding: 0px 20px;
   }
-
 `
 Container.Scrool = styled.div`
    width: 100%;
@@ -33,7 +32,6 @@ Container.Scrool = styled.div`
       transform: matrix(-1, 0, 0, 1, 0, 0);
       padding: 10px !important;
     }
-
     ::-webkit-scrollbar-thumb {
       background: #FFFFFF;
       border-radius: 30px;
@@ -60,7 +58,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 52px 1fr 1fr;
+    grid-template-columns: 52px 1fr 1fr 0.7fr;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -71,11 +69,10 @@ const ConTable = styled.div`
     border-left:  2px solid white;
     padding-left: 10px;
   }
-
 `
 Container.Nav = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 40px 1fr;
   gap: 10px;
   margin-bottom: 10px;
   >input{
@@ -94,7 +91,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 52px 1fr 1fr ;
+    grid-template-columns: 52px 1fr 1fr 0.7fr;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -134,8 +131,6 @@ const ConHero = styled.div`
 .UserImg{
   display: none;
 }}
-
-
 .TextPsamal{
   font-family: 'Montserrat';
   font-style: normal;

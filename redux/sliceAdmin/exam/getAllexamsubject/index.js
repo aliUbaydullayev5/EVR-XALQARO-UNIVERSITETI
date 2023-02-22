@@ -24,6 +24,7 @@ const getAllexamsubject = createSlice({
             state.status = 'loading'
         },
         [getAllexamsubjectFetch.fulfilled]: (state, action) => {
+            console.log(action.payload);
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
         },

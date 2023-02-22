@@ -24,7 +24,6 @@ const facultetsgetAll = createSlice({
             state.status = 'loading'
         },
         [facultetsgetAllFetch.fulfilled]: (state, action) => {
-            console.log(action.payload.data, 'action');
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
         },

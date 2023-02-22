@@ -10,11 +10,10 @@ import getStudyTypes from '../slices/getStudyTypes'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
-import getAdminArizalar from '../sliceAdmin/arizalar'
+import getAllDataAriza from '../sliceAdmin/arizalar'
 import talimYunalishAdmin from "../sliceAdmin/talimyunlishAdd"
 import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
 import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
-import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/index.js"
 import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 import editTalimYunalishType from "../sliceAdmin/talimYunalishTurlari/editTalimYunalishType"
@@ -24,6 +23,8 @@ import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
+import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
+import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 
 export default configureStore({
     reducer: {
@@ -37,11 +38,10 @@ export default configureStore({
         reseptionCheckPhoneSlice,
         receptionSmsVerify,
         loginAdminThunk,
-        getAdminArizalar,
+        getAllDataAriza,
         talimYunalishAdmin,
         getStudyTypesAbuturent,
         deleteAbuturentId,
-        editAbuturentId,
         facultytypesId,
         facultyTypeAdd,
         editTalimYunalishType,
@@ -51,5 +51,8 @@ export default configureStore({
         facultetsselectAdd,
         facultetsgetAll,
         facultetsdeleteId,
+        editAbuturentId,
+        getAllDataAriza,
+        getTalimYunalish
     },
 })
