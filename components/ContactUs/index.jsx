@@ -10,7 +10,7 @@ const ContactUsComponent = () => {
       <Container.Bottom>
         <Container.BottomBox>
           <Container.Box>
-            <a href={"https://maps.app.goo.gl/4BTuDe17fEGqUL7M9"} target={"_blank"}>
+            <a href={"https://maps.app.goo.gl/nzEx6Xp2EfDhhv4q6"} target={"_blank"}>
               <Locations className={"location"} />
             </a>
             <Container.Text>
