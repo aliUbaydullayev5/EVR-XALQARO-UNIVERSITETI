@@ -14,7 +14,7 @@ const ContactUsComponent = () => {
               <Locations className={"location"} />
             </a>
             <Container.Text>
-              <Container.P pi>Uzbekistan Tashkent Sergeli</Container.P>
+              <Container.TextP pi>Uzbekistan Tashkent Sergeli</Container.TextP>
             </Container.Text>
           </Container.Box>
           <Container.Box>
@@ -22,26 +22,26 @@ const ContactUsComponent = () => {
               <Phone className={"location"} />
             </a>
             <Container.Text>
-              <Container.P num>
+              <Container.TextP num>
+                <a href={"tel:+998997777575"} target={"_blank"}>
+                  +998997777575
+                </a>  
+              </Container.TextP>
+              <Container.TextP num>
                 <a href={"tel:+998997777575"} target={"_blank"}>
                   +998997777575
                 </a>
-              </Container.P>
-              <Container.P num>
+              </Container.TextP>
+              <Container.TextP num>
                 <a href={"tel:+998997777575"} target={"_blank"}>
                   +998997777575
                 </a>
-              </Container.P>
-              <Container.P num>
+              </Container.TextP>
+              <Container.TextP num>
                 <a href={"tel:+998997777575"} target={"_blank"}>
                   +998997777575
                 </a>
-              </Container.P>
-              <Container.P num>
-                <a href={"tel:+998997777575"} target={"_blank"}>
-                  +998997777575
-                </a>
-              </Container.P>
+              </Container.TextP>
             </Container.Text>
           </Container.Box>
           <Container.Box>
@@ -49,29 +49,29 @@ const ContactUsComponent = () => {
               <TelegramUs className={"location"} />
             </a>
             <Container.Text>
-              <Container.P>
+              <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}></a>
-              </Container.P>
-              <Container.P>
+              </Container.TextP>
+              <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}>
                   @exuedu_uz
                 </a>
-              </Container.P>
-              <Container.P>
+              </Container.TextP>
+              <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}>
                   @exuedu_uz
                 </a>
-              </Container.P>
-              <Container.P>
+              </Container.TextP>
+              <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}>
                   @exuedu_uz
                 </a>
-              </Container.P>
-              <Container.P>
+              </Container.TextP>
+              <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}>
                   @exuedu_uz
                 </a>
-              </Container.P>
+              </Container.TextP>
             </Container.Text>
           </Container.Box>
         </Container.BottomBox>
