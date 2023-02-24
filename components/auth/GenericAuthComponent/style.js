@@ -154,5 +154,10 @@ Container.ButtonArea = styled.div`
   flex-direction: column;
   align-items: center !important;
 `
+Container.ButtonLoader = styled.div`
+	text-align: center;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+`;
 
 export default Container

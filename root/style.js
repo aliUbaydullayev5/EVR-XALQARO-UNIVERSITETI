@@ -65,7 +65,7 @@ Container.MainMiniBlock = styled.div`
   grid-template-columns: ${({firstPage})=> firstPage ? '1fr' : '1fr 80px'};
   align-items: center;
   justify-content: center;
-  padding: 0px 27px 0px 27px;
+  padding: 0 27px 0 27px;
   height: 556px;
   @media only screen and (max-width: 1000px) {
     padding: 0;
@@ -86,7 +86,6 @@ Container.MiniContent = styled.div`
 
 Container.SideBarLaptop = styled.div`
   height: 100%;
-
   @media only screen and (max-width: 1000px){
     display: none;
   }

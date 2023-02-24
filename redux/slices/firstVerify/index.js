@@ -1,7 +1,7 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/check-phone`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/check-phone`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

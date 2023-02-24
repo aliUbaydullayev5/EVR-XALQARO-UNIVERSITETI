@@ -1,11 +1,28 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const receptionPostFetch = createAsyncThunk('receptionPostFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/admission-student`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/admission-student`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify(payload),
+        body:JSON.stringify({
+            courseLevel: payload.courseLevel,
+            diplomaId: payload.diplomaId,
+            educationType: payload.educationType,
+            extraPhoneNumber: payload.extraPhoneNumber?.match(/[0-9]+/g).join(''),
+            facultyId: payload.facultyId,
+            firstName: payload.firstName,
+            lastName: payload.lastName,
+            passportId: payload.passportId,
+            passportSeries: payload.passportSeries,
+            password: payload.password,
+            patron: payload.patron,
+            phoneNumber: payload.phoneNumber?.match(/[0-9]+/g).join(''),
+            prePassword: payload.prePassword,
+            studyLanguage: payload.studyLanguage,
+            studyType: payload.studyType,
+            verifyCode: payload.verifyCode,
+        })
     }).then((res)=> res.json())
 })
 

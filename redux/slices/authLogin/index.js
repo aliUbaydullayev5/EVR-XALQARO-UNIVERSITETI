@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const fetchAuthLogin = createAsyncThunk('fetchAuthLogin', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/personal-cabinet`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/personal-cabinet`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -10,22 +10,34 @@ export const fetchAuthLogin = createAsyncThunk('fetchAuthLogin', async (payload)
             phoneNumber: payload.phoneNumber,
             password: payload.password
         }),
-    }).then((res)=> res.json())
+    })
+        .then((res)=> res.json())
+        .then((json)=> {
+            return {...json, tokenName: payload.tokenName}
+        })
 })
 
 const authLogin = createSlice({
     name: 'authLogin',
     initialState: {
         status: null,
-        message: ''
+        message: '',
+        data: {}
     },
     extraReducers: {
         [fetchAuthLogin.pending]: (state)=> {
             state.status = 'loading'
         },
         [fetchAuthLogin.fulfilled]: (state, action)=> {
-            state.status = 'success'
-            console.log(action)
+            if(action.payload.success === true){
+                state.data = action.payload.data
+                state.status = 'success'
+                localStorage.setItem(action.payload.tokenName, action?.payload?.data?.accessToken)
+            }
+            else if(action?.payload?.success === false){
+                state.status = 'error'
+                state.message = action?.payload?.errors[0]?.errorMsg
+            }
         },
         [fetchAuthLogin.rejected]: (state)=> {
             state.status = 'error'
@@ -35,6 +47,7 @@ const authLogin = createSlice({
         resetAuthLogin(state){
             state.status = null
             state.message = ''
+            state.data = {}
         }
     }
 })

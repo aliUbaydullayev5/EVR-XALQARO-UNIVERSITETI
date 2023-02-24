@@ -16,7 +16,7 @@ import {
 } from '../../../redux/slices/receptionPost';
 import { startMessage } from '../../../redux/slices/message';
 import CustomInput from 'react-phone-number-input/input';
-import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes';
+import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
 import { checkAllInputs2 } from './checkAllInputs';
 import { Modal, Spin } from 'antd';
 import {
@@ -124,7 +124,6 @@ const OqishniKochirishComponent = () => {
 	};
 
 	const pushAllInfo = () => {
-		console.log(allData);
 		if (checkAllInputs()) dispatch(receptionPostFetch(allData));
 	};
 
@@ -224,7 +223,6 @@ const OqishniKochirishComponent = () => {
 	})
 
 
-	console.log(allData.phoneNumber)
 
 	useEffect(()=> {
 		dispatch(resetSmsVerify());

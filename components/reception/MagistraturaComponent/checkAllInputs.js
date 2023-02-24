@@ -31,7 +31,7 @@ export const checkAllInputs2 = ({allData}) => {
         }
     }
 
-    if (!(allData.passportSeries.length == 9)) {
+    if (!(allData.passportSeries.length === 9)) {
         return {
             status: false,
             message: {
@@ -41,17 +41,17 @@ export const checkAllInputs2 = ({allData}) => {
         }
     }
 
-    if(!(allData.phoneNumber.length == 12)) {
+    if(!(allData.phoneNumber.length === 13)) {
         return {
             status: false,
             message: {
                 time: 5,
-                message: 'Telefon raqamni togri kiritilganmagan'
+                message: 'Telefon raqamni togri kiritilgan'
             }
         }
     }
 
-    if (!(allData.extraPhoneNumber.length == 12)) {
+    if (!(allData.extraPhoneNumber.length === 13)) {
         return {
             status: false,
             message: {

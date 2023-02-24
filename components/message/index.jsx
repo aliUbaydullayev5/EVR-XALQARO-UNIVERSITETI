@@ -2,10 +2,12 @@ import Container from './style'
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {resetAllData} from "../../redux/slices/message";
+
 import WarningIcon from '../../assets/icon/worningIcon.svg'
 import SuccessIcon from '../../assets/icon/successIcon.svg'
 import ErrorIcon from '../../assets/icon/errorIcon.svg'
 import MessageClose from '../../assets/icon/messageClose.svg'
+
 
 const Message = () => {
 
@@ -48,7 +50,7 @@ const Message = () => {
     }
 
     return(
-        <Container hiddenState={hiddenBool} typeMessage={type}>
+        <Container hiddenState={hiddenBool}>
             <Container.Left>
                 {iconFunc(type)}
             </Container.Left>

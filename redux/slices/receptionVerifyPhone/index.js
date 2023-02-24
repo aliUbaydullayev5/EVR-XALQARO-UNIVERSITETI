@@ -2,11 +2,9 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const reseptionSmsCheckSliceFetch = createAsyncThunk(
-	'receptionCheckPhone',
-	async (payload) => {
+export const reseptionSmsCheckSliceFetch = createAsyncThunk('receptionCheckPhone', async (payload) => {
 		return await fetch(
-			`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/check-phone`,
+			`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/check-phone`,
 			{
 				method: 'POST',
 				headers: {
@@ -14,7 +12,7 @@ export const reseptionSmsCheckSliceFetch = createAsyncThunk(
 				},
 				body: JSON.stringify({
 					firstName: payload.firstName,
-					phoneNumber: payload.phoneNumber,
+					phoneNumber: payload.phoneNumber.match(/[0-9]+/g).join(''),
 				}),
 			},
 		).then((res) => res.json());
@@ -32,7 +30,6 @@ const reseptionCheckPhoneSlice = createSlice({
 			state.status = 'loading';
 		},
 		[reseptionSmsCheckSliceFetch.fulfilled]: (state, action) => {
-			console.log(action.payload);
 			if (action?.payload?.success === true) {
 				state.status = 'success';
 				state.message = action.payload.message;
