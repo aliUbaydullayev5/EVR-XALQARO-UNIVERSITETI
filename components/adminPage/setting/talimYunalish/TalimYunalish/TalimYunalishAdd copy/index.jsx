@@ -36,6 +36,7 @@ export const TalimYunlishAddCom = () => {
         if (getTalimYunalish.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' }), setName({
             ...name, nameUz: '',
             ...name, nameRu: '',
+
         }))
         else if (getTalimYunalish.status === 'notFound') dispatch(startMessage({ time: 3, message: getStudyTypes.message }))
         setTimeout(() => { dispatch(reset()) }, 500);
