@@ -1,37 +1,30 @@
-import Container, {BtnCon, IconBox, InputCont, TextCon} from './style'
-import {Button, Input} from "../../generic";
+import Container, { BtnCon, IconBox, InputCont, TextCon } from './style'
+import { Button, Input } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
-import {useRouter} from "next/router";
-import React, {useEffect, useState} from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import CustomInput from 'react-phone-number-input/input';
-import {Modal, Spin} from "antd";
-import {useDispatch, useSelector} from "react-redux";
-import {reseptionSmsCheckSliceFetch} from "../../../redux/slices/receptionVerifyPhone";
+import { Modal, Spin } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { reseptionSmsCheckSliceFetch } from "../../../redux/slices/receptionVerifyPhone";
 import { checkAllInputs2 } from './checkAllInputs';
 import { startMessage } from "../../../redux/slices/message";
-import {deployFileFetch} from "../../../redux/slices/deployFile";
+import { deployFileFetch } from "../../../redux/slices/deployFile";
 const AgentFormComponent = () => {
 
 
     const router = useRouter()
 
-<<<<<<< HEAD
     const [phoneNumber, setPhoneNumber] = useState('+998')
-    const [phoneExtraNumber , setPhoneExtraNumber] = useState('+998')
+    const [phoneExtraNumber, setPhoneExtraNumber] = useState('+998')
 
     const [modelHidden, setModalHidden] = useState(false)
     const [smsInput, setSmsInput] = useState('');
-=======
-    const [phoneNumber1, setphoneNumber1] = useState('+998')
-    const [phoneNumber2, setphoneNumber2] = useState('+998')
-    const [phoneNumber3, setphoneNumber3] = useState('+998')
->>>>>>> admin/login
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
-<<<<<<< HEAD
     const { fileId, by } = useSelector((store) => store.deployFile);
 
     const dispatch = useDispatch()
@@ -43,22 +36,6 @@ const AgentFormComponent = () => {
         changeAllDataFunc({ type: by, value: fileId });
     }, [fileId]);
 
-=======
-    const FuncNumbe1 = ({ value, type }) => {
-        setphoneNumber1(value)
-        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
-    }
-    const FuncNumbe2 = ({ value, type }) => {
-        setphoneNumber2(value)
-        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
-    }
-    const FuncNumbe3 = ({ value, type }) => {
-        setphoneNumber3(value)
-        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
-    }
-
-
->>>>>>> admin/login
     const [allData, setAllData] = useState({
         firmaName: '',
         password: '',
@@ -126,20 +103,18 @@ const AgentFormComponent = () => {
 
     console.log(allData)
 
-
-    return(
+    return (
         <Container>
             <TextCon>
                 <h1>Agent</h1>
             </TextCon>
             <InputCont>
                 <div className='row1'>
-<<<<<<< HEAD
-                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
+                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
                 </div>
 
                 <div className='row2'>
-                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'fio', value: e.target.value })} />
+                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'fio', value: e.target.value })} />
                 </div>
 
                 <div className='row7'>
@@ -151,41 +126,11 @@ const AgentFormComponent = () => {
                                     onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })}
                                 />
                                 <UploadFiler className={'UploadFile2'} />
-=======
-                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
-                </div>
-
-                <div className='row4'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firma rahbarining qo’shimcha raqami"
-                            onChange={(value) => FuncNumbe1({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber1}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firma rahbarining qo’shimcha raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
-
-                <div className='row2'>
-                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
-                </div>
-                <div className='row8'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-                                <UploadFiler className={'UploadFile1'} />
->>>>>>> admin/login
                                 <UploadMobile className={'UploadFileMobile'} />
                             </IconBox>
                         </div>
                         <div>
                             <IconBox>
-<<<<<<< HEAD
                                 <Input
                                     type={'password'}
                                     mpadding={'0 0 0 19px '}
@@ -205,9 +150,6 @@ const AgentFormComponent = () => {
                                         })
                                     }
                                 />
-=======
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />
->>>>>>> admin/login
                             </IconBox>
                         </div>
                     </div>
@@ -215,7 +157,6 @@ const AgentFormComponent = () => {
 
 
                 <div className='row3'>
-<<<<<<< HEAD
                     <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
                 </div>
 
@@ -261,73 +202,33 @@ const AgentFormComponent = () => {
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => {
-                                changeAllDataFunc({type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('')})
+                                changeAllDataFunc({ type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('') })
                                 setPhoneNumber(value)
                             }}
                             maxLength={17}
                             value={phoneNumber}
-=======
-                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
-                </div>
-                <div className='row9'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
-                                <UploadFiler className={'UploadFile2'} />
-                                <UploadMobile className={'UploadFileMobile'} />
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='row5'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firmaning telefon raqami"
-                            onChange={(value) => FuncNumbe2({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber2}
->>>>>>> admin/login
                             className={'customPhoneInput'}
                         />
                         <Container.NumberText>
-                            
                             Firmaning telefon raqami
                         </Container.NumberText>
                     </Container.Number>
                 </div>
 
                 <div className='row6'>
-                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
+                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
                 </div>
 
-<<<<<<< HEAD
                 <div className='row5'>
                     <Container.Number >
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => {
-                                changeAllDataFunc({type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('')})
+                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })
                                 setPhoneExtraNumber(value)
                             }}
                             value={phoneExtraNumber}
                             maxLength={17}
-=======
-                <div className='row6'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firma rahbarining telefon raqami"
-                            onChange={(value) => FuncNumbe3({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber3}
->>>>>>> admin/login
                             className={'customPhoneInput'}
                         />
                         <Container.NumberText>
@@ -335,7 +236,6 @@ const AgentFormComponent = () => {
                         </Container.NumberText>
                     </Container.Number>
                 </div>
-<<<<<<< HEAD
 
                 <div></div>
 
@@ -386,14 +286,6 @@ const AgentFormComponent = () => {
                             Telefon raqamni tastiqlash
                         </Button>
                     )}
-=======
-                
-                <BtnCon className='row10'>
-                    <div className='btnEnd'></div>
-                    <div>
-                        <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mmargin={'0px auto'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
-                    </div>
->>>>>>> admin/login
                 </BtnCon>
             </InputCont>
 
