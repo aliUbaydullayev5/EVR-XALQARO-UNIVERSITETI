@@ -38,13 +38,30 @@ const FacultetsImthonCom = () => {
   const facultetsdeleteId = useSelector((store) => store.deleteAbuturentId)
 
 
-  useEffect(() => { dispatch(getAllexamsubjectFetch({type : 'BACHELOR   '})) }, [])
 
+
+  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+  useEffect(() => {
+    if (facultetsgetAll.status === 'success')setData(facultetsgetAll.data)
+  }, [facultetsgetAll])
 
 
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
+
+  useEffect(() => {
+    dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
+  }, [getAllexamsubjectFetch])
+
+  useEffect(() => {
+    if ((getAllexamsubject.status === 'success'))
+      setDataFan(getAllexamsubject.data)
+  }, [getAllexamsubject])
+
+  useEffect(() => {
+    dispatch(facultetsgetAllFetch())
+  }, [facultetsgetAllFetch])
 
   const addFunc = () => {
     dispatch(facultetsselectAddPost(
@@ -98,7 +115,7 @@ const FacultetsImthonCom = () => {
                   optionFilterProp="children"
                   options={datalist?.map((value) => ({
                     value: value.id,
-                    label: value.name,
+                    label: value.nameUz,
                   })) || []}
                   onChange={(e) => setFacul({ ...facul, facultet: e })}
                 />
@@ -110,7 +127,7 @@ const FacultetsImthonCom = () => {
                   optionFilterProp="children"
                   options={datafan?.map((value) => ({
                     value: value.id,
-                    label: value.name,
+                    label: value.nameUz,
                   })) || []}
                   onChange={(e) => setFacul({ ...facul, firstExamSubjectId: e })}
                 />
@@ -122,7 +139,7 @@ const FacultetsImthonCom = () => {
                   optionFilterProp="children"
                   options={datafan?.map((value) => ({
                     value: value.id,
-                    label: value.name,
+                    label: value.nameUz,
                   })) || []}
                   onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
                 />
@@ -140,6 +157,7 @@ const FacultetsImthonCom = () => {
             </div>
           </Container.Nav>
         </div>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           {data?.map((value) => {
             return (
@@ -147,114 +165,49 @@ const FacultetsImthonCom = () => {
 
                 <div className='row'>
                   <div>
-                    dsa
                     {value?.checkInput ?
                       <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
-                        {value?.faculty?.name}
+                        {value?.faculty?.nameUz}
                       </>}
                   </div>
                   <div>
                     {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: value.faculty,
-                        firstExamSubject: v.firstExamSubject,
-                        firstExamSubjectBall: v.firstExamSubjectBall,
-                        secondExamSubject: v.secondExamSubject,
-                        secondExamSubjectBall: value.id === v.id ? e.target.value : v.secondExamSubjectBall,
-                        checkInput: v.checkInput
-                      })))} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
-                        {value?.secondExamSubjectBall}
+                        {value?.firstExamSubject?.nameUz}
                       </>}
                   </div>
 
                   <div>
                     {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: value.faculty,
-                        firstExamSubject: v.firstExamSubject,
-                        firstExamSubjectBall: value.id === v.id ? e.target.value : v.firstExamSubjectBall,
-                        secondExamSubject: v.secondExamSubject,
-                        secondExamSubjectBall: v.secondExamSubjectBall,
-                        checkInput: v.checkInput
-                      })))} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
-                        {value?.firstExamSubjectBall}
-                      </>
-                    }
-                  </div>
-
-                  {/* <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: value.id === v.id ? e.target.value : v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubject?.name}
-                      </>
-                    }
+                        {value?.secondExamSubject?.nameUz}
+                      </>}
                   </div>
                   <div>
                     {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: value.id === v.id ? e.target.value : v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubject?.name}
-                      </>
-                    }
-                  </div>
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: value.id === v.id ? e.target.value : v?.firstExamSubjectBall, 
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
                         {value?.firstExamSubjectBall}
-                      </>
-                    }
+                      </>}
                   </div>
 
                   <div>
                     {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: value.id === v.id ? e.target.value : v?.secondExamSubjectBall, 
-                      })))} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
                         {value?.secondExamSubjectBall}
-                      </>
-                    }
-                  </div> */}
+                      </>}
+                  </div>
+                 
+ 
                   <div className='action'>
                     {
                       value?.checkInput ?

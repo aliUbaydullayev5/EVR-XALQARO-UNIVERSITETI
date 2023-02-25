@@ -6,9 +6,15 @@ import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 export const ArizalarCom = () => {
+
+  const [excel, setexcel] = useState('')
+
+  const dispatch = useDispatch()
+
   const [data, setData] = useState(DataAriza)
   const [selectAllState, setSelectAllState] = useState(false)
 
@@ -101,7 +107,7 @@ export const ArizalarCom = () => {
           <div>
             <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
           </div>
-          <div>
+            <div>
             <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>

@@ -26,6 +26,7 @@ import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 
+
 export default configureStore({
     reducer: {
         firstVerify,
@@ -53,6 +54,6 @@ export default configureStore({
         facultetsdeleteId,
         editAbuturentId,
         getAllDataAriza,
-        getTalimYunalish
+        getTalimYunalish,
     },
 })
