@@ -6,6 +6,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `
 
 Container.Inset = styled.div`
@@ -87,16 +88,12 @@ input{
 @media only screen and (max-width: 1000px){
   font-weight: 200;
   font-size: 12px;
-  margin-right: 15px;
+  margin-right: 30px;
   input{
-    max-width: 120px;
-    height: 15px;
-    padding-left: 8px;
-    padding-right: 30px;
+    display: none;
   }
   .search{
-    top: 2px;
-    right: 5px;
+    display: none;
   }
 }
 

@@ -3,7 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
 width: 100%;
 max-width: 342.42px;
-height: 221.69px;
+min-height: 221.69px;
+height: 100%;
 display: flex;
 flex-direction: column;
 background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
@@ -12,6 +13,11 @@ border-radius: 20px 20px 10px 10px;
 width: 100%;
 height: 157.33px;
 }
+
+@media only screen and (max-width:1000px){
+  height: 250px;
+}
+
 `
 
 Container.Bottom = styled.div`
@@ -38,6 +44,10 @@ font-size: 18px;
 line-height: 22px;
 letter-spacing: -0.025em;
 color: #FFFFFF;
+@media only screen and (max-width:1000px){
+  font-size: 12px;
+  height: 58px;
+}
 `
 
 Container.Footer = styled.div`
@@ -67,6 +77,17 @@ font-weight: 500;
 font-size: 10px;
 line-height: 12px;
 color: rgba(255, 255, 255, 0.5);
+}
+button{
+background: none;
+border: none;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+color: #FFFFFF;
+cursor: pointer;
 }
 `
 

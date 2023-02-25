@@ -29,6 +29,7 @@ const NewsComponent = () => {
             />
             <Search className="search" />
           </Container.Search>
+          
         </Container.Top>
         <Container.Bottom>
           <Container.BottomDesc>
