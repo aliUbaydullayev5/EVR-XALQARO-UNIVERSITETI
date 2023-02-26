@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const reseptionSmsCheckSliceFetch = createAsyncThunk('receptionCheckPhone', async (payload) => {
 		return await fetch(
-			`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/check-phone`,
+			`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/check-phone`,
 			{
 				method: 'POST',
 				headers: {

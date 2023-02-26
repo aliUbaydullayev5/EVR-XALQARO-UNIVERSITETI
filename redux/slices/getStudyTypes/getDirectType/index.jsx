@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const getDirectTypeFetch = createAsyncThunk('getDirectTypeFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://192.168.0.105:8083/api/'}v1/faculty/get-with-faculty-type?studyType=${payload.type}`)
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/faculty/get-with-faculty-type?studyType=${payload.type}`)
         .then((res)=> res.json())
         .then((json)=> {
             return {

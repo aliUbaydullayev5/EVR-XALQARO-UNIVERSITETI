@@ -2,7 +2,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const getInfoUserCabinetFetch = createAsyncThunk('getInfoUserCabinetFetch', async (payload)=> {
     console.log()
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/user/me`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/user/me`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

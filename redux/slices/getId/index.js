@@ -1,7 +1,7 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const getUserIdFetch = createAsyncThunk('getUserIdFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://185.196.213.87:8088/api/'}v1/auth/get-id-number?phoneNumber=${payload.userName}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/get-id-number?phoneNumber=${payload.userName}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
