@@ -6,21 +6,21 @@ import {useRouter} from "next/router";
 
 const Talaba = () => {
     const router = useRouter()
-    const [state, setState] = useState(localStorage?.getItem('talaba-token'))
+    const [state, setState] = useState()
 
     useEffect(()=> {
-        setState(localStorage?.getItem('talaba-token'))
+        let authBool = localStorage?.getItem('talaba-token')
+        if(authBool?.length > 3){
+            setState(false)
+            router.push('/personalAccount/talaba')
+        }else{
+            setState(true)
+        }
     }, [])
-    const pushFunc = () => router.push('/personalAccount/talaba')
-
     return(
         <Root>
             {
-                state
-                    ?
-                    pushFunc()
-                    :
-                    <GenericAuthComponent title={'Talaba'} pushPath={'/personalAccount/talaba'} royxat={false} tokenName={'talaba-token'}/>
+                state && <GenericAuthComponent title={'Talaba'} pushPath={'/personalAccount/talaba'} royxat={false} tokenName={'talaba-token'}/>
             }
         </Root>
     )

@@ -4,7 +4,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   display: grid;
   grid-template-rows: 84px 1fr;
@@ -15,8 +15,8 @@ const Container = styled.div`
 `
 Container.Top = styled.div`
   background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   font-weight: 500;
   font-size: 40px;
   line-height: 49px;
@@ -210,6 +210,13 @@ Container.InputCustom1 = styled.input`
   }
   
 `
+
+Container.ButtonLoader = styled.div`
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);	  
+  border-radius: 4px;
+  
+`;
 
 
 export default Container

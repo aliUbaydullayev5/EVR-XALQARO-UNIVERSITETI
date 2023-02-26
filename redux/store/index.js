@@ -12,6 +12,7 @@ import agentAuth from '../slices/agentAuth'
 import authLogin from '../slices/authLogin'
 import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
+import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 
 export default configureStore({
     reducer: {
@@ -27,6 +28,7 @@ export default configureStore({
         agentAuth,
         authLogin,
         getFacultyLanguage,
-        getFacultyType
+        getFacultyType,
+        getInfoUserCabinet
     },
 })

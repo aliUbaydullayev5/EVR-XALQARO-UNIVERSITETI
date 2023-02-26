@@ -7,8 +7,6 @@ import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuthLogin, resetAuthLogin} from "../../../redux/slices/authLogin";
 import React, {useEffect, useState} from "react";
-
-import CustomInput from 'react-phone-number-input/input';
 import {startMessage} from "../../../redux/slices/message";
 import {Spin} from "antd";
 
@@ -17,7 +15,7 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
     const dispatch = useDispatch()
 
     const [logPas, setLogPas] = useState({
-        phoneNumber: '+998',
+        userName: '',
         password: ''
     })
 
@@ -39,9 +37,12 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
     }, [authLogin])
 
     const loginFunc = () => {
-        dispatch(fetchAuthLogin({phoneNumber: logPas.phoneNumber?.match(/[0-9]+/g).join(''), password: logPas.password, tokenName: tokenName}))
+        dispatch(fetchAuthLogin({
+            userName: logPas.userName,
+            password: logPas.password,
+            tokenName: tokenName
+        }))
     }
-
 
     return(
         <Container>
@@ -52,13 +53,26 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
                 <Container.Bottom>
                     <Container.InputArea>
                         <PersonIcon className={'personIcon'} />
-
-                        <CustomInput
-                            placeholder='Enter phone number'
-                            onChange={(e) => setLogPas({...logPas, phoneNumber: e})}
-                            maxLength={17}
-                            value={logPas.phoneNumber}
-                            className={'customPhoneInput'}
+                        <Input
+                            mwidth={'200px'}
+                            mheight={'30px'}
+                            borderBoT={'2px solid #fff'}
+                            mborderBoT={'2px solid #fff'}
+                            mradius={'0px'}
+                            radius={'0px'}
+                            placeholder={'ID raqam kiriting'}
+                            width={'333px'}
+                            height={'32px'}
+                            mbc={'rgba(255,255,255,0)'}
+                            bc={'rgba(255,255,255,0)'}
+                            mshadowOff={true}
+                            shadowOff={true}
+                            msize={'16px'}
+                            size={'24px'}
+                            mpadding={'0 0 0 40px'}
+                            padding={'0 0 0 40px'}
+                            type={'text'}
+                            onchange={(e) => setLogPas({...logPas, userName: e.target.value})}
                         />
 
                     </Container.InputArea>

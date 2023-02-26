@@ -19,8 +19,8 @@ import { Modal, Spin } from 'antd';
 import { checkAllInputs2 } from './checkAllInputs';
 import { reseptionSmsCheckSliceFetch, resetTimerVerify } from '../../../redux/slices/receptionVerifyPhone/index.js';
 import { receptionSmsVerifyFetch, resetSmsVerify } from '../../../redux/slices/receptionSmsVerify'
-import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
-import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType";
+import { getFacultyLanguageFetch } from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import { getFacultyTypeFetch, resetData } from "../../../redux/slices/getStudyTypes/getFacultyType";
 
 export const MagistraturaComponent = () => {
 
@@ -92,13 +92,11 @@ export const MagistraturaComponent = () => {
 		setAllData(fakeData)
 		setAllData({ ...allData, [type]: value })
 	}
-	console.log('allData', allData)
-
 
 	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
-		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }));
+		dispatch(getDirectTypeFetch({ type: 'MASTER' }));
 	}, []);
 
 	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]) // file ni yuklab id sini allData ga yozib koyadi
@@ -145,10 +143,6 @@ export const MagistraturaComponent = () => {
 		}, 2000);
 	}
 
-
-	// const funPhoneNumber = ({ value, type }) => {
-	// 	changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-	// };
 
 	// status, pushToHome, message
 	const [modelHidden, setModalHidden] = useState(false);
@@ -378,7 +372,7 @@ export const MagistraturaComponent = () => {
 					<select value={allData.facultyId} style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
 						{
 							getDirectType.length && getDirectType?.map((value, index) => (
-								<option id={value.id} value={value.id} selected={value.name === '-------------'} disabled={value.name === '-------------'} >{value.name}</option>
+								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
 							))
 						}
 					</select>
@@ -536,6 +530,7 @@ export const MagistraturaComponent = () => {
 					)}
 				</Container.Model>
 			</Modal>
+
 		</Container>
 	);
 };

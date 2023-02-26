@@ -21,7 +21,7 @@ export const receptionPostFetch = createAsyncThunk('receptionPostFetch', async (
             prePassword: payload.prePassword,
             studyLanguage: payload.studyLanguage,
             studyType: payload.studyType,
-            verifyCode: payload.verifyCode,
+            verifyCode: payload.verifyCode
         })
     }).then((res)=> res.json())
 })
@@ -40,12 +40,12 @@ const receptionPost = createSlice({
         [receptionPostFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
             if(action?.payload?.success){
-                state.message = action.payload.message
+                state.message = action.payload.message.split('_').join(' ')
                 state.pushAnswer = true
             }
             if(action?.payload?.success == false){
                 state.status = 'error'
-                state.message = action?.payload?.errors[0]?.errorMsg
+                state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
         },
         [receptionPostFetch.rejected]: (state)=> {
