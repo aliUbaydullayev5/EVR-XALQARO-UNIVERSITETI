@@ -28,11 +28,6 @@ import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyType
 
 export const AbiturientQabul = () => {
 
-<<<<<<< HEAD
-
-export const AbiturientQabul = (searchElement, fromIndex) => {
-=======
->>>>>>> origin
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const [numPasSeriya, setNumPasSeriya] = useState('');
@@ -496,11 +491,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						</Button>
 					)}
 				</BtnCon>
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
             </InputCont>
 			<Modal
 				open={modelHidden}

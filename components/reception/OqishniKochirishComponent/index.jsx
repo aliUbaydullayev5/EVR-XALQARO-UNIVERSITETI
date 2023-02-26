@@ -186,15 +186,12 @@ const OqishniKochirishComponent = () => {
 		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
 	}, [reseptionCheckPhoneSlice]);
 
-<<<<<<< HEAD
 
-=======
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
 		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
 	}, [receptionSmsVerify])
->>>>>>> origin
 
 	useEffect(()=> {
 		dispatch(resetSmsVerify())

@@ -483,11 +483,7 @@ export const MagistraturaComponent = () => {
 				</BtnCon>
 				<div className='mobileNone'></div>
 			</InputCont>
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
