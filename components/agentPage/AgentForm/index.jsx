@@ -21,15 +21,31 @@ const AgentFormComponent = () => {
 
     const router = useRouter()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
     const [phoneNumber, setPhoneNumber] = useState('+998')
     const [phoneExtraNumber, setPhoneExtraNumber] = useState('+998')
 
     const [modelHidden, setModalHidden] = useState(false)
     const [smsInput, setSmsInput] = useState('');
+<<<<<<< HEAD
+=======
+
+    const [phoneNumber1, setphoneNumber1] = useState('+998')
+    const [phoneNumber2, setphoneNumber2] = useState('+998')
+    const [phoneNumber3, setphoneNumber3] = useState('+998')
+
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
 
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
     const { fileId, by } = useSelector((store) => store.deployFile);
 
     const dispatch = useDispatch()
@@ -45,6 +61,24 @@ const AgentFormComponent = () => {
         changeAllDataFunc({ type: by, value: fileId });
     }, [fileId]);
 
+<<<<<<< HEAD
+=======
+
+    const FuncNumbe1 = ({ value, type }) => {
+        setphoneNumber1(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+    const FuncNumbe2 = ({ value, type }) => {
+        setphoneNumber2(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+    const FuncNumbe3 = ({ value, type }) => {
+        setphoneNumber3(value)
+        changeAllDataFunc({ value: (value?.match(/[0-9]+/g)).join(''), type })
+    }
+
+
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
     const [allData, setAllData] = useState({
         firmaName: '',
         password: '',
@@ -178,7 +212,11 @@ const AgentFormComponent = () => {
             <InputCont>
 
                 <div className='row1'>
+<<<<<<< HEAD
                     <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
+=======
+                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                 </div>
 
                 <div className='row2'>
@@ -193,8 +231,41 @@ const AgentFormComponent = () => {
                                     type={'file'}
                                     onChange={(e) => findFileFunc({ file: e, by: 'certificateId' })}
                                 />
+<<<<<<< HEAD
                                 <UploadFiler className={'uploadFile'} />
                                 <UploadMobile className={'uploadFileMobile'} />
+=======
+                                <UploadFiler className={'UploadFile2'} />
+                            </IconBox>
+                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                </div>
+
+                <div className='row4'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Firma rahbarining qo’shimcha raqami"
+                            onChange={(value) => FuncNumbe1({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={phoneNumber1}
+                            className={'customPhoneInput'}
+                        />
+                        <Container.NumberText>
+                            Firma rahbarining qo’shimcha raqami
+                        </Container.NumberText>
+                    </Container.Number>
+                </div>
+
+                <div className='row2'>
+                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
+                </div>
+                <div className='row8'>
+                    <div>
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
+                                <UploadFiler className={'UploadFile1'} />
+                                <UploadMobile className={'UploadFileMobile'} />
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                             </IconBox>
                         </div>
                         <div>
@@ -218,6 +289,10 @@ const AgentFormComponent = () => {
                                         })
                                     }
                                 />
+<<<<<<< HEAD
+=======
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                             </IconBox>
                         </div>
                     </div>
@@ -275,6 +350,38 @@ const AgentFormComponent = () => {
                             }}
                             maxLength={17}
                             value={phoneNumber}
+<<<<<<< HEAD
+=======
+                            />
+                    </Container.Number>
+                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
+                </div>
+                <div className='row9'>
+                    <div>
+                        <div>
+                            <IconBox>
+                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
+                                <UploadFiler className={'UploadFile2'} />
+                                <UploadMobile className={'UploadFileMobile'} />
+                            </IconBox>
+                        </div>
+                        <div>
+                            <IconBox>
+                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
+                            </IconBox>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='row5'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Firmaning telefon raqami"
+                            onChange={(value) => FuncNumbe2({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={phoneNumber2}
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                             className={'customPhoneInput'}
                         />
                         <Container.NumberText>
@@ -297,6 +404,16 @@ const AgentFormComponent = () => {
                             }}
                             value={phoneExtraNumber}
                             maxLength={17}
+<<<<<<< HEAD
+=======
+                <div className='row6'>
+                    <Container.Number>
+                        <CustomInput
+                            placeholder="Firma rahbarining telefon raqami"
+                            onChange={(value) => FuncNumbe3({ value, type: 'phoneNumber' })}
+                            maxLength={17}
+                            value={phoneNumber3}
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                             className={'customPhoneInput'}
                         />
                         <Container.NumberText>
@@ -304,8 +421,11 @@ const AgentFormComponent = () => {
                         </Container.NumberText>
                     </Container.Number>
                 </div>
+<<<<<<< HEAD
 
                 <div></div>
+=======
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
 
                 <BtnCon className='row9'>
                     {receptionSmsVerify.status === 'success' ? (
@@ -354,6 +474,15 @@ const AgentFormComponent = () => {
                             Telefon raqamni tastiqlash
                         </Button>
                     )}
+<<<<<<< HEAD
+=======
+                
+                <BtnCon className='row10'>
+                    <div className='btnEnd'></div>
+                    <div>
+                        <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mmargin={'0px auto'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
+                    </div>
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
                 </BtnCon>
             </InputCont>
 

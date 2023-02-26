@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import DataAriza from '../../Mock/adminAriza/data.js'
 import Container, { ConHero, ConTable } from './style.js'
 import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
+<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -16,6 +16,16 @@ export const ArizalarCom = () => {
   const dispatch = useDispatch()
 
   const [data, setData] = useState(DataAriza)
+=======
+import {useDispatch, useSelector} from 'react-redux'
+import {getApplications} from "../../../redux/sliceAdmin/arizalar/applications";
+import {getExcelfetch} from "../../../redux/sliceAdmin/arizalar/downloadExel";
+
+export const ArizalarCom = () => {
+
+    const dispatch = useDispatch()
+
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
   const [selectAllState, setSelectAllState] = useState(false)
 
   const [inView, setInView] = useState(false);
@@ -23,18 +33,58 @@ export const ArizalarCom = () => {
   const getAllData = useSelector((store) => store.getAllData)
 
 
-  useEffect(() => {
-    setData(data.map((value) => (
-      {
-        id: value.id,
-        ismi: value.ismi,
-        phone: value.phone,
-        data: value.data,
-        img: value.img,
-        checked: selectAllState
-      }
-    )))
-  }, [selectAllState])
+
+    // get applications - arizalar
+    const getApplicationData = useSelector((store) => store.getApplicationData)
+
+    const [data, setData] = useState([])
+
+    let defaultDate = new Date()
+    const [fromDate, setFromDate] = useState(defaultDate)
+    const [toDate, setToDate] = useState(defaultDate)
+    const onSetFromDate = (e) => {
+      setFromDate(new Date(e.target.value))
+    }
+    const onSetToDate = (e) => {
+      setToDate(new Date(e.target.value))
+    }
+    // console.log(fromDate.getTime(), ' - from')
+    // console.log(toDate, ' - to')
+
+    useEffect(() => {
+        dispatch(getApplications({
+          fromDate: fromDate.getTime(),
+          toDate: toDate.getTime()
+        }))
+    }, [])
+
+    useEffect(() => {
+        setData(getApplicationData.data)
+    }, [getApplicationData])
+    // console.log(data)
+
+
+    // get excel
+    const [excel, setExcel] = useState([])
+    const downloadExcel = () => {
+        dispatch(getExcelfetch())
+    }
+
+
+
+  // useEffect(() => {
+  //   setData(data?.map((value) => (
+  //     {
+  //       id: value.id,
+  //       ismi: value.ismi,
+  //       phone: value.phone,
+  //       data: value.data,
+  //       img: value.img,
+  //       checked: selectAllState
+  //     }
+  //   )))
+  // }, [selectAllState])
+
   useEffect(() => {
     if (inView) {
       if (getAllData.data.length == 20 || getAllData.data.length == 0) {
@@ -46,16 +96,7 @@ export const ArizalarCom = () => {
 
 
   const selectOne = (id = false) => {
-    setData(data.map((value) => (
-      {
-        id: value.id,
-        ismi: value.ismi,
-        phone: value.phone,
-        data: value.data,
-        img: value.img,
-        checked: value.id === id ? !value.checked : value.checked
-      }
-    )))
+
   }
 
   const searchFunc = (eventValue) => {
@@ -66,7 +107,6 @@ export const ArizalarCom = () => {
 
   return (
     <>
-
     <Container>
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
@@ -81,15 +121,16 @@ export const ArizalarCom = () => {
            </Container.Nav>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
-          {data.map((value) => {
+          {data?.users?.map((value) => {
             return(
               <ConTable key={value.id}>
                 <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked}  />
               <div className='row'>
-                <div >{value.id}</div>
-                <div className='colum'>{value.ismi}</div>
-                <div className='colum'>{value.phone}</div>
-                <div className='colum'>{value.data}</div>
+                {/*<div >{value.id}</div>*/}
+                <div>1</div>
+                <div className='colum'>{value.firstName + ' ' + value.lastName}</div>
+                <div className='colum'>{value.phoneNumber}</div>
+                <div className='colum'>{new Date(value.createdAt).toLocaleDateString()}</div>
               </div>
             </ConTable>
           )})}
@@ -97,17 +138,21 @@ export const ArizalarCom = () => {
       </Container.Scrool>
       <ConHero>
         <ConHero.Date>
-          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'55px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
-          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value="2023-01-01" min="2023-01-01" max="9999-12-31" /></div>
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" /></div>
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" /></div>
         </ConHero.Date>
         <ConHero.Tartiblash>
           <Button mwidth={'210px'} msize={'18px'} mheight={"45px"} size={'29px'} width={'510px'} height={"90px"} radius={'20px'}  mradius={'10px'}> Sana orqali tartiblash</Button>
         </ConHero.Tartiblash>
         <ConHero.Exel>
           <div>
-            <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data.length }</p>
+            <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: { data?.counts ? data.counts : 0 }</p>
           </div>
+<<<<<<< HEAD
             <div>
+=======
+          <div onClick={downloadExcel}>
+>>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
             <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
