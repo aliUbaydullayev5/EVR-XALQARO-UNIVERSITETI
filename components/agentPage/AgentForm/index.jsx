@@ -1,4 +1,3 @@
-import Container, { BtnCon, IconBox, InputCont, TextCon } from './style'
 import { Button, Input } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import { useRouter } from "next/router";
@@ -11,6 +10,7 @@ import { reseptionSmsCheckSliceFetch } from "../../../redux/slices/receptionVeri
 import { checkAllInputs2 } from './checkAllInputs';
 import { startMessage } from "../../../redux/slices/message";
 import { deployFileFetch } from "../../../redux/slices/deployFile";
+import Container, { BtnCon, IconBox, InputCont, TextCon } from "./style.js";
 const AgentFormComponent = () => {
 
 
