@@ -1,6 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit'
 import firstVerify from '../slices/firstVerify/index'
-
 import firstSmsCodeFetch from "../slices/firstSmsVerifyCode"
 import homeAllData from '../slices/homeAllData'
 import deployFile from '../slices/deployFile'
@@ -26,6 +25,9 @@ import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 
+import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
+import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
+
 export default configureStore({
     reducer: {
         firstVerify,
@@ -38,7 +40,6 @@ export default configureStore({
         reseptionCheckPhoneSlice,
         receptionSmsVerify,
         loginAdminThunk,
-        getAllDataAriza,
         talimYunalishAdmin,
         getStudyTypesAbuturent,
         deleteAbuturentId,
@@ -53,6 +54,9 @@ export default configureStore({
         facultetsdeleteId,
         editAbuturentId,
         getAllDataAriza,
-        getTalimYunalish
+        getTalimYunalish,
+
+        getApplicationData,
+        getExcelData
     },
 })
