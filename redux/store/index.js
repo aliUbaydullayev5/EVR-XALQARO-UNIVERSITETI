@@ -65,6 +65,6 @@ export default configureStore({
         getFacultyType,
         getInfoUserCabinet,
         getApplicationData,
-        getExcelData
+        getExcelData,
     },
 })
