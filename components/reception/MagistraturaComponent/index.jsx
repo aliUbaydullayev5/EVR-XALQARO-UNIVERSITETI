@@ -484,7 +484,6 @@ export const MagistraturaComponent = () => {
 				<div className='mobileNone'></div>
 			</InputCont>
 
-
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -526,7 +525,6 @@ export const MagistraturaComponent = () => {
 								Tastiqlash
 							</Button>
 						</>
-
 					)}
 				</Container.Model>
 			</Modal>

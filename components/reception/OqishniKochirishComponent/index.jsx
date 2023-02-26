@@ -186,6 +186,7 @@ const OqishniKochirishComponent = () => {
 		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
 	}, [reseptionCheckPhoneSlice]);
 
+
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
@@ -518,7 +519,6 @@ const OqishniKochirishComponent = () => {
 
 
 			</InputCont>
-
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}

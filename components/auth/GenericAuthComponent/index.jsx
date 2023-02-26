@@ -44,6 +44,7 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
         }))
     }
 
+
     return(
         <Container>
             <Container.Block>

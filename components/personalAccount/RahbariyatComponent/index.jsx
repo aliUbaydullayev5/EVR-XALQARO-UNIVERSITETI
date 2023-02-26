@@ -71,7 +71,7 @@ const RahbariyatComponent = () => {
                     </Container.Row>
                     <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'} mgap={'10px'}>
                         <Button mheight={'31px'} msize={'16px'} height={'48px'} width={'180px'} size={'24px'} color={'#fff'}>EK-101</Button>
-                        <Button mpadding={'0 5px'} wrap={true} mheight={'31px'} msize={'16px'} height={'48px'} width={'180px'} padding={'0 20px 0 20px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/adminPage/homePage')}>Admin Panel</Button>
+                        <Button mpadding={'0 5px'} wrap={true} mheight={'31px'} msize={'16px'} height={'48px'} width={'180px'} padding={'0 20px 0 20px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/admin')}>Admin Panel</Button>
                         <Button mheight={'31px'} msize={'16px'} height={'48px'} width={'180px'} size={'24px'} color={'#fff'}>Xabarlar</Button>
                     </Container.Row>
                 </Container.Right>

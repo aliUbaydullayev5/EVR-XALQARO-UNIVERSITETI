@@ -15,6 +15,7 @@ const Container = styled.div`
 		box-shadow: none;
 	}
 `;
+
 const TextCon = styled.div`
 	width: 100%;
 	height: 84px;
@@ -124,6 +125,7 @@ Container.FormatNumber = styled.div`
 		letter-spacing: -0.025em;
 	}
 `;
+
 const InputCont = styled.div`
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;

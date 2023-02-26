@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js';
@@ -63,7 +61,6 @@ export const AbiturientQabul = () => {
 	};
 
 	const [width, setWidth] = useState(null);
-
 	useEffect(() => {
 		if (window.innerWidth < 1000) setWidth('100%');
 		else setWidth('513px');
@@ -494,6 +491,7 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
+
             </InputCont>
 			<Modal
 				open={modelHidden}
