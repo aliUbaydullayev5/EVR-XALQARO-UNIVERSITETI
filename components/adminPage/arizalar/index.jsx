@@ -1,38 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container, { ConHero, ConTable } from './style.js'
 import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
-import { useEffect } from 'react'
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux'
-
-
-export const ArizalarCom = () => {
-
-  const [excel, setexcel] = useState('')
-
-  const dispatch = useDispatch()
-
-  const [data, setData] = useState(DataAriza)
-=======
-import {useDispatch, useSelector} from 'react-redux'
-import {getApplications} from "../../../redux/sliceAdmin/arizalar/applications";
-import {getExcelfetch} from "../../../redux/sliceAdmin/arizalar/downloadExel";
+import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
+import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
 
 export const ArizalarCom = () => {
 
     const dispatch = useDispatch()
-
->>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
-  const [selectAllState, setSelectAllState] = useState(false)
-
-  const [inView, setInView] = useState(false);
-
-  const getAllData = useSelector((store) => store.getAllData)
-
-
+    const [selectAllState, setSelectAllState] = useState(false)
+    const [inView, setInView] = useState(false)
+    const getAllData = useSelector((store) => store.getAllData)
 
     // get applications - arizalar
     const getApplicationData = useSelector((store) => store.getApplicationData)
@@ -45,11 +26,8 @@ export const ArizalarCom = () => {
     const onSetFromDate = (e) => {
       setFromDate(new Date(e.target.value))
     }
-    const onSetToDate = (e) => {
-      setToDate(new Date(e.target.value))
-    }
-    // console.log(fromDate.getTime(), ' - from')
-    // console.log(toDate, ' - to')
+    const onSetToDate = (e) => setToDate(new Date(e.target.value))
+
 
     useEffect(() => {
         dispatch(getApplications({
@@ -65,25 +43,10 @@ export const ArizalarCom = () => {
 
 
     // get excel
-    const [excel, setExcel] = useState([])
     const downloadExcel = () => {
         dispatch(getExcelfetch())
     }
 
-
-
-  // useEffect(() => {
-  //   setData(data?.map((value) => (
-  //     {
-  //       id: value.id,
-  //       ismi: value.ismi,
-  //       phone: value.phone,
-  //       data: value.data,
-  //       img: value.img,
-  //       checked: selectAllState
-  //     }
-  //   )))
-  // }, [selectAllState])
 
   useEffect(() => {
     if (inView) {
@@ -113,10 +76,10 @@ export const ArizalarCom = () => {
               <Container.Nav>
               <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
                 <div className='row'>
-                  <div >№</div>
-              <div className='colum'>FIO</div>
-              <div className='colum'>Telefon raqam</div>
-              <div className='colum'>Kun</div>
+                    <div >№</div>
+                    <div className='colum'>FIO</div>
+                    <div className='colum'>Telefon raqam</div>
+                    <div className='colum'>Kun</div>
                 </div>
            </Container.Nav>
         </div>
@@ -148,11 +111,7 @@ export const ArizalarCom = () => {
           <div>
             <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: { data?.counts ? data.counts : 0 }</p>
           </div>
-<<<<<<< HEAD
-            <div>
-=======
           <div onClick={downloadExcel}>
->>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
             <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
@@ -162,7 +121,10 @@ export const ArizalarCom = () => {
         </ConHero.Exel>
       </ConHero>
     </Container>
-    {getAllData?.status === 'loading' && <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>}
+    {
+        getAllData?.status === 'loading' &&
+        <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>
+    }
     </>
   )
 }

@@ -24,17 +24,13 @@ import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
-
-<<<<<<< HEAD
 import agentAuth from '../slices/agentAuth'
 import authLogin from '../slices/authLogin'
 import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
-=======
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
->>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
 
 export default configureStore({
     reducer: {
@@ -63,16 +59,12 @@ export default configureStore({
         editAbuturentId,
         getAllDataAriza,
         getTalimYunalish,
-<<<<<<< HEAD
         agentAuth,
         authLogin,
         getFacultyLanguage,
         getFacultyType,
-        getInfoUserCabinet
-=======
-
+        getInfoUserCabinet,
         getApplicationData,
         getExcelData
->>>>>>> e2c33bce8dd9fbf2faed85880f7ed2239470c773
     },
 })
