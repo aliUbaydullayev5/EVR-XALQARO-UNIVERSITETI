@@ -20,7 +20,7 @@ const HamburgerMenu = ({changeHidden}) => {
             <ul className={'nocopy'}>
                 <li onClick={()=> query.push('/ourTeamPage')}>Bizning jamoa</li>
                 <li onClick={() => query.push('/testTopshirish')}>Test topshirish</li>
-                <li>Test natijalari</li>
+                <li onClick={() => query.push('/examResults')}>Test natijalari</li>
                 <li onClick={()=> query.push('/contractDown')}>Shartnoma yuklab olish</li>
                 <li onClick={()=> query.push('/contactUs')}>Biz bilan aloqa</li>
                 <li>Elektron kutubxona</li>
