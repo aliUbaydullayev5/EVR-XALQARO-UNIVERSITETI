@@ -520,8 +520,6 @@ export const MagistraturaComponent = () => {
 				</BtnCon>
 				<div className='mobileNone'></div>
 			</InputCont>
-
-<<<<<<< HEAD
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -563,33 +561,6 @@ export const MagistraturaComponent = () => {
 								Tastiqlash
 							</Button>
 						</>
-=======
-        if (!(allData.phoneNumber.length == 12)) {
-            dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
-            return false
-        }
-        if (!(allData.extraPhoneNumber.length == 12)) {
-            dispatch(startMessage({ time: 5, message: 'Telefon raqamni togri kiritilgan' }))
-            return false
-        }
-        if (!(allData.diplomaId.length > 3)) {
-            dispatch(startMessage({ time: 5, message: 'Diplomingizni yulang' }))
-            return false
-        }
-        if (!(allData.passportId.length > 3)) {
-            dispatch(startMessage({ time: 5, message: 'Passportingizni yuklang' }))
-            return false
-        }
-        if (!(allData.password.length > 8)) {
-            dispatch(startMessage({ time: 5, message: 'Parolni kiriting' }))
-            return false
-        }
-        if (!(allData.prePassword.length > 8)) {
-            dispatch(startMessage({ time: 5, message: 'Parolni kiriting' }))
-            return false
-        }
->>>>>>> admin/login
-
 					)}
 				</Container.Model>
 			</Modal>

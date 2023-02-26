@@ -572,7 +572,6 @@ const OqishniKochirishComponent = () => {
 					)}
 				</BtnCon>
 			</InputCont>
-
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}

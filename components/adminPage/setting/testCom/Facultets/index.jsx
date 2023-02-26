@@ -14,6 +14,7 @@ import { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultet
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import data from '../../../../Mock/rahbariyat/data.js'
+
 const FacultetsImthonCom = () => {
   const [datalist, setDataList] = useState([])
   const [datafan, setDataFan] = useState([])
