@@ -4,30 +4,45 @@ import PersonIcon from '../../../assets/icon/inputIcon.svg'
 import BlockIcon from '../../../assets/icon/inputBlock.svg'
 
 import {useRouter} from "next/router";
-import {useDispatch} from "react-redux";
-import {fetchAuthLogin} from "../../../redux/slices/authLogin";
-import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAuthLogin, resetAuthLogin} from "../../../redux/slices/authLogin";
+import React, {useEffect, useState} from "react";
+import {startMessage} from "../../../redux/slices/message";
+import {Spin} from "antd";
 
-import CustomInput from 'react-phone-number-input/input';
-const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
+const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
     const [logPas, setLogPas] = useState({
-        phoneNumber: '+998',
+        userName: '',
         password: ''
     })
 
-    // const pushFunc = () => {
-    //     if(pushPath){
-    //         router.push(pushPath)
-    //     }
-    // }
+    const authLogin = useSelector((store)=> store.authLogin)
+
+    useEffect(()=> {
+        if(authLogin.status === 'success'){
+            dispatch(startMessage({time: 3, message: "Siz muvofiyaqatli kirdingiz", type: 'success'}))
+            router.push(pushPath)
+            setTimeout(()=> {
+                dispatch(resetAuthLogin())
+            }, 500)
+        }else if(authLogin.status === 'error'){
+            dispatch(startMessage({time: 3, message: "Login yoki parol no to'g'ri"}))
+            setTimeout(()=> {
+                dispatch(resetAuthLogin())
+            }, 500)
+        }
+    }, [authLogin])
 
     const loginFunc = () => {
-        dispatch(fetchAuthLogin({phoneNumber: '+998', password: ''}))
+        dispatch(fetchAuthLogin({
+            userName: logPas.userName,
+            password: logPas.password,
+            tokenName: tokenName
+        }))
     }
-
 
 
     return(
@@ -39,13 +54,26 @@ const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
                 <Container.Bottom>
                     <Container.InputArea>
                         <PersonIcon className={'personIcon'} />
-
-                        <CustomInput
-                            placeholder='Enter phone number'
-                            onChange={(e) => setLogPas({...logPas, phoneNumber: e})}
-                            maxLength={17}
-                            value={logPas.phoneNumber}
-                            className={'customPhoneInput'}
+                        <Input
+                            mwidth={'200px'}
+                            mheight={'30px'}
+                            borderBoT={'2px solid #fff'}
+                            mborderBoT={'2px solid #fff'}
+                            mradius={'0px'}
+                            radius={'0px'}
+                            placeholder={'ID raqam kiriting'}
+                            width={'333px'}
+                            height={'32px'}
+                            mbc={'rgba(255,255,255,0)'}
+                            bc={'rgba(255,255,255,0)'}
+                            mshadowOff={true}
+                            shadowOff={true}
+                            msize={'16px'}
+                            size={'24px'}
+                            mpadding={'0 0 0 40px'}
+                            padding={'0 0 0 40px'}
+                            type={'text'}
+                            onchange={(e) => setLogPas({...logPas, userName: e.target.value})}
                         />
 
                     </Container.InputArea>
@@ -74,19 +102,59 @@ const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
                         />
                     </Container.InputArea>
                     <Container.ButtonArea>
+
                         <div>
-                            <Button
-                                mwidth={'200px'}
-                                mheight={'30px'}
-                                msize={'24px'}
-                                mradius={'6px'}
-                                color={'#221F51'}
-                                bc={'#fff'}
-                                radius={'6px'}
-                                width={'333px'}
-                                height={'52px'}
-                                onclick={()=> loginFunc()}
-                            >KIRISH</Button>
+                            {
+                                authLogin.status === 'success' &&
+                                <Button
+                                    mwidth={'200px'}
+                                    mheight={'30px'}
+                                    msize={'24px'}
+                                    mradius={'6px'}
+                                    color={'#221F51'}
+                                    bc={'#fff'}
+                                    radius={'6px'}
+                                    width={'333px'}
+                                    height={'52px'}
+                                    disabled={true}
+                                ></Button>
+                            }
+                            {
+                                authLogin.status === 'loading' &&
+                                <Button
+                                    mwidth={'200px'}
+                                    mheight={'30px'}
+                                    msize={'24px'}
+                                    mradius={'6px'}
+                                    color={'#221F51'}
+                                    bc={'#fff'}
+                                    radius={'6px'}
+                                    width={'333px'}
+                                    height={'52px'}
+                                    disabled={true}
+                                >
+                                    <Container.ButtonLoader>
+                                        <Spin />
+                                    </Container.ButtonLoader>
+                                </Button>
+                            }
+
+                            {
+                                (authLogin.status === null || authLogin.status === 'error') &&
+                                <Button
+                                    mwidth={'200px'}
+                                    mheight={'30px'}
+                                    msize={'24px'}
+                                    mradius={'6px'}
+                                    color={'#221F51'}
+                                    bc={'#fff'}
+                                    radius={'6px'}
+                                    width={'333px'}
+                                    height={'52px'}
+                                    onclick={()=> loginFunc()}
+                                >KIRISH</Button>
+                            }
+
                         </div>
                         <Container.Desc className={'nocopy'}>ID raqamingizni esdan chiqardingizmi?</Container.Desc>
                         {
@@ -99,4 +167,10 @@ const GenericAuthComponent = ({title, pushPath, royxat = true}) => {
         </Container>
     )
 }
+
+
+// <Button width={'400px'} height={'50px'}>
+//
+// </Button>
+
 export default GenericAuthComponent

@@ -1,3 +1,4 @@
+import Container, { BtnCon, IconBox, InputCont, TextCon } from './style'
 import { Button, Input } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
 import { useRouter } from "next/router";
@@ -6,13 +7,17 @@ import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import CustomInput from 'react-phone-number-input/input';
 import { Modal, Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { reseptionSmsCheckSliceFetch } from "../../../redux/slices/receptionVerifyPhone";
+import { reseptionSmsCheckSliceFetch, resetTimerVerify } from "../../../redux/slices/receptionVerifyPhone";
 import { checkAllInputs2 } from './checkAllInputs';
 import { startMessage } from "../../../redux/slices/message";
 import { deployFileFetch } from "../../../redux/slices/deployFile";
-import Container, { BtnCon, IconBox, InputCont, TextCon } from "./style.js";
-const AgentFormComponent = () => {
+import { receptionSmsVerifyFetch, resetSmsVerify } from "../../../redux/slices/receptionSmsVerify";
 
+import { agentAuthFetch, resetVerify } from "../../../redux/slices/agentAuth";
+
+
+
+const AgentFormComponent = () => {
 
     const router = useRouter()
 
@@ -30,7 +35,11 @@ const AgentFormComponent = () => {
     const dispatch = useDispatch()
 
     const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
+    const receptionData = useSelector((store) => store.agentAuth);
 
+    const reseptionCheckPhoneSlice = useSelector(
+        (store) => store.reseptionCheckPhoneSlice,
+    );
 
     useEffect(() => {
         changeAllDataFunc({ type: by, value: fileId });
@@ -94,14 +103,72 @@ const AgentFormComponent = () => {
         if (checkAllInputs())
             dispatch(
                 reseptionSmsCheckSliceFetch({
-                    firstName: allData.firstName,
+                    firstName: allData.fio,
                     phoneNumber: allData.phoneNumber,
                 }),
             );
     };
 
+    const verifyCodeFunc = () => {
+        if (smsInput.length === 6)
+            dispatch(
+                receptionSmsVerifyFetch({
+                    verifyCode: allData.verifyCode,
+                    phoneNumber: allData.phoneNumber,
+                }),
+            );
+        else
+            dispatch(
+                startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }),
+            );
+    };
 
-    console.log(allData)
+    useEffect(() => {
+        if (agentAuthFetch.pushAnswer) {
+            router.push('/receptionPage/application/UsersCardInfo');
+            if (receptionData.status === 'success')
+                dispatch(
+                    startMessage({
+                        time: 5,
+                        type: 'success',
+                        message: receptionData.message,
+                    }),
+                );
+            setTimeout(() => {
+                dispatch(resetVerify());
+            }, 2000);
+        }
+    }, [agentAuthFetch])
+
+    const pushAllInfo = () => {
+        if (checkAllInputs()) dispatch(agentAuthFetch(allData));
+    };
+
+    useEffect(() => {
+        receptionSmsVerify?.status === 'success' && setModalHidden(false);
+        receptionSmsVerify?.status === 'error' &&
+            dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
+    }, [receptionSmsVerify]);
+
+    useEffect(() => {
+        if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
+    }, [reseptionCheckPhoneSlice]);
+
+
+    if (receptionData.pushAnswer) {
+        router.push('/receptionPage/application/UsersCardInfo');
+        if (receptionData.status === 'success')
+            dispatch(
+                startMessage({
+                    time: 5,
+                    type: 'success',
+                    message: receptionData.message,
+                }),
+            );
+        setTimeout(() => {
+            dispatch(resetVerify());
+        }, 2000);
+    }
 
     return (
         <Container>
@@ -109,6 +176,7 @@ const AgentFormComponent = () => {
                 <h1>Agent</h1>
             </TextCon>
             <InputCont>
+
                 <div className='row1'>
                     <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
                 </div>
@@ -121,12 +189,12 @@ const AgentFormComponent = () => {
                     <div>
                         <div>
                             <IconBox>
-                                <Container.InputCustom2
+                                <Container.InputCustom1
                                     type={'file'}
-                                    onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })}
+                                    onChange={(e) => findFileFunc({ file: e, by: 'certificateId' })}
                                 />
-                                <UploadFiler className={'UploadFile2'} />
-                                <UploadMobile className={'UploadFileMobile'} />
+                                <UploadFiler className={'uploadFile'} />
+                                <UploadMobile className={'uploadFileMobile'} />
                             </IconBox>
                         </div>
                         <div>
@@ -166,8 +234,8 @@ const AgentFormComponent = () => {
                         <div>
                             <IconBox>
                                 <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-                                <UploadFiler className={'UploadFile1'} />
-                                <UploadMobile className={'UploadFile2'} />
+                                <UploadFiler className={'uploadFile'} />
+                                <UploadMobile className={'uploadFileMobile'} />
                             </IconBox>
                         </div>
                         <div>
@@ -186,7 +254,7 @@ const AgentFormComponent = () => {
                                     size={'24px'}
                                     onchange={(e) =>
                                         changeAllDataFunc({
-                                            type: 'password',
+                                            type: 'prePassword',
                                             value: e.target.value,
                                         })
                                     }
@@ -288,7 +356,52 @@ const AgentFormComponent = () => {
                     )}
                 </BtnCon>
             </InputCont>
+
+
+            <Modal
+                open={modelHidden}
+                onOk={() => setModalHidden(!modelHidden)}
+                onCancel={() => setModalHidden(!modelHidden)}>
+                <Container.Model>
+                    <p>Sms ni kiriting</p>
+                    <Input
+                        placeholder={'_ _ _ _ _ _'}
+                        align={'center'}
+                        malign={'center'}
+                        maxlength={6}
+                        onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
+                        value={smsInput}
+                        onchange={(e) => {
+                            setSmsInput(e.target.value);
+                            changeAllDataFunc({ type: 'verifyCode', value: e.target.value });
+                        }}
+                    />
+                    {receptionSmsVerify.status === 'loading' ? (
+                        <>
+                            <Button width={'400px'} height={'50px'}>
+                                <Container.ButtonLoader>
+                                    <Spin />
+                                </Container.ButtonLoader>
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                width={'400px'}
+                                height={'50px'}
+                                msize={'24px'}
+                                mheight={'40px'}
+                                mwidth={'300px'}
+                                onclick={() => verifyCodeFunc()}>
+                                Tastiqlash
+                            </Button>
+                        </>
+                    )}
+                </Container.Model>
+            </Modal>
         </Container>
     )
+
 }
+
 export default AgentFormComponent

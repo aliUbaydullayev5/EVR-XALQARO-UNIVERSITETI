@@ -21,7 +21,13 @@ const AboutPersonUniq = ({id}) => {
                         <Container.Row>
                             <div>
                                 <p>IFO</p>
-                                <Input disabled={true} height={'39px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={singleUser.name} />
+                                <Input 
+                                    disabled={true}
+                                    height={'39px'} 
+                                    padding={'0 0 0 40px'} 
+                                    size={'20px'} weight={'600'} radius={'5px'}
+                                    placeholder={singleUser.name} 
+                                 />
                             </div>
                         </Container.Row>
                         <Container.Row>
