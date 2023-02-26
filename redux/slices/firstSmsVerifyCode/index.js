@@ -30,11 +30,7 @@ const firstSmsCode = createSlice({
             if(action.payload.success == true){
                 state.pushToHome = true
                 state.message = 'Siz muvofiyaqatli ottingiz'
-<<<<<<< HEAD
-                if (localStorage.getItem('firstToken')) state.pushToHome = true
-=======
                 if(localStorage.getItem('firstToken')) state.pushToHome = true
->>>>>>> origin
                 else localStorage.setItem('firstToken', 'success')
             }
             if(action?.payload?.success == false){
