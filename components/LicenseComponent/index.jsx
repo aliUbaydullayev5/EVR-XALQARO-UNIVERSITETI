@@ -5,6 +5,7 @@ import License from "../../assets/image/Litsenziya.jpg"
 import Image from "next/image";
 
 const LicenseComponent = () => {
+  
   return (
     <Container>
       <Container.Top>Litsenziya</Container.Top>
@@ -13,7 +14,9 @@ const LicenseComponent = () => {
           <Image className="img" src={License} />
           <Image className="img" src={License} />
         </Container.BottomImg>
-        <Button mwidth={'175px'} mheight={'36px'} msize={'12px'}  width={'218px'} height={'43px'} size={'20px'} > <p>Yuklab olish</p> &nbsp; &nbsp; <Down /> </Button>
+        <a href="315319-c793cb661907932ae734ab1ae6d7db94.pdf" download={true}>
+         <Button mwidth={'175px'} mheight={'36px'} msize={'12px'}  width={'218px'} height={'43px'} size={'20px'} > <p>Yuklab olish</p> &nbsp; &nbsp; <Down /> </Button>
+         </a>
       </Container.Bottom>
     </Container>
   );

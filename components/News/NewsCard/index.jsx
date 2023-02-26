@@ -13,12 +13,22 @@ export const NewsCard = ({ data = {} }) => {
   const { img, name,id,date, views,namechild, } = data;
 
   return (
-    <div style={{ display: "flex" }} onClick={()=>query.push(`/news/${id}`)}>
+    <div style={{ display: "flex",cursor:'pointer' }} onClick={()=>query.push(`/news/${id}`)}>
       <Container>
         <Image className="img" src={img} alt={"Yuklab Olinmadi"} />
         <Container.Bottom>
           <Container.BottomText>
-            {name}
+            {
+              name.split(' ').length > 3 ?
+              <>
+                {name.split(' ').slice(0, 3).join('')}....
+              </>
+              :
+              <>
+                {name}
+              </>
+
+            }
           </Container.BottomText>
           <Container.Footer>
             <Container.Box>
