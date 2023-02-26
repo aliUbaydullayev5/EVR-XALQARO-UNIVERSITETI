@@ -136,7 +136,7 @@ export const SidebarAdmin = () => {
       quarey.push('/admin/setting/facultetsType')
     }
     if (id === 5) {
-      quarey.push('/admin/setting/test')
+      quarey.push('/admin/setting/exsam')
     }
     if (id === 6) {
       quarey.push('/admin/setting/facultyImtxonselect')

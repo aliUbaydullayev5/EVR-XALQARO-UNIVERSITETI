@@ -18,7 +18,7 @@ import data from '../../../../Mock/rahbariyat/data.js'
 const FacultetsImthonCom = () => {
   const [datalist, setDataList] = useState([])
   const [datafan, setDataFan] = useState([])
-  const [datafac, setData] = useState([])
+  const [data, setData] = useState([])
 
   const [facul, setFacul] = useState({
     facultet: '',
@@ -44,7 +44,6 @@ const FacultetsImthonCom = () => {
     setTimeout(() => { dispatch(reset()) }, 500);
   }, [facultetsselectAdd, facultetsdeleteId])
 
-  console.log(facultetsdeleteId, 'facultetsdeleteId');
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
   useEffect(() => {
     if (facultetsgetAll.status === 'success') setData(facultetsgetAll.data)
@@ -159,7 +158,7 @@ const FacultetsImthonCom = () => {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-          {datafac?.map((value) => {
+          {data?.map((value) => {
             return (
               <ConTable key={value?.id}>
 

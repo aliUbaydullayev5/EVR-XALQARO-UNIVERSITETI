@@ -12,7 +12,7 @@ export const TalimYunalishCom = () => {
           <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultets/addAbuturent')}>Abuturent</Button>
         </div>
         <div>
-          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'}>Magistratura</Button>
+          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultets/masters')}>Magistratura</Button>
         </div>
       </Container.Block>
       </Container>

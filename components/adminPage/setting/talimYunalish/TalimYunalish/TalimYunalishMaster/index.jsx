@@ -14,7 +14,7 @@ import Input from '../../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
 
 
-export const TalimYunlishAddCom = () => {
+export const TalimYunlishMaster = () => {
 
     const quary = useRouter()
     const dispatch = useDispatch()
@@ -43,7 +43,7 @@ export const TalimYunlishAddCom = () => {
     }, [getTalimYunalish || deleteAbuturentId])
 
 
-    useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+    useEffect(() => { dispatch(getStudyTypesFetch({ type: 'MASTER' })) }, [])
     useEffect((e) => {
         if (getTalimYunalish.status === true) setName('')
     }, [getTalimYunalish])
@@ -76,12 +76,12 @@ export const TalimYunlishAddCom = () => {
 
     useEffect(() => {
         if (deleteAbuturentId.status === 'success')
-            dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
+            dispatch(getStudyTypesFetch({ type: 'MASTER' }))
     }, [deleteAbuturentId])
 
 
     useEffect(() => {
-        if (getTalimYunalish.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
+        if (getTalimYunalish.status === 'success') dispatch(getStudyTypesFetch({ type: 'MASTER' }))
     }, [getTalimYunalish])
 
 
@@ -90,7 +90,7 @@ export const TalimYunlishAddCom = () => {
     }, [getStudyTypesAbuturent])
 
     useEffect(() => {
-        if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
+        if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'MASTER' }))
     }, [editAbuturentId])
 
     return (
@@ -174,4 +174,4 @@ export const TalimYunlishAddCom = () => {
     )
 }
 
-export default TalimYunlishAddCom
+export default TalimYunlishMaster
