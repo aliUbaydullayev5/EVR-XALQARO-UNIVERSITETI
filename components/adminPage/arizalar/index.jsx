@@ -8,6 +8,7 @@ import Sms from "../../../assets/icons/Sms.svg"
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AntModal, BtnText } from '../../transferMoney/UsersPayInfo/click/style.js'
+import { AntTimeCon } from '../../reception/abiturient/style.js'
 
 
 export const ArizalarCom = () => {

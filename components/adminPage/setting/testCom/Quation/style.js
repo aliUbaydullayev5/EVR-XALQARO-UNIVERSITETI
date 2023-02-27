@@ -33,6 +33,15 @@ const QuationUz = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
+      >div{
+        display: flex;
+        gap: 10px;
+        >input{
+          height: 40px;
+          width: 30px;
+        }
+      }
+
     }
   }
  

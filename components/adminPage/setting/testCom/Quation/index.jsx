@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Container, { QuationUz } from './style.js'
 import { Button, Input } from '../../../../generic/index.jsx';
 import { AntSelect } from '../Facultets/style.js';
-import data from '../../../../Mock/rahbariyat/data.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import { quationCreatePost } from '../../../../../redux/sliceAdmin/quation/quationadd/index.js';
@@ -69,16 +68,13 @@ export const QuationCom = () => {
       answers4NameUz: name.answers4NameUz,
       answers3NameRu: name.answers3NameRu,
 
-      check1: Input.check1,
-      check2: Input.check2,
-      check3: Input.check3,
-      check: Input.check,
+      check1: Intput.check1,
+      check2: Intput.check2,
+      check3: Intput.check3,
+      check: Intput.check4,
     }))
   }
-  console.log(Input.check1, 'Input.check1');
-  console.log(Input.check2, 'Input.check2');
-  console.log(Input.check3, 'Input.check3');
-  console.log(Input.check4, 'Input.check4');
+
 
   const checkAnswerFunc = ({ type }) => {
     setInput({
@@ -89,8 +85,25 @@ export const QuationCom = () => {
       check4: type === 'check4' ? true : false,
     })
   }
+  console.log(name.textUz, 'name.textUz');
+  console.log(name.textRu, 'name.textRu');
+  console.log(name.answers1NameUz, 'name.answers1NameUz');
+  console.log(name.examSubjectId, 'name.examSubjectId');
+  console.log(name.answers1NameRu, 'name.answers1NameRu');
 
+  console.log(name.answers2NameUz, 'name.answers2NameUz')
+  console.log(name.answers2NameRu, 'name.answers2NameRu');
 
+  console.log(name.answers3NameUz, 'name.answers3NameUz');
+  console.log(name.answers3NameRu, 'name.answers3NameRu');
+  console.log(name.answers4NameUz, 'name.answers4NameUz');
+  console.log(name.answers4NameUz, 'name.answer4NameRu');
+
+  
+  console.log(Intput.check1, 'Input.check1');
+  console.log(Intput.check2, 'Input.check2');
+  console.log(Intput.check3, 'Input.check3');
+  console.log(Intput.check4, 'Input.check4');
   return (
     <Container>
       <QuationUz>
@@ -112,14 +125,13 @@ export const QuationCom = () => {
             <div>
               <input onChange={(e) => checkAnswerFunc({ type: 'check1' })} type="radio" id="html" name="fav_language" value="HTML" />
               <label for="html">
-                <Input onchange={(e) => setName({ ...name, answers1NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'A'} />
+                <Input onChange={(e) => setName({ ...name, answers1NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'A'} />
               </label>
             </div>
             <div>
               <input onChange={(e) => checkAnswerFunc({ type: 'check2' })} type="radio" id="html" name="fav_language" value="HTML" />
               <label for="html">
                 <Input onchange={(e) => setName({ ...name, answers2NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'B'} />
-
               </label>
             </div>
             <div>
@@ -163,7 +175,6 @@ export const QuationCom = () => {
                 <Input onchange={(e) => setName({ ...name, answers4NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'D'} />
               </label>
             </div>
-
           </form>
         </div>
       </QuationUz>
