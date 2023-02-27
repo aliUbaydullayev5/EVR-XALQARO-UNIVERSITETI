@@ -5,7 +5,6 @@ import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js';
 import { Input, Button } from '../../generic';
 import UploadFiler from '../../../assets/icons/uploadeFile.svg';
 import { useRouter } from 'next/router.js';
-import AntSelect from '../Antd/style.js';
 import UploadMobile from '../../../assets/mobile/icon/UploadMobile.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { deployFileFetch } from '../../../redux/slices/deployFile';
@@ -14,55 +13,59 @@ import {
 	resetVerify,
 } from '../../../redux/slices/receptionPost';
 import CustomInput from 'react-phone-number-input/input';
-import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes';
+import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
 import { startMessage } from '../../../redux/slices/message';
 import { Modal, Spin } from 'antd';
 import { checkAllInputs2 } from './checkAllInputs';
 import { reseptionSmsCheckSliceFetch, resetTimerVerify } from '../../../redux/slices/receptionVerifyPhone/index.js';
 import { receptionSmsVerifyFetch, resetSmsVerify } from '../../../redux/slices/receptionSmsVerify'
+import { getFacultyLanguageFetch } from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import { getFacultyTypeFetch, resetData } from "../../../redux/slices/getStudyTypes/getFacultyType";
 
 export const MagistraturaComponent = () => {
 
 	const router = useRouter();
 	const dispatch = useDispatch();
 
-	const [phonePatron, setPhonePatron] = useState('+998');
-	const [numState, setNumState] = useState('+998');
+	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
+	const getDirectType = useSelector((store) => store.getDirectType.data)
+	const { fileId, by } = useSelector((store) => store.deployFile)
+	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
+	const receptionData = useSelector((store) => store.receptionPost)
+	const getFacultyLanguage = useSelector((store)=> store.getFacultyLanguage)
+	const getFacultyType = useSelector((store)=> store.getFacultyType)
 
-	const [numPasSeriya, setNumPasSeriya] = useState('');
+
+
+	// Pasport input uchun probel koshadigon funcsiya
+
+	const [numPasSeriya, setNumPasSeriya] = useState('')
 	const [pasSerLength, setPasSerLength] = useState(0);
-
-	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
-	const reseptionCheckPhoneSlice = useSelector(
-		(store) => store.reseptionCheckPhoneSlice,
-	);
-
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
-			setPasSerLength(event.length - 1);
-			if (event.length == 2) {
-				return setNumPasSeriya(event.toUpperCase() + ' ');
-			}
-		}
-		if (pasSerLength >= event.length) {
-			setPasSerLength(event.length);
-			setNumPasSeriya(event.toUpperCase());
+			setPasSerLength(event.length - 1)
+			if (event.length == 2) return setNumPasSeriya(event.toUpperCase() + ' ')
+		} else if (pasSerLength >= event.length) {
+			setPasSerLength(event.length)
+			setNumPasSeriya(event.toUpperCase())
 		}
 		changeAllDataFunc({
 			type: 'passportSeries',
 			value: event.split(' ').join('').toUpperCase(),
 		});
-		return setNumPasSeriya(event.toUpperCase());
-	};
+		return setNumPasSeriya(event.toUpperCase())
+	}
 
-	const [width, setWidth] = useState(null);
+
+
+	// input selector larni width zi
+	const [width, setWidth] = useState(null)
 	useEffect(() => {
-		if (window.innerWidth < 1000) {
-			setWidth('100%');
-		} else {
-			setWidth('513px');
-		}
-	});
+		if (window.innerWidth < 1000) setWidth('100%')
+		else setWidth('513px')
+	})
+
+
 
 	const [allData, setAllData] = useState({
 		lastName: '',
@@ -72,42 +75,32 @@ export const MagistraturaComponent = () => {
 		password: '',
 		prePassword: '',
 		passportSeries: '',
-		phoneNumber: '',
-		extraPhoneNumber: '',
+		phoneNumber: '+998',
+		extraPhoneNumber: '+998',
 		courseLevel: 0,
 		studyLanguage: '',
 		educationType: '',
 		facultyId: 0,
 		diplomaId: '',
 		passportId: '',
-	});
-
-	const findFileFunc = ({ file, by }) => {
-		if (file.target.files[0]) dispatch(deployFileFetch({ file, by }));
-	};
-
-	useEffect(() => {
-		dispatch(getStudyTypesFetch({ type: 'MASTERS' }));
-	}, []);
-
-	const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector((store) => store.getStudyTypes.data);
+		verifyCode: ''
+	})
 
 	const changeAllDataFunc = ({ type, value }) => {
-		const fakeData = allData;
-		fakeData[type] = value;
-		setAllData(fakeData);
-		setAllData({ ...allData, [type]: value });
-	};
+		const fakeData = allData
+		fakeData[type] = value
+		setAllData(fakeData)
+		setAllData({ ...allData, [type]: value })
+	}
 
-	const { fileId, status, by } = useSelector((store) => store.deployFile);
-
-	useEffect(() => {
-		changeAllDataFunc({ type: by, value: fileId });
-	}, [fileId]);
+	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
-		changeAllDataFunc({ type: 'studyType', value: 'MASTERS' });
+		dispatch(getDirectTypeFetch({ type: 'MASTER' }));
 	}, []);
+
+	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]) // file ni yuklab id sini allData ga yozib koyadi
+	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []); // kirishiga magister yoki bakalavir uhcunligini allData ga yozib koyadi
 
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData });
@@ -123,17 +116,8 @@ export const MagistraturaComponent = () => {
 		}
 	};
 
-	const [modelHidden, setModalHidden] = useState(false);
-	const [smsInput, setSmsInput] = useState('');
-
-	const pushAllInfo = () => {
-		if (checkAllInputs()) dispatch(receptionPostFetch(allData));
-	};
-
-	const receptionData = useSelector((store) => store.receptionPost);
-
 	useEffect(() => {
-		if (receptionData?.status === 'error')
+		if (receptionData?.status === 'error') {
 			dispatch(
 				startMessage({
 					time: 5,
@@ -141,6 +125,7 @@ export const MagistraturaComponent = () => {
 					message: receptionData.message,
 				}),
 			);
+		}
 	}, [receptionData]);
 
 	if (receptionData.pushAnswer) {
@@ -158,49 +143,49 @@ export const MagistraturaComponent = () => {
 		}, 2000);
 	}
 
+
+	// status, pushToHome, message
+	const [modelHidden, setModalHidden] = useState(false);
+	const [smsInput, setSmsInput] = useState('');
+
 	const smsFunc = () => {
 		if (checkAllInputs())
 			dispatch(
 				reseptionSmsCheckSliceFetch({
 					firstName: allData.firstName,
-					phoneNumber: allData.phoneNumber,
+					phoneNumber: allData.phoneNumber
 				}),
-			);
-	};
-
-	useEffect(() => {
-		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true)
-	}, [reseptionCheckPhoneSlice])
+			)
+	}
 
 	const verifyCodeFunc = () => {
-		if (smsInput.length === 6)
-			dispatch(
-				receptionSmsVerifyFetch({
-					verifyCode: allData.verifyCode,
-					phoneNumber: allData.phoneNumber,
-				}),
-			);
-		else
-			dispatch(
-				startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }),
-			);
-	};
+		if (smsInput.length === 6) dispatch(receptionSmsVerifyFetch({verifyCode: allData.verifyCode, phoneNumber: allData.phoneNumber}))
+		else dispatch(startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }))
+	}
+
+	const pushAllInfo = () => {
+		if (checkAllInputs()) dispatch(receptionPostFetch(allData))
+	}
+
+
 
 	useEffect(() => {
-		receptionSmsVerify?.status === 'success' && setModalHidden(false);
+		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
+	}, [reseptionCheckPhoneSlice]);
+
+	useEffect(() => {
+		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
-			dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
+		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
 	}, [receptionSmsVerify])
 
-	const funForPhoneinput = ({ value, type }) => {
-		setPhonePatron(value);
-		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-	}
-	const funPhoneNumber = ({ value, type }) => {
-		setNumState(value)
-		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-	}
+	useEffect(()=> {
+		dispatch(resetSmsVerify())
+		setSmsInput('')
+	}, [allData.phoneNumber])
 
+
+	// RESET ALL DATA
 	useEffect(() => {
 		if (receptionData.status === 'success') {
 			router.push('/receptionPage/application/UsersCardInfo');
@@ -208,15 +193,33 @@ export const MagistraturaComponent = () => {
 				dispatch(resetVerify());
 				dispatch(resetTimerVerify());
 				dispatch(resetSmsVerify());
-			}, 4000)
+			}, 2000);
 		}
-	})
+	});
+
+
+	// select uchun
+	const selectDirectFunc = ({type, value}) => {
+		dispatch(getFacultyLanguageFetch({id: value}))
+		changeAllDataFunc({ type, value})
+	}
 
 
 	useEffect(()=> {
-		dispatch(resetSmsVerify());
-		setSmsInput('')
-	}, [allData.phoneNumber])
+		changeAllDataFunc({ type: 'studyLanguage', value: 'OQISH TILLINI TANLANG'})
+		changeAllDataFunc({ type: 'educationType', value: 'OQISH TURINI TANLANG'})
+		dispatch(resetData())
+	}, [getFacultyLanguage])
+
+	useEffect(()=> {
+		dispatch(getFacultyLanguageFetch({id: allData.facultyId}))
+	}, [getDirectType])
+
+	const selectLanguageFunc = ({type, value}) => {
+		dispatch(getFacultyTypeFetch({id: allData.facultyId, lang: value}))
+		changeAllDataFunc({ type, value})
+	}
+
 
 	return (
 		<Container>
@@ -235,33 +238,20 @@ export const MagistraturaComponent = () => {
 						width={'513px'}
 						height={'46px'}
 						size={'24px'}
-						onchange={(e) =>
-							changeAllDataFunc({ type: 'lastName', value: e.target.value })
-						}
+						onchange={(e)=> changeAllDataFunc({ type: 'lastName', value: e.target.value })}
 					/>
 				</div>
 
 				<IconBox className='row9'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim shaklingiz'
-						optionFilterProp='children'
-						filterOption={(input, option) =>
-							(option?.label ?? '').includes(input)
+
+					<select value={allData.educationType} style={{width}} onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e.target.value })}  >
+						{
+							getFacultyType?.data?.length && getFacultyType?.data?.map((value) => (
+								<option id={value} value={value} selected={value === 'OQISH TURINI TANLANG'} disabled={value === 'OQISH TURINI TANLANG'}>{value}</option>
+							))
 						}
-						options={
-							educationTypes?.map((value) => ({
-								value,
-								label: value,
-							})) || []
-						}
-						onChange={(e) =>
-							changeAllDataFunc({ type: 'educationType', value: e })
-						}
-					/>
+					</select>
+
 				</IconBox>
 
 				<div className='row2'>
@@ -275,9 +265,7 @@ export const MagistraturaComponent = () => {
 						width={'513px'}
 						height={'46px'}
 						size={'24px'}
-						onchange={(e) =>
-							changeAllDataFunc({ type: 'firstName', value: e.target.value })
-						}
+						onchange={(e)=> changeAllDataFunc({type: 'firstName', value: e.target.value})}
 					/>
 				</div>
 
@@ -285,12 +273,10 @@ export const MagistraturaComponent = () => {
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
-							onChange={(value) =>
-								funPhoneNumber({ value, type: 'phoneNumber' })
-							}
+							value={allData.phoneNumber}
 							maxLength={17}
-							value={numState}
 							className={'customPhoneInput'}
+							onChange={(e)=> changeAllDataFunc({ type: 'phoneNumber', value: e })}
 						/>
 						<Container.NumberText>Enter phone number</Container.NumberText>
 					</Container.Number>
@@ -308,9 +294,7 @@ export const MagistraturaComponent = () => {
 						placeholder={'Otangizni ismi'}
 						padding={'7px 0px 0px 30px'}
 						size={'24px'}
-						onchange={(e) =>
-							changeAllDataFunc({ type: 'patron', value: e.target.value })
-						}
+						onchange={(e)=> changeAllDataFunc({ type: 'patron', value: e.target.value })}
 					/>
 				</div>
 
@@ -318,11 +302,9 @@ export const MagistraturaComponent = () => {
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
-							onChange={(value) =>
-								funForPhoneinput({ value, type: 'extraPhoneNumber' })
-							}
 							maxLength={17}
-							value={phonePatron}
+							value={allData.extraPhoneNumber}
+							onChange={(e)=> changeAllDataFunc({ type: 'extraPhoneNumber', value: e })}
 							className={'customPhoneInput'}
 						/>
 						<Container.NumberText>Enter phone number</Container.NumberText>
@@ -384,22 +366,18 @@ export const MagistraturaComponent = () => {
 					</div>
 				</div>
 
-				<IconBox className='row8'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim yunalishingiz'
-						optionFilterProp='children'
-						options={
-							facultyDTOForHomeList?.map((value) => ({
-								value: value.id,
-								label: value.name,
-							})) || []
+				<IconBox className='row7'>
+
+
+					<select value={allData.facultyId} style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
+						{
+							getDirectType.length && getDirectType?.map((value, index) => (
+								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
+							))
 						}
-						onChange={(e) => changeAllDataFunc({ type: 'facultyId', value: e })}
-					/>
+					</select>
+
+
 				</IconBox>
 
 				<div className='row10'>
@@ -440,35 +418,19 @@ export const MagistraturaComponent = () => {
 					</div>
 				</div>
 
-				<IconBox className='row7'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim tilingiz'
-						optionFilterProp='children'
-						filterOption={(input, option) =>
-							(option?.label ?? '').includes(input)
+				<IconBox className='row8'>
+					<select value={allData.studyLanguage} name="cars" id="cars"style={{width}} onChange={(e) => selectLanguageFunc({type: 'studyLanguage', value: e.target.value})} >
+						{
+							getFacultyLanguage.data.length && getFacultyLanguage?.data?.map((value, index) => (
+								<option id={index} value={value} selected={value === 'OQISH TILLINI TANLANG'} disabled={value === 'OQISH TILLINI TANLANG'} >{value}</option>
+							))
 						}
-						filterSort={(optionA, optionB) =>
-							(optionA?.label ?? '')
-								.toLowerCase()
-								.localeCompare((optionB?.label ?? '').toLowerCase())
-						}
-						options={
-							studyLanguages?.map((value) => ({
-								value: value,
-								label: value,
-							})) || []
-						}
-						onChange={(e) =>
-							changeAllDataFunc({ type: 'studyLanguage', value: e })
-						}
-					/>
+					</select>
 				</IconBox>
+
 				<BtnCon className='row12'>
 					<div className='mobileNone'></div>
+
 					{receptionSmsVerify.status === 'success' ? (
 						<>
 							{receptionData.status == 'loading' && (
@@ -517,6 +479,7 @@ export const MagistraturaComponent = () => {
 							Telefon raqamni tastiqlash
 						</Button>
 					)}
+
 				</BtnCon>
 				<div className='mobileNone'></div>
 			</InputCont>
@@ -562,10 +525,10 @@ export const MagistraturaComponent = () => {
 								Tastiqlash
 							</Button>
 						</>
-
 					)}
 				</Container.Model>
 			</Modal>
+
 		</Container>
 	);
 };

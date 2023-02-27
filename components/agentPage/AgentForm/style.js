@@ -139,7 +139,6 @@ const InputCont = styled.div`
       grid-template-columns: 1fr 1fr !important;
     }
   }
-
   .row8 {
     > div {
       width: 512px;
@@ -206,7 +205,6 @@ const InputCont = styled.div`
   }
   .mainForm{
      position: relative;
-
     p{
       position: absolute;
       left: 18px;
@@ -216,7 +214,6 @@ const InputCont = styled.div`
       line-height: 105.9%;
       letter-spacing: -0.025em;
       color: white;
-
       @media only screen and (max-width: 1000px) {
         font-size: 16px;
         font-weight: 400;
@@ -229,7 +226,6 @@ const InputCont = styled.div`
     .mainForm{
       width: 100%;
     }
-
     }
   
 `
@@ -253,36 +249,18 @@ Container.ButtonLoader = styled.div`
   text-align: center;	  
   background: rgba(0, 0, 0, 0.05);	  
   border-radius: 4px;
+  
 `;
 
 const IconBox = styled.div`
   position: relative;
-  //height: 46px;
   padding: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  .ArrowTop {
-    position: absolute;
-    right: 30px;
-    top: 35px;
-    cursor: pointer;
-  }
-  .UploadFile2 {
-    position: absolute;
-    left: 5px;
-    top: 6px;
-    cursor: pointer;
-    @media only screen and (max-width: 800px) {
-      height: 26px;
-      position: absolute;
-      left: 22px;
-      top: 6px;
-      cursor: pointer;
-      display: none;
-    }
-  }
-  .UploadFile1 {
+  
+  //  Icon of Upload File for Desktop
+  .uploadFile {
     position: absolute;
     left: 5px;
     top: 6px;
@@ -290,26 +268,26 @@ const IconBox = styled.div`
     @media only screen and (max-width: 800px) {
       display: none;
     }
-  }
-  .UploadFileMobile2 {
-    position: absolute;
-    left: 7px;
-    top: 8px;
-    cursor: pointer;
     @media only screen and (min-width: 800px) {
-      display: none;
+      display: block;
     }
   }
-  .UploadFileMobile {
+  //  Icon of Upload File for Mobile
+  .uploadFileMobile {
     position: absolute;
-    left: 7px;
-    top: 8px;
+    left: 5px;
+    top: 12px;
     bottom: 5px;
     cursor: pointer;
+    @media only screen and (max-width: 800px) {
+      display: block;
+    }
     @media only screen and (min-width: 800px) {
       display: none;
     }
   }
+  
+  
   @media only screen and (max-width: 1000px) {
     width: 100% !important;
     display: flex;
@@ -318,17 +296,19 @@ const IconBox = styled.div`
     font-size: 22px;
     margin: auto;
   }
+  
 `;
 
 
 
 Container.InputCustom1 = styled.input`
+  cursor: pointer;
   min-width: 124.72px;
-  width: 513px;
+  width: 251px;
   height: 46px;
-  padding: 0 0 0 70px;
-  font-size: 24px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  padding: 3px 0 3px 40px;
+  font-size: 22px;
+  background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
   border-bottom: 0;
   border-radius: 15px;
   outline: none;
@@ -337,12 +317,10 @@ Container.InputCustom1 = styled.input`
   font-weight: 400;
   line-height: 105.9%;
   letter-spacing: -0.025em;
-  color: transparent;
-  transition: .2s ;
-  :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
+  transition: 0.2s;
+  color: rgba(255, 255, 255, 0);
   @media only screen and (max-width: 1000px) {
-    padding: 0 0 0 30px;
+    padding: 0 0 0 25px;
     font-size:13px;
     display: flex;
     align-items: center;
@@ -350,12 +328,10 @@ Container.InputCustom1 = styled.input`
     width: 100%;
     height: 36px;
     border-radius: 5px;
-    width: 100%;
-   }
+  }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -374,32 +350,11 @@ Container.InputCustom1 = styled.input`
       margin: 12px 0 0 0;
     }
   }
-  cursor: pointer;
+  
 `
 
 
 Container.InputCustom2 = styled.input`
-  //cursor: pointer;
-  //min-width: 124.72px;
-  //width: 513px;
-  //height: 46px;
-  //padding: 0px 0px 0px 70px;
-  //font-size: 24px;
-  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  //border-bottom: 0px;
-  //border-radius: 15px;
-  //outline: none;
-  //box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-  //font-family: 'Montserrat';
-  //font-style: normal;
-  //font-weight: 400;
-  //line-height: 105.9%;
-  //letter-spacing: -0.025em;
-  //color:transparent;
-  //transition: .2s ;
-  //:active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
-
-
   cursor: pointer;
   min-width: 124.72px;
   width: 251px;
@@ -417,10 +372,8 @@ Container.InputCustom2 = styled.input`
   letter-spacing: -0.025em;
   transition: 0.2s;
   color: rgba(255, 255, 255, 0);
-  
-  
   @media only screen and (max-width: 1000px) {
-     padding: 0 0 0 30px;
+     padding: 0 0 0 25px;
      font-size:13px;
      display: flex;
      align-items: center;
@@ -428,12 +381,10 @@ Container.InputCustom2 = styled.input`
      width: 100%;
      height: 36px;
      border-radius: 5px;
-  
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
-
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -451,9 +402,21 @@ Container.InputCustom2 = styled.input`
     @media only screen and (max-width: 1000px) {
       margin: 12px 0 0 0;
     }
-
   }
 `
+
+Container.Model = styled.div`
+	margin: 0 !important;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	> p {
+		font-size: 18px;
+		color: #fff;
+	}
+`;
 
 
 

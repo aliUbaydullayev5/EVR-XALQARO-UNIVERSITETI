@@ -1,5 +1,5 @@
 export const checkAllInputs2 = ({allData}) => {
-
+    //
     if(!(allData.lastName.length > 3)){
         return {
             status: false,
@@ -31,7 +31,7 @@ export const checkAllInputs2 = ({allData}) => {
         }
     }
 
-    if (!(allData.passportSeries.length == 9)) {
+    if (!(allData.passportSeries.length === 9)) {
         return {
             status: false,
             message: {
@@ -41,22 +41,53 @@ export const checkAllInputs2 = ({allData}) => {
         }
     }
 
-    if(!(allData.phoneNumber.length == 12)) {
+    if(!(allData.phoneNumber.length === 13)) {
         return {
             status: false,
             message: {
                 time: 5,
-                message: 'Telefon raqamni togri kiritilganmagan'
+                message: 'Telefon raqamni togri kiritilgan'
             }
         }
     }
 
-    if (!(allData.extraPhoneNumber.length == 12)) {
+    if (!(allData.extraPhoneNumber.length === 13)) {
         return {
             status: false,
             message: {
                 time: 5,
                 message: 'Telefon raqamni togri kiritilganMaGan'
+            }
+        }
+    }
+
+
+    if (!(allData.facultyId)) {
+        return {
+            status: false,
+            message: {
+                time: 5,
+                message: 'Oqish turini tallang'
+            }
+        }
+    }
+
+    if (!(allData.studyLanguage !== 'OQISH TILLINI TANLANG')) {
+        return {
+            status: false,
+            message: {
+                time: 5,
+                message: 'OQISH TILLINI TANLANG'
+            }
+        }
+    }
+
+    if (!(allData.educationType !== 'OQISH TURINI TANLANG')) {
+        return {
+            status: false,
+            message: {
+                time: 5,
+                message: 'OQISH TURINI TANLANG'
             }
         }
     }
@@ -107,38 +138,5 @@ export const checkAllInputs2 = ({allData}) => {
         }
     }
 
-
-    if (!(allData.studyLanguage.length)) {
-        return {
-            status: false,
-            message: {
-                time: 5,
-                message: 'Oqish tilini tallang'
-            }
-        }
-    }
-
-    if (!(allData.facultyId)) {
-        return {
-            status: false,
-            message: {
-                time: 5,
-                message: 'Oqish turini tallang'
-            }
-        }
-    }
-
-    if (!(allData.educationType.length)) {
-        return {
-            status: false,
-            message: {
-                time: 5,
-                message: 'Oqish shaklini tallang'
-            }
-        }
-    }
-
-    return {
-        status: true
-    }
+    return {status: true}
 }

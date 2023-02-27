@@ -15,6 +15,7 @@ const Container = styled.div`
 		box-shadow: none;
 	}
 `;
+
 const TextCon = styled.div`
 	width: 100%;
 	height: 84px;
@@ -51,59 +52,59 @@ const TextCon = styled.div`
 `;
 
 Container.NumberText = styled.div`
-	position: absolute;
-	top: -16px;
-	left: 90px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 105.9%;
-	display: flex;
-	align-items: center;
-	letter-spacing: -0.025em;
-	color: rgba(194, 191, 191, 0.442);
-	@media only screen and (max-width: 800px) {
-		top: -12px;
-		letter-spacing: -0.025em;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 105.9%;
-	}
+  position: absolute;	  
+  top: -16px;
+  left: 90px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 105.9%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.025em;
+  color: rgba(194, 191, 191, 0.442);
+  @media only screen and (max-width: 800px) {
+    top: -12px;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 105.9%;
+  }
 `;
 
 Container.Number = styled.div`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	.customPhoneInput {
-		border-radius: 15px !important;
-		background: linear-gradient(
-			90deg,
+  position: relative;
+  display: flex;
+  justify-content: center;
+  .customPhoneInput {
+    border-radius: 15px !important;
+    background: linear-gradient(
+            90deg,
 			#1e3c72 0%,
 			#1e3c72 1%,
 			#2a5298 100%
-		) !important;
-		box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 32px;
-		line-height: 105.9%;
-		letter-spacing: -0.025em;
-		color: #fff;
-		width: 513px !important;
-		padding: 0 0 0 20px !important;
-		height: 46px;
-		@media only screen and (max-width: 800px) {
-			width: 100% !important;
-			font-size: 16px;
-			height: 26px !important;
-			border-radius: 5px !important;
-		}
-	}
-	@media only screen and (max-width: 800px) {
-		width: 100%;
-	}
-`;
+    ) !important;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    width: 513px !important;
+    padding: 0 0 0 20px !important;
+    height: 46px;
+    @media only screen and (max-width: 800px) {
+      width: 100% !important;
+      font-size: 16px;
+      height: 26px !important;
+      border-radius: 5px !important;
+    }
+  }
+  @media only screen and (max-width: 800px) {  
+    width: 100%;
+  }
+`
 
 Container.FormatNumber = styled.div`
 	position: absolute;
@@ -124,6 +125,7 @@ Container.FormatNumber = styled.div`
 		letter-spacing: -0.025em;
 	}
 `;
+
 const InputCont = styled.div`
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
@@ -133,10 +135,10 @@ const InputCont = styled.div`
 	padding: 0 10px;
 	align-items: center;
 	justify-content: center;
-	> div {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: center;
+	>div {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center;
 	}
 	.row10 {
 		> div {
@@ -421,14 +423,15 @@ IconBox.Mobile = styled.div`
 	}
 `;
 const AntTimeCon = styled.div`
-	display: flex;
-	justify-content: space-between;
-	margin-top: 10px;
+  display: flex;	
+  justify-content: space-between;	  
+  margin-top: 10px
 `;
 Container.ButtonLoader = styled.div`
-	text-align: center;
-	background: rgba(0, 0, 0, 0.05);
-	border-radius: 4px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);	  
+  border-radius: 4px;
+  
 `;
 
 export { TextCon, InputCont, BtnCon, IconBox, AntTimeCon };

@@ -1,57 +1,131 @@
-import React, { useState } from 'react'
-import DataAriza from '../../Mock/adminAriza/data.js'
+import React, { useState, useEffect } from 'react'
 import Container, { ConHero, ConTable } from './style.js'
-import { Input } from "../../generic"
+import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
-
+import { useDispatch, useSelector } from 'react-redux'
+import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
+import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
 
 export const ArizalarCom = () => {
-  const [data, setData] = useState(DataAriza);
+
+    const dispatch = useDispatch()
+    const [selectAllState, setSelectAllState] = useState(false)
+    const [inView, setInView] = useState(false)
+    const getAllData = useSelector((store) => store.getAllData)
+
+    // get applications - arizalar
+    const getApplicationData = useSelector((store) => store.getApplicationData)
+
+    const [data, setData] = useState([])
+
+    let defaultDate = new Date()
+    const [fromDate, setFromDate] = useState(defaultDate)
+    const [toDate, setToDate] = useState(defaultDate)
+    const onSetFromDate = (e) => {
+      setFromDate(new Date(e.target.value))
+    }
+    const onSetToDate = (e) => setToDate(new Date(e.target.value))
+
+
+    useEffect(() => {
+        dispatch(getApplications({
+          fromDate: fromDate.getTime(),
+          toDate: toDate.getTime()
+        }))
+    }, [])
+
+    useEffect(() => {
+        setData(getApplicationData.data)
+    }, [getApplicationData])
+    // console.log(data)
+
+
+    // get excel
+    const downloadExcel = () => {
+        dispatch(getExcelfetch())
+    }
+
+
+  useEffect(() => {
+    if (inView) {
+      if (getAllData.data.length == 20 || getAllData.data.length == 0) {
+        dispatch(addPageCount())
+        dispatch(getAllDataFetch({ page: getAllData?.pageCount, query: '' }))
+      }
+    }
+  }, [inView])
+
+
+  const selectOne = (id = false) => {
+
+  }
+
+  const searchFunc = (eventValue) => {
+    setTimeout(() => {
+      dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))
+    }, 1000)
+  }
+
   return (
+    <>
     <Container>
-      <div className='scrollCon' style={{overflowY: 'scroll', maxHeight: '550px'}}>
+      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+              <Container.Nav>
+              <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
+                <div className='row'>
+                    <div >№</div>
+                    <div className='colum'>FIO</div>
+                    <div className='colum'>Telefon raqam</div>
+                    <div className='colum'>Kun</div>
+                </div>
+           </Container.Nav>
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
-          {data.map((value) => {
-            const Img = value.img
+          {data?.users?.map((value) => {
             return(
               <ConTable key={value.id}>
-              <ConTable.ChecBox>
-                <Img className={'checbox'} />
-              </ConTable.ChecBox>
+                <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked}  />
               <div className='row'>
-                <div >{value.id}</div>
-                <div className='colum'>{value.ismi}</div>
-                <div className='colum'>{value.phone}</div>
-                <div className='colum'>{value.data}</div>
+                {/*<div >{value.id}</div>*/}
+                <div>1</div>
+                <div className='colum'>{value.firstName + ' ' + value.lastName}</div>
+                <div className='colum'>{value.phoneNumber}</div>
+                <div className='colum'>{new Date(value.createdAt).toLocaleDateString()}</div>
               </div>
             </ConTable>
           )})}
         </div>
-      </div>
+      </Container.Scrool>
       <ConHero>
         <ConHero.Date>
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
-            <Input height={'55px'} size={'23px'} width={'240px'} type="date" id="start" name="trip-start" />
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" /></div>
+          <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" /></div>
         </ConHero.Date>
-        <div className='TextCenter'>
-          <p className='TextPsamal'>Sana orqali tartiblash</p>
-        </div>
+        <ConHero.Tartiblash>
+          <Button mwidth={'210px'} msize={'18px'} mheight={"45px"} size={'29px'} width={'510px'} height={"90px"} radius={'20px'}  mradius={'10px'}> Sana orqali tartiblash</Button>
+        </ConHero.Tartiblash>
         <ConHero.Exel>
           <div>
-            <PeoupleGroup/>  <p className='TextPsamal'>Arizalar soni: {data.length }</p>
+            <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: { data?.counts ? data.counts : 0 }</p>
+          </div>
+          <div onClick={downloadExcel}>
+            <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
           <div>
-           
-            <Sms /> <p className='TextPsamal'>Excelga chiqarish</p>
-          </div>
-          <div>
-            <Exel />  <p className='TextPsamal'>SMS yuborish</p> 
+            <Exel className={'UserImg'} />
+            <p className='TextPsamal'>SMS yuborish</p> 
           </div>
         </ConHero.Exel>
       </ConHero>
     </Container>
+    {
+        getAllData?.status === 'loading' &&
+        <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>
+    }
+    </>
   )
 }
 export default ArizalarCom

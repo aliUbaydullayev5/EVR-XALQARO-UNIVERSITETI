@@ -122,7 +122,6 @@ Container.BottomDescInset = styled.div`
 
   /* Handle on hover */
 
-
 `
 
 Container.SelectSection = styled.div`

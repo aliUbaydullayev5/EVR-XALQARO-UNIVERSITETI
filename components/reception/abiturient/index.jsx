@@ -1,9 +1,6 @@
-/** @format */
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js';
-import AntSelect from '../Antd/style.js';
 import { Modal, Spin } from 'antd';
 import { Input, Button } from '../../generic';
 import UploadFiler from '../../../assets/icons/uploadeFile.svg';
@@ -12,7 +9,7 @@ import { useRouter } from 'next/router.js';
 import CustomInput from 'react-phone-number-input/input';
 import { deployFileFetch } from '../../../redux/slices/deployFile';
 import { startMessage } from '../../../redux/slices/message';
-import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes';
+import {getDirectTypeFetch} from '../../../redux/slices/getStudyTypes/getDirectType';
 import {
 	receptionPostFetch,
 	resetVerify,
@@ -26,8 +23,11 @@ import {
 	resetSmsVerify,
 } from '../../../redux/slices/receptionSmsVerify';
 import { checkAllInputs2 } from './checkAllInputs';
+import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType";
 
-export const AbiturientQabul = (searchElement, fromIndex) => {
+export const AbiturientQabul = () => {
+
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const [numPasSeriya, setNumPasSeriya] = useState('');
@@ -35,12 +35,14 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 	const reseptionCheckPhoneSlice = useSelector(
 		(store) => store.reseptionCheckPhoneSlice,
 	);
-	const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector(
-		(store) => store.getStudyTypes.data,
+	const getDirectType = useSelector(
+		(store) => store.getDirectType.data,
 	);
-	const { fileId, by } = useSelector((store) => store.deployFile);
-	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
-	const receptionData = useSelector((store) => store.receptionPost);
+	const { fileId, by } = useSelector((store) => store.deployFile)
+	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
+	const receptionData = useSelector((store) => store.receptionPost)
+	const getFacultyLanguage = useSelector((store)=> store.getFacultyLanguage)
+	const getFacultyType = useSelector((store)=> store.getFacultyType)
 
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
@@ -53,12 +55,12 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 		changeAllDataFunc({
 			type: 'passportSeries',
 			value: event.split(' ').join('').toUpperCase(),
-		});
+		})
+
 		return setNumPasSeriya(event.toUpperCase());
 	};
 
 	const [width, setWidth] = useState(null);
-
 	useEffect(() => {
 		if (window.innerWidth < 1000) setWidth('100%');
 		else setWidth('513px');
@@ -83,12 +85,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 		verifyCode: ''
 	});
 
-	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
-
-	useEffect(() => {
-		dispatch(getStudyTypesFetch({ type: 'BACHELOR' }));
-	}, []);
-
 	const changeAllDataFunc = ({ type, value }) => {
 		const fakeData = allData;
 		fakeData[type] = value;
@@ -96,13 +92,15 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 		setAllData({ ...allData, [type]: value });
 	};
 
-	useEffect(() => {
-		changeAllDataFunc({ type: by, value: fileId });
-	}, [fileId]);
+
+	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
-		changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' });
+		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }));
 	}, []);
+
+	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]);
+	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
 
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData });
@@ -166,14 +164,10 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 			dispatch(
 				reseptionSmsCheckSliceFetch({
 					firstName: allData.firstName,
-					phoneNumber: allData.phoneNumber,
+					phoneNumber: allData.phoneNumber
 				}),
-			);
-	};
-
-	useEffect(() => {
-		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
-	}, [reseptionCheckPhoneSlice]);
+			)
+	}
 
 	const verifyCodeFunc = () => {
 		if (smsInput.length === 6)
@@ -182,22 +176,35 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 					verifyCode: allData.verifyCode,
 					phoneNumber: allData.phoneNumber,
 				}),
-			);
+			)
 		else
 			dispatch(
 				startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }),
-			);
-	};
+			)
+	}
 
 	const pushAllInfo = () => {
-		if (checkAllInputs()) dispatch(receptionPostFetch(allData));
-	};
+		if (checkAllInputs()) dispatch(receptionPostFetch(allData))
+	}
+
 
 	useEffect(() => {
-		receptionSmsVerify?.status === 'success' && setModalHidden(false);
+		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
+	}, [reseptionCheckPhoneSlice]);
+
+	useEffect(() => {
+		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
-			dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
-	}, [receptionSmsVerify]);
+			dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
+	}, [receptionSmsVerify])
+
+	useEffect(()=> {
+		dispatch(resetSmsVerify())
+		setSmsInput('')
+	}, [allData.phoneNumber])
+
+
+	// RESET ALL DATA
 
 	useEffect(() => {
 		if (receptionData.status === 'success') {
@@ -209,11 +216,25 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 			}, 2000);
 		}
 	});
+	const selectDirectFunc = ({type, value}) => {
+		dispatch(getFacultyLanguageFetch({id: value}))
+		changeAllDataFunc({ type, value})
+	}
 
 	useEffect(()=> {
-		dispatch(resetSmsVerify());
-		setSmsInput('')
-	}, [allData.phoneNumber])
+		changeAllDataFunc({ type: 'studyLanguage', value: 'OQISH TILLINI TANLANG'})
+		changeAllDataFunc({ type: 'educationType', value: 'OQISH TURINI TANLANG'})
+		dispatch(resetData())
+	}, [getFacultyLanguage])
+
+	useEffect(()=> {
+		dispatch(getFacultyLanguageFetch({id: allData.facultyId}))
+	}, [getDirectType])
+
+	const selectLanguageFunc = ({type, value}) => {
+		dispatch(getFacultyTypeFetch({id: allData.facultyId, lang: value}))
+		changeAllDataFunc({ type, value})
+	}
 
 	return (
 		<Container>
@@ -237,28 +258,17 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						}
 					/>
 				</div>
+
 				<IconBox className='row9'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim shaklingiz'
-						optionFilterProp='children'
-						filterOption={(input, option) =>
-							(option?.label ?? '').includes(input)
+					<select value={allData.educationType} name="cars" id="cars" style={{width}} onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e.target.value })}  >
+						{
+							getFacultyType?.data?.length && getFacultyType?.data?.map((value) => (
+								<option id={value} value={value} selected={value === 'OQISH TURINI TANLANG'} disabled={value === 'OQISH TURINI TANLANG'}>{value}</option>
+							))
 						}
-						options={
-							educationTypes?.map((value) => ({
-								value,
-								label: value,
-							})) || []
-						}
-						onChange={(e) =>
-							changeAllDataFunc({ type: 'educationType', value: e })
-						}
-					/>
+					</select>
 				</IconBox>
+
 				<div className='row2'>
 					<Input
 						placeholder={'Ismingiz'}
@@ -275,6 +285,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						}
 					/>
 				</div>
+
 				<div className='row5'>
 					<Container.Number>
 						<CustomInput
@@ -289,6 +300,7 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						<Container.NumberText>Enter phone number</Container.NumberText>
 					</Container.Number>
 				</div>
+
 				<div className='row3'>
 					<Input
 						mpadding={'0 0 0 19px '}
@@ -375,23 +387,16 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 					</div>
 				</div>
 
-				<IconBox className='row8'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim yunalishingiz'
-						optionFilterProp='children'
-						options={
-							facultyDTOForHomeList?.map((value) => ({
-								value: value.id,
-								label: value.name,
-							})) || []
+				<IconBox className='row7'>
+					<select name="cars" id="cars"style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
+						{
+							getDirectType.length && getDirectType?.map((value) => (
+								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
+							))
 						}
-						onChange={(e) => changeAllDataFunc({ type: 'facultyId', value: e })}
-					/>
+					</select>
 				</IconBox>
+
 				<div className='row10'>
 					<div>
 						<div>
@@ -429,32 +434,14 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 						</div>
 					</div>
 				</div>
-				<IconBox className='row7'>
-					<AntSelect
-						showSearch
-						style={{
-							width,
-						}}
-						placeholder='Talim tilingiz'
-						optionFilterProp='children'
-						filterOption={(input, option) =>
-							(option?.label ?? '').includes(input)
+				<IconBox className='row8'>
+					<select name="cars" id="cars" value={allData.studyLanguage} style={{width}} onChange={(e) => selectLanguageFunc({ type: 'studyLanguage', value: e.target.value })}  >
+						{
+							getFacultyLanguage?.data.length && getFacultyLanguage?.data?.map((value) => (
+								<option selected={value === 'OQISH TILLINI TANLANG'} disabled={value === 'OQISH TILLINI TANLANG'} id={value} value={value} >{value}</option>
+							))
 						}
-						filterSort={(optionA, optionB) =>
-							(optionA?.label ?? '')
-								.toLowerCase()
-								.localeCompare((optionB?.label ?? '').toLowerCase())
-						}
-						options={
-							studyLanguages?.map((value) => ({
-								value: value,
-								label: value,
-							})) || []
-						}
-						onChange={(e) =>
-							changeAllDataFunc({ type: 'studyLanguage', value: e })
-						}
-					/>
+					</select>
 				</IconBox>
 				<BtnCon className='row12'>
 					{receptionSmsVerify.status === 'success' ? (
@@ -506,7 +493,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 				</BtnCon>
 
             </InputCont>
-            
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -548,7 +534,6 @@ export const AbiturientQabul = (searchElement, fromIndex) => {
 					)}
 				</Container.Model>
 			</Modal>
-			
 		</Container>
 	);
 };
