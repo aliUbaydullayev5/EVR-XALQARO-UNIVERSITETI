@@ -10,7 +10,7 @@ import React, {useEffect, useState} from "react";
 import {startMessage} from "../../../redux/slices/message";
 import {Spin} from "antd";
 
-const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
+const GenericAuthComponent = ({pushPath, tokenName}) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -24,7 +24,7 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
     useEffect(()=> {
         if(authLogin.status === 'success'){
             dispatch(startMessage({time: 3, message: "Siz muvofiyaqatli kirdingiz", type: 'success'}))
-            router.push(pushPath)
+            router.push('/receptionPage/account')
             setTimeout(()=> {
                 dispatch(resetAuthLogin())
             }, 500)
@@ -49,7 +49,7 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
         <Container>
             <Container.Block>
                 <Container.Top>
-                    <Container.Title>{title}</Container.Title>
+                    <Container.Title>Kirish</Container.Title>
                 </Container.Top>
                 <Container.Bottom>
                     <Container.InputArea>
@@ -156,21 +156,12 @@ const GenericAuthComponent = ({title, pushPath, royxat = true, tokenName}) => {
                             }
 
                         </div>
-                        <Container.Desc className={'nocopy'}>ID raqamingizni esdan chiqardingizmi?</Container.Desc>
-                        {
-                            royxat &&
-                            <Container.SubDesc className={'nocopy'} >Ro’yxatdan o’tish</Container.SubDesc>
-                        }
+                        <Container.Desc className={'nocopy'} onClick={()=> router.push('/auth/password')} >ID yoki parolingiz unuttingizmi ?</Container.Desc>
                     </Container.ButtonArea>
                 </Container.Bottom>
             </Container.Block>
         </Container>
     )
 }
-
-
-// <Button width={'400px'} height={'50px'}>
-//
-// </Button>
 
 export default GenericAuthComponent

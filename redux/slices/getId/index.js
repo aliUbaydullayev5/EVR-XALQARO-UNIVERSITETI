@@ -1,7 +1,7 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const getUserIdFetch = createAsyncThunk('getUserIdFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/get-id-number?phoneNumber=${payload.userName}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/get-id-number?phoneNumber=${payload.userNumber.match(/[0-9]+/g).join('')}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -20,15 +20,14 @@ const getUserId = createSlice({
         [getUserIdFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [getUserIdFetch.fulfilled]: (state, action) => {
-            state.status = 'success'
-            if(action?.payload?.success){
-                state.message = action.payload.message.split('_').join(' ')
-                state.pushAnswer = true
+        [getUserIdFetch.fulfilled]: (state, {payload}) => {
+            if(payload?.success){
+                state.status = 'success'
+                state.message = payload.message.split('_').join(' ')
             }
-            if(action?.payload?.success == false){
+            if(!payload?.success){
                 state.status = 'error'
-                state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
+                state.message = payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
         },
         [getUserIdFetch.rejected]: (state) => {
@@ -37,8 +36,9 @@ const getUserId = createSlice({
     },
     reducers: {
         resetTimerVerify(state) {
-            state.verifyCode = false
             state.status = null
+            state.message = ''
+            state.data = null
         }
     }
 })

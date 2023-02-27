@@ -39,7 +39,6 @@ export const ArizalarCom = () => {
     useEffect(() => {
         setData(getApplicationData.data)
     }, [getApplicationData])
-    // console.log(data)
 
 
     // get excel
