@@ -37,8 +37,6 @@ Container.Top = styled.div`
 Container.Bottom = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 25px;
   padding: 20px 0;
 
@@ -53,6 +51,7 @@ Container.Button = styled.div`
   gap: 15px;
   flex-wrap: wrap;
   height: 234px;
+  padding: 0 10px;
 
   @media only screen and (max-width: 
   1000px){
@@ -62,11 +61,9 @@ Container.Button = styled.div`
 
 Container.BottomSelect = styled.div`
   display: flex;
-  max-width: 930px;
-  width: 100%;
+  padding: 0 85px;
 
-  @media only screen and (max-width: 
-  1000px){
+  @media only screen and (max-width: 1000px){
     flex-wrap: wrap;
     gap: 10px;
     padding: 0 5px;
@@ -76,7 +73,7 @@ Container.BottomDesc = styled.div`
   width: 100%;
   height: 314px !important;
   overflow-y: scroll;
-  padding: 0 16px 15px 0;
+  padding: 0 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;

@@ -29,7 +29,7 @@ const HamburgerMenu = ({changeHidden}) => {
                 <li onClick={()=> query.push('/license')}>Litsenziya</li>
                 <li onClick={()=> query.push('/gallery')}>Galereya</li>
                 <li onClick={()=> query.push('/chat')}>Umumiy chat</li>
-                <li>Reytinglar</li>
+                <li onClick={()=> query.push('/ratings')}>Reytinglar</li>
             </ul>
         </Container>
     )

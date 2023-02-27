@@ -70,7 +70,7 @@ const ExamResultsComponent = () => {
             {
               data.map((val)=>{
                 return(
-                  <Button key={val.id} msize="14px" mwidth="142px" mheight="34px" size="24px" width="253px" height="57px" >
+                  <Button key={val.id} msize="14px" mwidth="142px" mheight="34px" size="24px" width="353px" height="57px" >
                   {val.faculty} 
                 </Button> 
                 )
