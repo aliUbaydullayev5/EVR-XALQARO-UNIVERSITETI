@@ -1,29 +1,84 @@
 import Container from "./style";
-import { Space, Select } from "antd";
 import Button from "../generic/Button";
 import data from "../Mock/examResult"
 
 const ExamResultsComponent = () => {
-  const formOfEducation = ["Barchasi", "Kunduzgi", "Sirtqi", "Kechgi"];
-  const typeOfEducation = ["Barchasi", "Bakalavr", "Magistratura"];
-  const course = ["Barchasi", "1-kurs", "2-kurs", "3-kurs", "4-kurs", "5-kurs"];
-  const courseOfStudy = [
-    "Barchasi",
-    "Iqtisodiyot",
-    "Logistika",
-    "Geologiya",
-    "Marketing",
-    "Jaxon Siyosati",
-    "Jismoniy Madaniyat",
-    "Biologiya",
-    "Tarix",
-  ];
+
   return (
     <Container>
       <Container.Top> Test natijalari </Container.Top>
       <Container.Bottom>
         <Container.BottomSelect>
-          <Space direction="vertical" style={{ width: "100%" }}>
+          <select defaultValue='dsa' name="" id="">
+            <option value="dsa" disabled={true}>Ta'lim shakli</option>
+            <option value="">Barchasi</option>
+            <option value="">Kunduzgi</option>
+            <option value="">Sirtqi</option>
+            <option value="">Kechgi</option>
+          </select>
+          <select defaultValue='dsa' name="" id="">
+            <option value="dsa" disabled={true}>Ta'lim turi</option>
+            <option value="">Barchasi</option>
+            <option value="">Bakalavr</option>
+            <option value="">Magistratura</option>
+          </select>
+          <select defaultValue='dsa' name="" id="">
+            <option value="dsa" disabled={true}>Kurs</option>
+            <option value="">Barchasi</option>
+            <option value="">1-kurs</option>
+            <option value="">2-kurs</option>
+            <option value="">3-kurs</option>
+            <option value="">4-kurs</option>
+            <option value="">5-kurs</option>
+          </select>
+          <select defaultValue='dsa' name="" id="">
+            <option value="dsa" disabled={true}>Ta'lim yo'nalishi</option>
+            <option value="">Barchasi</option>
+            <option value="">Kunduzgi</option>
+            <option value="">Sirtqi</option>
+            <option value="">Kechgi</option>
+          </select>
+        </Container.BottomSelect>
+        <Container.Button>
+          <Container.BottomDesc>
+            {
+              data.map((val)=>{
+                return(
+                  <Button key={val.id} msize="14px" mwidth="142px" mheight="34px" size="24px" width="353px" height="57px" >
+                  {val.faculty} 
+                </Button> 
+                )
+              })
+            }
+            
+          </Container.BottomDesc>
+        </Container.Button>
+      </Container.Bottom>
+    </Container>
+  );
+};
+
+export default ExamResultsComponent;
+
+
+// import { Space, Select } from "antd";
+
+  // const formOfEducation = ["Barchasi", "Kunduzgi", "Sirtqi", "Kechgi"];
+  // const typeOfEducation = ["Barchasi", "Bakalavr", "Magistratura"];
+  // const course = ["Barchasi", "1-kurs", "2-kurs", "3-kurs", "4-kurs", "5-kurs"];
+  // const courseOfStudy = [
+  //   "Barchasi",
+  //   "Iqtisodiyot",
+  //   "Logistika",
+  //   "Geologiya",
+  //   "Marketing",
+  //   "Jaxon Siyosati",
+  //   "Jismoniy Madaniyat",
+  //   "Biologiya",
+  //   "Tarix",
+  // ];
+
+{/* <Space direction="vertical" style={{ width: "100%" }}>
             <Select
               defaultValue="Ta`lim shakli"
               style={{ width: 204, height: 41 }}
@@ -63,25 +118,4 @@ const ExamResultsComponent = () => {
                 value: province,
               }))}
             />
-          </Space>
-        </Container.BottomSelect>
-        <Container.Button>
-          <Container.BottomDesc>
-            {
-              data.map((val)=>{
-                return(
-                  <Button key={val.id} msize="14px" mwidth="142px" mheight="34px" size="24px" width="353px" height="57px" >
-                  {val.faculty} 
-                </Button> 
-                )
-              })
-            }
-            
-          </Container.BottomDesc>
-        </Container.Button>
-      </Container.Bottom>
-    </Container>
-  );
-};
-
-export default ExamResultsComponent;
+          </Space> */}

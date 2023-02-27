@@ -23,9 +23,9 @@ const HamburgerMenu = ({changeHidden}) => {
                 <li onClick={() => query.push('/examResults')}>Test natijalari</li>
                 <li onClick={()=> query.push('/contractDown')}>Shartnoma yuklab olish</li>
                 <li onClick={()=> query.push('/contactUs')}>Biz bilan aloqa</li>
-                <li>Elektron kutubxona</li>
+                <li onClick={()=> query.push('/library')}>Elektron kutubxona</li>
                 <li onClick={()=> query.push('/news')}>Yangiliklar</li>
-                <li>Savol-javoblar</li>
+                {/* <li>Savol-javoblar</li> */}
                 <li onClick={()=> query.push('/license')}>Litsenziya</li>
                 <li onClick={()=> query.push('/gallery')}>Galereya</li>
                 <li onClick={()=> query.push('/chat')}>Umumiy chat</li>

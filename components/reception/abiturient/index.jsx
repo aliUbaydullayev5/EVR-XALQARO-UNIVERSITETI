@@ -9,7 +9,7 @@ import { useRouter } from 'next/router.js';
 import CustomInput from 'react-phone-number-input/input';
 import { deployFileFetch } from '../../../redux/slices/deployFile';
 import { startMessage } from '../../../redux/slices/message';
-import {getDirectTypeFetch} from '../../../redux/slices/getStudyTypes/getDirectType';
+import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
 import {
 	receptionPostFetch,
 	resetVerify,

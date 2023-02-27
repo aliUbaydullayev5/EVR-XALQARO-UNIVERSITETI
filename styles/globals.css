@@ -313,14 +313,14 @@ select{
 }
 
 select option{
-  padding:8px 5px;
-  color: red;
+  padding: 8px 5px;
+  color: black;
 }
 
 
 label {position:relative}
 label:after {
-  content:'<>';
+  content:'';
   font:14px "Consolas", monospace;
   color:#333;
   -webkit-transform:rotate(90deg);
@@ -334,7 +334,6 @@ label:after {
   pointer-events:none;
 }
 label:before {
-  content:'';
   right: 6px;
   top: 0;
   width:20px; height:20px;

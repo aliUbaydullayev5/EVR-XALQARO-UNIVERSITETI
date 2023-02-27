@@ -8,6 +8,7 @@ const DownloadContractComponent = () => {
     <Container>
       <Container.Top>Shartnoma yuklash</Container.Top>
       <Container.Bottom>
+        
         <Container.LogoSection>
           <Logo />
           <div className={"line"} />
