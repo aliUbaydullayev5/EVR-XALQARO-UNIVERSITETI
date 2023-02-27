@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import firstVerify from '../slices/firstVerify/index'
 import firstSmsCodeFetch from "../slices/firstSmsVerifyCode"
 import homeAllData from '../slices/homeAllData'
@@ -22,7 +22,7 @@ import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
-import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
+import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 
 import agentAuth from '../slices/agentAuth'
@@ -30,6 +30,7 @@ import authLogin from '../slices/authLogin'
 import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
+import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
 
 export default configureStore({
     reducer: {
@@ -63,6 +64,7 @@ export default configureStore({
         authLogin,
         getFacultyLanguage,
         getFacultyType,
-        getInfoUserCabinet
+        getInfoUserCabinet,
+        quationCreate,
     },
 })

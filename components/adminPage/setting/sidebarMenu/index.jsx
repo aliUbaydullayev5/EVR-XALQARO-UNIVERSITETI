@@ -36,19 +36,20 @@ export const SidebarAdmin = () => {
     },
 
     {
+      id: 7,
+      name: 'Majburiy Fanlar',
+      clicked: false,
+    },
+    {
       id: 6,
       name: 'Fcultet Imtxon Fanlari',
       clicked: false,
 
     },
-    {
-      id: 7,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
+
     {
       id: 8,
-      name: 'Ta’lim yo’nalishlari',
+      name: 'Test Savolar Qo`shish',
       clicked: false,
     },
 
@@ -138,9 +139,21 @@ export const SidebarAdmin = () => {
     if (id === 5) {
       quarey.push('/admin/setting/exsam')
     }
+
     if (id === 6) {
       quarey.push('/admin/setting/facultyImtxonselect')
     }
+    if (id === 7) {
+      quarey.push('/admin/setting/subjectsMandatory')
+    }
+
+    if (id === 7) {
+      quarey.push('/admin/setting/subjectsMandatory')
+    }
+    if (id === 8) {
+      quarey.push('/admin/setting/quations')
+    }
+    // 
   }
 
   return (

@@ -64,7 +64,7 @@ Container.Scrool = styled.div`
    width: 100%;
    height: 600px !important;
    overflow-y: scroll;
-   padding: 0 15px 0 0;
+   padding: 0 10px 0 0;
    height: 100%;
    display: grid;
   ::-webkit-scrollbar {
