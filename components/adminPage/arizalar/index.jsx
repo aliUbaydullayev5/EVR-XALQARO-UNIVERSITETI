@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getApplications} from "../../../redux/sliceAdmin/arizalar/applications";
 import {getExcelfetch} from "../../../redux/sliceAdmin/arizalar/downloadExel";
+import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 
 export const ArizalarCom = () => {
 
@@ -21,41 +22,51 @@ export const ArizalarCom = () => {
 
 
 
-    // get applications - arizalar
-    const getApplicationData = useSelector((store) => store.getApplicationData)
+  // get applications - arizalar
+  const getApplicationData = useSelector((store) => store.getApplicationData)
 
-    const [data, setData] = useState([])
+  const [data, setData] = useState([])
 
-    let defaultDate = new Date()
-    const [fromDate, setFromDate] = useState(defaultDate)
-    const [toDate, setToDate] = useState(defaultDate)
-    const onSetFromDate = (e) => {
-      setFromDate(new Date(e.target.value))
-    }
-    const onSetToDate = (e) => {
-      setToDate(new Date(e.target.value))
-    }
-    // console.log(fromDate.getTime(), ' - from')
-    // console.log(toDate, ' - to')
+  let defaultDate = new Date()
+  const [fromDate, setFromDate] = useState(defaultDate)
+  const [toDate, setToDate] = useState(defaultDate)
+  const onSetFromDate = (e) => {
+    setFromDate(new Date(e.target.value))
+  }
+  const onSetToDate = (e) => {
+    setToDate(new Date(e.target.value))
+  }
+  // console.log(fromDate.getTime(), ' - from')
+  // console.log(toDate, ' - to')
 
-    useEffect(() => {
-        dispatch(getApplications({
-          fromDate: fromDate.getTime(),
-          toDate: toDate.getTime()
-        }))
-    }, [])
+  useEffect(() => {
+      dispatch(getApplications({
+        fromDate: fromDate.getTime(),
+        toDate: toDate.getTime()
+      }))
+  }, [])
 
-    useEffect(() => {
-        setData(getApplicationData.data)
-    }, [getApplicationData])
-    // console.log(data)
+  useEffect(() => {
+      setData(getApplicationData.data)
+  }, [getApplicationData])
+  // console.log(data)
 
 
-    // get excel
-    const [excel, setExcel] = useState([])
-    const downloadExcel = () => {
-        dispatch(getExcelfetch())
-    }
+  // get excel
+  const [excel, setExcel] = useState([])
+  const downloadExcel = () => {
+      dispatch(getExcelfetch())
+  }
+
+
+  // send sms
+  const sendSmsData = useSelector(store => store.sendSmsData)
+  const sendSms = () => {
+    dispatch(sendSmsFetch({
+      // ...
+    }))
+  }
+
 
 
 
@@ -140,7 +151,12 @@ export const ArizalarCom = () => {
           </div>
           <div>
             <Exel className={'UserImg'} />
-            <p className='TextPsamal'>SMS yuborish</p> 
+            <button
+                className='TextPsamal'
+                onClick={sendSms}
+            >
+              SMS yuborish
+            </button>
           </div>
         </ConHero.Exel>
       </ConHero>

@@ -14,7 +14,6 @@ export const getAllDataArizaFetch = createAsyncThunk('getAllDataFetch', async ({
                 search
             }
         })
-
 })
 
 const getAllDataAriza = createSlice({

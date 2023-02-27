@@ -377,9 +377,8 @@ Container.Nav = styled.div`
 
 `
 Container.Box = styled.div`
-  display: flex;
   display: grid;
-  grid-template-columns: 40px 96px 288px 90px 135px 198px 162px 240px 115px 191px 170px 240px 187px  182px 200px 205px 163px 196px 180px 185px 170px 230px 230px 149px;
+  grid-template-columns: 60px 90px 320px 90px 135px 500px 160px 150px 80px 100px 170px 180px 180px 180px 200px 200px 160px 180px 180px 180px 170px 230px 230px 150px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
@@ -413,9 +412,8 @@ Container.Section = styled.div`
 `
 
 Container.Map = styled.div`
-  display: flex;
   display: grid;
-  grid-template-columns: 40px 96px 288px 90px 135px 198px 162px 240px 115px 191px 170px 240px 187px  182px 200px 205px 163px 196px 180px 185px 170px 230px 230px 149px;
+  grid-template-columns: 60px 90px 320px 90px 135px 500px 160px 150px 80px 100px 170px 180px 180px 180px 200px 200px 160px 180px 180px 180px 170px 230px 230px 150px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
@@ -424,7 +422,6 @@ Container.Map = styled.div`
   text-align: center;
   >div{
     border-right: 2px solid rgba(255, 255, 255, 0.5);
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

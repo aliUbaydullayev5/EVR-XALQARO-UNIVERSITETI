@@ -6,9 +6,14 @@ import Exel from "../../../assets/icons/admin/adminExel.svg"
 import Sms from "../../../assets/icons/admin/adminSms.svg"
 import dataQabul from '../../Mock/qabulData/qabulData.js'
 import { useState } from 'react'
+import {getAdmissionFetch} from "../../../redux/sliceAdmin/qabul/admission";
+import {useDispatch, useSelector} from "react-redux";
+import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 
 
 export const QabuldanOtganCom = () => {
+
+    const dispatch = useDispatch()
 
   const [data, setData] = useState(dataQabul)
   const [selectAllState, setSelectAllState] = useState(false)
@@ -59,6 +64,25 @@ export const QabuldanOtganCom = () => {
     )))
   }
 
+
+  // get admission
+  const getAdmissionData = useSelector((store) => store.getAdmissionData)
+
+  useEffect(() => {
+      dispatch(getAdmissionFetch({}))
+  }, [])
+
+
+  // send sms
+  const sendSmsData = useSelector(store => store.sendSmsData)
+  const sendSms = () => {
+      dispatch(sendSmsFetch({
+          // ...
+      }))
+  }
+
+
+
   return (
     <>
       <Container>
@@ -81,7 +105,6 @@ export const QabuldanOtganCom = () => {
           <SelectSms>
             <Sms className={'Sms'} />
             <p> SMS yuborish</p>
-            <Down className={'Down'} />
           </SelectSms>
         </ContainerRith>
 
@@ -174,33 +197,33 @@ export const QabuldanOtganCom = () => {
                 </Container.Box>
               </Container.Nav>
               {
-                data?.map((value) => (
+                getAdmissionData.data?.map((value, num) => (
                   <Container.Section key={value.id}>
                   <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                     <Container.Map>
-                      <div>{value.num}</div>
-                      <div>{value.id}</div>
-                      <div>{value.ismi}</div>
-                      <div>{value.kurs}</div>
-                      <div>{value.tili}</div>
-                      <div>{value.num}</div>
-                      <div>{value.id}</div>
-                      <div>{value.ismi}</div>
-                      <div>{value.kurs}</div>
-                      <div>{value.tili}</div>
-                      <div>{value.num}</div>
-                      <div>{value.id}</div>
-                      <div>{value.ismi}</div>
-                      <div>{value.kurs}</div>
-                      <div>{value.tili}</div>
-                      <div>{value.num}</div>
-                      <div>{value.id}</div>
-                      <div>{value.ismi}</div>
-                      <div>{value.kurs}</div>
-                      <div>{value.tili}</div>
-                      <div>{value.num}</div>
-                      <div>{value.id}</div>
-                      <div>{value.ismi}</div>
+                      <div>{num+1}</div>
+                      <div>{value.facultyType.id}</div>
+                      <div>{value.user.firstName + ' ' + value.user.lastName}</div>
+                      <div>{value.courseLevel}</div>
+                      <div>{value.facultyType.studyLanguage}</div>
+                      <div>{value.facultyName}</div>
+                      <div>{value.facultyType.educationType}</div>
+                      <div>{new Date(value.user.createdAt).toLocaleDateString()}</div>
+                      <div>{value.facultyType.status ? 'true' : 'false'}</div>
+                      <div>{value.examResult}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{value.user.idNumber}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>{'null'}</div>
+                      <div>+{value.user.phoneNumber}</div>
+                      <div>+{value.user.extraPhoneNumber}</div>
                       <div>{value.kurs}</div>
                     </Container.Map>
                   </Container.Section>

@@ -27,6 +27,8 @@ import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
+import getAdmissionData from '../sliceAdmin/qabul/admission/index'
+import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 
 export default configureStore({
     reducer: {
@@ -57,6 +59,8 @@ export default configureStore({
         getTalimYunalish,
 
         getApplicationData,
-        getExcelData
+        getExcelData,
+        getAdmissionData,
+        sendSmsData
     },
 })
