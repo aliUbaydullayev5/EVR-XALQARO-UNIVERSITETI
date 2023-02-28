@@ -1,7 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (payload)=> {
-    console.log(payload)
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/verify-phone`, {
         method: 'POST',
         headers: {
