@@ -4,17 +4,10 @@ import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
-<<<<<<< HEAD
-import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getApplications} from "../../../redux/sliceAdmin/arizalar/applications";
 import {getExcelfetch} from "../../../redux/sliceAdmin/arizalar/downloadExel";
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
-=======
-import { useDispatch, useSelector } from 'react-redux'
-import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
-import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
->>>>>>> main
 
 export const ArizalarCom = () => {
 
@@ -25,57 +18,12 @@ export const ArizalarCom = () => {
 
   // get applications - arizalar
   const getApplicationData = useSelector((store) => store.getApplicationData)
-
   const [data, setData] = useState([])
 
-  let defaultDate = new Date()
-  const [fromDate, setFromDate] = useState(defaultDate)
-  const [toDate, setToDate] = useState(defaultDate)
-  const onSetFromDate = (e) => {
-    setFromDate(new Date(e.target.value))
-  }
-  const onSetToDate = (e) => {
-    setToDate(new Date(e.target.value))
-  }
-  // console.log(fromDate.getTime(), ' - from')
-  // console.log(toDate, ' - to')
-
-  useEffect(() => {
-      dispatch(getApplications({
-        fromDate: fromDate.getTime(),
-        toDate: toDate.getTime()
-      }))
-  }, [])
-
-  useEffect(() => {
-      setData(getApplicationData.data)
-  }, [getApplicationData])
-  // console.log(data)
-
-
-  // get excel
-  const [excel, setExcel] = useState([])
-  const downloadExcel = () => {
-      dispatch(getExcelfetch())
-  }
-
-
-  // send sms
-  const sendSmsData = useSelector(store => store.sendSmsData)
-  const sendSms = () => {
-    dispatch(sendSmsFetch({
-      // ...
-    }))
-  }
-
-<<<<<<< HEAD
-=======
     let defaultDate = new Date()
     const [fromDate, setFromDate] = useState(defaultDate)
     const [toDate, setToDate] = useState(defaultDate)
-    const onSetFromDate = (e) => {
-      setFromDate(new Date(e.target.value))
-    }
+    const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
     const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
 
@@ -95,7 +43,15 @@ export const ArizalarCom = () => {
     const downloadExcel = () => {
         dispatch(getExcelfetch())
     }
->>>>>>> main
+
+
+    // send sms
+    const sendSmsData = useSelector(store => store.sendSmsData)
+    const sendSms = () => {
+        dispatch(sendSmsFetch({
+            // ...
+        }))
+    }
 
 
   useEffect(() => {
@@ -134,13 +90,12 @@ export const ArizalarCom = () => {
            </Container.Nav>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
-          {data?.users?.map((value) => {
+          {data?.users?.map((value, num) => {
             return(
               <ConTable key={value.id}>
                 <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked}  />
               <div className='row'>
-                {/*<div >{value.id}</div>*/}
-                <div>1</div>
+                <div>{num+1}</div>
                 <div className='colum'>{value.firstName + ' ' + value.lastName}</div>
                 <div className='colum'>{value.phoneNumber}</div>
                 <div className='colum'>{new Date(value.createdAt).toLocaleDateString()}</div>
@@ -164,12 +119,9 @@ export const ArizalarCom = () => {
           <div onClick={downloadExcel}>
             <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
           </div>
-          <div>
+          <div onClick={sendSms}>
             <Exel className={'UserImg'} />
-            <button
-                className='TextPsamal'
-                onClick={sendSms}
-            >
+            <button className='TextPsamal'>
               SMS yuborish
             </button>
           </div>

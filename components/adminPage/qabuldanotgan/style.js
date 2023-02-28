@@ -378,7 +378,7 @@ Container.Nav = styled.div`
 `
 Container.Box = styled.div`
   display: grid;
-  grid-template-columns: 60px 90px 320px 90px 135px 500px 160px 150px 80px 100px 170px 180px 180px 180px 200px 200px 160px 180px 180px 180px 170px 230px 230px 150px;
+  grid-template-columns: 60px 180px 320px 90px 135px 500px 160px 150px 120px 190px 190px 250px 190px 190px 190px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
@@ -413,7 +413,7 @@ Container.Section = styled.div`
 
 Container.Map = styled.div`
   display: grid;
-  grid-template-columns: 60px 90px 320px 90px 135px 500px 160px 150px 80px 100px 170px 180px 180px 180px 200px 200px 160px 180px 180px 180px 170px 230px 230px 150px;
+  grid-template-columns: 60px 180px 320px 90px 135px 500px 160px 150px 120px 190px 190px 250px 190px 190px 190px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;

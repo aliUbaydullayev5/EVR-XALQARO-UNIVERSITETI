@@ -1,7 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async ({
-}) => {
+export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/admission/passed`, {
         method: 'POST',
         headers: {
@@ -9,11 +8,11 @@ export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async ({
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({
-            courseLevel: null,
-            facultyTypeId: null,
-            facultyId: null,
-            lang: null,
-            paymentType: null
+            courseLevel: payload.courseLevelId,
+            facultyTypeId: payload.facultyTypeId,
+            facultyId: payload.facultyId,
+            lang: payload.lang,
+            paymentType: payload.paymentType
         })
     })
         .then(res => res.json())

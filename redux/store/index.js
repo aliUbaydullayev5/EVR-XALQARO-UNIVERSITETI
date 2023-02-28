@@ -9,7 +9,6 @@ import getDirectType from '../slices/getStudyTypes/getDirectType'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
-import getAllDataAriza from '../sliceAdmin/arizalar'
 import talimYunalishAdmin from "../sliceAdmin/talimyunlishAdd"
 import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
 import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
@@ -30,14 +29,11 @@ import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
-import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
-<<<<<<< HEAD
+import getUserId from '../slices/getId/index'
+
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 
-=======
-import getUserId from '../slices/getId/index'
->>>>>>> main
 export default configureStore({
     reducer: {
         firstVerify,
@@ -63,7 +59,6 @@ export default configureStore({
         facultetsgetAll,
         facultetsdeleteId,
         editAbuturentId,
-        getAllDataAriza,
         getTalimYunalish,
         agentAuth,
         authLogin,
@@ -71,12 +66,9 @@ export default configureStore({
         getFacultyType,
         getInfoUserCabinet,
         getApplicationData,
-        getExcelData,
-<<<<<<< HEAD
+        getUserId,
+
         getAdmissionData,
-        sendSmsData
-=======
-        getUserId
->>>>>>> main
+        sendSmsData,
     },
 })

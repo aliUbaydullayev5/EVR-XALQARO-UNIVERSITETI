@@ -9,6 +9,9 @@ import { useState } from 'react'
 import {getAdmissionFetch} from "../../../redux/sliceAdmin/qabul/admission";
 import {useDispatch, useSelector} from "react-redux";
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
+import {getFacultyTypeFetch} from "../../../redux/slices/getStudyTypes/getFacultyType";
+import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
+import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
 
 
 export const QabuldanOtganCom = () => {
@@ -65,14 +68,6 @@ export const QabuldanOtganCom = () => {
   }
 
 
-  // get admission
-  const getAdmissionData = useSelector((store) => store.getAdmissionData)
-
-  useEffect(() => {
-      dispatch(getAdmissionFetch({}))
-  }, [])
-
-
   // send sms
   const sendSmsData = useSelector(store => store.sendSmsData)
   const sendSms = () => {
@@ -80,6 +75,67 @@ export const QabuldanOtganCom = () => {
           // ...
       }))
   }
+
+
+  // course level
+  const courseLevel = [
+      {
+          name: '1-kurs',
+          id: 1
+      },
+      {
+          name: '2-kurs',
+          id: 2
+      },
+      {
+          name: '3-kurs',
+          id: 3
+      },
+      {
+          name: '4-kurs',
+          id: 4
+      },
+      {
+          name: '5-kurs',
+          id: 5
+      },
+      {
+          name: '6-kurs',
+          id: 6
+      },
+  ]
+  const [courseLevelId, setCourseLevelId] = useState(null)
+  const courseLevelHandler = (e) => setCourseLevelId(e)
+
+
+    // get faculty types
+    const getStudyTypesAbuturent = useSelector(store => store.getStudyTypesAbuturent)
+    const [facultyTypes, setFacultyTypes] = useState([])
+    useEffect(() => {
+        dispatch(getAbuturentTypeFetch({
+            type: 'BACHELOR'
+        }))
+    }, [])
+    useEffect(() => setFacultyTypes(getStudyTypesAbuturent.data), [getStudyTypesAbuturent])
+    // handler
+    const [facultyTypeId, setFacultyTypeId] = useState(null)
+    const facultyTypeHandler = (e) => setFacultyTypeId(e)
+
+
+    // get admission
+    const getAdmissionData = useSelector((store) => store.getAdmissionData)
+    useEffect(() => {
+        dispatch(getAdmissionFetch({
+            courseLevelId: courseLevelId,
+            facultyTypeId: facultyTypeId
+        }))
+    }, [courseLevelId, facultyTypeId])
+
+
+    // download
+    const downloadExel = () => {
+        dispatch(getAdmissionExcelfetch())
+    }
 
 
 
@@ -98,11 +154,11 @@ export const QabuldanOtganCom = () => {
               <p>222 222 222</p>
             </div>
           </Conpul>
-          <ConExel>
+          <ConExel onClick={downloadExel}>
             <Exel />
             <p>Excelga chiqarish</p>
           </ConExel>
-          <SelectSms>
+          <SelectSms onClick={sendSms}>
             <Sms className={'Sms'} />
             <p> SMS yuborish</p>
           </SelectSms>
@@ -126,15 +182,34 @@ export const QabuldanOtganCom = () => {
           </Agent>
 
           <Agent>
-            <select name="pets" id="pet-select">
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => courseLevelHandler(e.target.value)}
+            >
               <option value="">Kurs</option>
+              {
+                  courseLevel.map(i => (
+                      <option value={i.id}>{ i.name }</option>
+                  ))
+              }
             </select>
             <Down className={'Down'} />
           </Agent>
 
           <TalimY>
-            <select name="pets" id="pet-select">
-              <option value="">Ta’lim yo’nalishi</option>
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => facultyTypeHandler(e.target.value)}
+            >
+              <option value=''>Ta’lim yo’nalishi</option>
+              {
+                  facultyTypes?.length > 0 &&
+                    facultyTypes.map(i => (
+                        <option value={i.id}>{i.name}</option>
+                    ))
+              }
             </select>
             <Down className={'Down'} />
           </TalimY>
@@ -160,7 +235,7 @@ export const QabuldanOtganCom = () => {
           </TalimTu>
         </ConSelect>
         <ContainerSort>
-          <div>Sana orqali tartiblash </div>
+          <div>Sana orqali tartiblash</div>
         </ContainerSort>
       </Container>
       <div>
@@ -177,20 +252,11 @@ export const QabuldanOtganCom = () => {
                   <div>Ta’lim tili</div>
                   <div>Ta’lim yo’nalishi</div>
                   <div>Ta’lim shakli</div>
-                  <div>Qo’shilgan sanasi</div>
-                  <div>Status</div>
-                  <div>Imtihon natijasi</div>
-                  <div>Kontrakt turi</div>
-                  <div>Shartnoma summasi</div>
-                  <div>To’lagan summa</div>
-                  <div>Qolgan summa</div>
-                  <div>Shartnoma kodi</div>
+                  <div>Sana</div>
                   <div>Agent</div>
-                  <div>Hujjat</div>
-                  <div>Shartnoma.yuk</div>
-                  <div>Ma’lumotnoma</div>
-                  <div>Chaqiruv xati</div>
-                  <div>Zapros</div>
+                  <div>Pasport seriya</div>
+                  <div>Pasport nusxasi</div>
+                  <div>Transcrip/Diplom nusxasi</div>
                   <div>Telefon raqam 1</div>
                   <div>Telefon raqam 2</div>
                   <div>Tahrirlash </div>
@@ -202,26 +268,17 @@ export const QabuldanOtganCom = () => {
                   <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                     <Container.Map>
                       <div>{num+1}</div>
-                      <div>{value.facultyType.id}</div>
-                      <div>{value.user.firstName + ' ' + value.user.lastName}</div>
+                      <div>{value.user.idNumber}</div>
+                      <div>{value.user.fullName}</div>
                       <div>{value.courseLevel}</div>
-                      <div>{value.facultyType.studyLanguage}</div>
+                      <div>{value.facultyType.studyLanguage === 'UZ' ? 'Ozbek tili' : 'Rus tili'}</div>
                       <div>{value.facultyName}</div>
                       <div>{value.facultyType.educationType}</div>
                       <div>{new Date(value.user.createdAt).toLocaleDateString()}</div>
-                      <div>{value.facultyType.status ? 'true' : 'false'}</div>
-                      <div>{value.examResult}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
+                      <div>{value?.agent ? value.agent.fullName : 'Yoq'}</div>
+                      <div>{value.user.passportSeries}</div>
                       <div>{value.user.idNumber}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
-                      <div>{'null'}</div>
+                      <div>{value.diplomaFile.fileOriginalName}</div>
                       <div>+{value.user.phoneNumber}</div>
                       <div>+{value.user.extraPhoneNumber}</div>
                       <div>{value.kurs}</div>
