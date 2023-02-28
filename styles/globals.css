@@ -334,7 +334,6 @@ label:after {
   pointer-events:none;
 }
 label:before {
-  content:'';
   right: 6px;
   top: 0;
   width:20px; height:20px;
