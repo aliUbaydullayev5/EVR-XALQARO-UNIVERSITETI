@@ -24,6 +24,14 @@ const PasswordComponent = () => {
 
     console.log(firstVerify, 'firstVerify')
 
+    // const [data, setData] = useState({
+    //     "phoneNumber":"998936330207",
+    //     "idNumber":"ID-A0000001",
+    //     "verifyDode":"839788",
+    //     "password":"Doniyor.02",
+    //     "prePassword":"Doniyor.02"
+    //
+    // })
 
     return(
         <Container>
@@ -47,7 +55,12 @@ const PasswordComponent = () => {
 
 
                     {
-                        // firstVerify.
+                        firstVerify.status === 'success' ?
+                            <div>
+
+                            </div>
+                            :
+                            <div></div>
                     }
 
 
