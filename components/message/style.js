@@ -14,38 +14,18 @@ const hiddenFunc = (hiddenState) => {
     }
 }
 
-const typeMessageFunc = (type) => {
-    switch (type) {
-        case 'error': {
-            return {
-                border: '3px solid #FF3838'
-            }
-        }
-        case 'success': {
-            return {
-                border: '3px solid #5FF16E'
-            }
-        }
-        default: {
-            return {
-                border: '3px solid #FFC554'
-            }
-        }
-    }
-}
-
 
 const Container = styled.div`
   position: absolute;
   width: 400px;
   min-height: 100px;
   border-radius: 13px;
-  background: #fff;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #fff;
+  //box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
+  background: #1E3C72;
   transition: .3s;
   z-index: 9999999999999;
   ${({hiddenState}) => hiddenFunc(hiddenState)}
-  ${({typeMessage})=> typeMessageFunc(typeMessage)}
   padding: 15px 25px;
   display: grid;
   gap: 7px;
@@ -74,7 +54,7 @@ Container.MessageArea = styled.div`
   justify-content: center;
   .title{
     font-size: 24px;
-    color: #000000; 
+    color: #fff; 
     line-height: 26px;
   }
   .desc{

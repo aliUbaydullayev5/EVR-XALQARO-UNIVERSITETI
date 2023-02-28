@@ -104,6 +104,8 @@ export const TalimYunalishTypeAddCom = () => {
         })))}
   }, [facultyTypeAdd])
   
+
+
   useEffect(() => {
     if (facultyTypeAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakunlandi', type: 'success' }))
     else if (facultyTypeAdd.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Hatolik Bor Qayta tekshirib ko`ring !!!' }))
@@ -128,6 +130,16 @@ export const TalimYunalishTypeAddCom = () => {
       <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '450px', overflowX: "scroll", maxWidth: '990px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           <Container.Nav>
+            <div className='row'>
+              <div >№</div>
+              <div className='colum'>Kantirakt Narxi</div>
+              <div className='colum'>Student soni</div>
+              <div className='colum'>Talim tili</div>
+              <div className='colum'>Ta`lim turi</div>
+              <div className='colum'>Action</div>
+              <div className='colum'>Status</div>
+            </div>
+
             <div className='row'>
               <div > {facultytypesId.id}</div>
               <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, contractPrice: e.target.value }))} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
@@ -159,15 +171,7 @@ export const TalimYunalishTypeAddCom = () => {
               <div className='columAdd'></div>
             </div>
 
-            <div className='row'>
-              <div >№</div>
-              <div className='colum'>Kantirakt Narxi</div>
-              <div className='colum'>Student soni</div>
-              <div className='colum'>Talim tili</div>
-              <div className='colum'>Ta`lim turi</div>
-              <div className='colum'>Action</div>
-              <div className='colum'>Status</div>
-            </div>
+  
           </Container.Nav>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>

@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router.js'
 import React, { useEffect } from 'react'
 import { Button, Input } from '../../../../generic/index.jsx'
-import data from '../../../../Mock/rahbariyat/data.js'
 import Container, { AntSelect, ConTable } from './style.js'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,8 +10,10 @@ import exsamsubjectcreate, { examsubjectCreatePost } from '../../../../../redux/
 import { getAllexamsubjectFetch } from "../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import { facultetsselectAddPost } from '../../../../../redux/sliceAdmin/facultets/facultetsAdd/index.js'
 import { facultetsgetAllFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsgetAll/index.js'
-import facultetsdeleteId, { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId/index.js'
-
+import { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId/index.js'
+import { startMessage } from '../../../../../redux/slices/message/index.js'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import data from '../../../../Mock/rahbariyat/data.js'
 
 const FacultetsImthonCom = () => {
   const [datalist, setDataList] = useState([])
@@ -32,19 +33,47 @@ const FacultetsImthonCom = () => {
 
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
   const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
+  const facultetsgetAll = useSelector((store) => store.facultetsgetAll)
+  const facultetsdeleteId = useSelector((store) => store.facultetsdeleteId)
   const facultetsselectAdd = useSelector((store) => store.facultetsselectAdd)
 
-  const facultetsgetAll = useSelector((store) => store.facultetsgetAll)
-  const facultetsdeleteId = useSelector((store) => store.deleteAbuturentId)
 
+  useEffect(() => {
+    if (facultetsselectAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' }))
+    else if (facultetsdeleteId.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli `Ochirildi', type: 'success' }))
+    setTimeout(() => { dispatch(reset()) }, 500);
+  }, [facultetsselectAdd, facultetsdeleteId])
 
-  useEffect(() => { dispatch(getAllexamsubjectFetch({type : 'BACHELOR   '})) }, [])
-
+  useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
+  useEffect(() => {
+    if (facultetsgetAll.status === 'success') setData(facultetsgetAll.data)
+  }, [facultetsgetAll])
 
 
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
+
+  useEffect(() => {
+    dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
+  }, [getAllexamsubjectFetch])
+
+  useEffect(() => {
+    if ((getAllexamsubject.status === 'success'))
+      setDataFan(getAllexamsubject.data)
+  }, [getAllexamsubject])
+
+  useEffect(() => {
+    dispatch(facultetsgetAllFetch())
+  }, [facultetsgetAllFetch])
+
+  useEffect(() => {
+    if ((facultetsselectAdd.status === 'success') || (facultetsdeleteId.status === 'success')) dispatch(facultetsgetAllFetch())
+    else if ((facultetsselectAdd.status === 'success')) {
+      dispatch(startMessage({ time: 3, message: facultetsselectAdd.message, type: 'success' }))
+    }
+  }, [facultetsselectAdd, facultetsdeleteId])
+
 
   const addFunc = () => {
     dispatch(facultetsselectAddPost(
@@ -59,20 +88,6 @@ const FacultetsImthonCom = () => {
     ))
   }
 
-
-  // edit
-  // const findEditID = (id) => {
-  //   setData(
-  //     data?.map((value) => ({
-  //       id: value.id,
-  //       faculty: value?.faculty?.name,
-  //       firstExamSubject: value.firstExamSubject?.name,
-  //       firstExamSubjectBall: value.firstExamSubjectBall,
-  //       secondExamSubject: value.secondExamSubject,
-  //       secondExamSubjectBall: value.secondExamSubjectBall,
-  //       checkInput: id === value.id ? (!value.id || true) : false
-  //     })))
-  // }
 
   const editPush = (id) => dispatch(postaFacultyTypeAdd({
     id: id,
@@ -93,12 +108,12 @@ const FacultetsImthonCom = () => {
             <div className='row'>
               <div className='colum'>
                 <AntSelect
-                  style={{ width: '400px', }}
+                  style={{ width: '450px', }}
                   placeholder='Facultet Turilar '
                   optionFilterProp="children"
                   options={datalist?.map((value) => ({
                     value: value.id,
-                    label: value.name,
+                    label: value.nameUz,
                   })) || []}
                   onChange={(e) => setFacul({ ...facul, facultet: e })}
                 />
@@ -140,121 +155,57 @@ const FacultetsImthonCom = () => {
             </div>
           </Container.Nav>
         </div>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
           {data?.map((value) => {
             return (
-              <ConTable key={value.id}>
+              <ConTable key={value?.id}>
 
                 <div className='row'>
                   <div>
-                    dsa
                     {value?.checkInput ?
                       <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
-                        {value?.faculty?.name}
+                        {value?.faculty?.nameUz}
                       </>}
                   </div>
                   <div>
                     {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: value.faculty,
-                        firstExamSubject: v.firstExamSubject,
-                        firstExamSubjectBall: v.firstExamSubjectBall,
-                        secondExamSubject: v.secondExamSubject,
-                        secondExamSubjectBall: value.id === v.id ? e.target.value : v.secondExamSubjectBall,
-                        checkInput: v.checkInput
-                      })))} />
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
+                      :
+                      <>
+                        {value?.firstExamSubject?.nameUz}
+                      </>}
+                  </div>
+
+                  <div>
+                    {value?.checkInput ?
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
+                      :
+                      <>
+                        {value?.secondExamSubject?.nameUz}
+                      </>}
+                  </div>
+                  <div>
+                    {value?.checkInput ?
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
+                      :
+                      <>
+                        {value?.firstExamSubjectBall}
+                      </>}
+                  </div>
+
+                  <div>
+                    {value?.checkInput ?
+                      <Input size={'17px'} radius={'5px'} height={'50px'} />
                       :
                       <>
                         {value?.secondExamSubjectBall}
                       </>}
                   </div>
 
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: value.faculty,
-                        firstExamSubject: v.firstExamSubject,
-                        firstExamSubjectBall: value.id === v.id ? e.target.value : v.firstExamSubjectBall,
-                        secondExamSubject: v.secondExamSubject,
-                        secondExamSubjectBall: v.secondExamSubjectBall,
-                        checkInput: v.checkInput
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubjectBall}
-                      </>
-                    }
-                  </div>
 
-                  {/* <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: value.id === v.id ? e.target.value : v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubject?.name}
-                      </>
-                    }
-                  </div>
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: value.id === v.id ? e.target.value : v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubject?.name}
-                      </>
-                    }
-                  </div>
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: value.id === v.id ? e.target.value : v?.firstExamSubjectBall, 
-                        secondExamSubjectBall: v?.secondExamSubjectBall,
-                      })))} />
-                      :
-                      <>
-                        {value?.firstExamSubjectBall}
-                      </>
-                    }
-                  </div>
-
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubjectBall} onchange={(e) => setData(data.map((v) => ({
-                        id: v.id,
-                        faculty: v.faculty?.name,
-                        firstExamSubject: v?.firstExamSubject?.name,
-                        secondExamSubject: v?.secondExamSubject?.name,
-                        firstExamSubjectBall: v?.firstExamSubjectBall,
-                        secondExamSubjectBall: value.id === v.id ? e.target.value : v?.secondExamSubjectBall, 
-                      })))} />
-                      :
-                      <>
-                        {value?.secondExamSubjectBall}
-                      </>
-                    }
-                  </div> */}
                   <div className='action'>
                     {
                       value?.checkInput ?

@@ -5,7 +5,7 @@ import homeAllData from '../slices/homeAllData'
 import deployFile from '../slices/deployFile'
 import receptionPost from '../slices/receptionPost'
 import messageSlice from '../slices/message'
-import getStudyTypes from '../slices/getStudyTypes'
+import getDirectType from '../slices/getStudyTypes/getDirectType'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
@@ -24,12 +24,20 @@ import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
-
+import agentAuth from '../slices/agentAuth'
+import authLogin from '../slices/authLogin'
+import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
+import getFacultyType from '../slices/getStudyTypes/getFacultyType'
+import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
+<<<<<<< HEAD
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 
+=======
+import getUserId from '../slices/getId/index'
+>>>>>>> main
 export default configureStore({
     reducer: {
         firstVerify,
@@ -38,7 +46,7 @@ export default configureStore({
         deployFile,
         receptionPost,
         messageSlice,
-        getStudyTypes,
+        getDirectType,
         reseptionCheckPhoneSlice,
         receptionSmsVerify,
         loginAdminThunk,
@@ -57,10 +65,18 @@ export default configureStore({
         editAbuturentId,
         getAllDataAriza,
         getTalimYunalish,
-
+        agentAuth,
+        authLogin,
+        getFacultyLanguage,
+        getFacultyType,
+        getInfoUserCabinet,
         getApplicationData,
         getExcelData,
+<<<<<<< HEAD
         getAdmissionData,
         sendSmsData
+=======
+        getUserId
+>>>>>>> main
     },
 })

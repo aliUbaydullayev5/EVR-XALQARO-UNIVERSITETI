@@ -5,7 +5,7 @@ import UploadFiler from '../../../assets/icons/uploadeFile.svg';
 import { Button, Input } from '../../generic';
 import AntSelect from '../Antd/style';
 import { useRouter } from 'next/router.js';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UploadMobile from '../../../assets/mobile/icon/UploadMobile.svg';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ import {
 } from '../../../redux/slices/receptionPost';
 import { startMessage } from '../../../redux/slices/message';
 import CustomInput from 'react-phone-number-input/input';
-import { getStudyTypesFetch } from '../../../redux/slices/getStudyTypes';
+import {getDirectTypeFetch, getStudyTypesFetch} from '../../../redux/slices/getStudyTypes/getDirectType';
 import { checkAllInputs2 } from './checkAllInputs';
 import { Modal, Spin } from 'antd';
 import {
@@ -27,43 +27,53 @@ import {
 	receptionSmsVerifyFetch,
 	resetSmsVerify,
 } from '../../../redux/slices/receptionSmsVerify/index.js';
+import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType";
 
 const OqishniKochirishComponent = () => {
+
 	const router = useRouter();
 	const dispatch = useDispatch();
 
-	const [numPasSeriya, setNumPasSeriya] = useState('');
+	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
+	const getDirectType = useSelector((store) => store.getDirectType.data)
+	const { fileId, by } = useSelector((store) => store.deployFile)
+	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
+	const receptionData = useSelector((store) => store.receptionPost)
+	const getFacultyLanguage = useSelector((store)=> store.getFacultyLanguage)
+	const getFacultyType = useSelector((store)=> store.getFacultyType)
+
+
+
+
+	// Pasport input uchun probel koshadigon funcsiya
+	const [numPasSeriya, setNumPasSeriya] = useState('')
 	const [pasSerLength, setPasSerLength] = useState(0);
-
-	const [phonePatron, setphonePatron] = useState('+998');
-	const [numState, setNumState] = useState('+998');
-
-	const [width, setWidth] = useState(null);
-	useEffect(() => {
-		if (window.innerWidth < 1000) {
-			setWidth('100%');
-		} else {
-			setWidth('513px');
-		}
-	});
-
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
-			setPasSerLength(event.length - 1);
-			if (event.length == 2) {
-				return setNumPasSeriya(event.toUpperCase() + ' ');
-			}
-		}
-		if (pasSerLength >= event.length) {
-			setPasSerLength(event.length);
-			setNumPasSeriya(event);
+			setPasSerLength(event.length - 1)
+			if (event.length == 2) return setNumPasSeriya(event.toUpperCase() + ' ')
+		} else if (pasSerLength >= event.length) {
+			setPasSerLength(event.length)
+			setNumPasSeriya(event.toUpperCase())
 		}
 		changeAllDataFunc({
 			type: 'passportSeries',
 			value: event.split(' ').join('').toUpperCase(),
 		});
-		return setNumPasSeriya(event.toUpperCase());
-	};
+		return setNumPasSeriya(event.toUpperCase())
+	}
+
+
+
+
+	// input selector larni width zi
+	const [width, setWidth] = useState(null)
+	useEffect(() => {
+		if (window.innerWidth < 1000) setWidth('100%')
+		else setWidth('513px')
+	})
+
 
 	const [allData, setAllData] = useState({
 		lastName: '',
@@ -73,41 +83,33 @@ const OqishniKochirishComponent = () => {
 		password: '',
 		prePassword: '',
 		passportSeries: '',
-		phoneNumber: '',
-		extraPhoneNumber: '',
+		phoneNumber: '+998',
+		extraPhoneNumber: '+998',
 		courseLevel: 0,
 		studyLanguage: '',
 		educationType: '',
 		facultyId: 0,
 		diplomaId: '',
 		passportId: '',
-	});
-
-	const findFileFunc = ({ file, by }) => {
-		dispatch(deployFileFetch({ file: file, by }));
-	};
-
-	useEffect(() => {
-		dispatch(getStudyTypesFetch({ type: 'BACHELOR' }));
-	}, []);
-	const { educationTypes, facultyDTOForHomeList, studyLanguages } = useSelector(
-		(store) => store.getStudyTypes.data,
-	);
+		verifyCode: ''
+	})
 
 	const changeAllDataFunc = ({ type, value }) => {
-		const fakeData = allData;
-		fakeData[type] = value;
-		setAllData(fakeData);
-		setAllData({ ...allData, [type]: value });
-	};
-	const { fileId, status, by } = useSelector((store) => store.deployFile);
+		const fakeData = allData
+		fakeData[type] = value
+		setAllData(fakeData)
+		setAllData({ ...allData, [type]: value })
+	}
+
+
+	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
-		changeAllDataFunc({ type: by, value: fileId });
-	}, [fileId]);
-	useEffect(() => {
-		changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' });
-	}, []);
+		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }))
+	}, [])
+
+	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]) // file ni yuklab id sini allData ga yozib koyadi
+	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []); // kirishiga magister yoki bakalavir uhcunligini allData ga yozib koyadi
 
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData });
@@ -123,13 +125,6 @@ const OqishniKochirishComponent = () => {
 		}
 	};
 
-	const pushAllInfo = () => {
-		console.log(allData);
-		if (checkAllInputs()) dispatch(receptionPostFetch(allData));
-	};
-
-	const receptionData = useSelector((store) => store.receptionPost);
-
 	useEffect(() => {
 		if (receptionData?.status === 'error') {
 			dispatch(
@@ -144,7 +139,7 @@ const OqishniKochirishComponent = () => {
 
 	if (receptionData.pushAnswer) {
 		router.push('/receptionPage/application/UsersCardInfo');
-		if (receptionData.status === 'success') {
+		if (receptionData.status === 'success')
 			dispatch(
 				startMessage({
 					time: 5,
@@ -152,84 +147,96 @@ const OqishniKochirishComponent = () => {
 					message: receptionData.message,
 				}),
 			);
-		}
 		setTimeout(() => {
 			dispatch(resetVerify());
 		}, 2000);
 	}
 
-	const funForPhoneinput = ({ value, type }) => {
-		setphonePatron(value);
-		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
-	};
 
 	const funPhoneNumber = ({ value, type }) => {
-		setNumState(value);
 		changeAllDataFunc({ value: value?.match(/[0-9]+/g).join(''), type });
 	};
 
+	// status, pushToHome, message
 	const [modelHidden, setModalHidden] = useState(false);
 	const [smsInput, setSmsInput] = useState('');
-
-	const reseptionCheckPhoneSlice = useSelector(
-		(store) => store.reseptionCheckPhoneSlice,
-	);
-
-	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
-
-	const verifyCodeFunc = () => {
-		if (smsInput.length === 6)
-			dispatch(
-				receptionSmsVerifyFetch({
-					verifyCode: allData.verifyCode,
-					phoneNumber: allData.phoneNumber,
-				}),
-			);
-		else
-			dispatch(
-				startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }),
-			);
-	};
-
-	useEffect(() => {
-		receptionSmsVerify?.status === 'success' && setModalHidden(false);
-		receptionSmsVerify?.status === null && setModalHidden(false);
-		receptionSmsVerify?.status === 'error' &&
-			dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
-	}, [receptionSmsVerify])
-
-	useEffect(() => {
-		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
-	}, [reseptionCheckPhoneSlice])
 
 	const smsFunc = () => {
 		if (checkAllInputs())
 			dispatch(
 				reseptionSmsCheckSliceFetch({
 					firstName: allData.firstName,
-					phoneNumber: allData.phoneNumber,
+					phoneNumber: allData.phoneNumber
 				}),
 			)
 	}
 
+	const verifyCodeFunc = () => {
+		if (smsInput.length === 6) dispatch(receptionSmsVerifyFetch({verifyCode: allData.verifyCode, phoneNumber: allData.phoneNumber}))
+		else dispatch(startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }))
+	}
+
+	const pushAllInfo = () => {
+		if (checkAllInputs()) dispatch(receptionPostFetch(allData))
+	}
+
+
+
 	useEffect(() => {
-		if (receptionData.status === 'success') {
-			router.push('/receptionPage/application/UsersCardInfo');
-			setTimeout(() => {
-				dispatch(resetVerify());
-				dispatch(resetTimerVerify());
-				dispatch(resetSmsVerify());
-			}, 2000);
-		}
-	})
+		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
+	}, [reseptionCheckPhoneSlice]);
 
 
+	useEffect(() => {
+		receptionSmsVerify?.status === 'success' && setModalHidden(false)
+		receptionSmsVerify?.status === 'error' &&
+		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
+	}, [receptionSmsVerify])
 
 	useEffect(()=> {
-		dispatch(resetSmsVerify());
+		dispatch(resetSmsVerify())
 		setSmsInput('')
 	}, [allData.phoneNumber])
 
+	useEffect(()=> {
+		dispatch(resetSmsVerify())
+		setSmsInput('')
+	}, [allData.phoneNumber])
+
+
+	// RESET ALL DATA
+
+	useEffect(() => {
+		if (receptionData.status === 'success') {
+			router.push('/receptionPage/application/UsersCardInfo')
+			setTimeout(() => {
+				dispatch(resetVerify())
+				dispatch(resetTimerVerify())
+				dispatch(resetSmsVerify())
+			}, 2000)
+		}
+	})
+
+	// select uchun
+	const selectDirectFunc = ({type, value}) => {
+		dispatch(getFacultyLanguageFetch({id: value}))
+		changeAllDataFunc({ type, value})
+	}
+
+	useEffect(()=> {
+		changeAllDataFunc({ type: 'studyLanguage', value: 'OQISH TILLINI TANLANG'})
+		changeAllDataFunc({ type: 'educationType', value: 'OQISH TURINI TANLANG'})
+		dispatch(resetData())
+	}, [getFacultyLanguage])
+
+	useEffect(()=> {
+		dispatch(getFacultyLanguageFetch({id: allData.facultyId}))
+	}, [getDirectType])
+
+	const selectLanguageFunc = ({type, value}) => {
+		dispatch(getFacultyTypeFetch({id: allData.facultyId, lang: value}))
+		changeAllDataFunc({ type, value})
+	}
 
 	return (
 		<Container>
@@ -256,21 +263,15 @@ const OqishniKochirishComponent = () => {
 
 				<div className={'row7'}>
 					<IconBox>
-						<AntSelect
-							showSearch
-							style={{
-								width,
-								borderRadius: '5px',
-							}}
-							placeholder='Talim shaklingiz'
-							optionFilterProp='children'
-							options={
-								educationTypes?.map((value) => ({ value, label: value })) || []
+
+						<select value={allData.educationType} style={{width}} onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e.target.value })}  >
+							{
+								getFacultyType?.data?.length && getFacultyType?.data?.map((value) => (
+									<option id={value} value={value} selected={value === 'OQISH TURINI TANLANG'} disabled={value === 'OQISH TURINI TANLANG'}>{value}</option>
+								))
 							}
-							onChange={(e) =>
-								changeAllDataFunc({ type: 'educationType', value: e })
-							}
-						/>
+						</select>
+
 					</IconBox>
 				</div>
 
@@ -285,43 +286,19 @@ const OqishniKochirishComponent = () => {
 						width={'513px'}
 						height={'46px'}
 						size={'24px'}
-						onchange={(e) =>
-							changeAllDataFunc({ type: 'firstName', value: e.target.value })
-						}
+						onchange={(e) => changeAllDataFunc({ type: 'firstName', value: e.target.value })}
 					/>
 				</div>
 
 				<div className={'row8'}>
 					<IconBox>
-						<AntSelect
-							showSearch
-							style={{
-								width,
-							}}
-							placeholder='Uqishingizni qaysi kursga kuchiryabsiz'
-							optionFilterProp='children'
-							onChange={(e) =>
-								changeAllDataFunc({ type: 'courseLevel', value: e })
-							}
-							options={[
-								{
-									value: 1,
-									label: '1',
-								},
-								{
-									value: '2',
-									label: '2',
-								},
-								{
-									value: '3',
-									label: '3',
-								},
-								{
-									value: '4',
-									label: '4',
-								},
-							]}
-						/>
+						<select value={allData.courseLevel} style={{width}} onChange={(e) => changeAllDataFunc({ type: 'courseLevel', value: e.target.value })}  >
+							<option disabled={true} selected={true} value={0}>OQISH KURSINI TANLANG</option>
+							<option value={1}>1-kurs</option>
+							<option value={2}>2-kurs</option>
+							<option value={3}>3-kurs</option>
+							<option value={4}>4-kurs</option>
+						</select>
 					</IconBox>
 				</div>
 
@@ -347,14 +324,12 @@ const OqishniKochirishComponent = () => {
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
-							onChange={(value) =>
-								funPhoneNumber({ value, type: 'phoneNumber' })
-							}
+							onChange={(value) => changeAllDataFunc({ type: 'extraPhoneNumber', value})}
 							maxLength={17}
-							value={numState}
+							value={allData.extraPhoneNumber}
 							className={'phoNumber'}
 						/>
-						<Container.NumberText>Enter phone number</Container.NumberText>
+						<Container.NumberText>Enter extra phone number</Container.NumberText>
 					</Container.Number>
 				</div>
 
@@ -380,46 +355,24 @@ const OqishniKochirishComponent = () => {
 					<Container.Number>
 						<CustomInput
 							placeholder='Enter phone number'
-							onChange={(value) =>
-								funForPhoneinput({ value, type: 'extraPhoneNumber' })
-							}
+							onChange={(value) => changeAllDataFunc({ type: 'phoneNumber', value})}
 							maxLength={17}
-							value={phonePatron}
+							value={allData.phoneNumber}
 							className={'phoNumber'}
 						/>
-						<Container.NumberText>Enter phone number 1</Container.NumberText>
+						<Container.NumberText>Enter phone number</Container.NumberText>
 					</Container.Number>
 				</div>
 
-
-
 				<div className={'row5'}>
 					<IconBox>
-						<AntSelect
-							showSearch
-							style={{
-								width,
-							}}
-							placeholder='Talim tilingiz'
-							optionFilterProp='children'
-							filterOption={(input, option) =>
-								(option?.label ?? '').includes(input)
+						<select value={allData.facultyId} style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
+							{
+								getDirectType.length && getDirectType?.map((value, index) => (
+									<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
+								))
 							}
-							filterSort={(optionA, optionB) =>
-								(optionA?.label ?? '')
-									.toLowerCase()
-									.localeCompare((optionB?.label ?? '').toLowerCase())
-							}
-							options={
-								studyLanguages?.map((value) => ({
-									value: value,
-									label: value,
-								})) || []
-							}
-							onChange={(e) =>
-								changeAllDataFunc({ type: 'studyLanguage', value: e })
-							}
-						/>
+						</select>
 					</IconBox>
 				</div>
 
@@ -463,23 +416,15 @@ const OqishniKochirishComponent = () => {
 
 				<div className={'row6'}>
 					<IconBox>
-						<AntSelect
-							showSearch
-							style={{
-								width,
-							}}
-							placeholder='Talim yunalishingiz'
-							optionFilterProp='children'
-							options={
-								facultyDTOForHomeList?.map((value) => ({
-									value: value.id,
-									label: value.name,
-								})) || []
+
+						<select value={allData.studyLanguage} name="cars" id="cars"style={{width}} onChange={(e) => selectLanguageFunc({type: 'studyLanguage', value: e.target.value})} >
+							{
+								getFacultyLanguage.data.length && getFacultyLanguage?.data?.map((value, index) => (
+									<option id={index} value={value} selected={value === 'OQISH TILLINI TANLANG'} disabled={value === 'OQISH TILLINI TANLANG'} >{value}</option>
+								))
 							}
-							onChange={(e) =>
-								changeAllDataFunc({ type: 'facultyId', value: e })
-							}
-						/>
+						</select>
+
 					</IconBox>
 				</div>
 
@@ -509,12 +454,7 @@ const OqishniKochirishComponent = () => {
 									placeholder={'Parol Qayta Kiriting'}
 									padding={'0 8px'}
 									size={'24px'}
-									onchange={(e) =>
-										changeAllDataFunc({
-											type: 'prePassword',
-											value: e.target.value,
-										})
-									}
+									onchange={(e) => changeAllDataFunc({type: 'prePassword', value: e.target.value})}
 								/>
 							</IconBox>
 						</div>
@@ -524,6 +464,8 @@ const OqishniKochirishComponent = () => {
 				<div className={'mobileDivNone'}></div>
 
 				<BtnCon className='row13'>
+					<div className='mobileNone'></div>
+
 					{receptionSmsVerify.status === 'success' ? (
 						<>
 							{receptionData.status == 'loading' && (
@@ -535,6 +477,7 @@ const OqishniKochirishComponent = () => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
+									margin={'0 60px 0 0'}
 									cursor={'none'}
 									disabled={true}>
 									<Container.ButtonLoader>
@@ -551,6 +494,7 @@ const OqishniKochirishComponent = () => {
 									width={'250px'}
 									height={'43px'}
 									size={'21px'}
+									margin={'0 60px 0 0'}
 									onclick={() => pushAllInfo()}>
 									QOLDIRISH
 								</Button>
@@ -564,15 +508,17 @@ const OqishniKochirishComponent = () => {
 							width={'300px'}
 							height={'43px'}
 							size={'21px'}
-							onclick={() => smsFunc()}
-							mpadding={'0 5px'}
-							wrap={true}>
+							mpadding={'0px 5px'}
+							margin={'0 60px 0 0'}
+							wrap={true}
+							onclick={() => smsFunc()}>
 							Telefon raqamni tastiqlash
 						</Button>
 					)}
 				</BtnCon>
-			</InputCont>
 
+
+			</InputCont>
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -588,7 +534,10 @@ const OqishniKochirishComponent = () => {
 						value={smsInput}
 						onchange={(e) => {
 							setSmsInput(e.target.value);
-							changeAllDataFunc({ type: 'verifyCode', value: e.target.value });
+							changeAllDataFunc({
+								type: 'verifyCode',
+								value: e.target.value,
+							});
 						}}
 					/>
 					{receptionSmsVerify.status === 'loading' ? (
@@ -611,9 +560,11 @@ const OqishniKochirishComponent = () => {
 								Tastiqlash
 							</Button>
 						</>
+
 					)}
 				</Container.Model>
 			</Modal>
+
 		</Container>
 	);
 };

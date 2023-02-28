@@ -22,6 +22,7 @@ Container.Scrool = styled.div`
    display: grid;
    ::-webkit-scrollbar {
       width: 5px;
+      height: 5px;
     }
     ::-webkit-scrollbar-track {
       width: 10px !important;
@@ -64,7 +65,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 10fr  200px;
+    grid-template-columns: 50px 10fr  10fr  200px;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
@@ -106,7 +107,7 @@ Container.Nav = styled.div`
     border-radius: 5px;
     height: 50px;
   }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    /* box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54); */
     border-radius: 5px;
   .colum{
     border-left:  2px solid white;

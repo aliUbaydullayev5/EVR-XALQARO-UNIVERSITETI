@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js'
-import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
+// import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
 import { getTalimYunalishFetch, reset } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
 import { startMessage } from '../../../../../../redux/slices/message/index.js'
@@ -26,8 +26,6 @@ export const TalimYunlishAddCom = () => {
 
     const [dataList, setDataList] = useState([])
 
-
-
     const getStudyTypes = useSelector((store) => store.getStudyTypes)
     const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
     const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId)
@@ -35,15 +33,18 @@ export const TalimYunlishAddCom = () => {
     const editAbuturentId = useSelector((store) => store.editAbuturentId)
 
     useEffect(() => {
-        if (getTalimYunalish.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli qoshildi', type: 'success' }), setName(''))
-        else if (getTalimYunalish.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Bu Talim Yunalish oldin Qo`shilgan' }))
+        if (getTalimYunalish.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' }), setName({
+            ...name, nameUz: '',
+            ...name, nameRu: '',
+        }))
+        else if (getTalimYunalish.status === 'notFound') dispatch(startMessage({ time: 3, message: getStudyTypes.message }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [getTalimYunalish || deleteAbuturentId])
 
 
     useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
     useEffect((e) => {
-        if (getTalimYunalish.status === true) setName(e.target.value)
+        if (getTalimYunalish.status === true) setName('')
     }, [getTalimYunalish])
 
 
@@ -63,13 +64,13 @@ export const TalimYunlishAddCom = () => {
             status: id === value.id ? (!value.id || true) : false
         })))
     }
-    
+
     const editPush = (id) => dispatch(getTalimYunalishFetch(
         {
             id: id,
             nameUz: dataList[0].nameUz,
             nameRu: dataList[0].nameRu,
-         }));
+        }));
 
 
     useEffect(() => {
@@ -80,8 +81,6 @@ export const TalimYunlishAddCom = () => {
 
     useEffect(() => {
         if (getTalimYunalish.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
-
-
     }, [getTalimYunalish])
 
 
@@ -92,8 +91,6 @@ export const TalimYunlishAddCom = () => {
     useEffect(() => {
         if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'BACHELOR' }))
     }, [editAbuturentId])
-
-    console.log(dataList, 'dataList');
 
     return (
         <Container>
@@ -111,19 +108,8 @@ export const TalimYunlishAddCom = () => {
                 <Container.Add>
                     <Input onchange={(e) => setName({ ...name, nameUz: e.target.value })} value={name.nameUz} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'5px'} placeholder={`Uzbek Tilida kiriting`} />
                     <Input onchange={(e) => setName({ ...name, nameRu: e.target.value })} value={name.nameRu} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'5px'} placeholder={` Ruscha kiriting`} />
-                    {
-                        getTalimYunalish.status === 'loading' &&
-                        <Container.ButtonLoader>
-                            <Button width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} disabled={true}>
-                                <Spin />
-                            </Button>
-                        </Container.ButtonLoader>
-                    }
 
-                    {
-                        getTalimYunalish.status !== 'loading' &&
-                        <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} radius={' 15px'}> Add</Button>
-                    }
+                    <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} radius={' 15px'}> Add</Button>
 
                 </Container.Add>
 

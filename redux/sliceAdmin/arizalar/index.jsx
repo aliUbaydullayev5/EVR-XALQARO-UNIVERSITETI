@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getAllDataArizaFetch = createAsyncThunk('getAllDataFetch', async ({ page = 0, query = '', search = false }) => {
-    return await fetch(`https://evrtourback.uz/api/v1/user/get?page=${page}&q=${query}`, {
+    return await fetch(`https://evrtourback.uz/api/v1/user/get?page`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             'Content-Type': 'application/json',
+<<<<<<< HEAD
         }
     }).then((res) => res.json())
         .then((json) => {
@@ -14,7 +15,24 @@ export const getAllDataArizaFetch = createAsyncThunk('getAllDataFetch', async ({
                 search
             }
         })
+=======
+            
+        },
+        responseType: "blob"
+
+    }).then((res) => {
+        const url = window.URL.createObjectURL(new Blob([res.data]))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'excel')
+        document.body.appendChild(link)
+        link.click()
+    }
+    )
+>>>>>>> main
 })
+
+
 
 const getAllDataAriza = createSlice({
     name: 'getAllData',

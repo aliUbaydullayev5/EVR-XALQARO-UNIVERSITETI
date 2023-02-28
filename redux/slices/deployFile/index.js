@@ -3,9 +3,10 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const deployFileFetch = createAsyncThunk('deployFetchData', async (payload)=> {
     let formData = new FormData()
     formData.append('file', payload.file.target.files[0])
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/attachment/upload`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/attachment/upload`, {
         headers: {
-          Secret: 'eyJhbGciOiJIUzI1NiJ9.e30.ZRrHA1JJJW8opsbCGfG_HACGpVUMN_a9IV7pAx'
+            'Content-Type': 'application/json',
+            Secret: 'eyJhbGciOiJIUzI1NiJ9.e30.ZRrHA1JJJW8opsbCGfG_HACGpVUMN_a9IV7pAx'
         },
         method: 'POST',
         body: formData
@@ -34,7 +35,6 @@ const deployFile = createSlice({
                 state.fileId = data
                 state.by = by
             }
-            console.log(payload)
         },
         [deployFileFetch.rejected]: (state)=> {
             state.status = 'error'

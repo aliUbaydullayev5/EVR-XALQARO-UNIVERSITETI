@@ -16,7 +16,7 @@ export  const facultySirtqi = [
     },
     {
         id: 2,
-        name: 'KUNDIZGI'
+        name: 'KUNDUZGI'
     },
     {
         id: 3,

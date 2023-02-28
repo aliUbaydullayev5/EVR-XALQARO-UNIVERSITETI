@@ -23,10 +23,10 @@ const getAllexamsubject = createSlice({
         [getAllexamsubjectFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [getAllexamsubjectFetch.fulfilled]: (state, action) => {
-            console.log(action.payload);
+        [getAllexamsubjectFetch.fulfilled]: (state, {payload}) => {
             state.status = 'success'
-            if (action?.payload?.success == true) state.data = action?.payload?.data
+            if (payload?.success == true)
+                state.data = payload?.data
         },
         [getAllexamsubjectFetch.rejected]: (state) => {
             state.status = 'error'

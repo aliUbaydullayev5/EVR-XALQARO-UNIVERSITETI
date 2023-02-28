@@ -1,26 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container, { ConHero, ConTable } from './style.js'
 import { Button, Input } from "../../generic"
 import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
 import Exel from "../../../assets/icons/Exel.svg"
 import Sms from "../../../assets/icons/Sms.svg"
+<<<<<<< HEAD
 import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getApplications} from "../../../redux/sliceAdmin/arizalar/applications";
 import {getExcelfetch} from "../../../redux/sliceAdmin/arizalar/downloadExel";
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
+=======
+import { useDispatch, useSelector } from 'react-redux'
+import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
+import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
+>>>>>>> main
 
 export const ArizalarCom = () => {
 
     const dispatch = useDispatch()
-
-  const [selectAllState, setSelectAllState] = useState(false)
-
-  const [inView, setInView] = useState(false);
-
-  const getAllData = useSelector((store) => store.getAllData)
-
-
+    const [selectAllState, setSelectAllState] = useState(false)
+    const [inView, setInView] = useState(false)
+    const getAllData = useSelector((store) => store.getAllData)
 
   // get applications - arizalar
   const getApplicationData = useSelector((store) => store.getApplicationData)
@@ -67,21 +68,35 @@ export const ArizalarCom = () => {
     }))
   }
 
+<<<<<<< HEAD
+=======
+    let defaultDate = new Date()
+    const [fromDate, setFromDate] = useState(defaultDate)
+    const [toDate, setToDate] = useState(defaultDate)
+    const onSetFromDate = (e) => {
+      setFromDate(new Date(e.target.value))
+    }
+    const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
 
+    useEffect(() => {
+        dispatch(getApplications({
+          fromDate: fromDate.getTime(),
+          toDate: toDate.getTime()
+        }))
+    }, [])
 
-  // useEffect(() => {
-  //   setData(data?.map((value) => (
-  //     {
-  //       id: value.id,
-  //       ismi: value.ismi,
-  //       phone: value.phone,
-  //       data: value.data,
-  //       img: value.img,
-  //       checked: selectAllState
-  //     }
-  //   )))
-  // }, [selectAllState])
+    useEffect(() => {
+        setData(getApplicationData.data)
+    }, [getApplicationData])
+
+
+    // get excel
+    const downloadExcel = () => {
+        dispatch(getExcelfetch())
+    }
+>>>>>>> main
+
 
   useEffect(() => {
     if (inView) {
@@ -111,10 +126,10 @@ export const ArizalarCom = () => {
               <Container.Nav>
               <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
                 <div className='row'>
-                  <div >№</div>
-              <div className='colum'>FIO</div>
-              <div className='colum'>Telefon raqam</div>
-              <div className='colum'>Kun</div>
+                    <div >№</div>
+                    <div className='colum'>FIO</div>
+                    <div className='colum'>Telefon raqam</div>
+                    <div className='colum'>Kun</div>
                 </div>
            </Container.Nav>
         </div>
@@ -161,7 +176,10 @@ export const ArizalarCom = () => {
         </ConHero.Exel>
       </ConHero>
     </Container>
-    {getAllData?.status === 'loading' && <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>}
+    {
+        getAllData?.status === 'loading' &&
+        <div style={{display: 'flex', justifyContent: 'center', padding: '10px'}}><Loading type={'bars'} color={'#000'} /></div>
+    }
     </>
   )
 }

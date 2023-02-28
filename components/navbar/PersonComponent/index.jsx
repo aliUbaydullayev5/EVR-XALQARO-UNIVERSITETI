@@ -17,16 +17,7 @@ const PersonComponent = ({onclick}) => {
                 <p className={'title'}>Shaxsiy kabinet</p>
             </div>
             <div>
-                <Button msize={'20px'} uppercase={true} mheight={'37px'} mweight={'162px'} height={'50px'} width={'202px'} size={'24px'} onclick={()=> router.push('/auth/talaba')} >talaba</Button>
-            </div>
-            <div>
-                <Button msize={'20px'} uppercase={true} mheight={'37px'} mweight={'162px'} height={'50px'} width={'202px'} size={'24px'} onclick={()=> router.push('/auth/oqituvchi')}>O‘qituvchi</Button>
-            </div>
-            <div>
-                <Button msize={'20px'} uppercase={true} mheight={'37px'} mweight={'162px'} height={'50px'} width={'202px'} size={'24px'} onclick={()=> router.push('/auth/rahbariyat')}>Boshqaruv</Button>
-            </div>
-            <div>
-                <Button msize={'20px'} uppercase={true} mheight={'37px'} mweight={'162px'} height={'50px'} width={'202px'} size={'24px'} onclick={()=> router.push('/auth/agent')}>AGENT</Button>
+                <Button msize={'20px'} uppercase={true} mheight={'37px'} mweight={'162px'} height={'50px'} width={'202px'} size={'24px'} onclick={()=> router.push('/auth')} >Kirish</Button>
             </div>
         </Component>
     )

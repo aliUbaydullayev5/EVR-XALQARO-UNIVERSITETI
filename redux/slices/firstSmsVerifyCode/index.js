@@ -1,7 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const firstSmsCodeFetch = createAsyncThunk('postSmsCodeFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/auth/verify-phone`, {
+    console.log(payload)
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/verify-phone`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +30,7 @@ const firstSmsCode = createSlice({
             if(action.payload.success == true){
                 state.pushToHome = true
                 state.message = 'Siz muvofiyaqatli ottingiz'
-                if (localStorage.getItem('firstToken')) state.pushToHome = true
+                if(localStorage.getItem('firstToken')) state.pushToHome = true
                 else localStorage.setItem('firstToken', 'success')
             }
             if(action?.payload?.success == false){

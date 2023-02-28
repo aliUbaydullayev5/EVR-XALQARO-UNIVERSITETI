@@ -10,7 +10,8 @@ export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', a
         },
         body: JSON.stringify({
             id: payload.id,
-            name: payload.name,
+            nameUz: payload.nameUz,
+            nameRu: payload.nameRu,
             "studyType": "BACHELOR",
         }),
     }).then((res) => res.json())
