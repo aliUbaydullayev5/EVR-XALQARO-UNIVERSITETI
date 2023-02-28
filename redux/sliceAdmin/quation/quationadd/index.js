@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const quationCreatePost = createAsyncThunk('quationCreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/exam-question/create`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/exam-question/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

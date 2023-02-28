@@ -6,7 +6,7 @@ export const getApplications = createAsyncThunk('getApplications', async ({
       fromDate = 1672531200000,
       toDate = new Date().getTime()
     }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
+    return await fetch(`${ process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

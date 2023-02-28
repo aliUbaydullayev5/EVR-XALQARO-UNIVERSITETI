@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async ({
 }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/sms`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/sms`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

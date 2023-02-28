@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const facultetsdeleteIdFetch = createAsyncThunk('facultetsdeleteIdFetch', async ({ id }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty-exam-subject/delete/${id}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/faculty-exam-subject/delete/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
