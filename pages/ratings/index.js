@@ -1,10 +1,10 @@
 import React from 'react'
-import ContactUsComponent from '../../components/ContactUs'
+import RatingsComponent from '../../components/Ratings'
 import Root from '../../root'
 
 export const Ratings = () => {
  return (
-  <Root><ContactUsComponent /></Root>
+  <Root><RatingsComponent /></Root>
  )
 }
 export default Ratings
