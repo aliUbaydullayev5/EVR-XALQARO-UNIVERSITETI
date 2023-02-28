@@ -315,7 +315,9 @@ select{
 select option{
   padding: 8px 5px;
   color: black;
+  background: #221F51;
 }
+
 
 
 label {position:relative}

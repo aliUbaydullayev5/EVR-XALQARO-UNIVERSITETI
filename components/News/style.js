@@ -6,6 +6,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 1000px){
+    padding: 0 0 0 0;
+  }
   
 `
 
@@ -18,7 +22,8 @@ Container.Inset = styled.div`
   display: grid;
   grid-template-rows: 84px 1fr;
   @media only screen and (max-width: 1000px) {
-    grid-template-rows: 31px 1fr;
+    grid-template-rows: 40px 1fr;
+    box-shadow: 0 0 0 0;
   }
 
 
@@ -36,8 +41,9 @@ Container.Top = styled.div`
   @media only screen and (max-width: 1000px) {
     background: #221F51;
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 15px 15px 0px 0px;
     height: 31px;
+    padding: 0;
   }
 `
 Container.TopTitle = styled.div`
@@ -48,23 +54,23 @@ Container.TopTitle = styled.div`
 
   @media only screen and (max-width: 1000px) {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
   } 
 
 `
 
 Container.Search = styled.div`
-position: absolute;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 105.9%;
-letter-spacing: -0.025em;
-color: #FFFFFF;
-left: 81%;
-input{
+ position: absolute;
+ font-family: 'Montserrat';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 20px;
+ line-height: 105.9%;
+ letter-spacing: -0.025em;
+ color: #FFFFFF;
+ left: 81%;
+ input{
     max-width: 200px;
     height: 38px;
     width: 100%;
@@ -78,23 +84,23 @@ input{
     padding-left: 18px;
     padding-bottom: 10px;
     padding-right: 50px;
-}
-.search{
-  position: absolute;
-  right: 15px;
-  top: 9px;
-} 
+ }
+ .search{
+   position: absolute;
+   right: 15px;
+   top: 9px;
+ } 
 
-@media only screen and (max-width: 1000px){
-  font-weight: 200;
-  font-size: 12px;
-  margin-right: 30px;
-  input{
-    display: none;
-  }
-  .search{
-    display: none;
-  }
+ @media only screen and (max-width: 1000px){
+   font-weight: 200;
+   font-size: 12px;
+   margin-right: 30px;
+   input{
+     display: none;
+   }
+   .search{
+     display: none;
+   }
 }
 
 `
@@ -103,7 +109,7 @@ Container.Bottom = styled.div`
   padding: 14px 32px;
   display: grid;
   @media only screen and (max-width: 1000px) {
-    padding: 25px 15px;
+    padding: 20px 15px;
   }
 `
 
@@ -118,7 +124,8 @@ Container.BottomDesc = styled.div`
   justify-content: center;
   @media only screen and (max-width: 
      1000px) {
-    height: 400px !important;
+    height: 450px !important;
+    padding: 0 8px 0 0;
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -162,6 +169,10 @@ Container.BottomLine = styled.div`
   margin-top: 15px;
   border-radius: 10px;
   background: #FFFFFF;
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `
 
 export default Container

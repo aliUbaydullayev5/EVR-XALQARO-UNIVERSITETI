@@ -12,6 +12,7 @@ const Container = styled.div`
    height: 136px;
    border-radius: 15px;
    background-size: cover;
+   cursor: pointer;
   }
   
   @media only screen and (max-width:1000px){
@@ -84,7 +85,7 @@ Container.Box = styled.div`
    font-size: 24px;
    line-height: 29px;
    color: #FFFFFF;
- }
+  }
  @media only screen and (max-width:1000px){
   gap: 2px;
   max-width: 150px;
@@ -98,8 +99,8 @@ Container.Box = styled.div`
     height: 6px;
     span{
       font-weight: 400;
-      font-size: 5px;
-      line-height: 6px;
+      font-size: 7px;
+      line-height: 7px;
      
     }
   }
@@ -112,8 +113,8 @@ Container.Box = styled.div`
    }
    p{
     font-weight: 500;
-    font-size: 5px;
-    line-height: 6px;
+    font-size: 7px;
+    line-height: 7px;
    }
   } 
 `
@@ -123,12 +124,19 @@ Container.End = styled.div`
  align-items: flex-end;
  gap: ${({ end }) => end && "36px"};
  margin-bottom: ${({ end }) => end && "10px"};
-
+ .star{
+  cursor: pointer;
+ }
+ .star:active{
+  transform: scale(1.1);
+  transition: .2s;
+ }
  @media only screen and (max-width:1000px){
-  gap: ${({ end }) => end && "34px"};
+  gap: ${({ end }) => end && "24px"};
   display: ${({ end }) => !end && "none"};
-  padding-bottom: 5px;
-  padding-right: 5px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  margin: 3px;
  } 
 `
 
