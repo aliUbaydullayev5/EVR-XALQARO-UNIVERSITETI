@@ -208,14 +208,14 @@ export const AbiturientQabul = () => {
 
 	useEffect(() => {
 		if (receptionData.status === 'success') {
-			router.push('/receptionPage/application/UsersCardInfo');
+			router.push('/receptionPage/application/UsersCardInfo')
 			setTimeout(() => {
-				dispatch(resetVerify());
-				dispatch(resetTimerVerify());
-				dispatch(resetSmsVerify());
-			}, 2000);
+				dispatch(resetVerify())
+				dispatch(resetTimerVerify())
+				dispatch(resetSmsVerify())
+			}, 2000)
 		}
-	});
+	})
 	const selectDirectFunc = ({type, value}) => {
 		dispatch(getFacultyLanguageFetch({id: value}))
 		changeAllDataFunc({ type, value})
