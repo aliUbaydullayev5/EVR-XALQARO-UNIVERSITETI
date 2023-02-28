@@ -25,6 +25,7 @@ const Account = () => {
             case 'BOSHQARUV': return  <div />
             case 'OQITUVCHI': return  <div />
             case 'AGENT': return  <div />
+            case 'ADMIN': return  <div />
         }
     }
     return <Root>{status === 'success' && ruleComTypeFunc(data?.role?.name)}</Root>
