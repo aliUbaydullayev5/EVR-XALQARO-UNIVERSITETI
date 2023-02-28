@@ -27,12 +27,7 @@ const ShaxsiyKabinetComponent = () => {
         query.push('/homePage')
     }
 
-    // useEffect(()=> {
-    //     dispatch(getInfoUserCabinetFetch())
-    // }, [])
-
     const {data, status} = useSelector((store)=> store.getInfoUserCabinet)
-
 
     return(
         <Container>
