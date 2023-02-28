@@ -1,48 +1,57 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
+export const forgonPasswordFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
     console.log(payload)
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/check-phone`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/change-password`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            firstName: payload.firstName,
-            phoneNumber: payload.phoneNumber
+            phoneNumber: payload.phoneNumber,
+            idNumber: payload.idNumber,
+            verifyDode: payload.verifyDode,
+            password: payload.password,
+            prePassword: payload.prePassword
         }),
     }).then((res) => res.json())
 })
 
-const firstVerify = createSlice({
+const forgonPassword = createSlice({
     name: 'postVerify',
     initialState: {
-        verifyCode: false,
         status: null,
+        message: ''
     },
     extraReducers: {
-        [firstVerifyFetch.pending]: (state) => {
+        [forgonPasswordFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [firstVerifyFetch.fulfilled]: (state, action) => {
+        [forgonPasswordFetch.fulfilled]: (state, action) => {
             state.status = 'success'
-            if (action.payload.success) {
-                state.verifyCode = true
+            if(action?.payload?.success){
+                state.message = action.payload.message.split('_').join(' ')
+                state.pushAnswer = true
+            }
+            if(action?.payload?.success == false){
+                state.status = 'error'
+                state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
         },
-        [firstVerifyFetch.rejected]: (state) => {
+        [forgonPasswordFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
     reducers: {
-        resetTimerVerify(state) {
-            state.verifyCode = false
+        resetData(state) {
             state.status = null
+            state.message = ''
+
         }
     }
 })
 
 
 
-export const { resetTimerVerify } = firstVerify.actions
-export default firstVerify.reducer
+export const { resetTimerVerify } = forgonPassword.actions
+export default forgonPassword.reducer

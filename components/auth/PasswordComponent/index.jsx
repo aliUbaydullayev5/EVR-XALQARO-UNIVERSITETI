@@ -24,14 +24,25 @@ const PasswordComponent = () => {
 
     console.log(firstVerify, 'firstVerify')
 
-    // const [data, setData] = useState({
-    //     "phoneNumber":"998936330207",
-    //     "idNumber":"ID-A0000001",
-    //     "verifyDode":"839788",
-    //     "password":"Doniyor.02",
-    //     "prePassword":"Doniyor.02"
-    //
-    // })
+    const [data, setData] = useState({
+        phoneNumber: '',
+        idNumber: '',
+        verifyDode: '',
+        password: '',
+        prePassword: ''
+    })
+    const changeAllDataFunc = ({ type, value }) => {
+        const fakeData = data
+        fakeData[type] = value
+        setData(fakeData)
+        setData({ ...data, [type]: value })
+    }
+
+    // phoneNumber
+    // idNumber
+    // verifyDode
+    // password
+    // prePassword
 
     return(
         <Container>
