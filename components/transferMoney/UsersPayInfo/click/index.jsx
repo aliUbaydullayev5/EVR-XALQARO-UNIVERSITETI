@@ -11,6 +11,7 @@ import { AntTimeCon } from '../../../reception/abiturient/style.js'
 
 
 export const Clickpay = () => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 

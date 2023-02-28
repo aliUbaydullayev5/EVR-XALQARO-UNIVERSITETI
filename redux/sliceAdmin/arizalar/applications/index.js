@@ -32,7 +32,6 @@ const getApplicationData = createSlice({
     extraReducers: {
         [getApplications.pending]: (state) => {
             state.status = 'Loading'
-            console.log(1)
         },
         [getApplications.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
