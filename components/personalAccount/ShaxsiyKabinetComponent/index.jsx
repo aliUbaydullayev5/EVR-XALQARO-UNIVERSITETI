@@ -26,10 +26,11 @@ const ShaxsiyKabinetComponent = () => {
         localStorage.removeItem('accessToken')
         query.push('/homePage')
     }
+
     // useEffect(()=> {
     //     dispatch(getInfoUserCabinetFetch())
     // }, [])
-    //
+
     const {data, status} = useSelector((store)=> store.getInfoUserCabinet)
 
 

@@ -1,7 +1,6 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 export const getInfoUserCabinetFetch = createAsyncThunk('getInfoUserCabinetFetch', async (payload)=> {
-    console.log()
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/user/me`, {
         method: 'GET',
         headers: {
@@ -16,6 +15,8 @@ const getInfoUserCabinet = createSlice({
     name: 'getInfoUserCabinet',
     initialState: {
         status: null,
+        message: '',
+        errorCode: null,
         data: {}
     },
     extraReducers: {
@@ -26,25 +27,29 @@ const getInfoUserCabinet = createSlice({
             if(action.payload.success === true){
                 state.data = action.payload.data
                 state.status = 'success'
+                state.message = 'success'
             }
             else if(action?.payload?.success === false){
                 state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
+                state.errorCode = action?.payload?.errors[0]?.errorCode
+
             }
         },
-        [getInfoUserCabinetFetch.rejected]: (state) => {
+        [getInfoUserCabinetFetch.rejected]: (state, action) => {
             state.status = 'error'
         }
     },
-    // reducers: {
-    //     resetTimerVerify(state) {
-    //         state.verifyCode = false
-    //         state.status = null
-    //     }
-    // }
+    reducers: {
+        resetStatusCode(state) {
+            state.errorCode = null
+            state.message = ''
+            state.status = null
+        }
+    }
 })
 
 
 
-// export const { resetTimerVerify } = getInfoUserCabinet.actions
+export const { resetStatusCode } = getInfoUserCabinet.actions
 export default getInfoUserCabinet.reducer

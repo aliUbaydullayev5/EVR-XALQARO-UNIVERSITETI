@@ -40,7 +40,7 @@ const authLogin = createSlice({
                 state.message = action?.payload?.errors[0]?.errorMsg
             }
         },
-        [fetchAuthLogin.rejected]: (state)=> {
+        [fetchAuthLogin.rejected]: (state, action)=> {
             state.status = 'error'
         }
     },

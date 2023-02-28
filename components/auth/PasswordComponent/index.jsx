@@ -12,8 +12,6 @@ const PasswordComponent = () => {
     const getUserId = useSelector((store)=> store.getUserId)
 
     const [number, setNumber] = useState('+998')
-    console.log(getUserId, 'getUserId')
-
     const pushNumber = () => dispatch(getUserIdFetch({userNumber: number}))
 
     return(
