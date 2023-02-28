@@ -12,7 +12,6 @@ export const FacultyImtxonSelectPage = () => {
                   <FacultetsImthonCom/>
               </AdminRootToken>
           </RootSidebar>
-
       </RootAdmin>
   )
 }
