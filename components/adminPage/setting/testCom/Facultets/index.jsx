@@ -124,7 +124,7 @@ const FacultetsImthonCom = () => {
                   style={{ width: '300px', }}
                   placeholder='Birinchi Blog uchun '
                   optionFilterProp="children"
-                  options={datafan?.map((value) => ({
+                  options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
@@ -136,7 +136,7 @@ const FacultetsImthonCom = () => {
                   style={{ width: '300px', }}
                   placeholder='Ikkinchi Blog Uchun'
                   optionFilterProp="children"
-                  options={datafan?.map((value) => ({
+                  options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
@@ -157,8 +157,10 @@ const FacultetsImthonCom = () => {
           </Container.Nav>
         </div>
 
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-          {data?.map((value) => {
+
+          {getStudyTypesAbuturent.status === 'success' && data?.map((value) => {
             return (
               <ConTable key={value?.id}>
 
@@ -225,6 +227,7 @@ const FacultetsImthonCom = () => {
             )
           })}
         </div>
+
       </Container.Scrool>
     </Container>
   )

@@ -55,7 +55,7 @@ export const SidebarAdmin = () => {
 
     {
       id: 9,
-      name: 'Ta’lim yo’nalishlari',
+      name: `Testlar`,
       clicked: false,
     },
     {
@@ -127,52 +127,34 @@ export const SidebarAdmin = () => {
     }
   ]
   const CheckId = (id) => {
-    if (id === 1) {
-      quarey.push('/admin/setting/menagement')
-    }
-    else if (id == 3) {
-      quarey.push('/admin/setting/facultets')
-    }
-    else if (id == 4) {
-      quarey.push('/admin/setting/facultetsType')
-    }
-    if (id === 5) {
-      quarey.push('/admin/setting/exsam')
-    }
-
-    if (id === 6) {
-      quarey.push('/admin/setting/facultyImtxonselect')
-    }
-    if (id === 7) {
-      quarey.push('/admin/setting/subjectsMandatory')
-    }
-
-    if (id === 7) {
-      quarey.push('/admin/setting/subjectsMandatory')
-    }
-    if (id === 8) {
-      quarey.push('/admin/setting/quations')
-    }
-    // 
+    if (id === 1) quarey.push('/admin/setting/menagement')
+    else if (id == 3) quarey.push('/admin/setting/facultets')
+    else if (id == 4) quarey.push('/admin/setting/facultetsType')
+    else if (id === 5) quarey.push('/admin/setting/exsam')
+    else if (id === 6) quarey.push('/admin/setting/facultyImtxonselect')
+    else if (id === 7) quarey.push('/admin/setting/subjectsMandatory')
+    else if (id === 7) quarey.push('/admin/setting/subjectsMandatory')
+    else if (id === 8) quarey.push('/admin/setting/quations')
+    else if (id === 9) quarey.push('/admin/setting/quationResalt')
   }
 
   return (
     <>
       <Container>
-            <Container.BottomDescInset>
-              {FaceMenu?.map((val) => {
-                var Imgs = val?.img
-                return (
-                  <UserCon onClick={() => CheckId(val.id)} key={val.id}>
-                    <UserCon.Box>
-                      <UserCon.Name>
-                        <h1>{val.name}</h1>
-                        {Imgs}
-                      </UserCon.Name>
-                    </UserCon.Box>
-                  </UserCon>
-                )
-              })}
+        <Container.BottomDescInset>
+          {FaceMenu?.map((val) => {
+            var Imgs = val?.img
+            return (
+              <UserCon onClick={() => CheckId(val.id)} key={val.id}>
+                <UserCon.Box>
+                  <UserCon.Name>
+                    <h1>{val.name}</h1>
+                    {Imgs}
+                  </UserCon.Name>
+                </UserCon.Box>
+              </UserCon>
+            )
+          })}
         </Container.BottomDescInset>
       </Container>
     </>

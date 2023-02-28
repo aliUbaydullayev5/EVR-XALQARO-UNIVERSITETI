@@ -63,7 +63,6 @@ const quationCreate = createSlice({
                 state.data = action.payload.data
                 state.status = 'success'
                 state.message = 'Malumot qo`shildi'
-
             }
             else if (action.payload.success === false) {
                 state.status = 'notFound'

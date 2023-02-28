@@ -31,6 +31,8 @@ import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
+import quationget from '../sliceAdmin/quation/quationgett/index.js'
+
 
 export default configureStore({
     reducer: {
@@ -66,5 +68,6 @@ export default configureStore({
         getFacultyType,
         getInfoUserCabinet,
         quationCreate,
+        quationget,
     },
 })

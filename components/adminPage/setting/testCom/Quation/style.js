@@ -4,19 +4,24 @@ const Container = styled.div`
  display: grid; 
  padding: 0px 40px;
  gap: 10px;
- .btneEnd {
-  display: flex;
-  justify-content: end;
- }
-`
-
-const QuationUz = styled.div`
-  background: rgba(34, 31, 81, 0.95);
+ background: rgba(34, 31, 81, 0.95);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   width: 100%;
   height: 530px;
   width: 100%;
+ .btneEnd {
+  display: flex;
+  justify-content: end;
+ }
+`
+Container.Select = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`
+const QuationUz = styled.div`
   display: grid;
   grid-template-columns: auto auto;
 

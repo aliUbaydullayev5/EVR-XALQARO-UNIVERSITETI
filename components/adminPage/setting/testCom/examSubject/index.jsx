@@ -33,7 +33,7 @@ export const ExamSubjectCreate = () => {
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({ ...name, createAd: '' })
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName('')
 
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
         setTimeout(() => { dispatch(reset()) }, 500);
@@ -41,15 +41,11 @@ export const ExamSubjectCreate = () => {
 
 
     useEffect(() => {
-        if ((examsubjectcreate.status === 'success') )
+        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
             dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [examsubjectcreate])
-    
-    useEffect(() => {
-        if ((examdeleteId.status === 'success'))
-            dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [examdeleteId])
-    
+    }, [examsubjectcreate, examdeleteId])
+
+
     useEffect(() => {
         dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
     }, [getAllexamsubjectFetch])

@@ -5,30 +5,26 @@ import { AntSelect } from '../Facultets/style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import { quationCreatePost } from '../../../../../redux/sliceAdmin/quation/quationadd/index.js';
+import { startMessage } from '../../../../../redux/slices/message/index.js';
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js';
 
 
 
 export const QuationCom = () => {
 
   const [dataList, setDataList] = useState([])
-
   const [name, setName] = useState({
     examSubjectId: '',
     textUz: '',
     textRu: '',
-
     answers1NameUz: '',
     answers1NameRu: '',
-
     answers2NameUz: '',
     answers2NameRu: '',
-
     answers3NameUz: '',
     answers3NameRu: '',
-
     answers4NameUz: '',
     answers3NameRu: '',
-
   })
   const [Intput, setInput] = useState({
     check1: false,
@@ -39,6 +35,13 @@ export const QuationCom = () => {
   const dispatch = useDispatch()
 
   const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
+  const quationCreate = useSelector((store) => store.quationCreate)
+  useEffect(() => {
+    if (quationCreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Qo`shildi', type: 'success' }), setName())
+    else if (quationCreate.status === 'notFound') dispatch(startMessage({ time: 4, message: quationCreate.message.split('_').join(' '), type: 'warning' }), setName({}))
+    setTimeout(() => { dispatch(reset()) }, 500);
+  }, [quationCreate]) 
+
 
   useEffect(() => {
     dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
@@ -85,47 +88,31 @@ export const QuationCom = () => {
       check4: type === 'check4' ? true : false,
     })
   }
-  console.log(name.textUz, 'name.textUz');
-  console.log(name.textRu, 'name.textRu');
-  console.log(name.answers1NameUz, 'name.answers1NameUz');
-  console.log(name.examSubjectId, 'name.examSubjectId');
-  console.log(name.answers1NameRu, 'name.answers1NameRu');
 
-  console.log(name.answers2NameUz, 'name.answers2NameUz')
-  console.log(name.answers2NameRu, 'name.answers2NameRu');
-
-  console.log(name.answers3NameUz, 'name.answers3NameUz');
-  console.log(name.answers3NameRu, 'name.answers3NameRu');
-  console.log(name.answers4NameUz, 'name.answers4NameUz');
-  console.log(name.answers4NameUz, 'name.answer4NameRu');
-
-  
-  console.log(Intput.check1, 'Input.check1');
-  console.log(Intput.check2, 'Input.check2');
-  console.log(Intput.check3, 'Input.check3');
-  console.log(Intput.check4, 'Input.check4');
   return (
     <Container>
+
+      <Container.Select>
+        <AntSelect
+          style={{ width: '420px', borderRadius: '15px' }}
+          placeholder='Fanga Tanlang Test Qo`shish'
+          optionFilterProp="children"
+          options={dataList?.map((value) => ({
+            label: value.name,
+            value: value.id,
+          })) || []}
+          onChange={(e) => setName({ ...name, examSubjectId: e })}
+        />
+      </Container.Select>
       <QuationUz>
+  
         <div>
-
-          <AntSelect
-            style={{ width: '420px' }}
-            placeholder='Fanga Tanlang Test Qo`shish'
-            optionFilterProp="children"
-            options={dataList?.map((value) => ({
-              label: value.name,
-              value: value.id,
-            })) || []}
-            onChange={(e) => setName({ ...name, examSubjectId: e })}
-          />
-
           <Input onchange={(e) => setName({ ...name, textUz: e.target.value })} width={'400px'} height={'40px'} radius={'10px'} placeholder={'Uzbek tilida kiriting savol'} size={'17px'} padding={'0px 10px'} />
           <form action="radiochec">
             <div>
               <input onChange={(e) => checkAnswerFunc({ type: 'check1' })} type="radio" id="html" name="fav_language" value="HTML" />
               <label for="html">
-                <Input onChange={(e) => setName({ ...name, answers1NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'A'} />
+                <Input onchange={(e) => setName({ ...name, answers1NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'A'} />
               </label>
             </div>
             <div>
