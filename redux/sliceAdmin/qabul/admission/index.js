@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/admission/passed`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/admission/passed`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

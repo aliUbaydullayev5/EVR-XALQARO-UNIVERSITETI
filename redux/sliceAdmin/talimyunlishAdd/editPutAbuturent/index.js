@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async ({ id, value }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/edit/${id}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/faculty/edit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
