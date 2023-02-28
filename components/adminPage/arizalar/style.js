@@ -3,13 +3,12 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-  display: flex;
   display: grid;
   max-width: 1440px;
   grid-template-columns: 1fr 0.7fr;
-  padding: 0px 40px;
+  padding: 0 40px;
  @media only screen and (max-width: 1000px) {
-   padding: 0px 20px;
+   padding: 0 20px;
   }
 `
 Container.Scrool = styled.div`
@@ -17,18 +16,15 @@ Container.Scrool = styled.div`
    height: 615px !important;
    overflow-y: scroll;
    padding: 0 15px 0 0;
-   height: 100%;
    display: grid;
    ::-webkit-scrollbar {
       width: 5px;
     }
     ::-webkit-scrollbar-track {
       width: 10px !important;
-      padding: 0 5px 0 0;
       background: #9a9a9a;
       opacity: 0.5;
       border-radius: 30px;
-      transform: matrix(-1, 0, 0, 1, 0, 0);
       transform: matrix(-1, 0, 0, 1, 0, 0);
       padding: 10px !important;
     }
@@ -46,7 +42,6 @@ const ConTable = styled.div`
   height: 30px;
 }
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -79,7 +74,6 @@ Container.Nav = styled.div`
     height: 45px;
   }
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -106,14 +100,13 @@ Container.Nav = styled.div`
 
 
 ConTable.Center = styled.div`
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
   width: 100%;
 `
 Container.BottomDesc = styled.div`
-  height: 247px !important;
+  height: 247px;
   border: 1px solid #FFFFFF;
-  height: 100%;
   padding: 15px;
 `
 Container.BottomDescInset = styled.div`
@@ -132,7 +125,6 @@ const ConHero = styled.div`
   display: none;
 }}
 .TextPsamal{
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -141,7 +133,13 @@ const ConHero = styled.div`
   align-items: center;
   color: #FFFFFF;
   justify-content:center;
+<<<<<<< HEAD
   align-items:center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+=======
+>>>>>>> main
   @media only screen and (max-width: 1000px) {
   font-size: 20px;
   }
@@ -167,7 +165,6 @@ ConHero.Exel = styled.div`
   display:flex;
   flex-direction:column;
   justify-content: space-around;
- 
   gap: 10px;
   >div{
     display:flex;

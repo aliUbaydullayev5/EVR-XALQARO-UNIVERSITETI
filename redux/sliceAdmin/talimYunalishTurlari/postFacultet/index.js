@@ -42,5 +42,4 @@ const facultytypesId = createSlice({
     }
 })
 
-
 export default facultytypesId.reducer

@@ -74,7 +74,6 @@ const FacultetsImthonCom = () => {
     }
   }, [facultetsselectAdd, facultetsdeleteId])
 
-  console.log(facultetsselectAdd, facultetsdeleteId)
 
   const addFunc = () => {
     dispatch(facultetsselectAddPost(

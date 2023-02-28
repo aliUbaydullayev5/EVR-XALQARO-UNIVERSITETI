@@ -330,8 +330,23 @@ select option {
 }
 
 
-label {
-  position: relative
+
+
+
+label {position:relative}
+label:after {
+  content:'';
+  font:14px "Consolas", monospace;
+  color:#333;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);
+  right:8px; top:0px;
+  padding:0 0 2px;
+  border-bottom:1px solid #ddd;
+  position:absolute;
+  pointer-events:none;
 }
 
 label:after {

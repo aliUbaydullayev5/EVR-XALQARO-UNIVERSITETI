@@ -9,7 +9,6 @@ import getDirectType from '../slices/getStudyTypes/getDirectType'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
 import receptionSmsVerify from '../slices/receptionSmsVerify'
 import loginAdminThunk from "../slices/loginAdmin"
-import getAllDataAriza from '../sliceAdmin/arizalar'
 import talimYunalishAdmin from "../sliceAdmin/talimyunlishAdd"
 import getStudyTypesAbuturent from "../sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
 import deleteAbuturentId from "../sliceAdmin/talimyunlishAdd/deleteAbuturent"
@@ -24,7 +23,6 @@ import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
 import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
-
 import agentAuth from '../slices/agentAuth'
 import authLogin from '../slices/authLogin'
 import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
@@ -33,6 +31,11 @@ import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
 import quationget from '../sliceAdmin/quation/quationgett/index.js'
 
+import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
+import getUserId from '../slices/getId/index'
+
+import getAdmissionData from '../sliceAdmin/qabul/admission/index'
+import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 
 export default configureStore({
     reducer: {
@@ -46,7 +49,6 @@ export default configureStore({
         reseptionCheckPhoneSlice,
         receptionSmsVerify,
         loginAdminThunk,
-        getAllDataAriza,
         talimYunalishAdmin,
         getStudyTypesAbuturent,
         deleteAbuturentId,
@@ -60,7 +62,6 @@ export default configureStore({
         facultetsgetAll,
         facultetsdeleteId,
         editAbuturentId,
-        getAllDataAriza,
         getTalimYunalish,
         agentAuth,
         authLogin,
@@ -69,5 +70,9 @@ export default configureStore({
         getInfoUserCabinet,
         quationCreate,
         quationget,
+        getApplicationData,
+        getUserId,
+        getAdmissionData,
+        sendSmsData,
     },
 })

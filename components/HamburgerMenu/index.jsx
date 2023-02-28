@@ -20,15 +20,16 @@ const HamburgerMenu = ({changeHidden}) => {
             <ul className={'nocopy'}>
                 <li onClick={()=> query.push('/ourTeamPage')}>Bizning jamoa</li>
                 <li onClick={() => query.push('/testTopshirish')}>Test topshirish</li>
-                <li>Test natijalari</li>
+                <li onClick={() => query.push('/examResults')}>Test natijalari</li>
                 <li onClick={()=> query.push('/contractDown')}>Shartnoma yuklab olish</li>
-                <li>Biz bilan aloqa</li>
-                <li>Elektron kutubxona</li>
-                <li>Yangiliklar</li>
-                <li>Savol-javoblar</li>
-                <li>Litsenziya</li>
-                <li>Umumiy chat</li>
-                <li>Reytinglar</li>
+                <li onClick={()=> query.push('/contactUs')}>Biz bilan aloqa</li>
+                <li onClick={()=> query.push('/library')}>Elektron kutubxona</li>
+                <li onClick={()=> query.push('/news')}>Yangiliklar</li>
+                {/* <li>Savol-javoblar</li> */}
+                <li onClick={()=> query.push('/license')}>Litsenziya</li>
+                <li onClick={()=> query.push('/gallery')}>Galereya</li>
+                <li onClick={()=> query.push('/chat')}>Umumiy chat</li>
+                <li onClick={()=> query.push('/ratings')}>Reytinglar</li>
             </ul>
         </Container>
     )
