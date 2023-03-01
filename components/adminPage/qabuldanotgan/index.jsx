@@ -278,7 +278,7 @@ export const QabuldanOtganCom = () => {
                       <div>{value?.agent ? value.agent.fullName : 'Yoq'}</div>
                       <div>{value.user.passportSeries}</div>
                       <div>{value.user.idNumber}</div>
-                      <div>{value.diplomaFile.fileOriginalName}</div>
+                      <div>{value.diplomaFile?.fileOriginalName}</div>
                       <div>+{value.user.phoneNumber}</div>
                       <div>+{value.user.extraPhoneNumber}</div>
                       <div>{value.kurs}</div>
