@@ -36,7 +36,6 @@ const PasswordComponent = () => {
     }, [number])
 
 
-
     const [data, setData] = useState({
         phoneNumber: '',
         idNumber: '',

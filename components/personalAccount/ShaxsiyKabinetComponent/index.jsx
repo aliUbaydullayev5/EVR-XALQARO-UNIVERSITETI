@@ -7,14 +7,12 @@ import DownIcon from '../../../assets/icon/personDown.svg'
 import Image from "next/image.js";
 import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
-import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg";
+import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg"
 import { Spin } from 'antd';
 import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
 import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
 import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
-import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect} from "react";
-import {getInfoUserCabinetFetch} from "../../../redux/slices/getInfoUserCabinet";
+import {useDispatch, useSelector} from "react-redux"
 
 const ShaxsiyKabinetComponent = () => {
 
