@@ -49,7 +49,7 @@ const authLogin = createSlice({
             state.status = null
             state.message = ''
             state.data = {}
-        }
+        }a
     }
 })
 
