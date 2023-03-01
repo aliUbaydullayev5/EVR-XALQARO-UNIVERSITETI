@@ -39,7 +39,6 @@ const Container = styled.div`
 
 Container.Block = styled.div`
   width: 500px;
-  height: 456px;
   left: 461px;
   background: #221F51;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
@@ -58,7 +57,9 @@ Container.BlockTop = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
+
 `
+
 Container.BlockBottom = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,6 +69,13 @@ Container.BlockBottom = styled.div`
   .customPhoneInput{
     width: 333px !important;
     font-size: 24px;
+  }
+  >div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
   h1{
     color: #fff;

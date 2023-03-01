@@ -5,16 +5,30 @@ import React, {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {getUserIdFetch, resetTimerVerify} from "../../../redux/slices/getId";
 import {firstVerifyFetch} from "../../../redux/slices/firstVerify";
+import {useRouter} from "next/router";
+import {Modal, Spin} from "antd";
 
 const PasswordComponent = () => {
+
+    const router = useRouter()
 
     const dispatch = useDispatch()
     const getUserId = useSelector((store)=> store.getUserId)
     const firstVerify = useSelector((store)=> store.firstVerify)
 
     const [number, setNumber] = useState('+998')
-    const pushNumber = () => dispatch(getUserIdFetch({userNumber: number}))
-    const pushSmsFunc = () => dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber:  number}))
+    const [modelHidden, setModalHidden] = useState(false)
+    const [smsInput, setSmsInput] = useState('')
+    const pushNumber = () => {
+        dispatch(getUserIdFetch({userNumber: number}))
+    }
+    const pushSmsFunc = () => {
+        // if(){
+        //
+        // }
+
+        // dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber: number}))
+    }
 
 
     useEffect(()=> {
@@ -22,7 +36,6 @@ const PasswordComponent = () => {
     }, [number])
 
 
-    console.log(firstVerify, 'firstVerify')
 
     const [data, setData] = useState({
         phoneNumber: '',
@@ -38,11 +51,24 @@ const PasswordComponent = () => {
         setData({ ...data, [type]: value })
     }
 
+    useEffect(()=> {
+        // if(){
+        //
+        // }
+        // changeAllDataFunc({type: 'verifyDode', value: })
+    }, [firstVerify])
+
+    console.log(getUserId, 'getUserId')
+
     // phoneNumber
     // idNumber
     // verifyDode
     // password
     // prePassword
+
+    // <Input type={'text'} placeholder={'verify code'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+
+
 
     return(
         <Container>
@@ -56,27 +82,86 @@ const PasswordComponent = () => {
 
                     <h1>{`${getUserId.message}` || ''}</h1>
 
-
                     {
-                        getUserId?.status === 'success' ?
-                            <Button onclick={()=> pushSmsFunc()} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>Nomer tastiqlash</Button>
-                            :
-                            <Button onclick={()=> pushNumber()} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>ID Topish</Button>
-                    }
-
-
-                    {
-                        firstVerify.status === 'success' ?
+                        getUserId.status === 'success' ?
                             <div>
-
+                                <Input onchange={(e)=> changeAllDataFunc()} type={'text'} placeholder={'password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+                                <Input type={'text'} placeholder={'pre password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
                             </div>
                             :
                             <div></div>
                     }
 
+                    {
+                        getUserId?.status === 'success' ?
+                            <div>
+                                <Button onclick={()=> pushSmsFunc()} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'} >Raqam tastiqlash</Button>
+                                <Button onclick={()=> router.push('/auth')} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>KIrish</Button>
+                            </div>
+                            :
+                            <Button onclick={()=> pushNumber()} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>ID Topish</Button>
+                    }
+
+
 
                 </Container.BlockBottom>
             </Container.Block>
+
+
+
+
+
+
+            {/*<Modal*/}
+            {/*    open={modelHidden}*/}
+            {/*    onOk={() => setModalHidden(!modelHidden)}*/}
+            {/*    onCancel={() => setModalHidden(!modelHidden)}*/}
+            {/*    footer={false}*/}
+            {/*>*/}
+            {/*    <Container.Model>*/}
+            {/*        <p>Sms ni kiriting</p>*/}
+            {/*        <Input*/}
+            {/*            placeholder={'_ _ _ _ _ _'}*/}
+            {/*            align={'center'}*/}
+            {/*            malign={'center'}*/}
+            {/*            maxlength={6}*/}
+            {/*            onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}*/}
+            {/*            value={smsInput}*/}
+            {/*            onchange={(e) => {*/}
+            {/*                setSmsInput(e.target.value);*/}
+            {/*                changeAllDataFunc({ type: 'verifyCode', value: e.target.value });*/}
+            {/*            }}*/}
+            {/*        />*/}
+            {/*        {receptionSmsVerify.status === 'loading' ? (*/}
+            {/*            <>*/}
+            {/*                <Button width={'400px'} height={'50px'}>*/}
+            {/*                    <Container.ButtonLoader>*/}
+            {/*                        <Spin />*/}
+            {/*                    </Container.ButtonLoader>*/}
+            {/*                </Button>*/}
+            {/*            </>*/}
+            {/*        ) : (*/}
+            {/*            <>*/}
+            {/*                <Button*/}
+            {/*                    width={'400px'}*/}
+            {/*                    height={'50px'}*/}
+            {/*                    msize={'24px'}*/}
+            {/*                    mheight={'40px'}*/}
+            {/*                    mwidth={'300px'}*/}
+            {/*                    onclick={() => verifyCodeFunc()}>*/}
+            {/*                    Tastiqlash*/}
+            {/*                </Button>*/}
+            {/*            </>*/}
+            {/*        )}*/}
+            {/*    </Container.Model>*/}
+            {/*</Modal>*/}
+
+
+
+
+
+
+
         </Container>
     )
 }
