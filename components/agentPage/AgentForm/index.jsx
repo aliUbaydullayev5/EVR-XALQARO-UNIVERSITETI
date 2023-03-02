@@ -12,10 +12,14 @@ import { checkAllInputs2 } from './checkAllInputs';
 import { startMessage } from "../../../redux/slices/message";
 import {deployFileFetch} from "../../../redux/slices/deployFile";
 import {receptionSmsVerifyFetch, resetSmsVerify} from "../../../redux/slices/receptionSmsVerify";
+import {agentAuthFetch, resetVerify} from "../../../redux/slices/agentAuth";
+
 
 import {agentAuthFetch, resetVerify} from "../../../redux/slices/agentAuth";
 
 
+
+const AgentFormComponent = () => {
 
 const AgentFormComponent = () => {
 

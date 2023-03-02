@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../globalApi";
 
 export const receptionSmsVerifyFetch = createAsyncThunk('receptionSmsVerifyFetch', async (payload)=> {
-    console.log(payload)
     return await fetch(`${API_GLOBAL}v1/auth/verify-phone`, {
         method: 'POST',
         headers: {
