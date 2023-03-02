@@ -289,47 +289,47 @@ const AgentFormComponent = () => {
             </InputCont>
 
 
-            {/*<Modal*/}
-            {/*    open={modelHidden}*/}
-            {/*    onOk={() => setModalHidden(!modelHidden)}*/}
-            {/*    onCancel={() => setModalHidden(!modelHidden)}>*/}
-            {/*    <Container.Model>*/}
-            {/*        <p>Sms ni kiriting</p>*/}
-            {/*        <Input*/}
-            {/*            placeholder={'_ _ _ _ _ _'}*/}
-            {/*            align={'center'}*/}
-            {/*            malign={'center'}*/}
-            {/*            maxlength={6}*/}
-            {/*            onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}*/}
-            {/*            value={smsInput}*/}
-            {/*            onchange={(e) => {*/}
-            {/*                setSmsInput(e.target.value);*/}
-            {/*                changeAllDataFunc({ type: 'verifyCode', value: e.target.value });*/}
-            {/*            }}*/}
-            {/*        />*/}
-            {/*        {receptionSmsVerify.status === 'loading' ? (*/}
-            {/*            <>*/}
-            {/*                <Button width={'400px'} height={'50px'}>*/}
-            {/*                    <Container.ButtonLoader>*/}
-            {/*                        <Spin />*/}
-            {/*                    </Container.ButtonLoader>*/}
-            {/*                </Button>*/}
-            {/*            </>*/}
-            {/*        ) : (*/}
-            {/*            <>*/}
-            {/*                <Button*/}
-            {/*                    width={'400px'}*/}
-            {/*                    height={'50px'}*/}
-            {/*                    msize={'24px'}*/}
-            {/*                    mheight={'40px'}*/}
-            {/*                    mwidth={'300px'}*/}
-            {/*                    onclick={() => verifyCodeFunc()}>*/}
-            {/*                    Tastiqlash*/}
-            {/*                </Button>*/}
-            {/*            </>*/}
-            {/*        )}*/}
-            {/*    </Container.Model>*/}
-            {/*</Modal>*/}
+            <Modal
+                open={modelHidden}
+                onOk={() => setModalHidden(!modelHidden)}
+                onCancel={() => setModalHidden(!modelHidden)}>
+                <Container.Model>
+                    <p>Sms ni kiriting</p>
+                    <Input
+                        placeholder={'_ _ _ _ _ _'}
+                        align={'center'}
+                        malign={'center'}
+                        maxlength={6}
+                        onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
+                        value={smsInput}
+                        onchange={(e) => {
+                            setSmsInput(e.target.value);
+                            changeAllDataFunc({ type: 'verifyCode', value: e.target.value });
+                        }}
+                    />
+                    {receptionSmsVerify.status === 'loading' ? (
+                        <>
+                            <Button width={'400px'} height={'50px'}>
+                                <Container.ButtonLoader>
+                                    <Spin />
+                                </Container.ButtonLoader>
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                width={'400px'}
+                                height={'50px'}
+                                msize={'24px'}
+                                mheight={'40px'}
+                                mwidth={'300px'}
+                                onclick={() => verifyCodeFunc()}>
+                                Tastiqlash
+                            </Button>
+                        </>
+                    )}
+                </Container.Model>
+            </Modal>
 
 
         </Container>
