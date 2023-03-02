@@ -104,457 +104,325 @@ const AgentFormComponent = () => {
 
     return (
         <Container>
-            <TextCon>
-                <h1>Agent</h1>
-            </TextCon>
-            <InputCont>
-<<<<<<< HEAD
+{/*            <TextCon>*/}
+{/*                <h1>Agent</h1>*/}
+{/*            </TextCon>*/}
+{/*            <InputCont>*/}
+{/*/!*<<<<<<< HEAD*!/*/}
 
-                <div className='row1'>
-                    <IconBox>
-                        <UploadFiler className={'UploadFile2'} />
-                    </IconBox>
-                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
-                </div>
+{/*                /!*<div className='row1'>*!/*/}
+{/*                /!*    <IconBox>*!/*/}
+{/*                /!*        <UploadFiler className={'UploadFile2'} />*!/*/}
+{/*                /!*    </IconBox>*!/*/}
+{/*                /!*    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />*!/*/}
+{/*                /!*</div>*!/*/}
 
-                <div className='row4'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firma rahbarining qo’shimcha raqami"
-                            onChange={(value) => FuncNumbe1({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber1}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firma rahbarining qo’shimcha raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
+{/*                /!*<div className='row4'>*!/*/}
+{/*                /!*    <Container.Number>*!/*/}
+{/*                /!*        <CustomInput*!/*/}
+{/*                /!*            placeholder="Firma rahbarining qo’shimcha raqami"*!/*/}
+{/*                /!*            onChange={(value) => FuncNumbe1({ value, type: 'phoneNumber' })}*!/*/}
+{/*                /!*            maxLength={17}*!/*/}
+{/*                /!*            value={phoneNumber1}*!/*/}
+{/*                /!*            className={'customPhoneInput'}*!/*/}
+{/*                /!*        />*!/*/}
+{/*                /!*        <Container.NumberText>*!/*/}
+{/*                /!*            Firma rahbarining qo’shimcha raqami*!/*/}
+{/*                /!*        </Container.NumberText>*!/*/}
+{/*                /!*    </Container.Number>*!/*/}
+{/*                /!*</div>*!/*/}
 
-                <div className='row2'>
-                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />
-                </div>
-                <div className='row8'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-                                <UploadFiler className={'UploadFile1'} />
-=======
-                <div className='row1'>
-                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
-                </div>
+{/*                /!*<div className='row2'>*!/*/}
+{/*                /!*    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} />*!/*/}
+{/*                /!*</div>*!/*/}
+{/*                /!*<div className='row8'>*!/*/}
+{/*                /!*    <div>*!/*/}
+{/*                /!*        <div>*!/*/}
+{/*                /!*            <IconBox>*!/*/}
+{/*                /!*                <Container.InputCustom1 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />*!/*/}
+{/*                /!*                <UploadFiler className={'UploadFile1'} />*!/*/}
+{/*/!*=======*!/*/}
+{/*                <div className='row1'>*/}
+{/*                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />*/}
+{/*                </div>*/}
 
-                <div className='row2'>
-                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'fio', value: e.target.value })} />
-                </div>
+{/*                <div className='row2'>*/}
+{/*                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'fio', value: e.target.value })} />*/}
+{/*                </div>*/}
 
-                <div className='row7'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom2
-                                    type={'file'}
-                                    onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })}
-                                />
-                                <UploadFiler className={'UploadFile2'} />
->>>>>>> admin/xasan
-                                <UploadMobile className={'UploadFileMobile'} />
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input
-                                    type={'password'}
-                                    mpadding={'0 0 0 19px '}
-                                    mradius={'5px'}
-                                    mwidth={'100%'}
-                                    mheight={'36px'}
-                                    msize={'16px'}
-                                    width={'251px'}
-                                    height={'46px'}
-                                    placeholder={'Parol'}
-                                    padding={'0 8px'}
-                                    size={'24px'}
-                                    onchange={(e) =>
-                                        changeAllDataFunc({
-                                            type: 'password',
-                                            value: e.target.value,
-                                        })
-                                    }
-                                />
-<<<<<<< HEAD
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />
-=======
->>>>>>> admin/xasan
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='row3'>
-                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />
-                </div>
+{/*                <div className='row7'>*/}
+{/*                    <div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Container.InputCustom2*/}
+{/*                                    type={'file'}*/}
+{/*                                    onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })}*/}
+{/*                                />*/}
+{/*                                <UploadFiler className={'UploadFile2'} />*/}
+{/*/!*>>>>>>> admin/xasan*!/*/}
+{/*                                <UploadMobile className={'UploadFileMobile'} />*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Input*/}
+{/*                                    type={'password'}*/}
+{/*                                    mpadding={'0 0 0 19px '}*/}
+{/*                                    mradius={'5px'}*/}
+{/*                                    mwidth={'100%'}*/}
+{/*                                    mheight={'36px'}*/}
+{/*                                    msize={'16px'}*/}
+{/*                                    width={'251px'}*/}
+{/*                                    height={'46px'}*/}
+{/*                                    placeholder={'Parol'}*/}
+{/*                                    padding={'0 8px'}*/}
+{/*                                    size={'24px'}*/}
+{/*                                    onchange={(e) =>*/}
+{/*                                        changeAllDataFunc({*/}
+{/*                                            type: 'password',*/}
+{/*                                            value: e.target.value,*/}
+{/*                                        })*/}
+{/*                                    }*/}
+{/*                                />*/}
+{/*/!*<<<<<<< HEAD*!/*/}
+{/*/!*                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol Qayta Kiriting'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'prePassword', value: e.target.value })} />*!/*/}
+{/*/!*=======*!/*/}
+{/*/!*>>>>>>> admin/xasan*!/*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                    </div>*/}
+{/*                </div>*/}
 
 
-                <div className='row8'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />
-<<<<<<< HEAD
-                                <UploadFiler className={'uploadFile'} />
-                                <UploadMobile className={'uploadFileMobile'} />
-=======
-                                <UploadFiler className={'UploadFile1'} />
-                                <UploadMobile className={'UploadFile2'} />
->>>>>>> admin/xasan
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input
-                                    type={'password'}
-                                    mpadding={'0 0 0 19px '}
-                                    mradius={'5px'}
-                                    mwidth={'100%'}
-                                    mheight={'36px'}
-                                    msize={'16px'}
-                                    width={'251px'}
-                                    height={'46px'}
-                                    placeholder={'Parol'}
-                                    padding={'0 8px'}
-                                    size={'24px'}
-                                    onchange={(e) =>
-                                        changeAllDataFunc({
-<<<<<<< HEAD
-                                            type: 'prePassword',
-=======
-                                            type: 'password',
->>>>>>> admin/xasan
-                                            value: e.target.value,
-                                        })
-                                    }
-                                />
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
+{/*                <div className='row3'>*/}
+{/*                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'10'} />*/}
+{/*                </div>*/}
 
 
-                <div className='row4'>
-                    <Container.Number >
-                        <CustomInput
-                            placeholder="Enter phone number"
-                            onChange={(value) => {
-                                changeAllDataFunc({ type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('') })
-                                setPhoneNumber(value)
-                            }}
-                            maxLength={17}
-                            value={phoneNumber}
-<<<<<<< HEAD
-                            />
-                    </Container.Number>
-                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />
-                </div>
-                <div className='row9'>
-                    <div>
-                        <div>
-                            <IconBox>
-                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />
-                                <UploadFiler className={'UploadFile2'} />
-                                <UploadMobile className={'UploadFileMobile'} />
-                            </IconBox>
-                        </div>
-                        <div>
-                            <IconBox>
-                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />
-                            </IconBox>
-                        </div>
-                    </div>
-                </div>
+{/*                <div className='row8'>*/}
+{/*                    <div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'passportId' })} />*/}
+{/*                                <UploadFiler className={'uploadFile'} />*/}
+{/*                                <UploadMobile className={'uploadFileMobile'} />*/}
+{/*/!*=======*!/*/}
+{/*/!*                                <UploadFiler className={'UploadFile1'} />*!/*/}
+{/*/!*                                <UploadMobile className={'UploadFile2'} />*!/*/}
+{/*/!*>>>>>>> admin/xasan*!/*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Input*/}
+{/*                                    type={'password'}*/}
+{/*                                    mpadding={'0 0 0 19px '}*/}
+{/*                                    mradius={'5px'}*/}
+{/*                                    mwidth={'100%'}*/}
+{/*                                    mheight={'36px'}*/}
+{/*                                    msize={'16px'}*/}
+{/*                                    width={'251px'}*/}
+{/*                                    height={'46px'}*/}
+{/*                                    placeholder={'Parol'}*/}
+{/*                                    padding={'0 8px'}*/}
+{/*                                    size={'24px'}*/}
+{/*                                    onchange={(e) =>*/}
+{/*                                        changeAllDataFunc({*/}
+{/*                                            type: 'prePassword',*/}
+{/*                                            value: e.target.value,*/}
+{/*                                        })*/}
+{/*                                    }*/}
+{/*                                />*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                    </div>*/}
+{/*                </div>*/}
 
 
-                <div className='row5'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firmaning telefon raqami"
-                            onChange={(value) => FuncNumbe2({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber2}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firmaning telefon raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
-
-                <div className='row6'>
-                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
-                </div>
-
-                <div className='row5'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Enter phone number"
-                            onChange={(value) => {
-                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })
-                                setPhoneExtraNumber(value)
-                            }}
-                            value={phoneExtraNumber}
-                            maxLength={17}
-                        />
-                    </Container.Number>
-                </div>
-
-                <div className='row6'>
-                    <Container.Number>
-                        <CustomInput
-                            placeholder="Firma rahbarining telefon raqami"
-                            onChange={(value) => FuncNumbe3({ value, type: 'phoneNumber' })}
-                            maxLength={17}
-                            value={phoneNumber3}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firma rahbarining telefon raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
-
-                <div></div>
-                <BtnCon className='row9'>
-                    {receptionSmsVerify.status === 'success' ? (
-                        <>
-                            {receptionData.status == 'loading' && (
-                                <Button
-                                    mradius={'5px'}
-                                    mwidth={'177px'}
-                                    mheight={'26px'}
-                                    msize={'16px'}
-                                    width={'250px'}
-                                    height={'43px'}
-                                    size={'21px'}
-                                    cursor={'none'}
-                                    disabled={true}>
-                                    <Container.ButtonLoader>
-                                        <Spin />
-                                    </Container.ButtonLoader>
-                                </Button>
-                            )}
-                            {receptionData.status !== 'loading' && (
-                                <Button
-                                    mradius={'5px'}
-                                    mwidth={'177px'}
-                                    mheight={'26px'}
-                                    msize={'16px'}
-                                    width={'250px'}
-                                    height={'43px'}
-                                    size={'21px'}
-                                    onclick={() => pushAllInfo()}>
-                                    QOLDIRISH
-                                </Button>
-                            )}
-                        </>
-                    ) : (
-                        <Button
-                            mradius={'5px'}
-                            mwidth={'250px'}
-                            mheight={'26px'}
-                            msize={'16px'}
-                            width={'300px'}
-                            height={'43px'}
-                            size={'21px'}
-                            padding={'0 10px'}
-                            onclick={() => smsFunc()}>
-                            Telefon raqamni tastiqlash
-                        </Button>
-                    )}
-                </BtnCon>
-
-                <BtnCon className='row10'>
-                    <div className='btnEnd'></div>
-                    <div>
-                        <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mmargin={'0px auto'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>
-                    </div>
-                </BtnCon>
-
-            </InputCont>
+{/*                <div className='row4'>*/}
+{/*                    <Container.Number >*/}
+{/*                        <CustomInput*/}
+{/*                            placeholder="Enter phone number"*/}
+{/*                            onChange={(value) => {*/}
+{/*                                changeAllDataFunc({ type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('') })*/}
+{/*                                setPhoneNumber(value)*/}
+{/*                            }}*/}
+{/*                            maxLength={17}*/}
+{/*                            value={phoneNumber}*/}
+{/*                            />*/}
+{/*                    </Container.Number>*/}
+{/*                    <Input placeholder={'Firma rahbarining pasport seriyasi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'26px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeMumPass(e.target.value)} value={numPasSeriya} maxlength={'12'} />*/}
+{/*                </div>*/}
+{/*                <div className='row9'>*/}
+{/*                    <div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Container.InputCustom2 type={'file'} onChange={(e) => findFileFunc({ file: e, by: 'diplomaId' })} />*/}
+{/*                                <UploadFiler className={'UploadFile2'} />*/}
+{/*                                <UploadMobile className={'UploadFileMobile'} />*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                        <div>*/}
+{/*                            <IconBox>*/}
+{/*                                <Input type={'password'} mpadding={'0 0 0 19px '} mradius={'5px'} mwidth={'100%'} mheight={'26px'} msize={'16px'} width={'251px'} height={'46px'} placeholder={'Parol'} padding={'0 8px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'password', value: e.target.value })} />*/}
+{/*                            </IconBox>*/}
+{/*                        </div>*/}
+{/*                    </div>*/}
+{/*                </div>*/}
 
 
-            <Modal
-                open={modelHidden}
-                onOk={() => setModalHidden(!modelHidden)}
-                onCancel={() => setModalHidden(!modelHidden)}>
-                <Container.Model>
-                    <p>Sms ni kiriting</p>
-                    <Input
-                        placeholder={'_ _ _ _ _ _'}
-                        align={'center'}
-                        malign={'center'}
-                        maxlength={6}
-                        onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
-                        value={smsInput}
-                        onchange={(e) => {
-                            setSmsInput(e.target.value);
-                            changeAllDataFunc({ type: 'verifyCode', value: e.target.value });
-                        }}
-                    />
-                    {receptionSmsVerify.status === 'loading' ? (
-                        <>
-                            <Button width={'400px'} height={'50px'}>
-                                <Container.ButtonLoader>
-                                    <Spin />
-                                </Container.ButtonLoader>
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button
-                                width={'400px'}
-                                height={'50px'}
-                                msize={'24px'}
-                                mheight={'40px'}
-                                mwidth={'300px'}
-                                onclick={() => verifyCodeFunc()}>
-                                Tastiqlash
-                            </Button>
-                        </>
-                    )}
-                </Container.Model>
-            </Modal>
+{/*                <div className='row5'>*/}
+{/*                    <Container.Number>*/}
+{/*                        <CustomInput*/}
+{/*                            placeholder="Enter phone number"*/}
+{/*                            onChange={(value) => {*/}
+{/*                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })*/}
+{/*                                setPhoneExtraNumber(value)*/}
+{/*                            }}*/}
+{/*                            value={phoneExtraNumber}*/}
+{/*                            maxLength={17}*/}
+{/*                        />*/}
+{/*                    </Container.Number>*/}
+{/*                </div>*/}
 
-=======
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firmaning telefon raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
+{/*                <div className='row6'>*/}
+{/*                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />*/}
+{/*                </div>*/}
 
-                <div className='row6'>
-                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
-                </div>
+{/*                <div className='row5'>*/}
+{/*                    <Container.Number>*/}
+{/*                        <CustomInput*/}
+{/*                            placeholder="Enter phone number"*/}
+{/*                            onChange={(value) => {*/}
+{/*                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })*/}
+{/*                                setPhoneExtraNumber(value)*/}
+{/*                            }}*/}
+{/*                            value={phoneExtraNumber}*/}
+{/*                            maxLength={17}*/}
+{/*                        />*/}
+{/*                    </Container.Number>*/}
+{/*                </div>*/}
 
-                <div className='row5'>
-                    <Container.Number >
-                        <CustomInput
-                            placeholder="Enter phone number"
-                            onChange={(value) => {
-                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })
-                                setPhoneExtraNumber(value)
-                            }}
-                            value={phoneExtraNumber}
-                            maxLength={17}
-                            className={'customPhoneInput'}
-                        />
-                        <Container.NumberText>
-                            Firma rahbarining telefon raqami
-                        </Container.NumberText>
-                    </Container.Number>
-                </div>
+{/*                /!*<div className='row6'>*!/*/}
+{/*                /!*    <Container.Number>*!/*/}
+{/*                /!*        <CustomInput*!/*/}
+{/*                /!*            placeholder="Firma rahbarining telefon raqami"*!/*/}
+{/*                /!*            onChange={(value) => FuncNumbe3({ value, type: 'phoneNumber' })}*!/*/}
+{/*                /!*            maxLength={17}*!/*/}
+{/*                /!*            value={phoneNumber3}*!/*/}
+{/*                /!*            className={'customPhoneInput'}*!/*/}
+{/*                /!*        />*!/*/}
+{/*                /!*        <Container.NumberText>*!/*/}
+{/*                /!*            Firma rahbarining telefon raqami*!/*/}
+{/*                /!*        </Container.NumberText>*!/*/}
+{/*                /!*    </Container.Number>*!/*/}
+{/*                /!*</div>*!/*/}
 
-                <div></div>
+{/*                <div className='row6'>*/}
+{/*                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />*/}
+{/*                </div>*/}
 
-                <BtnCon className='row9'>
-                    {receptionSmsVerify.status === 'success' ? (
-                        <>
-                            {receptionData.status == 'loading' && (
-                                <Button
-                                    mradius={'5px'}
-                                    mwidth={'177px'}
-                                    mheight={'26px'}
-                                    msize={'16px'}
-                                    width={'250px'}
-                                    height={'43px'}
-                                    size={'21px'}
-                                    cursor={'none'}
-                                    disabled={true}>
-                                    <Container.ButtonLoader>
-                                        <Spin />
-                                    </Container.ButtonLoader>
-                                </Button>
-                            )}
-                            {receptionData.status !== 'loading' && (
-                                <Button
-                                    mradius={'5px'}
-                                    mwidth={'177px'}
-                                    mheight={'26px'}
-                                    msize={'16px'}
-                                    width={'250px'}
-                                    height={'43px'}
-                                    size={'21px'}
-                                    onclick={() => pushAllInfo()}>
-                                    QOLDIRISH
-                                </Button>
-                            )}
-                        </>
-                    ) : (
-                        <Button
-                            mradius={'5px'}
-                            mwidth={'250px'}
-                            mheight={'26px'}
-                            msize={'16px'}
-                            width={'300px'}
-                            height={'43px'}
-                            size={'21px'}
-                            padding={'0 10px'}
-                            onclick={() => smsFunc()}>
-                            Telefon raqamni tastiqlash
-                        </Button>
-                    )}
-                </BtnCon>
-            </InputCont>
+{/*                <div></div>*/}
+{/*                <BtnCon className='row9'>*/}
+{/*                    {receptionSmsVerify.status === 'success' ? (*/}
+{/*                        <>*/}
+{/*                            {receptionData.status == 'loading' && (*/}
+{/*                                <Button*/}
+{/*                                    mradius={'5px'}*/}
+{/*                                    mwidth={'177px'}*/}
+{/*                                    mheight={'26px'}*/}
+{/*                                    msize={'16px'}*/}
+{/*                                    width={'250px'}*/}
+{/*                                    height={'43px'}*/}
+{/*                                    size={'21px'}*/}
+{/*                                    cursor={'none'}*/}
+{/*                                    disabled={true}>*/}
+{/*                                    <Container.ButtonLoader>*/}
+{/*                                        <Spin />*/}
+{/*                                    </Container.ButtonLoader>*/}
+{/*                                </Button>*/}
+{/*                            )}*/}
+{/*                            {receptionData.status !== 'loading' && (*/}
+{/*                                <Button*/}
+{/*                                    mradius={'5px'}*/}
+{/*                                    mwidth={'177px'}*/}
+{/*                                    mheight={'26px'}*/}
+{/*                                    msize={'16px'}*/}
+{/*                                    width={'250px'}*/}
+{/*                                    height={'43px'}*/}
+{/*                                    size={'21px'}*/}
+{/*                                    onclick={() => pushAllInfo()}>*/}
+{/*                                    QOLDIRISH*/}
+{/*                                </Button>*/}
+{/*                            )}*/}
+{/*                        </>*/}
+{/*                    ) : (*/}
+{/*                        <Button*/}
+{/*                            mradius={'5px'}*/}
+{/*                            mwidth={'250px'}*/}
+{/*                            mheight={'26px'}*/}
+{/*                            msize={'16px'}*/}
+{/*                            width={'300px'}*/}
+{/*                            height={'43px'}*/}
+{/*                            size={'21px'}*/}
+{/*                            padding={'0 10px'}*/}
+{/*                            onclick={() => smsFunc()}>*/}
+{/*                            Telefon raqamni tastiqlash*/}
+{/*                        </Button>*/}
+{/*                    )}*/}
+{/*                </BtnCon>*/}
+
+{/*                <BtnCon className='row10'>*/}
+{/*                    <div className='btnEnd'></div>*/}
+{/*                    <div>*/}
+{/*                        <Button width={'177px'} height={'43px'} size={'21px'} mradius={'5px'} mmargin={'0px auto'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} margin={'0 60px 0 0'} onclick={()=> router.push('/receptionPage/agent/agentFinally')}>QOLDIRISH</Button>*/}
+{/*                    </div>*/}
+{/*                </BtnCon>*/}
+
+{/*            </InputCont>*/}
 
 
-            <Modal
-                open={modelHidden}
-                onOk={() => setModalHidden(!modelHidden)}
-                onCancel={() => setModalHidden(!modelHidden)}>
-                <Container.Model>
-                    <p>Sms ni kiriting</p>
-                    <Input
-                        placeholder={'_ _ _ _ _ _'}
-                        align={'center'}
-                        malign={'center'}
-                        maxlength={6}
-                        onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}
-                        value={smsInput}
-                        onchange={(e) => {
-                            setSmsInput(e.target.value);
-                            changeAllDataFunc({ type: 'verifyCode', value: e.target.value });
-                        }}
-                    />
-                    {receptionSmsVerify.status === 'loading' ? (
-                        <>
-                            <Button width={'400px'} height={'50px'}>
-                                <Container.ButtonLoader>
-                                    <Spin />
-                                </Container.ButtonLoader>
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button
-                                width={'400px'}
-                                height={'50px'}
-                                msize={'24px'}
-                                mheight={'40px'}
-                                mwidth={'300px'}
-                                onclick={() => verifyCodeFunc()}>
-                                Tastiqlash
-                            </Button>
-                        </>
-                    )}
-                </Container.Model>
-            </Modal>
-
-
->>>>>>> admin/xasan
+{/*            <Modal*/}
+{/*                open={modelHidden}*/}
+{/*                onOk={() => setModalHidden(!modelHidden)}*/}
+{/*                onCancel={() => setModalHidden(!modelHidden)}>*/}
+{/*                <Container.Model>*/}
+{/*                    <p>Sms ni kiriting</p>*/}
+{/*                    <Input*/}
+{/*                        placeholder={'_ _ _ _ _ _'}*/}
+{/*                        align={'center'}*/}
+{/*                        malign={'center'}*/}
+{/*                        maxlength={6}*/}
+{/*                        onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}*/}
+{/*                        value={smsInput}*/}
+{/*                        onchange={(e) => {*/}
+{/*                            setSmsInput(e.target.value);*/}
+{/*                            changeAllDataFunc({ type: 'verifyCode', value: e.target.value });*/}
+{/*                        }}*/}
+{/*                    />*/}
+{/*                    {receptionSmsVerify.status === 'loading' ? (*/}
+{/*                        <>*/}
+{/*                            <Button width={'400px'} height={'50px'}>*/}
+{/*                                <Container.ButtonLoader>*/}
+{/*                                    <Spin />*/}
+{/*                                </Container.ButtonLoader>*/}
+{/*                            </Button>*/}
+{/*                        </>*/}
+{/*                    ) : (*/}
+{/*                        <>*/}
+{/*                            <Button*/}
+{/*                                width={'400px'}*/}
+{/*                                height={'50px'}*/}
+{/*                                msize={'24px'}*/}
+{/*                                mheight={'40px'}*/}
+{/*                                mwidth={'300px'}*/}
+{/*                                onclick={() => verifyCodeFunc()}>*/}
+{/*                                Tastiqlash*/}
+{/*                            </Button>*/}
+{/*                        </>*/}
+{/*                    )}*/}
+{/*                </Container.Model>*/}
+{/*            </Modal>*/}
         </Container>
     )
 }
