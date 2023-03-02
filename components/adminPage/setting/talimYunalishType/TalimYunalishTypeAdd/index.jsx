@@ -136,8 +136,7 @@ export const TalimYunalishTypeAddCom = () => {
               <div className='colum'>Student soni</div>
               <div className='colum'>Talim tili</div>
               <div className='colum'>Ta`lim turi</div>
-              <div className='colum'>Action</div>
-              <div className='colum'>Status</div>
+              <div className='colum'>Tahrirlash</div>
             </div>
 
             <div className='row'>

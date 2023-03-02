@@ -2,24 +2,32 @@ import styled from "styled-components"
 
 const Container = styled.div`
   width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
-  display: grid;
-  max-width: 1440px;
-  grid-template-columns: 5fr 0.7fr;
-  padding: 0px 40px;
+  flex-direction: column;
  @media only screen and (max-width: 1000px) {
-   padding: 0px 20px;
-  }
+
+}
 
 `
+
+Container.Top=styled.div`
+width: 100%;
+height: 150px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+`
+
 Container.Scrool = styled.div`
    width: 100%;
-   height: 615px !important;
+   height: 410px !important;
    overflow-y: scroll;
-   padding: 0 15px 0 0;
+   padding: 4px 10px 4px 0;
    height: 100%;
    display: grid;
+   border-radius: 10px;
    ::-webkit-scrollbar {
       width: 5px;
       height: 5px;

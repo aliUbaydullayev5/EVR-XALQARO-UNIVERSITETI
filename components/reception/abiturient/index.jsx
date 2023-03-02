@@ -493,10 +493,15 @@ export const AbiturientQabul = () => {
 				</BtnCon>
 
             </InputCont>
+
+
+
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
-				onCancel={() => setModalHidden(!modelHidden)}>
+				onCancel={() => setModalHidden(!modelHidden)}
+				footer={false}
+				>
 				<Container.Model>
 					<p>Sms ni kiriting</p>
 					<Input
@@ -534,6 +539,8 @@ export const AbiturientQabul = () => {
 					)}
 				</Container.Model>
 			</Modal>
+
+
 		</Container>
 	);
 };
