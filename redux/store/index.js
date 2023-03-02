@@ -36,7 +36,7 @@ import getUserId from '../slices/getId/index'
 
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
-
+import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
 export default configureStore({
     reducer: {
         firstVerify,
@@ -74,5 +74,7 @@ export default configureStore({
         getUserId,
         getAdmissionData,
         sendSmsData,
+        quationDeleteId,
+
     },
 })

@@ -12,8 +12,6 @@ export const facultetsselectAddPost = createAsyncThunk('facultetsselectAddPost',
             facultyId: payload.facultyId,
             firstExamSubjectId: payload.firstExamSubjectId,
             secondExamSubjectId: payload.secondExamSubjectId,
-            firstExamSubjectBall: payload.firstExamSubjectBall,
-            secondExamSubjectBall: payload.secondExamSubjectBall
 
         })
     }).then((res) => res.json())
