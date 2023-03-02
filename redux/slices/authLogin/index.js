@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../globalApi";
 
 export const fetchAuthLogin = createAsyncThunk('fetchAuthLogin', async (payload)=> {
     console.log(payload, 'payload')
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/login`, {
+    return await fetch(`${API_GLOBAL}v1/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
