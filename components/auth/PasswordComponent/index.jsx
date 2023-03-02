@@ -6,7 +6,8 @@ import {useDispatch, useSelector} from "react-redux"
 import {getUserIdFetch, resetTimerVerify} from "../../../redux/slices/getId";
 import {firstVerifyFetch} from "../../../redux/slices/firstVerify";
 import {useRouter} from "next/router";
-import {Modal, Spin} from "antd";
+import {startMessage} from "../../../redux/slices/message";
+
 
 const PasswordComponent = () => {
 
@@ -19,16 +20,24 @@ const PasswordComponent = () => {
     const [number, setNumber] = useState('+998')
     const [modelHidden, setModalHidden] = useState(false)
     const [smsInput, setSmsInput] = useState('')
+
     const pushNumber = () => {
         dispatch(getUserIdFetch({userNumber: number}))
     }
     const pushSmsFunc = () => {
-        // if(){
-        //
-        // }
-
-        // dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber: number}))
+        if(data.password.length >= 8 && data.password === data.prePassword){
+            dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber: number}))
+        }else{
+            dispatch(
+                startMessage({
+                    time: 5,
+                    type: 'error',
+                    message: 'Parol 8 honadan kop va bir hil bolishi kere',
+                }),
+            );
+        }
     }
+
 
 
     useEffect(()=> {
@@ -57,16 +66,8 @@ const PasswordComponent = () => {
         // changeAllDataFunc({type: 'verifyDode', value: })
     }, [firstVerify])
 
-    console.log(getUserId, 'getUserId')
 
-    // phoneNumber
-    // idNumber
-    // verifyDode
-    // password
-    // prePassword
-
-    // <Input type={'text'} placeholder={'verify code'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
-
+    console.log(data)
 
 
     return(
@@ -77,15 +78,15 @@ const PasswordComponent = () => {
                     ID raqamni tiklash
                 </Container.BlockTop>
                 <Container.BlockBottom>
-                    <CustomInput className={'customPhoneInput'} value={number} onChange={(e)=> setNumber(e)} maxLength={17} />
+                    <CustomInput className={'customPhoneInput'} value={number} onchange={(e)=> changeAllDataFunc({type: 'phoneNumber', value: e.target.value})} maxLength={17} />
 
                     <h1>{`${getUserId.message}` || ''}</h1>
 
                     {
                         getUserId.status === 'success' ?
                             <div>
-                                <Input onchange={(e)=> changeAllDataFunc()} type={'text'} placeholder={'password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
-                                <Input type={'text'} placeholder={'pre password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+                                <Input onchange={(e)=> changeAllDataFunc({type: 'password', value: e.target.value})} type={'password'} placeholder={'password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+                                <Input onchange={(e)=> changeAllDataFunc({type: 'prePassword', value: e.target.value})} type={'password'} placeholder={'pre password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
                             </div>
                             :
                             <div></div>

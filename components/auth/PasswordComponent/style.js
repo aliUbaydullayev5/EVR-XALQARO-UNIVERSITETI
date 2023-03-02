@@ -110,6 +110,8 @@ Container.InputArea = styled.div`
       font-size: 16px;
     }
   }
+  
 `
+
 
 export default Container
