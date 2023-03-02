@@ -13,8 +13,8 @@ const Container = styled.div`
   h1{
     width: 26%;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 17px;
+    line-height: 20px;
     display: flex;
     justify-content: center;
     gap: 20px;

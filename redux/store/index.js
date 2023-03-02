@@ -32,6 +32,7 @@ import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getExcelData from "../sliceAdmin/arizalar/downloadExel/index"
 import getUserId from '../slices/getId/index'
+import testGet  from '../testSlice'
 export default configureStore({
     reducer: {
         firstVerify,
@@ -66,6 +67,7 @@ export default configureStore({
         getInfoUserCabinet,
         getApplicationData,
         getExcelData,
-        getUserId
+        getUserId,
+        testGet,
     },
 })
