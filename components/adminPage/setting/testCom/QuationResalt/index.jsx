@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { quationgetAll } from '../../../../../redux/sliceAdmin/quation/quationgett/index.js'
 import { Button } from '../../../../generic/index.jsx'
 
-import Container, { ConTable } from './style.js'
+import Container, { ConTable, TrueBal } from './style.js'
 
 
 export const QuationResalt = () => {
@@ -86,6 +86,8 @@ export const QuationResalt = () => {
     // useEffect(() => {
     //     if (editAbuturentId.status === 'success') dispatch(getStudyTypesFetch({ type: 'MASTER' }))
     // }, [editAbuturentId])
+
+
     return (
         <Container>
             <div>
@@ -116,11 +118,11 @@ export const QuationResalt = () => {
                                             <div>{ind + 1}</div>
                                             <div>{value?.examSubject?.name}</div>
                                             <div>{value?.textUz}</div>
-                                            <div><b>A</b> &nbsp; &nbsp;{value?.answers[0]?.nameUz}</div>
-                                            <div><b>B</b>&nbsp; &nbsp; {value?.answers[1]?.nameUz}</div>
-                                            <div><b>C</b>&nbsp; &nbsp; {value?.answers[2]?.nameUz}</div>
-                                            <div><b>D</b>&nbsp; &nbsp; {value?.answers[3]?.nameUz}</div>
-                                          
+                                            <div> {value?.answers[0]?.correct === true ? <b>A</b> : <span>A</span>} {value?.answers[0]?.nameUz}    </div>
+                                            <div> {value?.answers[1]?.correct === true ? <b>B</b> : <span>B</span>} {value?.answers[1]?.nameUz}  </div>
+                                            <div> {value?.answers[2]?.correct === true ? <b>C</b> : <span>C</span>} {value?.answers[2]?.nameUz} </div>
+                                            <div> {value?.answers[3]?.correct === true ? <b>D</b> : <span>C</span>} {value?.answers[3]?.nameUz} </div>
+
                                             <div>{value?.textRu}</div>
                                             <div><b>A</b> &nbsp; &nbsp;{value?.answers[0]?.nameRu}</div>
                                             <div><b>B</b>&nbsp; &nbsp; {value?.answers[1]?.nameRu}</div>

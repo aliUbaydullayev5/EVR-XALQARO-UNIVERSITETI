@@ -73,7 +73,7 @@ Container.Nav = styled.div`
 Container.Box = styled.div`
   display: flex;
   display: grid;
-  grid-template-columns: 40px 300px 300px 10fr 300px 300px 300px 300px 240px 300px 300px 300px 120px  ;
+  grid-template-columns: 40px 400px 400px 400px 400px 400px 400px 400px 400px 400px 400px 400px  120px ;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
@@ -105,14 +105,14 @@ Container.Section = styled.div`
 Container.Map = styled.div`
   display: flex;
   display: grid;
-  grid-template-columns: 40px 300px 300px 300px 300px 300px 300px 300px 240px 300px 300px 300px  120px ;
+  grid-template-columns: 40px 400px 400px 400px 400px 400px 400px 400px 400px 400px 400px 400px  120px ;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 5px;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 80px;
+  height: 100px;
   
 
   >div{
@@ -123,10 +123,26 @@ Container.Map = styled.div`
     font-size: 20px;
     line-height: 24px;
     color: #FFFFFF;
+   >b{
+    background-color: #29ff00;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 3px 3px;
+   }
+   >span{
+    background-color: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 3px 3px;
+   }
   }
   @media only screen and (max-width: 1000px) {}
 `
 
+const TrueBal = styled.span`
 
-export { ConTable }
+`
+export { ConTable, TrueBal }
 export default Container
