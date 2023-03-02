@@ -10,13 +10,6 @@ const NewsInfoComponent = () => {
   const [data,setdata] =useState(dataNews)
 
   const query = useRouter()
-  // console.log(query.query.id,'query');
-
-  // let params=query.asPath.slice(-2).split('/').join('')
-  // let map= data.filter((val)=>val.id ===+params );
-  // let x = map[0]?.id
-  // let v = map?.name
-  // console.log(x,'xx',v,'vv');
 
 return (
     <Container>

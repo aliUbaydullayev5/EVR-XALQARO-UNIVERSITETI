@@ -139,6 +139,7 @@ const InputCont = styled.div`
       grid-template-columns: 1fr 1fr !important;
     }
   }
+
   .row8 {
     > div {
       width: 512px;
@@ -205,6 +206,7 @@ const InputCont = styled.div`
   }
   .mainForm{
      position: relative;
+
     p{
       position: absolute;
       left: 18px;
@@ -214,6 +216,7 @@ const InputCont = styled.div`
       line-height: 105.9%;
       letter-spacing: -0.025em;
       color: white;
+
       @media only screen and (max-width: 1000px) {
         font-size: 16px;
         font-weight: 400;
@@ -226,6 +229,7 @@ const InputCont = styled.div`
     .mainForm{
       width: 100%;
     }
+
     }
   
 `
@@ -272,6 +276,7 @@ const IconBox = styled.div`
       display: block;
     }
   }
+
   //  Icon of Upload File for Mobile
   .uploadFileMobile {
     position: absolute;
@@ -302,6 +307,67 @@ const IconBox = styled.div`
 
 
 Container.InputCustom1 = styled.input`
+  // min-width: 124.72px;
+  // width: 513px;
+  // height: 46px;
+  // padding: 0 0 0 70px;
+  // font-size: 24px;
+  // background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  // border-bottom: 0;
+  // border-radius: 15px;
+  // outline: none;
+  // box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
+  // font-style: normal;
+  // font-weight: 400;
+  // line-height: 105.9%;
+  // letter-spacing: -0.025em;
+  // color: transparent;
+  // transition: .2s ;
+  // :active{transform: scale(${({ scale }) => (scale ? `${scale}` : '1.02')})}
+  //
+  // @media only screen and (max-width: 1000px) {
+  //   padding: 0 0 0 25px;
+  //   font-size:13px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 100%;
+  //   height: 36px;
+  //   border-radius: 5px;
+  //   width: 100%;
+  //  }
+  // ::-webkit-calendar-picker-indicator {
+  //   filter: invert(1);
+  // }
+  //
+  // color: ${({ inputType }) => inputType && 'transparent'};
+  // ::-webkit-file-upload-button {
+  //   visibility: hidden;
+  // }
+  // ::before {
+  //   content: 'Firma guvohnomasini yuklang';
+  //   line-height: 105.9%;
+  //   letter-spacing: -0.025em;
+  //   color: #d3d3d3;
+  //   display: inline-block;
+  //   outline: none;
+  //   white-space: nowrap;
+  //   -webkit-user-select: none;
+  //   margin: 8px 0 0 0;
+  //   @media only screen and (max-width: 1000px) {
+  //     margin: 12px 0 0 0;
+  //   }
+  // }
+  // cursor: pointer;
+
+
+
+
+
+
+
+
+
   cursor: pointer;
   min-width: 124.72px;
   width: 251px;
@@ -319,6 +385,8 @@ Container.InputCustom1 = styled.input`
   letter-spacing: -0.025em;
   transition: 0.2s;
   color: rgba(255, 255, 255, 0);
+
+
   @media only screen and (max-width: 1000px) {
     padding: 0 0 0 25px;
     font-size:13px;
@@ -328,10 +396,12 @@ Container.InputCustom1 = styled.input`
     width: 100%;
     height: 36px;
     border-radius: 5px;
+
   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
+
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -372,6 +442,8 @@ Container.InputCustom2 = styled.input`
   letter-spacing: -0.025em;
   transition: 0.2s;
   color: rgba(255, 255, 255, 0);
+
+
   @media only screen and (max-width: 1000px) {
      padding: 0 0 0 25px;
      font-size:13px;
@@ -381,10 +453,12 @@ Container.InputCustom2 = styled.input`
      width: 100%;
      height: 36px;
      border-radius: 5px;
+
    }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
+
   color: ${({ inputType }) => inputType && 'transparent'};
   ::-webkit-file-upload-button {
     visibility: hidden;
