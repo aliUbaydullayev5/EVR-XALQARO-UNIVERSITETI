@@ -10,7 +10,7 @@ import { Button } from '../../../../generic/index.jsx'
 import Container, { ConTable, ContBtn, TrueBal } from './style.js'
 
 
-export const QuationResalt = () => {
+export const ExsamStandart = () => {
 
     const quary = useRouter()
     const dispatch = useDispatch()
@@ -33,6 +33,7 @@ export const QuationResalt = () => {
     useEffect(() => {
         if (quationget.status === 'success') setDataList(quationget.data)
     })
+
 
 
     useEffect(() => {
@@ -100,4 +101,4 @@ export const QuationResalt = () => {
     )
 }
 
-export default QuationResalt
+export default ExsamStandart
