@@ -1,7 +1,14 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+<<<<<<< HEAD
 export const forgonPasswordFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/change-password`, {
+=======
+import {API_GLOBAL} from "../../../globalApi";
+export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
+    console.log(payload)
+    return await fetch(`${API_GLOBAL}v1/auth/check-phone`, {
+>>>>>>> admin/xasan
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

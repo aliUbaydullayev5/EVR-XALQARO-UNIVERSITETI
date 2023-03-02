@@ -272,6 +272,7 @@ const IconBox = styled.div`
       display: block;
     }
   }
+  
   //  Icon of Upload File for Mobile
   .uploadFileMobile {
     position: absolute;
