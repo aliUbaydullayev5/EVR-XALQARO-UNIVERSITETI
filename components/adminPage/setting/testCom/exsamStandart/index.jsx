@@ -120,7 +120,7 @@ export const ExsamStandart = () => {
                     <Input placeholder={'2-Blog uchun'} onchange={(e) => setName({ ...name, secondExamSubjectBall: e.target.value })} width={'150px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Input placeholder={'Majburiy Fan uchun'} onchange={(e) => setName({ ...name, importantExamSubjectBall: e.target.value })} width={'170px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Input placeholder={'Umumiy Kirish uchun Ball'} onchange={(e) => setName({ ...name, entranceBall: e.target.value })} width={'200px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
-                    <Input placeholder={'Imtxon uchun Vaqt Kiritish'} onchange={(e) => setName({ ...name, examTime: e.target.value })} width={'250px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input type={'time'} placeholder={'Imtxon uchun Vaqt Kiritish'} onchange={(e) => setName({ ...name, examTime: e.target.value })} width={'250px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} radius={'10px'}> Add</Button>
                 </Container.Add>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
