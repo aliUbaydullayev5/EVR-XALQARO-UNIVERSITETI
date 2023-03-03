@@ -12,10 +12,17 @@ const LibraryCard = ({ data = {} }) => {
       <Container.Bottom>
         <Container.Box>
           <h1 className="nocopy"> 
-          <marquee behavior="" direction="">
-              {name}
-            </marquee>
-            </h1>
+           {
+              name.split(' ').length > 4 ?
+              <>
+                {name.split(' ').slice(0, 3).join(' ')}....
+              </>
+              :
+              <>
+                {name}
+              </>
+            } 
+          </h1>
           <div className="info nocopy">
             <p>Muallif :</p>
             <span>Vikas Svarul</span>

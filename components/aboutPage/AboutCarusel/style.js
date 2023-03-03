@@ -4,14 +4,40 @@ import Image from "next/image.js";
 
 
 const Container = styled.div`
-  border-radius: 25px;
   height: 100%;
-  display: grid;
-  grid-template-rows: 67px 1fr 40px;
-`
-Container.Header = styled.div`
-  height: 67px;
   background: #221F51;
+  border-radius: 30px;  
+  display: grid;
+  grid-template-rows: 84px 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media only screen and (max-width: 1000px){
+   grid-template-rows: 40px 1fr;
+  }
+`
+
+const Carousels = styled(Carousel)`
+  height: 380px !important;
+  border-radius: 25px;
+  width: 100% !important;
+  background-size: cover !important;
+`
+
+Carousels.CaruselImg = styled(Image)`
+  max-height: 385px !important;
+  width: 100% !important;
+  border-radius: 25px;
+  @media only screen and (max-width: 1000px) {
+    max-height: 375px;
+  }
+`
+
+Container.Header = styled.div`
+  width: 97%;
+  height: 84px;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
   font-weight: 500;
@@ -28,111 +54,66 @@ Container.Header = styled.div`
     right: 29px;
     cursor: pointer;
   }
-`
-
-const carouselWidth = '400px'
-
-
-Container.MainCarousel = styled.div`
-  
-`
-  
-const Carousels = styled(Carousel)`
-  height: ${carouselWidth} !important;
-  border-radius: 25px;
-  .control-dots{
-    top: 150px !important;
-    left: 0px !important;
-    z-index: 99999999 !important;
+  @media only screen and (max-width: 1000px){
+   font-size: 20px;
+   height: 42px;
+   .icon{
+    top: 10px;
+    right: 20px;
+   }
   }
 `
-Carousels.CaruselImg = styled(Image)`
-  max-height: ${carouselWidth} !important;
-  width: 100%;
-  border-radius: 25px;
 
-`
+Container.Img=styled.div`
+ width: 100%;
+ height: 380px;
+ position: relative;
 
-
-const CaruselContainer = styled.div`
-  height: 400px;
-  width: 100%;
-  position: relative;
-  padding: 0 15px 0 0;
- >p{
+ p{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    display: flex;
-    align-items: center;
     text-align: justify;
     color: #FFFFFF;
     position: absolute;
     z-index: 9999;
-    left: 0px;
-    bottom: 15px;
-    right: 0px;
-    margin: 0 auto;
-    padding: 0 60px;
-    text-shadow: 0 0 8px #333;
-}
+    bottom: 10px;
+    padding: 0 50px;
+  }
+
+  @media only screen and (max-width: 1000px){
+   >p{
+    font-weight: 350;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 0 30px;
+   }
+  }
 `
-const Blur = styled.div`
-  position: absolute ;
-  top: 8px;
-  bottom:  0px ;
-  right: 0px ;
-  left: 0px ;
-  /* background-color: rgba(0,0,0,0.2); */
-  height: 500px !important;
-  max-width: 97.5%;
-  border-radius: 25px;
-  margin: 0 auto;
+
+
+Container.MainCarousel = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-size: cover;
 `
+
 const ContainerDow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr 2fr;
-  width: 95%;
-  margin: 0 auto;
-  gap: 15px;
-`
-const ButtonCon = styled.div`
-   height:40px;
-   display:flex;
-   justify-content:center;
-   align-items: center;
-   padding-right:35px ;
-   cursor: pointer;
-  transition: 0.2s;
-   :hover {transform: scale(1.02)}
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 105.9%;
-    display: flex;
-    align-items: center;
-    letter-spacing: -0.025em;
-    color: rgba(255, 255, 255, 0.5);
-    position: relative;
-    top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  align-items: center;
+  justify-content: center;
 
-    
-    >div{
-        position: absolute;
-        right: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
+  @media only screen and (max-width: 1000px){
+   gap: 12px;
+  }
 `
 
 
-export { Carousels, CaruselContainer, Blur, ContainerDow, ButtonCon,  }
+export { Carousels, ContainerDow, }
 export default Container

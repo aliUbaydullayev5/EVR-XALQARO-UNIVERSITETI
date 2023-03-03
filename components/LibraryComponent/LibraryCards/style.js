@@ -46,10 +46,10 @@ Container.Bottom = styled.div`
 Container.Box = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 5px;
   max-width: 370px;
   width: 100%;
-  height: 86px;
+  height: 100%;
 
   .info{
     display: flex;
@@ -78,12 +78,11 @@ Container.Box = styled.div`
   }
   h1{
    width: 100%;
-   height: 20px;
    font-family: 'Montserrat';
    font-style: normal;
-   font-weight: 600;
-   font-size: 24px;
-   line-height: 29px;
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 20px;
    color: #FFFFFF;
   }
  @media only screen and (max-width:1000px){

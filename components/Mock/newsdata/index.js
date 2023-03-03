@@ -1,5 +1,6 @@
 import img from "../../../assets/image/noImg.png"
 
+
 export const dataNews = [
   {
    id: 1,
