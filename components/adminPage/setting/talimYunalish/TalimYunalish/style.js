@@ -15,9 +15,9 @@ Container.Block = styled.div`
   height: 428px;
   display: flex;
   flex-direction: column;
-  gap:40px;
   align-items:center;
   justify-content: center;
+  gap: 20px;
 
 `
 
