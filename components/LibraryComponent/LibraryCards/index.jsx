@@ -11,16 +11,11 @@ const LibraryCard = ({ data = {} }) => {
       <Image src={img} className="img" />
       <Container.Bottom>
         <Container.Box>
-          <h1 className="nocopy"> {
-              name.split(' ').length > 4 ?
-              <>
-                {name.split(' ').slice(0, 4).join('')}...
-              </>
-              :
-              <>
-                {name}
-              </>
-            }</h1>
+          <h1 className="nocopy"> 
+          <marquee behavior="" direction="">
+              {name}
+            </marquee>
+            </h1>
           <div className="info nocopy">
             <p>Muallif :</p>
             <span>Vikas Svarul</span>
@@ -38,7 +33,7 @@ const LibraryCard = ({ data = {} }) => {
             <span>Badiiy adabiyot</span>
           </div>
         </Container.Box>
-        <Container.End end>
+        <Container.End end className="nocopy">
           <Container.End>
             <Star className="star" />
             <Star className="star" />

@@ -18,7 +18,10 @@ export const NewsCard = ({ data = {} }) => {
         <Image className="img" src={img} alt={"Yuklab Olinmadi"} />
         <Container.Bottom>
           <Container.BottomText>
-            {
+            <marquee behavior="" direction="">
+              {name}
+            </marquee>
+            {/* {
               name.split(' ').length > 3 ?
               <>
                 {name.split(' ').slice(0, 3).join('')}....
@@ -28,7 +31,7 @@ export const NewsCard = ({ data = {} }) => {
                 {name}
               </>
 
-            }
+            } */}
           </Container.BottomText>
           <Container.Footer>
             <Container.Box>
