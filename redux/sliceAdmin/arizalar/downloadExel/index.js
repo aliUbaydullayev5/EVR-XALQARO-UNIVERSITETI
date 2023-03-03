@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const getExcelfetch = createAsyncThunk('getExcelfetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/application/download-excel`, {
+    return await fetch(`${ process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/application/download-excel`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -33,7 +33,7 @@ export const ExamSubjectCreate = () => {
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({ ...name, createAd: '' })
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName('')
 
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
         setTimeout(() => { dispatch(reset()) }, 500);
@@ -41,15 +41,11 @@ export const ExamSubjectCreate = () => {
 
 
     useEffect(() => {
-        if ((examsubjectcreate.status === 'success') )
+        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
             dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [examsubjectcreate])
-    
-    useEffect(() => {
-        if ((examdeleteId.status === 'success'))
-            dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [examdeleteId])
-    
+    }, [examsubjectcreate, examdeleteId])
+
+
     useEffect(() => {
         dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
     }, [getAllexamsubjectFetch])
@@ -69,17 +65,21 @@ export const ExamSubjectCreate = () => {
         })))
     }
 
-    const editPush = (id) => dispatch(examsubjectCreatePost({
-        id: id,
-        nameUz: dataList[0].nameUz,
-        nameRu: dataList[0].nameRu,
-    }))
+    const editPush = (id, i) => dispatch(examsubjectCreatePost(
+        {
+            id: id,
+            nameUz: dataList[i].nameUz,
+            nameRu: dataList[i].nameRu,
+        }))
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
         nameUz: name?.createAd,
         nameRu: name?.valueSet,
     }))
+
+    console.log({ dataList, }, 'dataList[0].nameUz');
+    console.log(dataList.nameRu, 'dataList[0].nameRu');
 
 
     return (
@@ -144,7 +144,7 @@ export const ExamSubjectCreate = () => {
                                     <div className='action'>
                                         {
                                             value?.status ?
-                                                <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                                                <Button onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                                                 :
                                                 <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
                                         }

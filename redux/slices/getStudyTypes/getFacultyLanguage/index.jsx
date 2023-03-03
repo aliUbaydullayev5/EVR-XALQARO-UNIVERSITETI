@@ -1,7 +1,8 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {API_GLOBAL} from "../../../../globalApi";
 
 export const getFacultyLanguageFetch = createAsyncThunk('getFacultyLanguageFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/faculty-type/get-study-language?facultyId=${payload.id}`)
+    return await fetch(`${API_GLOBAL}v1/faculty-type/get-study-language?facultyId=${payload.id}`)
         .then((res)=> res.json())
         .then((json)=> {
             if(json.data.length){

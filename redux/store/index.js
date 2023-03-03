@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import firstVerify from '../slices/firstVerify/index'
 import firstSmsCodeFetch from "../slices/firstSmsVerifyCode"
 import homeAllData from '../slices/homeAllData'
@@ -21,18 +21,21 @@ import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
 import facultetsdeleteId from "../sliceAdmin/facultets/facultetsdeleteId"
-import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent" 
+import editAbuturentId from "../sliceAdmin/talimyunlishAdd/editPutAbuturent"
 import getTalimYunalish from "../sliceAdmin/talimyunlishAdd/index.js"
 import agentAuth from '../slices/agentAuth'
 import authLogin from '../slices/authLogin'
 import getFacultyLanguage from '../slices/getStudyTypes/getFacultyLanguage'
 import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
+import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
+import quationget from '../sliceAdmin/quation/quationgett/index.js'
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getUserId from '../slices/getId/index'
-
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
+import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
+import forgonPassword from '../slices/passwordForgot'
 
 export default configureStore({
     reducer: {
@@ -65,10 +68,13 @@ export default configureStore({
         getFacultyLanguage,
         getFacultyType,
         getInfoUserCabinet,
+        quationCreate,
+        quationget,
         getApplicationData,
         getUserId,
-
         getAdmissionData,
         sendSmsData,
+        quationDeleteId,
+        forgonPassword
     },
 })

@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Montserrat', sans-serif;
   background: #211E51;
   position: relative;
   width: 100%;
 
-
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -28,15 +28,13 @@ a{
   user-select: none;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-
-
 /*  Carousel styles  */
 
-.control-dots{
+.control-dots {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -45,33 +43,39 @@ a{
   justify-content: space-around;
   height: 30% !important;
   left: -20px;
- 
+
 }
 
-.carousel-status{
+.carousel-status {
   display: none;
 }
-.control-arrow, .control-prev{
+
+.control-arrow,
+.control-prev {
   display: none !important;
 }
-.dot{
+
+.dot {
   width: 16px !important;
   height: 16px !important;
   border: 3px solid #FFFFFF !important;
   background-color: rgba(255, 255, 255, 0) !important;
   opacity: 1 !important;
 }
-.control-dots>.selected{
-    background-color: #fff !important;
+
+.control-dots>.selected {
+  background-color: #fff !important;
 }
-.previous{
+
+.previous {
   background-color: rgba(255, 255, 255, 0) !important;
 }
 
 
 
 /*  Safari  */
-input, textarea {
+input,
+textarea {
   position: relative;
   display: inline-block;
   margin: 0;
@@ -98,7 +102,7 @@ input, textarea {
 
 
 ::-webkit-input-placeholder[style*=hidden] {
-  color: rgb(16,124,246);
+  color: rgb(16, 124, 246);
   font-size: 8pt;
   font-weight: normal;
   top: -8pt;
@@ -137,13 +141,14 @@ input, textarea {
   color: rgba(255, 255, 255, 0.5) !important;
   border-radius: 15px !important;
 }
+
 @media only screen and (max-width: 800px) {
   .ant-select-selector {
-   width: 100% !important;
-    height: 27px !important; 
-   font-size: 13px!important;
-  border-radius: 5px !important; 
-  /* min-width: 300px !important;
+    width: 100% !important;
+    height: 27px !important;
+    font-size: 13px !important;
+    border-radius: 5px !important;
+    /* min-width: 300px !important;
   max-width: 352!important; */
   }
 }
@@ -156,19 +161,21 @@ input, textarea {
   height: 46px;
   padding: 0 11px !important;
 }
+
 .delete {
-  text-align:  end;
+  text-align: end;
   display: flex;
   margin-left: auto;
 
 }
+
 .delete:hover {
   cursor: pointer;
 
 }
 
 /* /application/UsersCardInfo/click  bir hill text css    */
-.textSmall{
+.textSmall {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
@@ -179,8 +186,9 @@ input, textarea {
   letter-spacing: -0.025em;
   color: rgba(255, 255, 255, 0.7);
 }
+
 @media only screen and (max-width: 1000px) {
-  .textSmall{
+  .textSmall {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -202,7 +210,7 @@ input, textarea {
 }
 
 @media only screen and (max-width: 1000px) {
-  .ant-modal .ant-modal-content{
+  .ant-modal .ant-modal-content {
     margin-top: 40px !important;
 
   }
@@ -215,7 +223,7 @@ input::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 1000px) {
-  .control-dots{
+  .control-dots {
     display: flex !important;
     flex-direction: row;
     align-items: flex-end;
@@ -273,6 +281,7 @@ input::-webkit-inner-spin-button {
   margin: 0px 20px;
   color: white;
 }
+
 :where(.css-dev-only-do-not-override-1s3dcof).ant-modal .ant-modal-footer {
   text-align: end;
   background: transparent;
@@ -282,28 +291,28 @@ input::-webkit-inner-spin-button {
 
 /*   Phone Number    */
 
-.test{
+.test {
   color: rgba(194, 191, 191, 0.442);
 }
 
 
 /* select */
 
-select{
+select {
   margin: 0;
   background: #fff;
-  color:#fff;
+  color: #fff;
   border: none;
-  outline:none;
+  outline: none;
   display: inline-block;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 100%;
   height: 46px;
-  -webkit-padding-before:8px;
-  -webkit-padding-after:8px;
-  cursor:pointer;
+  -webkit-padding-before: 8px;
+  -webkit-padding-after: 8px;
+  cursor: pointer;
   font-size: 24px;
   padding: 0 34px;
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
@@ -312,10 +321,13 @@ select{
   border-radius: 15px;
 }
 
-select option{
+select option {
   padding: 8px 5px;
-  color: black;
+  color: red;
 }
+
+
+
 
 
 label {position:relative}
@@ -333,38 +345,58 @@ label:after {
   position:absolute;
   pointer-events:none;
 }
+
+label:after {
+  content: '<>';
+  font: 14px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 8px;
+  top: 0px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  pointer-events: none;
+}
+
 label:before {
+  content: none;
   right: 6px;
   top: 0;
-  width:20px; height:20px;
-  background:#fff;
-  position:absolute;
-  pointer-events:none;
-  display:block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  position: absolute;
+  pointer-events: none;
+  display: block;
 }
 
 @media only screen and (max-width: 800px) {
-  select{
+  select {
     margin: 0;
-    color:#fff;
+    color: #fff;
     border: none;
-    outline:none;
+    outline: none;
     display: inline-block;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     padding: 0 0 0 19px;
     height: 26px;
     -webkit-padding-before: 0;
     -webkit-padding-after: 0;
-    cursor:pointer;
+    cursor: pointer;
     font-size: 12px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-  select option{
-    padding:8px 5px;
+
+  select option {
+    padding: 8px 5px;
   }
 }

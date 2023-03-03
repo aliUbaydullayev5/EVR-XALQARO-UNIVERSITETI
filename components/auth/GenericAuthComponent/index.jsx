@@ -75,7 +75,6 @@ const GenericAuthComponent = ({pushPath, tokenName}) => {
                             type={'text'}
                             onchange={(e) => setLogPas({...logPas, userName: e.target.value})}
                         />
-
                     </Container.InputArea>
                     <Container.InputArea>
                         <BlockIcon className={'blockIcon'} />
