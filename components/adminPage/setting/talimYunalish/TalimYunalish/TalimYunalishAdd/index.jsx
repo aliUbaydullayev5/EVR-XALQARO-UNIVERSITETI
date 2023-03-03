@@ -1,4 +1,4 @@
-import { Modal, Spin } from "antd";
+import { Modal } from "antd";
 import { useRouter } from "next/router.js";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -27,7 +27,7 @@ export const TalimYunlishAddCom = () => {
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState("Ushbu ma'lumotlar o'chirib yuborilsinmi?");
+  const [deletId, setDeletId] = useState("");
 
   const getStudyTypes = useSelector((store) => store.getStudyTypes);
   const getStudyTypesAbuturent = useSelector(
@@ -75,18 +75,17 @@ export const TalimYunlishAddCom = () => {
         id: 0,
         nameUz: name.nameUz,
         nameRu: name.nameRu,
+        studyType:'BACHELOR' 
       })
     );
 
-  const [deletId, setDeletId] = useState("");
   const findDeleteID = (deleteId) => {
     setOpen(true);
-    setDeletId(deleteId)
+    setDeletId(deleteId);
   };
 
   const handleOk = () => {
     dispatch(deleteAbuturentFetch({ id: deletId }));
-    setModalText("ma'lumotlar o'chirildi");
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -115,6 +114,7 @@ export const TalimYunlishAddCom = () => {
         id: id,
         nameUz: dataList[0].nameUz,
         nameRu: dataList[0].nameRu,
+        studyType:'BACHELOR' 
       })
     );
 
@@ -282,13 +282,28 @@ export const TalimYunlishAddCom = () => {
         </div>
       </Container.Scrool>
       <Modal
-        style={{display:"flex",alignItems:"center",justifyContent:"center",marginTop:"100px"}}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "100px",
+        }}
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <p style={{color:"#ffff",width:"300px",height:"100px",textAlign:"center",paddingTop:"35px"}}>{modalText}</p>
+        <p
+          style={{
+            color: "#ffff",
+            width: "300px",
+            height: "100px",
+            textAlign: "center",
+            paddingTop: "35px",
+          }}
+        >
+          Ushbu ma'lumotlar o'chirib yuborilsinmi?
+        </p>
       </Modal>
     </Container>
   );

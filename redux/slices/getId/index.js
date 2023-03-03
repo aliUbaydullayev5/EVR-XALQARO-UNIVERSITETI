@@ -1,7 +1,8 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {API_GLOBAL} from "../../../globalApi";
 export const getUserIdFetch = createAsyncThunk('getUserIdFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/get-id-number?phoneNumber=${payload.userNumber.match(/[0-9]+/g).join('')}`, {
+    return await fetch(`${API_GLOBAL}v1/auth/get-id-number?phoneNumber=${payload.userNumber.match(/[0-9]+/g).join('')}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

@@ -501,7 +501,11 @@ export const AbiturientQabul = () => {
 				onOk={() => setModalHidden(!modelHidden)}
 				onCancel={() => setModalHidden(!modelHidden)}
 				footer={false}
+<<<<<<< HEAD
 				>
+=======
+			>
+>>>>>>> 8ee0f634b43ae8b79478d211f244769c5d54f744
 				<Container.Model>
 					<p>Sms ni kiriting</p>
 					<Input

@@ -10,25 +10,11 @@ export const SidebarAdmin = () => {
   const FaceMenu = [
 
     {
-      id: 1,
-      name: 'Boshqaruv bo’limi',
-      clicked: false,
-    },
-    {
-      id: 2,
-      name: 'O’qituvchi',
-      clicked: false,
-    },
-    {
       id: 3,
       name: 'Ta’lim yo’nalishlari ',
       clicked: false,
     },
-    {
-      id: 4,
-      name: 'Ta’lim yo’nalish turlari',
-      clicked: false,
-    },
+
     {
       id: 5,
       name: 'Imtxon Fanlar',
@@ -58,73 +44,7 @@ export const SidebarAdmin = () => {
       name: `Testlar`,
       clicked: false,
     },
-    {
-      id: 10,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 11,
-      name: 'Boshqaruv bo’limi',
-      clicked: false,
-    },
-    {
-      id: 12,
-      name: 'O’qituvchi',
-      clicked: false,
-    },
-    {
-      id: 13,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 15,
-      name: 'Ta’lim yo’nalish Turlari',
-      clicked: false,
-    },
-    {
-      id: 14,
-      name: 'Testlar',
-      clicked: false,
-    },
-
-    {
-      id: 16,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 17,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 18,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-
-    {
-      id: 19,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 20,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 21,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    },
-    {
-      id: 22,
-      name: 'Ta’lim yo’nalishlari',
-      clicked: false,
-    }
+  
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')

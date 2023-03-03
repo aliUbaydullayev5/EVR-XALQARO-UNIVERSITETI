@@ -30,13 +30,13 @@ import getFacultyType from '../slices/getStudyTypes/getFacultyType'
 import getInfoUserCabinet from '../slices/getInfoUserCabinet'
 import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
 import quationget from '../sliceAdmin/quation/quationgett/index.js'
-
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getUserId from '../slices/getId/index'
-
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
+import forgonPassword from '../slices/passwordForgot'
+
 export default configureStore({
     reducer: {
         firstVerify,
@@ -75,6 +75,6 @@ export default configureStore({
         getAdmissionData,
         sendSmsData,
         quationDeleteId,
-
+        forgonPassword
     },
 })
