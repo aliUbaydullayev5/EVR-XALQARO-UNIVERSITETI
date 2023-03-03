@@ -10,17 +10,9 @@ import CustomInput from 'react-phone-number-input/input';
 import { deployFileFetch } from '../../../redux/slices/deployFile';
 import { startMessage } from '../../../redux/slices/message';
 import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
-import {
-	receptionPostFetch,
-	resetVerify,
-} from '../../../redux/slices/receptionPost';
-import {
-	reseptionSmsCheckSliceFetch,
-	resetTimerVerify,
-} from '../../../redux/slices/receptionVerifyPhone';
-import {
-	receptionSmsVerifyFetch,
-	resetSmsVerify,
+import {receptionPostFetch,resetVerify,} from '../../../redux/slices/receptionPost';
+import {reseptionSmsCheckSliceFetch,resetTimerVerify,} from '../../../redux/slices/receptionVerifyPhone';
+import {receptionSmsVerifyFetch,resetSmsVerify,
 } from '../../../redux/slices/receptionSmsVerify';
 import { checkAllInputs2 } from './checkAllInputs';
 import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
@@ -493,12 +485,14 @@ export const AbiturientQabul = () => {
 				</BtnCon>
 
             </InputCont>
+
+
+
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
 				onCancel={() => setModalHidden(!modelHidden)}
-				footer={false}
-			>
+				footer={false}>
 				<Container.Model>
 					<p>Sms ni kiriting</p>
 					<Input
@@ -536,6 +530,8 @@ export const AbiturientQabul = () => {
 					)}
 				</Container.Model>
 			</Modal>
+
+
 		</Container>
 	);
 };
