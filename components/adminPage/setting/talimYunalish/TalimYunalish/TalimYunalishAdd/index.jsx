@@ -27,7 +27,7 @@ export const TalimYunlishAddCom = () => {
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState("Content of the modal");
+  const [modalText, setModalText] = useState("Ushbu ma'lumotlar o'chirib yuborilsinmi?");
 
   const getStudyTypes = useSelector((store) => store.getStudyTypes);
   const getStudyTypesAbuturent = useSelector(
@@ -86,7 +86,7 @@ export const TalimYunlishAddCom = () => {
 
   const handleOk = () => {
     dispatch(deleteAbuturentFetch({ id: deletId }));
-    setModalText("information has been deleted");
+    setModalText("ma'lumotlar o'chirildi");
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -282,14 +282,13 @@ export const TalimYunlishAddCom = () => {
         </div>
       </Container.Scrool>
       <Modal
-        title="O'chirib yuborilsinmi?"
-
+        style={{display:"flex",alignItems:"center",justifyContent:"center",marginTop:"100px"}}
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <p>{modalText}</p>
+        <p style={{color:"#ffff",width:"300px",height:"100px",textAlign:"center",paddingTop:"35px"}}>{modalText}</p>
       </Modal>
     </Container>
   );
