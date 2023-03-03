@@ -44,6 +44,11 @@ export const SidebarAdmin = () => {
       name: `Testlar`,
       clicked: false,
     },
+    {
+      id: 10,
+      name: `Test Boshqaruv`,
+      clicked: false,
+    },
   
   ]
   const CheckId = (id) => {
@@ -56,6 +61,7 @@ export const SidebarAdmin = () => {
     else if (id === 7) quarey.push('/admin/setting/subjectsMandatory')
     else if (id === 8) quarey.push('/admin/setting/quations')
     else if (id === 9) quarey.push('/admin/setting/quationResalt')
+    else if (id === 10) quarey.push('/admin/setting/exsamStandart')
   }
 
   return (
