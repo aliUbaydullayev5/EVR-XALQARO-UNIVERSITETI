@@ -35,6 +35,8 @@ import getUserId from '../slices/getId/index'
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import forgonPassword from '../slices/passwordForgot'
+import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
+
 
 export default configureStore({
     reducer: {
@@ -73,6 +75,7 @@ export default configureStore({
         getUserId,
         getAdmissionData,
         sendSmsData,
-        forgonPassword
+        forgonPassword,
+        subjectMandatoryData
     },
 })
