@@ -9,19 +9,28 @@ const Talaba = () => {
     const [state, setState] = useState()
 
     useEffect(()=> {
-        let authBool = localStorage?.getItem('talaba-token')
-        if(authBool?.length > 3){
+
+        let authTalabaBool = localStorage?.getItem('talaba-token')
+        let authAgentBool = localStorage?.getItem('agent-token')
+
+        // talaba
+        if(authTalabaBool?.length > 3){
             setState(false)
             router.push('/receptionPage/account')
-        }else{
-            setState(true)
-        }
+        }else setState(true)
+
+        // agent
+        if(authAgentBool?.length > 3){
+            setState(false)
+            router.push('/receptionPage/account')
+        }else setState(true)
+
     }, [])
 
     return(
         <Root>
             {
-                state && <GenericAuthComponent title={'Kirish'} pushPath={'/personalAccount/talaba'} royxat={false} tokenName={'talaba-token'}/>
+                state && <GenericAuthComponent tokenName={'talaba-token'}/>
             }
         </Root>
     )

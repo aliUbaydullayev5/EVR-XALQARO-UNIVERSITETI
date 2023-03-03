@@ -34,7 +34,7 @@ import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getUserId from '../slices/getId/index'
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
-import forgonPassword from '../slices/passwordForgot'
+import forgotPassword from '../slices/passwordForgot'
 
 export default configureStore({
     reducer: {
@@ -73,6 +73,6 @@ export default configureStore({
         getUserId,
         getAdmissionData,
         sendSmsData,
-        forgonPassword
+        forgotPassword
     },
 })

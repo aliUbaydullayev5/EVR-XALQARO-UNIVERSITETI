@@ -10,7 +10,7 @@ import React, {useEffect, useState} from "react";
 import {startMessage} from "../../../redux/slices/message";
 import {Spin} from "antd";
 
-const GenericAuthComponent = ({pushPath, tokenName}) => {
+const GenericAuthComponent = ({tokenName}) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
