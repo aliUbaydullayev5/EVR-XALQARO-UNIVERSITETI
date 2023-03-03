@@ -12,6 +12,7 @@ export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', a
             id: payload.id,
             nameUz: payload.nameUz,
             nameRu: payload.nameRu,
+            important: payload.important,
             "studyType": "BACHELOR",
         }),
     }).then((res) => res.json())

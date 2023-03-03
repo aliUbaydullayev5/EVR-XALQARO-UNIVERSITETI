@@ -36,6 +36,10 @@ import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
 import forgonPassword from '../slices/passwordForgot'
+import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
+import getManagementData from '../sliceAdmin/management/boshqaruv'
+import aboutCreateData from '../sliceAdmin/about-us/index'
+import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
 
 export default configureStore({
     reducer: {
@@ -75,6 +79,10 @@ export default configureStore({
         getAdmissionData,
         sendSmsData,
         quationDeleteId,
-        forgonPassword
+        forgonPassword,
+        subjectMandatoryData,
+        getManagementData,
+        aboutCreateData,
+        getKutubxonaMuallifData
     },
 })

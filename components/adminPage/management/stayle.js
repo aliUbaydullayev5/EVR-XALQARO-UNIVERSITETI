@@ -132,7 +132,6 @@ const Center = styled.div`
 `
 const  Bolim1 = styled.div`
   display: grid;
-  grid-template-columns: 200px 200px;
   margin: 10px auto;
   cursor: pointer;
 
