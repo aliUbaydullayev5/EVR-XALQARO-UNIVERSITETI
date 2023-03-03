@@ -99,7 +99,7 @@ export const MagistraturaComponent = () => {
 		dispatch(getDirectTypeFetch({ type: 'MASTER' }));
 	}, []);
 
-	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]) // file ni yuklab id sini allData ga yozib koyadi
+	useEffect(() => changeAllDataFunc({type: by, value: fileId}), [fileId]) // file ni yuklab id sini allData ga yozib koyadi
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []); // kirishiga magister yoki bakalavir uhcunligini allData ga yozib koyadi
 
 	const checkAllInputs = () => {

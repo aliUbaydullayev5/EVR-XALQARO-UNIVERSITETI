@@ -38,7 +38,7 @@ const sendSmsData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [sendSmsFetch]: state => {
+        [sendSmsFetch.rejected]: state => {
             state.status = 'Error'
         }
     }

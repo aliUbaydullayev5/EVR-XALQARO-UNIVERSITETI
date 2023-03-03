@@ -28,7 +28,7 @@ const subjectMandatoryData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [subjectMandatoryFetch]: (state) => {
+        [subjectMandatoryFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     }

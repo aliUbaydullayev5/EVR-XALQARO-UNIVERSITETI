@@ -60,7 +60,7 @@ export const SidebarAdmin = () => {
     },
     {
       id: 10,
-      name: 'Ta’lim yo’nalishlari',
+      name: 'About US',
       clicked: false,
     },
     {
@@ -128,14 +128,15 @@ export const SidebarAdmin = () => {
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
-    else if (id == 3) quarey.push('/admin/setting/facultets')
-    else if (id == 4) quarey.push('/admin/setting/facultetsType')
+    else if (id === 3) quarey.push('/admin/setting/facultets')
+    else if (id === 4) quarey.push('/admin/setting/facultetsType')
     else if (id === 5) quarey.push('/admin/setting/exsam')
     else if (id === 6) quarey.push('/admin/setting/facultyImtxonselect')
     else if (id === 7) quarey.push('/admin/setting/subjectsMandatory')
     else if (id === 7) quarey.push('/admin/setting/subjectsMandatory')
     else if (id === 8) quarey.push('/admin/setting/quations')
     else if (id === 9) quarey.push('/admin/setting/quationResalt')
+    else if (id === 10) quarey.push('/admin/setting/aboutUs')
   }
 
   return (

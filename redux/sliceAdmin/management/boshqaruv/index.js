@@ -1,21 +1,22 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {fetch} from "next/dist/compiled/@edge-runtime/primitives/fetch";
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {API_GLOBAL} from "../../../../globalApi";
 
-export const getManagementFetch = createAsyncThunk('getManagementFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }...`, {
+
+export const getManagementFetch = createAsyncThunk('getManagementFetch', async (payload)=> {
+    return await fetch(`${API_GLOBAL}v1/management`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     })
-        .then(res => res.json())
+        .then((res) => res.json())
 })
 
 const getManagementData = createSlice({
     name: 'getManagementData',
     initialState: {
-        status: '',
+        status: null,
         data: []
     },
     extraReducers: {
@@ -28,8 +29,12 @@ const getManagementData = createSlice({
                 state.status = 'Success'
             }
         },
-        [getManagementFetch]: state => {
+        [getManagementFetch.rejected]: state => {
             state.status = 'Error'
         }
     }
 })
+
+
+
+export default getManagementData.reducer
