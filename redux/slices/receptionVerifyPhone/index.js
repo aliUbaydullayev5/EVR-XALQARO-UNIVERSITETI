@@ -1,10 +1,11 @@
 /** @format */
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {API_GLOBAL} from "../../../globalApi";
 
 export const reseptionSmsCheckSliceFetch = createAsyncThunk('receptionCheckPhone', async (payload) => {
 		return await fetch(
-			`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/check-phone`,
+			`${API_GLOBAL}v1/auth/check-phone`,
 			{
 				method: 'POST',
 				headers: {

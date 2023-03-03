@@ -3,10 +3,11 @@ import {Button, Input} from "../../generic"
 import CustomInput from 'react-phone-number-input/input'
 import React, {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {getUserIdFetch, resetTimerVerify} from "../../../redux/slices/getId";
-import {firstVerifyFetch} from "../../../redux/slices/firstVerify";
-import {useRouter} from "next/router";
-import {Modal, Spin} from "antd";
+import {firstVerifyFetch, resetTimerVerify} from "../../../redux/slices/firstVerify"
+import {useRouter} from "next/router"
+import {startMessage} from "../../../redux/slices/message"
+import {getUserIdFetch, resetData} from "../../../redux/slices/getId"
+import { Modal, Spin } from 'antd'
 
 const PasswordComponent = () => {
 
@@ -16,34 +17,45 @@ const PasswordComponent = () => {
     const getUserId = useSelector((store)=> store.getUserId)
     const firstVerify = useSelector((store)=> store.firstVerify)
 
-    const [number, setNumber] = useState('+998')
-    const [modelHidden, setModalHidden] = useState(false)
-    const [smsInput, setSmsInput] = useState('')
-    const pushNumber = () => {
-        dispatch(getUserIdFetch({userNumber: number}))
-    }
-    const pushSmsFunc = () => {
-        // if(){
-        //
-        // }
-
-        // dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber: number}))
-    }
-
-
-    useEffect(()=> {
-        dispatch(resetTimerVerify())
-    }, [number])
-
-
-
     const [data, setData] = useState({
-        phoneNumber: '',
+        phoneNumber: '+998',
         idNumber: '',
         verifyDode: '',
         password: '',
         prePassword: ''
     })
+
+    const [modelHidden, setModalHidden] = useState(false)
+    const pushNumber = () => dispatch(getUserIdFetch({userNumber: data.phoneNumber}))
+
+    const pushSmsFunc = () => {
+        if (data.password.length >= 8 && data.password === data.prePassword) {
+            dispatch(firstVerifyFetch({firstName: 'forgot password', phoneNumber: data.phoneNumber}))
+        } else {
+            dispatch(
+                startMessage({
+                    time: 5,
+                    type: 'error',
+                    message: 'Parol 8 honadan kop va bir hil bolishi kere',
+                }),
+            );
+        }
+    }
+
+    useEffect(()=> {
+        dispatch(resetData())
+        dispatch(resetTimerVerify())
+        setData({
+            ...data,
+            idNumber: '',
+            verifyDode: '',
+            password: '',
+            prePassword: ''
+        })
+        setModalHidden(false)
+    }, [data.phoneNumber.length])
+
+
     const changeAllDataFunc = ({ type, value }) => {
         const fakeData = data
         fakeData[type] = value
@@ -52,21 +64,8 @@ const PasswordComponent = () => {
     }
 
     useEffect(()=> {
-        // if(){
-        //
-        // }
-        // changeAllDataFunc({type: 'verifyDode', value: })
+        if(firstVerify.status === 'success') setModalHidden(true)
     }, [firstVerify])
-
-    console.log(getUserId, 'getUserId')
-
-    // phoneNumber
-    // idNumber
-    // verifyDode
-    // password
-    // prePassword
-
-    // <Input type={'text'} placeholder={'verify code'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
 
 
 
@@ -78,15 +77,21 @@ const PasswordComponent = () => {
                     ID raqamni tiklash
                 </Container.BlockTop>
                 <Container.BlockBottom>
-                    <CustomInput className={'customPhoneInput'} value={number} onChange={(e)=> setNumber(e)} maxLength={17} />
 
-                    <h1>{`${getUserId.message}` || ''}</h1>
+                    <CustomInput
+                        className={'customPhoneInput'}
+                        value={data.phoneNumber}
+                        onChange={(e)=> changeAllDataFunc({type: 'phoneNumber', value: e})}
+                        maxLength={17}
+                    />
+
+                    <h1>{getUserId?.message || ''}</h1>
 
                     {
-                        getUserId.status === 'success' ?
+                        getUserId?.status === 'success' ?
                             <div>
-                                <Input onchange={(e)=> changeAllDataFunc()} type={'text'} placeholder={'password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
-                                <Input type={'text'} placeholder={'pre password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+                                <Input onchange={(e)=> changeAllDataFunc({type: 'password', value: e.target.value})} type={'password'} placeholder={'password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
+                                <Input onchange={(e)=> changeAllDataFunc({type: 'prePassword', value: e.target.value})} type={'password'} placeholder={'pre password'} mradius={'5px'} radius={'5px'} height={'30px'} width={'333px'} mwidth={'300px'} mheight={'30px'} />
                             </div>
                             :
                             <div></div>
@@ -102,65 +107,30 @@ const PasswordComponent = () => {
                             <Button onclick={()=> pushNumber()} radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>ID Topish</Button>
                     }
 
-
-
                 </Container.BlockBottom>
             </Container.Block>
 
 
-
-
-
-
-            {/*<Modal*/}
-            {/*    open={modelHidden}*/}
-            {/*    onOk={() => setModalHidden(!modelHidden)}*/}
-            {/*    onCancel={() => setModalHidden(!modelHidden)}*/}
-            {/*    footer={false}*/}
-            {/*>*/}
-            {/*    <Container.Model>*/}
-            {/*        <p>Sms ni kiriting</p>*/}
-            {/*        <Input*/}
-            {/*            placeholder={'_ _ _ _ _ _'}*/}
-            {/*            align={'center'}*/}
-            {/*            malign={'center'}*/}
-            {/*            maxlength={6}*/}
-            {/*            onKeyDown={(e) => e.key === 'Enter' && verifyCodeFunc()}*/}
-            {/*            value={smsInput}*/}
-            {/*            onchange={(e) => {*/}
-            {/*                setSmsInput(e.target.value);*/}
-            {/*                changeAllDataFunc({ type: 'verifyCode', value: e.target.value });*/}
-            {/*            }}*/}
-            {/*        />*/}
-            {/*        {receptionSmsVerify.status === 'loading' ? (*/}
-            {/*            <>*/}
-            {/*                <Button width={'400px'} height={'50px'}>*/}
-            {/*                    <Container.ButtonLoader>*/}
-            {/*                        <Spin />*/}
-            {/*                    </Container.ButtonLoader>*/}
-            {/*                </Button>*/}
-            {/*            </>*/}
-            {/*        ) : (*/}
-            {/*            <>*/}
-            {/*                <Button*/}
-            {/*                    width={'400px'}*/}
-            {/*                    height={'50px'}*/}
-            {/*                    msize={'24px'}*/}
-            {/*                    mheight={'40px'}*/}
-            {/*                    mwidth={'300px'}*/}
-            {/*                    onclick={() => verifyCodeFunc()}>*/}
-            {/*                    Tastiqlash*/}
-            {/*                </Button>*/}
-            {/*            </>*/}
-            {/*        )}*/}
-            {/*    </Container.Model>*/}
-            {/*</Modal>*/}
-
-
-
-
-
-
+            <Modal
+                open={modelHidden}
+                onOk={() => setModalHidden(!modelHidden)}
+                onCancel={() => setModalHidden(!modelHidden)}
+                footer={false}
+            >
+                <Container.Model>
+                    <p>Sms ni kiriting</p>
+                    <Input
+                        placeholder={'_ _ _ _ _ _'}
+                        align={'center'}
+                        malign={'center'}
+                        maxlength={6}
+                        mradius={'5px'}
+                        value={data.verifyDode}
+                        onchange={(e) => changeAllDataFunc({type: 'verifyDode', value: e.target.value})}
+                    />
+                    <Button radius={'5px'} size={'32px'} width={'333px'} height={'40px'} msize={'22px'} mheight={'40px'} mwidth={'300px'} mradius={'5px'}>Parol ozgartirish</Button>
+                </Container.Model>
+            </Modal>
 
         </Container>
     )

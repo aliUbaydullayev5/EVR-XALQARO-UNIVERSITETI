@@ -82,6 +82,18 @@ Container.BlockBottom = styled.div`
   }
 `
 
+Container.Model = styled.div`
+	margin: 0 !important;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	> p {
+		font-size: 18px;
+		color: #fff;
+	}
+`;
 
 Container.InputArea = styled.div`
   position: relative;
@@ -110,6 +122,8 @@ Container.InputArea = styled.div`
       font-size: 16px;
     }
   }
+  
 `
+
 
 export default Container

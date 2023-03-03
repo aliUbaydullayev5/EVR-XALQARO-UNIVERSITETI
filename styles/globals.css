@@ -13,7 +13,6 @@ body {
   position: relative;
   width: 100%;
 
-
 }
 
 a {
@@ -32,8 +31,6 @@ a {
 .pointer {
   cursor: pointer;
 }
-
-
 
 /*  Carousel styles  */
 
@@ -364,7 +361,7 @@ label:after {
 }
 
 label:before {
-  content: '';
+  content: none;
   right: 6px;
   top: 0;
   width: 20px;
