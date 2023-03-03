@@ -42,7 +42,7 @@ const getApplicationData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [getApplications]: (state) => {
+        [getApplications.rejected]: (state) => {
             state.loading = 'error'
         }
     }

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getTalimYunalishFetch = createAsyncThunk('getTalimYunalishFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/faculty/create`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/faculty/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ export const getTalimYunalishFetch = createAsyncThunk('getTalimYunalishFetch', a
             id: payload.id,
             nameUz: payload.nameUz,
             nameRu: payload.nameRu,
-            studyType: "BACHELOR"
+            studyType: payload.studyType
         }),
     }).then((res) => res.json())
 })

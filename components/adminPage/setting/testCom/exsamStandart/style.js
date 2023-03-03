@@ -121,7 +121,12 @@ Container.ButtonLoader = styled.div`
   background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 `
-
+Container.Btn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: red;
+`
 
 export { ConTable }
 export default Container

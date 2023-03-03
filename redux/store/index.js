@@ -37,6 +37,11 @@ import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
 import forgonPassword from '../slices/passwordForgot'
 import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
+import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
+import getManagementData from '../sliceAdmin/management/boshqaruv'
+import aboutCreateData from '../sliceAdmin/about-us/index'
+import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
+
 export default configureStore({
     reducer: {
         firstVerify,
@@ -77,5 +82,9 @@ export default configureStore({
         quationDeleteId,
         forgonPassword,
         exsamManegemnt,
+        subjectMandatoryData,
+        getManagementData,
+        aboutCreateData,
+        getKutubxonaMuallifData
     },
 })
