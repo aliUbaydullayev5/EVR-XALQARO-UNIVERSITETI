@@ -66,7 +66,6 @@ Container.Box = styled.div`
       align-items: center;
       color: #FFFFFF;
       white-space: nowrap;
-      overflow: hidden;
     }
   }
   p{
@@ -75,8 +74,11 @@ Container.Box = styled.div`
     line-height: 15px;
     color: #FFFFFF;
     opacity: 0.5;
+    white-space: nowrap;
+
   }
   h1{
+   margin-top: 4px;
    width: 100%;
    font-family: 'Montserrat';
    font-style: normal;
@@ -84,6 +86,7 @@ Container.Box = styled.div`
    font-size: 20px;
    line-height: 20px;
    color: #FFFFFF;
+   white-space: nowrap;
   }
  @media only screen and (max-width:1000px){
   gap: 2px;
@@ -104,6 +107,7 @@ Container.Box = styled.div`
     }
   }
   h1{
+    margin-top: 2px;
     width: 120px;
     height: 12px;
     font-weight: 600;

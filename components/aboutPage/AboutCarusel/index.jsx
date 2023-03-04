@@ -4,8 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Down from "../../../assets/icon/personDown.svg";
 import Button from "../../generic/Button";
 import ImagCar from "../../../assets/icons/EvrLogo.png";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Close from '../../../assets/icon/rahmariyatCloseIcon.svg'
 import { useRouter } from "next/router.js";
 

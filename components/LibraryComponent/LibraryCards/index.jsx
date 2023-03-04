@@ -13,7 +13,7 @@ const LibraryCard = ({ data = {} }) => {
         <Container.Box>
           <h1 className="nocopy"> 
            {
-              name.split(' ').length > 4 ?
+              name.split(' ').length > 3 ?
               <>
                 {name.split(' ').slice(0, 3).join(' ')}....
               </>

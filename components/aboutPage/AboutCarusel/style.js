@@ -78,7 +78,7 @@ Container.Img=styled.div`
     text-align: justify;
     color: #FFFFFF;
     position: absolute;
-    z-index: 9999;
+    z-index: 2;
     bottom: 10px;
     padding: 0 50px;
   }
