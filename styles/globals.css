@@ -321,21 +321,11 @@ select {
 
 select option {
   padding: 8px 5px;
-<<<<<<< HEAD
   color: red;
-=======
-  color: black;
-  background: #221F51;
->>>>>>> c6507dd4a672bdf6f6c8e0b77c29986aaf4051ab
 }
 
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c6507dd4a672bdf6f6c8e0b77c29986aaf4051ab
 label {position:relative}
 label:after {
   content:'';
