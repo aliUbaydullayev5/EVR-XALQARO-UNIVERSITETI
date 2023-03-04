@@ -19,22 +19,6 @@ const Container = styled.div`
   }
 `
 
-const Carousels = styled(Carousel)`
-  height: 380px !important;
-  border-radius: 25px;
-  width: 100% !important;
-  background-size: cover !important;
-`
-
-Carousels.CaruselImg = styled(Image)`
-  max-height: 385px !important;
-  width: 100% !important;
-  border-radius: 25px;
-  @media only screen and (max-width: 1000px) {
-    max-height: 375px;
-  }
-`
-
 Container.Header = styled.div`
   width: 97%;
   height: 84px;
@@ -114,6 +98,18 @@ const ContainerDow = styled.div`
   }
 `
 
+const Carousels = styled(Carousel)`
+  height: 455px !important;
+  border-radius: 25px;
+`
+Carousels.CaruselImg = styled(Image)`
+  max-height: 520px !important;
+  max-width: 100%;
+  border-radius: 25px;
+  @media only screen and (max-width: 1000px) {
+    max-height: 467px !important;
+  }
+`
 
 export { Carousels, ContainerDow, }
 export default Container
