@@ -19,8 +19,50 @@ const Container = styled.div`
   }
 `
 
+const Carousels = styled(Carousel)`
+  height: 380px !important;
+  border-radius: 25px;
+  width: 100% !important;
+  background-size: cover !important;
+  position: relative;
+
+  p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify;
+    color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    padding: 0 50px;
+  }
+
+  @media only screen and (max-width: 1000px){
+   p{
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 12px;
+    padding: 0 30px;
+   }
+  }
+`
+
+Carousels.CaruselImg = styled(Image)`
+  max-height: 385px !important;
+  width: 100% !important;
+  border: 25px;
+  border: 2px solid yellow;
+
+  @media only screen and (max-width: 1000px) {
+    max-height: 375px;
+  }
+`
+
 Container.Header = styled.div`
-  width: 97%;
+  width: 100%;
   height: 84px;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0px 0px;
@@ -51,30 +93,6 @@ Container.Header = styled.div`
 Container.Img=styled.div`
  width: 100%;
  height: 380px;
- position: relative;
-
- p{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: justify;
-    color: #FFFFFF;
-    position: absolute;
-    z-index: 2;
-    bottom: 10px;
-    padding: 0 50px;
-  }
-
-  @media only screen and (max-width: 1000px){
-   >p{
-    font-weight: 350;
-    font-size: 10px;
-    line-height: 12px;
-    padding: 0 30px;
-   }
-  }
 `
 
 
@@ -98,18 +116,6 @@ const ContainerDow = styled.div`
   }
 `
 
-const Carousels = styled(Carousel)`
-  height: 455px !important;
-  border-radius: 25px;
-`
-Carousels.CaruselImg = styled(Image)`
-  max-height: 520px !important;
-  max-width: 100%;
-  border-radius: 25px;
-  @media only screen and (max-width: 1000px) {
-    max-height: 467px !important;
-  }
-`
 
 export { Carousels, ContainerDow, }
 export default Container

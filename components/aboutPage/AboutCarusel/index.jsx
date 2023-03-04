@@ -3,12 +3,11 @@ import Container, { Carousels, ContainerDow } from "./style.js";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Down from "../../../assets/icon/personDown.svg";
 import Button from "../../generic/Button";
-import ImagCar from "../../../assets/icons/EvrLogo.png"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import {  } from "react";
 import Close from '../../../assets/icon/rahmariyatCloseIcon.svg'
-import { useRouter } from "next/router.js"
-import data from "../../Mock/newsdata"
-
+import { useRouter } from "next/router.js";
+import data from "../../Mock/newsdata/index"
 
 export const AboutCaruselComp = () => {
   const [state, setState] = useState()
@@ -18,7 +17,7 @@ export const AboutCaruselComp = () => {
       setState(window.innerWidth)
   }, [])
 
- 
+console.log(data); 
   return (
     <Container>
       <Container.Header>Biz haqimizda
@@ -27,24 +26,19 @@ export const AboutCaruselComp = () => {
 
       <Container.MainCarousel>
         <Container.Img>
-           {/* {
-            data.map((val)=>{
-              return  <Carousels autoPlay={state < 1000 ? false : true} showThumbs={false}>
-                <Carousels.CaruselImg src={val.img} alt='carusel' />
-                <p>loocuihygfuhsijc Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi cum ab debitis dolor sunt dignissimos autem et ducimus modi enim!</p>
-              </Carousels>
-            })
-           } */}
-
             <Carousels autoPlay={state < 1000 ? false : true} showThumbs={false}>
-                <Carousels.CaruselImg src={ImagCar} alt='carusel' />
-                <Carousels.CaruselImg src={ImagCar} alt='carusel' />
-                <Carousels.CaruselImg src={ImagCar} alt='carusel' />
-                <Carousels.CaruselImg src={ImagCar} alt='carusel' />
-                <Carousels.CaruselImg src={ImagCar} alt='carusel' />
+              {data.map((value)=> {
+                var Imgsa =value.imgs
+                console.log(Imgsa,'Imgsa');
+              return (
+                <div>
+                  <Carousels.CaruselImg src={Imgsa} alt='carusel' />
+                  <p>{value.name}</p>
+                </div>
+                
+              )
+              })}
             </Carousels>
-
-
         </Container.Img>
         <ContainerDow>
           <a href="" download={true}>
