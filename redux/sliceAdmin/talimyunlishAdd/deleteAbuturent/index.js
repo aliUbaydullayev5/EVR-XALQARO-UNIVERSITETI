@@ -5,7 +5,7 @@ export const deleteAbuturentFetch = createAsyncThunk('deleteAbuturentFetch', asy
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
     }).then((res) => res.json())
 })

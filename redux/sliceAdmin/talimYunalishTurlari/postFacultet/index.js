@@ -6,7 +6,7 @@ export const getfacultyIdfetch = createAsyncThunk('getfacultyIdfetch', async (pa
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         }
     })
         .then((res) => res.json())

@@ -22,7 +22,6 @@ const Container = styled.button`
     border: none;
     transition: .2s;
     font-weight: unset;
-    transition: .2s;
     position: ${({position})=> position && position};
     white-space: nowrap;
     cursor: ${({cursor})=> cursor ? cursor : 'pointer'};
