@@ -1,12 +1,12 @@
 import React from 'react'
 import Root from '../../root'
-import LicenseComponent from "../../components/LicenseComponent"
+import LicenseComponent from "../../components/LicenseComponent/index"
 
 export const License = () => {
  return (
   <Root>
    <LicenseComponent />
-  </Root>
+   </Root>
  )
 }
 export default License

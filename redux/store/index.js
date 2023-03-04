@@ -32,6 +32,7 @@ import quationCreate from '../sliceAdmin/quation/quationadd/index.js'
 import quationget from '../sliceAdmin/quation/quationgett/index.js'
 import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getUserId from '../slices/getId/index'
+<<<<<<< HEAD
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
@@ -90,4 +91,44 @@ export default configureStore({
                 getKutubxonaMuallifData,
 
         },
+=======
+import testGet  from '../testSlice'
+export default configureStore({
+    reducer: {
+        firstVerify,
+        firstSmsCodeFetch,
+        homeAllData,
+        deployFile,
+        receptionPost,
+        messageSlice,
+        getDirectType,
+        reseptionCheckPhoneSlice,
+        receptionSmsVerify,
+        loginAdminThunk,
+        talimYunalishAdmin,
+        getStudyTypesAbuturent,
+        deleteAbuturentId,
+        facultytypesId,
+        facultyTypeAdd,
+        editTalimYunalishType,
+        examsubjectcreate,
+        getAllexamsubject,
+        examdeleteId,
+        facultetsselectAdd,
+        facultetsgetAll,
+        facultetsdeleteId,
+        editAbuturentId,
+        getAllDataAriza,
+        getTalimYunalish,
+        agentAuth,
+        authLogin,
+        getFacultyLanguage,
+        getFacultyType,
+        getInfoUserCabinet,
+        getApplicationData,
+        getExcelData,
+        getUserId,
+        testGet,
+    },
+>>>>>>> c6507dd4a672bdf6f6c8e0b77c29986aaf4051ab
 })

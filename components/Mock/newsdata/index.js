@@ -1,4 +1,6 @@
 import img from "../../../assets/image/noImg.png"
+import imgs from "../../../assets/image/evr.png"
+
 
 export const dataNews = [
   {
@@ -7,6 +9,7 @@ export const dataNews = [
    namechild: "Batafsil",
    date: '07.12.2022',
    img,
+   imgs,
    views: '1250',
   },
   {
@@ -14,7 +17,8 @@ export const dataNews = [
    name: " Pdp Xalqaro Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
   {
@@ -22,7 +26,8 @@ export const dataNews = [
    name: " Milliy Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
 
@@ -31,7 +36,8 @@ export const dataNews = [
    name: " Tatu Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '125'
   },
   {
@@ -39,7 +45,8 @@ export const dataNews = [
    name: " Nizomiy Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
   {
@@ -47,7 +54,8 @@ export const dataNews = [
    name: " Adu Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
   {
@@ -55,7 +63,8 @@ export const dataNews = [
    name: " Namdu Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
   {
@@ -63,7 +72,8 @@ export const dataNews = [
    name: " Deputat Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
   {
@@ -71,7 +81,8 @@ export const dataNews = [
    name: " Najot Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '125'
   },
   {
@@ -79,7 +90,8 @@ export const dataNews = [
    name: " Webbrain Xalqaro Universitetida Qabul Davom etmoqda",
    namechild: "Batafsil",
    date: '07.12.2022',
-   img: img,
+   img,
+   imgs,
    views: '1250'
   },
 

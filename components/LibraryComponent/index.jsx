@@ -33,7 +33,7 @@ const LibraryComponent = () => {
 
   return (
     <Container>
-      <Container.Top>Elektron kutubxona</Container.Top>
+      <Container.Top className="nocopy">Elektron kutubxona</Container.Top>
       <Container.Bottom>
 
         <Container.BottomTop>
