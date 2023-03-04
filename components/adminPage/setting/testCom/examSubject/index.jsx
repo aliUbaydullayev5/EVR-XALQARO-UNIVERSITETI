@@ -47,10 +47,7 @@ export const ExamSubjectCreate = () => {
   const getAllexamsubject = useSelector((store) => store.getAllexamsubject);
   const examsubjectcreate = useSelector((store) => store.examsubjectcreate);
   const examdeleteId = useSelector((store) => store.examdeleteId);
-
-  const getStudyTypesAbuturent = useSelector(
-    (store) => store.getStudyTypesAbuturent
-  );
+  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
 
   useEffect(() => {
     if (examsubjectcreate.status === "success")
@@ -76,9 +73,7 @@ export const ExamSubjectCreate = () => {
 
   useEffect(() => {
     if (
-      examsubjectcreate.status === "success" ||
-      examdeleteId.status === "success"
-    )
+      examsubjectcreate.status === "success" || examdeleteId.status === "success")
       dispatch(getAllexamsubjectFetch({ type: "BACHELOR" }));
   }, [examsubjectcreate, examdeleteId]);
 
@@ -121,8 +116,6 @@ export const ExamSubjectCreate = () => {
       })
     );
 
-  console.log({ dataList }, "dataList[0].nameUz");
-  console.log(dataList.nameRu, "dataList[0].nameRu");
 
   return (
     <Container>

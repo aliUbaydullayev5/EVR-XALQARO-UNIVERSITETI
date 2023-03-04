@@ -2,13 +2,19 @@ import React, { useState } from 'react'
 import Container, { ConTable } from './style.js'
 import Input from "../../../components/generic/Input/index.jsx"
 import dataQabul from "../../Mock/qabulData/qabulData.js"
+import {Button} from "../../generic";
+import {Modal, Spin} from 'antd';
 
 export const AgentComponent = () => {
+
   const [serch,setSearch]=useState('')
   
   const hendelChange = (e) => {
     setSearch(e.target.value);
   }
+
+  const [model, setModel] = useState(false)
+
   return (
     <>
       <Container>
@@ -108,8 +114,28 @@ export const AgentComponent = () => {
           </Container.Bottom>
         </ConTable>
       </Container>
+      <Button width={'15%'} height={'60px'} size={'20px'} onclick={() => setModel(true)}>Agent qoshish</Button>
       <div>
      </div>
+
+      <Modal
+          open={model}
+          onOk={() => setModel(!model)}
+          onCancel={() => setModel(false)}
+          footer={false}
+          style={{maxWidth: '860px'}}
+      >
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+        <Input width={'320px'} height={'55px'} size={'22px'}/>
+      </Modal>
+
     </>
   )
 }

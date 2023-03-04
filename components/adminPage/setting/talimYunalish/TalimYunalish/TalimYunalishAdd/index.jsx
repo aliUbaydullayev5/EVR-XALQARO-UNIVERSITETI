@@ -1,19 +1,34 @@
+
+import { Spin } from 'antd'
+import { useRouter } from 'next/router.js'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js'
+// import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.jsx'
+import { getTalimYunalishFetch, reset } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
+import { startMessage } from '../../../../../../redux/slices/message/index.js'
+import Button from '../../../../../generic/Button/index.jsx'
+import Input from '../../../../../generic/Input/index.jsx'
+import Container, { ConTable } from './style.js'
+
+// =======
 import { Modal } from "antd";
-import { useRouter } from "next/router.js";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
-// import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
-import {
-  getTalimYunalishFetch,
-  reset,
-} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
-import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.jsx";
-import { startMessage } from "../../../../../../redux/slices/message/index.js";
-import Button from "../../../../../generic/Button/index.jsx";
-import Input from "../../../../../generic/Input/index.jsx";
-import Container, { ConTable } from "./style.js";
+// import { useRouter } from "next/router.js";
+// import React, { useState } from "react";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
+// // import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
+// import {
+//   getTalimYunalishFetch,
+// reset,} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
+// import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.jsx";
+// import { startMessage } from "../../../../../../redux/slices/message/index.js";
+// import Button from "../../../../../generic/Button/index.jsx";
+// import Input from "../../../../../generic/Input/index.jsx";
+// import Container, { ConTable } from "./style.js";
 
 export const TalimYunlishAddCom = () => {
   const quary = useRouter();
@@ -46,14 +61,12 @@ export const TalimYunlishAddCom = () => {
           type: "success",
         }),
         setName({
-          ...name,
-          nameUz: "",
-          ...name,
-          nameRu: "",
+          ...name,nameUz: "",
+          ...name, nameRu: "",
         })
       );
     else if (getTalimYunalish.status === "notFound")
-      dispatch(startMessage({ time: 3, message: getStudyTypes.message }));
+      dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
       dispatch(reset());
     }, 500);
@@ -108,12 +121,12 @@ export const TalimYunlishAddCom = () => {
     );
   };
 
-  const editPush = (id) =>
+  const editPush = (id,i) =>
     dispatch(
       getTalimYunalishFetch({
         id: id,
-        nameUz: dataList[0].nameUz,
-        nameRu: dataList[0].nameRu,
+        nameUz: dataList[i].nameUz,
+        nameRu: dataList[i].nameRu,
         studyType:'BACHELOR' 
       })
     );
@@ -172,14 +185,7 @@ export const TalimYunlishAddCom = () => {
             radius={"5px"}
             placeholder={` Ruscha kiriting`}
           />
-          <Button
-            onclick={() => addFacultet()}
-            width={"100px"}
-            height={"45px"}
-            size={"20px"}
-            padding={"0px 10px"}
-            radius={" 5px"}
-          >
+          <Button onclick={() => addFacultet()} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>
             Qo'shish
           </Button>
         </Container.Add>
@@ -242,7 +248,7 @@ export const TalimYunlishAddCom = () => {
                   <div className="action">
                     {value?.status ? (
                       <Button
-                        onclick={() => editPush(value.id)}
+                        onclick={() => editPush(value.id,index)}
                         width={"70px"}
                         height={"40px"}
                         size={"18px"}

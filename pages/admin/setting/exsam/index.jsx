@@ -12,7 +12,6 @@ export const TestPage = () => {
                     <ExamSubjectCreate />
                 </AdminRootToken>
             </RootSidebarMenu>
-
         </RootAdmin>
     )
 }

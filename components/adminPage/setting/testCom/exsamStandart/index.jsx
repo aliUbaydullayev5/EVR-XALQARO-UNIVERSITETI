@@ -1,102 +1,187 @@
 
+import { Spin } from 'antd'
 import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { quationDeleteIdFetch } from '../../../../../redux/sliceAdmin/quation/quationDelete/index.js'
-import { quationgetAll } from '../../../../../redux/sliceAdmin/quation/quationgett/index.js'
-import { Button } from '../../../../generic/index.jsx'
+import Button from '../../../../generic/Button/index.jsx'
+import Input from '../../../../generic/Input/index.jsx'
+import Container, { ConTable } from './style.js'
+import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
+import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
+import { startMessage } from '../../../../../redux/slices/message/index.js'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { exsamManegemntFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/index.js'
+import { exsamMenegmntgetFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js'
 
-import Container, { ConTable, ContBtn, TrueBal } from './style.js'
-
-
-export const ExsamStandart = () => {
-
+export const ExsamStandart = (props) => {
     const quary = useRouter()
     const dispatch = useDispatch()
-    const [name, setName] = useState({
-        id: 0,
-        nameUz: '',
-        nameRu: '',
-    })
 
     const [dataList, setDataList] = useState([])
-
-    const quationget = useSelector((store) => store.quationget)
-    const quationDeleteId = useSelector((store) => store.quationDeleteId)
-
-
-    useEffect(() => {
-        dispatch(quationgetAll())
-    }, [quationgetAll])
-
-    useEffect(() => {
-        if (quationget.status === 'success') setDataList(quationget.data)
+    const [name, setName] = useState({
+        firstExamSubjectBall: '',
+        secondExamSubjectBall: '',
+        importantExamSubjectBall: '',
+        entranceBall: '',
+        examTime: ''
     })
 
 
+    const exsamMenegmntget = useSelector((store) => store.exsamMenegmntget);
+
+
+    const addFacultet = () => dispatch(exsamManegemntFetch({
+        id: 0,
+        firstExamSubjectBall: name.firstExamSubjectBall,
+        secondExamSubjectBall: name.secondExamSubjectBall,
+        importantExamSubjectBall: name.importantExamSubjectBall,
+        entranceBall: name.entranceBall,
+        examTime: name.examTime,
+    }))
 
     useEffect(() => {
-        if (quationDeleteId.status === 'success') dispatch(quationgetAll())
-            
-    }, [quationDeleteId])
-    const findId = (id) => dispatch(quationDeleteIdFetch({ id: id }))
+        if (exsamMenegmntget.status === 'success') setDataList(exsamMenegmntget.data)
+    }, [exsamMenegmntget])
+
+    useEffect(() => {
+        dispatch(exsamMenegmntgetFetch())
+    }, [exsamMenegmntgetFetch])
+
+    function handleTimeChange(event) {
+        const timeValue = event.target.value; const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
+        setName({ ...name, examTime: timeInMilliseconds })
+    }
+
     return (
         <Container>
-            <div>
-                <ConTable>
-                    <Container.Bottom>
-                        <Container.BottomInset>
-                            <Container.Nav>
-                                <Container.Box>
-                                    <div>№</div>
-                                    <div>Imthon Fani</div>
-                                    <div>Savol Uz</div>
-                                    <div><b>A</b> &nbsp; JavobUz </div>
-                                    <div><b>B</b> &nbsp;JavobUz </div>
-                                    <div><b>C</b>&nbsp;JavobUz </div>
-                                    <div><b>D</b>&nbsp;JavobUz </div>
-                                    <div>Savol Ru</div>
-                                    <div><b>A</b> &nbsp; JavobRu</div>
-                                    <div><b>B</b>&nbsp; JavobRu</div>
-                                    <div><b>C</b> &nbsp; JavobRu </div>
-                                    <div><b>D</b> &nbsp; JavobRu </div>
-                                    <div>Tahrirlash </div>
-                                </Container.Box>
-                            </Container.Nav>
-                            {
-                                dataList?.map((value, ind) => (
-                                    <Container.Section key={value.id}>
-                                        <Container.Map>
-                                            <div>{ind + 1}</div>
-                                            <div>{value?.examSubject?.name}</div>
-                                            <div>{value?.textUz}</div>
-                                            <div> {value?.answers[0]?.correct === true ? <b>A</b> : <span>A</span>} &nbsp; {value?.answers[0]?.nameUz}    </div>
-                                            <div> {value?.answers[1]?.correct === true ? <b>B</b> : <span>B</span>} &nbsp;{value?.answers[1]?.nameUz}  </div>
-                                            <div> {value?.answers[2]?.correct === true ? <b>C</b> : <span>C</span>} &nbsp;{value?.answers[2]?.nameUz} </div>
-                                            <div> {value?.answers[3]?.correct === true ? <b>D</b> : <span>C</span>} &nbsp;{value?.answers[3]?.nameUz} </div>
 
-                                            <div>{value?.textRu}</div>
-                                            <div> {value?.answers[0]?.correct === true ? <b>A</b> : <span>A</span>} &nbsp; {value?.answers[0]?.nameRu}    </div>
-                                            <div> {value?.answers[1]?.correct === true ? <b>B</b> : <span>B</span>} &nbsp;{value?.answers[1]?.nameRu}  </div>
-                                            <div> {value?.answers[2]?.correct === true ? <b>C</b> : <span>C</span>} &nbsp;{value?.answers[2]?.nameRu} </div>
-                                            <div> {value?.answers[3]?.correct === true ? <b>D</b> : <span>C</span>} &nbsp;{value?.answers[3]?.nameRu} </div>
-                                            <ContBtn>
-                                                <Button width={'100px'} height={'50x'} size={'13px'} radius={'5px'}>
-                                                    Tahrirlash
-                                                </Button>
-                                                <Button onclick={() => findId(value.id)} width={'100px'} height={'50x'} size={'13px'} radius={'5px'}>
-                                                    'Ochirish
-                                                </Button>
-                                            </ContBtn>
-                                        </Container.Map>
-                                    </Container.Section>
-                                ))
-                            }
-                        </Container.BottomInset>
-                    </Container.Bottom>
-                </ConTable>
-            </div>
+            <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+
+                <Container.Nav>
+                    <div className='row'>
+                        <div >№</div>
+                        <div className='colum'>1-Blog uchun</div>
+                        <div className='colum'>2-Blog uchun</div>
+                        <div className='colum'>Majburiy Fan uchun</div>
+                        <div className='colum'>Umumiy Kirish uchun Ball</div>
+                        <div className='colum'>Imtxon uchun Vaqt Kiritish</div>
+                        <div className='colum' >Action</div>
+                    </div>
+                </Container.Nav>
+                <Container.Add>
+                    <Input placeholder={'1-Blog uchun'} onchange={(e) => setName({ ...name, firstExamSubjectBall: e.target.value })} width={'150px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input placeholder={'2-Blog uchun'} onchange={(e) => setName({ ...name, secondExamSubjectBall: e.target.value })} width={'150px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input placeholder={'Majburiy Fan uchun'} onchange={(e) => setName({ ...name, importantExamSubjectBall: e.target.value })} width={'170px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input placeholder={'Umumiy Kirish uchun Ball'} onchange={(e) => setName({ ...name, entranceBall: e.target.value })} width={'200px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input type="time" onchange={handleTimeChange} width={'250px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} radius={'10px'}> Add</Button>
+                </Container.Add>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+                    {dataList?.map((value, index) => {
+                        return (
+                            <ConTable key={value.id}>
+                                <div className='row'>
+                                    <div >{index + 1}</div>
+                                    <div className='colum'>
+                                        {
+                                            value?.status ?
+                                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                                                    nameRu: val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status
+                                                })))} />
+                                                :
+                                                <>
+                                                    {value.nameUz}
+                                                </>}
+
+                                    </div>
+                                    <div className='colum'>
+                                        {
+                                            value?.status ?
+                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: val.nameUz,
+                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status
+                                                })))} />
+                                                :
+                                                <>
+                                                    {value.nameRu}
+                                                </>
+                                        }
+                                    </div>
+                                    <div className='colum'>
+                                        {
+                                            value?.status ?
+                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: val.nameUz,
+                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status
+                                                })))} />
+                                                :
+                                                <>
+                                                    {value.nameRu}
+                                                </>
+                                        }
+                                    </div>
+                                    <div className='colum'>
+                                        {
+                                            value?.status ?
+                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: val.nameUz,
+                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status
+                                                })))} />
+                                                :
+                                                <>
+                                                    {value.nameRu}
+                                                </>
+                                        }
+                                    </div>
+                                    <div className='colum'>
+                                        {
+                                            value?.status ?
+                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: val.nameUz,
+                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status
+                                                })))} />
+                                                :
+                                                <>
+                                                    {value.nameRu}
+                                                </>
+                                        }
+                                    </div>
+
+                                    <div className='action'>
+                                        {
+                                            value?.status ?
+                                                <Button onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                                                :
+                                                <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
+                                        }
+                                        <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
+                                    </div>
+                                </div>
+                            </ConTable>
+                        )
+                    })}
+                </div>
+            </Container.Scrool>
         </Container>
     )
 }

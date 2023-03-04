@@ -10,7 +10,7 @@ export const getApplications = createAsyncThunk('getApplications', async ({
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         }
     })
         .then(res => res.json())
@@ -42,7 +42,7 @@ const getApplicationData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [getApplications]: (state) => {
+        [getApplications.rejected]: (state) => {
             state.loading = 'error'
         }
     }
