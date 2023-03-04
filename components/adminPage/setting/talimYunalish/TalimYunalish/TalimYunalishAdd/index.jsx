@@ -185,14 +185,7 @@ export const TalimYunlishAddCom = () => {
             radius={"5px"}
             placeholder={` Ruscha kiriting`}
           />
-          <Button
-            onclick={() => addFacultet()}
-            width={"100px"}
-            height={"45px"}
-            size={"20px"}
-            padding={"0px 10px"}
-            radius={" 5px"}
-          >
+          <Button onclick={() => addFacultet()} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>
             Qo'shish
           </Button>
         </Container.Add>

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate/index.js'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
@@ -12,93 +11,48 @@ import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/e
 import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { exsamManegemntFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/index.js'
+import { exsamMenegmntgetFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js'
 
-
-export const ExsamStandart = () => {
+export const ExsamStandart = (props) => {
     const quary = useRouter()
     const dispatch = useDispatch()
 
+    const [dataList, setDataList] = useState([])
     const [name, setName] = useState({
         firstExamSubjectBall: '',
         secondExamSubjectBall: '',
         importantExamSubjectBall: '',
         entranceBall: '',
         examTime: ''
-
     })
-    const [dataList, setDataList] = useState([])
 
 
-    const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
-    const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
-    const examdeleteId = useSelector((store) => store.examdeleteId)
-
-    const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
+    const exsamMenegmntget = useSelector((store) => store.exsamMenegmntget);
 
 
-    useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName('')
-
-        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
-        setTimeout(() => { dispatch(reset()) }, 500);
-    }, [examsubjectcreate])
-
-
-    useEffect(() => {
-        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
-            dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [examsubjectcreate, examdeleteId])
-
-
-    useEffect(() => {
-        dispatch(getAllexamsubjectFetch({ type: 'BACHELOR' }))
-    }, [getAllexamsubjectFetch])
-
-    useEffect(() => {
-        if ((getAllexamsubject.status === 'success'))
-            setDataList(getAllexamsubject.data)
-    }, [getAllexamsubject])
-
-    const findEditID = (id) => {
-        setDataList(dataList.map((value) => ({
-            id: value.id,
-            nameUz: value.nameUz,
-            nameRu: value.nameRu,
-            studyType: value.studyType,
-            status: id === value.id ? (!value.id || true) : false
-        })))
-    }
-
-    const editPush = (id, i) => dispatch(examsubjectCreatePost(
-        {
-            id: id,
-            nameUz: dataList[i].nameUz,
-            nameRu: dataList[i].nameRu,
-        }))
-    const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
-    const addFacultet = () => dispatch(examsubjectCreatePost({
+    const addFacultet = () => dispatch(exsamManegemntFetch({
         id: 0,
-        firstExamSubjectBall: name,
-        secondExamSubjectBall: name,
-        importantExamSubjectBall: name,
-        entranceBall: name,
-        examTime: name,
+        firstExamSubjectBall: name.firstExamSubjectBall,
+        secondExamSubjectBall: name.secondExamSubjectBall,
+        importantExamSubjectBall: name.importantExamSubjectBall,
+        entranceBall: name.entranceBall,
+        examTime: name.examTime,
     }))
 
-    console.log(name?.firstExamSubjectBall, 'firstExamSubjectBall');
-    console.log(name?.secondExamSubjectBall, 'firstExamSubjectBall');
-    console.log(name?.importantExamSubjectBall, 'firstExamSubjectBall');
-    console.log(name?.firstExamSubjectBall, 'firstExamSubjectBall');
-    console.log(name?.entranceBall, 'firstExamSubjectBall');
-    console.log(name?.examTime, 'examTime');
+    useEffect(() => {
+        if (exsamMenegmntget.status === 'success') setDataList(exsamMenegmntget.data)
+    }, [exsamMenegmntget])
 
+    useEffect(() => {
+        dispatch(exsamMenegmntgetFetch())
+    }, [exsamMenegmntgetFetch])
 
-    // "id": 0,
-    //  "firstExamSubjectBall": 3.1,
-    //   "secondExamSubjectBall": 2.1,
-    //   "importantExamSubjectBall": 1.1,
-    //   "entranceBall": 56.7,
-    //                     "examTime": 123456678
+    function handleTimeChange(event) {
+        const timeValue = event.target.value; const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
+        setName({ ...name, examTime: timeInMilliseconds })
+    }
+
     return (
         <Container>
 
@@ -120,7 +74,7 @@ export const ExsamStandart = () => {
                     <Input placeholder={'2-Blog uchun'} onchange={(e) => setName({ ...name, secondExamSubjectBall: e.target.value })} width={'150px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Input placeholder={'Majburiy Fan uchun'} onchange={(e) => setName({ ...name, importantExamSubjectBall: e.target.value })} width={'170px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Input placeholder={'Umumiy Kirish uchun Ball'} onchange={(e) => setName({ ...name, entranceBall: e.target.value })} width={'200px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
-                    <Input type={'time'} placeholder={'Imtxon uchun Vaqt Kiritish'} onchange={(e) => setName({ ...name, examTime: e.target.value })} width={'250px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
+                    <Input type="time" onchange={handleTimeChange} width={'250px'} height={'45px'} padding={'0px 10px'} size={'18px'} radius={'10px'} />
                     <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} radius={'10px'}> Add</Button>
                 </Container.Add>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>

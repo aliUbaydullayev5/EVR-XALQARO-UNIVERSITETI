@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const quationgetAll = createAsyncThunk('quationgetAll', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/exam-question/get-all`,
+export const exsamMenegmntgetFetch = createAsyncThunk('exsamMenegmntgetFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/exam-question/get-all`,
         {
             method: 'GET',
             headers: {
@@ -10,27 +10,27 @@ export const quationgetAll = createAsyncThunk('quationgetAll', async (payload) =
             }, body: JSON.stringify()
         })
         .then((res) => res.json())
-    
+
 })
 
-const quationget = createSlice({
-    name: 'quationget',
+const exsamMenegmntget = createSlice({
+    name: 'exsamMenegmntget',
     initialState: {
         data: {},
         status: null,
     },
     extraReducers: {
-        [quationgetAll.pending]: (state) => {
+        [exsamMenegmntgetFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [quationgetAll.fulfilled]: (state, action) => {
+        [exsamMenegmntgetFetch.fulfilled]: (state, action) => {
             state.status = 'success'
             if (action?.payload?.success == true) state.data = action?.payload?.data
         },
-        [quationgetAll.rejected]: (state) => {
+        [exsamMenegmntgetFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
 })
 
-export default quationget.reducer
+export default exsamMenegmntget.reducer

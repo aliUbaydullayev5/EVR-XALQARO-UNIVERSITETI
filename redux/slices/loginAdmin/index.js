@@ -46,7 +46,7 @@ const loginAdminThunk = createSlice({
             message = ''
         },
         foundToken({ status, message }) {
-            if (localStorage.getItem('accessToken')) {
+            if (localStorage.getItem('admin_AccessToken')) {
                 status = 'success'
                 message = ''
             } else {
