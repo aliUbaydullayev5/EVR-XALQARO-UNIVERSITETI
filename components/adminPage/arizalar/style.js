@@ -1,22 +1,50 @@
 import styled from "styled-components";
+import { Modal } from 'antd'
+
 
 const Container = styled.div`
+  gap: 24px;
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  max-width: 1440px;
-  grid-template-columns: 1fr 0.7fr;
-  padding: 0 40px;
+  max-width: 1273px;
+  display: flex;
+  
  @media only screen and (max-width: 1000px) {
-   padding: 0 20px;
   }
 `
+// left
+
+Container.Top=styled.div`
+max-width: 830px;
+height: 100%;
+display: flex;
+flex-direction: column;
+gap: 12px;
+width: 100%;
+`
+Container.Map=styled.div`
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+
+`
+
+Container.Search=styled.div`
+ position: relative;
+ .search{
+  position: absolute;
+  z-index: 4;
+  top: 10px;
+  left: 10px;
+ }
+`
+
 Container.Scrool = styled.div`
-   width: 100%;
-   height: 615px !important;
+  /* width : ; */
+   height: 400px;
    overflow-y: scroll;
    padding: 0 15px 0 0;
-   display: grid;
+   width: 670px;
    ::-webkit-scrollbar {
       width: 5px;
     }
@@ -34,97 +62,96 @@ Container.Scrool = styled.div`
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
 `
-const ConTable = styled.div`
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap:10px;
->input{
-  height: 30px;
-}
-  >div{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-  }
-  .row{
-    display: grid;
-    grid-template-columns: 52px 1fr 1fr 0.7fr;
-    padding-left: 15px;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    border-radius: 5px;
-  }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 5px;
-  .colum{
-    border-left:  2px solid white;
-    padding-left: 10px;
-  }
-`
-Container.Nav = styled.div`
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
-  >input{
-    height: 45px;
-  }
-  >div{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-  }
-  .row{
-    display: grid;
-    grid-template-columns: 52px 1fr 1fr 0.7fr;
-    padding-left: 15px;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    border-radius: 5px;
-  }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 5px;
-  .colum{
-    border-left:  2px solid white;
-    padding-left: 10px;
+
+Container.Input=styled.div`
+  width: 40px;
+  height: 40px;
+  background: #241F69;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ffff;
   }
 `
 
-
-ConTable.Center = styled.div`
-  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 5px;
+Container.Info=styled.div`
+  max-width: 651px;
   width: 100%;
+  height: 40px;
+  background: #241F69;
+  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    height: 24px;
+    font-weight: 400;
+  }
+  .id{
+    width: 10%;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .fio{
+    font-size: 18px;
+    line-height: 22px;
+    width: 40%;
+    border-left: 1px solid #FFFFFF;
+  }
+  .tel{
+    font-size: 18px;
+    line-height: 22px;
+    width: 30%;
+    border-left: 1px solid #FFFFFF;
+  }
+  .kun{
+    font-size: 18px;
+    line-height: 22px;
+    width: 20%;
+    border-left: 1px solid #FFFFFF;
+  }
 `
-Container.BottomDesc = styled.div`
-  height: 247px;
-  border: 1px solid #FFFFFF;
-  padding: 15px;
+
+Container.Nav = styled.div`
+  display: flex;
+  max-width: 651px;
+  width: 100%;
+  gap: 6px;
+  height: 40px;
+
 `
-Container.BottomDescInset = styled.div`
-`
-// 2 Container Hero Data filter 
+
+// right
+
 const ConHero = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px;
- @media only screen and (max-width: 1000px) {
-  padding: 10px;
-  justify-content: space-evenly;
-.UserImg{
-  display: none;
-}}
-.TextPsamal{
+  
+  >button{
+    background: #241F69;
+  }
+  @media only screen and (max-width: 1000px) {
+    justify-content: space-evenly;
+    .UserImg{
+      display: none;
+    }
+  }
+
+ .TextPsamal{
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -142,48 +169,72 @@ const ConHero = styled.div`
   }
 }
 `
-ConHero.Tartiblash = styled.div`
-  display: flex;
-  justify-content: center;
-  
-`
-
 ConHero.Date = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  >button{
+    background: #241F69;
+  }
   @media only screen and (max-width: 1000px) {
    display: flex;
    flex-direction: column;
-   gap: 20px;
   }
 `
 ConHero.Exel = styled.div`
   display:flex;
   flex-direction:column;
-  justify-content: space-around;
-  gap: 10px;
-  >div{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    width: 510px; 
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.54);
-    border-radius: 20px;
-    padding-left:25px;
-    cursor: pointer;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  >button{
+    background: #241F69;
+    display: flex;
+    gap: 34px;
+    span{
+      font-size: 34px;
+    }
+    h1{
+      color: #fff;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 44px;
+    }
+    .sms{
+      margin-right: 70px;
+    }
+    .exel{
+      margin-right: 10px;
+    }
   }
+  
   @media only screen and (max-width: 1000px) {
-   gap: 20px;
-  >div{
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-    padding-left:15px;
+  
   }
+`
+const SendModal=styled(Modal)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  position: relative;
+  height: 300px;
+  padding: 20px;
+  h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    margin: 10px;
+  }
+
+  .sendSms{
+    position: absolute;
+    z-index: 2;
+    top: 99px;
+    left: 30px;
   }
 `
 
-export { ConTable, ConHero }
+export { ConHero,SendModal }
 export default Container
