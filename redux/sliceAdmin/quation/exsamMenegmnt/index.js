@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-
 export const exsamManegemntFetch = createAsyncThunk('exsamManegemntFetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/exam-info/create
 `, {

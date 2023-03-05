@@ -69,10 +69,10 @@ export const ExamSubjectCreate = () => {
         })))
     }
 
-    const editPush = (id) => dispatch(examsubjectCreatePost({
+    const editPush = (id,i) => dispatch(examsubjectCreatePost({
         id: id,
-        nameUz: dataList[0].nameUz,
-        nameRu: dataList[0].nameRu,
+        nameUz: dataList[i].nameUz,
+        nameRu: dataList[i].nameRu,
     }))
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
@@ -144,7 +144,7 @@ export const ExamSubjectCreate = () => {
                                     <div className='action'>
                                         {
                                             value?.status ?
-                                                <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                                                <Button onclick={() => editPush(value.id,index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                                                 :
                                                 <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
                                         }
