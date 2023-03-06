@@ -66,8 +66,7 @@ export const ExamSubjectCreate = () => {
             nameRu: value.nameRu,
             studyType: value.studyType,
             status: id === value.id ? (!value.id || true) : false
-        })))
-    }
+        })))}
 
     const editPush = (id,i) => dispatch(examsubjectCreatePost({
         id: id,
