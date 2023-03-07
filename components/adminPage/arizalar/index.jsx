@@ -26,12 +26,8 @@ export const ArizalarCom = () => {
   const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
   const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
-
   useEffect(() => {
-    dispatch(getApplications({
-      fromDate: fromDate.getTime(),
-      toDate: toDate.getTime()
-    }))
+    dispatch(getApplications({}))
   }, [])
 
   useEffect(() => {

@@ -2,28 +2,31 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../../globalApi";
 
 
-export const getLibraryWayFetch = createAsyncThunk('getLibraryWayFetch', async (payload)=> {
-    return await fetch(`${API_GLOBAL}v1/book/direction/get`, {
-        method: 'GET',
+export const getLibraryFetch = createAsyncThunk('getLibraryFetch', async (payload)=> {
+    return await fetch(`${API_GLOBAL}v1/book/get`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        }
+        },
+        body: JSON.stringify({
+
+        })
     })
         .then((res)=> res.json())
 })
 
-const getLibraryWayData = createSlice({
-    name: 'getLibraryWayData',
+const getLibraryData = createSlice({
+    name: 'getLibraryAuthorData',
     initialState: {
         status: null,
         data: []
     },
     extraReducers: {
-        [getLibraryWayFetch.pending]: (state)=> {
+        [getLibraryFetch.pending]: (state)=> {
             state.status = 'loading'
         },
-        [getLibraryWayFetch.fulfilled]: (state, {payload})=> {
+        [getLibraryFetch.fulfilled]: (state, {payload})=> {
             if (payload?.success) {
                 state.status = 'Success'
                 state.data = payload
@@ -31,7 +34,7 @@ const getLibraryWayData = createSlice({
                 state.status = 'No payload'
             }
         },
-        [getLibraryWayFetch.rejected]: (state)=> {
+        [getLibraryFetch.rejected]: (state)=> {
             state.status = 'error'
         }
     },
@@ -46,5 +49,5 @@ const getLibraryWayData = createSlice({
 
 
 
-export const { resetAuthLogin } = getLibraryWayData.actions
-export default getLibraryWayData.reducer
+export const { resetAuthLogin } = getLibraryData.actions
+export default getLibraryData.reducer

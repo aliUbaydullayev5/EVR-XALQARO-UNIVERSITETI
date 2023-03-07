@@ -1,40 +1,50 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../../globalApi";
 
-export const getKutubxonaMualifFetch = createAsyncThunk('getKutubxonaMualifFetch', async (payload) => {
-    await fetch(`${API_GLOBAL}v1/book/author/get`, {
+
+export const getLibraryAuthorFetch = createAsyncThunk('getLibraryAuthorFetch', async (payload)=> {
+    return await fetch(`${API_GLOBAL}v1/book/author/get`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     })
-        .then(res => res.json())
+        .then((res)=> res.json())
 })
 
-const getKutubxonaMuallifData = createSlice({
-    name: 'getKutubxonaMuallifData',
+const getLibraryAuthorData = createSlice({
+    name: 'getLibraryAuthorData',
     initialState: {
-        data: [],
-        status: null
+        status: null,
+        data: []
     },
     extraReducers: {
-        [getKutubxonaMualifFetch.pending]: state => {
-            state.status = 'Loading'
+        [getLibraryAuthorFetch.pending]: (state)=> {
+            state.status = 'loading'
         },
-        [getKutubxonaMualifFetch.fulfilled]: (state, { payload }) => {
-            console.log(payload)
+        [getLibraryAuthorFetch.fulfilled]: (state, {payload})=> {
             if (payload?.success) {
                 state.status = 'Success'
-                state.data = payload.data
+                state.data = payload
             } else {
-                state.status = 'No response'
+                state.status = 'No payload'
             }
         },
-        [getKutubxonaMualifFetch.rejected]: state => {
-            state.status = 'Error'
+        [getLibraryAuthorFetch.rejected]: (state)=> {
+            state.status = 'error'
+        }
+    },
+    reducers:{
+        resetAuthLogin(state){
+            state.status = null
+            state.message = ''
+            state.data = {}
         }
     }
 })
 
-export default getKutubxonaMuallifData.reducer
+
+
+export const { resetAuthLogin } = getLibraryAuthorData.actions
+export default getLibraryAuthorData.reducer

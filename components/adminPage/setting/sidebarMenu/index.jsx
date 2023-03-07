@@ -50,7 +50,7 @@ export const SidebarAdmin = () => {
       name: 'About US',
       clicked: false,
     },
-  ]
+ ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
     else if (id === 3) quarey.push('/admin/setting/facultets')

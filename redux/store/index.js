@@ -39,7 +39,10 @@ import forgonPassword from '../slices/passwordForgot'
 import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
 import getManagementData from '../sliceAdmin/management/boshqaruv'
 import aboutCreateData from '../sliceAdmin/about-us/index'
-import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
 
 export default configureStore({
     reducer: {
@@ -83,6 +86,9 @@ export default configureStore({
         subjectMandatoryData,
         getManagementData,
         aboutCreateData,
-        getKutubxonaMuallifData
+        getLibraryAuthorData,
+        getLibraryLangData,
+        getLibraryWayData,
+        getLibraryData
     },
 })
