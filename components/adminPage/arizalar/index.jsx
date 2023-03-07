@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Container, { ConHero, SendModal } from './style.js'
 import { Button, Input } from "../../generic"
-import PeoupleGroup from "../../../assets/icon/people.svg"
-import Exel from "../../../assets/icon/exel.svg"
-import Sms from "../../../assets/icon/sms.svg"
-import SendSmss from "../../../assets/icon/send.svg"
+import PeoupleGroup from "../../../assets/icons/admin/people.svg"
+import Exel from "../../../assets/icons/admin/exel.svg"
+import Sms from "../../../assets/icons/admin/sms.svg"
+import SendSmss from "../../../assets/icons/admin/send.svg"
 import { useDispatch, useSelector } from 'react-redux'
 import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
 import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
@@ -31,16 +31,21 @@ export const ArizalarCom = () => {
   const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
   // sms //
+  const sendSmsData = useSelector(store => store.sendSmsData)
+
+
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [sendSms,setSendSms]=useState("")
+  const smsRef=useRef()
+  
 
-  const SendSms = ({target:{value}}) => {
+  const SendSms = () => {
     setOpen(true);
-    setSendSms(value)
   };
   const handleOk = () => {
-    dispatch(sendSmsFetch({sendSms}))
+    dispatch(sendSmsFetch(smsRef))
+    console.log(smsRef.current.value, "sms");
+    
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -69,8 +74,6 @@ export const ArizalarCom = () => {
   }
 
 
-  // send sms
-  const sendSmsData = useSelector(store => store.sendSmsData)
 
 
   useEffect(() => {
@@ -92,7 +95,7 @@ export const ArizalarCom = () => {
       dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))
     }, 1000)
   }
-console.log(data,'data');
+
   return (
     <>
       <Container>
@@ -122,8 +125,7 @@ console.log(data,'data');
               return (
                 <Container.Nav mapp key={value.id}>
                   <Container.Input>
-                    <input type="checkbox" />
-                    {/* <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} /> */}
+                    <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                   </Container.Input>
                   <Container.Info>
                    <h1 className='id'>{num + 1}</h1>
@@ -148,17 +150,16 @@ console.log(data,'data');
           <Button mline={"22px"} mwidth={'210px'} msize={'10px'} mheight={"45px"} size={'28px'} width={'511px'} height={"48px"} radius={'10px'} mradius={'10px'} weight="500">Tartiblash</Button>
 
           <ConHero.Exel>
-            <Button radius={"20px"} width={"511px"} height={"80px"}><PeoupleGroup/><h1>Arizalar soni: <span>{2054}</span></h1></Button>
+            <Button radius={"20px"} width={"511px"} height={"80px"}><PeoupleGroup/><h1>Arizalar soni: <span>{data?.counts ? data.counts : 0}</span></h1></Button>
             <Button onclick={downloadExcel} radius={"20px"} width={"511px"} height={"80px"}><Exel/><h1 className='exel'>Excelga chiqarish</h1></Button>
             <Button onclick={SendSms} radius={"20px"} width={"511px"} height={"80px"}><Sms/><h1 className='sms'>SMS yuborish</h1></Button>
-              {/* <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data?.counts ? data.counts : 0}</p> */}
           </ConHero.Exel>
         </ConHero>
       </Container>
       <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
         <h1>SMS yuborish</h1>
         <SendSmss className="sendSms"/>
-        <Input width="350px" height="20px" size="15px" placeholder="t y p i n g ..." />
+        <input ref={smsRef} type="text" placeholder='t y p i n g ...' />
       </SendModal>
       {/* {
         getAllData?.status === 'loading' &&

@@ -228,11 +228,23 @@ const SendModal=styled(Modal)`
     margin: 10px;
   }
 
+  input{
+    width: 350px;
+    height: 45px;
+    border-radius: 20px;
+    padding: 0 8px 0 35px;
+    background: #295196;
+    font-weight: 500;
+    line-height: 22px;
+    font-size: 18px;
+    color: #ffff;
+  }
+
   .sendSms{
     position: absolute;
     z-index: 2;
-    top: 99px;
-    left: 30px;
+    top: 98px;
+    left: 33px;
   }
 `
 
