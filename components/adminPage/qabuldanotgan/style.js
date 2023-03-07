@@ -24,9 +24,9 @@ Container.Filter=styled.div`
   z-index: 2;
   top: 22px;
   left: 10px;
-
-}
->button{
+ 
+ }
+ >button{
   background: #241F69;
  }
 `
@@ -91,6 +91,7 @@ const ContainerRith = styled.div`
 
 const SendModal=styled(Modal)`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   margin-top: 100px;
@@ -211,7 +212,7 @@ const ConSelect = styled.div`
 const TalimY = styled.div`
  position: relative;
  .Down{
-     position: absolute;
+    position: absolute;
     right: 20px;
     bottom: 10px;
 
@@ -347,6 +348,23 @@ const ContainerSort = styled.div`
     color: #FFFFFF;
  }
 `
+
+const FilterModal=styled(Modal)`
+  display: flex;
+  height: 300px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  .ant-modal-footer{
+   display: none !important;
+  }
+
+  .anticon svg{
+    display: none;
+  }
+
+`
+
 const SelectSms = styled.div`
   position: relative;
   border: none;
@@ -550,5 +568,5 @@ const AntSelect = styled (Select)`
    font-size: 17px !important;
  }
 `
-export { ConTable,SendModal, AntSelect,SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul, ConExel, ConDate, TalimY, TalimTu }
+export { ConTable,SendModal, AntSelect,SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul,FilterModal, ConExel, ConDate, TalimY, TalimTu }
 export default Container

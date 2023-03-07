@@ -42,6 +42,9 @@ import getManagementData from '../sliceAdmin/management/boshqaruv'
 import aboutCreateData from '../sliceAdmin/about-us/index'
 import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
 import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js"
+import authorCreate from "../sliceAdmin/libary/author/create.js"
+import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
+import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
 
 export default configureStore({
         reducer: {
@@ -88,6 +91,8 @@ export default configureStore({
                 getManagementData,
                 aboutCreateData,
                 getKutubxonaMuallifData,
-
+                authorCreate,
+                authorGet,
+                authorDelete,
         },
 })

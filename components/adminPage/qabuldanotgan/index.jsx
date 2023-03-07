@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
-import Container, { Agent, ConExel, Conpul, ConSelect, SmsMod, ConTable, ContainerRith, ContainerSort, ConW, SelectSms, SendModal, SmsModal, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
+import Container, { Agent, ConExel, Conpul, ConTable, ContainerRith, ConW, SelectSms, SendModal, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
 import Down from "../../../assets/icons/admin/selectdown.svg"
 import Woomen from "../../../assets/icons/admin/peoples.svg"
 import Exel from "../../../assets/icons/admin/exelSetting.svg"
 import Sms from "../../../assets/icons/admin/smsSet.svg"
 import Dollar from "../../../assets/icons/admin/dollar.svg"
 import Setting from "../../../assets/icon/setting.svg"
-import Calendar from "../../../assets/icon/calendar.svg"
 import Search from "../../../assets/icon/search.svg"
 import dataQabul from '../../Mock/qabulData/qabulData.js'
 import { useState } from 'react'
@@ -17,7 +16,7 @@ import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 import {getFacultyTypeFetch} from "../../../redux/slices/getStudyTypes/getFacultyType";
 import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
 import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
-import SendSmss from "../../../assets/icons/admin/send.svg"
+// import SendSmss from "../../../assets/icons/admin/send.svg"
 
 
 

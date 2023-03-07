@@ -1,63 +1,87 @@
-
-import { Spin } from 'antd'
-import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
-import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
-import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
-import { startMessage } from '../../../../../redux/slices/message/index.js'
-import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { exsamManegemntFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/index.js'
 import { exsamMenegmntgetFetch } from '../../../../../redux/sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js'
+import { startMessage } from '../../../../../redux/slices/message/index.js'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { useRouter } from 'next/router.js'
 
-export const ExsamStandart = (props) => {
-    const quary = useRouter()
+export const ExsamStandart = () => {
+
     const dispatch = useDispatch()
-
+    const quary = useRouter()
     const [dataList, setDataList] = useState([])
-    const [name, setName] = useState({
-        firstExamSubjectBall: '',
-        secondExamSubjectBall: '',
-        importantExamSubjectBall: '',
-        entranceBall: '',
-        examTime: ''
-    })
-
+    const [name, setName] = useState({ firstExamSubjectBall: '', secondExamSubjectBall: '', importantExamSubjectBall: '', entranceBall: '', examTime: '' })
 
     const exsamMenegmntget = useSelector((store) => store.exsamMenegmntget);
+    const exsamManegemnt = useSelector((store) => store.exsamManegemnt)
 
-
-    const addFacultet = () => dispatch(exsamManegemntFetch({
-        id: 0,
-        firstExamSubjectBall: name.firstExamSubjectBall,
-        secondExamSubjectBall: name.secondExamSubjectBall,
-        importantExamSubjectBall: name.importantExamSubjectBall,
-        entranceBall: name.entranceBall,
-        examTime: name.examTime,
-    }))
 
     useEffect(() => {
-        if (exsamMenegmntget.status === 'success') setDataList(exsamMenegmntget.data)
+        if (exsamManegemnt.status === "success")
+            dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
+                setDataList());
+        else if (exsamManegemnt.status === "notFound")
+            dispatch(startMessage({ time: 3, message: exsamManegemnt.message.split('_').join(' '), type: "error", }));
+        setTimeout(() => {
+            dispatch(reset());
+        }, 500);
+    }, [exsamMenegmntget]);
+
+
+    useEffect(() => {
+        if (exsamManegemnt.message === 'UN_AUTHORIZED') localStorage.clear()
+    }, [exsamManegemnt])
+
+    useEffect(() => {
+        if (exsamManegemnt.message === 'UN_AUTHORIZED') window.location.reload(false);
+    }, [exsamManegemnt])
+
+    useEffect(() => {
+        if (exsamManegemnt.message === 'UN_AUTHORIZED') quary.push('/admin')
+    }, [exsamManegemnt])
+
+
+    useEffect(() => { exsamManegemnt.status === 'success' && dispatch(exsamMenegmntgetFetch()) }, [exsamManegemnt])
+    useEffect(() => { dispatch(exsamMenegmntgetFetch()) }, [exsamMenegmntgetFetch])
+    useEffect(() => {
+        if (exsamMenegmntget.status === 'success')
+            setDataList(exsamMenegmntget.data?.map((value) => ({ id: value.id, firstExamSubjectBall: value.firstExamSubjectBall, secondExamSubjectBall: value.secondExamSubjectBall, importantExamSubjectBall: value.importantExamSubjectBall, entranceBall: value.entranceBall, examTime: value.examTime * 1000 && new Date(value.examTime).toISOString().slice(11, 16) })))
     }, [exsamMenegmntget])
+    console.log(exsamManegemnt.message, 'exsamManegemnt.message');
+    // add
+    const addFacultet = () => dispatch(exsamManegemntFetch({ id: 0, firstExamSubjectBall: name.firstExamSubjectBall, secondExamSubjectBall: name.secondExamSubjectBall, importantExamSubjectBall: name.importantExamSubjectBall, entranceBall: name.entranceBall, examTime: name.examTime, }))
+    //  date hours change second
 
-    useEffect(() => {
-        dispatch(exsamMenegmntgetFetch())
-    }, [exsamMenegmntgetFetch])
-
+    // find id
+    const findEditID = (id) => {
+        setDataList(dataList.map((value) => ({ id: value.id, firstExamSubjectBall: value.firstExamSubjectBall, secondExamSubjectBall: value.secondExamSubjectBall, importantExamSubjectBall: value.importantExamSubjectBall, entranceBall: value.entranceBall, examTime: value.examTime, status: id === value.id ? !value.id || true : false, })))
+    };
+    // hours change secondd
     function handleTimeChange(event) {
-        const timeValue = event.target.value; const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
+        const timeValue = event.target.value;
+        const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
         setName({ ...name, examTime: timeInMilliseconds })
     }
+    // edit fuction push back
+    const editPush = (id, i) =>
+        dispatch(
+            exsamManegemntFetch({
+                id: id,
+                firstExamSubjectBall: dataList[i].firstExamSubjectBall,
+                secondExamSubjectBall: dataList[i].secondExamSubjectBall,
+                importantExamSubjectBall: dataList[i].importantExamSubjectBall,
+                entranceBall: dataList[i].entranceBall,
+                examTime: new Date(`1970-01-01T${dataList[i].examTime}:00Z`).getTime()
+            }));
 
     return (
         <Container>
-
             <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
-
                 <Container.Nav>
                     <div className='row'>
                         <div >№</div>
@@ -87,82 +111,91 @@ export const ExsamStandart = (props) => {
                                 <div className='row'>
                                     <div >{index + 1}</div>
                                     <div className='colum'>
-                                        {
-                                            value?.status ?
-                                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                    id: val.id,
-                                                    nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                                    nameRu: val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
-                                                })))} />
-                                                :
-                                                <>
-                                                    {value.nameUz}
-                                                </>}
+                                        {value?.status ?
+                                            <input value={value.firstExamSubjectBall} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                id: val.id,
+                                                firstExamSubjectBall: value.id === val.id ? e.target.value : val.firstExamSubjectBall,
+                                                secondExamSubjectBall: val.secondExamSubjectBall,
+                                                importantExamSubjectBall: val.importantExamSubjectBall,
+                                                entranceBall: val.entranceBall,
+                                                examTime: val.examTime,
+                                                status: val.status,
+                                            })))} />
+                                            :
+                                            <>
+                                                {value.firstExamSubjectBall}
+                                            </>}
 
                                     </div>
                                     <div className='colum'>
                                         {
                                             value?.status ?
-                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                <input value={value.secondExamSubjectBall} onChange={(e) => setDataList(dataList.map((val) => ({
                                                     id: val.id,
-                                                    nameUz: val.nameUz,
-                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
+                                                    firstExamSubjectBall: val.firstExamSubjectBall,
+                                                    secondExamSubjectBall: value.id === val.id ? e.target.value : val.secondExamSubjectBall,
+                                                    importantExamSubjectBall: val.importantExamSubjectBall,
+                                                    entranceBall: val.entranceBall,
+                                                    examTime: val.examTime,
+                                                    status: val.status,
                                                 })))} />
                                                 :
                                                 <>
-                                                    {value.nameRu}
+                                                    {value.secondExamSubjectBall}
                                                 </>
                                         }
                                     </div>
                                     <div className='colum'>
                                         {
                                             value?.status ?
-                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                <input value={value.importantExamSubjectBall} onChange={(e) => setDataList(dataList.map((val) => ({
                                                     id: val.id,
-                                                    nameUz: val.nameUz,
-                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
+                                                    firstExamSubjectBall: val.firstExamSubjectBall,
+                                                    secondExamSubjectBall: val.secondExamSubjectBall,
+                                                    importantExamSubjectBall: value.id === val.id ? e.target.value : val.importantExamSubjectBall,
+                                                    entranceBall: val.entranceBall,
+                                                    examTime: val.examTime,
+                                                    status: val.status,
                                                 })))} />
                                                 :
                                                 <>
-                                                    {value.nameRu}
+                                                    {value.importantExamSubjectBall}
                                                 </>
                                         }
                                     </div>
                                     <div className='colum'>
                                         {
                                             value?.status ?
-                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                <input value={value.entranceBall} onChange={(e) => setDataList(dataList.map((val) => ({
                                                     id: val.id,
-                                                    nameUz: val.nameUz,
-                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
+                                                    firstExamSubjectBall: val.firstExamSubjectBall,
+                                                    secondExamSubjectBall: val.secondExamSubjectBall,
+                                                    importantExamSubjectBall: val.importantExamSubjectBall,
+                                                    entranceBall: value.id === val.id ? e.target.value : val.entranceBall,
+                                                    examTime: val.examTime,
+                                                    status: val.status,
                                                 })))} />
                                                 :
                                                 <>
-                                                    {value.nameRu}
+                                                    {value.entranceBall}
                                                 </>
                                         }
                                     </div>
                                     <div className='colum'>
                                         {
                                             value?.status ?
-                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                <input value={value.examTime} onChange={(e) => setDataList(dataList.map((val) => ({
                                                     id: val.id,
-                                                    nameUz: val.nameUz,
-                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
+                                                    firstExamSubjectBall: val.firstExamSubjectBall,
+                                                    secondExamSubjectBall: val.secondExamSubjectBall,
+                                                    importantExamSubjectBall: val.importantExamSubjectBall,
+                                                    entranceBall: val.entranceBall,
+                                                    examTime: value.id === val.id ? e.target.value : val.examTime,
+                                                    status: val.status,
                                                 })))} />
                                                 :
                                                 <>
-                                                    {value.nameRu}
+                                                    {value.examTime}
                                                 </>
                                         }
                                     </div>

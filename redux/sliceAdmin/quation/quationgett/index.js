@@ -7,7 +7,7 @@ export const quationgetAll = createAsyncThunk('quationgetAll', async (payload) =
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
-            }, body: JSON.stringify()
+         }, body: JSON.stringify()
         })
         .then((res) => res.json())
     

@@ -54,14 +54,9 @@ export const TalimYunlishAddCom = () => {
 
   useEffect(() => {
     if (getTalimYunalish.status === "success")
-      dispatch(
-        startMessage({
-          time: 3,
-          message: "Muvofiyaqatli Yakulandi",
-          type: "success",
-        }),
+      dispatch(startMessage({time: 3,message: "Muvofiyaqatli Yakulandi",type: "success", }),
         setName({
-          ...name,nameUz: "",
+ ...name,nameUz: "",
           ...name, nameRu: "",
         })
       );

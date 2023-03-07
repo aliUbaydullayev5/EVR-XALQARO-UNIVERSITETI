@@ -1,5 +1,4 @@
 import { Modal, Spin } from "antd";
-import { useRouter } from "next/router.js";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,7 @@ import { examdeleteIdFetch } from "../../../../../redux/sliceAdmin/exam/examdele
 import { startMessage } from "../../../../../redux/slices/message/index.js";
 import { reset } from "../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
 export const ExamSubjectCreate = () => {
-  const quary = useRouter();
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState({
@@ -33,7 +32,7 @@ export const ExamSubjectCreate = () => {
 
   const handleOk = () => {
     dispatch(examdeleteIdFetch({ id: deletId }))
-    
+
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -50,31 +49,14 @@ export const ExamSubjectCreate = () => {
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
 
   useEffect(() => {
-    if (examsubjectcreate.status === "success")
-      dispatch(
-        startMessage({
-          time: 3,
-          message: "Muvofiyaqatli Yakulandi",
-          type: "success",
-        })
-      ),
-        setName("");
+    if (examsubjectcreate.status === "success") dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", })), setName("");
     else if (examsubjectcreate.status === "notFound")
-      dispatch(
-        startMessage({
-          time: 3,
-          message: examsubjectcreate.message.split("_").join(""),
-        })
-      );
-    setTimeout(() => {
-      dispatch(reset());
-    }, 500);
+      dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split("_").join(""), }));
+    setTimeout(() => { dispatch(reset()); }, 500);
   }, [examsubjectcreate]);
 
   useEffect(() => {
-    if (
-      examsubjectcreate.status === "success" || examdeleteId.status === "success")
-      dispatch(getAllexamsubjectFetch({ type: "BACHELOR" }));
+    if (examsubjectcreate.status === "success" || examdeleteId.status === "success") dispatch(getAllexamsubjectFetch({ type: "BACHELOR" }));
   }, [examsubjectcreate, examdeleteId]);
 
   useEffect(() => {
@@ -169,22 +151,12 @@ export const ExamSubjectCreate = () => {
                   <div>{index + 1}</div>
                   <div className="colum">
                     {value?.status ? (
-                      <input
-                        value={value.nameUz}
-                        onChange={(e) =>
-                          setDataList(
-                            dataList.map((val) => ({
-                              id: val.id,
-                              nameUz:
-                                value.id === val.id
-                                  ? e.target.value
-                                  : val.nameUz,
-                              nameRu: val.nameRu,
-                              studyType: val.studyType,
-                              status: val.status,
-                            }))
-                          )
-                        }
+                      <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                        id: val.id,
+                        nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                        nameRu: val.nameRu,
+                        studyType: val.studyType,
+                        status: val.status, })) )}
                       />
                     ) : (
                       <>{value.nameUz}</>
@@ -217,37 +189,13 @@ export const ExamSubjectCreate = () => {
                   <div className="action">
                     {value?.status ? (
                       <Button
-                        onclick={() => editPush(value.id, index)}
-                        width={"70px"}
-                        height={"40px"}
-                        size={"18px"}
-                        radius={"5px"}
-                        border={"1px solid red"}
-                      >
-                        OK
-                      </Button>
+                        onclick={() => editPush(value.id, index)}  width={"70px"}     height={"40px"}  size={"18px"}  radius={"5px"}  border={"1px solid red"}> OK </Button>
                     ) : (
                       <Button
-                        onclick={() => findEditID(value.id)}
-                        width={"70px"}
-                        height={"40px"}
-                        size={"18px"}
-                        radius={"5px"}
-                        border={"1px solid red"}
-                      >
-                        Edit
-                      </Button>
+                        onclick={() => findEditID(value.id)}   width={"70px"}  height={"40px"}  size={"18px"}  radius={"5px"}  border={"1px solid red"} >   Edit</Button>
                     )}
                     <Button
-                      onclick={() => findDeleteID(value.id)}
-                      width={"70px"}
-                      height={"40px"}
-                      size={"18px"}
-                      radius={"5px"}
-                      border={"1px solid red"}
-                    >
-                      Delete
-                    </Button>
+                      onclick={() => findDeleteID(value.id)}  width={"70px"}  height={"40px"}  size={"18px"}radius={"5px"}  border={"1px solid red"} >Delete</Button>
                   </div>
                 </div>
               </ConTable>
@@ -256,11 +204,11 @@ export const ExamSubjectCreate = () => {
         </div>
       </Container.Scrool>
       <Modal style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "100px",
-        }}
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "100px",
+      }}
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
