@@ -10,6 +10,10 @@ import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/ge
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/deleteId.js'
+import Edit from "../../../../../assets/icons/edit.svg"
+import Trash from "../../../../../assets/icons/trash.svg"
+
+
 
 export const AfterComponet = () => {
   const dispatch = useDispatch();
@@ -76,74 +80,101 @@ export const AfterComponet = () => {
   console.log(dataList, 'dataList');
   return (
     <Container>
-
-      <Container.Scrool style={{ overflowY: "scroll" }}>
-        <Container.Top>
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            <Container.Nav>
-              <div className="row">
-                <div>№</div>
-                <div className="colum nocopy">Talim Yunalish Turlari</div>
-                <div className="colum">Action</div>
-              </div>
-            </Container.Nav>
-          </div>
-
-          <Container.Add>
-            <Input
-              onchange={(e) => setName({ ...name, name: e.target.value })}
-              value={name.name} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Uzbek Tilida kiriting`}
-            />
-            <Button onclick={() => addFacultet()} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>
-              Qo'shish
-            </Button>
-          </Container.Add>
-        </Container.Top>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {dataList?.map((value, index) => {
-            return (
-              <ConTable key={value.id}>
-                <div className="row">
-                  <div>{index + 1}</div>
-                  <div className='colum'>
-                    {
-                      value?.status ?
-                        <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
-                          id: val.id,
-                          name: value.id === val.id ? e.target.value : val.name,
-                          status: val.status
-                        })))} />
-                        :
-                        <>
-                          {value.name}
-                        </>}
-                  </div>
-                  <div className="action">
-                    {value?.status ? (
-                      <Button
-                        onclick={() => editPush(value.id, index)}
-                        width={"70px"}
-                        height={"40px"}
-                        size={"18px"}
-                        radius={"5px"}
-                        border={"1px solid red"}
-                      >
-                        OK
-                      </Button>
-                    ) : (
-                      <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"} > Tahrirlash </Button>
-                    )}
-
-                    <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}  > O'chirish</Button>
-                  </div>
-                </div>
-              </ConTable>
-            );
-          })}
+      <Container.Bottom>
+        <h1>Mualliflar</h1>
+        <div>
+          Qo’shish
         </div>
-      </Container.Scrool>
+      </Container.Bottom>
+      <Container.Table>
+        <Container.Scrool style={{ overflowY: "scroll" }}>
+          <Container.Top>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <Container.Nav>
+                <div className="row">
+                  <div>№</div>
+                  <div className="colum nocopy">Talim Yunalish Turlari</div>
+                  <div className="colum nocopy">Vaqt</div>
+
+                  <div className="colum">Action</div>
+                </div>
+              </Container.Nav>
+            </div>
+          </Container.Top>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {dataList?.map((value, index) => {
+              return (
+                <ConTable key={value.id}>
+                  <div className="row">
+                    <div>{index + 1}</div>
+                    <div className='colum'>
+                      {
+                        value?.status ?
+                          <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
+                            id: val.id,
+                            name: value.id === val.id ? e.target.value : val.name,
+                            status: val.status
+                          })))} />
+                          :
+                          <>
+                            {value.name}
+                          </>
+                      }
+                    </div>
+                    <div className='colum'>
+                      {
+                        value?.status ?
+                          <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
+                            id: val.id,
+                            date: value.id === val.id ? e.target.value : val.date,
+                            name: value.name,
+                            status: val.status
+                          })))} />
+                          :
+                          <>
+                            {value.date || 'date'}
+                          </>
+                      }
+                    </div>
+                    <div className="action">
+                      {value?.status ? (
+                        <Button
+                          onclick={() => editPush(value.id, index)}
+                          width={"70px"}
+                          height={"40px"}
+                          size={"18px"}
+                          radius={"5px"}
+                          border={"1px solid red"}
+                        >
+                          OK
+                        </Button>
+                      ) : (
+                        <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                      )}  
+
+                      <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
+                    </div>
+                  </div>
+                </ConTable>
+              );
+            })}
+          </div>
+        </Container.Scrool>
+
+
+      </Container.Table>
     </Container>
   );
 };
 
+
+{/* <Container.Add>
+  <Input
+    onchange={(e) => setName({ ...name, name: e.target.value })}
+    value={name.name} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Uzbek Tilida kiriting`}
+  />
+  <Button onclick={() => addFacultet()} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>
+    Qo'shish
+  </Button>
+</Container.Add> */}
 export default AfterComponet;
