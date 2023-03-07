@@ -5,7 +5,7 @@ import NavBar from '../NavBar/index.jsx'
 export const RootAdmin = ({ children }) => {
   return (
     <Container >
-      {/* <NavBar /> */}
+      <NavBar />
       {children}
     </Container>
   )

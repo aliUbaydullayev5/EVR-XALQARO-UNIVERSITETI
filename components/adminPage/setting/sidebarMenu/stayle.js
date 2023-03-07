@@ -36,23 +36,10 @@ Container.Logo = styled.div`
     align-items: center;
     color: #FFFFFF; 
     cursor: pointer;
-  }
+  } }
 
   `
-Container.Inset = styled.div`
-  width: 100%;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
-  border-radius: 30px;
-  height: 45vh;
-  display: grid;
-  grid-template-rows: 84px 1fr;
-  @media only screen and (max-width: 1000px) {
-    grid-template-rows: 31px 1fr;
-  }
 
-
-`
 Container.Top = styled.div`
   background: #221F51;
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
@@ -67,20 +54,6 @@ Container.Top = styled.div`
     border-radius: 30px 30px 0px 0px;
     height: 31px;
   }
-`
-Container.TopTitle = styled.div`
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 49px;
-  color: #FFFFFF;
-
-  @media only screen and (max-width: 1000px) {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    border-radius: 5px ;
-    
-  } 
 `
 
 
@@ -102,7 +75,6 @@ Container.BottomDescInset = styled.div`
   }
 
   /* Track */
-
   ::-webkit-scrollbar-track {
     width: 10px !important;
     padding: 0 5px 0 0;
@@ -119,7 +91,6 @@ Container.BottomDescInset = styled.div`
     background: #FFFFFF;
     border-radius: 30px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
-
   }
   /* Handle on hover */
 `
@@ -127,16 +98,17 @@ Container.BottomDescInset = styled.div`
 
 const UserCon = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   height:50px;
   background: #221F51;
   width: 100%;
+  padding: 0px 10px;
   cursor: pointer;
     transition: all 0.4 ease-in-out ;
     :hover{
-    transform: scale(1.05);}
-
->h1 {
+      transform: scale(1.04);
+    }
+   >h1 {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
@@ -145,10 +117,15 @@ const UserCon = styled.div`
   display: flex;
   align-items: center;
   color: #FFFFFF;
-}
-
+  }
+  >p{
+    display: flex;
+    text-align: end;
+    align-items: center;
+    margin:  0 0 0 auto;
+  }
 `
 
 
-export { UserCon, }
+export { UserCon }
 export default Container

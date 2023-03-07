@@ -16,6 +16,10 @@ export const SidebarAdmin = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  const getId = (value) => {
+
+  }
   const FaceMenu = [
 
     {
@@ -107,12 +111,13 @@ export const SidebarAdmin = () => {
     else if (id === 10) quarey.push('/admin/setting/exsamStandart')
     else if (id === 11) quarey.push('/admin/setting/aboutUs')
     else if (id === 12) quarey.push('/admin/setting/library')
+
+
   }
 
   return (
     <>
       <Container>
-
         <Container.Logo >
           <div>   <Logo onClick={() => quarey.push('/admin/home')} /></div>
           <div onClick={() => quarey.push('/admin/home')} className={'nocopy'}>
@@ -129,7 +134,7 @@ export const SidebarAdmin = () => {
                 <UserCon onClick={() => CheckId(value.id)} key={value.id}>
                   <UserCon>
                     <h1>{value.name} </h1>
-                    <Imgsa />
+                    <p> <Imgsa /></p>
                   </UserCon>
                 </UserCon>
               </>

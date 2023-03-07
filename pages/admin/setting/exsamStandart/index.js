@@ -7,14 +7,11 @@ import ExsamStandart from '../../../../components/adminPage/setting/testCom/exsa
 
 export const exsamStandart = () => {
     return (
-        <RootAdmin>
             <RootSidebarMenu>
                 < AdminRootToken>
                     <ExsamStandart />
                 </AdminRootToken>
             </RootSidebarMenu>
-
-        </RootAdmin>
     )
 }
 export default exsamStandart
