@@ -6,6 +6,7 @@ const Container = styled.div`
  flex-direction: column;
  gap: 20px;
 
+
 `
 
 Container.Header = styled.div`
