@@ -6,7 +6,7 @@ const ExamResultsComponent = () => {
 
   return (
     <Container>
-      <Container.Top> Test natijalari </Container.Top>
+      <Container.Top className="nocopy"> Test natijalari </Container.Top>
       <Container.Bottom>
         <Container.BottomSelect>
           <select defaultValue='dsa' name="" id="">

@@ -6,7 +6,7 @@ import data from "../Mock/newsdata/index"
 const GalleryComponent = () => {
   return (
     <Container>
-      <Container.Top>Gallery</Container.Top>
+      <Container.Top className="nocopy">Gallery</Container.Top>
       <Container.Bottom>
        <Container.BottomDesc>
         <Container.Img>

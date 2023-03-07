@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import Container, { ConHero, ConTable } from './style.js'
+import React, { useState, useEffect, useRef } from 'react'
+import Container, { ConHero, SendModal } from './style.js'
 import { Button, Input } from "../../generic"
-import PeoupleGroup from "../../../assets/icons/peoplegroup.svg"
-import Exel from "../../../assets/icons/Exel.svg"
-import Sms from "../../../assets/icons/Sms.svg"
+import PeoupleGroup from "../../../assets/icons/admin/people.svg"
+import Exel from "../../../assets/icons/admin/exel.svg"
+import Sms from "../../../assets/icons/admin/sms.svg"
+import SendSmss from "../../../assets/icons/admin/send.svg"
 import { useDispatch, useSelector } from 'react-redux'
 import { getApplications } from "../../../redux/sliceAdmin/arizalar/applications";
 import { getExcelfetch } from "../../../redux/sliceAdmin/arizalar/downloadExel";
 import { sendSmsFetch } from "../../../redux/sliceAdmin/arizalar-qabul-sms";
+import  datas from "../../Mock/adminAriza/data"
+import Search from "../../../assets/icon/search.svg"
 
 export const ArizalarCom = () => {
 
@@ -18,6 +21,7 @@ export const ArizalarCom = () => {
 
   // get applications - arizalar
   const getApplicationData = useSelector((store) => store.getApplicationData)
+  const [faceData,setFaceData]=useState(datas)
   const [data, setData] = useState([])
 
   let defaultDate = new Date()
@@ -26,6 +30,31 @@ export const ArizalarCom = () => {
   const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
   const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
+  // sms //
+  const sendSmsData = useSelector(store => store.sendSmsData)
+
+
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const smsRef=useRef()
+  
+
+  const SendSms = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+    dispatch(sendSmsFetch(smsRef))
+    console.log(smsRef.current.value, "sms");
+    
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 1000);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getApplications({
@@ -45,13 +74,6 @@ export const ArizalarCom = () => {
   }
 
 
-  // send sms
-  const sendSmsData = useSelector(store => store.sendSmsData)
-  const sendSms = () => {
-    dispatch(sendSmsFetch({
-      // ...
-    }))
-  }
 
 
   useEffect(() => {
@@ -77,62 +99,72 @@ export const ArizalarCom = () => {
   return (
     <>
       <Container>
-        <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-            <Container.Nav>
+
+        {/* body */}
+        
+      <Container.Top>
+        <Container.Search className="nocopy">
+            <Search className="search" />
+            <Input radius="8px" bc={"#241F69"} padding={"0 10px 0 50px"} width={"651px"} height={"40px"} size={"20px"} type={"text"} placeholder="search" />
+        </Container.Search>
+        <Container.Nav>
+            <Container.Input>
               <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
-              <div className='row'>
-                <div >№</div>
-                <div className='colum'>FIO</div>
-                <div className='colum'>Telefon raqam</div>
-                <div className='colum'>Kun</div>
-              </div>
-            </Container.Nav>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-            {data?.users?.map((value, num) => {
+            </Container.Input>
+            <Container.Info>
+              <h1 className='id nocopy'>№</h1>
+              <h1 className='fio nocopy'>FIO</h1>
+              <h1 className='tel nocopy'>Telefon raqam</h1>
+              <h1 className='kun nocopy'>Kun</h1>
+            </Container.Info>
+        </Container.Nav>
+            
+        <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+          <Container.Map className="nocopy">
+            {faceData?.map((value, num) => {
               return (
-                <ConTable key={value.id}>
-                  <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
-                  <div className='row'>
-                    <div>{num + 1}</div>
-                    <div className='colum'>{value.firstName + ' ' + value.lastName}</div>
-                    <div className='colum'>{value.phoneNumber}</div>
-                    <div className='colum'>{new Date(value.createdAt).toLocaleDateString()}</div>
-                  </div>
-                </ConTable>
+                <Container.Nav mapp key={value.id}>
+                  <Container.Input>
+                    <input type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
+                  </Container.Input>
+                  <Container.Info>
+                   <h1 className='id'>{num + 1}</h1>
+                   <h1 className='fio'>{value.firstName + ' ' + value.lastName}</h1>
+                   <h1 className='tel'>{value.phoneNumber}</h1>
+                   <h1 className='kun'>{new Date(value.createdAt).toLocaleDateString()}</h1>
+                  </Container.Info>
+                </Container.Nav>
               )
             })}
-          </div>
-        </Container.Scrool>
-        <ConHero>
+          </Container.Map>
+         </Container.Scrool>
+        </Container.Top>
+
+        {/* bottom  */}
+
+        <ConHero className='nocopy'>
           <ConHero.Date>
-            <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" /></div>
-            <div> <Input mheight={'45px'} msize={'20px'} mwidth={'170px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'215px'} type="date" id="start" name="trip-start" value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" /></div>
+             <Input bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" />
+             <Input bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" />
           </ConHero.Date>
-          <ConHero.Tartiblash>
-            <Button mwidth={'210px'} msize={'18px'} mheight={"45px"} size={'29px'} width={'510px'} height={"90px"} radius={'20px'} mradius={'10px'}> Sana orqali tartiblash</Button>
-          </ConHero.Tartiblash>
+          <Button mline={"22px"} mwidth={'210px'} msize={'10px'} mheight={"45px"} size={'28px'} width={'511px'} height={"48px"} radius={'10px'} mradius={'10px'} weight="500">Tartiblash</Button>
+
           <ConHero.Exel>
-            <div>
-              <PeoupleGroup className={'UserImg'} />  <p className='TextPsamal'> Arizalar soni: {data?.counts ? data.counts : 0}</p>
-            </div>
-            <div onClick={downloadExcel}>
-              <Sms className={'UserImg'} /> <p className='TextPsamal'>Excelga chiqarish</p>
-            </div>
-            <div onClick={sendSms}>
-              <Exel className={'UserImg'} />
-              <button className='TextPsamal'>
-                SMS yuborish
-              </button>
-            </div>
+            <Button radius={"20px"} width={"511px"} height={"80px"}><PeoupleGroup/><h1>Arizalar soni: <span>{data?.counts ? data.counts : 0}</span></h1></Button>
+            <Button onclick={downloadExcel} radius={"20px"} width={"511px"} height={"80px"}><Exel/><h1 className='exel'>Excelga chiqarish</h1></Button>
+            <Button onclick={SendSms} radius={"20px"} width={"511px"} height={"80px"}><Sms/><h1 className='sms'>SMS yuborish</h1></Button>
           </ConHero.Exel>
         </ConHero>
       </Container>
-      {
+      <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
+        <h1>SMS yuborish</h1>
+        <SendSmss className="sendSms"/>
+        <input ref={smsRef} type="text" placeholder='t y p i n g ...' />
+      </SendModal>
+      {/* {
         getAllData?.status === 'loading' &&
         <div style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}><Loading type={'bars'} color={'#000'} /></div>
-      }
+      } */}
     </>
   )
 }

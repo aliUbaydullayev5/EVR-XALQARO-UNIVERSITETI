@@ -6,10 +6,10 @@ import Button from "../generic/Button";
 const DownloadContractComponent = () => {
   return (
     <Container>
-      <Container.Top>Shartnoma yuklash</Container.Top>
+      <Container.Top className="nocopy">Shartnoma yuklash</Container.Top>
       <Container.Bottom>
         
-        <Container.LogoSection>
+        <Container.LogoSection className="nocopy">
           <Logo />
           <div className={"line"} />
           <div className={"title"}>
@@ -32,7 +32,7 @@ const DownloadContractComponent = () => {
             <input type="radio" name="contract" id="tripartite" />
           </Container.Button>
         </Container.ButtonLine>
-        <p>Shartnoma olish uchun Passport raqamingizni kiriting</p>
+        <p className="nocopy">Shartnoma olish uchun Passport raqamingizni kiriting</p>
         <Input width="500px" height="50px" size="32px" mheight="36px" msize="14px" placeholder="Passport raqamingiz"/>
         <div className="button">
           <Button mwidth="125px" width="206px" mheight="29px" height="47px" msize="16px" size="24px">Tekshirish</Button>

@@ -6,7 +6,7 @@ import Telegram from "../../assets/icon/resTelegram.svg";
 const ContactUsComponent = () => {
   return (
     <Container>
-      <Container.Top>Biz bilan aloqa</Container.Top>
+      <Container.Top className="nocopy">Biz bilan aloqa</Container.Top>
       <Container.Bottom>
         <Container.BottomBox>
           <Container.Box>
@@ -14,14 +14,14 @@ const ContactUsComponent = () => {
               <Location className={"resLocation"} />
             </a>
             <Container.Text>
-              <Container.TextP pi>Uzbekistan Tashkent Sergeli</Container.TextP>
+              <Container.TextP className="nocopy" pi>Uzbekistan Tashkent Sergeli</Container.TextP>
             </Container.Text>
           </Container.Box>
           <Container.Box>
             <a href={"tel:+998997777575"} target={"_blank"}>
               <Phone className={"resLocation"} />
             </a>
-            <Container.Text>
+            <Container.Text className="nocopy">
               <Container.TextP num>
                 <a href={"tel:+998997777575"} target={"_blank"}>
                 +998 99-777-75-75
@@ -48,7 +48,7 @@ const ContactUsComponent = () => {
             <a href={"https://t.me/exuedu_uz"} target={"_blank"}>
               <Telegram className={"resLocation"} />
             </a>
-            <Container.Text>
+            <Container.Text className="nocopy">
               <Container.TextP>
                 <a href={"https://t.me/exuedu_uz"} target={"_blank"}></a>
               </Container.TextP>

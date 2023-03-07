@@ -27,7 +27,7 @@ Container.Top = styled.div`
   @media only screen and (max-width: 1000px){
     height: 100%;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 20px;
   }
 `
@@ -36,37 +36,75 @@ Container.Bottom = styled.div`
   display: flex;
   flex-direction: column;
   gap: 13px;
+  margin-top: 15px;
+  padding: 0 5px;
 
-  h1{
-    color: #ffff;
-    width: 27%;
-    text-align: center;
-    border: 1px solid yellow;
-  }
   @media only screen and (max-width: 1000px){
-
+    gap: 5px;
+    margin-top: 22px;
+    padding: 0 5px;
+   
   }
 `
 Container.Sciences=styled.div`
   display: flex;
-  width: 100%;
+  width: 99%;
   height: 44px;
-  border: 1px solid red;
-  @media only screen and (max-width: 1000px){
 
+  h1{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    width: 26%;
+  }
+
+  p{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  b{
+    width: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  @media only screen and (max-width: 1000px){
+  height: 11px;
+  h1{
+      font-size: 8px;
+      line-height: 10px;
+    }
+    p{
+      font-size: 7px;
+      line-height: 6px;
+    }
+    b{
+      font-size: 7px;
+      line-height: 6px;
+    }
   }
 `
-
-
-
-
 Container.BottomDesc = styled.div`
   width: 100%;
-  height: 320px !important;
+  height: 330px !important;
   overflow-y: scroll;
   @media only screen and (max-width: 
-     1000px) {
-    height: 230px !important;
+    1000px) {
+    height: 410px !important;
   }
   ::-webkit-scrollbar {
     width: 5px;

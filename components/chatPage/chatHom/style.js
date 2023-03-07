@@ -4,10 +4,9 @@ const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1.1fr 2fr;
-@media only screen and (max-width: 800px) {
- grid-template-columns: auto;
-
-}
+  @media only screen and (max-width: 800px) {
+   grid-template-columns: auto;
+  }
 `
 
 Container.Inset = styled.div`
@@ -33,10 +32,10 @@ Container.Top = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 1000px) {
-     background: #221F51;
+    background: #221F51;
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 30px 30px 0px 0px;
-    height: 31px;
+    height: 45px;
   }
 `
 Container.TopTitle = styled.div`
@@ -46,7 +45,7 @@ Container.TopTitle = styled.div`
   color: #FFFFFF;
   @media only screen and (max-width: 1000px) {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
   } 
 
@@ -79,6 +78,7 @@ Container.BottomDesc = styled.div`
   border-bottom: 3px solid #ffffff !important;
   @media only screen and (max-width: 1000px) {
     height: 430px !important;
+    border-bottom: none !important;
   }
 `
 Container.BottomDescCopy = styled.div`
@@ -99,7 +99,8 @@ Container.BottomDescInset = styled.div`
   gap:10px;
   padding: 10px;
   @media only screen and (max-width: 1000px) {
-    height: 390px !important;
+    height: 450px !important;
+    padding:0 ;
   }
   ::-webkit-scrollbar {
     width: 5px;
