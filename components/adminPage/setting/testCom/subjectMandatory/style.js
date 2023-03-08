@@ -1,18 +1,73 @@
 import styled from "styled-components"
+import { Upload } from 'antd';
+
 
 const Container = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin:  auto;
   display: flex;
-  display: grid;
-  max-width: 1440px;
-  grid-template-columns: 5fr 0.7fr;
+  flex-direction: column;
+  gap: 20px;
+  height: 600px;
   padding: 0px 40px;
- @media only screen and (max-width: 1000px) {
+  box-shadow: 0px 0px 28px rgba(0, 0, 0, 0.5);
+  border-radius: 45px;
+  background: #211E51;
+  @media only screen and (max-width: 1000px) {
    padding: 0px 20px;
   }
 
 `
+Container.Top=styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 300px;
+`
+
+Container.Text=styled.div`
+ width: 100%;
+ height: 100px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ >input{
+   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.41);
+   border-radius: 8px;
+   background: #241F69;
+ }
+
+`
+
+Container.Button=styled.div`
+ width: 100%;
+ height: 100%;
+ box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.22);
+ border-radius: 12px;
+ background: #241F69 ;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ padding-right: 20px;
+ justify-content: center;
+ >button{
+  background: #221F51;
+ }
+`
+
+Container.Upload=styled(Upload)`
+ :where(.css-dev-only-do-not-override-1km3mtt).ant-upload-wrapper .ant-upload-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+}
+
+`
+
+
+
 Container.Scrool = styled.div`
    width: 100%;
    height: 615px !important;

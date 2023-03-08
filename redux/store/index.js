@@ -45,6 +45,7 @@ import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntg
 import authorCreate from "../sliceAdmin/libary/author/create.js"
 import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
 import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
+import aboutGetData from "../sliceAdmin/about-us/getAbout.js"
 
 export default configureStore({
         reducer: {
@@ -94,5 +95,6 @@ export default configureStore({
                 authorCreate,
                 authorGet,
                 authorDelete,
+                aboutGetData,
         },
 })
