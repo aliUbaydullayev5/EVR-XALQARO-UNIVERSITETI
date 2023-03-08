@@ -1,4 +1,4 @@
-import { Modal } from "antd"
+import { Modal, Select } from "antd"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -129,8 +129,8 @@ Container.Add = styled.div`
 `
 const ConTable = styled.div`
   display: grid;
-  grid-template-columns:  1fr;
-  gap:10px;
+  grid-template-columns: 100px 1fr;
+  height: 100px;
   >div{
     font-family: 'Montserrat';
     font-style: normal;
@@ -197,12 +197,86 @@ Container.Nav = styled.div`
   }
 
 `
-Container.ButtonLoader = styled.div`
-  text-align: center;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+const ModalaContainer = styled.div`
+ display: grid;
+ grid-template-columns: 5fr 5fr ;
+ background-color: red;
+ justify-content: space-around;
+ >div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  >p{
+   font-family: 'Montserrat';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 17px;
+   display: flex;
+   align-items: center;
+   color: #FFFFFF;
+  }
+ }
+`
+Container.Galereya = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: yellow;
+height: 200px;
+margin-top: 10px;
+`
+const AntSelect = styled(Select)`
+ .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
+   background-color: transparent !important;
+  }
+  .ant-select-selection-item{
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    padding: 0 10px !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    font-family: 'Montserrat' !important;
+    @media only screen and (max-width: 1000px) {
+      font-size: 16px !important;
+      padding: 0 12px !important;
+    }
+  }
+  .ant-select-arrow{
+    color: white !important;
+    font-size: 20px;
+    @media only screen and (max-width: 1000px) {
+      font-size: 13px;
+    }
+  }
+  .ant-select-selection-search-input{
+    display: none !important;
+  }
+  .ant-select-selection-placeholder{
+    display: flex;
+    align-items: center;
+    padding: 0 0px !important;
+    font-size: 22px !important;
+    color: #ffff;
+    @media only screen and (max-width: 800px) {
+      font-size: 16px !important;
+      padding: 0 8px !important;
+    }
+  }
+
+ .ant-select-item-option-content{
+  font-size: 17px !important;
+ } 
+ .ant-select-item .ant-select-item-option .ant-select-item-option-active{
+   font-size: 17px !important;
+ }
+ .ant-select-selector {
+  border-radius: 0px !important;
+}
 `
 
-
-export { ConTable, Antmodal }
+export { ConTable, Antmodal, ModalaContainer }
 export default Container

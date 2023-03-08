@@ -191,7 +191,6 @@ const AntSelect = styled(Select)`
  .ant-select-selector {
   border-radius: 0px !important;
 }
-
 `
 Container.FacultyTypeAdd = styled.div`
     display: grid;

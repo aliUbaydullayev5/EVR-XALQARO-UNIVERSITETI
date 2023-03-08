@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
-import Container, { Antmodal, ConTable } from './style.js'
+import Container, { Antmodal, ConTable, ModalaContainer } from './style.js'
 import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
 import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
@@ -13,7 +13,8 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
-import { Modal } from 'antd'
+import { Modal, Select } from 'antd'
+import { AntSelect } from '../../talimYunalishType/TalimYunalishTypeAdd/style.js'
 
 
 
@@ -96,18 +97,50 @@ export const BookComponet = () => {
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <div>
-              <h1>Yunalish yaratish</h1>
+              <h1>Elektron kutubxona yaratish</h1>
             </div>
-            <br />
-            <div>
-              <p>Yunalish nomi</p>
-            </div> <br />
-            <div>
-              <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-              <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
-            </div>
-          </Container.Add>
+            <ModalaContainer>
+              <div>
+                <p>Kitob nomi</p>
+                <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                <p>Muallif ismi</p>
+                <AntSelect
+                  style={{ width: '440px', marginBottom: '20px' }}
+                  placeholder='Vikas Svarul '
+                  optionFilterProp="children"
+                  options={dataList?.map((value) => ({
+                    value: value.id,
+                    label: value.name,
+                  })) || []}
+                  onChange={(e) => handelChangeId(e)}
+                />
+              </div>
+              <div>
+                <p>Reyting</p>
+                <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Reyting soni`} />
+                <p>Yo’nalish</p>
+                <AntSelect
+                  style={{ width: '440px', marginBottom: '20px' }}
+                  placeholder='Badiiy adabiyot'
+                  optionFilterProp="children"
+                  options={dataList?.map((value) => ({
+                    value: value.id,
+                    label: value.name,
+                  })) || []}
+                  onChange={(e) => handelChangeId(e)}
+                />
 
+              </div>
+            </ModalaContainer>
+
+            <Container.Galereya>
+
+            </Container.Galereya>
+
+          </Container.Add>
+          <div>
+            <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+          </div>
         </Antmodal>
         <div onClick={modalAdd}>
           <Plus /> &nbsp;   Qo’shish
@@ -132,7 +165,9 @@ export const BookComponet = () => {
             {dataList?.map((value, index) => {
               return (
                 <ConTable key={value.id}>
+                  <div>1</div>
                   <div className="row">
+                    <div>{index + 1}</div>
                     <div>{index + 1}</div>
                     <div className='colum'>
                       {
