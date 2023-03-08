@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
 import {deployFileFetch} from "../../../../redux/slices/deployFile";
 import { aboutGetFetch } from '../../../../redux/sliceAdmin/about-us/getAbout';
-import { Upload } from 'antd';
 
 const AboutUss = () => {
 

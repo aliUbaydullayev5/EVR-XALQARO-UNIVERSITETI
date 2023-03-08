@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Upload } from 'antd';
 
 
 const Container = styled.div`

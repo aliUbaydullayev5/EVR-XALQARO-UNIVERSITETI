@@ -1,7 +1,8 @@
-import { Modal } from "antd"
 import styled from "styled-components"
+import { Modal,Upload } from "antd"
 
-const Container = styled.div`
+
+const   Container = styled.div`
   width: 100%;
   max-width: 1050px;
   margin: 0 auto;
@@ -18,6 +19,11 @@ const Antmodal = styled(Modal)`
   justify-content: center;
   align-items: center;
   padding: 0px 20px;
+
+  .ant-modal-footer{
+   display: none !important;
+  }
+
  @media only screen and (max-width: 1000px) {
   width: 700px!important;
  }
@@ -35,13 +41,22 @@ border-radius: 12px;
 margin: 30px 0px;
 `
 
+
+Container.Upload=styled(Upload)`
+  width: 100%;
+  :where(.css-dev-only-do-not-override-1km3mtt).ant-upload-wrapper .ant-upload-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 170px;
+}
+`
+
 Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
  >h1{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
@@ -58,8 +73,6 @@ Container.Bottom = styled.div`
     background: #221F51;
     box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
     border-radius: 10px;
-    font-family: 'Montserrat';
-    font-style: normal; 
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
@@ -101,11 +114,22 @@ Container.Scrool = styled.div`
 `
 
 Container.Add = styled.div`
->div{
-  display: flex ;
-  align-items: center;
-  gap: 20px;
-  >h1{
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  input{
+    background: #241F69;
+  }
+  >div p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+  }
+
+  >div h1{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -125,7 +149,7 @@ Container.Add = styled.div`
    align-items: center;
    color: #FFFFFF;
   }
-}
+
 `
 const ConTable = styled.div`
   display: grid;

@@ -1,19 +1,19 @@
-
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '../../../../generic/Button/index.jsx'
-import Input from '../../../../generic/Input/index.jsx'
+import Button from '../../../generic/Button/index.jsx'
+import Input from '../../../generic/Input/index.jsx'
 import Container, { Antmodal, ConTable } from './style.js'
-import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
-import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
-import { startMessage } from '../../../../../redux/slices/message/index.js'
-import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/deleteId.js'
-import Edit from "../../../../../assets/icons/edit.svg"
-import Trash from "../../../../../assets/icons/trash.svg"
-import Plus from "../../../../../assets/icons/plus.svg"
-import { Modal } from 'antd'
+import { authorCreatePost } from '../../../../redux/sliceAdmin/libary/author/create.js'
+import { authorGetFetch } from '../../../../redux/sliceAdmin/libary/author/getAuthor.js'
+import { startMessage } from '../../../../redux/slices/message/index.js'
+import { reset } from '../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { authorDeletePost } from '../../../../redux/sliceAdmin/libary/author/deleteId.js'
+import Edit from "../../../../assets/icons/edit.svg"
+import Trash from "../../../../assets/icons/trash.svg"
+import Plus from "../../../../assets/icons/plus.svg"
+import AddImg from "../../../../assets/icon/addimg.svg"
+
 
 
 
@@ -28,7 +28,26 @@ export const GaleryaComponet = () => {
   const authorGet = useSelector((store) => store.authorGet);
   const authorCreate = useSelector((store) => store.authorCreate);
 
+  const [fileList, setFileList] = useState([]);
 
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+   
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
 
   useEffect(() => {
     if (authorCreate.status === "success")
@@ -92,25 +111,37 @@ export const GaleryaComponet = () => {
   return (
     <Container>
       <Container.Bottom>
-        <h1>Mualliflar</h1>
+        <h1>Galereya</h1>
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <div>
-              <h1>Kutubxona yaratish</h1>
+              <h1>Galereya yaratish</h1>
             </div>
-            <br />
-            <div>
-              <p>Kitob nomi</p>
-            </div> <br />
-            <div>
-              <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-              <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+
+            <div style={{display:"flex",flexDirection:"column", gap:"20px"}}>
+              <div>
+               <p>Sarlavha nomi</p>
+                <Input weight={"400"} onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"886px"} height={"40px"} padding={"0px 13px"} size={"16px"} radius={"5px"} placeholder={`Sarlavha`} />
+              </div>
+              <div>
+                <p>Batafsi ma'lumot</p>
+                <Input weight={"400"} mwidth={"340px"} mheight={"40px"} width={"886px"} height={"40px"} padding={"0px 13px"} size={"16px"} radius={"5px"} placeholder={`Batafsil`} />
+              </div>
+               <Container.Upload listType="picture-card" fileList={fileList} onChange={onChange} onPreview={onPreview} >
+                   {fileList.length < 1 && <AddImg/>}
+               </Container.Upload>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"end",width:"100%", height:"50px"}}>
+               <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>Qo'shish</Button>
+              </div>
             </div>
+           
           </Container.Add>
+          
+
 
         </Antmodal>
         <div onClick={modalAdd}>
-          <Plus /> &nbsp;   Qo’shish
+          <Plus /> &nbsp;   Qo'shish
         </div>
       </Container.Bottom>
       <Container.Table>

@@ -16,7 +16,6 @@ import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 import {getFacultyTypeFetch} from "../../../redux/slices/getStudyTypes/getFacultyType";
 import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
 import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
-// import SendSmss from "../../../assets/icons/admin/send.svg"
 
 
 
