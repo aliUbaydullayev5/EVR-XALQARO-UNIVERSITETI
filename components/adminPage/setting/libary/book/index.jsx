@@ -18,7 +18,7 @@ import { Modal } from 'antd'
 
 
 
-export const AfterComponet = () => {
+export const BookComponet = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState({ id: 0, name: "", });
   const [dataList, setDataList] = useState([]);
@@ -92,15 +92,15 @@ export const AfterComponet = () => {
   return (
     <Container>
       <Container.Bottom>
-        <h1>Mualliflar</h1>
+        <h1>Elektron kutubxona yaratish</h1>
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <div>
-              <h1>Kutubxona yaratish</h1>
+              <h1>Yunalish yaratish</h1>
             </div>
             <br />
             <div>
-              <p>Kitob nomi</p>
+              <p>Yunalish nomi</p>
             </div> <br />
             <div>
               <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
@@ -119,10 +119,10 @@ export const AfterComponet = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <Container.Nav>
                 <div className="row">
+                  <div>Rasm</div>
                   <div>№</div>
                   <div className="colum nocopy">Nomi</div>
                   <div className="colum nocopy">Vaqt</div>
-
                   <div className="colum">Action</div>
                 </div>
               </Container.Nav>
@@ -194,4 +194,4 @@ export const AfterComponet = () => {
 
 
 
-export default AfterComponet;
+export default BookComponet;

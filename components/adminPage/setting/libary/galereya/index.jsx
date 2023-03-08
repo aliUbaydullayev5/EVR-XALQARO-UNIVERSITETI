@@ -18,7 +18,7 @@ import { Modal } from 'antd'
 
 
 
-export const AfterComponet = () => {
+export const GaleryaComponet = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState({ id: 0, name: "", });
   const [dataList, setDataList] = useState([]);
@@ -194,4 +194,4 @@ export const AfterComponet = () => {
 
 
 
-export default AfterComponet;
+export default GaleryaComponet;
