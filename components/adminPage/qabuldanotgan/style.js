@@ -6,6 +6,7 @@ const Container = styled.div`
   display:flex ;
   flex-direction: column;
   gap: 30px;
+
 `
 Container.Filter=styled.div`
  position: relative;

@@ -8,6 +8,13 @@ const Container = styled.div`
   margin: 0 auto;
   max-width: 1273px;
   display: flex;
+  background: #211E51;
+  box-shadow: 0px 0px 28px rgba(0, 0, 0, 0.5);
+  border-radius: 45px;
+  padding: 40px 40px;
+
+
+  
   
  @media only screen and (max-width: 1000px) {
   }

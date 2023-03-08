@@ -144,7 +144,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 10fr 200px  200px ;
+    grid-template-columns:  50px 10fr 200px  200px ;
     padding-left: 15px;
     background: #241F69;
     border-radius: 5px;
@@ -183,7 +183,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  50px 10fr 200px 200px;
+    grid-template-columns:   50px 10fr 200px 200px;
     padding-left: 15px;
     background: #221F51;
     border-radius: 5px;

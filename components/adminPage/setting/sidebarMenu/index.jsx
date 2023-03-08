@@ -97,6 +97,12 @@ export const SidebarAdmin = () => {
       clicked: false,
       img: imgArow,
     },
+    {
+      id: 13,
+      name: 'Galereya',
+      clicked: false,
+      img: imgArow,
+    },
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
@@ -111,6 +117,8 @@ export const SidebarAdmin = () => {
     else if (id === 10) quarey.push('/admin/setting/exsamStandart')
     else if (id === 11) quarey.push('/admin/setting/aboutUs')
     else if (id === 12) quarey.push('/admin/setting/library')
+    else if (id === 13) quarey.push('/admin/setting/galereya')
+
 
 
   }
