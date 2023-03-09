@@ -1,5 +1,5 @@
-import Root from "../../../../root";
-import ParolniOzgartirishComponent from "../../../../components/personalAccount/parolniOzgartirishComponent";
+import Root from "../../../root";
+import ParolniOzgartirishComponent from "../../../components/personalAccount/parolniOzgartirishComponent";
 
 
 const ParolniOzgartirish = () => {
