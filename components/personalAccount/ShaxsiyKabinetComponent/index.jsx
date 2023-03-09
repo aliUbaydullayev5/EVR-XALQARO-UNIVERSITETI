@@ -17,11 +17,9 @@ import {useDispatch, useSelector} from "react-redux"
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
-    const dispatch = useDispatch()
 
     const exitFromAccount = () => {
-        localStorage.removeItem('talaba-token')
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem('access-token')
         query.push('/homePage')
     }
 

@@ -32,12 +32,8 @@ export const AbiturientQabul = () => {
 	const dispatch = useDispatch();
 	const [numPasSeriya, setNumPasSeriya] = useState('');
 	const [pasSerLength, setPasSerLength] = useState(0);
-	const reseptionCheckPhoneSlice = useSelector(
-		(store) => store.reseptionCheckPhoneSlice,
-	);
-	const getDirectType = useSelector(
-		(store) => store.getDirectType.data,
-	);
+	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
+	const getDirectType = useSelector((store) => store.getDirectType.data)
 	const { fileId, by } = useSelector((store) => store.deployFile)
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
 	const receptionData = useSelector((store) => store.receptionPost)
@@ -491,8 +487,8 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
-
             </InputCont>
+
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}

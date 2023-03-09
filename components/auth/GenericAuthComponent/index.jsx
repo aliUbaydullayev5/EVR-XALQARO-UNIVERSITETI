@@ -24,7 +24,7 @@ const GenericAuthComponent = ({tokenName}) => {
     useEffect(()=> {
         if(authLogin.status === 'success'){
             dispatch(startMessage({time: 3, message: "Siz muvofiyaqatli kirdingiz", type: 'success'}))
-            router.push('/receptionPage/account')
+            router.push('/personalAccount/account')
             setTimeout(()=> {
                 dispatch(resetAuthLogin())
             }, 500)

@@ -35,7 +35,7 @@ import getUserId from '../slices/getId/index'
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
 import forgotPassword from '../slices/passwordForgot'
-
+import agentAddUser from '../slices/agentAddUser'
 export default configureStore({
     reducer: {
         firstVerify,
@@ -73,6 +73,7 @@ export default configureStore({
         getUserId,
         getAdmissionData,
         sendSmsData,
-        forgotPassword
+        forgotPassword,
+        agentAddUser
     },
 })
