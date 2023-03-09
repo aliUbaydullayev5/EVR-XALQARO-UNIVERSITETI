@@ -7,7 +7,6 @@ export const getLibraryWayFetch = createAsyncThunk('getLibraryWayFetch', async (
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     })
         .then((res)=> res.json())

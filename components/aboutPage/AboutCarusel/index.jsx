@@ -17,7 +17,6 @@ export const AboutCaruselComp = () => {
       setState(window.innerWidth)
   }, [])
 
-console.log(data); 
   return (
     <Container>
       <Container.Header>Biz haqimizda
@@ -29,7 +28,6 @@ console.log(data);
             <Carousels autoPlay={state < 1000 ? false : true} showThumbs={false}>
               {data.map((value)=> {
                 var Imgsa =value.imgs
-                console.log(Imgsa,'Imgsa');
               return (
                 <div>
                   <Carousels.CaruselImg src={Imgsa} alt='carusel' />

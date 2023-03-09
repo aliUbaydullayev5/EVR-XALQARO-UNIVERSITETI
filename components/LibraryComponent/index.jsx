@@ -13,13 +13,13 @@ const LibraryComponent = () => {
 
   const dispatch = useDispatch()
 
-  const [search, setSearch] = useState(dataNews);
+  const [search, setSearch] = useState(dataNews)
 
   const onSearch = ({ target: { value } }) => {
     let res = dataNews.filter((val) =>
       val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    );
-    setSearch(res);
+    )
+    setSearch(res)
   }
 
 
@@ -28,11 +28,10 @@ const LibraryComponent = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     dispatch(getLibraryFetch())
-  }, []);
+  }, [])
   useEffect(() => {
     setData(getLibraryData.data)
   }, [getLibraryData])
-  console.log(data)
 
 
   // author

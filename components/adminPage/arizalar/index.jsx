@@ -53,8 +53,7 @@ export const ArizalarCom = () => {
   };
   const handleOk = () => {
     dispatch(sendSmsFetch(smsRef))
-    console.log(smsRef.current.value, "sms");
-    
+
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
