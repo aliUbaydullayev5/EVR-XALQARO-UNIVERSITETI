@@ -55,6 +55,7 @@ Container.Button = styled.div`
 
   @media only screen and (max-width: 
   1000px){
+    height: 283px;
     padding: 0 5px;
   }
 `
@@ -63,23 +64,8 @@ Container.BottomSelect = styled.div`
   display: flex;
   padding: 0 85px;
   gap: 32px;
-  /* select{
-    padding-left: 11px;
-    max-width: 204px;
-    width: 100%;
-    height: 41px;
-    background: linear-gradient(90deg, #1E3C72 0%, 
-    #1E3C72 1%, #2A5298 100%);
-    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 105.9%;
-    color: #FFFFFF;
+  select{
     option{
-      background: #221F51;
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
@@ -87,15 +73,15 @@ Container.BottomSelect = styled.div`
       line-height: 105.9%;
       color: #FFFFFF;
       padding-bottom: 8px;
-    } */
+    }
   }
 
-/* 
+
   @media only screen and (max-width: 1000px){
     flex-wrap: wrap;
     gap: 10px;
-    padding: 0 5px;
-  } */
+    /* padding: 0 5px; */
+  }
 `
 Container.BottomDesc = styled.div`
   width: 100%;

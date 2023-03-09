@@ -26,7 +26,7 @@ const ChatComponents = () => {
     return (
         <> 
          <Container.Top>
-                <Container.TopTitle>Shaxsiy xabarlar</Container.TopTitle>
+                <Container.TopTitle className="nocopy">Shaxsiy xabarlar</Container.TopTitle>
           </Container.Top>
         <Container>
                 <Container.Bottom>

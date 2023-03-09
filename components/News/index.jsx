@@ -18,7 +18,7 @@ const NewsComponent = () => {
     <Container>
       <Container.Inset>
         <Container.Top>
-          <Container.TopTitle>Yangiliklar</Container.TopTitle>
+          <Container.TopTitle className="nocopy">Yangiliklar</Container.TopTitle>
 
           <Container.Search>
             <input

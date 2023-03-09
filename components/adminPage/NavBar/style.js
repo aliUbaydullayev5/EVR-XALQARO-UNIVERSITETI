@@ -4,29 +4,25 @@ const Container = styled.div`
   padding: 20px 80px;
   max-width: 1440px;
   margin: 0 auto;
-  select {
-  border: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-  @media only screen and (max-width: 1000px) {
-      display: flex;
-      flex-wrap: wrap;
-       padding: 50px 80px;
-
-   }
-     @media only screen and (max-width: 550px) {
-      display: flex;
-      flex-wrap: wrap;
-       padding: 50px 20px;
-
-   }
 `
 Container.Logo = styled.div`
   display: flex;
-  align-items: center;
-`
+  gap: 10px;
+ 
+  >div{
+    cursor: pointer;
+     >p{ 
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37.3462px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF; 
+    cursor: pointer;
+  } }
+  `
 const ConText = styled.div`
   margin-left: 20px;
   :hover {

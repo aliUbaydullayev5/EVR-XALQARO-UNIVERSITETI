@@ -5,7 +5,7 @@ export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (pa
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
             courseLevel: payload.courseLevelId,
@@ -40,7 +40,7 @@ const getAdmissionData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [getAdmissionFetch]: (state) => {
+        [getAdmissionFetch.rejected]: (state) => {
             state.status = 'Error'
         }
     }

@@ -75,7 +75,6 @@ Container.BottomDesc = styled.div`
   flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
-  cursor: pointer;
      
   @media only screen and (max-width: 1000px) 
   {

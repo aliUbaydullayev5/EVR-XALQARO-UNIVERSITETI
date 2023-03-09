@@ -5,7 +5,7 @@ export const getAdmissionExcelfetch = createAsyncThunk('getAdmissionExcelfetch',
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         responseType: "blob"
     })
