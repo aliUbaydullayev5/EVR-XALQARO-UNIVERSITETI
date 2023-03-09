@@ -151,7 +151,6 @@ const AntSelect = styled(Select)`
     color: #fff !important;
     display: flex;
     align-items: center;
-    padding: 0 10px !important;
     font-size: 18px !important;
     font-weight: 400 !important;
     font-family: 'Montserrat' !important;
@@ -173,12 +172,10 @@ const AntSelect = styled(Select)`
   .ant-select-selection-placeholder{
     display: flex;
     align-items: center;
-    padding: 0 0px !important;
     font-size: 22px !important;
     color: #ffff;
     @media only screen and (max-width: 800px) {
       font-size: 16px !important;
-      padding: 0 8px !important;
     }
   }
 

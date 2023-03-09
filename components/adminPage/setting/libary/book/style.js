@@ -1,4 +1,4 @@
-import { Modal, Select } from "antd"
+import { Modal, Select, Upload } from "antd"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -12,11 +12,7 @@ const Container = styled.div`
 `
 const Antmodal = styled(Modal)`
   width: 700px!important;
-  left: 100px;
-  top: 200px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0px 20px;
  @media only screen and (max-width: 1000px) {
   width: 700px!important;
@@ -101,32 +97,12 @@ Container.Scrool = styled.div`
 `
 
 Container.Add = styled.div`
->div{
-  display: flex ;
-  align-items: center;
-  gap: 20px;
-  >h1{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 34px;
-    display: flex;
-    align-items: center;
-    color: #FFFFFF;
-  }
-  >p{
-    font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 20px;
-   display: flex;
-   align-items: center;
-   color: #FFFFFF;
-  }
-}
+display: flex;
+align-items: center;
+flex-direction: column;
+
 `
+
 const ConTable = styled.div`
   display: grid;
   grid-template-columns: 100px 1fr;
@@ -199,9 +175,9 @@ Container.Nav = styled.div`
 `
 const ModalaContainer = styled.div`
  display: grid;
- grid-template-columns: 5fr 5fr ;
- background-color: red;
- justify-content: space-around;
+ grid-template-columns: 5fr 5fr  5fr;
+ gap: 20px;
+
  >div{
   display: flex;
   flex-direction: column;
@@ -227,6 +203,7 @@ flex-direction: column;
 background-color: yellow;
 height: 200px;
 margin-top: 10px;
+margin:  0 auto;
 `
 const AntSelect = styled(Select)`
  .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
@@ -276,6 +253,15 @@ const AntSelect = styled(Select)`
  .ant-select-selector {
   border-radius: 0px !important;
 }
+`
+Container.Upload = styled(Upload)`
+.ant-upload-list.ant-upload-list-picture-card
+ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
 `
 
 export { ConTable, Antmodal, ModalaContainer }

@@ -45,7 +45,13 @@ import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntg
 import authorCreate from "../sliceAdmin/libary/author/create.js"
 import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
 import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
-
+import aboutGetData from "../sliceAdmin/about-us/getAbout.js"
+import bookTypesGet from "../sliceAdmin/libary/booksTypes/getbooksType.js"
+import bookTypesCreate from "../sliceAdmin/libary/booksTypes/create.js"
+import bookTypesDeleteId from "../sliceAdmin/libary/booksTypes/deleteId.js"
+import bookLaunguageGet from "../sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js"
+import bookLaunguageDeleteId from "../sliceAdmin/libary/bookLaunguage/deleteId.js"
+import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -94,5 +100,12 @@ export default configureStore({
                 authorCreate,
                 authorGet,
                 authorDelete,
+                aboutGetData,
+                bookTypesGet,
+                bookTypesCreate,
+                bookTypesDeleteId,
+                bookLaunguageGet,
+                bookLaunguageDeleteId,
+                bookLaunguageCreate,
         },
 })

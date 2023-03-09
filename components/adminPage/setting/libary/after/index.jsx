@@ -60,6 +60,7 @@ export const AfterComponet = () => {
 
 
   const findEditID = (id) => {
+    console.log(id,'id');
     setDataList(dataList.map((value) => ({
       id: value.id,
       name: value.name,
@@ -176,7 +177,7 @@ export const AfterComponet = () => {
                           OK
                         </Button>
                       ) : (
-                        <Button onClick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                        <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
                       )}
 
                       <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
