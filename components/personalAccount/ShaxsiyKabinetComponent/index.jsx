@@ -19,7 +19,12 @@ const ShaxsiyKabinetComponent = () => {
     const query = useRouter()
 
     const exitFromAccount = () => {
+<<<<<<< HEAD
         localStorage.removeItem('access-token')
+=======
+        localStorage.removeItem('talaba-token')
+        localStorage.removeItem('admin_AccessToken')
+>>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436
         query.push('/homePage')
     }
 

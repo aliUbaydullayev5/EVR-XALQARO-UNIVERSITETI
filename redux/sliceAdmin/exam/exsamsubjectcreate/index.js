@@ -6,12 +6,13 @@ export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', a
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
             id: payload.id,
             nameUz: payload.nameUz,
             nameRu: payload.nameRu,
+            important: payload.important,
             "studyType": "BACHELOR",
         }),
     }).then((res) => res.json())

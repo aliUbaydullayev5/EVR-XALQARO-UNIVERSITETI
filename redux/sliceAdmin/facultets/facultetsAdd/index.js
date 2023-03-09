@@ -5,15 +5,13 @@ export const facultetsselectAddPost = createAsyncThunk('facultetsselectAddPost',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
             id: payload.id,
             facultyId: payload.facultyId,
             firstExamSubjectId: payload.firstExamSubjectId,
             secondExamSubjectId: payload.secondExamSubjectId,
-            firstExamSubjectBall: payload.firstExamSubjectBall,
-            secondExamSubjectBall: payload.secondExamSubjectBall
 
         })
     }).then((res) => res.json())

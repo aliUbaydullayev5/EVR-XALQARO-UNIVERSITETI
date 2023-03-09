@@ -34,6 +34,7 @@ import getApplicationData from "../sliceAdmin/arizalar/applications/index.js"
 import getUserId from '../slices/getId/index'
 import getAdmissionData from '../sliceAdmin/qabul/admission/index'
 import sendSmsData from '../sliceAdmin/arizalar-qabul-sms/index'
+<<<<<<< HEAD
 import forgotPassword from '../slices/passwordForgot'
 import agentAddUser from '../slices/agentAddUser'
 export default configureStore({
@@ -77,3 +78,64 @@ export default configureStore({
         agentAddUser
     },
 })
+=======
+import quationDeleteId from "../sliceAdmin/quation/quationDelete/index.js"
+import forgonPassword from '../slices/passwordForgot'
+import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
+import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
+import getManagementData from '../sliceAdmin/management/boshqaruv'
+import aboutCreateData from '../sliceAdmin/about-us/index'
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
+
+export default configureStore({
+        reducer: {
+                firstVerify,
+                firstSmsCodeFetch,
+                homeAllData,
+                deployFile,
+                receptionPost,
+                messageSlice,
+                getDirectType,
+                reseptionCheckPhoneSlice,
+                receptionSmsVerify,
+                loginAdminThunk,
+                talimYunalishAdmin,
+                getStudyTypesAbuturent,
+                deleteAbuturentId,
+                facultytypesId,
+                facultyTypeAdd,
+                editTalimYunalishType,
+                examsubjectcreate,
+                getAllexamsubject,
+                examdeleteId,
+                facultetsselectAdd,
+                facultetsgetAll,
+                facultetsdeleteId,
+                editAbuturentId,
+                getTalimYunalish,
+                agentAuth,
+                authLogin,
+                getFacultyLanguage,
+                getFacultyType,
+                getInfoUserCabinet,
+                quationCreate,
+                quationget,
+                getApplicationData,
+                getUserId,
+                getAdmissionData,
+                sendSmsData,
+                quationDeleteId,
+                forgonPassword,
+                subjectMandatoryData,
+                getManagementData,
+                aboutCreateData,
+                getLibraryAuthorData,
+                getLibraryLangData,
+                getLibraryWayData,
+                getLibraryData
+        }
+})
+>>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436

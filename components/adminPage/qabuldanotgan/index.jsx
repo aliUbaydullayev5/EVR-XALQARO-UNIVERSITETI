@@ -1,25 +1,43 @@
 import React, { useEffect } from 'react'
-import Container, { Agent, ConDate, ConExel, Conpul, ConSelect, ConSms, ConTable, ContainerRith, ContainerSort, ConW, SelectSms, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
+import Container, { Agent, ConExel, Conpul, ConTable, ContainerRith, ConW, SelectSms, SendModal, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
 import Down from "../../../assets/icons/admin/selectdown.svg"
-import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
-import Exel from "../../../assets/icons/admin/adminExel.svg"
-import Sms from "../../../assets/icons/admin/adminSms.svg"
+import Woomen from "../../../assets/icons/admin/peoples.svg"
+import Exel from "../../../assets/icons/admin/exelSetting.svg"
+import Sms from "../../../assets/icons/admin/smsSet.svg"
+import Dollar from "../../../assets/icons/admin/dollar.svg"
+import Setting from "../../../assets/icon/setting.svg"
+import Search from "../../../assets/icon/search.svg"
 import dataQabul from '../../Mock/qabulData/qabulData.js'
 import { useState } from 'react'
 import {getAdmissionFetch} from "../../../redux/sliceAdmin/qabul/admission";
 import {useDispatch, useSelector} from "react-redux";
+import {Input,Button} from "../../generic"
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 import {getFacultyTypeFetch} from "../../../redux/slices/getStudyTypes/getFacultyType";
 import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
 import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
+// import SendSmss from "../../../assets/icons/admin/send.svg"
+
 
 
 export const QabuldanOtganCom = () => {
 
     const dispatch = useDispatch()
 
-  const [data, setData] = useState(dataQabul)
+  const [data, setData] = useState([])
   const [selectAllState, setSelectAllState] = useState(false)
+
+  // sms
+  const sendSmsData = useSelector(store => store.sendSmsData)
+  
+  // dispatch(sendSmsFetch({smsRef}))
+  // search
+  const [ search, setSearch ] = useState(data);
+
+  const onSearch=({ target: { value } })=>{
+    let res= data.filter((val)=>val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+    setSearch(res)
+  }
 
   useEffect(() => {
     setData(data.map((value) => (
@@ -65,15 +83,6 @@ export const QabuldanOtganCom = () => {
         checked: value.id === id ? !value.checked : value.checked
       }
     )))
-  }
-
-
-  // send sms
-  const sendSmsData = useSelector(store => store.sendSmsData)
-  const sendSms = () => {
-      dispatch(sendSmsFetch({
-          // ...
-      }))
   }
 
 
@@ -131,56 +140,94 @@ export const QabuldanOtganCom = () => {
         }))
     }, [courseLevelId, facultyTypeId])
 
-
-    // download
+   useEffect(()=>{
+if ( getAdmissionData.status === 'success') {
+  setData(getAdmissionData.data)
+}
+   },[])    // download
     const downloadExel = () => {
         dispatch(getAdmissionExcelfetch())
     }
+    // setting
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
 
+    const Settings = () => {
+      setOpen(true);
+    };
+    const handleOk = () => {
+      dispatch(sendSmsFetch())
+      
+      setConfirmLoading(true);
+      setTimeout(() => {
+        setOpen(false);
+        setConfirmLoading(false);
+      }, 1000);
+    };
+    const handleCancel = () => {
+      setOpen(false);
+    };
 
 
   return (
-    <>
+    <Container.Wrapper>
       <Container>
-        <ContainerRith>
+  
+        <Container.Filter>
+          
+          <Search className="search"/>
+          <Input onchange={onSearch} padding="0 128px 0 50px" width="711px" height="60px" size="25px" placeholder="search" />
+          <Container.Button>
+           <Button onclick={Settings} shadow="0 0 0 0" width={"100%"} height={"30px"} radius="0" size={"18px"} ><div><Setting /> <p>Filter</p> </div></Button>
+          </Container.Button>
+          <Container.Date className="nocopy"> 
+            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          </Container.Date>
+          <Container.Date className="nocopy"> 
+            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          </Container.Date>
+           {/* <ConDate>
+          <input type="date" id="start" name="trip-start"
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
+          <input type="date" id="start" name="trip-start"
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
+        </ConDate> */}
+          <Button width={"175px"} height="48px" radius={"10px"} size={"18px"} >Tartiblash</Button>
+
+        </Container.Filter>
+
+        <ContainerRith className='nocopy'>
           <ConW>
             <Woomen />
             <p>Arizalar soni: {data?.length}</p>
           </ConW>
           <Conpul>
-            <b>＄</b>
+            <Dollar/>
             <div>
-              <p>Ariza to’lovi</p>
-              <p>222 222 222</p>
+              <p>Ariza to'lovi: {"222 222 222"}</p>
             </div>
           </Conpul>
           <ConExel onClick={downloadExel}>
             <Exel />
             <p>Excelga chiqarish</p>
           </ConExel>
-          <SelectSms onClick={sendSms}>
+          <SelectSms>
             <Sms className={'Sms'} />
             <p> SMS yuborish</p>
           </SelectSms>
+          
         </ContainerRith>
 
-        <ConDate>
-          <input type="date" id="start" name="trip-start"
-            value="2023-01-01"
-            min="2023-01-01" max="9999-12-31" />
-          <input type="date" id="start" name="trip-start"
-            value="2023-01-01"
-            min="2023-01-01" max="9999-12-31" />
-        </ConDate>
-
-        <ConSelect>
+        <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
+         <div>
           <Agent>
             <select name="pets" id="pet-select">
               <option value="">Agent</option>
             </select>
             <Down className={'Down'} />
           </Agent>
-
           <Agent>
             <select
                 name="pets"
@@ -196,14 +243,13 @@ export const QabuldanOtganCom = () => {
             </select>
             <Down className={'Down'} />
           </Agent>
-
           <TalimY>
             <select
                 name="pets"
                 id="pet-select"
                 onChange={(e) => facultyTypeHandler(e.target.value)}
             >
-              <option value=''>Ta’lim yo’nalishi</option>
+              <option value=''>Ta'lim yo'nalishi</option>
               {
                   facultyTypes?.length > 0 &&
                     facultyTypes.map(i => (
@@ -213,30 +259,28 @@ export const QabuldanOtganCom = () => {
             </select>
             <Down className={'Down'} />
           </TalimY>
-
           <TalimSh>
             <select name="pets" id="pet-select">
-              <option value="">Ta’lim shakli</option>
+              <option value="">Ta'lim shakli</option>
             </select>
             <Down className={'Down'} />
           </TalimSh>
 
           <TalimT>
             <select name="pets" id="pet-select">
-              <option value="">Ta’lim tili</option>
+              <option value="">Ta'lim tili</option>
             </select>
             <Down className={'Down'} />
           </TalimT>
           <TalimTu>
             <select name="pets" id="pet-select">
-              <option value="">To’lov turi</option>
+              <option value="">To'lov turi</option>
             </select>
             <Down className={'Down'} />
           </TalimTu>
-        </ConSelect>
-        <ContainerSort>
-          <div>Sana orqali tartiblash</div>
-        </ContainerSort>
+        </div>
+        </SendModal>
+        {/*  */}
       </Container>
       <div>
         <ConTable>
@@ -249,9 +293,9 @@ export const QabuldanOtganCom = () => {
                   <div>ID</div>
                   <div>FIO</div>
                   <div>Kurs</div>
-                  <div>Ta’lim tili</div>
-                  <div>Ta’lim yo’nalishi</div>
-                  <div>Ta’lim shakli</div>
+                  <div>Ta'lim tili</div>
+                  <div>Ta'lim yo'nalishi</div>
+                  <div>Ta'lim shakli</div>
                   <div>Sana</div>
                   <div>Agent</div>
                   <div>Pasport seriya</div>
@@ -263,7 +307,7 @@ export const QabuldanOtganCom = () => {
                 </Container.Box>
               </Container.Nav>
               {
-                getAdmissionData.data?.map((value, num) => (
+                search?.map((value, num) => (
                   <Container.Section key={value.id}>
                   <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                     <Container.Map>
@@ -278,7 +322,7 @@ export const QabuldanOtganCom = () => {
                       <div>{value?.agent ? value.agent.fullName : 'Yoq'}</div>
                       <div>{value.user.passportSeries}</div>
                       <div>{value.user.idNumber}</div>
-                      <div>{value.diplomaFile.fileOriginalName}</div>
+                      <div>{value.diplomaFile?.fileOriginalName}</div>
                       <div>+{value.user.phoneNumber}</div>
                       <div>+{value.user.extraPhoneNumber}</div>
                       <div>{value.kurs}</div>
@@ -290,7 +334,7 @@ export const QabuldanOtganCom = () => {
           </Container.Bottom>
         </ConTable>
       </div>
-    </>
+    </Container.Wrapper>
   )
 }
 

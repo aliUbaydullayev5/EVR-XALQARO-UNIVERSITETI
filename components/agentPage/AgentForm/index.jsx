@@ -1,18 +1,20 @@
-import Container, {BtnCon, IconBox, InputCont, TextCon} from './style'
-import {Button, Input} from "../../generic";
+import Container, { BtnCon, IconBox, InputCont, TextCon } from './style'
+import { Button, Input } from "../../generic";
 import UploadFiler from "../../../assets/icons/uploadeFile.svg";
-import {useRouter} from "next/router";
-import React, {useEffect, useState} from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import UploadMobile from "../../../assets/mobile/icon/UploadMobile.svg"
 import CustomInput from 'react-phone-number-input/input';
-import {Modal, Spin} from "antd";
-import {useDispatch, useSelector} from "react-redux";
-import {reseptionSmsCheckSliceFetch, resetTimerVerify} from "../../../redux/slices/receptionVerifyPhone";
+import { Modal, Spin } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { reseptionSmsCheckSliceFetch, resetTimerVerify } from "../../../redux/slices/receptionVerifyPhone";
 import { checkAllInputs2 } from './checkAllInputs';
 import { startMessage } from "../../../redux/slices/message";
-import {deployFileFetch} from "../../../redux/slices/deployFile";
-import {receptionSmsVerifyFetch, resetSmsVerify} from "../../../redux/slices/receptionSmsVerify";
-import {agentAuthFetch, resetVerify} from "../../../redux/slices/agentAuth";
+import { deployFileFetch } from "../../../redux/slices/deployFile";
+import { receptionSmsVerifyFetch, resetSmsVerify } from "../../../redux/slices/receptionSmsVerify";
+
+import { agentAuthFetch, resetVerify } from "../../../redux/slices/agentAuth";
+
 
 
 const AgentFormComponent = () => {
@@ -150,7 +152,11 @@ const AgentFormComponent = () => {
     useEffect(() => {
         receptionSmsVerify?.status === 'success' && setModalHidden(false);
         receptionSmsVerify?.status === 'error' &&
+<<<<<<< HEAD
         dispatch(startMessage({time: 3, message: 'Sms no togri'}));
+=======
+            dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
+>>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436
     }, [receptionSmsVerify]);
 
     useEffect(() => {
@@ -172,9 +178,12 @@ const AgentFormComponent = () => {
             dispatch(resetVerify());
         }, 2000);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436
 
-    return(
+    return (
         <Container>
             <TextCon>
                 <h1>Agent</h1>
@@ -182,11 +191,11 @@ const AgentFormComponent = () => {
             <InputCont>
 
                 <div className='row1'>
-                    <Input placeholder={'Firma nomi' } mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
+                    <Input placeholder={'Firma nomi'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'firmaName', value: e.target.value })} />
                 </div>
 
                 <div className='row2'>
-                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'fio', value: e.target.value })} />
+                    <Input placeholder={'Firma Rahbari FIO'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'fio', value: e.target.value })} />
                 </div>
 
                 <div className='row7'>
@@ -274,7 +283,7 @@ const AgentFormComponent = () => {
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => {
-                                changeAllDataFunc({type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('')})
+                                changeAllDataFunc({ type: 'phoneNumber', value: value?.match(/[0-9]+/g).join('') })
                                 setPhoneNumber(value)
                             }}
                             maxLength={17}
@@ -288,7 +297,7 @@ const AgentFormComponent = () => {
                 </div>
 
                 <div className='row6'>
-                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e)=> changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
+                    <Input type={'number'} placeholder={'Firmaning nechta filiali mavjud'} mradius={'5px'} mpadding={'0px 10px'} mwidth={'290px'} mheight={'36px'} msize={'14px'} width={'513px'} height={'46px'} size={'24px'} onchange={(e) => changeAllDataFunc({ type: 'countFirma', value: e.target.value })} />
                 </div>
 
                 <div className='row5'>
@@ -296,7 +305,7 @@ const AgentFormComponent = () => {
                         <CustomInput
                             placeholder="Enter phone number"
                             onChange={(value) => {
-                                changeAllDataFunc({type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('')})
+                                changeAllDataFunc({ type: 'extraPhoneNumber', value: value?.match(/[0-9]+/g).join('') })
                                 setPhoneExtraNumber(value)
                             }}
                             value={phoneExtraNumber}

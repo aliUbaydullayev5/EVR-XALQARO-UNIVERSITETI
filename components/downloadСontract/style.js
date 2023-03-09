@@ -10,7 +10,7 @@ const Container = styled.div`
   grid-template-rows: 84px 1fr;
   @media only screen and (max-width: 1000px){
     box-shadow: 0px 0px 0px 0px;
-  grid-template-rows: 30px 1fr;
+    grid-template-rows: 40px 1fr;
 
   }
 `
@@ -31,7 +31,7 @@ Container.Top = styled.div`
   @media only screen and (max-width: 1000px){
     height: 100%;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
   }
 `

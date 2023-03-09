@@ -4,11 +4,11 @@ export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async (
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            name: payload.nameUz,
-            name: payload.nameUz,
+            nameUz: payload.nameUz,
+            nameRu: payload.nameRu,
             studyType: "BACHELOR"
         }),
     }).then((res) => res.json())

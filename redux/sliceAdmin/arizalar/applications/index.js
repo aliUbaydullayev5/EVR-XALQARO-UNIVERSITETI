@@ -6,19 +6,14 @@ export const getApplications = createAsyncThunk('getApplications', async ({
       fromDate = 1672531200000,
       toDate = new Date().getTime()
     }) => {
-    return await fetch(`${ process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
+    return await fetch(`${API_GLOBAL}v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         }
     })
         .then(res => res.json())
-        .then(json => {
-            return {
-                ...json
-            }
-        })
 })
 
 const getApplicationData = createSlice({
@@ -34,15 +29,15 @@ const getApplicationData = createSlice({
             state.status = 'Loading'
         },
         [getApplications.fulfilled]: (state, { payload }) => {
+            console.log(payload.data)
             if (payload.success === true) {
-                console.log(payload.data)
                 state.data = payload.data
                 state.status = 'Success'
             } else if (payload.success === false) {
                 state.status = 'Not found, try again please'
             }
         },
-        [getApplications]: (state) => {
+        [getApplications.rejected]: (state) => {
             state.loading = 'error'
         }
     }

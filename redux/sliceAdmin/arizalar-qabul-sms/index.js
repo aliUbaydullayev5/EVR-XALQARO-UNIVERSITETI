@@ -6,7 +6,7 @@ export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async ({
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
             text: 'Ilhomjon qondaysiz',
@@ -38,7 +38,7 @@ const sendSmsData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [sendSmsFetch]: state => {
+        [sendSmsFetch.rejected]: state => {
             state.status = 'Error'
         }
     }
