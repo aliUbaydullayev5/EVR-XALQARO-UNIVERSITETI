@@ -12,19 +12,16 @@ import { Spin } from 'antd';
 import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
 import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
 import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
 
     const exitFromAccount = () => {
-<<<<<<< HEAD
         localStorage.removeItem('access-token')
-=======
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')
->>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436
         query.push('/homePage')
     }
 

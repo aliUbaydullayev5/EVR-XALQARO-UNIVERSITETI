@@ -44,6 +44,7 @@ import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
 import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
 import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getGalleryData from '../slices/getGalleryData'
 
 export default configureStore({
         reducer: {
@@ -91,6 +92,7 @@ export default configureStore({
                 getLibraryLangData,
                 getLibraryWayData,
                 getLibraryData,
-                exsamManegemnt
+                exsamManegemnt,
+                getGalleryData
         }
 })

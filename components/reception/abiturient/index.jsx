@@ -481,11 +481,6 @@ export const AbiturientQabul = () => {
 				</BtnCon>
             </InputCont>
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 535e4fdc7dfaea88f1d116c1aeea10eb2ced1436
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}

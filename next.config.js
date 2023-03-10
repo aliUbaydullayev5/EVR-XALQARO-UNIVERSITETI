@@ -14,7 +14,10 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true
-  }
-}
+  },
+  images: {
+    domains: ['http://185.217.131.147:8088'],
+  },
+};
 
 module.exports = nextConfig

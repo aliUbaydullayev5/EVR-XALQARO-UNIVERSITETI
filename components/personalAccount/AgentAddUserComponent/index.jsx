@@ -87,7 +87,7 @@ const AgentAddUserComponent = () => {
 
         if (receptionData?.status === 'error') dispatch(startMessage({time: 5, type: 'error', message: receptionData.message}))
 
-        if (receptionData.status === 'success') {
+        if (receptionData?.status === 'success') {
             setTimeout(() => {dispatch(resetPushData())}, 2000)
             setAllData({
                 lastName: "",
@@ -351,7 +351,7 @@ const AgentAddUserComponent = () => {
                 </IconBox>
                 <BtnCon className='row12'>
                     <>
-                        {receptionData.status == 'loading' && (
+                        {receptionData?.status == 'loading' && (
                             <Button
                                 mradius={'5px'}
                                 mwidth={'177px'}
@@ -367,7 +367,7 @@ const AgentAddUserComponent = () => {
                                 </Container.ButtonLoader>
                             </Button>
                         )}
-                        {receptionData.status !== 'loading' && (
+                        {receptionData?.status !== 'loading' && (
                             <Button
                                 mradius={'5px'}
                                 mwidth={'177px'}

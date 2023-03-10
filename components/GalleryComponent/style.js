@@ -3,13 +3,13 @@ import styled from 'styled-components'
 const Container = styled.div`
  height: 100%;
  background: #221F51;
- box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
  border-radius: 30px;  
  display: grid;
  grid-template-rows: 84px 1fr;
   
  @media only screen and (max-width: 1000px){
-   box-shadow: 0px 0px 0px 0px;
+   box-shadow: 0 0 0 0;
    grid-template-rows: 44px 470px;
  }
 `
@@ -22,14 +22,15 @@ Container.Top = styled.div`
   line-height: 49px;
   color: #fff;
   background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
 
-  @media only screen and (max-width: 1000px){
+  @media only screen and (max-width: 1000px) {
     font-size: 16px;
     height: 31px;
   }
 `
+
 
 Container.Bottom = styled.div`
  display: flex;
@@ -76,8 +77,7 @@ Container.BottomDesc = styled.div`
   gap: 25px;
   justify-content: center;
      
-  @media only screen and (max-width: 1000px) 
-  {
+  @media only screen and (max-width: 1000px) {
     height: 100% !important;
     padding: 0 16px 15px 0;
   }
@@ -89,25 +89,18 @@ Container.BottomDesc = styled.div`
 
   ::-webkit-scrollbar-track {
     width: 10px !important;
-    padding: 0 5px 0 0;
     background: #9a9a9a;
     opacity: 0.5;
     border-radius: 30px;
-    transform: matrix(-1, 0, 0, 1, 0, 
-       0);
-    transform: matrix(-1, 0, 0, 1, 0, 
-       0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px !important;
-
   }
 
   /* Handle */
-
   ::-webkit-scrollbar-thumb {
     background: #FFFFFF;
     border-radius: 30px;
-    transform: matrix(-1, 0, 0, 1, 0, 
-       0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
 
   /* Handle on hover */
