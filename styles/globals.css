@@ -338,8 +338,11 @@ select option {
   color: red;
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9c425d633e5eee064bc447c7d35242e214da8e82
 label {position:relative}
 label:after {
   content:'';

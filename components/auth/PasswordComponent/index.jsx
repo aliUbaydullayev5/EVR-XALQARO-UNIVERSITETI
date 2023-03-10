@@ -64,7 +64,7 @@ const PasswordComponent = () => {
     }, [getUserId])
 
     useEffect(()=> {
-        if(firstVerify.status === 'success') setModalHidden(true)
+        if(firstVerify?.status === 'success') setModalHidden(true)
     }, [firstVerify])
 
 
@@ -81,7 +81,7 @@ const PasswordComponent = () => {
     }
 
     useEffect(()=> {
-        if(forgotPassword.status === 'success'){
+        if(forgotPassword?.status === 'success'){
             dispatch(startMessage({type: 'success', time: 3, message: forgotPassword?.message}))
             dispatch(resetData())
             dispatch(resetTimerVerify())
@@ -94,7 +94,7 @@ const PasswordComponent = () => {
                 prePassword: ''
             })
             setModalHidden(false)
-        }else if(forgotPassword.status === 'error') dispatch(startMessage({type: 'error', time: 3, message: forgotPassword?.message}))
+        }else if(forgotPassword?.status === 'error') dispatch(startMessage({type: 'error', time: 3, message: forgotPassword?.message}))
     }, [forgotPassword])
 
 

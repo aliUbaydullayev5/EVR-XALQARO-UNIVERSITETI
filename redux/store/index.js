@@ -93,6 +93,6 @@ export default configureStore({
                 getLibraryWayData,
                 getLibraryData,
                 exsamManegemnt,
-                getGalleryData
+                getGalleryData,
         }
 })

@@ -4,7 +4,6 @@ import BlockIcon from '../../../assets/icon/personalAcauntBlock.svg'
 import ExitIcon from '../../../assets/icon/personalAcauntExit.svg'
 import FileIcon from '../../../assets/icon/personalAcauntFile.svg'
 import DownIcon from '../../../assets/icon/personDown.svg'
-import Image from "next/image.js";
 import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
 import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg"
@@ -13,15 +12,16 @@ import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
 import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
 import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
 import {useSelector} from "react-redux"
+import Image from "next/image";
 
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
 
     const exitFromAccount = () => {
-        localStorage.removeItem('access-token')
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')
+        localStorage.removeItem('access-token')
         query.push('/homePage')
     }
 
