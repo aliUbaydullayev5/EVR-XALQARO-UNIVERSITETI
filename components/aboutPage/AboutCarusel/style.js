@@ -48,9 +48,9 @@ Container.Header = styled.div`
 
 Container.Img=styled.div`
  width: 100%;
+ max-width: 1276px;
  height: 380px;
  .mySwiper{
-  max-width: 1276px;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -82,9 +82,8 @@ Container.Img=styled.div`
  }
  @media only screen and (max-width: 1000px){
   .mySwiper{
-    max-width: 330px;
+    max-width: 355px;
     width: 100%;
-
   }
   .SwiperSlide{
     margin-top: 10px;

@@ -22,7 +22,7 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 1000px) {
     .mySwiper{
-      max-width: 330px;
+      max-width: 340px;
       width: 100%;
       height: 490px;
       border-radius: 10px;
