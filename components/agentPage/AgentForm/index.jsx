@@ -152,11 +152,8 @@ const AgentFormComponent = () => {
     useEffect(() => {
         receptionSmsVerify?.status === 'success' && setModalHidden(false);
         receptionSmsVerify?.status === 'error' &&
-<<<<<<< HEAD
             dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
-=======
         dispatch(startMessage({time: 3, message: 'Sms no togri'}));
->>>>>>> 76ccf6d50f45af4875618e36e90785b50d163431
     }, [receptionSmsVerify]);
 
     useEffect(() => {
@@ -178,10 +175,7 @@ const AgentFormComponent = () => {
             dispatch(resetVerify());
         }, 2000);
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 76ccf6d50f45af4875618e36e90785b50d163431
 
     return (
         <Container>
