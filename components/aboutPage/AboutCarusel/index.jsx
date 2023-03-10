@@ -67,17 +67,3 @@ export const AboutCaruselComp = () => {
 };
 
 export default AboutCaruselComp;
-
- {/* <Carousels autoPlay={state < 1000 ? false : true} showThumbs={false}>
-              {data.map((value)=> {
-                var Imgsa =value.imgs
-                console.log(Imgsa,'Imgsa');
-              return (
-                <div>
-                  <Carousels.CaruselImg src={Imgsa} alt='carusel' />
-                  <p>{value.name}</p>
-                </div>
-                
-              )
-              })}
-            </Carousels> */}
