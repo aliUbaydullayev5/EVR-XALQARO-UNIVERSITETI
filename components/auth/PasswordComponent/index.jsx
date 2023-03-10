@@ -64,7 +64,7 @@ const PasswordComponent = () => {
     }, [getUserId])
 
     useEffect(()=> {
-        if(firstVerify.status === 'success') setModalHidden(true)
+        if(firstVerify?.status === 'success') setModalHidden(true)
     }, [firstVerify])
 
 
