@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-  padding: 0px 15px 0 15px;
   height: 100%;
   .mySwiper{
    max-width: 1276px;
@@ -22,11 +21,10 @@ const Container = styled.div`
    }
   }
   @media only screen and (max-width: 1000px) {
-    margin-top: 10px;
     .mySwiper{
-      max-width: 300px;
+      max-width: 330px;
       width: 100%;
-      height: 480px;
+      height: 490px;
       border-radius: 10px;
     }
    
