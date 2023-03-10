@@ -6,11 +6,11 @@ export const getApplications = createAsyncThunk('getApplications', async ({
       fromDate = 1672531200000,
       toDate = new Date().getTime()
     }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
+    return await fetch(`${ process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         }
     })
         .then(res => res.json())
@@ -32,7 +32,6 @@ const getApplicationData = createSlice({
     extraReducers: {
         [getApplications.pending]: (state) => {
             state.status = 'Loading'
-            console.log(1)
         },
         [getApplications.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
@@ -43,7 +42,7 @@ const getApplicationData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [getApplications]: (state) => {
+        [getApplications.rejected]: (state) => {
             state.loading = 'error'
         }
     }

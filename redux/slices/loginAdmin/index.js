@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../globalApi";
 
 export const getAallLoginFetch = createAsyncThunk('postLoginformFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/login`, {
+    return await fetch(`${API_GLOBAL}v1/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,8 +29,8 @@ const loginAdminThunk = createSlice({
             if (payload.success === true) {
                 state.status = 'success'
                 state.message = 'Siz muvofiyaqatli kirdingiz'
-                localStorage.setItem('accessToken', payload.data.accessToken)
-                localStorage.setItem('refreshToken', payload.data.refreshToken)
+                localStorage.setItem('admin_AccessToken', payload.data.accessToken)
+                localStorage.setItem('admin_RefreshToken', payload.data.refreshToken)
             } else if (payload.success === false) {
                 state.status = 'notFound'
                 state.message = 'Not Found'
@@ -45,7 +46,7 @@ const loginAdminThunk = createSlice({
             message = ''
         },
         foundToken({ status, message }) {
-            if (localStorage.getItem('accessToken')) {
+            if (localStorage.getItem('admin_AccessToken')) {
                 status = 'success'
                 message = ''
             } else {

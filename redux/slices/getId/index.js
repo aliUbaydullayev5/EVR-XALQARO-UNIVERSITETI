@@ -1,7 +1,9 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {API_GLOBAL} from "../../../globalApi";
+
 export const getUserIdFetch = createAsyncThunk('getUserIdFetch', async (payload)=> {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/auth/get-id-number?phoneNumber=${payload.userNumber.match(/[0-9]+/g).join('')}`, {
+    return await fetch(`${API_GLOBAL}v1/auth/get-id-number?phoneNumber=${payload.userNumber.match(/[0-9]+/g).join('')}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -20,7 +22,7 @@ const getUserId = createSlice({
         [getUserIdFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [getUserIdFetch.fulfilled]: (state, {payload}) => {
+        [getUserIdFetch.fulfilled]: (state, { payload }) => {
             if(payload?.success){
                 state.status = 'success'
                 state.message = payload.message.split('_').join(' ')
@@ -31,11 +33,11 @@ const getUserId = createSlice({
             }
         },
         [getUserIdFetch.rejected]: (state) => {
-            state.status = 'error'
+            state.loading = 'Error'
         }
     },
     reducers: {
-        resetTimerVerify(state) {
+        resetData(state) {
             state.status = null
             state.message = ''
             state.data = null
@@ -45,5 +47,6 @@ const getUserId = createSlice({
 
 
 
-export const { resetTimerVerify } = getUserId.actions
+
+export const { resetData } = getUserId.actions
 export default getUserId.reducer

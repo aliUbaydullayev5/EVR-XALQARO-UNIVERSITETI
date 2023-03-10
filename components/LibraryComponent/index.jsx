@@ -1,10 +1,15 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Container from "./style";
 import dataNews from "../Mock/newsdata";
 import Search from "../../assets/icon/search.svg";
 import LibraryCard from "./LibraryCards";
+import {useDispatch, useSelector} from "react-redux";
+import {getKutubxonaMualifFetch} from "../../redux/slices/kutubxona/kutubxona-mualif";
 
 const LibraryComponent = () => {
+
+  const dispatch = useDispatch()
+
   const [search, setSearch] = useState(dataNews);
 
   const onSearch = ({ target: { value } }) => {
@@ -12,7 +17,18 @@ const LibraryComponent = () => {
       val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     );
     setSearch(res);
-  };
+  }
+
+  const getKutubxonaMuallifData = useSelector(store => store.getKutubxonaMuallifData)
+  const [mualliflar, setMualliflar] = useState([])
+  useEffect(() => {
+    dispatch(getKutubxonaMualifFetch())
+  }, [])
+  useEffect(() => {
+    setMualliflar(getKutubxonaMuallifData.data)
+  }, [getKutubxonaMuallifData]);
+
+  console.log(getKutubxonaMuallifData)
 
 
   return (
@@ -42,10 +58,11 @@ const LibraryComponent = () => {
               <option value="dsa" disabled={true}>
               Mualliflar
               </option>
-              <option value="">Vikas Svarul</option>
-              <option value="">Vikas Svarul</option>
-              <option value="">Vikas Svarul</option>
-              <option value="">Vikas Svarul</option>
+              {
+                mualliflar?.map(i => (
+                    <option value={i.id}>{i.name}</option>
+                ))
+              }
             </select>
             <select defaultValue="dsa" name="" id="">
               <option value="dsa" disabled={true}>

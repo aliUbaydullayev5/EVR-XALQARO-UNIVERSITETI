@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const editAbuturentFetch = createAsyncThunk('editAbuturentFetch', async ({ id, value }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/edit/${id}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/faculty/edit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            name: payload.nameUz,
-            name: payload.nameUz,
+            nameUz: payload.nameUz,
+            nameRu: payload.nameRu,
             studyType: "BACHELOR"
         }),
     }).then((res) => res.json())

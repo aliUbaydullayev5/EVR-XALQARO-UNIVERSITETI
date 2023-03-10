@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const deleteAbuturentFetch = createAsyncThunk('deleteAbuturentFetch', async ({ id }) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/faculty/delete/${id}`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/faculty/delete/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
     }).then((res) => res.json())
 })

@@ -133,6 +133,10 @@ const ConHero = styled.div`
   align-items: center;
   color: #FFFFFF;
   justify-content:center;
+  align-items:center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   @media only screen and (max-width: 1000px) {
   font-size: 20px;
   }

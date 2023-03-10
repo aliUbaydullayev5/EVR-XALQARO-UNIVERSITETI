@@ -36,7 +36,7 @@ export const LoginCom = () => {
 
   useEffect(() => {
     dispatch(foundToken())
-    if (localStorage.getItem('accessToken')) {
+    if (localStorage.getItem('admin_AccessToken')) {
       query.push('admin/home')
     }
   }, [])

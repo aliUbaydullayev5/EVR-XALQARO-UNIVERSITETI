@@ -2,16 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/exam-subject/create`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/exam-subject/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
             id: payload.id,
             nameUz: payload.nameUz,
             nameRu: payload.nameRu,
+            important: payload.important,
             "studyType": "BACHELOR",
         }),
     }).then((res) => res.json())

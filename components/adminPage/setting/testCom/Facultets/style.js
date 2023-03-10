@@ -64,7 +64,7 @@ Container.Scrool = styled.div`
    width: 100%;
    height: 600px !important;
    overflow-y: scroll;
-   padding: 0 15px 0 0;
+   padding: 0 10px 0 0;
    height: 100%;
    display: grid;
   ::-webkit-scrollbar {
@@ -111,7 +111,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  450px  300px 300px 200px 200px 100px 100px;
+    grid-template-columns:  450px  300px 300px 200px  ;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;
     >div{
@@ -160,7 +160,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  450px  300px 300px 200px 200px 100px 100px;
+    grid-template-columns:  450px  300px 300px 200px  ;
     padding-left: 15px;
     background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
     border-radius: 5px;

@@ -13,12 +13,36 @@ import { facultetsgetAllFetch } from '../../../../../redux/sliceAdmin/facultets/
 import { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import data from '../../../../Mock/rahbariyat/data.js'
+// import data from '../../../../Mock/rahbariyat/data.js'
+import { Modal } from 'antd'
 
 const FacultetsImthonCom = () => {
   const [datalist, setDataList] = useState([])
   const [datafan, setDataFan] = useState([])
   const [data, setData] = useState([])
+
+  // delete
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [deletId, setDeletId] = useState("");
+
+  // function delete
+  const findDeleteID = (deleteId) => {
+    setOpen(true);
+    setDeletId(deleteId);
+  };
+
+  const handleOk = () => {
+    dispatch(facultetsdeleteIdFetch({ id: deletId }))
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 1000);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   const [facul, setFacul] = useState({
     facultet: '',
@@ -93,12 +117,9 @@ const FacultetsImthonCom = () => {
     id: id,
     faculty: data?.faculty?.name,
     firstExamSubject: data[0]?.firstExamSubject?.name,
-    firstExamSubjectBall: data[0]?.firstExamSubjectBall,
     secondExamSubject: data?.secondExamSubject,
-    secondExamSubjectBall: data?.secondExamSubjectBall,
   }));
 
-  const findDeleteID = (deleteId) => dispatch(facultetsdeleteIdFetch({ id: deleteId }))
 
   return (
     <Container>
@@ -123,7 +144,7 @@ const FacultetsImthonCom = () => {
                   style={{ width: '300px', }}
                   placeholder='Birinchi Blog uchun '
                   optionFilterProp="children"
-                  options={datafan?.map((value) => ({
+                  options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
@@ -135,18 +156,12 @@ const FacultetsImthonCom = () => {
                   style={{ width: '300px', }}
                   placeholder='Ikkinchi Blog Uchun'
                   optionFilterProp="children"
-                  options={datafan?.map((value) => ({
+                  options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
                   onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
                 />
-              </div>
-              <div className='colum'>
-                <Input onchange={(e) => setFacul({ ...facul, firstExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'200px'} height={'50px'} radius={'5px'} size={'16px'} placeholder={'birinchi blog uchun ball'} />
-              </div>
-              <div className='colum'>
-                <Input onchange={(e) => setFacul({ ...facul, secondExamSubjectBall: e.target.value })} padding={'0px 5px'} width={'200px'} height={'50px'} radius={'5px'} size={'16px'} placeholder={'ikkinchi blog uchun ball'} />
               </div>
               <div className='colum'>
                 <Button onclick={() => addFunc()} width={'100px'} height={'50px'} radius={'5px'} size={'19px'}>Add</Button>
@@ -156,8 +171,10 @@ const FacultetsImthonCom = () => {
           </Container.Nav>
         </div>
 
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-          {data?.map((value) => {
+
+          {getStudyTypesAbuturent.status === 'success' && data?.map((value) => {
             return (
               <ConTable key={value?.id}>
 
@@ -187,25 +204,6 @@ const FacultetsImthonCom = () => {
                         {value?.secondExamSubject?.nameUz}
                       </>}
                   </div>
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} />
-                      :
-                      <>
-                        {value?.firstExamSubjectBall}
-                      </>}
-                  </div>
-
-                  <div>
-                    {value?.checkInput ?
-                      <Input size={'17px'} radius={'5px'} height={'50px'} />
-                      :
-                      <>
-                        {value?.secondExamSubjectBall}
-                      </>}
-                  </div>
-
-
                   <div className='action'>
                     {
                       value?.checkInput ?
@@ -214,17 +212,43 @@ const FacultetsImthonCom = () => {
                         :
                         <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
                     }
+                    <div>
+                      <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
+                    </div>
                   </div>
-                  <div>
-                    <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
-                  </div>
+                
 
                 </div>
               </ConTable>
             )
           })}
         </div>
+
       </Container.Scrool>
+      <Modal
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "100px",
+        }}
+        open={open}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+      >
+        <p
+          style={{
+            color: "#ffff",
+            width: "300px",
+            height: "100px",
+            textAlign: "center",
+            paddingTop: "35px",
+          }}
+        >
+          Ushbu ma'lumotlar o'chirib yuborilsinmi?
+        </p>
+      </Modal>
     </Container>
   )
 }

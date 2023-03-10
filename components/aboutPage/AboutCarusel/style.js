@@ -1,6 +1,4 @@
-import { Carousel } from "react-responsive-carousel";
 import styled from "styled-components";
-import Image from "next/image.js";
 
 
 const Container = styled.div`
@@ -16,48 +14,6 @@ const Container = styled.div`
 
   @media only screen and (max-width: 1000px){
    grid-template-rows: 40px 1fr;
-  }
-`
-
-const Carousels = styled(Carousel)`
-  height: 380px !important;
-  border-radius: 25px;
-  width: 100% !important;
-  background-size: cover !important;
-  position: relative;
-
-  p{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: justify;
-    color: #FFFFFF;
-    position: absolute;
-    z-index: 2;
-    bottom: 20px;
-    padding: 0 50px;
-  }
-
-  @media only screen and (max-width: 1000px){
-   p{
-    font-weight: 350;
-    font-size: 14px;
-    line-height: 12px;
-    padding: 0 30px;
-   }
-  }
-`
-
-Carousels.CaruselImg = styled(Image)`
-  max-height: 385px !important;
-  width: 100% !important;
-  border: 25px;
-  border: 2px solid yellow;
-
-  @media only screen and (max-width: 1000px) {
-    max-height: 375px;
   }
 `
 
@@ -93,6 +49,53 @@ Container.Header = styled.div`
 Container.Img=styled.div`
  width: 100%;
  height: 380px;
+ .mySwiper{
+  max-width: 1276px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  .wrap{
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .SwiperSlide{
+    height: 380px;
+    .img{
+      width: 100%;
+      height: 100%;
+    }
+    p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify;
+    color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+    padding: 0 50px;
+    }
+  }
+ }
+ @media only screen and (max-width: 1000px){
+  .mySwiper{
+    max-width: 300px;
+    width: 100%;
+
+  }
+  .SwiperSlide{
+    margin-top: 10px;
+  }
+  .mySwiper .SwiperSlide p{
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0 20px;
+    bottom: 40px;
+  }
+ }
 `
 
 
@@ -107,15 +110,20 @@ Container.MainCarousel = styled.div`
 const ContainerDow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 48px;
   align-items: center;
   justify-content: center;
+  a{
+    >button{
+      background: #241F69;
+    }
+  }
+ 
 
   @media only screen and (max-width: 1000px){
    gap: 12px;
   }
 `
 
-
-export { Carousels, ContainerDow, }
+export { ContainerDow, }
 export default Container

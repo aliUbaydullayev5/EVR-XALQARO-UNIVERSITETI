@@ -12,7 +12,6 @@ const NewsComponent = () => {
       val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     );
     setSearch(res);
-    console.log(res);
   };
 
   return (

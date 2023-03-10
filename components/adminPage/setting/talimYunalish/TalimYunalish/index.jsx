@@ -14,6 +14,9 @@ export const TalimYunalishCom = () => {
         <div>
           <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultets/masters')}>Magistratura</Button>
         </div>
+        <div>
+          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultetsType/facultetsTypeAdd')}> Talim Abuturent</Button>
+        </div>
       </Container.Block>
       </Container>
   )
