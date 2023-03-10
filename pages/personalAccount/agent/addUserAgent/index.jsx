@@ -4,7 +4,7 @@ import Root from "../../../../root";
 const AddUserAgetn = () => {
     return(
         <Root>
-            <AgentAddUserComponent />
+           <AgentAddUserComponent/>
         </Root>
     )
 }

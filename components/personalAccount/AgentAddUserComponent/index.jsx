@@ -14,7 +14,7 @@ import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFa
 import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType"
 import {agentAddUserFetch, resetPushData} from "../../../redux/slices/agentAddUser"
 
-const AgentAddUserComponent = () => {
+export const AgentAddUserComponent = () => {
     const dispatch = useDispatch()
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
