@@ -1,6 +1,6 @@
 import Root from "../../../../root";
 import AgentAddUserComponent from "../../../../components/personalAccount/AgentAddUserComponent/index"
-const AddUserAgetn = () => {
+const AddUserAgent = () => {
     return(
         <Root>
            <AgentAddUserComponent/>
@@ -8,4 +8,4 @@ const AddUserAgetn = () => {
     )
 }
 
-export default AddUserAgetn
+export default AddUserAgent
