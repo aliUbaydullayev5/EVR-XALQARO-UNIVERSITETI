@@ -82,7 +82,7 @@ Container.Img=styled.div`
  }
  @media only screen and (max-width: 1000px){
   .mySwiper{
-    max-width: 300px;
+    max-width: 330px;
     width: 100%;
 
   }
@@ -91,7 +91,7 @@ Container.Img=styled.div`
   }
   .mySwiper .SwiperSlide p{
     font-size: 12px;
-    line-height: 14px;
+    line-height: 12px;
     padding: 0 20px;
     bottom: 40px;
   }
