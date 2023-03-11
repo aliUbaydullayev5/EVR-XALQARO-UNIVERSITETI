@@ -16,7 +16,7 @@ export const FinanceMenu = () => {
           <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/finance/salaries')}>Berilgan oyliklar</Button>
         </div>
         <div>
-          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/booklanguage')}>Xarajatlar</Button>
+          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/finance/expenses')}>Xarajatlar</Button>
         </div>
         <div>
           <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/book')}>Kirim</Button>

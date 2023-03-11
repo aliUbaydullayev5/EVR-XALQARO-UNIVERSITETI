@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Container, { Agent, Conpul,SendModal,FilterModal} from './style.js'
+import Container, { Agent, Conpul,FilterModal} from './style.js'
 import Down from "../../../../../assets/icons/admin/selectdown.svg"
 import Plyus from "../../../../../assets/icons/plus.svg"
 import Dollar from "../../../../../assets/icons/admin/dollar.svg"
@@ -42,41 +42,20 @@ export const SalariesPaid = () => {
     let res= dataMoliya.filter((val)=>val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
     setSearch(res)
   }
-    // setting
-    const [open, setOpen] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
-
-    const Settings = () => {
-      setOpen(true);
-    };
-    const handleOk = () => {
-      dispatch()
-      
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setOpen(false);
-        setConfirmLoading(false);
-      }, 1000);
-    };
-    const handleCancel = () => {
-      setOpen(false);
-    };
 
 
   return (
     <Container>
       <Container.Top>
          <h1>Berilgan oyliklar</h1>
-         <Button onclick={PayWages} width={"204px"} height={"48px"} size={"20px"} radius={"10px"}><Plyus/> &nbsp; Moash berish</Button>
+         <Button onclick={PayWages} width={"204px"} height={"48px"} size={"20px"} radius={"10px"}><Plyus/> &nbsp; Maosh berish</Button>
       </Container.Top>
 
       <Container.Bottom>
           <Container.Filter>
               <Search className="search" />
-              <Input onchange={onSearch} padding="0 97px 0 50px" width="542px" height="45px" size="20px" placeholder="search" />
-              <Container.Button>
-               <Button onclick={Settings} shadow="0 0 0 0" width={"100%"} height={"30px"} radius="0" size={"16px"} ><div><Setting /> <p>Filter</p> </div></Button>
-              </Container.Button>
+              <Input onchange={onSearch} padding="0 15px 0 50px" width="542px" height="45px" size="20px" placeholder="search" />
+
               <Container.Date className="nocopy">
                <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
               </Container.Date>
@@ -85,13 +64,20 @@ export const SalariesPaid = () => {
               </Container.Date>
               <Button width={"92px"} height="36px" radius={"10px"} size={"13px"} >Tartiblash</Button>
           </Container.Filter>
+          <div className={'box'}>
           <Conpul className='nocopy'>
                <Dollar/>
                <div>
                   <p>Berilgan oyliklar : {"222 222 222"}</p>
                </div>
           </Conpul>
-
+          <Agent>
+              <select name="pets" id="pet-select">
+                  <option value="">Boshqaruv</option>
+              </select>
+              <Down className={'Down'} />
+          </Agent>
+          </div>
           <Container.Footer>
              <div className={"wrap"}>
               <Container.Input>
@@ -137,18 +123,30 @@ export const SalariesPaid = () => {
           </Container.Scrool>
 
       </Container.Bottom>
-        <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
-            <div className={'div'}>
-                <Agent>
-                    <select name="pets" id="pet-select">
-                        <option value="">Boshqaruv</option>
-                    </select>
-                    <Down className={'Down'} />
-                </Agent>
-            </div>
-        </SendModal>
-        <FilterModal open={opens} onOk={handleOkk} confirmLoading={confirmLoadings} onCancel={HandleCancel}>
 
+        <FilterModal open={opens} onOk={handleOkk} confirmLoading={confirmLoadings} onCancel={HandleCancel}>
+          <Container.FilterModal>
+            <h1>Maosh berish</h1>
+            <Container.FIlterInput>
+                <p>ID raqami yoki FIO</p>
+                <Search className="search" />
+                <Input padding={"0 10px 0 45px"} width="100%" height="40px" size="14px" placeholder="ID raqami yoki FIO" />
+            </Container.FIlterInput>
+              <Container.FIlterInput pro>
+                  <div className={"div"}>
+                    <p>Maoshi</p>
+                    <Input padding={"0 10px 0 20px"} width="100%" height="40px" size="14px" placeholder="Maoshi" />
+                  </div>
+                  <div className={"div"}>
+                    <p>Tafsif</p>
+                    <Input padding={"0 10px 0 20px"} width="100%" height="40px" size="14px" placeholder="Tafsif" />
+                  </div>
+
+              </Container.FIlterInput>
+              <div className={'but'}>
+                  <Button width={"157px"} height={"48px"}>Saqlash</Button>
+              </div>
+          </Container.FilterModal>
         </FilterModal>
     </Container>
 

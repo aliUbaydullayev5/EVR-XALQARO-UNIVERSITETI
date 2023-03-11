@@ -107,7 +107,7 @@ const Conpul = styled.div`
   background: #241F69;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.54);   
   border-radius: 10px;
-  width: 267px; 
+  width: 189px; 
   height: 37px;
   display: flex;
   justify-content: center;
@@ -120,6 +120,34 @@ const Conpul = styled.div`
     font-size: 14px;
     color: #FFFFFF;
   }
+`
+
+const DeleteModal=styled(Modal)`
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-top: 100px;
+
+  :where(.css-dev-only-do-not-override-1km3mtt).ant-modal .ant-modal-content{
+    padding: 10px;
+  }
+ h1{
+   color: white;
+   text-align: center;
+   background: #221F51;
+   box-shadow: 0 2 17px rgba(0, 0, 0, 0.54);
+ } 
+  p{
+    color: white;
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    padding-top: 35px;
+  }
+
+ .anticon svg{
+    display: none;
+ } 
 `
 
 Container.Footer=styled.div`
@@ -161,6 +189,16 @@ Container.Info=styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  >button{
+    height: 24px;
+    width: 10%;
+    border-radius: 0;
+    background: none;
+    border-left: 1px solid #FFFFFF;
+    :active{
+      transform: scale(1);
+    }
+  }
   h1{
     font-family: 'Montserrat';
     font-style: normal;
@@ -227,28 +265,7 @@ Container.Map=styled.div`
  flex-direction: column;
  gap: 12px;
 `
-const Agent = styled.div`
- position: relative;
- >select{
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.54);
-  border-radius: 10px;
-  width: 150px;
-  height: 37px;
-  color: white;
-  font-family: 'Montserrat';
-  font-style: normal;
-  background: #241F69;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  padding:0 0 0 27px;
- }
- .Down{
-    position: absolute;
-    right: 15px;
-    bottom: 27px;
-}
-`
+
 const FilterModal=styled(Modal)`
   display: flex;
   align-items: center;
@@ -383,5 +400,5 @@ const AntSelect = styled (Select)`
    font-size: 17px !important;
  }
 `
-export { ConTable,Conpul, AntSelect,Agent,ConSelect, FilterModal,}
+export { ConTable,Conpul,DeleteModal, AntSelect,ConSelect, FilterModal,}
 export default Container
