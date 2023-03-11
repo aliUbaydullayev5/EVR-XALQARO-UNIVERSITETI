@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    unoptimized: true,
-  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -16,7 +13,9 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: ['http://185.217.131.147:8088'],
+    domains: ['185.217.131.147:8088'],
+    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
 };
 
