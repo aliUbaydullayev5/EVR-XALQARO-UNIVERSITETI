@@ -13,7 +13,7 @@ export const FinanceMenu = () => {
           Barcha ma'lumotlar</Button>
         </div>
         <div>
-          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/bookTypes')}>Berilgan oyliklar</Button>
+          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/finance/salaries')}>Berilgan oyliklar</Button>
         </div>
         <div>
           <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/booklanguage')}>Xarajatlar</Button>

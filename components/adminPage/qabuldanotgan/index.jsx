@@ -185,14 +185,7 @@ if ( getAdmissionData.status === 'success') {
           <Container.Date className="nocopy"> 
             <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
           </Container.Date>
-           {/* <ConDate>
-          <input type="date" id="start" name="trip-start"
-            value="2023-01-01"
-            min="2023-01-01" max="9999-12-31" />
-          <input type="date" id="start" name="trip-start"
-            value="2023-01-01"
-            min="2023-01-01" max="9999-12-31" />
-        </ConDate> */}
+
           <Button width={"175px"} height="48px" radius={"10px"} size={"18px"} >Tartiblash</Button>
 
         </Container.Filter>
