@@ -84,9 +84,7 @@ export const ArizalarCom = () => {
 
 
   const selectOne = (id = false) => {
-
   }
-
   const searchFunc = (eventValue) => {
     setTimeout(() => {
       dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))

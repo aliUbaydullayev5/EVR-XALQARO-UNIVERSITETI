@@ -13,6 +13,9 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
+import { Modal } from 'antd'
+
+
 
 
 export const AfterComponet = () => {
@@ -78,13 +81,15 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
+<<<<<<< HEAD
 
   const modalAdd = () => {
     setOpen(true)
   }
   const handleCancel = () => {
     setOpen(false);
-  }
+  };
+
   return (
     <Container>
       <Container.Bottom>
