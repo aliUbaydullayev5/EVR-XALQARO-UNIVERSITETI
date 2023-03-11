@@ -88,10 +88,8 @@ export const AbiturientQabul = () => {
 		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }))
 	}, [])
 
-<<<<<<< HEAD
 	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId])
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), [])
-=======
 	useEffect(() => {
 		changeAllDataFunc({type: by, value: fileId})
 		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
@@ -101,8 +99,6 @@ export const AbiturientQabul = () => {
 
 
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
->>>>>>> main
-
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData })
 		if (result?.status) return true;
@@ -492,12 +488,8 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
-<<<<<<< HEAD
-
 			</InputCont>
-=======
             </InputCont>
->>>>>>> main
 
 			<Modal
 				open={modelHidden}
