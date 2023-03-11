@@ -222,6 +222,9 @@ export const BookComponet = () => {
         <Wrapper>
           <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
             <Container.Nav>
+                <div>
+                    Rasm
+                </div>
               <div className='row'>
                 <div >№</div>
                 <div className='colum'>Talim Yunalish Turlari</div>
@@ -233,6 +236,9 @@ export const BookComponet = () => {
               {dataList?.map((value, index) => {
                 return (
                     <ConTable key={value.id}>
+                        <div>
+                            rasm
+                        </div>
                       <div className='row'>
                         <div >{index + 1}</div>
                         <div className='colum'>
@@ -247,7 +253,7 @@ export const BookComponet = () => {
                                 })))} />
                                 :
                                 <>
-                                  {value.nameUz}
+                                  {value.name}
                                 </>}
                         </div>
                         <div className='colum'>
