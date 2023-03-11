@@ -5,59 +5,54 @@ import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { Antmodal, ConTable } from './style.js'
-import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
-import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/deleteId.js'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
 import { Modal } from 'antd'
-
-
-
+import { bookLaunguageCreatePost } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/create.js'
+import { bookLaunguageGetFetch } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js'
+import { bookLaunguageDeleteIdDel } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/deleteId.js'
 
 export const BookLaunguage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState({ id: 0, name: "", });
   const [dataList, setDataList] = useState([]);
-
   const [open, setOpen] = useState(false)
-  const authorDelete = useSelector((store) => store.authorDelete);
-  const authorGet = useSelector((store) => store.authorGet);
-  const authorCreate = useSelector((store) => store.authorCreate);
+
+  const bookLaunguageDeleteId = useSelector((store) => store.bookLaunguageDeleteId);
+  const bookLaunguageGet = useSelector((store) => store.bookLaunguageGet);
+  const bookLaunguageCreate = useSelector((store) => store.bookLaunguageCreate);
 
 
 
   useEffect(() => {
-    if (authorCreate.status === "success")
+    if (bookLaunguageCreate.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
         setName({ ...name, nameUz: "", ...name, nameRu: "", }));
-    else if (authorCreate.status === "notFound")
+    else if (bookLaunguageCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
       dispatch(reset());
     }, 500);
-  }, [authorGet]);
+  }, [bookLaunguageGet]);
 
 
   useEffect(() => {
-    if (authorDelete.status === 'success' || authorCreate.status === 'success')
-      dispatch(authorGetFetch())
-  }, [authorDelete, authorCreate])
+    if (bookLaunguageDeleteId.status === 'success' || bookLaunguageCreate.status === 'success')
+      dispatch(bookLaunguageGetFetch())
+  }, [bookLaunguageDeleteId, bookLaunguageCreate])
 
   const addFacultet = () =>
-    dispatch(authorCreatePost({
+    dispatch(bookLaunguageCreatePost({
       id: 0,
       name: name.name,
     }));
 
   const findDeleteID = (deleteId) => {
-    dispatch(authorDeletePost({ id: deleteId }));
+    dispatch(bookLaunguageDeleteIdDel({ id: deleteId }));
   };
-
-
 
   const findEditID = (id) => {
     setDataList(dataList.map((value) => ({
@@ -68,20 +63,20 @@ export const BookLaunguage = () => {
   }
 
   const editPush = (id, i) => dispatch(
-    authorCreatePost({
+    bookLaunguageCreatePost({
       id: id,
       name: dataList[i].name,
-    }));
+ }));
 
   useEffect(() => {
-    dispatch(authorGetFetch())
-  }, [authorGetFetch])
+    dispatch(bookLaunguageGetFetch())
+  }, [bookLaunguageGetFetch])
 
 
   useEffect(() => {
-    if (authorGet.status === "success") setDataList(authorGet.data);
-  }, [authorGet]);
-  console.log(dataList, 'dataList');
+    if (bookLaunguageGet.status === "success") setDataList(bookLaunguageGet.data);
+  }, [bookLaunguageGet]);
+
 
   const modalAdd = () => {
     setOpen(true)
@@ -176,7 +171,7 @@ export const BookLaunguage = () => {
                           OK
                         </Button>
                       ) : (
-                        <Button onClick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                        <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
                       )}
 
                       <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>

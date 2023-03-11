@@ -17,7 +17,7 @@ const Antmodal = styled(Modal)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0 20px;
  @media only screen and (max-width: 1000px) {
   width: 700px!important;
  }
@@ -40,7 +40,6 @@ Container.Bottom = styled.div`
   justify-content: space-between;
   align-items: center;
  >h1{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
@@ -56,9 +55,8 @@ Container.Bottom = styled.div`
     width: 150px;
     height: 50px;
     background: #221F51;
-    box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
     border-radius: 10px;
-    font-family: 'Montserrat';
     font-style: normal; 
     font-weight: 500;
     font-size: 20px;
@@ -66,14 +64,12 @@ Container.Bottom = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-
-color: #FFFFFF;
+  color: #FFFFFF;
     }
 
 `
 Container.Scrool = styled.div`
    width: 100%;
-   height: 510px !important;
    overflow-y: scroll;
    height: 100%;
    display: grid;
@@ -85,11 +81,9 @@ Container.Scrool = styled.div`
     }
     ::-webkit-scrollbar-track {
       width: 10px !important;
-      padding: 0 15px 0 0;
       background: #9a9a9a;
       opacity: 0.5;
       border-radius: 30px;
-      transform: matrix(-1, 0, 0, 1, 0, 0);
       transform: matrix(-1, 0, 0, 1, 0, 0);
       padding: 10px !important;
     }
@@ -106,7 +100,6 @@ Container.Add = styled.div`
   align-items: center;
   gap: 20px;
   >h1{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
@@ -116,7 +109,6 @@ Container.Add = styled.div`
     color: #FFFFFF;
   }
   >p{
-    font-family: 'Montserrat';
    font-style: normal;
    font-weight: 400;
    font-size: 16px;
@@ -132,7 +124,6 @@ const ConTable = styled.div`
   grid-template-columns:  1fr;
   gap:10px;
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -171,7 +162,6 @@ Container.Nav = styled.div`
   gap: 10px;
   margin-bottom: 10px;
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -189,7 +179,7 @@ Container.Nav = styled.div`
     border-radius: 5px;
     height: 50px;
   }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
   .colum{
     border-left:  2px solid white;

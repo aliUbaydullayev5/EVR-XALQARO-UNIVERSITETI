@@ -2,17 +2,20 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../globalApi";
 
 export const aboutCreateFetch = createAsyncThunk('aboutCreateFetch', async (payload) => {
-    await fetch(`${API_GLOBAL}v1/about-us/create`, {
+    await fetch(`${API_GLOBAL}v1/gallery/create`, {
+        // v1/about-us/create
+        // textUz: payload.textUz,
+        // textRu: payload.textRu,
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            id: payload.id,
-            textUz: payload.textUz,
-            textRu: payload.textRu,
-            photoId: payload.photoId
+            id: 0,
+            title:payload.textUz,
+            description:payload.textRu,
+            attachmentId: payload.photoId
         }),
     })
         .then((res) => res.json())
