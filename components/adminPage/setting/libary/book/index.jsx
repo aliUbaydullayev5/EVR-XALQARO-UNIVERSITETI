@@ -151,7 +151,7 @@ export const BookComponet = () => {
                     <div className='colum'>
                       {
                         value?.status ?
-                          <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
+                          <input value={value?  .date} onChange={(e) => setDataList(dataList.map((val) => ({
                             id: val.id,
                             date: value.id === val.id ? e.target.value : val.date,
                             name: value.name,
