@@ -1,5 +1,4 @@
 import AgentAddUserComponent from "../../../../components/personalAccount/AgentAddUserComponent";
-// import AgentAddUserComponent from "../../../../components/personalAccount/AgentAddUserComponent";
 import Root from "../../../../root";
 
 const AddUserAgetn = () => {
