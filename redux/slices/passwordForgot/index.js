@@ -2,14 +2,14 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import {API_GLOBAL} from "../../../globalApi"
 
-export const forgonPasswordFetch = createAsyncThunk('postFirstVerify', async (payload)=> {
+export const forgotPasswordFetch = createAsyncThunk('forgotPasswordFetch', async (payload)=> {
     return await fetch(`${API_GLOBAL}v1/auth/change-password`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            phoneNumber: payload.phoneNumber,
+            phoneNumber: payload.phoneNumber.match(/[0-9]+/g).join(''),
             idNumber: payload.idNumber,
             verifyDode: payload.verifyDode,
             password: payload.password,
@@ -18,41 +18,39 @@ export const forgonPasswordFetch = createAsyncThunk('postFirstVerify', async (pa
     }).then((res) => res.json())
 })
 
-const forgonPassword = createSlice({
-    name: 'postVerify',
+const forgotPassword = createSlice({
+    name: 'forgotPassword',
     initialState: {
         status: null,
         message: ''
     },
     extraReducers: {
-        [forgonPasswordFetch.pending]: (state) => {
+        [forgotPasswordFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [forgonPasswordFetch.fulfilled]: (state, action) => {
-            state.status = 'success'
-            if(action?.payload?.success){
-                state.message = action.payload.message.split('_').join(' ')
-                state.pushAnswer = true
+        [forgotPasswordFetch.fulfilled]: (state, {payload}) => {
+            if(payload?.success){
+                state.status = 'success'
+                state.message = payload?.message.split('_').join(' ')
             }
-            if(action?.payload?.success == false){
+            if(payload?.success == false){
                 state.status = 'error'
-                state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
+                state.message = payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
         },
-        [forgonPasswordFetch.rejected]: (state) => {
+        [forgotPasswordFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
     reducers: {
-        resetData(state) {
+        resetForgotData(state) {
             state.status = null
             state.message = ''
-
         }
     }
 })
 
 
 
-export const { resetTimerVerify } = forgonPassword.actions
-export default forgonPassword.reducer
+export const { resetForgotData } = forgotPassword.actions
+export default forgotPassword.reducer

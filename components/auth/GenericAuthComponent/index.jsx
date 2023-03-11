@@ -10,7 +10,7 @@ import React, {useEffect, useState} from "react";
 import {startMessage} from "../../../redux/slices/message";
 import {Spin} from "antd";
 
-const GenericAuthComponent = ({pushPath, tokenName}) => {
+const GenericAuthComponent = ({tokenName}) => {
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -24,7 +24,7 @@ const GenericAuthComponent = ({pushPath, tokenName}) => {
     useEffect(()=> {
         if(authLogin.status === 'success'){
             dispatch(startMessage({time: 3, message: "Siz muvofiyaqatli kirdingiz", type: 'success'}))
-            router.push('/receptionPage/account')
+            router.push('/personalAccount/account')
             setTimeout(()=> {
                 dispatch(resetAuthLogin())
             }, 500)

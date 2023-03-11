@@ -2,27 +2,30 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../../globalApi";
 
 
-export const getLibraryLangFetch = createAsyncThunk('getLibraryLangFetch', async (payload)=> {
-    return await fetch(`${API_GLOBAL}v1/book/language/get`, {
-        method: 'GET',
+export const getLibraryFetch = createAsyncThunk('getLibraryFetch', async (payload)=> {
+    return await fetch(`${API_GLOBAL}v1/book/get`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify({
+
+        })
     })
         .then((res)=> res.json())
 })
 
-const getLibraryLangData = createSlice({
-    name: 'getLibraryLangData',
+const getLibraryData = createSlice({
+    name: 'getLibraryAuthorData',
     initialState: {
         status: null,
         data: []
     },
     extraReducers: {
-        [getLibraryLangFetch.pending]: (state)=> {
+        [getLibraryFetch.pending]: (state)=> {
             state.status = 'loading'
         },
-        [getLibraryLangFetch.fulfilled]: (state, {payload})=> {
+        [getLibraryFetch.fulfilled]: (state, {payload})=> {
             if (payload?.success) {
                 state.status = 'Success'
                 state.data = payload
@@ -30,7 +33,7 @@ const getLibraryLangData = createSlice({
                 state.status = 'No payload'
             }
         },
-        [getLibraryLangFetch.rejected]: (state)=> {
+        [getLibraryFetch.rejected]: (state)=> {
             state.status = 'error'
         }
     },
@@ -45,5 +48,5 @@ const getLibraryLangData = createSlice({
 
 
 
-export const { resetAuthLogin } = getLibraryLangData.actions
-export default getLibraryLangData.reducer
+export const { resetAuthLogin } = getLibraryData.actions
+export default getLibraryData.reducer

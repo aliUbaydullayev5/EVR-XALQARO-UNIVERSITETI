@@ -39,11 +39,26 @@ a {
   flex-direction: column;
   align-items: flex-end;
   position: absolute;
-  top: 200px;
   justify-content: space-around;
   height: 30% !important;
-  left: -20px;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
 
+@media only screen and (max-width: 800px) {
+  .control-dots {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 200px;
+    justify-content: space-around;
+    height: 30% !important;
+    top: unset !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
 }
 
 .carousel-status {
@@ -323,8 +338,6 @@ select option {
   color: red;
 }
 
-
-
 label {position:relative}
 label:after {
   content:'';
@@ -334,15 +347,16 @@ label:after {
   -moz-transform:rotate(90deg);
   -ms-transform:rotate(90deg);
   transform:rotate(90deg);
-  right:8px; top:0px;
-  padding:0 0 2px;
-  border-bottom:1px solid #ddd;
-  position:absolute;
-  pointer-events:none;
+  right:8px;
+  top: 0;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  pointer-events: none;
 }
 
 label:after {
-  content: '<>';
+  content: '';
   font: 14px "Consolas", monospace;
   color: #333;
   -webkit-transform: rotate(90deg);

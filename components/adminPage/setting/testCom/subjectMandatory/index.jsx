@@ -52,7 +52,6 @@ export const ExamSubjectCreate = () => {
     useEffect(() => {
         setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
-    console.log(getAllexamsubject.data)
 
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({

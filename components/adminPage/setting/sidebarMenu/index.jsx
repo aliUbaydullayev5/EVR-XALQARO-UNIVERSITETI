@@ -90,7 +90,6 @@ export const SidebarAdmin = () => {
       img: imgArow,
       clicked: false,
     },
-
     {
       id: 12,
       name: 'Kutubxona',

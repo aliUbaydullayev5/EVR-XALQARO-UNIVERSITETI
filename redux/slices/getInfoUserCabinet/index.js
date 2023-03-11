@@ -6,7 +6,7 @@ export const getInfoUserCabinetFetch = createAsyncThunk('getInfoUserCabinetFetch
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('talaba-token')}`
+            Authorization: `Bearer ${localStorage.getItem('access-token')}`
         },
 
     }).then((res) => res.json())
@@ -34,7 +34,6 @@ const getInfoUserCabinet = createSlice({
                 state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
                 state.errorCode = action?.payload?.errors[0]?.errorCode
-
             }
         },
         [getInfoUserCabinetFetch.rejected]: (state, action) => {

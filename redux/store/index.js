@@ -55,6 +55,12 @@ import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
 import bookCreate from "../sliceAdmin/libary/book/create.js"
 import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getGalleryData from '../slices/getGalleryData'
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -94,8 +100,6 @@ export default configureStore({
                 sendSmsData,
                 quationDeleteId,
                 forgonPassword,
-                exsamManegemnt,
-                exsamMenegmntget,
                 subjectMandatoryData,
                 getManagementData,
                 aboutCreateData,
@@ -113,5 +117,12 @@ export default configureStore({
                 bookCreate,
                 bookDeleteId,
                 bookGet,
-        },
+                getLibraryAuthorData,
+                getLibraryLangData,
+                getLibraryWayData,
+                getLibraryData,
+                exsamManegemnt,
+                getGalleryData,
+                exsamMenegmntget
+        }
 })

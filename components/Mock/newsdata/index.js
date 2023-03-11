@@ -1,5 +1,5 @@
 import img from "../../../assets/image/noImg.png"
-import imgs from "../../../assets/image/evr.png"
+import imgs from "../../../assets/image/university.jpg"
 
 
 export const dataNews = [

@@ -22,7 +22,8 @@ const deployFile = createSlice({
     initialState: {
         fileId: '',
         status: null,
-        by: ''
+        by: '',
+        message: '',
     },
     extraReducers: {
         [deployFileFetch.pending]: (state)=> {
@@ -34,6 +35,11 @@ const deployFile = createSlice({
                 state.status = 'success'
                 state.fileId = data
                 state.by = by
+                state.message = 'File saqlandi'
+            }
+            if(success == false){
+                state.status = 'error'
+                state.message = payload?.errors[0]?.errorMsg.join('')
             }
         },
         [deployFileFetch.rejected]: (state)=> {

@@ -25,13 +25,9 @@ export const AbiturientQabul = () => {
 	const dispatch = useDispatch();
 	const [numPasSeriya, setNumPasSeriya] = useState('');
 	const [pasSerLength, setPasSerLength] = useState(0);
-	const reseptionCheckPhoneSlice = useSelector(
-		(store) => store.reseptionCheckPhoneSlice,
-	);
-	const getDirectType = useSelector(
-		(store) => store.getDirectType.data,
-	);
-	const { fileId, by } = useSelector((store) => store.deployFile)
+	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
+	const getDirectType = useSelector((store) => store.getDirectType.data)
+	const { fileId, by, status, message } = useSelector((store) => store.deployFile)
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
 	const receptionData = useSelector((store) => store.receptionPost)
 	const getFacultyLanguage = useSelector((store) => store.getFacultyLanguage)
@@ -92,8 +88,20 @@ export const AbiturientQabul = () => {
 		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }))
 	}, [])
 
+<<<<<<< HEAD
 	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId])
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), [])
+=======
+	useEffect(() => {
+		changeAllDataFunc({type: by, value: fileId})
+		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
+		if(status === 'error') dispatch(startMessage({time: 2, message}))
+		console.log(fileId, by, status, '======', message, 'dsadasdas')
+	}, [status])
+
+
+	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
+>>>>>>> main
 
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData })
@@ -484,10 +492,12 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
+<<<<<<< HEAD
 
 			</InputCont>
-
-
+=======
+            </InputCont>
+>>>>>>> main
 
 			<Modal
 				open={modelHidden}
@@ -531,8 +541,6 @@ export const AbiturientQabul = () => {
 					)}
 				</Container.Model>
 			</Modal>
-
-
 		</Container>
 	);
 };
