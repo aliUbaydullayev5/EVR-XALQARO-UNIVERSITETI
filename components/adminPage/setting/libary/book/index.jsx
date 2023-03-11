@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
-import Container, { Antmodal, ConTable, ModalaContainer } from './style.js'
+import Container, { Antmodal, ModalaContainer, ConTable} from './style.js'
 import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
 import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
@@ -13,10 +13,13 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
-import { Modal, Select } from 'antd'
 import { AntSelect } from '../../talimYunalishType/TalimYunalishTypeAdd/style.js'
 import { deployFileFetch } from '../../../../../redux/slices/deployFile/index.js'
 import AddImg from "../../../../../assets/icon/addimg.svg"
+import { bookCreatePost } from '../../../../../redux/sliceAdmin/libary/book/create.js'
+import { bookLaunguageGetFetch } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js'
+import { bookTypesGetFetch } from '../../../../../redux/sliceAdmin/libary/booksTypes/getbooksType.js'
+import {bookGetFetch} from "../../../../../redux/sliceAdmin/libary/book/getbook";
 
 
 
@@ -35,26 +38,44 @@ export const BookComponet = () => {
       directionId: "",
     });
   const [dataList, setDataList] = useState([]);
+  const [dataLanguage, setDataLaungage] = useState([]);
+  const [databookTypes, setDatabookTypes] = useState([]);
+  const [dataAuthor, setAuthor] = useState([]);
+
+
+
 
   const [open, setOpen] = useState(false)
 
   const authorDelete = useSelector((store) => store.authorDelete);
   const authorGet = useSelector((store) => store.authorGet);
   const authorCreate = useSelector((store) => store.authorCreate);
+  const bookLaunguageGet = useSelector((store) => store.bookLaunguageGet);
+  const bookTypesGet = useSelector((store) => store.bookTypesGet);
+  const { fileId, by } = useSelector((store) => store.deployFile);
+  const bookCreate = useSelector((store) => store.bookCreate);
+  const bookGet = useSelector((store) => store.bookGet);
 
 
 
   useEffect(() => {
-    if (authorCreate.status === "success")
+    if (bookCreate.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
-        setName({ ...name, nameUz: "", ...name, nameRu: "", }));
-    else if (authorCreate.status === "notFound")
+        setName({
+          id: '',
+          name: '',
+          rating: '',
+          attachmentId: '',
+          authorId: '',
+          languageId: '',
+          directionId: '',
+        }));
+    else if (bookCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
       dispatch(reset());
     }, 500);
-  }, [authorGet]);
-
+  }, [bookCreate]);
 
   useEffect(() => {
     if (authorDelete.status === 'success' || authorCreate.status === 'success')
@@ -62,15 +83,20 @@ export const BookComponet = () => {
   }, [authorDelete, authorCreate])
 
   const addFacultet = () =>
-    dispatch(authorCreatePost({
+    dispatch(bookCreatePost({
       id: 0,
       name: name.name,
+      rating: name.rating,
+      attachmentId: fileId,
+      authorId: name.authorId,
+      languageId: name.languageId,
+      directionId: name.directionId,
+
     }));
 
-  const findDeleteID = (deleteId) => {
-    dispatch(authorDeletePost({ id: deleteId }));
-  };
 
+
+  const findDeleteID = (deleteId) => dispatch(authorDeletePost({ id: deleteId }));
 
 
   const findEditID = (id) => {
@@ -88,20 +114,32 @@ export const BookComponet = () => {
     }));
 
   useEffect(() => {
+    if (bookLaunguageGet.status === "success") setDataLaungage(bookLaunguageGet.data);
+    if (bookTypesGet.status === "success") setDatabookTypes(bookTypesGet.data)
+    if (authorGet.status === "success") setAuthor(authorGet.data)
+    if (bookGet.status === "success") setDataList(bookGet.data)
+  }, [bookLaunguageGet, bookTypesGet, authorGet]);
+
+   useEffect(()=> {
+      dispatch(bookGetFetch())
+   },[bookGetFetch])
+
+  useEffect(() => {
     dispatch(authorGetFetch())
   }, [authorGetFetch])
 
+  useEffect(() => {
+    dispatch(bookLaunguageGetFetch())
+  }, [bookLaunguageGetFetch])
+
 
   useEffect(() => {
-    if (authorGet.status === "success") setDataList(authorGet.data);
-  }, [authorGet]);
+    dispatch(bookTypesGetFetch())
+  }, [bookTypesGetFetch])
 
-  const modalAdd = () => {
-    setOpen(true)
-  }
-  const handleCancel = () => {
-    setOpen(false);
-  };
+  const modalAdd = () => setOpen(true)
+  const handleCancel = () => setOpen(false)
+    console.log(dataList,'dataList')
   return (
     <Container>
       <Container.Bottom>
@@ -119,15 +157,14 @@ export const BookComponet = () => {
                   style={{ width: '440px', marginBottom: '20px' }}
                   placeholder='Vikas Svarul '
                   optionFilterProp="children"
-                  options={dataList?.map((value) => ({
-                    value: value.id,
-                    label: value.name,
+                  options={authorGet.data.length && dataAuthor?.map((value) => ({
+                    value: value?.id,
+                    label: value?.name,
                   })) || []}
                   onChange={(e) => setName({ ...name, authorId: e })}
                 />
               </div>
             </ModalaContainer>
-
             <ModalaContainer>
               <div>
                 <p>Reyting</p>
@@ -139,7 +176,7 @@ export const BookComponet = () => {
                   style={{ width: '440px', marginBottom: '20px' }}
                   placeholder='Badiiy adabiyot'
                   optionFilterProp="children"
-                  options={dataList?.map((value) => ({
+                  options={bookTypesGet.data.length && databookTypes?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
@@ -155,11 +192,11 @@ export const BookComponet = () => {
                   style={{ width: '440px', marginBottom: '20px' }}
                   placeholder='O`zbek'
                   optionFilterProp="children"
-                  options={dataList?.map((value) => ({
+                  options={bookLaunguageGet.status === 'success' && dataLanguage?.map((value) => ({
                     value: value.id,
                     label: value.name,
                   })) || []}
-                  onChange={(e) => setName({ ...name, directionId: e })}
+                  onChange={(e) => setName({ ...name, languageId: e })}
                 />
               </div>
             </ModalaContainer>
@@ -181,90 +218,13 @@ export const BookComponet = () => {
             {fileList.length < 1 && <AddImg />}
           </Container.Upload>
 
-            <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
-   
+          <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+
         </Antmodal>
         <div onClick={modalAdd}>
           <Plus /> &nbsp;   Qo’shish
         </div>
       </Container.Bottom>
-      <Container.Table>
-        <Container.Scrool style={{ overflowY: "scroll" }}>
-          <Container.Top>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <Container.Nav>
-                <div className="row">
-                  <div>Rasm</div>
-                  <div>№</div>
-                  <div className="colum nocopy">Nomi</div>
-                  <div className="colum nocopy">Vaqt</div>
-                  <div className="colum">Action</div>
-                </div>
-              </Container.Nav>
-            </div>
-          </Container.Top>
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            {dataList?.map((value, index) => {
-              return (
-                <ConTable key={value.id}>
-                  <div>1</div>
-                  <div className="row">
-                    <div>{index + 1}</div>
-                    <div>{index + 1}</div>
-                    <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val.id,
-                            name: value.id === val.id ? e.target.value : val.name,
-                            status: val.status
-                          })))} />
-                          :
-                          <>
-                            {value.name}
-                          </>
-                      }
-                    </div>
-                    <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val.id,
-                            date: value.id === val.id ? e.target.value : val.date,
-                            name: value.name,
-                            status: val.status
-                          })))} />
-                          :
-                          <>
-                            {value.date || 'date'}
-                          </>
-                      }
-                    </div>
-                    <div className="action">
-                      {value?.status ? (
-                        <Button
-                          onclick={() => editPush(value.id, index)}
-                          width={"70px"}
-                          height={"40px"}
-                          size={"18px"}
-                          radius={"5px"}
-                          border={"1px solid red"}
-                        >
-                          OK
-                        </Button>
-                      ) : (
-                        <Button onClick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
-                      )}
-
-                      <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
-                    </div>
-                  </div>
-                </ConTable>
-              );
-            })}
-          </div>
-        </Container.Scrool>
-      </Container.Table>
     </Container>
   );
 };

@@ -60,7 +60,6 @@ export const AfterComponet = () => {
 
 
   const findEditID = (id) => {
-    console.log(id,'id');
     setDataList(dataList.map((value) => ({
       id: value.id,
       name: value.name,
@@ -82,7 +81,6 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
-  console.log(dataList, 'dataList');
 
   const modalAdd = () => {
     setOpen(true)

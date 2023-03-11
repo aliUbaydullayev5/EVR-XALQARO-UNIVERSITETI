@@ -52,6 +52,9 @@ import bookTypesDeleteId from "../sliceAdmin/libary/booksTypes/deleteId.js"
 import bookLaunguageGet from "../sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js"
 import bookLaunguageDeleteId from "../sliceAdmin/libary/bookLaunguage/deleteId.js"
 import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
+import bookCreate from "../sliceAdmin/libary/book/create.js"
+import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
+import bookGet from "../sliceAdmin/libary/book/getbook.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -107,5 +110,8 @@ export default configureStore({
                 bookLaunguageGet,
                 bookLaunguageDeleteId,
                 bookLaunguageCreate,
+                bookCreate,
+                bookDeleteId,
+                bookGet,
         },
 })
