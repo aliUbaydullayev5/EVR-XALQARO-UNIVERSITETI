@@ -54,6 +54,7 @@ Container.Scrool = styled.div`
 
 Container.Nav = styled.div`
   display: grid;
+grid-template-columns: 80px auto;
   >div{
     font-style: normal;
     font-weight: 400;
@@ -67,8 +68,8 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  50px 10fr  100px 100px ;
-    padding-left: 15px;
+    grid-template-columns:  90px 10fr  100px 100px ;
+    padding-left: 20px;
     height: 50px;
   }
 
@@ -80,9 +81,8 @@ Container.Nav = styled.div`
 `
 const ConTable = styled.div`
   display: grid;
-  grid-template-columns:  1fr;
-  gap:10px;
-  background: #241F69;
+  grid-template-columns:90px  1fr;
+  gap:20px;
 
   >div{
     font-style: normal;
@@ -96,10 +96,12 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 10fr  10fr  100px 100px ;
-    padding-left: 15px;
+    grid-template-columns: 80px 10fr  10fr  100px 100px ;
+    padding-left: 10px;
     box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 8px;
+    background: #241F69;
+    
   }
 
   .colum{
