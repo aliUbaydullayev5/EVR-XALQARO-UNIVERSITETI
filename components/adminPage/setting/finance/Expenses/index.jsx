@@ -4,15 +4,22 @@ import Edit from "../../../../../assets/icons/edit.svg"
 import Delete from "../../../../../assets/icons/delete.svg"
 import Dollar from "../../../../../assets/icons/admin/dollar.svg"
 import Search from "../../../../../assets/icon/search.svg"
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Input,Button} from "../../../../generic"
 import dataMoliya from "../../../../Mock/moliyaData";
 import {deleteAbuturentFetch} from "../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent";
-import {Modal} from "antd";
 
 export const Expenses = () => {
 
   const dispatch = useDispatch()
+
+    // classification
+    const [opens, setOpens] = useState(false);
+
+    // function classification
+    const Classification = () => {
+        setOpens(true);
+    };
 
     // delete
     const [open, setOpen] = useState(false);
@@ -104,7 +111,7 @@ export const Expenses = () => {
                                   <h1 className='fio'>{value.firstname + value.name}</h1>
                                   <h1 className='tel'>{value.number}</h1>
                                   <h1 className='kun'>{value.idNumber}</h1>
-                                  <Button>soiuyf</Button>
+                                  <Button onclick={Classification}>{"salom "}</Button>
                                   <h1 className='kun'>{value.turi}</h1>
                                   <h1 className='kun'>{value.berilgan}</h1>
                                   <Button><Edit /></Button>
@@ -115,6 +122,11 @@ export const Expenses = () => {
                   })}
               </Container.Map>
           </Container.Scrool>
+          <FilterModal open={opens}>
+              <h1 className={"nocopy"} >Tasnif</h1>
+              <p>Hurmatli talaba, agar naqd pul  ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa ortga qaytib ilovalar orqali to'lashingiz mumkin.Hurmatli talaba, agar naqd pul  ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa ortga qaytib ilovalar orqali to'lashingiz mumkin.</p>
+          </FilterModal>
+
           <DeleteModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
               <h1 >O’chirish</h1>
               <p>O’chirsangiz buni qayta tiklash iloji yo’q.</p>

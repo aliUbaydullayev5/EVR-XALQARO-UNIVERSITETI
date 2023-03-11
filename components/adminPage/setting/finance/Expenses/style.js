@@ -121,7 +121,6 @@ const Conpul = styled.div`
     color: #FFFFFF;
   }
 `
-
 const DeleteModal=styled(Modal)`
  display: flex;
  align-items: center;
@@ -159,12 +158,6 @@ Container.Footer=styled.div`
  }
 `
 
-const ConSelect = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap:10px;
-`
-
 Container.Input=styled.div`
   width: 30px;
   height: 30px;
@@ -194,9 +187,15 @@ Container.Info=styled.div`
     width: 10%;
     border-radius: 0;
     background: none;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 17px;
     border-left: 1px solid #FFFFFF;
     :active{
       transform: scale(1);
+    }
+    :hover{
+      letter-spacing: 0px;
     }
   }
   h1{
@@ -207,7 +206,6 @@ Container.Info=styled.div`
     justify-content: center;
     color: #FFFFFF;
     height: 24px;
-    font-weight: 400;
   }
   .id{
     width: 6%;
@@ -265,28 +263,33 @@ Container.Map=styled.div`
  flex-direction: column;
  gap: 12px;
 `
-
 const FilterModal=styled(Modal)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  .but{
-    display: flex;
-    justify-content: flex-end;
-    >button{
-      background: #221F51;
-      box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 24px;
-      color: #FFFFFF;
-    }
+  margin-top: 100px;
+  :where(.css-dev-only-do-not-override-1km3mtt).ant-modal .ant-modal-content{
+    padding: 10px;
+  }
+  h1{
+    color: white;
+    width: 879px;
+    text-align: center;
+    background: #221F51;
+    box-shadow: 0 2 17px rgba(0, 0, 0, 0.54);
+  }
+  p{
+    color: white;
+    padding: 0 20px;
+    margin: 0 30px;
+    font-weight: 320;
+    font-size: 20px;
+    line-height: 30px;
   }
   .ant-modal-footer{
     display: none !important;
   }
+  
 `
 
 Container.FilterModal=styled.div`
@@ -337,14 +340,6 @@ Container.FIlterInput=styled.div`
     color: #FFFFFF;
   }
 `
-const ConTable = styled.div`
-  width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid red;
-
-`
 
 Container.Nav = styled.div`
   display: flex;
@@ -352,53 +347,6 @@ Container.Nav = styled.div`
   gap: 10px;
   height: 40px;
 `
-const AntSelect = styled (Select)`
-   .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
-      background-color: transparent !important;
-  }
-  .ant-select-selection-item{
-    color: #fff !important;
-    display: flex;
-    align-items: center;
-    padding: 0 20px !important;
-    font-size: 24px !important;
-    font-weight: 400 !important;
-    font-family: 'Montserrat' !important;
-    @media only screen and (max-width: 1000px) {
-      font-size: 16px !important;
-      padding: 0 12px !important;
-    }
-  }
-  .ant-select-arrow{
-   position: absolute;
-   right: -20px;
-    color: white !important;
-    font-size: 30px;
-    @media only screen and (max-width: 1000px) {
-      font-size: 13px;
-    }
-  }
-  .ant-select-selection-search-input{
-    display: none !important;
-  }
-  .ant-select-selection-placeholder{
-    display: flex;
-    align-items: center;
-    padding: 0 20px !important;
-    font-size: 22px !important;
-    color: #ffff;
-    @media only screen and (max-width: 800px) {
-      font-size: 16px !important;
-      padding: 0 8px !important;
-    }
-  }
 
- .ant-select-item-option-content{
-  font-size: 17px !important;
- } 
- .ant-select-item .ant-select-item-option .ant-select-item-option-active{
-   font-size: 17px !important;
- }
-`
-export { ConTable,Conpul,DeleteModal, AntSelect,ConSelect, FilterModal,}
+export { Conpul,DeleteModal, FilterModal,}
 export default Container
