@@ -236,6 +236,10 @@ Container.Info=styled.div`
   }
 `
 
+const AddModal=styled(Modal)`
+
+`
+
 Container.Scrool = styled.div`
    width: 100%; 
    height: 400px;
@@ -348,5 +352,5 @@ Container.Nav = styled.div`
   height: 40px;
 `
 
-export { Conpul,DeleteModal, FilterModal,}
+export { Conpul,DeleteModal,AddModal, FilterModal,}
 export default Container

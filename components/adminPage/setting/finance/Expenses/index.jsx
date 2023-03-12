@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import Container, { DeleteModal,Conpul,FilterModal} from './style.js'
+import Container, { DeleteModal,Conpul,FilterModal,AddModal} from './style.js'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Delete from "../../../../../assets/icons/delete.svg"
 import Dollar from "../../../../../assets/icons/admin/dollar.svg"
@@ -8,10 +8,17 @@ import {useDispatch} from "react-redux";
 import {Input,Button} from "../../../../generic"
 import dataMoliya from "../../../../Mock/moliyaData";
 import {deleteAbuturentFetch} from "../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent";
+import Plyus from "../../../../../assets/icons/plus.svg";
 
 export const Expenses = () => {
 
   const dispatch = useDispatch()
+
+    // add Modal
+    const [openAdd, setOpenAdd] = useState(false);
+    const AdModal = () => {
+        setOpenAdd(true);
+    };
 
     // classification
     const [opens, setOpens] = useState(false);
@@ -57,7 +64,8 @@ export const Expenses = () => {
   return (
     <Container>
       <Container.Top>
-         <h1>Berilgan oyliklar</h1>
+         <h1>Xarajatlar</h1>
+         <Button onclick={AdModal} width={"180px"} height={"45px"} size={"20px"} radius={"10px"}><Plyus/> &nbsp;&nbsp; Qo’shish</Button>
       </Container.Top>
 
       <Container.Bottom>
@@ -122,11 +130,39 @@ export const Expenses = () => {
                   })}
               </Container.Map>
           </Container.Scrool>
+
+          {/* Add Modal*/}
+          <AddModal open={openAdd}>
+              <Container.FilterModal>
+                  <h1>Maosh berish</h1>
+                  <Container.FIlterInput>
+                      <p>ID raqami yoki FIO</p>
+                      <Search className="search" />
+                      <Input padding={"0 10px 0 45px"} width="100%" height="40px" size="14px" placeholder="ID raqami yoki FIO" />
+                  </Container.FIlterInput>
+                  <Container.FIlterInput pro>
+                      <div className={"div"}>
+                          <p>Maoshi</p>
+                          <Input padding={"0 10px 0 20px"} width="100%" height="40px" size="14px" placeholder="Maoshi" />
+                      </div>
+                      <div className={"div"}>
+                          <p>Tafsif</p>
+                          <Input padding={"0 10px 0 20px"} width="100%" height="40px" size="14px" placeholder="Tafsif" />
+                      </div>
+
+                  </Container.FIlterInput>
+                  <div className={'but'}>
+                      <Button width={"157px"} height={"48px"}>Saqlash</Button>
+                  </div>
+              </Container.FilterModal>
+          </AddModal>
+
+          {/* Tasnif Modal*/}
           <FilterModal open={opens}>
               <h1 className={"nocopy"} >Tasnif</h1>
               <p>Hurmatli talaba, agar naqd pul  ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa ortga qaytib ilovalar orqali to'lashingiz mumkin.Hurmatli talaba, agar naqd pul  ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa ortga qaytib ilovalar orqali to'lashingiz mumkin.</p>
           </FilterModal>
-
+          {/*Delete Modal*/}
           <DeleteModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
               <h1 >O’chirish</h1>
               <p>O’chirsangiz buni qayta tiklash iloji yo’q.</p>
