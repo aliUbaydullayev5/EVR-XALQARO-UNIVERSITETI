@@ -35,9 +35,6 @@ const Account = () => {
     }
 
 
-
-
-
     const Container = styled.div`
       text-align: center;
       background: rgba(0, 0, 0, 0.05);	  

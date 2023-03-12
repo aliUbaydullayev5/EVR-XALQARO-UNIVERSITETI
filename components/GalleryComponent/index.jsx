@@ -42,9 +42,8 @@ const GalleryComponent = () => {
                 </Container.BottomDesc>
             </Container.Bottom>
         </Container>
-    );
-
-};
+    )
+}
 
 
 export default GalleryComponent;

@@ -15,14 +15,14 @@ export const CaruselRigth = () => {
              {
                data.map((val)=>{
 
-                return(
-                  <SwiperSlide key={val.id} className="SwiperSlide"> <Image className="img" src={val.imgs}/>  </SwiperSlide>
-                )
+                   return (
+                       <SwiperSlide key={val.id} className="SwiperSlide"> <Image className="img" src={val.imgs}/>
+                       </SwiperSlide>
+                   )
                 }
               )
              }
             </Swiper>
-
         </Container>
     );
 };
