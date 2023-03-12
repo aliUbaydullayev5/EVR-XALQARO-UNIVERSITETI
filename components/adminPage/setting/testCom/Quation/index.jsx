@@ -24,6 +24,7 @@ export const QuationCom = () => {
     answers3NameUz: '',
     answers3NameRu: '',
     answers4NameUz: '',
+    answers4NameRu: '',
   })
   const [Intput, setInput] = useState({
     check1: false,
@@ -68,6 +69,7 @@ export const QuationCom = () => {
       answers3NameUz: name.answers3NameUz,
       answers3NameRu: name.answers3NameRu,
       answers4NameUz: name.answers4NameUz,
+      answers4NameRu: name.answers4NameRu,
 
       check1: Intput.check1,
       check2: Intput.check2,
@@ -157,7 +159,7 @@ export const QuationCom = () => {
 
             <div>
               <label for="html">
-                <Input onchange={(e) => setName({ ...name, answers4NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'D'} />
+                <Input onchange={(e) => setName({ ...name, answers4NameRu: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'D'} />
               </label>
             </div>
           </form>

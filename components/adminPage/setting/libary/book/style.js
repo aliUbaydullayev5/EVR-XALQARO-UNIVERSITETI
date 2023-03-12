@@ -68,9 +68,10 @@ grid-template-columns: 80px auto;
   }
   .row{
     display: grid;
-    grid-template-columns:  90px 10fr  100px 100px ;
-    padding-left: 20px;
+    grid-template-columns:  60px 260px 116px 90px 85px 143px  110px 100px ;
+    padding-left: 15px;
     height: 50px;
+    font-size: 16px;
   }
 
   .colum{
@@ -93,10 +94,13 @@ const ConTable = styled.div`
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    >img{
+      border-radius: 10px;
+    }
   }
   .row{
     display: grid;
-    grid-template-columns: 80px 10fr  10fr  100px 100px ;
+    grid-template-columns: 60px 260px  116px 90px 85px  143px 110px 100px ;
     padding-left: 10px;
     box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 8px;
