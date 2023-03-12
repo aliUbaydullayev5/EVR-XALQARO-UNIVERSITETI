@@ -12,10 +12,13 @@ export const AccessComponent = () => {
           <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/after')}>Mualif</Button>
         </div>
         <div>
-          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultets/masters')}>Yunalishlar</Button>
+          <Button mwidth={'290px'} msize={'13px'} mheight={'45px'} width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/bookTypes')}>Yunalishlar</Button>
         </div>
         <div>
-          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/facultetsType/facultetsTypeAdd')}>Till</Button>
+          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/booklanguage')}>Till</Button>
+        </div>
+        <div>
+          <Button width={'290px'} size={'13px'} height={'45px'} onclick={() => quary.push('/admin/setting/library/book')}>Kitoblar</Button>
         </div>
       </Container.Block>
     </Container>

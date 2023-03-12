@@ -45,6 +45,21 @@ import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
 import getLibraryData from '../slices/kutubxona/kutubxona-all'
 import getGalleryData from '../slices/getGalleryData'
+import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
+import authorCreate from "../sliceAdmin/libary/author/create.js"
+import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
+import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
+import aboutGetData from "../sliceAdmin/about-us/getAbout.js"
+import bookTypesGet from "../sliceAdmin/libary/booksTypes/getbooksType.js"
+import bookTypesCreate from "../sliceAdmin/libary/booksTypes/create.js"
+import bookTypesDeleteId from "../sliceAdmin/libary/booksTypes/deleteId.js"
+import bookLaunguageGet from "../sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js"
+import bookLaunguageDeleteId from "../sliceAdmin/libary/bookLaunguage/deleteId.js"
+import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
+import bookCreate from "../sliceAdmin/libary/book/create.js"
+import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
+import bookGet from "../sliceAdmin/libary/book/getbook.js"
+
 
 export default configureStore({
         reducer: {
@@ -94,5 +109,19 @@ export default configureStore({
                 getLibraryData,
                 exsamManegemnt,
                 getGalleryData,
+                getKutubxonaMuallifData,
+                authorCreate,
+                authorGet,
+                authorDelete,
+                aboutGetData,
+                bookTypesGet,
+                bookTypesCreate,
+                bookTypesDeleteId,
+                bookLaunguageGet,
+                bookLaunguageDeleteId,
+                bookLaunguageCreate,
+                bookCreate,
+                bookDeleteId,
+                bookGet,
         }
-})
+});

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
-import Container, { ConTable } from './style.js'
+import Container, { Antmodal, ConTable } from './style.js'
 import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
 import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
@@ -12,7 +12,7 @@ import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/deleteId.js'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
-
+import Plus from "../../../../../assets/icons/plus.svg"
 
 
 export const AfterComponet = () => {
@@ -20,6 +20,7 @@ export const AfterComponet = () => {
   const [name, setName] = useState({ id: 0, name: "", });
   const [dataList, setDataList] = useState([]);
 
+  const [open, setOpen] = useState(false)
   const authorDelete = useSelector((store) => store.authorDelete);
   const authorGet = useSelector((store) => store.authorGet);
   const authorCreate = useSelector((store) => store.authorCreate);
@@ -77,12 +78,35 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
+
+  const modalAdd = () => {
+    setOpen(true)
+  }
+  const handleCancel = () => {
+    setOpen(false);
+  }
   return (
     <Container>
       <Container.Bottom>
         <h1>Mualliflar</h1>
-        <div>
-          Qo’shish
+        <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+          <Container.Add>
+            <div>
+              <h1>Kutubxona yaratish</h1>
+            </div>
+            <br />
+            <div>
+              <p>Kitob nomi</p>
+            </div> <br />
+            <div>
+              <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+              <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+            </div>
+          </Container.Add>
+
+        </Antmodal>
+        <div onClick={modalAdd}>
+          <Plus /> &nbsp;   Qo’shish
         </div>
       </Container.Bottom>
       <Container.Table>
@@ -92,7 +116,7 @@ export const AfterComponet = () => {
               <Container.Nav>
                 <div className="row">
                   <div>№</div>
-                  <div className="colum nocopy">Talim Yunalish Turlari</div>
+                  <div className="colum nocopy">Nomi</div>
                   <div className="colum nocopy">Vaqt</div>
 
                   <div className="colum">Action</div>
@@ -149,7 +173,7 @@ export const AfterComponet = () => {
                         </Button>
                       ) : (
                         <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
-                      )}  
+                      )}
 
                       <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
                     </div>
@@ -159,21 +183,11 @@ export const AfterComponet = () => {
             })}
           </div>
         </Container.Scrool>
-
-
       </Container.Table>
     </Container>
   );
 };
 
 
-{/* <Container.Add>
-  <Input
-    onchange={(e) => setName({ ...name, name: e.target.value })}
-    value={name.name} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Uzbek Tilida kiriting`}
-  />
-  <Button onclick={() => addFacultet()} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>
-    Qo'shish
-  </Button>
-</Container.Add> */}
+
 export default AfterComponet;
