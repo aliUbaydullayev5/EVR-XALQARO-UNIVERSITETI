@@ -53,7 +53,6 @@ export const ArizalarCom = () => {
   };
   const handleOk = () => {
     dispatch(sendSmsFetch(smsRef))
-
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -154,7 +153,7 @@ export const ArizalarCom = () => {
           </ConHero.Exel>
         </ConHero>
       </Container>
-      <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
+      <SendModal open={open} onOk={handleOk}  onCancel={handleCancel}>
         <h1>SMS yuborish</h1>
         <SendSmss className="sendSms"/>
         <input ref={smsRef} type="text" placeholder='t y p i n g ...' />

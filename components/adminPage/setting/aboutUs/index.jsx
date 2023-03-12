@@ -1,56 +1,86 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from "../testCom/subjectMandatory/style";
 import Input from "../../../generic/Input";
 import Button from "../../../generic/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
-import {deployFileFetch} from "../../../../redux/slices/deployFile";
+import AddImg from "../../../../assets/icon/addimg.svg"
+import { useDispatch, useSelector } from "react-redux";
+import { aboutCreateFetch } from "../../../../redux/sliceAdmin/about-us";
+import { deployFileFetch } from "../../../../redux/slices/deployFile";
+import { aboutGetFetch } from '../../../../redux/sliceAdmin/about-us/getAbout';
 
 const AboutUss = () => {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(aboutGetFetch())
+  }, [aboutGetFetch])
+
+  const [data, setData] = useState({
+    id: 0,
+    textUz: '',
+    textRu: '',
+    photoId: ''
+  })
 
 
-    const [data, setData] = useState({
-        id: 0,
-        textUz: '',
-        textRu: '',
-        photoId: ''
-    })
 
-    const createAboutFile = () => {
-        dispatch(aboutCreateFetch(data))
-    }
+  const changeAllDataFunc = ({ type, value }) => {
+    const fakeData = data
+    fakeData[type] = value
+    setData(fakeData)
+    setData({ ...data, [type]: value })
+  }
 
-    const changeAllDataFunc = ({ type, value }) => {
-        const fakeData = data
-        fakeData[type] = value
-        setData(fakeData)
-        setData({ ...data, [type]: value })
-    }
+  const { fileId, by } = useSelector((store) => store.deployFile)
 
-    const { fileId, by } = useSelector((store) => store.deployFile)
-    const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }))
+  useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId])
 
-    useEffect(() => changeAllDataFunc({type: by, value: fileId}), [fileId])
+  // addimg
+  const [fileList, setFileList] = useState([]);
+
+  const createAboutFile = () => {
+    dispatch(aboutCreateFetch({
+      textUz: data.textUz,
+      textRu: data.textRu,
+      photoId: fileId
+    }))
+  }
+  return (
+    <Container>
+      <Container.Top>
+        <Container.Text>
+          <Input placeholder={'Uzbek Tilidi kiriting'} onchange={(e) => changeAllDataFunc({ type: 'textUz', value: e.target.value })} width={'45%'} height={'55px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
+          <Input placeholder={'Rus Tilidi kiriting'} onchange={(e) => changeAllDataFunc({ type: 'textRu', value: e.target.value })} width={'45%'} height={'55px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
+        </Container.Text>
+        <Container.Button>
+
+          <Container.Upload
+            listType="picture-card"
+            onChange={(e) =>
+              dispatch(deployFileFetch({
+                file: {
+                  target: {
+                    files: [
+                      e.file.originFileObj
+                    ]
+                  }
+                }, by: 'antdesing'
+              }))
+            }
+          >
+            {fileList.length < 1 && <AddImg />}
+          </Container.Upload>
 
 
-    return (
-        <Container>
+          <Button onclick={createAboutFile} width={'157px'} height={'48px'} size={'20px'} radius="10px" > Saqlash</Button>
+        </Container.Button>
 
-            <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
-                <div>
-                    <Input placeholder={'Uzbek Tilidi kiriting'} onchange={(e) => changeAllDataFunc({type: 'textUz', value: e.target.value})} width={'45%'} height={'55px'} padding={'0px 10px'} margin={'0 1rem 1rem 0'} size={'20px'} radius={'15px'} />
-                    <Input placeholder={'Rus Tilidi kiriting'}  onchange={(e) => changeAllDataFunc({type: 'textRu', value: e.target.value})} width={'45%'} height={'55px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
-                    <Input placeholder={'Rasm kiriting'} type={'file'}  onchange={(e) => findFileFunc({ file: e, by: 'photoId' })} width={'45%'} height={'55px'} padding={'0px 10px'} margin={'0 0 1rem 0'} size={'20px'} radius={'15px'} />
-                    <Button onclick={createAboutFile} width={'100px'} height={'55px'} size={'20px'} padding={'0px 10px'} > Add</Button>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-
-                </div>
-            </Container.Scrool>
-        </Container>
-    );
+      </Container.Top>
+      <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '370px' }}>
+      </Container.Scrool>
+    </Container >
+  );
 };
 
 export default AboutUss;
