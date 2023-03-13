@@ -100,7 +100,6 @@ export const GaleryaComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
-  console.log(dataList, 'dataList');
 
   const modalAdd = () => {
     setOpen(true)

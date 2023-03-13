@@ -13,8 +13,6 @@ import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
 import {useSelector} from "react-redux"
 import {Spin} from "antd"
 import {useRouter} from "next/router"
-import {mockData} from "./mock"
-import {useEffect, useState} from "react";
 
 const Agentomponent = () => {
 
@@ -32,7 +30,7 @@ const Agentomponent = () => {
         <Container>
             <Container.Top>
                 Shaxsiy kabinet
-                <CloseIcon className={'closeIcon'} onClick={()=> query.push('/auth/agent')} />
+                <CloseIcon className={'closeIcon'} onClick={()=> query.push('/homePage')} />
             </Container.Top>
             <Container.Bottom>
                 {
@@ -72,29 +70,29 @@ const Agentomponent = () => {
                             <Container.Row>
                                 <div>
                                     <p>Agentlik nomi</p>
-                                    <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.fullName} />
+                                    <Input mheight={'33px'} mpadding={'0 10px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.fullName} />
                                 </div>
                             </Container.Row>
                             <Container.Row>
                                 <div>
                                     <p>Manzil</p>
-                                    <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Uzbekistan, Tashkent'} />
+                                    <Input mheight={'33px'} mpadding={'0 10px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'Uzbekistan, Tashkent'} />
                                 </div>
                             </Container.Row>
                             <Container.Row disabled={true} columns={'1fr 1fr'} gap={'31px'}>
                                 <div>
                                     <p>ID raqam</p>
-                                    <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.passportSeries} />
+                                    <Input mheight={'33px'} mpadding={'0 10px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.passportSeries} />
                                 </div>
                                 <div>
                                     <p>Litsenziya raqami</p>
-                                    <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'123 456 789'} />
+                                    <Input mheight={'33px'} mpadding={'0 10px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'123 456 789'} />
                                 </div>
                             </Container.Row>
                             <Container.Row>
                                 <div>
                                     <p>Telefon raqam</p>
-                                    <Input mheight={'33px'} mpadding={'0 19px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.phoneNumber} />
+                                    <Input mheight={'33px'} mpadding={'0 10px'} mradius={'5px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={data.phoneNumber} />
                                 </div>
                             </Container.Row>
                             <Container.Row columns={'1fr 1fr'} gap={'31px'}>
