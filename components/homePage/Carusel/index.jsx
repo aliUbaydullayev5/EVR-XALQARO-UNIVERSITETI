@@ -27,4 +27,5 @@ export const CaruselRigth = () => {
     );
 };
 
+
 export default CaruselRigth
