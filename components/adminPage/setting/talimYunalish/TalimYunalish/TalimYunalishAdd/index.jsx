@@ -192,53 +192,53 @@ export const TalimYunlishAddCom = () => {
               <ConTable key={value.id}>
                 <div className="row">
                   <div>{index + 1}</div>
-                  <div className="colum">
-                    {value?.status ? (
-                      <input
-                        value={value.nameUz}
-                        onChange={(e) =>
-                          setDataList(
-                            dataList.map((val) => ({
-                              id: val.id,
-                              nameUz:
-                                value.id === val.id
-                                  ? e.target.value
-                                  : val.nameUz,
-                              nameRu: val.nameRu,
-                              studyType: val.studyType,
-                              status: val.status,
-                            }))
-                          )
-                        }
-                      />
-                    ) : (
-                      <>{value.nameUz}</>
-                    )}
-                  </div>
+                    <div className="colum">
+                        {value?.status ? (
+                            <input
+                                value={value.nameUz}
+                                onChange={(e) =>
+                                    setDataList(
+                                        dataList.map((val) => ({
+                                            id: val.id,
+                                            nameUz:
+                                                value.id === val.id
+                                                    ? e.target.value
+                                                    : val.nameUz,
+                                            nameRu: val.nameRu,
+                                            studyType: val.studyType,
+                                            status: val.status,
+                                        }))
+                                    )
+                                }
+                            />
+                        ) : (
+                            <>{value.nameUz}</>
+                        )}
+                    </div>
 
-                  <div className="colum">
-                    {value?.status ? (
-                      <input
-                        value={value.nameRu}
-                        onChange={(e) =>
-                          setDataList(
-                            dataList.map((val) => ({
-                              id: val.id,
-                              nameUz: val.nameUz,
-                              nameRu:
-                                value.id === val.id
-                                  ? e.target.value
-                                  : val.nameRu,
-                              studyType: val.studyType,
-                              status: val.status,
-                            }))
-                          )
-                        }
-                      />
-                    ) : (
-                      <>{value.nameRu}</>
-                    )}
-                  </div>
+                    <div className="colum">
+                        {value?.status ? (
+                            <input
+                                value={value.nameRu}
+                                onChange={(e) =>
+                                    setDataList(
+                                        dataList.map((val) => ({
+                                            id: val.id,
+                                            nameUz: val.nameUz,
+                                            nameRu:
+                                                value.id === val.id
+                                                    ? e.target.value
+                                                    : val.nameRu,
+                                            studyType: val.studyType,
+                                            status: val.status,
+                                        }))
+                                    )
+                                }
+                            />
+                        ) : (
+                            <>{value.nameRu}</>
+                        )}
+                    </div>
 
                   <div className="action">
                     {value?.status ? (

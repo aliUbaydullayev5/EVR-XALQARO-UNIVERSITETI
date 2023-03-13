@@ -58,6 +58,7 @@ useEffect(()=>{
             id: value.id,
             nameUz: value.nameUz,
             nameRu: value.nameRu,
+            studyType: value.studyType,
             status: id === value.id ? (!value.id || true) : false
         })))
     }
@@ -121,35 +122,41 @@ useEffect(()=>{
                                 <ConTable key={value.id}>
                                     <div className="row">
                                         <div>{index + 1}</div>
-                                        <div className='colum'>
-                                            {
-                                                value?.status ?
-                                                    <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                        id: val.id,
-                                                        nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                                        nameRu: value.nameRu,
-                                                        status: val.status
-                                                    })))} />
-                                                    :
-                                                    <>
-                                                        {value.nameUz}
-                                                    </>
-                                            }
+                                        <div className="colum">
+                                            {value?.status ? (
+                                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                                                    nameRu: val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status, })) )}
+                                                />
+                                            ) : (
+                                                <>{value.nameUz}</>
+                                            )}
                                         </div>
-                                        <div className='colum'>
-                                            {
-                                                value?.status ?
-                                                    <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                        id: val.id,
-                                                        nameUz: value.nameUz,
-                                                        nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                        status: val.status
-                                                    })))} />
-                                                    :
-                                                    <>
-                                                        {value.nameRu || 'Ru'}
-                                                    </>
-                                            }
+                                        <div className="colum">
+                                            {value?.status ? (
+                                                <input
+                                                    value={value.nameRu}
+                                                    onChange={(e) =>
+                                                        setDataList(
+                                                            dataList.map((val) => ({
+                                                                id: val.id,
+                                                                nameUz: val.nameUz,
+                                                                nameRu:
+                                                                    value.id === val.id
+                                                                        ? e.target.value
+                                                                        : val.nameRu,
+                                                                studyType: val.studyType,
+                                                                status: val.status,
+                                                            }))
+                                                        )
+                                                    }
+                                                />
+                                            ) : (
+                                                <>{value.nameRu}</>
+                                            )}
                                         </div>
                                         <div className="action">
                                             {value?.status ? (
