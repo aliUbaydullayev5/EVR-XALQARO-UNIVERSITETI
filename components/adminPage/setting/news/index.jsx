@@ -38,7 +38,7 @@ export const NewsComponents = () => {
 
 
   useEffect(() => {
-    if (newsreate.status === "success" )
+    if (newsreate?.status === "success" )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -46,7 +46,7 @@ export const NewsComponents = () => {
               description: '',
               attachmentId: '',
           }));
-    else if (newsreate.status === "notFound")
+    else if (newsreate?.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
        setTimeout(() => {
       dispatch(reset());
@@ -57,8 +57,8 @@ export const NewsComponents = () => {
   const addFacultet = () =>
       dispatch(newsreatePost({
          id: 0,
-          title: name.title,
-          description: name.description,
+          title: name?.title,
+          description: name?.description,
           attachmentId: [fileId],
 
       }));
@@ -66,7 +66,7 @@ export const NewsComponents = () => {
   const findDeleteID = (deleteId) => dispatch(galleryDeleteIdDel({ id: deleteId }));
 
   const findEditID = (id) => {
-    setDataList(dataList.map((value) => ({
+    setDataList(dataList?.map((value) => ({
         id: value.id,
         name: value.name,
         rating:value.rating,
@@ -87,11 +87,11 @@ export const NewsComponents = () => {
       }));
 
     useEffect(() => {
-        if (newsGet.status === "success") setDataList(newsGet.data)
+        if (newsGet?.status === "success") setDataList(newsGet.data)
     }, [newsGet]);
 
     useEffect(() => {
-        if ( newsreate.status === 'success')
+        if ( newsreate?.status === 'success')
             dispatch(newsGetFetch())
     }, [newsreate])
 
@@ -101,6 +101,7 @@ export const NewsComponents = () => {
   const modalAdd = () => {
       setOpen(true)
   }
+    console.log(dataList,'dataList')
   const handleCancel = () => setOpen(false)
 
   return (
@@ -138,7 +139,7 @@ export const NewsComponents = () => {
                       file: {
                         target: {
                           files: [
-                            e.file.originFileObj
+                            e.file?.originFileObj
                           ]
                         }
                       }, by: 'antdesing'
