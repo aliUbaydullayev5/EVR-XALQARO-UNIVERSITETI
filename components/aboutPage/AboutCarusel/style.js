@@ -2,26 +2,25 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
   height: 100%;
   background: #221F51;
   border-radius: 30px;  
   display: grid;
   grid-template-rows: 84px 1fr;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
+  grid-gap: 2px;  
   @media only screen and (max-width: 1000px){
    grid-template-rows: 40px 1fr;
+    
   }
 `
 
 Container.Header = styled.div`
   width: 100%;
-  height: 84px;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   font-weight: 500;
   font-size: 32px;
   line-height: 39px;
@@ -48,9 +47,10 @@ Container.Header = styled.div`
 
 Container.Img=styled.div`
  width: 100%;
- max-width: 1276px;
  height: 380px;
+  margin: 0 auto;
  .mySwiper{
+  max-width: 1200px;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -80,13 +80,15 @@ Container.Img=styled.div`
     }
   }
  }
+  
  @media only screen and (max-width: 1000px){
+   
   .mySwiper{
-    max-width: 355px;
+    max-width: 750px;
     width: 100%;
   }
   .SwiperSlide{
-    margin-top: 10px;
+    margin-top: 2px;
   }
   .mySwiper .SwiperSlide p{
     font-size: 12px;
@@ -95,6 +97,25 @@ Container.Img=styled.div`
     bottom: 40px;
   }
  }
+  @media only screen and (max-width: 900px){
+    .mySwiper{
+      max-width: 650px;
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 700px){
+    .mySwiper{
+      max-width: 450px;
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .mySwiper{
+      max-width: 335px;
+      width: 100%;
+    }
+    
+  }
 `
 
 
@@ -109,7 +130,7 @@ Container.MainCarousel = styled.div`
 const ContainerDow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
+  gap: 23px;
   align-items: center;
   justify-content: center;
   a{

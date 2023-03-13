@@ -18,22 +18,19 @@ export const AboutCaruselComp = () => {
 
   return (
     <Container>
-      <Container.Header>Biz haqimizda
-      <Close className={'icon'} onClick={() => query.push('/homePage')} />
-      </Container.Header>
-
+      <Container.Header>Biz haqimizda<Close className={'icon'} onClick={() => query.push('/homePage')} /></Container.Header>
       <Container.MainCarousel>
         <Container.Img>
         <Swiper autoplay={{ delay: 2500, disableOnInteraction: false, }} pagination={{ clickable: true, }} modules={[Autoplay, Pagination]} className="mySwiper" >
-        {
+         {
           data.map((val)=>{
 
             return(
                 <SwiperSlide key={val.id} className="SwiperSlide"> <p>{val.name}</p> <Image className="img" src={val.imgs}/>  </SwiperSlide>
             )
           })
-        }
-      </Swiper>
+         }
+        </Swiper>
         </Container.Img>
         <ContainerDow>
           <a href="" download={true}>

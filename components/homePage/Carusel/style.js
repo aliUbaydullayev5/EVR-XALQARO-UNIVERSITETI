@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
   height: 100%;
   .mySwiper{
-   max-width: 1276px;
    width: 100%;
    border-radius: 25px;
    cursor: pointer;
@@ -20,9 +22,15 @@ const Container = styled.div`
    
    }
   }
-  @media only screen and (max-width: 1000px) {
+
+  @media only screen and (max-width: 1000px){
+    max-width: 450px;
+    width: 100%;
+  }
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+    max-width: 330px;
     .mySwiper{
-      max-width: 340px;
       width: 100%;
       height: 490px;
       border-radius: 10px;
