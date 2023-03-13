@@ -86,7 +86,7 @@ export const SidebarAdmin = () => {
 
     {
       id: 11,
-      name: 'About US',
+      name: 'Biz haqimizda',
       img: imgArow,
       clicked: false,
     },
@@ -102,6 +102,13 @@ export const SidebarAdmin = () => {
       clicked: false,
       img: imgArow,
     },
+    {
+      id: 14,
+      name: 'Yangliklar',
+      clicked: false,
+      img: imgArow,
+    },
+ 
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
@@ -117,6 +124,8 @@ export const SidebarAdmin = () => {
     else if (id === 11) quarey.push('/admin/setting/aboutUs')
     else if (id === 12) quarey.push('/admin/setting/library')
     else if (id === 13) quarey.push('/admin/setting/galereya')
+    else if (id === 14) quarey.push('/admin/setting/news')
+
 
 
 

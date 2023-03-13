@@ -15,11 +15,9 @@ import Image from "next/image";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
 import {newsreatePost} from "../../../../redux/sliceAdmin/news/create";
 import {newsGetFetch} from "../../../../redux/sliceAdmin/news/getnews";
-import {aboutGetFetch} from "../../../../redux/sliceAdmin/about-us/getAbout";
-import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
 
 
-export const AboutUsComponents = () => {
+export const NewsComponents = () => {
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
 
@@ -35,7 +33,7 @@ export const AboutUsComponents = () => {
 
     const { fileId, by } = useSelector((store) => store.deployFile);
   const newsreate = useSelector((store) => store.newsreate);
-  const aboutGetData = useSelector((store) => store.aboutGetData);
+  const newsGet = useSelector((store) => store.newsGet);
 
 
 
@@ -57,11 +55,11 @@ export const AboutUsComponents = () => {
 
 
   const addFacultet = () =>
-      dispatch(aboutCreateFetch({
+      dispatch(newsreatePost({
          id: 0,
-          textRu: name.title,
-          textUz: name.description,
-          attachmentId: fileId,
+          title: name.title,
+          description: name.description,
+          attachmentId: [fileId],
 
       }));
 
@@ -89,8 +87,8 @@ export const AboutUsComponents = () => {
       }));
 
     useEffect(() => {
-        if (aboutGetData.status === "success") setDataList(aboutGetData.data)
-    }, [aboutGetData]);
+        if (newsGet.status === "success") setDataList(newsGet.data)
+    }, [newsGet]);
 
     useEffect(() => {
         if ( newsreate.status === 'success')
@@ -98,8 +96,8 @@ export const AboutUsComponents = () => {
     }, [newsreate])
 
     useEffect(()=> {
-      dispatch(aboutGetFetch())
-    }, [aboutGetFetch])
+      dispatch(newsGetFetch())
+    }, [newsGetFetch])
   const modalAdd = () => {
       setOpen(true)
   }
@@ -166,6 +164,7 @@ export const AboutUsComponents = () => {
                 <div className='colum'>Sarlavha</div>
                 <div className='colum'>Batafsil ma’lumot</div>
                 <div className='colum' >Tahrirlash</div>
+                <div className='colum' >O’chirish</div>
               </div>
             </Container.Nav>
 
@@ -176,7 +175,7 @@ export const AboutUsComponents = () => {
                         <div>
                             <Image
                                 alt="img"
-                                src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.photoId}`}
+                                src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}
                                 width={60}
                                 height={60}
 
@@ -194,10 +193,14 @@ export const AboutUsComponents = () => {
                                     id: val?.id,
                                     name: value.id === val.id ? e.target.value : val?.name,
                                     rating: val.rating,
+                                    author: val.author?.name,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
-                                  {value.textUz}
+                                  {value.title}
                                 </>}
                         </div>
                           <div className='colum'>
@@ -214,7 +217,7 @@ export const AboutUsComponents = () => {
                                       })))} />
                                       :
                                       <>
-                                          {value?.textRu}
+                                          {value?.description}
                                       </>
                               }
                           </div>
@@ -236,4 +239,4 @@ export const AboutUsComponents = () => {
   )
 }
 
-export default AboutUsComponents
+export default NewsComponents

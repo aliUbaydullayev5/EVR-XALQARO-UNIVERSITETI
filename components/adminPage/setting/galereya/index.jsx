@@ -11,15 +11,14 @@ import Trash from "../../../../assets/icons/trash.svg"
 import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
+import { bookCreatePost } from '../../../../redux/sliceAdmin/libary/book/create.js'
 import Image from "next/image";
+import {getGalleryDataFetch} from "../../../../redux/slices/getGalleryData";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
-import {newsreatePost} from "../../../../redux/sliceAdmin/news/create";
-import {newsGetFetch} from "../../../../redux/sliceAdmin/news/getnews";
-import {aboutGetFetch} from "../../../../redux/sliceAdmin/about-us/getAbout";
-import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
+import {galleryCreatePost} from "../../../../redux/sliceAdmin/gallerya/galleryCreate";
 
 
-export const AboutUsComponents = () => {
+export const GalleryaComponet = () => {
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
 
@@ -33,14 +32,15 @@ export const AboutUsComponents = () => {
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false)
 
-    const { fileId, by } = useSelector((store) => store.deployFile);
-  const newsreate = useSelector((store) => store.newsreate);
-  const aboutGetData = useSelector((store) => store.aboutGetData);
+  const { fileId, by } = useSelector((store) => store.deployFile);
+  const galleryCreate = useSelector((store) => store.galleryCreate);
+  const getGalleryData = useSelector((store) => store.getGalleryData);
+  const galleryDeleteId = useSelector((store) => store.galleryDeleteId);
 
 
 
   useEffect(() => {
-    if (newsreate.status === "success" )
+    if (galleryCreate.status === "success" ||galleryDeleteId.status==='success' )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -48,19 +48,20 @@ export const AboutUsComponents = () => {
               description: '',
               attachmentId: '',
           }));
-    else if (newsreate.status === "notFound")
+    else if (galleryCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
        setTimeout(() => {
       dispatch(reset());
     }, 500);
-  }, [newsreate]);
+  }, [galleryCreate,galleryDeleteId]);
+
 
 
   const addFacultet = () =>
-      dispatch(aboutCreateFetch({
+      dispatch(galleryCreatePost({
          id: 0,
-          textRu: name.title,
-          textUz: name.description,
+          title: name.title,
+          description: name.description,
           attachmentId: fileId,
 
       }));
@@ -89,17 +90,18 @@ export const AboutUsComponents = () => {
       }));
 
     useEffect(() => {
-        if (aboutGetData.status === "success") setDataList(aboutGetData.data)
-    }, [aboutGetData]);
+        if (getGalleryData.status === "success") setDataList(getGalleryData.data)
+    }, [getGalleryData]);
 
     useEffect(() => {
-        if ( newsreate.status === 'success')
-            dispatch(newsGetFetch())
-    }, [newsreate])
+        if (galleryDeleteId.status === 'success' || galleryCreate.status === 'success')
+            dispatch(getGalleryDataFetch())
+    }, [galleryDeleteId, galleryCreate])
 
     useEffect(()=> {
-      dispatch(aboutGetFetch())
-    }, [aboutGetFetch])
+      dispatch(getGalleryDataFetch())
+    },[getGalleryDataFetch])
+
   const modalAdd = () => {
       setOpen(true)
   }
@@ -109,12 +111,12 @@ export const AboutUsComponents = () => {
       <Container>
         <Container.Bottom>
           <Container.TextAdd>
-            <h1>Yangliklar  </h1>
+            <h1>Galereya </h1>
           </Container.TextAdd>
           <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
             <Container.Add>
                  <Container.Texth1>
-                     Yangliklar
+                     Galereya
                  </Container.Texth1>
                 <br/>
               <ModalaContainer>
@@ -166,6 +168,7 @@ export const AboutUsComponents = () => {
                 <div className='colum'>Sarlavha</div>
                 <div className='colum'>Batafsil ma’lumot</div>
                 <div className='colum' >Tahrirlash</div>
+                <div className='colum' >O’chirish</div>
               </div>
             </Container.Nav>
 
@@ -176,7 +179,7 @@ export const AboutUsComponents = () => {
                         <div>
                             <Image
                                 alt="img"
-                                src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.photoId}`}
+                                src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}
                                 width={60}
                                 height={60}
 
@@ -194,10 +197,14 @@ export const AboutUsComponents = () => {
                                     id: val?.id,
                                     name: value.id === val.id ? e.target.value : val?.name,
                                     rating: val.rating,
+                                    author: val.author?.name,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
-                                  {value.textUz}
+                                  {value.title}
                                 </>}
                         </div>
                           <div className='colum'>
@@ -214,7 +221,7 @@ export const AboutUsComponents = () => {
                                       })))} />
                                       :
                                       <>
-                                          {value?.textRu}
+                                          {value?.description}
                                       </>
                               }
                           </div>
@@ -226,6 +233,9 @@ export const AboutUsComponents = () => {
                                 <Edit onClick={() => findEditID(value.id)}/>
                           }
                         </div>
+                        <div className='colum'>
+                          <Button onclick={() => findDeleteID(value.id)} shadow={'0px'}  width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Trash /></Button>
+                        </div>
                       </div>
                     </ConTable>
                 )})}
@@ -236,4 +246,4 @@ export const AboutUsComponents = () => {
   )
 }
 
-export default AboutUsComponents
+export default GalleryaComponet

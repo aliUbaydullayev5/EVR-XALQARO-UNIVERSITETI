@@ -8,25 +8,25 @@ import Input from '../../../../generic/Input/index.jsx'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Container, {ConTable, Wrapper} from './style.js'
-import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
-
-
+import {getAllexamsubjectFetch} from "../../../../../redux/sliceAdmin/exam/getAllexamsubject";
+import {Antmodal} from "../../libary/bookLaunguage/style";
+import Plus from "../../../../../assets/icons/plus.svg";
 export const ExamSubjectCreate = () => {
     const quary = useRouter()
     const dispatch = useDispatch()
 
+    const [open, setOpen] = useState(false)
     const [name, setName] = useState({
-        createAd: '',
-        valueSet: '',
+        nameUz: '',
+        nameRu: '',
     })
     const [dataList, setDataList] = useState([])
 
 
-    const getAllexamsubject = useSelector((store) => store.subjectMandatoryData)
+    const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
     const examdeleteId = useSelector((store) => store.examdeleteId)
 
@@ -34,7 +34,7 @@ export const ExamSubjectCreate = () => {
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName('')
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
 
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
         setTimeout(() => { dispatch(reset()) }, 500);
@@ -43,144 +43,139 @@ export const ExamSubjectCreate = () => {
 
     useEffect(() => {
         if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
-            dispatch(subjectMandatoryFetch())
+            dispatch(getAllexamsubjectFetch())
     }, [examsubjectcreate, examdeleteId])
 
-
+useEffect(()=>{
+    dispatch(getAllexamsubjectFetch())
+},[getAllexamsubjectFetch])
     useEffect(() => {
-        dispatch(subjectMandatoryFetch())
-    }, [subjectMandatoryFetch])
-
-    useEffect(() => {
-        setDataList(getAllexamsubject.data)
+        if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
-    console.log(getAllexamsubject.data)
-
+    console.log(getAllexamsubject?.data,'getAllexamsubject')
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
             id: value.id,
             nameUz: value.nameUz,
             nameRu: value.nameRu,
-            studyType: value.studyType,
             status: id === value.id ? (!value.id || true) : false
         })))
     }
-
     const editPush = (id, i) => dispatch(examsubjectCreatePost({
         id: id,
         nameUz: dataList[i].nameUz,
         nameRu: dataList[i].nameRu,
-        important: true
     }))
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
-        nameUz: name?.createAd,
-        nameRu: name?.valueSet,
-        important: true
+        nameUz: name?.nameUz,
+        nameRu: name?.nameRu,
     }))
+    const modalAdd = () => setOpen(true)
+    const handleCancel = () => setOpen(false);
 
-    return (
-        <Container>
-            <Container.Add>
-                <Input
-                    placeholder={"Uzbek Tilidi kiriting"}
-                    onchange={(e) => setName({ ...name, createAd: e.target.value })}
-                    width={"330px"}
-                    height={"45px"}
-                    padding={"0px 10px"}
-                    size={"20px"}
-                    radius={"15px"}
-                />
-                <Input
-                    placeholder={"Rus Tilidi kiriting"}
-                    onchange={(e) => setName({ ...name, valueSet: e.target.value })}
-                    width={"330px"}
-                    height={"45px"}
-                    padding={"0px 10px"}
-                    size={"20px"}
-                    radius={"15px"}
-                />
-                <Button
-                    onclick={() => addFacultet()}
-                    width={"100px"}
-                    height={"45px"}
-                    size={"20px"}
-                    padding={"0px 10px"}
-                >
-                    {" "}
-                    Add
-                </Button>
-            </Container.Add>
-            <Wrapper>
-
-                <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
-                    <Container.Nav>
-                        <div className='row'>
-                            <div >№</div>
-                            <div className='colum'>Talim Yunalish Turlari</div>
-                            <div className='colum' >Action</div>
+    return (<Container>
+            <Container.Bottom>
+                <h1>Majburiy Fanlar</h1>
+                <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+                    <Container.Add>
+                        <div>
+                            <h1>Majburiy Fan yaratish</h1>
                         </div>
-                    </Container.Nav>
+                        <br />
+                        <div>
+                            <p>Yunalish nomi</p>
+                        </div> <br />
+                        <div>
+                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+                        </div>
+
+                    </Container.Add>
+
+                </Antmodal>
+                <div onClick={modalAdd}>
+                    <Plus /> &nbsp;   Qo’shish
+                </div>
+            </Container.Bottom>
+            <Container.Table>
+                <Container.Scrool style={{ overflowY: "scroll" }}>
+                    <Container.Top>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                            <Container.Nav>
+                                <div className="row">
+                                    <div>№</div>
+                                    <div className="colum nocopy">Nomi</div>
+                                    <div className="colum nocopy">Vaqt</div>
+
+                                    <div className="colum">Action</div>
+                                </div>
+                            </Container.Nav>
+                        </div>
+                    </Container.Top>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                         {dataList?.map((value, index) => {
                             return (
                                 <ConTable key={value.id}>
-                                    <div className='row'>
-                                        <div >{index + 1}</div>
+                                    <div className="row">
+                                        <div>{index + 1}</div>
                                         <div className='colum'>
                                             {
                                                 value?.status ?
                                                     <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
                                                         id: val.id,
                                                         nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                                        nameRu: val.nameRu,
-                                                        studyType: val.studyType,
+                                                        nameRu: value.nameRu,
                                                         status: val.status
                                                     })))} />
                                                     :
                                                     <>
                                                         {value.nameUz}
-                                                    </>}
+                                                    </>
+                                            }
                                         </div>
                                         <div className='colum'>
                                             {
                                                 value?.status ?
                                                     <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
                                                         id: val.id,
-                                                        nameUz: val.nameUz,
+                                                        nameUz: value.nameUz,
                                                         nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                        studyType: val.studyType,
                                                         status: val.status
                                                     })))} />
                                                     :
                                                     <>
-                                                        {value.nameRu}
+                                                        {value.nameRu || 'Ru'}
                                                     </>
                                             }
                                         </div>
+                                        <div className="action">
+                                            {value?.status ? (
+                                                <Button
+                                                    onclick={() => editPush(value.id, index)}
+                                                    width={"70px"}
+                                                    height={"40px"}
+                                                    size={"18px"}
+                                                    radius={"5px"}
+                                                    border={"1px solid red"}
+                                                >
+                                                    OK
+                                                </Button>
+                                            ) : (
+                                                <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                                            )}
 
-
-
-                                        <div className='colum'>
-                                            {
-                                                value?.status ?
-                                                    <Button shadow={'0px'}  onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
-                                                    :
-                                                    <Edit onClick={() => findEditID(value.id)}/>
-                                            }
-                                        </div>
-                                        <div className='colum'>
-                                            <Button onClick={() => findDeleteID(value.id)} shadow={'0px'}  width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Trash /></Button>
+                                            <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
                                         </div>
                                     </div>
                                 </ConTable>
-                            )
+                            );
                         })}
                     </div>
                 </Container.Scrool>
-            </Wrapper>
+            </Container.Table>
         </Container>
     )
 }

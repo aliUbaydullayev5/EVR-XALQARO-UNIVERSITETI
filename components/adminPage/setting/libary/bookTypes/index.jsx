@@ -20,7 +20,7 @@ import { bookTypesDeleteIdDel } from '../../../../../redux/sliceAdmin/libary/boo
 
 export const BookTypesComponet = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState({ id: 0, name: "", });
+  const [name, setName] = useState();
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false)
 
@@ -33,7 +33,7 @@ export const BookTypesComponet = () => {
   useEffect(() => {
     if (bookTypesCreate.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
-        setName({ ...name, nameUz: "", ...name, nameRu: "", }));
+        setName(''));
     else if (bookTypesCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
@@ -50,7 +50,7 @@ export const BookTypesComponet = () => {
   const addFacultet = () =>
     dispatch(bookTypesCreatePost({
       id: 0,
-      name: name.name,
+      name: name,
     }));
 
   const findDeleteID = (deleteId) => {
@@ -89,105 +89,105 @@ export const BookTypesComponet = () => {
     setOpen(false);
   };
   return (
-    <Container>
-      <Container.Bottom>
-        <h1>Yo’nalishlar</h1>
-        <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
-          <Container.Add>
-            <div>
-              <h1>Yunalish yaratish</h1>
-            </div>
-            <br />
-            <div>
-              <p>Yunalish nomi</p>
-            </div> <br />
-            <div>
-              <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-              <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
-            </div>
-          </Container.Add>
+      <Container>
+        <Container.Bottom>
+          <h1>Tillar</h1>
+          <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+            <Container.Add>
+              <div>
+                <h1>Yunalish yaratish</h1>
+              </div>
+              <br />
+              <div>
+                <p>Yunalish nomi</p>
+              </div> <br />
+              <div>
+                <Input onchange={(e) => setName(e.target.value )} value={name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+              </div>
+            </Container.Add>
 
-        </Antmodal>
-        <div onClick={modalAdd}>
-          <Plus /> &nbsp;   Qo’shish
-        </div>
-      </Container.Bottom>
-      <Container.Table>
-        <Container.Scrool style={{ overflowY: "scroll" }}>
-          <Container.Top>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <Container.Nav>
-                <div className="row">
-                  <div>№</div>
-                  <div className="colum nocopy">Nomi</div>
-                  <div className="colum nocopy">Vaqt</div>
-
-                  <div className="colum">Action</div>
-                </div>
-              </Container.Nav>
-            </div>
-          </Container.Top>
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            {dataList?.map((value, index) => {
-              return (
-                <ConTable key={value.id}>
-                  <div className="row">
-                    <div>{index + 1}</div>
-                    <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val.id,
-                            name: value.id === val.id ? e.target.value : val.name,
-                            status: val.status
-                          })))} />
-                          :
-                          <>
-                            {value.name}
-                          </>
-                      }
-                    </div>
-                    <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val.id,
-                            date: value.id === val.id ? e.target.value : val.date,
-                            name: value.name,
-                            status: val.status
-                          })))} />
-                          :
-                          <>
-                            {value.date || 'date'}
-                          </>
-                      }
-                    </div>
-                    <div className="action">
-                      {value?.status ? (
-                        <Button
-                          onclick={() => editPush(value.id, index)}
-                          width={"70px"}
-                          height={"40px"}
-                          size={"18px"}
-                          radius={"5px"}
-                          border={"1px solid red"}
-                        >
-                          OK
-                        </Button>
-                      ) : (
-                        <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
-                      )}
-
-                      <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
-                    </div>
-                  </div>
-                </ConTable>
-              );
-            })}
+          </Antmodal>
+          <div onClick={modalAdd}>
+            <Plus /> &nbsp;   Qo’shish
           </div>
-        </Container.Scrool>
-      </Container.Table>
-    </Container>
+        </Container.Bottom>
+        <Container.Table>
+          <Container.Scrool style={{ overflowY: "scroll" }}>
+            <Container.Top>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <Container.Nav>
+                  <div className="row">
+                    <div>№</div>
+                    <div className="colum nocopy">Nomi</div>
+                    <div className="colum nocopy">Vaqt</div>
+
+                    <div className="colum">Action</div>
+                  </div>
+                </Container.Nav>
+              </div>
+            </Container.Top>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {dataList?.map((value, index) => {
+                return (
+                    <ConTable key={value.id}>
+                      <div className="row">
+                        <div>{index + 1}</div>
+                        <div className='colum'>
+                          {
+                            value?.status ?
+                                <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
+                                  id: val.id,
+                                  name: value.id === val.id ? e.target.value : val.name,
+                                  status: val.status
+                                })))} />
+                                :
+                                <>
+                                  {value.name}
+                                </>
+                          }
+                        </div>
+                        <div className='colum'>
+                          {
+                            value?.status ?
+                                <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
+                                  id: val.id,
+                                  date: value.id === val.id ? e.target.value : val.date,
+                                  name: value.name,
+                                  status: val.status
+                                })))} />
+                                :
+                                <>
+                                  {value.date || 'date'}
+                                </>
+                          }
+                        </div>
+                        <div className="action">
+                          {value?.status ? (
+                              <Button
+                                  onclick={() => editPush(value.id, index)}
+                                  width={"70px"}
+                                  height={"40px"}
+                                  size={"18px"}
+                                  radius={"5px"}
+                                  border={"1px solid red"}
+                              >
+                                OK
+                              </Button>
+                          ) : (
+                              <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                          )}
+
+                          <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
+                        </div>
+                      </div>
+                    </ConTable>
+                );
+              })}
+            </div>
+          </Container.Scrool>
+        </Container.Table>
+      </Container>
   );
 };
 

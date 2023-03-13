@@ -17,7 +17,7 @@ const Antmodal = styled(Modal)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0 20px;
  @media only screen and (max-width: 1000px) {
   width: 700px!important;
  }
@@ -56,14 +56,12 @@ Container.Bottom = styled.div`
     width: 150px;
     height: 50px;
     background: #221F51;
-    box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-    border-radius: 10px;
+    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
     font-family: 'Montserrat';
     font-style: normal; 
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    display: flex;
     align-items: center;
     cursor: pointer;
 
@@ -75,21 +73,18 @@ Container.Scrool = styled.div`
    width: 100%;
    height: 510px !important;
    overflow-y: scroll;
-   height: 100%;
    display: grid;
    border-radius: 10px;
-   padding: 0px 10px;
+   padding: 0 10px;
    ::-webkit-scrollbar {
       width: 5px;
       height: 5px;
     }
     ::-webkit-scrollbar-track {
       width: 10px !important;
-      padding: 0 15px 0 0;
       background: #9a9a9a;
       opacity: 0.5;
       border-radius: 30px;
-      transform: matrix(-1, 0, 0, 1, 0, 0);
       transform: matrix(-1, 0, 0, 1, 0, 0);
       padding: 10px !important;
     }

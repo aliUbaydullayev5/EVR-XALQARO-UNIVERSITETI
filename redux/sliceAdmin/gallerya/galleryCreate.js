@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/exam-subject/create`, {
+export const galleryCreatePost = createAsyncThunk('galleryCreatePost', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/gallery/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,9 +10,10 @@ export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', a
         },
         body: JSON.stringify({
             id: payload.id,
-            nameUz: payload.nameUz,
-            nameRu: payload.nameRu,
-            "studyType": "BACHELOR",
+            title: payload.title,
+            description: payload.description,
+            attachmentId: payload.attachmentId
+
         }),
     }).then((res) => res.json())
 })
@@ -23,14 +24,14 @@ const initialState = {
     data: [],
 }
 
-const examsubjectcreate = createSlice({
-    name: 'examsubjectcreate',
+const galleryCreate = createSlice({
+    name: 'galleryaCreate',
     initialState,
     extraReducers: {
-        [examsubjectCreatePost.pending]: (state) => {
+        [galleryCreatePost.pending]: (state) => {
             state.status = 'loading'
         },
-        [examsubjectCreatePost.fulfilled]: (state, action) => {
+        [galleryCreatePost.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.data = action.payload.data
                 state.status = 'success'
@@ -42,7 +43,7 @@ const examsubjectcreate = createSlice({
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [examsubjectCreatePost.rejected]: (state) => {
+        [galleryCreatePost.rejected]: (state) => {
             state.loading = 'error'
         }
     },
@@ -55,5 +56,5 @@ const examsubjectcreate = createSlice({
 })
 
 
-export const { reset } = examsubjectcreate.actions
-export default examsubjectcreate.reducer
+export const { reset } = galleryCreate.actions
+export default galleryCreate.reducer
