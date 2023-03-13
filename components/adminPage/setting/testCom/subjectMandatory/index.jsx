@@ -11,6 +11,10 @@ import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdele
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
+import {Antmodal} from "../../libary/bookLaunguage/style";
+import Plus from "../../../../../assets/icons/plus.svg";
+import Edit from "../../../../../assets/icons/edit.svg";
+import Trash from "../../../../../assets/icons/trash.svg";
 
 
 export const ExamSubjectCreate = () => {
@@ -18,22 +22,21 @@ export const ExamSubjectCreate = () => {
     const dispatch = useDispatch()
 
     const [name, setName] = useState({
-        createAd: '',
-        valueSet: '',
+        nameUz: '',
+        nameRu: '',
     })
     const [dataList, setDataList] = useState([])
+    const [open, setOpen] = useState(false)
 
 
     const getAllexamsubject = useSelector((store) => store.subjectMandatoryData)
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
     const examdeleteId = useSelector((store) => store.examdeleteId)
 
-    const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName('')
-
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name, nameUz: '', nameRu:''});
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [examsubjectcreate])
@@ -72,85 +75,115 @@ export const ExamSubjectCreate = () => {
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
-        nameUz: name?.createAd,
-        nameRu: name?.valueSet,
+        nameUz: name?.nameUz,
+        nameRu: name?.nameRu,
         important: true
     }))
+    const modalAdd = () => setOpen(true)
+    const handleCancel = () => setOpen(false);
 
     return (
         <Container>
+            <Container.Bottom>
+                <h1>Majburiy Fanlar</h1>
+                <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+                    <Container.Add>
+                        <div>
+                            <h1>Majburiy Fan yaratish</h1>
+                        </div>
+                        <br />
+                        <div>
+                            <p>Yunalish nomi</p>
+                        </div> <br />
+                        <div>
+                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
 
-            <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+                        </div>
 
-                <Container.Nav>
-                    <div className='row'>
-                        <div >№</div>
-                        <div className='colum'>Talim Yunalish Turlari</div>
-                        <div className='colum' >Action</div>
-                    </div>
-                </Container.Nav>
+                    </Container.Add>
 
-                <Container.Add>
-                    <Input placeholder={'Uzbek Tilidi kiriting'} onchange={(e) => setName({ ...name, createAd: e.target.value })} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
-                    <Input placeholder={'Rus Tilidi kiriting'} onchange={(e) => setName({ ...name, valueSet: e.target.value })} width={'330px'} height={'45px'} padding={'0px 10px'} size={'20px'} radius={'15px'} />
-                    <Button onclick={() => addFacultet()} width={'100px'} height={'45px'} size={'20px'} padding={'0px 10px'} > Add</Button>
-                </Container.Add>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-
+                </Antmodal>
+                <div onClick={modalAdd}>
+                    <Plus /> &nbsp;   Qo’shish
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
-                    {dataList?.map((value, index) => {
-                        return (
-                            <ConTable key={value.id}>
-                                <div className='row'>
-                                    <div >{index + 1}</div>
-                                    <div className='colum'>
-                                        {
-                                            value?.status ?
-                                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                    id: val.id,
-                                                    nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                                    nameRu: val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
-                                                })))} />
-                                                :
-                                                <>
-                                                    {value.nameUz}
-                                                </>}
-                                    </div>
-                                    <div className='colum'>
-                                        {
-                                            value?.status ?
-                                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                    id: val.id,
-                                                    nameUz: val.nameUz,
-                                                    nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                    studyType: val.studyType,
-                                                    status: val.status
-                                                })))} />
-                                                :
-                                                <>
-                                                    {value.nameRu}
-                                                </>
-                                        }
-                                    </div>
+            </Container.Bottom>
+            <Container.Table>
+                <Container.Scrool style={{ overflowY: "scroll" }}>
+                    <Container.Top>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                            <Container.Nav>
+                                <div className="row">
+                                    <div>№</div>
+                                    <div className="colum nocopy">Nomi</div>
+                                    <div className="colum nocopy">Vaqt</div>
 
-                                    <div className='action'>
-                                        {
-                                            value?.status ?
-                                                <Button onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
-                                                :
-                                                <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
-                                        }
-                                        <Button onclick={() => findDeleteID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Delete</Button>
-                                    </div>
+                                    <div className="colum">Action</div>
                                 </div>
-                            </ConTable>
-                        )
-                    })}
-                </div>
-            </Container.Scrool>
+                            </Container.Nav>
+                        </div>
+                    </Container.Top>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                        {dataList?.map((value, index) => {
+                            return (
+                                <ConTable key={value.id}>
+                                    <div className="row">
+                                        <div>{index + 1}</div>
+                                        <div className='colum'>
+                                            {
+                                                value?.status ?
+                                                    <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                        id: val.id,
+                                                        nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                                                        nameRu: value.nameRu,
+                                                        status: val.status
+                                                    })))} />
+                                                    :
+                                                    <>
+                                                        {value.nameUz}
+                                                    </>
+                                            }
+                                        </div>
+                                        <div className='colum'>
+                                            {
+                                                value?.status ?
+                                                    <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                        id: val.id,
+                                                        nameUz: value.nameUz,
+                                                        nameRu: value.id === val.id ? e.target.value : val.nameRu,
+                                                        status: val.status
+                                                    })))} />
+                                                    :
+                                                    <>
+                                                        {value.nameRu || 'Ru'}
+                                                    </>
+                                            }
+                                        </div>
+                                        <div className="action">
+                                            {value?.status ? (
+                                                <Button
+                                                    onclick={() => editPush(value.id, index)}
+                                                    width={"70px"}
+                                                    height={"40px"}
+                                                    size={"18px"}
+                                                    radius={"5px"}
+                                                    border={"1px solid red"}
+                                                >
+                                                    OK
+                                                </Button>
+                                            ) : (
+                                                <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                                            )}
+
+                                            <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
+                                        </div>
+                                    </div>
+                                </ConTable>
+                            );
+                        })}
+                    </div>
+                </Container.Scrool>
+            </Container.Table>
         </Container>
     )
 }

@@ -21,7 +21,7 @@ const Wrapper=styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10px;
+  padding: 20px;
 `
 Container.Scrool = styled.div`
   width: 1050px;

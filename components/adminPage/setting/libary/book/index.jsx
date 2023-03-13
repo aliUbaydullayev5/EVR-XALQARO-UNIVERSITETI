@@ -105,45 +105,44 @@ export const BookComponet = () => {
       authorCreatePost({
         id: id,
         name: dataList[i].name,
+          rating: dataList[i].rating,
+          author: dataList[i].author,
+          direction: dataList[i].direction,
+          language: dataList[i].language,
+
       }));
 
-  useEffect(() => {
-    if (bookLaunguageGet.status === "success") setDataLaungage(bookLaunguageGet.data);
-    if (bookTypesGet.status === "success") setDatabookTypes(bookTypesGet.data)
-    if (authorGet.status === "success") setAuthor(authorGet.data)
-    if (bookGet.status === "success") setDataList(bookGet.data)
-  }, [bookLaunguageGet, bookTypesGet, authorGet]);
+    useEffect(() => {
+        if (bookLaunguageGet.status === "success") setDataLaungage(bookLaunguageGet.data);
+        if (bookTypesGet.status === "success") setDatabookTypes(bookTypesGet.data)
+        if (authorGet.status === "success") setAuthor(authorGet.data)
+        if (bookGet.status === "success") setDataList(bookGet.data)
+    }, [bookLaunguageGet, bookTypesGet, authorGet,bookGet]);
+
+    useEffect(() => {
+        if (bookDeleteId.status === 'success' || bookCreate.status === 'success')
+            dispatch(bookGetFetch())
+    }, [bookDeleteId, bookCreate])
 
     useEffect(()=> {
-        dispatch(bookGetFetch())
+      dispatch(bookGetFetch())
     },[bookGetFetch])
 
-    // useEffect(() => {
-    //     if ((bookDeleteId.status === 'success' || bookCreate.status === 'success'))
-    //         dispatch(resetBookGet())
-    //         dispatch(bookGetFetch())
-    // }, [bookDeleteId, bookCreate])
+    useEffect(() => {
+        open===true&&  dispatch(authorGetFetch())
+    }, [authorGetFetch,open])
+
+    useEffect(() => {
+        open===true &&    dispatch(bookLaunguageGetFetch())
+    }, [bookLaunguageGetFetch,open])
+
+    useEffect(() => {
+        open===true&&  dispatch(bookTypesGetFetch())
+    }, [bookTypesGetFetch,open])
 
   const modalAdd = () => {
       setOpen(true)
-
-      if (open===true){
-    useEffect(() => {
-              dispatch(authorGetFetch())
-          }, [authorGetFetch])
-      }
-    else if (open=== true) {
-       useEffect(() => {
-              dispatch(bookLaunguageGetFetch())
-          }, [bookLaunguageGetFetch])
-      }
-    else  if ( open===true) {
-            useEffect(() => {
-              dispatch(bookTypesGetFetch())
-          }, [bookTypesGetFetch])
-      }
   }
-
   const handleCancel = () => setOpen(false)
 
   return (
@@ -232,7 +231,7 @@ export const BookComponet = () => {
           </Container.BtnAdd>
         </Container.Bottom>
         <Wrapper>
-          <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+          <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '850px' }}>
             <Container.Nav>
                 <div>
                     Rasm
@@ -270,12 +269,14 @@ export const BookComponet = () => {
                         <div className='colum'>
                           {
                             value?.status ?
-                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                  nameRu: val.nameRu,
-                                  studyType: val.studyType,
-                                  status: val.status
+                                <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
+                                    id: val?.id,
+                                    name: value.id === val.id ? e.target.value : val?.name,
+                                    rating: val.rating,
+                                    author: val.author?.name,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
@@ -285,16 +286,18 @@ export const BookComponet = () => {
                         <div className='colum'>
                           {
                             value?.status ?
-                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  nameUz: val.nameUz,
-                                  nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                  studyType: val.studyType,
-                                  status: val.status
+                                <input value={value.author} onChange={(e) => setDataList(dataList.map((val) => ({
+                                    id: val?.id,
+                                    name: val?.name,
+                                    author: value?.id === val.id ? e.target.value : val?.author?.name,
+                                    rating: val?.rating,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
-                                  {value.author.name}
+                                  {value?.author?.name}
                                 </>
                           }
                         </div>
@@ -302,12 +305,14 @@ export const BookComponet = () => {
                           <div className='colum'>
                               {
                                   value?.status ?
-                                      <input value={value?.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                          id: val.id,
-                                          nameUz: val.nameUz,
-                                          nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                          studyType: val.studyType,
-                                          status: val.status
+                                      <input value={value?.language} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: value?.id === val.id ? e.target.value : val?.language?.name,
+                                          rating: val?.rating,
+                                          direction: val?.direction?.name,
+                                          status: val?.status,
                                       })))} />
                                       :
                                       <>
@@ -318,12 +323,14 @@ export const BookComponet = () => {
                           <div className='colum'>
                               {
                                   value?.status ?
-                                      <input value={value?.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                          id: val.id,
-                                          nameUz: val.nameUz,
-                                          nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                          studyType: val.studyType,
-                                          status: val.status
+                                      <input value={value?.rating} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: val.language,
+                                          rating: value.id === val.id ? e.target.value : val?.rating,
+                                          direction: val?.direction?.name,
+                                          status: val?.status,
                                       })))} />
                                       :
                                       <>
@@ -335,12 +342,14 @@ export const BookComponet = () => {
                           <div className='colum'>
                               {
                                   value?.status ?
-                                      <input value={value?.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                          id: val.id,
-                                          nameUz: val.nameUz,
-                                          nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                          studyType: val.studyType,
-                                          status: val.status
+                                      <input value={value?.direction} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: val.language,
+                                          rating: val?.rating,
+                                          direction: value.id === val.id ? e.target.value : val?.direction?.name,
+                                          status: val?.status,
                                       })))} />
                                       :
                                       <>

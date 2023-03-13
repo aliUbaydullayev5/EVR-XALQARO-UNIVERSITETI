@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/exam-subject/create`, {
+export const newsreatePost = createAsyncThunk('newsreatePost', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/news/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,9 +10,9 @@ export const examsubjectCreatePost = createAsyncThunk('examsubjectCreatePost', a
         },
         body: JSON.stringify({
             id: payload.id,
-            nameUz: payload.nameUz,
-            nameRu: payload.nameRu,
-            "studyType": "BACHELOR",
+            description: payload.description,
+            title: payload.title,
+            attachmentId: payload.attachmentId,
         }),
     }).then((res) => res.json())
 })
@@ -23,14 +23,14 @@ const initialState = {
     data: [],
 }
 
-const examsubjectcreate = createSlice({
-    name: 'examsubjectcreate',
+const newsreate = createSlice({
+    name: 'newsreate',
     initialState,
     extraReducers: {
-        [examsubjectCreatePost.pending]: (state) => {
+        [newsreatePost.pending]: (state) => {
             state.status = 'loading'
         },
-        [examsubjectCreatePost.fulfilled]: (state, action) => {
+        [newsreatePost.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.data = action.payload.data
                 state.status = 'success'
@@ -42,7 +42,7 @@ const examsubjectcreate = createSlice({
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [examsubjectCreatePost.rejected]: (state) => {
+        [newsreatePost.rejected]: (state) => {
             state.loading = 'error'
         }
     },
@@ -55,5 +55,5 @@ const examsubjectcreate = createSlice({
 })
 
 
-export const { reset } = examsubjectcreate.actions
-export default examsubjectcreate.reducer
+export const { reset } = newsreate.actions
+export default newsreate.reducer

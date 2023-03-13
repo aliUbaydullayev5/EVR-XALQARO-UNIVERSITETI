@@ -11,14 +11,13 @@ import Trash from "../../../../assets/icons/trash.svg"
 import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
-import { bookCreatePost } from '../../../../redux/sliceAdmin/libary/book/create.js'
 import Image from "next/image";
-import {getGalleryDataFetch} from "../../../../redux/slices/getGalleryData";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
-import {galleryCreatePost} from "../../../../redux/sliceAdmin/gallerya/galleryCreate";
+import {newsreatePost} from "../../../../redux/sliceAdmin/news/create";
+import {newsGetFetch} from "../../../../redux/sliceAdmin/news/getnews";
 
 
-export const GalleryaComponet = () => {
+export const NewsComponents = () => {
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
 
@@ -32,15 +31,14 @@ export const GalleryaComponet = () => {
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false)
 
-  const { fileId, by } = useSelector((store) => store.deployFile);
-  const galleryCreate = useSelector((store) => store.galleryCreate);
-  const getGalleryData = useSelector((store) => store.getGalleryData);
-  const galleryDeleteId = useSelector((store) => store.galleryDeleteId);
+    const { fileId, by } = useSelector((store) => store.deployFile);
+  const newsreate = useSelector((store) => store.newsreate);
+  const newsGet = useSelector((store) => store.newsGet);
 
 
 
   useEffect(() => {
-    if (galleryCreate.status === "success" ||galleryDeleteId.status==='success' )
+    if (newsreate.status === "success" )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -48,21 +46,20 @@ export const GalleryaComponet = () => {
               description: '',
               attachmentId: '',
           }));
-    else if (galleryCreate.status === "notFound")
+    else if (newsreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
        setTimeout(() => {
       dispatch(reset());
     }, 500);
-  }, [galleryCreate,galleryDeleteId]);
-
+  }, [newsreate]);
 
 
   const addFacultet = () =>
-      dispatch(galleryCreatePost({
+      dispatch(newsreatePost({
          id: 0,
           title: name.title,
           description: name.description,
-          attachmentId: fileId,
+          attachmentId: [fileId],
 
       }));
 
@@ -90,18 +87,17 @@ export const GalleryaComponet = () => {
       }));
 
     useEffect(() => {
-        if (getGalleryData.status === "success") setDataList(getGalleryData.data)
-    }, [getGalleryData]);
+        if (newsGet.status === "success") setDataList(newsGet.data)
+    }, [newsGet]);
 
     useEffect(() => {
-        if (galleryDeleteId.status === 'success' || galleryCreate.status === 'success')
-            dispatch(getGalleryDataFetch())
-    }, [galleryDeleteId, galleryCreate])
+        if ( newsreate.status === 'success')
+            dispatch(newsGetFetch())
+    }, [newsreate])
 
     useEffect(()=> {
-      dispatch(getGalleryDataFetch())
-    },[getGalleryDataFetch])
-
+      dispatch(newsGetFetch())
+    }, [newsGetFetch])
   const modalAdd = () => {
       setOpen(true)
   }
@@ -111,12 +107,12 @@ export const GalleryaComponet = () => {
       <Container>
         <Container.Bottom>
           <Container.TextAdd>
-            <h1>Galereya </h1>
+            <h1>Yangliklar  </h1>
           </Container.TextAdd>
           <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
             <Container.Add>
                  <Container.Texth1>
-                     Galereya
+                     Yangliklar
                  </Container.Texth1>
                 <br/>
               <ModalaContainer>
@@ -233,9 +229,6 @@ export const GalleryaComponet = () => {
                                 <Edit onClick={() => findEditID(value.id)}/>
                           }
                         </div>
-                        <div className='colum'>
-                          <Button onclick={() => findDeleteID(value.id)} shadow={'0px'}  width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Trash /></Button>
-                        </div>
                       </div>
                     </ConTable>
                 )})}
@@ -246,4 +239,4 @@ export const GalleryaComponet = () => {
   )
 }
 
-export default GalleryaComponet
+export default NewsComponents
