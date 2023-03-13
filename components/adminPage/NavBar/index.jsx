@@ -1,17 +1,18 @@
 import Container, { ConText } from './style'
-import Logo from "../../../assets/icon/download.svg"
 import { useRouter } from 'next/router.js'
+import Logo from "../../../assets/icons/logo.svg"
 
 const NavBar = () => {
-    const query=useRouter()
+    const quarey =useRouter()
     return(
         <Container>
-            <Container.Logo>
-                <Logo/>
-                <ConText onClick={() => query.push('/admin/home')}> 
+            <Container.Logo >
+                <div>
+                    <Logo onClick={() => quarey.push('/admin/home')} /></div>
+                <div onClick={() => quarey.push('/admin/home')} className={'nocopy'}>
                     <p>EVR XALQARO</p>
                     <p>universiteti</p>
-                 </ConText >
+                </div>
             </Container.Logo>
         </Container>
     )

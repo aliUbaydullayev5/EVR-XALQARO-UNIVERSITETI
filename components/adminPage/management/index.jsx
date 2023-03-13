@@ -17,7 +17,6 @@ export const ManagementCom = () => {
     useEffect(() => {
         setData(getManagementData.data)
     }, [getManagementData])
-    console.log(data)
 
 
     function go(managements = []) {

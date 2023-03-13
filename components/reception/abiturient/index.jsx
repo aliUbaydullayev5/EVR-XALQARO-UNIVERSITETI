@@ -26,7 +26,7 @@ export const AbiturientQabul = () => {
 	const [pasSerLength, setPasSerLength] = useState(0);
 	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
 	const getDirectType = useSelector((store) => store.getDirectType.data)
-	const { fileId, by } = useSelector((store) => store.deployFile)
+	const { fileId, by, status, message } = useSelector((store) => store.deployFile)
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
 	const receptionData = useSelector((store) => store.receptionPost)
 	const getFacultyLanguage = useSelector((store)=> store.getFacultyLanguage)
@@ -87,7 +87,14 @@ export const AbiturientQabul = () => {
 		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }));
 	}, []);
 
-	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId]);
+	useEffect(() => {
+		changeAllDataFunc({type: by, value: fileId})
+		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
+		if(status === 'error') dispatch(startMessage({time: 2, message}))
+		console.log(fileId, by, status, '======', message, 'dsadasdas')
+	}, [status])
+
+
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
 
 	const checkAllInputs = () => {
@@ -183,7 +190,7 @@ export const AbiturientQabul = () => {
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
-			dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
+		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
 	}, [receptionSmsVerify])
 
 	useEffect(()=> {
@@ -479,10 +486,7 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
-            </InputCont>
-
-
-
+			</InputCont>
 
 			<Modal
 				open={modelHidden}
@@ -526,8 +530,6 @@ export const AbiturientQabul = () => {
 					)}
 				</Container.Model>
 			</Modal>
-
-
 		</Container>
 	);
 };

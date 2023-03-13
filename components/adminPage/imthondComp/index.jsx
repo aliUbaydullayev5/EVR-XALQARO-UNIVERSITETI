@@ -1,134 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import Container, { ConTable, ConText, Header } from './style.js'
-import Logo from "../../../assets/icon/download.svg"
+import Container, { ConExel, Conpul, ConTable, ConW, Header } from './style.js'
 import { useRouter } from 'next/router.js'
-import Button from '../../generic/Button/index.jsx'
-
-import Woomen from "../../../assets/icons/admin/adminWoomen.svg"
-import Money from "../../../assets/icons/admin/admin$.svg"
-import Exel from "../../../assets/icons/admin/adminExel.svg"
-import Sms from "../../../assets/icons/admin/adminSms.svg"
+import Search from "../../../assets/icon/search.svg"
+import Woomen from "../../../assets/icons/admin/peoples.svg"
+import Exel from "../../../assets/icons/admin/exelSetting.svg"
+import Sms from "../../../assets/icons/admin/smsSet.svg"
+import Dollar from "../../../assets/icons/admin/dollar.svg"
+import Setting from "../../../assets/icon/setting.svg"
+import {Button,Input} from "../../generic"
 import Select from "../../../assets/icons/admin/selectdown.svg"
+import Down from "../../../assets/icons/admin/selectdown.svg"
+
 
 import dataQabul from '../../Mock/qabulData/qabulData.js'
+import { FilterModal, SelectSms } from '../qabuldanotgan/style.js'
 
-
-const data = [
-  {
-    id: 1,
-    img: Woomen,
-    title: 'Imtihondan o’tganlar',
-    sena: '3455'
-  },
-  {
-    id: 2,
-    img: Money,
-    title: 'Shartnoma summasi',
-    sena: '222 222 222'
-  },
-  {
-    id: 3,
-    img: Money,
-    title: 'To’langan',
-    sena: '222 222 222'
-  },
-  {
-    id: 4,
-    img: Money,
-    title: 'Qarzdorlik',
-    sena: '222 222 222'
-  },
-  {
-    id: 5,
-    img: Exel,
-    title: 'Excelga chiqarish',
-    sena: ''
-  },
-  {
-    id: 6,
-    img: Sms,
-    title: 'SMS yuborish',
-    sena: ''
-  },
-  {
-    id: 7,
-    img: Select,
-    title: 'Ma’lumotnoma',
-    sena: '3455'
-  },
-  {
-    id: 8,
-    img: Select,
-    title: 'Ta’lim yo’nalishi',
-    sena: ''
-  },
-  {
-    id: 9,
-    img: Select,
-    title: 'Ta’lim shakli',
-    sena: ''
-  },
-  {
-    id: 11,
-    img: Select,
-    title: 'Kontrakt turi',
-    sena: ''
-  },
-  {
-    id: 12,
-    img: Select,
-    title: 'Uch tomonlama',
-    sena: ''
-  },
-  {
-    id: 13,
-    img: Select,
-    title: 'Shartnoma yuk',
-    sena: ''
-  },
-  {
-    id: 13,
-    img: Select,
-    title: 'Chaqiruv hati',
-    sena: ''
-  },
-  {
-    id: 14,
-    img: Select,
-    title: 'Ta’lim tili',
-    sena: ''
-  },
-  {
-    id: 15,
-    img: Select,
-    title: 'Kurs',
-    sena: ''
-  },
-  {
-    id: 16,
-    img: Select,
-    title: 'Status',
-    sena: ''
-  },
-  {
-    id: 17,
-    img: Select,
-    title: 'Zapros',
-    sena: ''
-  },
-  {
-    id: 18,
-    img: Select,
-    title: 'Agent',
-    sena: ''
-  },
-  {
-    id: 19,
-    img: Select,
-    title: 'Hujjat',
-    sena: ''
-  },
-]
 
 
 export const ImhonotganlarComp = () => {
@@ -136,6 +22,34 @@ export const ImhonotganlarComp = () => {
 
   const [dataImt, setDataImt]=useState(dataQabul)
   const [selectAllState, setSelectAllState] = useState(false)
+
+  // search
+  const [ search, setSearch ] = useState(dataImt);
+
+  const onSearch=({ target: { value } })=>{
+    let res= dataImt.filter((val)=>val.ismi.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+    setSearch(res)
+  }
+
+   // setting
+   const [open, setOpen] = useState(false);
+   const [confirmLoading, setConfirmLoading] = useState(false);
+
+   const Settings = () => {
+     setOpen(true);
+   };
+   const handleOk = () => {
+     dispatch(sendSmsFetch())
+     
+     setConfirmLoading(true);
+     setTimeout(() => {
+       setOpen(false);
+       setConfirmLoading(false);
+     }, 1000);
+   };
+   const handleCancel = () => {
+     setOpen(false);
+   };
 
   useEffect(() => {
     setDataImt(dataImt.map((value) => (
@@ -184,51 +98,65 @@ export const ImhonotganlarComp = () => {
   }
 
   return (
-    <>
+    <Container.Wrapper>
     <Container>
-      <Container.Navbar>
-        <div>
-          <Logo />
-          <ConText onClick={() => query.push('/admin/home')}>
-            <p>EVR XALQARO</p>
-            <p>universiteti</p>
-          </ConText >
-        </div>
-        <Container.Left>
-          <div>
-            <input type="date" id="start" name="trip-start"
-              value="2023-01-01"
-              min="2023-01-01" max="9999-12-31" />
-            <input type="date" id="start" name="trip-start"
-              value="2023-01-01"
-              min="2023-01-01" max="9999-12-31" />
-          </div>
-          <div>
-            <Button width={'264px'} height={'55px'} size={'22px'} radius={'20px'}>
-              Sana orqali tartiblash
-            </Button>
-          </div>
-        </Container.Left>
-      </Container.Navbar>
+      <Header>
+          <Search className="search"/>
+          <Input onchange={onSearch} padding="0 128px 0 50px" width="711px" height="55px" size="20px" weight="500" placeholder="search" />
+          <Container.Button>
+           <Button  onclick={Settings} shadow="0 0 0 0" width={"90%"} height={"30px"} radius="0" size={"18px"} ><div><Setting /> <p>Filter</p> </div></Button>
+          </Container.Button>
+          <Container.Date className="nocopy"> 
+            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          </Container.Date>
+          <Container.Date className="nocopy"> 
+            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          </Container.Date>
+           {/* <ConDate>
+          <input type="date" id="start" name="trip-start"
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
+          <input type="date" id="start" name="trip-start"
+            value="2023-01-01"
+            min="2023-01-01" max="9999-12-31" />
+        </ConDate> */}
+          <Button width={"175px"} height="48px" radius={"10px"} size={"18px"} >Tartiblash</Button>
+      </Header>
       <Container.Header>
-        <Header>
-          {data?.map((value) => {
-            var Womeen = value.img
-            return (
-              <Header.Con key={value.id}>
-                <div>
-                  <Womeen />
-                </div>
-                <div>
-                  <p>{value.title}</p>
-                  <p>{value.sena}</p>
-                </div>
-              </Header.Con>)})}
-        </Header>
+          <ConW>
+          <Woomen />
+            <p>Imthondan o'tgan: {3005}</p>
+          </ConW>
+          <Conpul summa>
+            <Dollar/>
+            <div>
+              <p>Shartnoma suma: {"200 000 000"}</p>
+            </div>
+          </Conpul>
+          <Conpul>
+            <Dollar/>
+            <div>
+              <p>To'lagan: {"200 000 000"}</p>
+            </div>
+          </Conpul>
+          <Conpul>
+            <Dollar/>
+            <div>
+              <p>Qarzdor: {"200 000 000"}</p>
+            </div>
+          </Conpul>
+          <ConExel>
+            <Exel />
+            <p>Excelga chiqarish</p>
+          </ConExel>
+          <SelectSms>
+            <Sms className={'Sms'} />
+            <p> SMS yuborish</p>
+          </SelectSms>
       </Container.Header>
-      </Container>
-
-      <div>
+    </Container>
+    
+    <div>
         <ConTable>
           <Container.Bottom>
             <Container.BottomInset>
@@ -262,7 +190,7 @@ export const ImhonotganlarComp = () => {
                 </Container.Box>
               </Container.Nav>
               {
-                dataImt?.map((value) => (
+                search?.map((value) => (
                   <Container.Section key={value.id}>
                     <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
                     <Container.Map>
@@ -297,8 +225,102 @@ export const ImhonotganlarComp = () => {
             </Container.BottomInset>
           </Container.Bottom>
         </ConTable>
-      </div>
-    </>
+    
+    </div>
+
+    <FilterModal imtihon open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
+      <Container.Option>
+        <div>
+          <Container.Select>
+            <select style={{width:"161px"}} name="pets" id="pet-select">
+              <option value="">Ma'lumotlar</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select>
+            <select style={{width:"191px"}} name="pets" id="pet-select" >
+              <option value="">Ta'lim yo'nalishi</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select>
+            <select style={{width:"164px"}} name="pets" id="pet-select"  >
+              <option value=''>Ta'lim shakli</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select>
+            <select style={{width:"165px"}} name="pets" id="pet-select">
+              <option value="">Kontrakt turi</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+
+          <Container.Select>
+            <select style={{width:"192px"}} name="pets" id="pet-select">
+              <option value="">Uch tomonlama</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select>
+            <select style={{width:"187px"}} name="pets" id="pet-select">
+              <option value="">Shartnoma yuk</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+        </div>
+
+        <div>
+          <Container.Select tt>
+            <select name="pets" id="pet-select">
+              <option value="">Ta'lim tili</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select kurs>
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => courseLevelHandler(e.target.value)}
+            >
+              <option value="">Kurs</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select stat>
+            <select name="pets" id="pet-select">
+              <option value="">Status</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+       
+          <Container.Select zap>
+            <select
+                name="pets"
+                id="pet-select"
+            >
+              <option value=''>Zapros</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Container.Select ag>
+            <select name="pets" id="pet-select">
+              <option value="">Agent</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+
+          <Container.Select huj>
+            <select name="pets" id="pet-select">
+              <option value="">Hujjat</option>
+            </select>
+            <Down className={'Down'} />
+          </Container.Select>
+          <Button width={"200px"} height="48px" size={"18px"} radius="10px" >Filtrni tartiblash</Button>
+       </div>
+        </Container.Option>
+        </FilterModal>
+    </Container.Wrapper>
   )
 }
 export default ImhonotganlarComp
