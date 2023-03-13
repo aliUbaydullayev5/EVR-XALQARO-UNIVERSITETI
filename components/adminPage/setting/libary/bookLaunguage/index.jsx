@@ -17,10 +17,9 @@ import { bookLaunguageDeleteIdDel } from '../../../../../redux/sliceAdmin/libary
 
 export const BookLaunguage = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState({ id: 0, name: "", });
+  const [name, setName] = useState();
   const [dataList, setDataList] = useState([]);
   const [open, setOpen] = useState(false)
-
   const bookLaunguageDeleteId = useSelector((store) => store.bookLaunguageDeleteId);
   const bookLaunguageGet = useSelector((store) => store.bookLaunguageGet);
   const bookLaunguageCreate = useSelector((store) => store.bookLaunguageCreate);
@@ -30,7 +29,7 @@ export const BookLaunguage = () => {
   useEffect(() => {
     if (bookLaunguageCreate.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
-        setName({ ...name, nameUz: "", ...name, nameRu: "", }));
+        setName(''));
     else if (bookLaunguageCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
@@ -38,7 +37,7 @@ export const BookLaunguage = () => {
     }, 500);
   }, [bookLaunguageGet]);
 
-
+    console.log(name,'name')
   useEffect(() => {
     if (bookLaunguageDeleteId.status === 'success' || bookLaunguageCreate.status === 'success')
       dispatch(bookLaunguageGetFetch())
@@ -47,7 +46,7 @@ export const BookLaunguage = () => {
   const addFacultet = () =>
     dispatch(bookLaunguageCreatePost({
       id: 0,
-      name: name.name,
+      name: name,
     }));
 
   const findDeleteID = (deleteId) => {
@@ -78,12 +77,10 @@ export const BookLaunguage = () => {
   }, [bookLaunguageGet]);
 
 
-  const modalAdd = () => {
-    setOpen(true)
-  }
-  const handleCancel = () => {
-    setOpen(false);
-  };
+  const modalAdd = () => setOpen(true)
+
+  const handleCancel = () => setOpen(false);
+
   return (
     <Container>
       <Container.Bottom>
@@ -98,7 +95,7 @@ export const BookLaunguage = () => {
               <p>Yunalish nomi</p>
             </div> <br />
             <div>
-              <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+              <Input onchange={(e) => setName(e.target.value )} value={name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
               <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
             </div>
           </Container.Add>

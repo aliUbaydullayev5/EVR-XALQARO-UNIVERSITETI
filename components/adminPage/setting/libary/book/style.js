@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   max-width: 1440px;
-  padding: 0 50px ;
+  padding: 0 30px ;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,14 +17,14 @@ const Wrapper=styled.div`
   background: #221F51;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
   border-radius: 12px;
-  height: 600px !important;
+  height: 640px !important;
   display: flex;
   justify-content: center;
   align-content: center;
   padding: 20px;
 `
 Container.Scrool = styled.div`
-  width: 900px;
+  width: 1050px;
   overflow-y: scroll;
   padding: 0 15px 0 0;
   display: grid;
@@ -68,9 +68,10 @@ grid-template-columns: 80px auto;
   }
   .row{
     display: grid;
-    grid-template-columns:  90px 10fr  100px 100px ;
-    padding-left: 20px;
+    grid-template-columns:  60px 260px 116px 100px 85px 143px  110px 100px ;
+    padding-left: 15px;
     height: 50px;
+    font-size: 16px;
   }
 
   .colum{
@@ -93,10 +94,14 @@ const ConTable = styled.div`
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    >img{
+      border-radius: 10px;
+      cursor: pointer;
+    }
   }
   .row{
     display: grid;
-    grid-template-columns: 80px 10fr  10fr  100px 100px ;
+    grid-template-columns: 60px 260px  116px 100px 85px  143px 110px 100px ;
     padding-left: 10px;
     box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 8px;

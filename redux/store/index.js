@@ -16,7 +16,7 @@ import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/inde
 import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 import editTalimYunalishType from "../sliceAdmin/talimYunalishTurlari/editTalimYunalishType"
 import examsubjectcreate from "../sliceAdmin/exam/exsamsubjectcreate"
-import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject"
+import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject/index.js"
 import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
@@ -60,7 +60,10 @@ import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
 import getLibraryData from '../slices/kutubxona/kutubxona-all'
 import getGalleryData from '../slices/getGalleryData'
-
+import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
+import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
+import newsreate from "../sliceAdmin/news/create.js"
+import newsGet from "../sliceAdmin/news/getnews.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -122,7 +125,12 @@ export default configureStore({
                 getLibraryWayData,
                 getLibraryData,
                 exsamManegemnt,
+                exsamMenegmntget,
                 getGalleryData,
-                exsamMenegmntget
+                galleryCreate,
+                galleryDeleteId,
+                newsreate,
+                newsGet,
+
         }
 })

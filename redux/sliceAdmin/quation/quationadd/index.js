@@ -35,7 +35,7 @@ export const quationCreatePost = createAsyncThunk('quationCreatePost', async (pa
                 {
                     id: payload.id,
                     nameUz: payload.answers4NameUz,
-                    nameRu: payload.answers3NameRu,
+                    nameRu: payload.answers4NameRu,
                     correct: payload.check4,
                 }
             ],

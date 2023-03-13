@@ -1,34 +1,34 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const bookGetFetch = createAsyncThunk('bookGetFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/book/get`,
+export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/news/get`,
         {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
             },
-            body: JSON.stringify({}),
+            body: JSON.stringify(),
         })
         .then((res) => res.json())
 })
 
-const bookGet = createSlice({
-    name: 'bookGet',
+const newsGet = createSlice({
+    name: 'newsGet',
     initialState: {
         data: {},
         status: null,
     },
     extraReducers: {
-        [bookGetFetch.pending]: (state) => {
+        [newsGetFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [bookGetFetch.fulfilled]: (state, { payload }) => {
+        [newsGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
                 state.data = payload?.data
         },
-        [bookGetFetch.rejected]: (state) => {
+        [newsGetFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
@@ -40,5 +40,5 @@ const bookGet = createSlice({
     }
 })
 
-export const { resetBookGet } = bookGet.actions
-export default bookGet.reducer
+export const { resetBookGet } = newsGet.actions
+export default newsGet.reducer

@@ -21,7 +21,7 @@ const Wrapper=styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10px;
+  padding: 20px;
 `
 Container.Scrool = styled.div`
   width: 1050px;
@@ -68,7 +68,7 @@ grid-template-columns: 80px auto;
   }
   .row{
     display: grid;
-    grid-template-columns:  60px 260px 366px   110px  ;
+    grid-template-columns:  60px 260px 366px   110px 100px ;
     padding-left: 15px;
     height: 50px;
     font-size: 16px;
@@ -101,7 +101,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  60px 260px 366px   110px;
+    grid-template-columns:  60px 260px 366px   110px 100px ;
     padding-left: 10px;
     box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 8px;
