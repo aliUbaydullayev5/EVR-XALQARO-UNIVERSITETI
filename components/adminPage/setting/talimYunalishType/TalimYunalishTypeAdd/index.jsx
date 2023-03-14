@@ -19,7 +19,6 @@ export const TalimYunalishTypeAddCom = () => {
 
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(true)
   const [dataList, setDataList] = useState([])
   const [data, setData] = useState([])
 
@@ -38,24 +37,25 @@ export const TalimYunalishTypeAddCom = () => {
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
   const facultyTypeAdd = useSelector((store) => store.facultyTypeAdd)
+  const getStudyTypes = useSelector((store) => store.getStudyTypes)
 
 
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
-  useEffect(() => {
-    setData(facultytypesId.data)
-  }, [facultytypesId.data])
+  // useEffect(() => {
+  //   setData(facultytypesId.data)
+  // }, [])
+
 
 
   const handelChangeId = (e) => {
     dispatch(getfacultyIdfetch({ id: e }))
- 
   }
 
   useEffect(() => {
-    dispatch(getfacultyIdfetch({ id: 1 }))
+    dispatch(getfacultyIdfetch({ id: 5 }))
   }, [getfacultyIdfetch])
 
 
@@ -81,7 +81,7 @@ export const TalimYunalishTypeAddCom = () => {
         checkInput: id === value.id ? (!value.id || true) : false
       })))
   }
-
+  console.log(facultyTypeAdd,'facultyTypeAdd')
   const editPush = (id) => dispatch(postaFacultyTypeAdd({
     id: id,
     facultytypesId: facultytypesId.id,
@@ -103,8 +103,8 @@ export const TalimYunalishTypeAddCom = () => {
           checkInput: false
         })))}
   }, [facultyTypeAdd])
-  
 
+  console.log(data,'data')
 
   useEffect(() => {
     if (facultyTypeAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakunlandi', type: 'success' }))
@@ -115,7 +115,6 @@ export const TalimYunalishTypeAddCom = () => {
   useEffect(() => { dispatch(getStudyTypesFetch({ type: 'BACHELOR' })) }, [])
   const modalAdd = () => setOpen(true)
   const handleCancel = () => setOpen(false);
-
   return (
       <>
       <Container>
@@ -192,24 +191,24 @@ export const TalimYunalishTypeAddCom = () => {
               </div>
             </Container.Top>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {dataList?.map((value, index) => {
+              {data?.map((value, index) => {
                 return (
                     <ConTable key={value.id}>
                       <div className="row">
                         <div>{index + 1}</div>
                         <div className='colum'>
                           {value?.checkInput ?
-                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value.contractPrice} onchange={(e) => setData(data.map((v) => ({
+                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value?.contractPrice} onchange={(e) => setData(data.map((v) => ({
                                 id: v.id,
-                                contractPrice: value.id === v.id ? e.target.value : v.contractPrice,
-                                admissionStudentCount: v.admissionStudentCount,
-                                studyLanguage: v.studyLanguage,
-                                educationType: v.educationType,
-                                checkInput: v.checkInput
+                                contractPrice: value.id === v.id ? e.target.value : v?.contractPrice,
+                                admissionStudentCount: v?.admissionStudentCount,
+                                studyLanguage: v?.studyLanguage,
+                                educationType: v?.educationType,
+                                checkInput: v?.checkInput
                               })))} />
                               :
                               <>
-                                {value.contractPrice || '9998'}
+                                {value?.contractPrice || '9998'}
                               </>
                           }
                         </div>
@@ -225,7 +224,7 @@ export const TalimYunalishTypeAddCom = () => {
                               })))} />
                               :
                               <>
-                                {value.admissionStudentCount || '0'}
+                                {value?.admissionStudentCount || '0'}
                               </>}
                         </div>
 
@@ -260,7 +259,7 @@ export const TalimYunalishTypeAddCom = () => {
                               />
                               :
                               <>
-                                {value.educationType}
+                                {value?.educationType}
                               </>
                           }
                         </div>
@@ -283,8 +282,7 @@ export const TalimYunalishTypeAddCom = () => {
         </Container.Table>
       </Container>
       </>
-
-      )}
+  )}
 export default TalimYunalishTypeAddCom
 
 
