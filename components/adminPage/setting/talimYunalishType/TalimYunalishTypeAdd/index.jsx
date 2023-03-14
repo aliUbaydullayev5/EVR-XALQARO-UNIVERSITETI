@@ -116,6 +116,170 @@ export const TalimYunalishTypeAddCom = () => {
   const modalAdd = () => setOpen(true)
   const handleCancel = () => setOpen(false);
   return (
+      <>
+        <Container>
+          <AntSelect
+              style={{ width: '500px', marginBottom: '20px' }}
+              placeholder='Facultet Turilar'
+              optionFilterProp="children"
+              options={dataList?.map((value) => ({
+                value: value.id,
+                label: value.nameUz,
+              })) || []}
+              onChange={(e) => handelChangeId(e)}
+          />
+
+          <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '450px', overflowX: "scroll", maxWidth: '990px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+              <Container.Nav>
+                <div className='row'>
+                  <div >№</div>
+                  <div className='colum'>Kantirakt Narxi</div>
+                  <div className='colum'>Student soni</div>
+                  <div className='colum'>Talim tili</div>
+                  <div className='colum'>Ta`lim turi</div>
+                  <div className='colum'>Tahrirlash</div>
+                </div>
+
+                <div className='row'>
+                  <div > {facultytypesId.id}</div>
+                  <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, contractPrice: e.target.value }))} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
+                  <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, admissionStudentCount: e.target.value }))} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
+                  <div className='columAdd'>
+                    <AntSelect
+                        style={{ width: '167px' }}
+                        placeholder='Talim Tili'
+                        optionFilterProp="children"
+                        options={facultyTypeUz?.map((value) => ({
+                          label: value.name,
+                          value: value.name,
+                        })) || []}
+                        onChange={(e) => setDatapush({ ...datapush, studyLanguage: e })} />
+                  </div>
+                  <div className='columAdd'>
+                    <AntSelect
+                        style={{ width: '200px' }}
+                        placeholder='Talim Turi'
+                        optionFilterProp="children"
+                        options={facultySirtqi?.map((value) => ({
+                          value: value.name,
+                          label: value.name,
+                        })) || []}
+                        onChange={(e) => setDatapush({ ...datapush, educationType: e })}
+                    />
+                  </div>
+                  <div className='columAdd'><Button onclick={() => pushFunc()} width={'100px'} height={'50px'} radius={'5px'} size={'16px'} >Add</Button></div>
+                  <div className='columAdd'></div>
+                </div>
+
+
+              </Container.Nav>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
+              {data?.map((value, index) => {
+                return (
+                    <ConTable key={value.id}>
+                      <div className='row'>
+                        <div >{index + 1}</div>
+                        <div className='colum'>
+                          {value?.checkInput ?
+                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value.contractPrice} onchange={(e) => setData(data.map((v) => ({
+                                id: v.id,
+                                contractPrice: value.id === v.id ? e.target.value : v.contractPrice,
+                                admissionStudentCount: v.admissionStudentCount,
+                                studyLanguage: v.studyLanguage,
+                                educationType: v.educationType,
+                                checkInput: v.checkInput
+                              })))} />
+                              :
+                              <>
+                                {value.contractPrice || '9998'}
+                              </>
+                          }
+                        </div>
+                        <div className='colum'>
+
+                          {value?.checkInput ?
+                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value.admissionStudentCount} onchange={(e) => setData(data.map((v) => ({
+                                id: v.id,
+                                admissionStudentCount: value.id === v.id ? e.target.value : v.admissionStudentCount,
+                                contractPrice: v.contractPrice,
+                                studyLanguage: v.studyLanguage,
+                                educationType: v.educationType,
+                                checkInput: v.checkInput
+                              })))} />
+                              :
+                              <>
+                                {value.admissionStudentCount || '0'}
+                              </>
+                          }
+
+                        </div>
+                        <div className='colum'>
+
+                          {
+                            value.checkInput ?
+                                <AntSelect
+                                    style={{ width: '167px' }}
+                                    placeholder='Talim Tili'
+                                    optionFilterProp="children"
+                                    options={facultyTypeUz?.map((value) => ({
+                                      label: value.name,
+                                      value: value.name,
+                                    })) || []}
+                                    onChange={(e) => setSelect({ ...select, studyLanguage: e })}
+                                />
+                                :
+                                <>
+                                  {value?.studyLanguage}
+                                </>
+                          }
+                        </div>
+                        <div className='colum'>
+                          {
+                            value.checkInput ?
+
+
+                                <AntSelect
+                                    style={{ width: '167px' }}
+                                    placeholder='Talim Turi'
+                                    optionFilterProp="children"
+                                    options={facultySirtqi?.map((value) => ({
+                                      label: value.name,
+                                      value: value.name,
+                                    })) || []}
+                                    onChange={(e) => setSelect({ ...select, educationType: e })}
+                                />
+                                :
+                                <>
+                                  {value.educationType}
+
+                                </>
+                          }
+                        </div>
+                        <div className='colum'>
+                          <div className="action">
+
+                            {
+                              value?.checkInput ?
+
+                                  <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                                  :
+                                  <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>Edit</Button>
+                            }
+                          </div>
+                        </div>
+                        <div className='colum'>
+                          <Input height={'30px'} padding={'15px'} type="checkbox" defaultChecked={true} onChange={() => setChecked(!checked)} />
+                        </div>
+                      </div>
+                    </ConTable>
+                )
+              })}
+            </div>
+          </Container.Scrool>
+        </Container>
+
       <Container>
         <Container.Bottom>
           <h1>Facultet Abuturent </h1>
@@ -224,6 +388,8 @@ export const TalimYunalishTypeAddCom = () => {
           </Container.Scrool>
         </Container.Table>
       </Container>
+      </>
+
       )}
 export default TalimYunalishTypeAddCom
 
