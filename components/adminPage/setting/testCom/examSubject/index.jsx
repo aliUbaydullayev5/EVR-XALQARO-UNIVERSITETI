@@ -30,15 +30,19 @@ export const ExamSubjectCreate = () => {
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
     const examdeleteId = useSelector((store) => store.examdeleteId)
 
-    const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
 
 
     useEffect(() => {
         if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
-
-        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
+        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join(' ') }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [examsubjectcreate])
+
+    useEffect(() => {
+        if (examdeleteId.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
+        else if (examdeleteId.status === 'notFound') dispatch(startMessage({ time: 3, message: examdeleteId.message.split('_').join(' ') }))
+        setTimeout(() => { dispatch(reset()) }, 500);
+    }, [examdeleteId])
 
 
     useEffect(() => {
@@ -78,11 +82,11 @@ useEffect(()=>{
 
     return (<Container>
             <Container.Bottom>
-                <h1>Majburiy Fanlar</h1>
+                <h1>Imtxon Fanlar </h1>
                 <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
                     <Container.Add>
                         <div>
-                            <h1>Majburiy Fan yaratish</h1>
+                            <h1>Fan yaratish</h1>
                         </div>
                         <br />
                         <div>

@@ -1,7 +1,7 @@
 
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import {API_GLOBAL} from "../../../globalApi";
-export const getGalleryDataFetch = createAsyncThunk('getGalleryDataFetch', async (payload)=> {return await fetch(`${API_GLOBAL}v1/gallery/get`, {
+export const getGalleryAdminFetch = createAsyncThunk('getGalleryDataFetch', async (payload)=> {return await fetch(`${API_GLOBAL}v1/gallery/get`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -9,7 +9,7 @@ export const getGalleryDataFetch = createAsyncThunk('getGalleryDataFetch', async
     }).then((res) => res.json())
 })
 
-const getGalleryData = createSlice({
+const getGalleryAdmin = createSlice({
     name: 'getGalleryData',
     initialState: {
         message: '',
@@ -17,10 +17,10 @@ const getGalleryData = createSlice({
         data: {}
     },
     extraReducers: {
-        [getGalleryDataFetch.pending]: (state) => {
+        [getGalleryAdminFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [getGalleryDataFetch.fulfilled]: (state, {payload}) => {
+        [getGalleryAdminFetch.fulfilled]: (state, {payload}) => {
             if(payload.success === true){
                 state.status = 'success'
                 state.data = payload.data
@@ -30,11 +30,11 @@ const getGalleryData = createSlice({
                 state.message = payload?.errors[0]?.errorMsg
             }
         },
-        [getGalleryDataFetch.rejected]: (state) => {
+        [getGalleryAdminFetch.rejected]: (state) => {
             state.status = 'error'
         }
     }
 })
 
 
-export default getGalleryData.reducer
+export default getGalleryAdmin.reducer

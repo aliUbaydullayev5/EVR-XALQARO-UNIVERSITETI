@@ -33,7 +33,7 @@ export const NewsComponents = () => {
 
     const { fileId, by } = useSelector((store) => store.deployFile);
   const newsreate = useSelector((store) => store.newsreate);
-  const newsGet = useSelector((store) => store.newsGet);
+  const newsAdminGet = useSelector((store) => store.newsAdminGet);
 
 
 
@@ -87,8 +87,9 @@ export const NewsComponents = () => {
       }));
 
     useEffect(() => {
-        if (newsGet?.status === "success") setDataList(newsGet.data)
-    }, [newsGet]);
+        if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
+    }, [newsAdminGet]);
+
 
     useEffect(() => {
         if ( newsreate?.status === 'success')
@@ -101,7 +102,6 @@ export const NewsComponents = () => {
   const modalAdd = () => {
       setOpen(true)
   }
-    console.log(dataList,'dataList')
   const handleCancel = () => setOpen(false)
 
   return (
@@ -165,7 +165,6 @@ export const NewsComponents = () => {
                 <div className='colum'>Sarlavha</div>
                 <div className='colum'>Batafsil ma’lumot</div>
                 <div className='colum' >Tahrirlash</div>
-                <div className='colum' >O’chirish</div>
               </div>
             </Container.Nav>
 

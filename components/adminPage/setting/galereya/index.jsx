@@ -16,6 +16,7 @@ import Image from "next/image";
 import {getGalleryDataFetch} from "../../../../redux/slices/getGalleryData";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
 import {galleryCreatePost} from "../../../../redux/sliceAdmin/gallerya/galleryCreate";
+import {getGalleryAdminFetch} from "../../../../redux/sliceAdmin/gallerya/galleryGet";
 
 
 export const GalleryaComponet = () => {
@@ -34,13 +35,13 @@ export const GalleryaComponet = () => {
 
   const { fileId, by } = useSelector((store) => store.deployFile);
   const galleryCreate = useSelector((store) => store.galleryCreate);
-  const getGalleryData = useSelector((store) => store.getGalleryData);
+  const getGalleryAdmin = useSelector((store) => store.getGalleryAdmin);
   const galleryDeleteId = useSelector((store) => store.galleryDeleteId);
 
 
 
   useEffect(() => {
-    if (galleryCreate.status === "success" ||galleryDeleteId.status==='success' )
+    if (galleryCreate?.status === "success" ||galleryDeleteId?.status==='success' )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -48,7 +49,7 @@ export const GalleryaComponet = () => {
               description: '',
               attachmentId: '',
           }));
-    else if (galleryCreate.status === "notFound")
+    else if (galleryCreate?.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
        setTimeout(() => {
       dispatch(reset());
@@ -69,7 +70,7 @@ export const GalleryaComponet = () => {
   const findDeleteID = (deleteId) => dispatch(galleryDeleteIdDel({ id: deleteId }));
 
   const findEditID = (id) => {
-    setDataList(dataList.map((value) => ({
+    setDataList(dataList?.map((value) => ({
         id: value.id,
         name: value.name,
         rating:value.rating,
@@ -90,12 +91,12 @@ export const GalleryaComponet = () => {
       }));
 
     useEffect(() => {
-        if (getGalleryData.status === "success") setDataList(getGalleryData.data)
-    }, [getGalleryData]);
+        if (getGalleryAdmin?.status === "success") setDataList(getGalleryAdmin?.data)
+    }, [getGalleryAdmin]);
 
     useEffect(() => {
-        if (galleryDeleteId.status === 'success' || galleryCreate.status === 'success')
-            dispatch(getGalleryDataFetch())
+        if (galleryDeleteId?.status === 'success' || galleryCreate?.status === 'success')
+            dispatch(getGalleryAdminFetch())
     }, [galleryDeleteId, galleryCreate])
 
     useEffect(()=> {

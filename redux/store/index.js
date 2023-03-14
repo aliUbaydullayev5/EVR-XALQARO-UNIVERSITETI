@@ -63,7 +63,8 @@ import getGalleryData from '../slices/getGalleryData'
 import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
 import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
 import newsreate from "../sliceAdmin/news/create.js"
-import newsGet from "../sliceAdmin/news/getnews.js"
+import newsAdminGet from "../sliceAdmin/news/getnews.js"
+import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -130,7 +131,8 @@ export default configureStore({
                 galleryCreate,
                 galleryDeleteId,
                 newsreate,
-                newsGet,
+                newsAdminGet,
+                getGalleryAdmin,
 
         }
 })
