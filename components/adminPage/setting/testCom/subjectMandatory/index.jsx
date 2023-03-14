@@ -6,15 +6,12 @@ import { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsa
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
-import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
-import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
 import {Antmodal} from "../../libary/bookLaunguage/style";
 import Plus from "../../../../../assets/icons/plus.svg";
 import Edit from "../../../../../assets/icons/edit.svg";
-import Trash from "../../../../../assets/icons/trash.svg";
 
 
 export const ExamSubjectCreate = () => {
@@ -28,24 +25,23 @@ export const ExamSubjectCreate = () => {
     const [dataList, setDataList] = useState([])
     const [open, setOpen] = useState(false)
 
-
     const getAllexamsubject = useSelector((store) => store.subjectMandatoryData)
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
-    const examdeleteId = useSelector((store) => store.examdeleteId)
 
 
 
     useEffect(() => {
         if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name, nameUz: '', nameRu:''});
-        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join('') }))
+        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join(' ') }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [examsubjectcreate])
 
 
+
     useEffect(() => {
-        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
+        if ((examsubjectcreate.status === 'success'))
             dispatch(subjectMandatoryFetch())
-    }, [examsubjectcreate, examdeleteId])
+    }, [examsubjectcreate])
 
 
     useEffect(() => {
@@ -72,7 +68,6 @@ export const ExamSubjectCreate = () => {
         nameRu: dataList[i].nameRu,
         important: true
     }))
-    const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
         nameUz: name?.nameUz,
@@ -96,9 +91,8 @@ export const ExamSubjectCreate = () => {
                             <p>Yunalish nomi</p>
                         </div> <br />
                         <div>
-                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-
+                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
                         </div>
 
                     </Container.Add>
@@ -129,35 +123,40 @@ export const ExamSubjectCreate = () => {
                                 <ConTable key={value.id}>
                                     <div className="row">
                                         <div>{index + 1}</div>
-                                        <div className='colum'>
-                                            {
-                                                value?.status ?
-                                                    <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                        id: val.id,
-                                                        nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                                        nameRu: value.nameRu,
-                                                        status: val.status
-                                                    })))} />
-                                                    :
-                                                    <>
-                                                        {value.nameUz}
-                                                    </>
-                                            }
+                                        <div className="colum">
+                                            {value?.status ? (
+                                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                    id: val.id,
+                                                    nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                                                    nameRu: val.nameRu,
+                                                    studyType: val.studyType,
+                                                    status: val.status, })) )}
+                                                />
+                                            ) : (
+                                                <>{value.nameUz}</>
+                                            )}
                                         </div>
-                                        <div className='colum'>
-                                            {
-                                                value?.status ?
-                                                    <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                                        id: val.id,
-                                                        nameUz: value.nameUz,
-                                                        nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                                        status: val.status
-                                                    })))} />
-                                                    :
-                                                    <>
-                                                        {value.nameRu || 'Ru'}
-                                                    </>
-                                            }
+                                        <div className="colum">
+                                            {value?.status ? (
+                                                <input
+                                                    value={value.nameRu}
+                                                    onChange={(e) =>
+                                                        setDataList(
+                                                            dataList.map((val) => ({
+                                                                id: val.id,
+                                                                nameUz: val.nameUz,
+                                                                nameRu:
+                                                                    value.id === val.id
+                                                                        ? e.target.value
+                                                                        : val.nameRu,
+                                                                studyType: val.studyType,
+                                                                status: val.status,
+                                                            }))
+                                                        )}
+                                                />
+                                            ) : (
+                                                <>{value.nameRu}</>
+                                            )}
                                         </div>
                                         <div className="action">
                                             {value?.status ? (
@@ -174,8 +173,6 @@ export const ExamSubjectCreate = () => {
                                             ) : (
                                                 <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
                                             )}
-
-                                            <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
                                         </div>
                                     </div>
                                 </ConTable>

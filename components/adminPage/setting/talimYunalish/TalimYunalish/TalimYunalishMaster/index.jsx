@@ -1,43 +1,24 @@
-import { Modal } from "antd";
 import { useRouter } from "next/router.js";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
-import { editAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js";
-import {
-  getTalimYunalishFetch,
-  reset,
-} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
+import {getTalimYunalishFetch, reset,} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
 import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.jsx";
 import { startMessage } from "../../../../../../redux/slices/message/index.js";
 import Button from "../../../../../generic/Button/index.jsx";
 import Input from "../../../../../generic/Input/index.jsx";
 import Container, { ConTable } from "./style.js";
+import {Antmodal} from "../../../libary/bookLaunguage/style";
+import Plus from "../../../../../../assets/icons/plus.svg";
+import Edit from "../../../../../../assets/icons/edit.svg";
+import Trash from "../../../../../../assets/icons/trash.svg";
 
 export const TalimYunlishMaster = () => {
-  // delete
+
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [deletId, setDeletId] = useState("");
+  const [dataList, setDataList] = useState([]);
 
-  // function delete
-  const findDeleteID = (deleteId) => {
-    setOpen(true);
-    setDeletId(deleteId);
-  };
-
-  const handleOk = () => {
-    dispatch(deleteAbuturentFetch({ id: deletId }));
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 1000);
-  };
-  const handleCancel = () => {
-    setOpen(false);
-  };
 
   const quary = useRouter();
   const dispatch = useDispatch();
@@ -47,47 +28,29 @@ export const TalimYunlishMaster = () => {
     nameRu: "",
   });
 
-  const [dataList, setDataList] = useState([]);
 
-  const getStudyTypes = useSelector((store) => store.getStudyTypes);
-  const getStudyTypesAbuturent = useSelector(
-    (store) => store.getStudyTypesAbuturent
-  );
+  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
   const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId);
   const getTalimYunalish = useSelector((store) => store.getTalimYunalish);
   const editAbuturentId = useSelector((store) => store.editAbuturentId);
 
-  useEffect(() => {
-    if (getTalimYunalish.status === "success")
-      dispatch(
-        startMessage({
-          time: 3,
-          message: "Muvofiyaqatli Yakulandi",
-          type: "success",
-        }),
-        setName({
-          ...name,
-          nameUz: "",
-          ...name,
-          nameRu: "",
-        })
-      );
-    else if (getTalimYunalish.status === "notFound")
-      dispatch(startMessage({ time: 3, message: getStudyTypes.message }));
-    setTimeout(() => {
-      dispatch(reset());
-    }, 500);
-  }, [getTalimYunalish || deleteAbuturentId]);
 
-  useEffect(() => {
+    useEffect(() => {
+        if (getTalimYunalish.status === "success") dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
+        else if (getTalimYunalish.status === 'notFound') dispatch(startMessage({ time: 3, message: getTalimYunalish.message.split('_').join(' ') }))
+        setTimeout(() => { dispatch(reset()) }, 500);
+    }, [getTalimYunalish])
+
+    useEffect(() => {
+        if (deleteAbuturentId.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
+        else if (deleteAbuturentId.status === 'notFound') dispatch(startMessage({ time: 3, message: deleteAbuturentId.message.split('_').join(' ') }))
+        setTimeout(() => { dispatch(reset()) }, 500);
+    }, [deleteAbuturentId])
+
+    useEffect(() => {
     dispatch(getStudyTypesFetch({ type: "MASTERS" }));
-  }, []);
-  useEffect(
-    (e) => {
-      if (getTalimYunalish.status === true) setName("");
-    },
-    [getTalimYunalish]
-  );
+  }, [getStudyTypesFetch]);
+
 
   const addFacultet = () =>
     dispatch(
@@ -120,197 +83,133 @@ export const TalimYunlishMaster = () => {
         studyType: "MASTERS",
       })
     );
+    const modalAdd = () => setOpen(true)
+  useEffect(() => {
+        if (deleteAbuturentId.status === "success" || getTalimYunalish.status === "success" || editAbuturentId.status === "success" )
+            dispatch(getStudyTypesFetch({ type: "MASTERS" }));
+    }, [deleteAbuturentId,getTalimYunalish,editAbuturentId]);
+
 
   useEffect(() => {
-    if (deleteAbuturentId.status === "success")
-      dispatch(getStudyTypesFetch({ type: "MASTERS" }));
-  }, [deleteAbuturentId]);
+        if (getStudyTypesAbuturent.status === "success")
+            setDataList(getStudyTypesAbuturent.data);
+    }, [getStudyTypesAbuturent]);
 
-  useEffect(() => {
-    if (getTalimYunalish.status === "success")
-      dispatch(getStudyTypesFetch({ type: "MASTERS" }));
-  }, [getTalimYunalish]);
-
-  useEffect(() => {
-    if (getStudyTypesAbuturent.status === "success")
-      setDataList(getStudyTypesAbuturent.data);
-  }, [getStudyTypesAbuturent]);
-
-  useEffect(() => {
-    if (editAbuturentId.status === "success")
-      dispatch(getStudyTypesFetch({ type: "MASTERS" }));
-  }, [editAbuturentId]);
+    const findDeleteID = (deleteId) => {
+        dispatch(deleteAbuturentFetch({ id: deleteId }));
+    };
+    const handleCancel = () =>  setOpen(false)
 
   return (
-    <Container>
-      <Container.Scrool style={{ overflowY: "scroll", maxHeight: "550px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <Container.Nav>
-            <div className="row">
-              <div>№</div>
-              <div className="colum">Talim Yunalish Turlari</div>
-              <div className="colum">Action</div>
-            </div>
-          </Container.Nav>
-        </div>
+      (<Container>
+              <Container.Bottom>
+                  <h1>Facultet Abuturent </h1>
+                  <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+                      <Container.Add>
+                          <div>
+                              <h1>Facultet Qo`shish Abuturent </h1>
+                          </div>
+                          <br />
+                          <div>
+                              <p>Facultet Nomi</p>
+                          </div> <br />
+                          <div>
+                              <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi uzbek tilida kiriting`} />
+                              <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi rus tilida kiriting`} />
 
-        <Container.Add>
-          <Input
-            onchange={(e) => setName({ ...name, nameUz: e.target.value })}
-            value={name.nameUz}
-            width={"330px"}
-            height={"45px"}
-            padding={"0px 10px"}
-            size={"20px"}
-            radius={"5px"}
-            placeholder={`Uzbek Tilida kiriting`}
-          />
-          <Input
-            onchange={(e) => setName({ ...name, nameRu: e.target.value })}
-            value={name.nameRu}
-            width={"330px"}
-            height={"45px"}
-            padding={"0px 10px"}
-            size={"20px"}
-            radius={"5px"}
-            placeholder={` Ruscha kiriting`}
-          />
+                          </div>
 
-          <Button
-            onclick={() => addFacultet()}
-            width={"100px"}
-            height={"45px"}
-            size={"20px"}
-            padding={"0px 10px"}
-            radius={" 15px"}
-          >
-            {" "}
-            Add
-          </Button>
-        </Container.Add>
+                      </Container.Add>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {dataList?.map((value, index) => {
-            return (
-              <ConTable key={value.id}>
-                <div className="row">
-                  <div>{index + 1}</div>
-                  <div className="colum">
-                    {value?.status ? (
-                      <input
-                        value={value.nameUz}
-                        onChange={(e) =>
-                          setDataList(
-                            dataList.map((val) => ({
-                              id: val.id,
-                              nameUz:
-                                value.id === val.id
-                                  ? e.target.value
-                                  : val.nameUz,
-                              nameRu: val.nameRu,
-                              studyType: val.studyType,
-                              status: val.status,
-                            }))
-                          )
-                        }
-                      />
-                    ) : (
-                      <>{value.nameUz}</>
-                    )}
+                  </Antmodal>
+                  <div onClick={modalAdd}>
+                      <Plus /> &nbsp;   Qo’shish
                   </div>
+              </Container.Bottom>
+              <Container.Table>
+                  <Container.Scrool style={{ overflowY: "scroll" }}>
+                      <Container.Top>
+                          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                              <Container.Nav>
+                                  <div className="row">
+                                      <div>№</div>
+                                      <div className="colum nocopy">Facultet Uz</div>
+                                      <div className="colum nocopy">Facultet Ru</div>
 
-                  <div className="colum">
-                    {value?.status ? (
-                      <input
-                        value={value.nameRu}
-                        onChange={(e) =>
-                          setDataList(
-                            dataList.map((val) => ({
-                              id: val.id,
-                              nameUz: val.nameUz,
-                              nameRu:
-                                value.id === val.id
-                                  ? e.target.value
-                                  : val.nameRu,
-                              studyType: val.studyType,
-                              status: val.status,
-                            }))
-                          )
-                        }
-                      />
-                    ) : (
-                      <>{value.nameRu}</>
-                    )}
-                  </div>
+                                      <div className="colum">Action</div>
+                                  </div>
+                              </Container.Nav>
+                          </div>
+                      </Container.Top>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                          {dataList?.map((value, index) => {
+                              return (
+                                  <ConTable key={value.id}>
+                                      <div className="row">
+                                          <div>{index + 1}</div>
+                                          <div className="colum">
+                                              {value?.status ? (
+                                                  <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
+                                                      id: val.id,
+                                                      nameUz: value.id === val.id ? e.target.value : val.nameUz,
+                                                      nameRu: val.nameRu,
+                                                      studyType: val.studyType,
+                                                      status: val.status, })) )}
+                                                  />
+                                              ) : (
+                                                  <>{value.nameUz}</>
+                                              )}
+                                          </div>
+                                          <div className="colum">
+                                              {value?.status ? (
+                                                  <input
+                                                      value={value.nameRu}
+                                                      onChange={(e) =>
+                                                          setDataList(
+                                                              dataList.map((val) => ({
+                                                                  id: val.id,
+                                                                  nameUz: val.nameUz,
+                                                                  nameRu:
+                                                                      value.id === val.id
+                                                                          ? e.target.value
+                                                                          : val.nameRu,
+                                                                  studyType: val.studyType,
+                                                                  status: val.status,
+                                                              }))
+                                                          )
+                                                      }
+                                                  />
+                                              ) : (
+                                                  <>{value.nameRu}</>
+                                              )}
+                                          </div>
+                                          <div className="action">
+                                              {value?.status ? (
+                                                  <Button
+                                                      onclick={() => editPush(value.id, index)}
+                                                      width={"70px"}
+                                                      height={"40px"}
+                                                      size={"18px"}
+                                                      radius={"5px"}
+                                                      border={"1px solid red"}
+                                                  >
+                                                      OK
+                                                  </Button>
+                                              ) : (
+                                                  <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                                              )}
 
-                  <div className="action">
-                    {value?.status ? (
-                      <Button
-                        onclick={() => editPush(value.id)}
-                        width={"70px"}
-                        height={"40px"}
-                        size={"18px"}
-                        radius={"5px"}
-                        border={"1px solid red"}
-                      >
-                        OK
-                      </Button>
-                    ) : (
-                      <Button
-                        onclick={() => findEditID(value.id)}
-                        width={"70px"}
-                        height={"40px"}
-                        size={"18px"}
-                        radius={"5px"}
-                        border={"1px solid red"}
-                      >
-                        Edit
-                      </Button>
-                    )}
-
-                    <Button
-                      onclick={() => findDeleteID(value.id)}
-                      width={"70px"}
-                      height={"40px"}
-                      size={"18px"}
-                      radius={"5px"}
-                      border={"1px solid red"}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </div>
-              </ConTable>
-            );
-          })}
-        </div>
-      </Container.Scrool>
-      <Modal
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "100px",
-        }}
-        open={open}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-        onCancel={handleCancel}
-      >
-        <p
-          style={{
-            color: "#ffff",
-            width: "300px",
-            height: "100px",
-            textAlign: "center",
-            paddingTop: "35px",
-          }}
-        >
-          Ushbu ma'lumotlar o'chirib yuborilsinmi?
-        </p>
-      </Modal>
-    </Container>
-  );
+                                              <Button onclick={() => findDeleteID(value.id)}width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
+                                          </div>
+                                      </div>
+                                  </ConTable>
+                              );
+                          })}
+                      </div>
+                  </Container.Scrool>
+              </Container.Table>
+          </Container>
+  ))
 };
 
 export default TalimYunlishMaster;

@@ -40,7 +40,7 @@ export const AboutUsComponents = () => {
 
 
   useEffect(() => {
-    if (newsreate.status === "success" )
+    if (newsreate?.status === "success" )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -48,7 +48,7 @@ export const AboutUsComponents = () => {
               description: '',
               attachmentId: '',
           }));
-    else if (newsreate.status === "notFound")
+    else if (newsreate?.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
        setTimeout(() => {
       dispatch(reset());
@@ -68,7 +68,7 @@ export const AboutUsComponents = () => {
   const findDeleteID = (deleteId) => dispatch(galleryDeleteIdDel({ id: deleteId }));
 
   const findEditID = (id) => {
-    setDataList(dataList.map((value) => ({
+    setDataList(dataList?.map((value) => ({
         id: value.id,
         name: value.name,
         rating:value.rating,
@@ -89,11 +89,11 @@ export const AboutUsComponents = () => {
       }));
 
     useEffect(() => {
-        if (aboutGetData.status === "success") setDataList(aboutGetData.data)
+        if (aboutGetData?.status === "success") setDataList(aboutGetData.data)
     }, [aboutGetData]);
 
     useEffect(() => {
-        if ( newsreate.status === 'success')
+        if ( newsreate?.status === 'success')
             dispatch(newsGetFetch())
     }, [newsreate])
 

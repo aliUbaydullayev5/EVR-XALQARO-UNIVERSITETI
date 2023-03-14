@@ -13,8 +13,8 @@ export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => 
         .then((res) => res.json())
 })
 
-const newsGet = createSlice({
-    name: 'newsGet',
+const newsAdminGet = createSlice({
+    name: 'newsAdminGet',
     initialState: {
         data: {},
         status: null,
@@ -26,6 +26,7 @@ const newsGet = createSlice({
         [newsGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
+                console.log(payload,'payload')
                 state.data = payload?.data
         },
         [newsGetFetch.rejected]: (state) => {
@@ -33,12 +34,12 @@ const newsGet = createSlice({
         }
     },
     reducers: {
-        resetBookGet(state) {
+        resetnewsAdmin(state) {
             state.data = {}
             state.status = null
         }
     }
 })
 
-export const { resetBookGet } = newsGet.actions
-export default newsGet.reducer
+export const { resetnewsAdmin } = newsAdminGet.actions
+export default newsAdminGet.reducer
