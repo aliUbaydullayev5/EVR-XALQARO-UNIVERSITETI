@@ -37,7 +37,6 @@ import {newsGetFetch} from "../../../../redux/sliceAdmin/news/getnews";
 import {aboutGetFetch} from "../../../../redux/sliceAdmin/about-us/getAbout";
 import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
 
-
 export const AboutUsComponents = () => {
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);

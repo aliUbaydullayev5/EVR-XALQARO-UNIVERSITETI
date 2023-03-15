@@ -65,6 +65,7 @@ import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
 import newsreate from "../sliceAdmin/news/create.js"
 import newsGet from "../sliceAdmin/news/getnews.js"
 import aboutGetUserData from "../slices/aboutUsGet/getAbout"
+import newsGetData from "../slices/newsGet/getnews.js"
 
 export default configureStore({
         reducer: {
@@ -134,6 +135,7 @@ export default configureStore({
                 newsreate,
                 newsGet,
                 aboutGetUserData,
+                newsGetData,
 
         }
 })

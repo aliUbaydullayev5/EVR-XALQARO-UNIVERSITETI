@@ -28,7 +28,7 @@ const getGalleryData = createSlice({
             }
             else if(payload?.success === false){
                 state.status = 'error'
-                state.message = action?.payload?.errors[0]?.errorMsg
+                state.message = payload?.errors[0]?.errorMsg
             }
         },
         [getGalleryDataFetch.rejected]: (state) => {

@@ -1,18 +1,34 @@
 import NewsCard from "./NewsCard";
 import Container from "./style";
-import Search from "../../assets/icon/search.svg";
-import dataNews from "../Mock/newsdata";
-import { useState } from "react";
+// import Search from "../../assets/icon/search.svg";
+import {useEffect, useState} from "react";
+import {newsGet} from "../../redux/slices/newsGet/getnews";
+import {useDispatch, useSelector} from "react-redux";
 
 const NewsComponent = () => {
-  const [ search, setSearch ] = useState(dataNews);
+  const dispatch = useDispatch()
 
-  const onSearch = ({ target: { value } }) => {
-    let res = dataNews.filter((val) =>
-      val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    );
-    setSearch(res);
-  };
+  const [dataList,setDatalist]=useState([])
+  const newsGetData = useSelector((store)=> store.newsGetData)
+
+
+  useEffect(()=>{
+    dispatch(newsGet())
+  },[newsGet])
+
+  useEffect(()=>{
+    if (newsGetData.status === "success")setDatalist(newsGetData.data)
+  },[newsGetData])
+
+  // search
+  // const [ search, setSearch ] = useState(dataList);
+  //
+  // const onSearch = ({ target: { value } }) => {
+  //   let res = dataList.filter((val) =>
+  //     val.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+  //   );
+  //   setSearch(res);
+  // };
 
   return (
     <Container>
@@ -20,19 +36,19 @@ const NewsComponent = () => {
         <Container.Top>
           <Container.TopTitle className="nocopy">Yangiliklar</Container.TopTitle>
 
-          <Container.Search>
-            <input
-              onChange={onSearch}
-              type="text"
-              placeholder={"Qidiruv"}
-            />
-            <Search className="search" />
-          </Container.Search>
-          
+          {/*<Container.Search>*/}
+          {/*  <input*/}
+          {/*    onChange={onSearch}*/}
+          {/*    type="text"*/}
+          {/*    placeholder={"Qidiruv"}*/}
+          {/*  />*/}
+          {/*  <Search className="search" />*/}
+          {/*</Container.Search>*/}
+
         </Container.Top>
         <Container.Bottom>
           <Container.BottomDesc>
-            {search.map((value) => {
+            {dataList?.map((value) => {
               return <NewsCard data={value} key={value.id} />;
             })}
           </Container.BottomDesc>

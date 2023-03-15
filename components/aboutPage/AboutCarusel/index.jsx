@@ -43,6 +43,7 @@ export const AboutCaruselComp = () => {
              ))
          }
         </Swiper>
+
         </Container.Img>
         <ContainerDow>
           <a href="" download={true}>

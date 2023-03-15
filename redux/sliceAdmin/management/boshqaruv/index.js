@@ -21,20 +21,26 @@ const getManagementData = createSlice({
     },
     extraReducers: {
         [getManagementFetch.pending]: state => {
-            state.status = 'Loading'
+            state.status = 'loading'
         },
         [getManagementFetch.fulfilled]: (state, { payload }) => {
             if (payload.success) {
                 state.data = payload.data
-                state.status = 'Success'
+                state.status = 'success'
             }
         },
         [getManagementFetch.rejected]: state => {
-            state.status = 'Error'
+            state.status = 'error'
+        }
+    },
+    reducers: {
+        reset(state){
+            state.status = null
         }
     }
 })
 
 
 
+export const {reset} = getManagementData.actions
 export default getManagementData.reducer

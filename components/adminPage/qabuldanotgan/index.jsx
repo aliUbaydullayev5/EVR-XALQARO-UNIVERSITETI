@@ -7,13 +7,11 @@ import Sms from "../../../assets/icons/admin/smsSet.svg"
 import Dollar from "../../../assets/icons/admin/dollar.svg"
 import Setting from "../../../assets/icon/setting.svg"
 import Search from "../../../assets/icon/search.svg"
-import dataQabul from '../../Mock/qabulData/qabulData.js'
 import { useState } from 'react'
 import {getAdmissionFetch} from "../../../redux/sliceAdmin/qabul/admission";
 import {useDispatch, useSelector} from "react-redux";
 import {Input,Button} from "../../generic"
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
-import {getFacultyTypeFetch} from "../../../redux/slices/getStudyTypes/getFacultyType";
 import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
 import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
 
@@ -21,68 +19,64 @@ import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
 
 export const QabuldanOtganCom = () => {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const [data, setData] = useState([])
-  const [selectAllState, setSelectAllState] = useState(false)
+
 
   // sms
   const sendSmsData = useSelector(store => store.sendSmsData)
-  
-  // dispatch(sendSmsFetch({smsRef}))
+  const getAdmissionData = useSelector((store) => store.getAdmissionData)
+
+
   // search
   const [ search, setSearch ] = useState(data);
-
   const onSearch=({ target: { value } })=>{
     let res= data.filter((val)=>val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
     setSearch(res)
   }
 
   useEffect(() => {
-    setData(data.map((value) => (
-      {
-        id: value.id,
-        num: value.num,
-        ismi: value.ismi,
-        agent: value.agent,
-        pasport: value.pasport,
-        kurs: value.kurs,
-        tili: value.tili,
-        yonalishi: value.yonalishi,
-        shakli: value.shakli,
-        phone: value.phone,
-        qoshimcharaqam: value.qoshimcharaqam,
-        pasportnusxasi: value.pasportnusxasi,
-        diplomnusxasi: value.diplomnusxasi,
-        sana: value.sana,
-        tahrirlash: value.tahrirlash,
-        checked: selectAllState
-      }
-    )))
-  }, [selectAllState])
+      setData(getAdmissionData.data.map((value) => (
+          {
+              ...value,
+              checked: false
+          }
+      )))
+  }, [getAdmissionData])
 
-  const selectOne = (id = false) => {
+
+    // all data select
+    const [selectAllState, setSelectAllState] = useState(false)
+    const selectAllStates = () => {
+        if (selectAllState) {
+            setData(data.map(value => (
+                {
+                    ...value,
+                    checked: false
+                }
+            )))
+        } else {
+            setData(data.map(value => (
+                {
+                    ...value,
+                    checked: true
+                }
+            )))
+        }
+    }
+
+
+  // select one
+  const selectOne = (id, bool) => {
     setData(data.map((value) => (
       {
-        id: value.id,
-        num: value.num,
-        ismi: value.ismi,
-        agent: value.agent,
-        pasport: value.pasport,
-        kurs: value.kurs,
-        tili: value.tili,
-        yonalishi: value.yonalishi,
-        shakli: value.shakli,
-        phone: value.phone,
-        qoshimcharaqam: value.qoshimcharaqam,
-        pasportnusxasi: value.pasportnusxasi,
-        diplomnusxasi: value.diplomnusxasi,
-        sana: value.sana,
-        tahrirlash: value.tahrirlash,
-        checked: value.id === id ? !value.checked : value.checked
+        ...value,
+        checked: value.checked === id ? !value.checked : value.checked
       }
     )))
   }
+    console.log(data, 'data')
 
 
   // course level
@@ -131,7 +125,7 @@ export const QabuldanOtganCom = () => {
 
 
     // get admission
-    const getAdmissionData = useSelector((store) => store.getAdmissionData)
+
     useEffect(() => {
         dispatch(getAdmissionFetch({
             courseLevelId: courseLevelId,
@@ -139,21 +133,21 @@ export const QabuldanOtganCom = () => {
         }))
     }, [courseLevelId, facultyTypeId])
 
-   useEffect(()=>{
-if ( getAdmissionData.status === 'success') {
-  setData(getAdmissionData.data)
-}
-   },[])    // download
+
+
+    // download
     const downloadExel = () => {
         dispatch(getAdmissionExcelfetch())
     }
+
+
     // setting
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
 
     const Settings = () => {
       setOpen(true);
-    };
+    }
     const handleOk = () => {
       dispatch(sendSmsFetch())
       
@@ -165,8 +159,7 @@ if ( getAdmissionData.status === 'success') {
     };
     const handleCancel = () => {
       setOpen(false);
-    };
-
+    }
 
   return (
     <Container.Wrapper>
@@ -229,7 +222,7 @@ if ( getAdmissionData.status === 'success') {
               <option value="">Kurs</option>
               {
                   courseLevel.map(i => (
-                      <option value={i.id}>{ i.name }</option>
+                      <option value={i.id} key={i.id}>{ i.name }</option>
                   ))
               }
             </select>
@@ -245,7 +238,7 @@ if ( getAdmissionData.status === 'success') {
               {
                   facultyTypes?.length > 0 &&
                     facultyTypes.map(i => (
-                        <option value={i.id}>{i.name}</option>
+                        <option value={i.id} key={i.id}>{i.name}</option>
                     ))
               }
             </select>
@@ -272,14 +265,17 @@ if ( getAdmissionData.status === 'success') {
           </TalimTu>
         </div>
         </SendModal>
-        {/*  */}
+
       </Container>
       <div>
         <ConTable>
           <Container.Bottom>
             <Container.BottomInset>
               <Container.Nav>
-                <input type="checkbox" onChange={() => setSelectAllState(!selectAllState)} />
+                <input type="checkbox" onChange={() => {
+                    setSelectAllState(!selectAllState)
+                    selectAllStates()
+                }} />
                 <Container.Box>
                   <div>№</div>
                   <div>ID</div>
@@ -299,28 +295,31 @@ if ( getAdmissionData.status === 'success') {
                 </Container.Box>
               </Container.Nav>
               {
-                search?.map((value, num) => (
-                  <Container.Section key={value.id}>
-                  <input className='chcxboxInput' type="checkbox" onChange={() => selectOne(value.id)} checked={value.checked} />
-                    <Container.Map>
-                      <div>{num+1}</div>
-                      <div>{value.user.idNumber}</div>
-                      <div>{value.user.fullName}</div>
-                      <div>{value.courseLevel}</div>
-                      <div>{value.facultyType.studyLanguage === 'UZ' ? 'Ozbek tili' : 'Rus tili'}</div>
-                      <div>{value.facultyName}</div>
-                      <div>{value.facultyType.educationType}</div>
-                      <div>{new Date(value.user.createdAt).toLocaleDateString()}</div>
-                      <div>{value?.agent ? value.agent.fullName : 'Yoq'}</div>
-                      <div>{value.user.passportSeries}</div>
-                      <div>{value.user.idNumber}</div>
-                      <div>{value.diplomaFile?.fileOriginalName}</div>
-                      <div>+{value.user.phoneNumber}</div>
-                      <div>+{value.user.extraPhoneNumber}</div>
-                      <div>{value.kurs}</div>
-                    </Container.Map>
-                  </Container.Section>
-                ))
+                data?.length ?
+                    data?.map((value, num) => (
+                        <Container.Section key={value.id}>
+                            <input className='chcxboxInput' type="checkbox" checked={value.checked} onChange={() => selectOne(value.user.idNumber, value.checked)} />
+                            <Container.Map>
+                                <div>{num+1}</div>
+                                <div>{value.user.idNumber}</div>
+                                <div>{value.user.fullName}</div>
+                                <div>{value.courseLevel}</div>
+                                <div>{value.facultyType.studyLanguage === 'UZ' ? 'Ozbek tili' : 'Rus tili'}</div>
+                                <div>{value.facultyName}</div>
+                                <div>{value.facultyType.educationType}</div>
+                                <div>{new Date(value.user.createdAt).toLocaleDateString()}</div>
+                                <div>{value?.agent ? value.agent.fullName : 'Yoq'}</div>
+                                <div>{value.user.passportSeries}</div>
+                                <div>{value.user.idNumber}</div>
+                                <div>{value.diplomaFile?.fileOriginalName}</div>
+                                <div>+{value.user.phoneNumber}</div>
+                                <div>+{value.user.extraPhoneNumber}</div>
+                                <div>{value.kurs}</div>
+                                <h1>{value.checked}</h1>
+                            </Container.Map>
+                        </Container.Section>
+                    ))
+                    : <p style={{color: '#fff', padding: '1rem'}}>No data !</p>
               }
             </Container.BottomInset>
           </Container.Bottom>
