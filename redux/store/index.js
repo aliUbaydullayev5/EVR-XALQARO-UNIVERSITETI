@@ -16,7 +16,7 @@ import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/inde
 import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 import editTalimYunalishType from "../sliceAdmin/talimYunalishTurlari/editTalimYunalishType"
 import examsubjectcreate from "../sliceAdmin/exam/exsamsubjectcreate"
-import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject"
+import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject/index.js"
 import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
@@ -55,6 +55,17 @@ import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
 import bookCreate from "../sliceAdmin/libary/book/create.js"
 import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getGalleryData from '../slices/getGalleryData'
+import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
+import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
+import newsreate from "../sliceAdmin/news/create.js"
+import newsGet from "../sliceAdmin/news/getnews.js"
+import aboutGetUserData from "../slices/aboutUsGet/getAbout"
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -94,8 +105,6 @@ export default configureStore({
                 sendSmsData,
                 quationDeleteId,
                 forgonPassword,
-                exsamManegemnt,
-                exsamMenegmntget,
                 subjectMandatoryData,
                 getManagementData,
                 aboutCreateData,
@@ -113,5 +122,18 @@ export default configureStore({
                 bookCreate,
                 bookDeleteId,
                 bookGet,
-        },
+                getLibraryAuthorData,
+                getLibraryLangData,
+                getLibraryWayData,
+                getLibraryData,
+                exsamManegemnt,
+                exsamMenegmntget,
+                getGalleryData,
+                galleryCreate,
+                galleryDeleteId,
+                newsreate,
+                newsGet,
+                aboutGetUserData,
+
+        }
 })

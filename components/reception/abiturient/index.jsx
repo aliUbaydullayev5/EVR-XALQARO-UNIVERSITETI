@@ -10,14 +10,13 @@ import CustomInput from 'react-phone-number-input/input';
 import { deployFileFetch } from '../../../redux/slices/deployFile';
 import { startMessage } from '../../../redux/slices/message';
 import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
-import { receptionPostFetch, resetVerify, } from '../../../redux/slices/receptionPost';
-import { reseptionSmsCheckSliceFetch, resetTimerVerify, } from '../../../redux/slices/receptionVerifyPhone';
-import {
-	receptionSmsVerifyFetch, resetSmsVerify,
+import {receptionPostFetch,resetVerify,} from '../../../redux/slices/receptionPost';
+import {reseptionSmsCheckSliceFetch,resetTimerVerify,} from '../../../redux/slices/receptionVerifyPhone';
+import {receptionSmsVerifyFetch,resetSmsVerify,
 } from '../../../redux/slices/receptionSmsVerify';
 import { checkAllInputs2 } from './checkAllInputs';
-import { getFacultyLanguageFetch } from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
-import { getFacultyTypeFetch, resetData } from "../../../redux/slices/getStudyTypes/getFacultyType";
+import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType";
 
 export const AbiturientQabul = () => {
 
@@ -27,11 +26,11 @@ export const AbiturientQabul = () => {
 	const [pasSerLength, setPasSerLength] = useState(0);
 	const reseptionCheckPhoneSlice = useSelector((store) => store.reseptionCheckPhoneSlice)
 	const getDirectType = useSelector((store) => store.getDirectType.data)
-	const { fileId, by } = useSelector((store) => store.deployFile)
+	const { fileId, by, status, message } = useSelector((store) => store.deployFile)
 	const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify)
 	const receptionData = useSelector((store) => store.receptionPost)
-	const getFacultyLanguage = useSelector((store) => store.getFacultyLanguage)
-	const getFacultyType = useSelector((store) => store.getFacultyType)
+	const getFacultyLanguage = useSelector((store)=> store.getFacultyLanguage)
+	const getFacultyType = useSelector((store)=> store.getFacultyType)
 
 	const changeMumPass = (event) => {
 		if (pasSerLength < event.length) {
@@ -75,24 +74,31 @@ export const AbiturientQabul = () => {
 	});
 
 	const changeAllDataFunc = ({ type, value }) => {
-		const fakeData = allData
-		fakeData[type] = value
-		setAllData(fakeData)
-		setAllData({ ...allData, [type]: value })
-	}
+		const fakeData = allData;
+		fakeData[type] = value;
+		setAllData(fakeData);
+		setAllData({ ...allData, [type]: value });
+	};
 
 
-	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }))
+	const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
 
 	useEffect(() => {
-		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }))
-	}, [])
+		dispatch(getDirectTypeFetch({ type: 'BACHELOR' }));
+	}, []);
 
-	useEffect(() => changeAllDataFunc({ type: by, value: fileId }), [fileId])
-	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), [])
+	useEffect(() => {
+		changeAllDataFunc({type: by, value: fileId})
+		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
+		if(status === 'error') dispatch(startMessage({time: 2, message}))
+		console.log(fileId, by, status, '======', message, 'dsadasdas')
+	}, [status])
+
+
+	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
 
 	const checkAllInputs = () => {
-		const result = checkAllInputs2({ allData })
+		const result = checkAllInputs2({ allData });
 		if (result?.status) return true;
 		else {
 			dispatch(
@@ -118,7 +124,7 @@ export const AbiturientQabul = () => {
 	}, [receptionData]);
 
 	if (receptionData.pushAnswer) {
-		router.push('/receptionPage/application/UsersCardInfo')
+		router.push('/receptionPage/application/UsersCardInfo');
 		if (receptionData.status === 'success')
 			dispatch(
 				startMessage({
@@ -184,10 +190,10 @@ export const AbiturientQabul = () => {
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
-			dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
+		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
 	}, [receptionSmsVerify])
 
-	useEffect(() => {
+	useEffect(()=> {
 		dispatch(resetSmsVerify())
 		setSmsInput('')
 	}, [allData.phoneNumber])
@@ -205,24 +211,24 @@ export const AbiturientQabul = () => {
 			}, 2000)
 		}
 	})
-	const selectDirectFunc = ({ type, value }) => {
-		dispatch(getFacultyLanguageFetch({ id: value }))
-		changeAllDataFunc({ type, value })
+	const selectDirectFunc = ({type, value}) => {
+		dispatch(getFacultyLanguageFetch({id: value}))
+		changeAllDataFunc({ type, value})
 	}
 
-	useEffect(() => {
-		changeAllDataFunc({ type: 'studyLanguage', value: 'OQISH TILLINI TANLANG' })
-		changeAllDataFunc({ type: 'educationType', value: 'OQISH TURINI TANLANG' })
+	useEffect(()=> {
+		changeAllDataFunc({ type: 'studyLanguage', value: 'OQISH TILLINI TANLANG'})
+		changeAllDataFunc({ type: 'educationType', value: 'OQISH TURINI TANLANG'})
 		dispatch(resetData())
 	}, [getFacultyLanguage])
 
-	useEffect(() => {
-		dispatch(getFacultyLanguageFetch({ id: allData.facultyId }))
+	useEffect(()=> {
+		dispatch(getFacultyLanguageFetch({id: allData.facultyId}))
 	}, [getDirectType])
 
-	const selectLanguageFunc = ({ type, value }) => {
-		dispatch(getFacultyTypeFetch({ id: allData.facultyId, lang: value }))
-		changeAllDataFunc({ type, value })
+	const selectLanguageFunc = ({type, value}) => {
+		dispatch(getFacultyTypeFetch({id: allData.facultyId, lang: value}))
+		changeAllDataFunc({ type, value})
 	}
 
 	return (
@@ -249,7 +255,7 @@ export const AbiturientQabul = () => {
 				</div>
 
 				<IconBox className='row9'>
-					<select value={allData.educationType} name="cars" id="cars" style={{ width }} onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e.target.value })}  >
+					<select value={allData.educationType} name="cars" id="cars" style={{width}} onChange={(e) => changeAllDataFunc({ type: 'educationType', value: e.target.value })}  >
 						{
 							getFacultyType?.data?.length && getFacultyType?.data?.map((value) => (
 								<option id={value} value={value} selected={value === 'OQISH TURINI TANLANG'} disabled={value === 'OQISH TURINI TANLANG'}>{value}</option>
@@ -377,7 +383,7 @@ export const AbiturientQabul = () => {
 				</div>
 
 				<IconBox className='row7'>
-					<select name="cars" id="cars" style={{ width }} onChange={(e) => selectDirectFunc({ type: 'facultyId', value: e.target.value })} >
+					<select name="cars" id="cars"style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
 						{
 							getDirectType.length && getDirectType?.map((value) => (
 								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
@@ -424,7 +430,7 @@ export const AbiturientQabul = () => {
 					</div>
 				</div>
 				<IconBox className='row8'>
-					<select name="cars" id="cars" value={allData.studyLanguage} style={{ width }} onChange={(e) => selectLanguageFunc({ type: 'studyLanguage', value: e.target.value })}  >
+					<select name="cars" id="cars" value={allData.studyLanguage} style={{width}} onChange={(e) => selectLanguageFunc({ type: 'studyLanguage', value: e.target.value })}  >
 						{
 							getFacultyLanguage?.data.length && getFacultyLanguage?.data?.map((value) => (
 								<option selected={value === 'OQISH TILLINI TANLANG'} disabled={value === 'OQISH TILLINI TANLANG'} id={value} value={value} >{value}</option>
@@ -480,7 +486,12 @@ export const AbiturientQabul = () => {
 						</Button>
 					)}
 				</BtnCon>
+<<<<<<< HEAD
             </InputCont>
+=======
+			</InputCont>
+
+>>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
 			<Modal
 				open={modelHidden}
 				onOk={() => setModalHidden(!modelHidden)}
@@ -523,8 +534,6 @@ export const AbiturientQabul = () => {
 					)}
 				</Container.Model>
 			</Modal>
-
-
 		</Container>
 	);
 };

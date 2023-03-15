@@ -17,7 +17,10 @@ import AddImg from "../../../../../assets/icon/addimg.svg"
 import { bookCreatePost } from '../../../../../redux/sliceAdmin/libary/book/create.js'
 import { bookLaunguageGetFetch } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js'
 import { bookTypesGetFetch } from '../../../../../redux/sliceAdmin/libary/booksTypes/getbooksType.js'
-import {bookGetFetch} from "../../../../../redux/sliceAdmin/libary/book/getbook";
+import {bookGetFetch,resetBookGet} from "../../../../../redux/sliceAdmin/libary/book/getbook";
+import Image from "next/image";
+import {bookDeleteIdDel} from "../../../../../redux/sliceAdmin/libary/book/deleteId";
+import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
 
 
 export const BookComponet = () => {
@@ -37,25 +40,21 @@ export const BookComponet = () => {
   const [dataLanguage, setDataLaungage] = useState([]);
   const [databookTypes, setDatabookTypes] = useState([]);
   const [dataAuthor, setAuthor] = useState([]);
-
-
-
-
   const [open, setOpen] = useState(false)
 
-  const authorDelete = useSelector((store) => store.authorDelete);
+
   const authorGet = useSelector((store) => store.authorGet);
-  const authorCreate = useSelector((store) => store.authorCreate);
   const bookLaunguageGet = useSelector((store) => store.bookLaunguageGet);
   const bookTypesGet = useSelector((store) => store.bookTypesGet);
   const { fileId, by } = useSelector((store) => store.deployFile);
   const bookCreate = useSelector((store) => store.bookCreate);
   const bookGet = useSelector((store) => store.bookGet);
+  const bookDeleteId = useSelector((store) => store.bookDeleteId);
 
 
 
   useEffect(() => {
-    if (bookCreate.status === "success")
+    if (bookCreate.status === "success" ||bookDeleteId.status==='success' )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
           setName({
             id: '',
@@ -71,12 +70,10 @@ export const BookComponet = () => {
     setTimeout(() => {
       dispatch(reset());
     }, 500);
-  }, [bookCreate]);
+  }, [bookCreate,bookDeleteId]);
 
-  useEffect(() => {
-    if (authorDelete.status === 'success' || authorCreate.status === 'success')
-      dispatch(authorGetFetch())
-  }, [authorDelete, authorCreate])
+
+
 
   const addFacultet = () =>
       dispatch(bookCreatePost({
@@ -90,48 +87,62 @@ export const BookComponet = () => {
 
       }));
 
-  const findDeleteID = (deleteId) => dispatch(authorDeletePost({ id: deleteId }));
+  const findDeleteID = (deleteId) => dispatch(bookDeleteIdDel({ id: deleteId }));
 
 
   const findEditID = (id) => {
     setDataList(dataList.map((value) => ({
-      id: value.id,
-      name: value.name,
-      status: id === value.id ? (!value.id || true) : false
+        id: value.id,
+        name: value.name,
+        rating:value.rating,
+        author: value.author?.name,
+        direction: value?.direction?.name,
+        language: value?.language?.name,
+       status: id === value.id ? (!value.id || true) : false
     })))
   }
-
   const editPush = (id, i) => dispatch(
       authorCreatePost({
         id: id,
         name: dataList[i].name,
+          rating: dataList[i].rating,
+          author: dataList[i].author,
+          direction: dataList[i].direction,
+          language: dataList[i].language,
+
       }));
 
-  useEffect(() => {
-    if (bookLaunguageGet.status === "success") setDataLaungage(bookLaunguageGet.data);
-    if (bookTypesGet.status === "success") setDatabookTypes(bookTypesGet.data)
-    if (authorGet.status === "success") setAuthor(authorGet.data)
-    if (bookGet.status === "success") setDataList(bookGet.data)
-  }, [bookLaunguageGet, bookTypesGet, authorGet]);
+    useEffect(() => {
+        if (bookLaunguageGet.status === "success") setDataLaungage(bookLaunguageGet.data);
+        if (bookTypesGet.status === "success") setDatabookTypes(bookTypesGet.data)
+        if (authorGet.status === "success") setAuthor(authorGet.data)
+        if (bookGet.status === "success") setDataList(bookGet.data)
+    }, [bookLaunguageGet, bookTypesGet, authorGet,bookGet]);
 
-  useEffect(()=> {
-    dispatch(bookGetFetch())
-  },[bookGetFetch])
+    useEffect(() => {
+        if (bookDeleteId.status === 'success' || bookCreate.status === 'success')
+            dispatch(bookGetFetch())
+    }, [bookDeleteId, bookCreate])
 
-  useEffect(() => {
-    dispatch(authorGetFetch())
-  }, [authorGetFetch])
+    useEffect(()=> {
+      dispatch(bookGetFetch())
+    },[bookGetFetch])
 
-  useEffect(() => {
-    dispatch(bookLaunguageGetFetch())
-  }, [bookLaunguageGetFetch])
+    useEffect(() => {
+        open===true&&  dispatch(authorGetFetch())
+    }, [authorGetFetch,open])
 
+    useEffect(() => {
+        open===true &&    dispatch(bookLaunguageGetFetch())
+    }, [bookLaunguageGetFetch,open])
 
-  useEffect(() => {
-    dispatch(bookTypesGetFetch())
-  }, [bookTypesGetFetch])
+    useEffect(() => {
+        open===true&&  dispatch(bookTypesGetFetch())
+    }, [bookTypesGetFetch,open])
 
-  const modalAdd = () => setOpen(true)
+  const modalAdd = () => {
+      setOpen(true)
+  }
   const handleCancel = () => setOpen(false)
 
   return (
@@ -213,19 +224,27 @@ export const BookComponet = () => {
             >
               {fileList.length < 1 && <AddImg />}
             </Container.Upload>
-            <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
+            {/*<Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>*/}
           </Antmodal>
           <Container.BtnAdd>
             <Button onclick={modalAdd} width={'100px'} height={'50px'} radius={"5px"} size={'12px'}> <Plus /> &nbsp;   Qo’shish</Button>
           </Container.BtnAdd>
         </Container.Bottom>
         <Wrapper>
-          <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '550px' }}>
+          <Container.Scrool style={{ overflowY: 'scroll', maxHeight: '850px' }}>
             <Container.Nav>
+                <div>
+                    Rasm
+                </div>
               <div className='row'>
                 <div >№</div>
-                <div className='colum'>Talim Yunalish Turlari</div>
-                <div className='colum' >Action</div>
+                <div className='colum'>Nomi</div>
+                <div className='colum'>Muallif</div>
+                <div className='colum'>Til</div>
+                <div className='colum'>Reyting</div>
+                <div className='colum'>Yo’nalish</div>
+                <div className='colum' >Tahrirlash</div>
+                <div className='colum' >O’chirish</div>
               </div>
             </Container.Nav>
 
@@ -233,39 +252,112 @@ export const BookComponet = () => {
               {dataList?.map((value, index) => {
                 return (
                     <ConTable key={value.id}>
+                        <div>
+                            <Image
+                                alt="img"
+                                src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}
+                                width={60}
+                                height={60}
+
+                                sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                style={{height: '100%', width: '100%'}}
+                                className={"img"}
+                            />
+                        </div>
                       <div className='row'>
                         <div >{index + 1}</div>
                         <div className='colum'>
                           {
                             value?.status ?
-                                <input value={value.nameUz} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  nameUz: value.id === val.id ? e.target.value : val.nameUz,
-                                  nameRu: val.nameRu,
-                                  studyType: val.studyType,
-                                  status: val.status
+                                <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
+                                    id: val?.id,
+                                    name: value.id === val.id ? e.target.value : val?.name,
+                                    rating: val.rating,
+                                    author: val.author?.name,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
-                                  {value.nameUz}
+                                  {value.name}
                                 </>}
                         </div>
                         <div className='colum'>
                           {
                             value?.status ?
-                                <input value={value.nameRu} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  nameUz: val.nameUz,
-                                  nameRu: value.id === val.id ? e.target.value : val.nameRu,
-                                  studyType: val.studyType,
-                                  status: val.status
+                                <input value={value.author} onChange={(e) => setDataList(dataList.map((val) => ({
+                                    id: val?.id,
+                                    name: val?.name,
+                                    author: value?.id === val.id ? e.target.value : val?.author?.name,
+                                    rating: val?.rating,
+                                    direction: val?.direction?.name,
+                                    language: val?.language?.name,
+                                    status: val?.status,
                                 })))} />
                                 :
                                 <>
-                                  {value.nameRu}
+                                  {value?.author?.name}
                                 </>
                           }
                         </div>
+
+                          <div className='colum'>
+                              {
+                                  value?.status ?
+                                      <input value={value?.language} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: value?.id === val.id ? e.target.value : val?.language?.name,
+                                          rating: val?.rating,
+                                          direction: val?.direction?.name,
+                                          status: val?.status,
+                                      })))} />
+                                      :
+                                      <>
+                                          {value?.language?.name}
+                                      </>
+                              }
+                          </div>
+                          <div className='colum'>
+                              {
+                                  value?.status ?
+                                      <input value={value?.rating} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: val.language,
+                                          rating: value.id === val.id ? e.target.value : val?.rating,
+                                          direction: val?.direction?.name,
+                                          status: val?.status,
+                                      })))} />
+                                      :
+                                      <>
+                                          {value?.rating}
+                                      </>
+                              }
+                          </div>
+
+                          <div className='colum'>
+                              {
+                                  value?.status ?
+                                      <input value={value?.direction} onChange={(e) => setDataList(dataList.map((val) => ({
+                                          id: val?.id,
+                                          name: val?.name,
+                                          author: val?.author?.name,
+                                          language: val.language,
+                                          rating: val?.rating,
+                                          direction: value.id === val.id ? e.target.value : val?.direction?.name,
+                                          status: val?.status,
+                                      })))} />
+                                      :
+                                      <>
+                                          {value?.direction?.name}
+                                      </>
+                              }
+                          </div>
+
                         <div className='colum'>
                           {
                             value?.status ?
@@ -275,7 +367,7 @@ export const BookComponet = () => {
                           }
                         </div>
                         <div className='colum'>
-                          <Button onClick={() => findDeleteID(value.id)} shadow={'0px'}  width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Trash /></Button>
+                          <Button onclick={() => findDeleteID(value.id)} shadow={'0px'}  width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Trash /></Button>
                         </div>
                       </div>
                     </ConTable>

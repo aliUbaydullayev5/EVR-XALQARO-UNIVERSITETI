@@ -4,7 +4,6 @@ import BlockIcon from '../../../assets/icon/personalAcauntBlock.svg'
 import ExitIcon from '../../../assets/icon/personalAcauntExit.svg'
 import FileIcon from '../../../assets/icon/personalAcauntFile.svg'
 import DownIcon from '../../../assets/icon/personDown.svg'
-import Image from "next/image.js";
 import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
 import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg"
@@ -12,7 +11,8 @@ import { Spin } from 'antd';
 import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
 import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
 import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
+import Image from "next/image";
 
 const ShaxsiyKabinetComponent = () => {
 
@@ -21,6 +21,11 @@ const ShaxsiyKabinetComponent = () => {
     const exitFromAccount = () => {
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')
+<<<<<<< HEAD
+=======
+        localStorage.removeItem('access-token')
+        query.push('/homePage')
+>>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
     }
 
     const {data, status} = useSelector((store)=> store.getInfoUserCabinet)

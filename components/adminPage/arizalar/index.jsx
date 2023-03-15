@@ -30,6 +30,15 @@ export const ArizalarCom = () => {
   const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
   const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
+  useEffect(() => {
+    dispatch(getApplications({}))
+  }, [])
+
+  useEffect(() => {
+    setData(getApplicationData.data)
+  }, [getApplicationData])
+
+
   // sms //
   const sendSmsData = useSelector(store => store.sendSmsData)
 
@@ -44,7 +53,6 @@ export const ArizalarCom = () => {
   };
   const handleOk = () => {
     dispatch(sendSmsFetch(smsRef))
-    
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -53,18 +61,8 @@ export const ArizalarCom = () => {
   };
   const handleCancel = () => {
     setOpen(false);
-  };
+  }
 
-  useEffect(() => {
-    dispatch(getApplications({
-      fromDate: fromDate.getTime(),
-      toDate: toDate.getTime()
-    }))
-  }, [])
-
-  useEffect(() => {
-    setData(getApplicationData.data)
-  }, [getApplicationData])
 
 
   // get excel
@@ -86,9 +84,7 @@ export const ArizalarCom = () => {
 
 
   const selectOne = (id = false) => {
-
   }
-
   const searchFunc = (eventValue) => {
     setTimeout(() => {
       dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))

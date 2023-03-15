@@ -8,8 +8,7 @@ export const bookGetFetch = createAsyncThunk('bookGetFetch', async (payload) => 
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
             },
-            body: JSON.stringify({
- }),
+            body: JSON.stringify({}),
         })
         .then((res) => res.json())
 })
@@ -33,6 +32,13 @@ const bookGet = createSlice({
             state.status = 'error'
         }
     },
+    reducers: {
+        resetBookGet(state) {
+            state.data = {}
+            state.status = null
+        }
+    }
 })
 
+export const { resetBookGet } = bookGet.actions
 export default bookGet.reducer

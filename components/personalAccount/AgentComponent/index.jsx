@@ -27,43 +27,9 @@ const Agentomponent = () => {
 
     const {data, status} = useSelector((store)=> store.getInfoUserCabinet)
 
-    // ================================
-
-
-    // const [allData, setAllData] = useState([]);
-    //
-    // function flattenData(data) {
-    //     data.forEach(item => {
-    //         setAllData(prevData => [...prevData, item])
-    //         if (item.managements && item.managements.length > 0) flattenData(item.managements)
-    //     })
-    // }
-    // useEffect(() => flattenData(mockData.data), [])
-
-
 
     return(
         <Container>
-
-
-            {/*<h1>Sorted Management Tree</h1>*/}
-            {/*<div>*/}
-            {/*    /!* отображаем все объекты из массива allData *!/*/}
-            {/*    {allData.slice(0, allData.length / 2).map(item => (*/}
-            {/*        <div key={item.id}>{item.name}</div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-
-            {/*/!*----------------*!/*/}
-
-            {/*<div>*/}
-            {/*    /!* отображаем все объекты из массива allData *!/*/}
-            {/*    {allData.map(item => (*/}
-            {/*        <div key={item.id}>{item.name}</div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-
-
             <Container.Top>
                 Shaxsiy kabinet
                 <CloseIcon className={'closeIcon'} onClick={()=> query.push('/auth/agent')} />

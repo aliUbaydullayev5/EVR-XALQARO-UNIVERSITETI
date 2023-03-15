@@ -1,12 +1,11 @@
-import AgentAddUserComponent from "../../../../components/personalAccount/AgentAddUserComponent";
 import Root from "../../../../root";
-
-const AddUserAgetn = () => {
+import AgentAddUserComponent from "../../../../components/personalAccount/AgentAddUserComponent/index"
+const AddUserAgent = () => {
     return(
         <Root>
-            <AgentAddUserComponent />
+           <AgentAddUserComponent/>
         </Root>
     )
 }
 
-export default AddUserAgetn
+export default AddUserAgent
