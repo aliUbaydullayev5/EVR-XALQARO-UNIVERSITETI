@@ -104,18 +104,15 @@ export const SidebarAdmin = () => {
     },
     {
       id: 14,
-<<<<<<< HEAD
       name: 'Moliya',
       clicked: false,
       img: imgArow,
     },
-=======
       name: 'Yangliklar',
       clicked: false,
       img: imgArow,
     },
  
->>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
@@ -131,12 +128,8 @@ export const SidebarAdmin = () => {
     else if (id === 11) quarey.push('/admin/setting/aboutUs')
     else if (id === 12) quarey.push('/admin/setting/library')
     else if (id === 13) quarey.push('/admin/setting/galereya')
-<<<<<<< HEAD
     else if (id === 14) quarey.push('/admin/setting/finance')
-=======
     else if (id === 14) quarey.push('/admin/setting/news')
->>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
-
 
 
 

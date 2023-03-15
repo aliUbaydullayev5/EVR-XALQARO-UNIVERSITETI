@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -227,7 +226,6 @@ export const GaleryaComponet = () => {
 
 
 export default GaleryaComponet;
-=======
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../generic/Button'
@@ -477,4 +475,3 @@ export const GalleryaComponet = () => {
 }
 
 export default GalleryaComponet
->>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
