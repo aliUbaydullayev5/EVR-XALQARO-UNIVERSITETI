@@ -3,8 +3,6 @@ import Container from "./style"
 import ratings from "../Mock/ratings"
 
 const RatingsComponent = () => {
-<<<<<<< HEAD
-=======
   // const dispatch = useDispatch();
   // const [data, setData] = useState([]);
   // const testGet = useSelector((store) => store.testGet);
@@ -17,8 +15,6 @@ const RatingsComponent = () => {
   //   if (testGet.status === "success") setData(testGet.data);
   // }, [testGet]);
 
-
->>>>>>> 2f2a440859c2233efadc471bf133c7f30565d12e
   return (
     <Container>
       <Container.Top className="nocopy">Talabalar reytingi</Container.Top>

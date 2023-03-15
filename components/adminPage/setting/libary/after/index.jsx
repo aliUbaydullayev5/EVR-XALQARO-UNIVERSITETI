@@ -86,7 +86,6 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
-<<<<<<< HEAD
 
   const modalAdd = () => {
     setOpen(true)
@@ -95,8 +94,6 @@ export const AfterComponet = () => {
     setOpen(false);
   };
 
-=======
->>>>>>> 2f2a440859c2233efadc471bf133c7f30565d12e
   return (
       <Container>
         <Container.Bottom>

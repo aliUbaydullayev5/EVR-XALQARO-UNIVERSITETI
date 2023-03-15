@@ -36,7 +36,6 @@ export const AboutCaruselComp = () => {
       <Container.Header>Biz haqimizda<Close className={'icon'} onClick={() => query.push('/homePage')} /></Container.Header>
       <Container.MainCarousel>
         <Container.Img>
-<<<<<<< HEAD
         <Swiper autoplay={{ delay: 2500, disableOnInteraction: false, }} pagination={{ clickable: true, }} modules={[Autoplay, Pagination]} className="mySwiper" >
          {
              dataList?.map((val)=>(
@@ -44,20 +43,7 @@ export const AboutCaruselComp = () => {
              ))
          }
         </Swiper>
-=======
-            <Carousels autoPlay={state < 1000 ? false : true} showThumbs={false}>
-              {data.map((value)=> {
-                var Imgsa =value.imgs
-              return (
-                <div>
-                  <Carousels.CaruselImg src={Imgsa} alt='carusel' />
-                  <p>{value.name}</p>
-                </div>
-                
-              )
-              })}
-            </Carousels>
->>>>>>> 2f2a440859c2233efadc471bf133c7f30565d12e
+
         </Container.Img>
         <ContainerDow>
           <a href="" download={true}>
