@@ -52,7 +52,6 @@ export const ExsamStandart = () => {
         if (exsamMenegmntget.status === 'success')
             setDataList(exsamMenegmntget.data?.map((value) => ({ id: value.id, firstExamSubjectBall: value.firstExamSubjectBall, secondExamSubjectBall: value.secondExamSubjectBall, importantExamSubjectBall: value.importantExamSubjectBall, entranceBall: value.entranceBall, examTime: value.examTime * 1000 && new Date(value.examTime).toISOString().slice(11, 16) })))
     }, [exsamMenegmntget])
-    console.log(exsamManegemnt.message, 'exsamManegemnt.message');
     // add
     const addFacultet = () => dispatch(exsamManegemntFetch({ id: 0, firstExamSubjectBall: name.firstExamSubjectBall, secondExamSubjectBall: name.secondExamSubjectBall, importantExamSubjectBall: name.importantExamSubjectBall, entranceBall: name.entranceBall, examTime: name.examTime, }))
     //  date hours change second

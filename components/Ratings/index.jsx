@@ -18,7 +18,6 @@ const RatingsComponent = () => {
   // useEffect(() => {
   //   if (testGet.status === "success") setData(testGet.data);
   // }, [testGet]);
-  // console.log(data,"data");
 
 
   return (

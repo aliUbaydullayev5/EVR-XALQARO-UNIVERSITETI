@@ -32,7 +32,6 @@ const LibraryComponent = () => {
   useEffect(() => {
     setData(getLibraryData.data)
   }, [getLibraryData])
-  console.log(data)
 
 
   // author

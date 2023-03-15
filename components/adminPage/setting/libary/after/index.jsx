@@ -77,7 +77,6 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
-  console.log(dataList, 'dataList');
   return (
     <Container>
       <Container.Bottom>

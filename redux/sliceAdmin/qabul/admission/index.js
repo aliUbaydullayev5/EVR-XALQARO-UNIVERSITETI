@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../../globalApi";
 
 export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (payload) => {
     return await fetch(`${API_GLOBAL}v1/admission/passed`, {
@@ -16,9 +17,6 @@ export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (pa
         })
     })
         .then(res => res.json())
-        .then(res => {
-            return { ...res }
-        })
 })
 
 const getAdmissionData = createSlice({
@@ -32,8 +30,7 @@ const getAdmissionData = createSlice({
             state.status = 'Loading'
         },
         [getAdmissionFetch.fulfilled]: (state, { payload }) => {
-            console.log(payload)
-            if (payload.data) {
+            if (payload.success) {
                 state.data = payload.data
                 state.status = 'Success'
             } else {
