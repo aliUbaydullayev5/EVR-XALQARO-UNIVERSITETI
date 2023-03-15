@@ -16,6 +16,21 @@ Container.Inset = styled.div`
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   height: 520px;  
+  .but{
+    >button{
+      display: flex;
+      gap: 10px;
+      background: #221F51;
+      box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+      border-radius: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 105.9%;
+      .arr{
+        transform: rotate(180deg);
+      }
+    }
+  }
   @media only screen and (max-width: 1000px) {
   box-shadow: 0 0 0 0;
   padding: 10px 10px 10px 10px;

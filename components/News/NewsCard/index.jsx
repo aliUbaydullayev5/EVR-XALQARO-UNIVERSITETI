@@ -10,28 +10,18 @@ export const NewsCard = ({ data = {} }) => {
   
   const query = useRouter()
 
-  const { img, name,id,date, views,namechild, } = data;
+  const { description, title,id,date, views,attachment, } = data;
+  console.log(data,'data')
 
   return (
     <div style={{ display: "flex",cursor:'pointer' }} onClick={()=>query.push(`/news/${id}`)}>
       <Container>
-        <Image className="img" src={img} alt={"Yuklab Olinmadi"} />
+        <Image className="img" width={200} height={200} src={`http://185.217.131.147:8088/api/v1/attachment/download/${attachment?.contentType}`} alt={"Yuklab Olinmadi"} />
         <Container.Bottom>
-          <Container.BottomText>
-             {
-              name.split(' ').length > 4 ?
-              <>
-                {name.split(' ').slice(0, 3).join(' ')}....
-              </>
-              :
-              <>
-                {name}
-              </>
-            } 
-          </Container.BottomText>
+          <Container.BottomText> {title.split(' ').length > 3 ? <> {title.split(' ').slice(0, 3).join(' ')}.... </> : <>{title}</>}</Container.BottomText>
           <Container.Footer>
             <Container.Box>
-              <button>{namechild}</button>
+              <button>Batafsil</button>
               <Arrow className="arrow" />
             </Container.Box>
             <Container.Box>

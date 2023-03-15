@@ -11,13 +11,20 @@ const Container = styled.div`
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-radius: 20px 20px 10px 10px;
   .img{
-    width: 100%;
+    width: 342px;
     height: 157.33px;
     background-size: cover;
   }
 
   @media only screen and (max-width:1000px){
     min-height: 91px;
+    max-width: 139px;
+    width: 100%;
+    .img{
+      width: 139px;
+      height: 64.33px;
+      background-size: cover;
+    }
   }
 
 `
@@ -48,7 +55,8 @@ Container.BottomText = styled.div`
   letter-spacing: -0.025em;
   color: #FFFFFF;
   @media only screen and (max-width:1000px){
-    font-size: 12px;
+    font-size: 7px;
+    line-height: 9px;
   }
 `
 
@@ -90,6 +98,12 @@ Container.Box = styled.div`
  line-height: 15px;
  color: #FFFFFF;
  cursor: pointer;
+   @media only screen and (max-width:1000px){
+     font-weight: 400;
+     font-size: 8px;
+     line-height: 8px; 
+   }
+  
  }
 `
 

@@ -5,6 +5,8 @@ import Evr from "../../../assets/image/evr.jpg"
 import { useRouter } from "next/router";
 import dataNews from "../../Mock/newsdata/index";
 import { useState } from "react";
+import Arrow from "../../../assets/icon/arrow.svg";
+
 
 const NewsInfoComponent = () => {
   const [data,setdata] =useState(dataNews)
@@ -50,7 +52,7 @@ return (
       </Container.Bottom>
       <Container.BottomLine/>
       <div className="but">
-      <Button onclick={()=>query.push(`/news`)} mwidth={'139px'} width={'139px'} height={'23px'} mheight={'23px'} msize={'7px'} size={'14px'}>Ortga</Button>
+       <Button onclick={()=>query.push(`/news`)} width={'139px'} height={'23px'} ><Arrow className={'arr'}/> Ortga</Button>
       </div>
     </Container.Inset>
   </Container>
