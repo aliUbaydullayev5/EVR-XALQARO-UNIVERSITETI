@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4cab3b80-4109-49cf-91f7-3db6ead849e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsGet/getnews.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../components/News/NewsCard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/News/NewsCard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../components/News/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/News/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/../../.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/Ratings/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/Ratings/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/aboutPage/AboutCarusel/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/aboutPage/AboutCarusel/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/arizalar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/arizalar/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/imthondComp/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/imthondComp/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/management/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/management/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/qabuldanotgan/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/qabuldanotgan/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/qabuldanotgan/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/qabuldanotgan/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../components/adminPage/setting/libary/after/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/adminPage/setting/libary/after/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sliceAdmin/arizalar-qabul-sms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sliceAdmin/arizalar-qabul-sms/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sliceAdmin/arizalar/applications/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sliceAdmin/arizalar/applications/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sliceAdmin/management/boshqaruv/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sliceAdmin/management/boshqaruv/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sliceAdmin/qabul/admission/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sliceAdmin/qabul/admission/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,15 +30,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/EVR-XALQARO-UNIVERSITETI/redux/slices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/EVR-XALQARO-UNIVERSITETI/redux/slices",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,6 +53,7 @@
       <updated>1678701235328</updated>
       <workItem from="1678701236381" duration="3000" />
       <workItem from="1678769196852" duration="26000" />
+      <workItem from="1678856176382" duration="592000" />
     </task>
     <servers />
   </component>

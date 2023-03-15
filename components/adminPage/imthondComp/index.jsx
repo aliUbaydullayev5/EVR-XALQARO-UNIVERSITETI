@@ -125,7 +125,7 @@ export const ImhonotganlarComp = () => {
       <Container.Header>
           <ConW>
           <Woomen />
-            <p>Imthondan o'tgan: {3005}</p>
+            <p>Imthondan o'tgan: {3007}</p>
           </ConW>
           <Conpul summa>
             <Dollar/>

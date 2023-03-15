@@ -410,7 +410,6 @@ const ConTable = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 
 `
 
