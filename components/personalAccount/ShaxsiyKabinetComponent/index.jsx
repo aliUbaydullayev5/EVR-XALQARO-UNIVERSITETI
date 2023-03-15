@@ -21,11 +21,8 @@ const ShaxsiyKabinetComponent = () => {
     const exitFromAccount = () => {
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')
-<<<<<<< HEAD
-=======
         localStorage.removeItem('access-token')
         query.push('/homePage')
->>>>>>> 98802fc7b88d558f2d3cf18c5e084ff01b546d94
     }
 
     const {data, status} = useSelector((store)=> store.getInfoUserCabinet)

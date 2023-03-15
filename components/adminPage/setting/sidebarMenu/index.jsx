@@ -108,11 +108,11 @@ export const SidebarAdmin = () => {
       clicked: false,
       img: imgArow,
     },
-      name: 'Yangliklar',
+    { name: 'Yangliklar',
       clicked: false,
       img: imgArow,
     },
- 
+
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
@@ -130,6 +130,7 @@ export const SidebarAdmin = () => {
     else if (id === 13) quarey.push('/admin/setting/galereya')
     else if (id === 14) quarey.push('/admin/setting/finance')
     else if (id === 14) quarey.push('/admin/setting/news')
+
 
 
 
