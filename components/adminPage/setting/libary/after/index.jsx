@@ -13,12 +13,7 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
-import { Modal } from 'antd'
-import {ModalaContainer, Wrapper} from "../book/style";
-import {AntSelect} from "../../talimYunalishType/TalimYunalishTypeAdd/style";
-import {deployFileFetch} from "../../../../../redux/slices/deployFile";
-import AddImg from "../../../../../assets/icon/addimg.svg";
-import Image from "next/image";
+
 
 
 
@@ -86,8 +81,6 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
-<<<<<<<<< Temporary merge branch 1
-
   const modalAdd = () => {
     setOpen(true)
   }
