@@ -124,8 +124,6 @@ export const SidebarAdmin = () => {
     else if (id === 14) quarey.push('/admin/setting/finance')
 
 
-
-
   }
 
   return (

@@ -1,11 +1,4 @@
-import React from 'react'
 import ManagementCom from '../../../components/adminPage/management/index.jsx'
-
-export const boshqaruvPage = () => {
-  return (
-    <div>
-      <ManagementCom />
-    </div>
-  )
-}
+import AdminRoot from "../../../components/adminPage/AdminRoot";
+export const boshqaruvPage = () => <AdminRoot><ManagementCom /></AdminRoot>
 export default boshqaruvPage
