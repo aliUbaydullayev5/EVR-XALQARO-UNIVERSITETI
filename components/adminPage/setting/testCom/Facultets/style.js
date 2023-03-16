@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import { Select } from 'antd';
+import { Modal, Select } from 'antd';
 
 const Container = styled.div`
   width: 100%;
-  padding: 0px 50px;
+  max-width: 1050px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  padding: 20px 20px;
+  justify-content: center;
+  @media only screen and (max-width: 1000px) {}
 `
 
 const AntSelect = styled(Select)`
@@ -99,7 +102,6 @@ const ConTable = styled.div`
   grid-template-columns:  1fr;
   gap:10px;
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -111,44 +113,30 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  450px  300px 300px 200px  ;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-    border-radius: 5px;
-    >div{
-    height: 40px;
-    border-left:  2px solid white;
+        grid-template-columns: 300px 200px 200px 120px 120px ;
     padding-left: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    border: red 2px solid black;
-    }
+    background: #241F69;
+    border-radius: 5px;
   }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
   .colum{
     border-left:  2px solid white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    padding-left: 10px;
   }
   .action{
     display: flex;
     justify-content: space-between;
     padding-right: 10px;
-
-
-  }
-
+    >button {
+      background: #241F69;  ;
+    } }
 `
 Container.Nav = styled.div`
+  display: grid;
   gap: 10px;
   margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   >div{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -160,23 +148,28 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  450px  300px 300px 200px  ;
+    grid-template-columns: 300px 200px 200px 120px 120px ;
     padding-left: 15px;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+    background: #221F51;
     border-radius: 5px;
-    gap: 5px;
+    height: 50px;
   }
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 5px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
   .colum{
     border-left:  2px solid white;
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }}
+    padding-left: 10px;
+  }
+
 `
 
-
+Container.Table = styled.div`
+  padding: 30px 30px;
+  background: #221F51;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  margin: 30px 0;
+`
 Container.Btn = styled.div`
   display: flex;
   justify-content: end;
@@ -191,6 +184,80 @@ Container.Btn = styled.div`
   text-align: center;
   color: #FFFFFF;
 `
+Container.Text = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+ >h1{
+ font-family: 'Montserrat';
+ font-style: normal;
+ font-weight: 500;
+ font-size: 36px;
+ line-height: 44px;
+ display: flex;
+ align-items: center;
+ color: #FFFFFF;
+ }
+ >div{
+    display: flex;
+    align-items: center;
+    justify-content:  space-around;
+    width: 150px;
+    height: 50px;
+    background: #221F51;
+    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #FFFFFF;
+ }
 
-export { AntSelect, ConTable }
+`
+const Antmodal = styled(Modal)`
+  width: 700px!important;
+  left: 150px;
+  top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  @media only screen and (max-width: 1000px) {
+    width: 700px!important;
+  }
+`
+
+Container.Add = styled.div`
+display: flex;
+flex-direction: column;
+gap: 20px;
+  >div{
+    display: flex ;
+    align-items: center;
+    gap: 10px;
+    >div{
+  
+    }
+    >h1{
+      font-style: normal;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 34px;
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+    }
+    >p{
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+    }
+  }
+`
+export { AntSelect, ConTable, Antmodal }
 export default Container

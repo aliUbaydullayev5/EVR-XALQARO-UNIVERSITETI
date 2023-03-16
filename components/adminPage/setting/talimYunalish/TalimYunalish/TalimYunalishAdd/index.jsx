@@ -120,11 +120,9 @@ export const TalimYunlishAddCom = () => {
                           <div>
                               <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi uzbek tilida kiriting`} />
                               <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi rus tilida kiriting`} />
-
                           </div>
 
                       </Container.Add>
-
                   </Antmodal>
                   <div onClick={modalAdd}>
                       <Plus /> &nbsp;   Qo’shish
@@ -139,7 +137,6 @@ export const TalimYunlishAddCom = () => {
                                       <div>№</div>
                                       <div className="colum nocopy">Facultet Uz</div>
                                       <div className="colum nocopy">Facultet Ru</div>
-
                                       <div className="colum">Action</div>
                                   </div>
                               </Container.Nav>

@@ -61,7 +61,6 @@ Container.Bottom = styled.div`
     font-size: 20px;
     line-height: 24px;
     cursor: pointer;
-
     color: #FFFFFF;
   }
 
