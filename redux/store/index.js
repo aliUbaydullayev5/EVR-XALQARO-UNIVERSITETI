@@ -44,6 +44,8 @@ import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
 import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
 import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getAdmissionAgentData from '../sliceAdmin/qabul/getAgent'
+import getAdmissionPaymentData from '../sliceAdmin/qabul/payment'
 
 export default configureStore({
         reducer: {
@@ -90,6 +92,8 @@ export default configureStore({
                 getLibraryAuthorData,
                 getLibraryLangData,
                 getLibraryWayData,
-                getLibraryData
+                getLibraryData,
+                getAdmissionAgentData,
+                getAdmissionPaymentData
         }
 })

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import Container, { Agent, ConExel, Conpul, ConTable, ContainerRith, ConW, SelectSms, SendModal, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
+import React, {useEffect, useRef} from 'react'
+import Container, { Agent, ConExel, Conpul, SendModalSms, ConTable, ContainerRith, ConW, SelectSms, SendModal, TalimSh, TalimT, TalimTu, TalimY } from './style.js'
 import Down from "../../../assets/icons/admin/selectdown.svg"
 import Woomen from "../../../assets/icons/admin/peoples.svg"
 import Exel from "../../../assets/icons/admin/exelSetting.svg"
@@ -14,6 +14,10 @@ import {Input,Button} from "../../generic"
 import {sendSmsFetch} from "../../../redux/sliceAdmin/arizalar-qabul-sms";
 import {getAbuturentTypeFetch} from "../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin";
 import {getAdmissionExcelfetch} from "../../../redux/sliceAdmin/qabul/exel";
+import SendSmss from "../../../assets/icons/admin/send.svg";
+import {getAdmissionAgentFetch} from "../../../redux/sliceAdmin/qabul/getAgent";
+import {facultySirtqi} from "../../Mock/facultyType";
+import {getAdmissionPaymentFetch} from "../../../redux/sliceAdmin/qabul/payment";
 
 
 
@@ -22,22 +26,11 @@ export const QabuldanOtganCom = () => {
   const dispatch = useDispatch()
 
   const [data, setData] = useState([])
-
-
-  // sms
-  const sendSmsData = useSelector(store => store.sendSmsData)
   const getAdmissionData = useSelector((store) => store.getAdmissionData)
 
 
-  // search
-  const [ search, setSearch ] = useState(data);
-  const onSearch=({ target: { value } })=>{
-    let res= data.filter((val)=>val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
-    setSearch(res)
-  }
-
   useEffect(() => {
-      setData(getAdmissionData.data.map((value) => (
+      setData(getAdmissionData?.data?.map((value) => (
           {
               ...value,
               checked: false
@@ -47,6 +40,7 @@ export const QabuldanOtganCom = () => {
 
 
     // all data select
+    const [checkedData, setCheckedData] = useState([])
     const [selectAllState, setSelectAllState] = useState(false)
     const selectAllStates = () => {
         if (selectAllState) {
@@ -56,6 +50,7 @@ export const QabuldanOtganCom = () => {
                     checked: false
                 }
             )))
+            setCheckedData([])
         } else {
             setData(data.map(value => (
                 {
@@ -63,24 +58,34 @@ export const QabuldanOtganCom = () => {
                     checked: true
                 }
             )))
+            data.map(i => checkedData.push(i.user.id))
         }
     }
 
+    // select one
+    const selectOne = (event, id) => {
+        setData(
+            data.map(i => ({
+                ...i,
+                checked: id === i.user.id ? !i.checked : i.checked
+            }))
+        )
+        setCheckedData(event ? [...checkedData, id] : checkedData.filter(idd => idd !== id))
+    }
 
-  // select one
-  const selectOne = (id, bool) => {
-    setData(data.map((value) => (
-      {
-        ...value,
-        checked: value.checked === id ? !value.checked : value.checked
-      }
-    )))
-  }
-    console.log(data, 'data')
+
+    // time toDate ~ fromDate
+    let defaultDate = new Date()
+    const [fromDate, setFromDate] = useState(new Date(1672531200000))
+    const [toDate, setToDate] = useState(defaultDate)
+    const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
+    const onSetToDate = (e) => setToDate(new Date(e.target.value))
+
+    const [changeDate, setChangeDate] = useState(false)
 
 
-  // course level
-  const courseLevel = [
+    // course level
+    const courseLevel = [
       {
           name: '1-kurs',
           id: 1
@@ -105,81 +110,148 @@ export const QabuldanOtganCom = () => {
           name: '6-kurs',
           id: 6
       },
-  ]
-  const [courseLevelId, setCourseLevelId] = useState(null)
-  const courseLevelHandler = (e) => setCourseLevelId(e)
+    ]
+    const [courseLevelId, setCourseLevelId] = useState(null)
+    const courseLevelHandler = (e) => setCourseLevelId(e)
+
+
+    // course language
+    const courseLang = [{id: 'UZ'}, {id: 'RU'}]
+    const [courseLangId, setCourseLangId] = useState(null)
+    const courseLangHandler = (e) => setCourseLangId(e)
 
 
     // get faculty types
     const getStudyTypesAbuturent = useSelector(store => store.getStudyTypesAbuturent)
     const [facultyTypes, setFacultyTypes] = useState([])
-    useEffect(() => {
-        dispatch(getAbuturentTypeFetch({
-            type: 'BACHELOR'
-        }))
-    }, [])
-    useEffect(() => setFacultyTypes(getStudyTypesAbuturent.data), [getStudyTypesAbuturent])
-    // handler
+    useEffect(() => setFacultyTypes(getStudyTypesAbuturent.data))
+    // faculty id
     const [facultyTypeId, setFacultyTypeId] = useState(null)
     const facultyTypeHandler = (e) => setFacultyTypeId(e)
 
 
-    // get admission
+    // get agent types
+    const [agentTypes, setAgentTypes] = useState([])
+    const getAdmissionAgentData = useSelector(store => store.getAdmissionAgentData)
+    useEffect(() => setAgentTypes(getAdmissionAgentData.data))
+    // agent id
+    const [agentId, setAgentId] = useState(null)
+    const agentIdHandler = (e) => setAgentId(e)
 
+
+    // course shakli
+    const [facultyId, setFacultyId] = useState(null)
+    const courseShaklHandler = (e) => setFacultyId(e)
+
+
+    // get payments
+    const [paymentTypes, setPaymentTypes] = useState([])
+    const getAdmissionPaymentData = useSelector(store => store.getAdmissionPaymentData)
+    useEffect(() => setPaymentTypes(getAdmissionPaymentData.data))
+    console.log(paymentTypes)
+    // payment id
+    const [paymentId, setPaymentId] = useState(null)
+    const paymentIdHandler = (e) => setPaymentId(e)
+
+
+    // get admission
+    const [ filter, setFilter ] = useState(false)
+    const [ page, setPage ] = useState(0)
+    const [ search, setSearch ] = useState('')
     useEffect(() => {
         dispatch(getAdmissionFetch({
-            courseLevelId: courseLevelId,
-            facultyTypeId: facultyTypeId
+            page: page,
+            search: search,
+            fromDate: fromDate.getTime(),
+            toDate: toDate.getTime(),
+            lang: courseLangId,
+            courseLevel: courseLevelId,
+            facultyTypeId: facultyTypeId,
+            facultyId: facultyId,
+            paymentType: paymentId,
+            agentId: agentId,
         }))
-    }, [courseLevelId, facultyTypeId])
+    }, [filter, page, search])
 
 
-
-    // download
-    const downloadExel = () => {
-        dispatch(getAdmissionExcelfetch())
-    }
+    // download exel
+    const downloadExel = () => dispatch(getAdmissionExcelfetch())
 
 
-    // setting
+    // settings
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-
     const Settings = () => {
-      setOpen(true);
+        setOpen(true)
+
+        dispatch(getAbuturentTypeFetch({
+            type: 'BACHELOR'
+        }))
+
+        dispatch(getAdmissionAgentFetch())
+
+        dispatch(getAdmissionPaymentFetch())
     }
     const handleOk = () => {
-      dispatch(sendSmsFetch())
-      
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setOpen(false);
-        setConfirmLoading(false);
-      }, 1000);
+
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 1000);
     };
     const handleCancel = () => {
-      setOpen(false);
+        setOpen(false)
     }
+
+
+    // sms //
+    const sendSmsData = useSelector(store => store.sendSmsData)
+
+    const [openSms, setOpenSms] = useState(false)
+    const [confirmLoadingSms, setConfirmLoadingSms] = useState(false)
+    const smsRef = useRef()
+
+    const SendSms = () => {
+        setOpenSms(true)
+    }
+
+    const handleOkSms = () => {
+        dispatch(sendSmsFetch({
+            text: smsRef.current?.value,
+            users: checkedData
+        }))
+
+        setConfirmLoadingSms(true)
+        setTimeout(() => {
+            setOpenSms(false)
+            setConfirmLoadingSms(false)
+        }, 1000)
+    }
+    const handleCancelSms = () => {
+        setOpenSms(false)
+    }
+
 
   return (
     <Container.Wrapper>
       <Container>
-  
+
         <Container.Filter>
-          
+
           <Search className="search"/>
-          <Input onchange={onSearch} padding="0 128px 0 50px" width="711px" height="60px" size="25px" placeholder="search" />
+          <Input onchange={(e) => setSearch(e.target.value)} padding="0 128px 0 50px" width="711px" height="60px" size="25px" placeholder="search" />
           <Container.Button>
            <Button onclick={Settings} shadow="0 0 0 0" width={"100%"} height={"30px"} radius="0" size={"18px"} ><div><Setting /> <p>Filter</p> </div></Button>
           </Container.Button>
-          <Container.Date className="nocopy"> 
-            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          <Container.Date className="nocopy">
+            <Input value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
           </Container.Date>
-          <Container.Date className="nocopy"> 
-            <Input value="2023-01-01" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
+          <Container.Date className="nocopy">
+            <Input value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" shadowOff="0 0 0 0" width="100%" height="100%" type="date" size="14px" bc="none" />
           </Container.Date>
 
-          <Button width={"175px"} height="48px" radius={"10px"} size={"18px"} >Tartiblash</Button>
+          <Button onclick={() => setChangeDate(!changeDate)} width={"175px"} height="48px" radius={"10px"} size={"18px"} >Tartiblash</Button>
 
         </Container.Filter>
 
@@ -198,18 +270,33 @@ export const QabuldanOtganCom = () => {
             <Exel />
             <p>Excelga chiqarish</p>
           </ConExel>
-          <SelectSms>
+          <SelectSms onClick={SendSms}>
             <Sms className={'Sms'} />
             <p> SMS yuborish</p>
           </SelectSms>
-          
+
         </ContainerRith>
+
+          <SendModalSms open={openSms} onOk={handleOkSms} confirmLoading={confirmLoadingSms} onCancel={handleCancelSms}>
+              <h1>SMS yuborish</h1>
+              <SendSmss className="sendSms"/>
+              <input ref={smsRef} type="text" placeholder='t y p i n g ...' />
+          </SendModalSms>
 
         <SendModal open={open} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
          <div>
           <Agent>
-            <select name="pets" id="pet-select">
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => agentIdHandler(e.target.value)}
+            >
               <option value="">Agent</option>
+                {
+                    agentTypes.map(i => (
+                        <option value={i.id} key={i.id}>{i.fullName}</option>
+                    ))
+                }
             </select>
             <Down className={'Down'} />
           </Agent>
@@ -236,34 +323,68 @@ export const QabuldanOtganCom = () => {
             >
               <option value=''>Ta'lim yo'nalishi</option>
               {
-                  facultyTypes?.length > 0 &&
+                  facultyTypes?.length > 0 ?
                     facultyTypes.map(i => (
                         <option value={i.id} key={i.id}>{i.name}</option>
                     ))
+                      : <p>No data !</p>
               }
             </select>
             <Down className={'Down'} />
           </TalimY>
           <TalimSh>
-            <select name="pets" id="pet-select">
-              <option value="">Ta'lim shakli</option>
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => courseShaklHandler(e.target.value)}
+            >
+                <option value="">Ta'lim shakli</option>
+                {
+                    facultySirtqi.map(i => (
+                        <option value={i.id} key={i.id}>{i.name}</option>
+                    ))
+                }
             </select>
             <Down className={'Down'} />
           </TalimSh>
 
           <TalimT>
-            <select name="pets" id="pet-select">
-              <option value="">Ta'lim tili</option>
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => courseLangHandler(e.target.value)}
+            >
+                <option value="">Ta'lim tili</option>
+                {
+                    courseLang.map(i => (
+                        <option value={i.id} key={i.id}>{ i.id }</option>
+                    ))
+                }
             </select>
             <Down className={'Down'} />
           </TalimT>
           <TalimTu>
-            <select name="pets" id="pet-select">
-              <option value="">To'lov turi</option>
+            <select
+                name="pets"
+                id="pet-select"
+                onChange={(e) => paymentIdHandler(e.target.value)}
+            >
+                <option value="">To'lov turi</option>
+                {
+                    paymentTypes.map(i => (
+                        <option value={i.value} key={i.value}>{i.key}</option>
+                    ))
+                }
             </select>
             <Down className={'Down'} />
           </TalimTu>
         </div>
+            <div style={{position: 'absolute', right: '0', top: '100px'}}>
+                <Button onclick={() => {
+                    setFilter(!filter)
+                    setOpen(false)
+                }} width={'200px'} height={'50px'} size={'20px'} weight={400}>Filter</Button>
+            </div>
         </SendModal>
 
       </Container>
@@ -298,7 +419,12 @@ export const QabuldanOtganCom = () => {
                 data?.length ?
                     data?.map((value, num) => (
                         <Container.Section key={value.id}>
-                            <input className='chcxboxInput' type="checkbox" checked={value.checked} onChange={() => selectOne(value.user.idNumber, value.checked)} />
+                            <input
+                                className='chcxboxInput'
+                                type="checkbox"
+                                onChange={(e) => selectOne(e.target.checked, value.user.id)}
+                                checked={value.checked}
+                            />
                             <Container.Map>
                                 <div>{num+1}</div>
                                 <div>{value.user.idNumber}</div>

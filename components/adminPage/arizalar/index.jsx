@@ -32,13 +32,17 @@ export const ArizalarCom = () => {
 
   const [changeDate, setChangeDate] = useState(false)
 
+  // get applications
+  const [ page, setPage ] = useState(0)
+  const [ search, setSearch ] = useState('')
   useEffect(() => {
     dispatch(getApplicationsFetch({
       fromDate: fromDate.getTime(),
       toDate: toDate.getTime(),
-      page: 0
+      page: page,
+      search: search
     }))
-  }, [changeDate])
+  }, [changeDate, page, search])
 
   useEffect(() => {
     setData(getApplicationData.data?.users?.map((value) => (
@@ -52,23 +56,37 @@ export const ArizalarCom = () => {
 
 
   // all data select
+  const [checkedData, setCheckedData] = useState([])
   const [selectAllState, setSelectAllState] = useState(false)
   const selectAllStates = () => {
     if (selectAllState) {
-      setData(data.map(value => (
+      setData(data?.map(value => (
           {
             ...value,
             checked: false
           }
       )))
+      setCheckedData([])
     } else {
-      setData(data.map(value => (
+      setData(data?.map(value => (
           {
             ...value,
             checked: true
           }
       )))
+      data?.map(i => checkedData.push(i.id))
     }
+  }
+
+  // select one
+  const selectOne = (event, id) => {
+    setData(
+        data.map(i => ({
+          ...i,
+          checked: id === i.id ? !i.checked : i.checked
+        }))
+    )
+    setCheckedData(event ? [...checkedData, id] : checkedData.filter(idd => idd !== id))
   }
 
 
@@ -115,16 +133,6 @@ export const ArizalarCom = () => {
   }, [inView])
 
 
-  const selectOne = (id = false) => {
-
-  }
-
-  const searchFunc = (eventValue) => {
-    setTimeout(() => {
-      dispatch(getAllDataFetch({ payload: 0, query: eventValue, search: true }))
-    }, 1000)
-  }
-
   return (
     <>
       <Container>
@@ -134,7 +142,7 @@ export const ArizalarCom = () => {
       <Container.Top>
         <Container.Search className="nocopy">
             <Search className="search" />
-            <Input radius="8px" bc={"#241F69"} padding={"0 10px 0 50px"} width={"651px"} height={"40px"} size={"20px"} type={"text"} placeholder="search" />
+            <Input onchange={(e) => setSearch(e.target.value)} radius="8px" bc={"#241F69"} padding={"0 10px 0 50px"} width={"651px"} height={"40px"} size={"20px"} type={"text"} placeholder="search" />
         </Container.Search>
         <Container.Nav>
             <Container.Input>
@@ -161,7 +169,7 @@ export const ArizalarCom = () => {
                           <Container.Input>
                             <input
                                 type="checkbox"
-                                onChange={() => selectOne(value.id)}
+                                onChange={(e) => selectOne(e.target.checked, value.id)}
                                 checked={value.checked}
                             />
                           </Container.Input>
@@ -184,8 +192,8 @@ export const ArizalarCom = () => {
 
         <ConHero className='nocopy'>
           <ConHero.Date>
-             <Input bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" />
-             <Input bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" />
+             <Input value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" />
+             <Input value={toDate.toLocaleDateString('en-CA')} onchange={onSetToDate} min="2023-01-01" max="9999-12-31" bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'250px'} type="date" id="start" name="trip-start" />
           </ConHero.Date>
 
           <Button onclick={() => setChangeDate(!changeDate)} mline={"22px"} mwidth={'210px'} msize={'10px'} mheight={"45px"} size={'28px'} width={'511px'} height={"48px"} radius={'10px'} mradius={'10px'} weight="500">Tartiblash</Button>
@@ -202,10 +210,6 @@ export const ArizalarCom = () => {
         <SendSmss className="sendSms"/>
         <input ref={smsRef} type="text" placeholder='t y p i n g ...' />
       </SendModal>
-      {/* {
-        getAllData?.status === 'loading' &&
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}><Loading type={'bars'} color={'#000'} /></div>
-      } */}
     </>
   )
 }

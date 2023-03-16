@@ -1,9 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_GLOBAL} from "../../../globalApi";
 
-export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async ({
-    text = ''
-}) => {
+export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async (payload) => {
     return await fetch(`${API_GLOBAL}v1/sms`, {
         method: 'POST',
         headers: {
@@ -11,8 +9,8 @@ export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async ({
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            text: text,
-            users: []
+            text: payload.text,
+            users: payload.users
         })
     })
         .then(res => res.json())

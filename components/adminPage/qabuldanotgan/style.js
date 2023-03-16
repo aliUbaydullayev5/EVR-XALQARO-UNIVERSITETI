@@ -569,5 +569,42 @@ const AntSelect = styled (Select)`
    font-size: 17px !important;
  }
 `
-export { ConTable,SendModal, AntSelect,SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul,FilterModal, ConExel, ConDate, TalimY, TalimTu }
+
+const SendModalSms=styled(Modal)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  position: relative;
+  height: 300px;
+  padding: 20px;
+  h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    margin: 10px;
+  }
+
+  input{
+    width: 350px;
+    height: 45px;
+    border-radius: 20px;
+    padding: 0 8px 0 35px;
+    background: #295196;
+    font-weight: 500;
+    line-height: 22px;
+    font-size: 18px;
+    color: #ffff;
+  }
+
+  .sendSms{
+    position: absolute;
+    z-index: 2;
+    top: 98px;
+    left: 33px;
+  }
+`
+
+export { ConTable,SendModal, SendModalSms, AntSelect,SelectSms, ContainerSort,Agent,TalimT, TalimSh, ConSelect, ContainerRith, ConW, Conpul,FilterModal, ConExel, ConDate, TalimY, TalimTu }
 export default Container
