@@ -1,15 +1,4 @@
-
 import ArizalarCom from "../../../components/adminPage/arizalar/index.jsx";
-import AdminRootToken from "../../../components/adminPage/outlet/index.jsx";
-import RootAdmin from "../../../components/adminPage/RootLogo/index.jsx"
-const arzalar = () => {
-  return (
-    <RootAdmin>
-      <AdminRootToken>
-      <ArizalarCom />
-      </AdminRootToken>
-    </RootAdmin>
-  )
-}
-
+import AdminRoot from "../../../components/adminPage/AdminRoot";
+const arzalar = () => <AdminRoot><ArizalarCom /></AdminRoot>
 export default arzalar

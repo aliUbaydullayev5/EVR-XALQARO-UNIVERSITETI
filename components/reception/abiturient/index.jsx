@@ -190,10 +190,10 @@ export const AbiturientQabul = () => {
 	useEffect(() => {
 		receptionSmsVerify?.status === 'success' && setModalHidden(false)
 		receptionSmsVerify?.status === 'error' &&
-		dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
+			dispatch(startMessage({ time: 3, message: 'Sms no togri' }))
 	}, [receptionSmsVerify])
 
-	useEffect(()=> {
+	useEffect(() => {
 		dispatch(resetSmsVerify())
 		setSmsInput('')
 	}, [allData.phoneNumber])
@@ -383,7 +383,7 @@ export const AbiturientQabul = () => {
 				</div>
 
 				<IconBox className='row7'>
-					<select name="cars" id="cars"style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
+					<select name="cars" id="cars" style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
 						{
 							getDirectType.length && getDirectType?.map((value) => (
 								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>

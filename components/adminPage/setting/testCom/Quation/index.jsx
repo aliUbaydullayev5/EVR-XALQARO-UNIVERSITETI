@@ -159,7 +159,7 @@ export const QuationCom = () => {
 
             <div>
               <label for="html">
-                <Input onchange={(e) => setName({ ...name, answers4NameRu: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'D'} />
+                <Input onchange={(e) => setName({ ...name, answers4NameUz: e.target.value })} type="text" width={'300px'} height={'40px'} padding={'0px 10px'} size={'17px'} radius={'10px'} placeholder={'D'} />
               </label>
             </div>
           </form>

@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import { useRouter } from "next/router.js";
 import React, { useState } from "react";
 import { useEffect } from "react";

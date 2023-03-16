@@ -1,18 +1,4 @@
-
-
-import AdminRootToken from "../../../components/adminPage/outlet/index.jsx"
 import QabuldanOtganCom from "../../../components/adminPage/qabuldanotgan/index.jsx"
-import RootAdmin from "../../../components/adminPage/RootLogo/index.jsx"
-export const QabuldanOtganlar = () => {
-  return (
-
-<RootAdmin>
-    <AdminRootToken>
-      <QabuldanOtganCom />
-  </AdminRootToken>
-</RootAdmin>
-
-  )
-}
-
+import AdminRoot from "../../../components/adminPage/AdminRoot";
+export const QabuldanOtganlar = () => <AdminRoot><QabuldanOtganCom/></AdminRoot>
 export default QabuldanOtganlar

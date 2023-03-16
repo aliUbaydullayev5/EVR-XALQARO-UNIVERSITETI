@@ -1,12 +1,4 @@
-import React from 'react'
 import AgentComponent from '../../../components/adminPage/agent/index.jsx'
-import RootAdmin from "../../../components/adminPage/RootLogo/index.jsx"
-
-export const AgentPage = () => {
-  return (
-    <RootAdmin>
-      <AgentComponent/>
-    </RootAdmin>
-  )
-}
+import AdminRoot from "../../../components/adminPage/AdminRoot";
+export const AgentPage = () => <AdminRoot><AgentComponent/></AdminRoot>
 export default AgentPage

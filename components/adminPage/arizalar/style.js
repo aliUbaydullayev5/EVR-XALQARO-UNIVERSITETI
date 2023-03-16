@@ -33,7 +33,6 @@ Container.Map=styled.div`
  display: flex;
  flex-direction: column;
  gap: 12px;
-
 `
 
 Container.Search=styled.div`
@@ -136,7 +135,6 @@ Container.Nav = styled.div`
   width: 100%;
   gap: 6px;
   height: 40px;
-
 `
 
 // right

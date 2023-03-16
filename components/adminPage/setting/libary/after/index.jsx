@@ -25,7 +25,7 @@ import Image from "next/image";
 
 export const AfterComponet = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState();
+  const [name, setName] = useState({ id: 0, name: "", });
   const [dataList, setDataList] = useState([]);
 
   const [open, setOpen] = useState(false)
@@ -38,7 +38,7 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorCreate.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
-        setName(''));
+        setName({ ...name, nameUz: "", ...name, nameRu: "", }));
     else if (authorCreate.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
@@ -55,7 +55,7 @@ export const AfterComponet = () => {
   const addFacultet = () =>
     dispatch(authorCreatePost({
       id: 0,
-      name: name,
+      name: name.name,
     }));
 
   const findDeleteID = (deleteId) => {
@@ -86,6 +86,7 @@ export const AfterComponet = () => {
   useEffect(() => {
     if (authorGet.status === "success") setDataList(authorGet.data);
   }, [authorGet]);
+<<<<<<<<< Temporary merge branch 1
 
   const modalAdd = () => {
     setOpen(true)

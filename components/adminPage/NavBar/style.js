@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  padding: 20px 80px;
   max-width: 1440px;
-  margin: 0 auto;
+  padding: 30px;
+  
 `
 Container.Logo = styled.div`
   display: flex;
@@ -26,37 +26,34 @@ Container.Logo = styled.div`
 const ConText = styled.div`
   margin-left: 20px;
   :hover {
-  transform: scale(1.02);
-  cursor: pointer;
-}
->p{
-  font-family: 'Bebas Neue';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 64px;
-  align-items: center;
-  color: #FFFFFF;
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+  > p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 64px;
+    align-items: center;
+    color: #FFFFFF;
     @media only screen and (max-width: 600px) {
-      font-family: 'Bebas Neue';
       font-style: normal;
       font-weight: 500;
       font-size: 54px;
-       line-height: 54px;
-       align-items: center;
-       color: #FFFFFF;
-   }
-      @media only screen and (max-width: 550px) {
-      font-family: 'Bebas Neue';
+      line-height: 54px;
+      align-items: center;
+      color: #FFFFFF;
+    }
+    @media only screen and (max-width: 550px) {
       font-style: normal;
       font-weight: 500;
       font-size: 44px;
-       line-height: 44px;
-       align-items: center;
-       color: #FFFFFF;
+      line-height: 44px;
+      align-items: center;
+      color: #FFFFFF;
 
-   }
-}
-`
+    }
+  }
+`;
 export { ConText }
 export default Container

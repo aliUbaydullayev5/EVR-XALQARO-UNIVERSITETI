@@ -4,15 +4,12 @@ import { useEffect } from "react"
 
 const AdminRootToken = ({ children }) => {
     const query = useRouter()
-    
-    
 
     useEffect(() => {
         if (!localStorage.getItem('admin_AccessToken')) {
             query.push('/admin')
         }
     }, [])
-
 
     const [securety, setSecurety] = useState(false)
 
@@ -21,13 +18,7 @@ const AdminRootToken = ({ children }) => {
         else setSecurety(false)
     }, [])
 
-    return (
-        <>
-            {
-                securety ? <>{children}</> : <div></div>
-            }
-        </>
-    )
+    return securety ? <>{children}</> : <div></div>
 }
 
 export default AdminRootToken

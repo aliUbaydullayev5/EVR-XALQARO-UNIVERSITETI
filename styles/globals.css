@@ -403,8 +403,14 @@ label:before {
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
   select option {
     padding: 8px 5px;
   }
+}
+
+
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
+  background: #000c17;
+  border-radius: 15px;
 }
