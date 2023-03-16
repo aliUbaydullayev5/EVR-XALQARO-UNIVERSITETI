@@ -1,4 +1,4 @@
-import SolveTheTestComponent from "../../../components/testTopshirish/solveTheTestComponent"
+import SolveTheTestComponent from "../../../components/testTopshirish/solveTheTestComponent/index.jsx"
 
 import Root from "../../../root";
 
