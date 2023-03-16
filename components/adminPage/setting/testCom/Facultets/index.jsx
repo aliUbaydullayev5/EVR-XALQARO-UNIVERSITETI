@@ -86,6 +86,46 @@ const FacultetsImthonCom = () => {
     }
   }, [facultetsselectAdd, facultetsdeleteId])
 
+  const changeAllDataFunc = ({id, value, type}) => {
+    // const fakeData = data;
+    // fakeData[type] = value;
+    // setData(fakeData);
+    // setData({ ...data, [type]: value });
+    // console.log({ id, value, type }, 'dsadasdasd')
+    // setData(
+    //     data?.map((mainValue) => ({
+    //       ...value,
+    //       [type] : id === mainValue.id ? value : mainValue[type]
+    //     }))
+    // )
+  }
+
+
+  // value.faculty?.name
+  // value?.firstExamSubject?.name
+  // value?.secondExamSubject?.name
+  const changeEditFuncFaculty = ({id, value}) => {
+    setData(data?.map((mainValue)=> ({
+      ...value,
+      faculty: id === mainValue.id ? {...mainValue.faculty, name: value} : mainValue.faculty
+    })))
+  }
+
+  const changeEditFuncfirstExamSubject = ({id, value}) => {
+    console.log({id, value}, 'dsadassad')
+    setData(data?.map((value)=> ({
+      ...value,
+      checkInput: id === value.id ? !value.checkInput : value.checkInput
+    })))
+  }
+  const changeEditFuncsecondExamSubject = ({id, value}) => {
+    console.log({id, value}, 'dsadassad')
+    // setData(data?.map((value)=> ({
+    //   ...value,
+    //   checkInput: id === value.id ? !value.checkInput : value.checkInput
+    // })))
+  }
+
 
   const addFunc = () => {
     dispatch(facultetsselectAddPost(
@@ -100,18 +140,11 @@ const FacultetsImthonCom = () => {
     ))
   }
   const findEditID = (id) => {
-    setData(data?.map((value) =>  ({
-      id: value.id,
-      faculty: value.faculty?.name,
-      firstExamSubject: value.firstExamSubject,
-      secondExamSubject: value.secondExamSubject,
-      firstExamSubjectBall: value.firstExamSubjectBall,
-      secondExamSubjectBall: value.secondExamSubjectBall,
-      checkInput: id === value.id ? (!value.id || true) : false
+    setData(data?.map((value)=> ({
+      ...value,
+      checkInput: id === value.id ? !value.checkInput : value.checkInput
     })))
   }
-
-  console.log(data,'data');
 
   const editPush = (id, i) => dispatch(facultetsselectAddPost({
     id: id,
@@ -190,59 +223,46 @@ const FacultetsImthonCom = () => {
               return (
                 <ConTable key={value?.id}>
                   <div className='row'>
-                    <div className='colum'>
-                      {value?.checkInput ?
-                        <Input size={'17px'} radius={'5px'} height={'50px'} value={value.faculty} onchange={(e) => setData(data.map((v) => ({
-                          id: v.id,
-                          faculty: value.id === v.id ? e.target.value : v.faculty?.name,
-                          firstExamSubject: v.firstExamSubject,
-                          secondExamSubject: v.secondExamSubject,
-                          secondExamSubjectBall: v.secondExamSubjectBall,
-                          checkInput: v.checkInput
-                        })))} />
-                        :
-                        <>
-                          {value.faculty?.name || '9998'}
-                        </>
-                      }
-                    </div>
-                    <div className='colum'>
-                      {value?.checkInput ?
-                        <Input size={'17px'} radius={'5px'} height={'50px'} value={value.firstExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                          id: v.id,
-                          faculty: v.faculty?.name,
-                          firstExamSubject: value.id === v.id ? e.target.value : v.firstExamSubject?.name,
-                          secondExamSubject: v.secondExamSubject,
-                          secondExamSubjectBall: v.secondExamSubjectBall,
-                          checkInput: v.checkInput
-                        })))} />
-                        :
-                        <>
-                          {value?.firstExamSubject?.name}
-                        </>}
-                    </div>
 
                     <div className='colum'>
                       {value?.checkInput ?
-                        <Input size={'17px'} radius={'5px'} height={'50px'} value={value.secondExamSubject?.name} onchange={(e) => setData(data.map((v) => ({
-                          id: v.id,
-                          faculty: v.faculty?.name,
-                          firstExamSubject: v.firstExamSubject,
-                          firstExamSubject: value.id === v.id ? e.target.value : v.secondExamSubject?.name,
-                          secondExamSubject: v.secondExamSubjectBall,
-                          checkInput: v.checkInput
-                        })))} />
+                        <Input
+                            size={'17px'}
+                            radius={'5px'}
+                            height={'50px'}
+                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value})}
+                            value={value.faculty.name}
+                        />
                         :
                         <>
-                          {value?.secondExamSubject?.name || '0'}
-                        </>}
+                          {value.faculty?.name}
+                        </>
+                      }
                     </div>
+
+                    {/*<div className='colum'>*/}
+                    {/*  {value?.checkInput ?*/}
+                    {/*    <Input size={'17px'} radius={'5px'} height={'50px'} onchange={(e)=> changeEditFuncfirstExamSubject({id: value.id, value: e.target.value})} />*/}
+                    {/*    :*/}
+                    {/*    <>*/}
+                    {/*      {value?.firstExamSubject?.name}*/}
+                    {/*    </>*/}
+                    {/*  }*/}
+                    {/*</div>*/}
+                    {/*<div className='colum'>*/}
+                    {/*  {value?.checkInput ?*/}
+                    {/*    <Input size={'17px'} radius={'5px'} height={'50px'} onchange={(e)=> changeEditFuncsecondExamSubject({id: value.id, value: e.target.value})} />*/}
+                    {/*    :*/}
+                    {/*    <>*/}
+                    {/*      {value?.secondExamSubject?.name}*/}
+                    {/*    </>}*/}
+                    {/*</div>*/}
                     <div className='colum'>
                       <div className="action">
                         {value?.checkInput ?
                           <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                           :
-                          <Button onclick={() => findEditID(value.id,index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Edit/></Button>
+                          <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Edit/></Button>
                         }
                       </div>
                     </div>
