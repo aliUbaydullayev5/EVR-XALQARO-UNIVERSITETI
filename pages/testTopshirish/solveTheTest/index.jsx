@@ -1,4 +1,5 @@
-import SolveTheTestComponent from "../../../components/testTopshirish/solveTheTestComponent";
+import SolveTheTestComponent from "../../../components/testTopshirish/solveTheTestComponent"
+
 import Root from "../../../root";
 
 const SolveTheTest = () => {
