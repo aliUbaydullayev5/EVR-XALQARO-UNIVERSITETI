@@ -3,59 +3,50 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
-import Container, { AntSelect, ConTable } from './style.js'
+import Container, {Antmodal, AntSelect, ConTable, TextStart} from './style.js'
 import facultyTypeUz, { facultySirtqi } from "../../../../Mock/facultyType/index.js"
 import { getfacultyIdfetch } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultet/index.js'
 import { postaFacultyTypeAdd } from '../../../../../redux/sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import {Antmodal} from "../../libary/bookLaunguage/style";
 import Plus from "../../../../../assets/icons/plus.svg";
-import Edit from "../../../../../assets/icons/edit.svg";
-import Trash from "../../../../../assets/icons/trash.svg";
 
 
 export const TalimYunalishTypeAddCom = () => {
-
   const dispatch = useDispatch()
-  const [open, setOpen] = useState(false);
-  const [dataList, setDataList] = useState([])
-  const [data, setData] = useState([])
 
-  const [select, setSelect] = useState({
+    const [open, setOpen] = useState(false);
+    const [dataList, setDataList] = useState([])
+    const [data, setData] = useState([])
+    const [select, setSelect] = useState({
     studyLanguage: '',
-    educationType: ''
+    educationType: '',
   })
 
-  const [datapush, setDatapush] = useState({
-    contractPrice: '',
-    admissionStudentCount: '',
-    studyLanguage: '',
-    educationType: ''
-  })
+   const [datapush, setDatapush] = useState({
+        contractPrice: '',
+        admissionStudentCount: '',
+        studyLanguage: '',
+        educationType: ''
+    })
+
 
   const facultytypesId = useSelector((store) => store.facultytypesId)
   const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent)
   const facultyTypeAdd = useSelector((store) => store.facultyTypeAdd)
-  const getStudyTypes = useSelector((store) => store.getStudyTypes)
 
 
   useEffect(() => {
     if ((getStudyTypesAbuturent.status === 'success')) setDataList(getStudyTypesAbuturent.data)
   }, [getStudyTypesAbuturent])
 
-  // useEffect(() => {
-  //   setData(facultytypesId.data)
-  // }, [])
+  useEffect(() => {
+    setData(facultytypesId.data)
+  }, [facultytypesId.data])
 
-
-
-  const handelChangeId = (e) => {
-    dispatch(getfacultyIdfetch({ id: e }))
-  }
 
   useEffect(() => {
-    dispatch(getfacultyIdfetch({ id: 5 }))
+    dispatch(getfacultyIdfetch({ id: 105 }))
   }, [getfacultyIdfetch])
 
 
@@ -71,22 +62,20 @@ export const TalimYunalishTypeAddCom = () => {
   }
 
   const findEditID = (id) => {
-    setData(
-      data?.map((value) => ({
-        id: value.id,
-        contractPrice: value.contractPrice,
-        admissionStudentCount: value.admissionStudentCount,
-        studyLanguage: value.studyLanguage,
-        educationType: value.educationType,
-        checkInput: id === value.id ? (!value.id || true) : false
-      })))
+    setData(data?.map((value) => ({
+          id: value.id,
+          contractPrice: value.contractPrice,
+          admissionStudentCount: value.admissionStudentCount,
+          studyLanguage: value.studyLanguage,
+          educationType: value.educationType,
+          checkInput: id === value.id ? (!value.id || true) : false
+        })))
   }
-  console.log(facultyTypeAdd,'facultyTypeAdd')
-  const editPush = (id) => dispatch(postaFacultyTypeAdd({
+  const editPush = (id,i) => dispatch(postaFacultyTypeAdd({
     id: id,
     facultytypesId: facultytypesId.id,
-    contractPrice: data[0]?.contractPrice,
-    admissionStudentCount: data[0]?.admissionStudentCount,
+    contractPrice: data[i]?.contractPrice,
+    admissionStudentCount: data[i]?.admissionStudentCount,
     studyLanguage: select.studyLanguage,
     educationType: select.educationType,
   }));
@@ -94,20 +83,20 @@ export const TalimYunalishTypeAddCom = () => {
   useEffect(() => {
     if (facultyTypeAdd.status === 'success') {
       setData(
-        data?.map((value) => ({
-          id: value.id,
-          contractPrice: value.contractPrice,
-          admissionStudentCount: value.admissionStudentCount,
-          studyLanguage: value.studyLanguage,
-          educationType: value.educationType,
-          checkInput: false
-        })))}
+          data?.map((value) => ({
+            id: value.id,
+            contractPrice: value.contractPrice,
+            admissionStudentCount: value.admissionStudentCount,
+            studyLanguage: value.studyLanguage,
+            educationType: value.educationType,
+            checkInput: false
+          })))}
   }, [facultyTypeAdd])
 
-  console.log(data,'data')
+
 
   useEffect(() => {
-    if (facultyTypeAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakunlandi', type: 'success' }))
+    if (facultyTypeAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakunlandi', type: 'success' })) && setDatapush({ ...datapush, contractPrice: '', admissionStudentCount: '', studyLanguage: '', educationType :''})
     else if (facultyTypeAdd.status === 'notFound') dispatch(startMessage({ time: 3, message: 'Hatolik Bor Qayta tekshirib ko`ring !!!' }))
     setTimeout(() => { dispatch(reset()) }, 500);
   }, [facultyTypeAdd])
@@ -119,24 +108,41 @@ export const TalimYunalishTypeAddCom = () => {
       <>
       <Container>
         <Container.Bottom>
-          <h1>Facultet Turlari </h1>
-          <AntSelect
-              style={{ width: '500px', marginBottom: '20px' }}
-              placeholder='Facultet Turilar'
-              optionFilterProp="children"
-              options={dataList?.map((value) => ({
-                value: value.id,
-                label: value.nameUz,
-              })) || []}
-              onChange={(e) => handelChangeId(e)}
-          />
-
+            <TextStart>
+                <h1>Facultet Turlari </h1>
+                <br/>
+                <div>
+                    <AntSelect
+                        style={{ width: '500px', marginBottom: '20px' }}
+                        placeholder='Facultet Turilar'
+                        optionFilterProp="children"
+                        options={dataList?.map((value) => ({
+                            value: value.id,
+                            label: value.nameUz,
+                        })) || []}
+                        onChange={(e) =>  dispatch(getfacultyIdfetch({ id: e }))}
+                    />
+                </div>
+            </TextStart>
           <Antmodal open={open} onOk={pushFunc} onCancel={handleCancel}>
+              <AntSelect
+                  style={{ width: '500px', marginBottom: '20px' }}
+                  placeholder='Facultet Turilar'
+                  optionFilterProp="children"
+                  options={dataList?.map((value) => ({
+                      value: value.id,
+                      label: value.nameUz,
+                  })) || []}
+                  onChange={(e) =>  dispatch(getfacultyIdfetch({ id: e }))}
+              />
             <Container.Add>
               <div className='row'>
-                <div > {facultytypesId.id}</div>
-                <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, contractPrice: e.target.value }))} type={'Number'} width={'200px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Contract summasi qo`shish'} /></div>
-                <div className='columAdd'>  <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, admissionStudentCount: e.target.value }))} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} /></div>
+                <div className='columAdd'>
+                    <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, contractPrice: e.target.value }))} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} />
+                </div>
+                <div className='columAdd'>
+                    <Input className="inputFaculty" onchange={(e) => (setDatapush({ ...datapush, admissionStudentCount: e.target.value }))} type={'Number'} width={'150px'} height={'50px'} radius={'0px'} size={'14px'} padding={'0px 5px'} placeholder={'Qabul qilish soni'} />
+                </div>
                 <div className='columAdd'>
                   <AntSelect
                       style={{ width: '167px' }}
@@ -160,18 +166,13 @@ export const TalimYunalishTypeAddCom = () => {
                       onChange={(e) => setDatapush({ ...datapush, educationType: e })}
                   />
                 </div>
-                <div className='columAdd'><Button onclick={() => pushFunc()} width={'100px'} height={'50px'} radius={'5px'} size={'16px'} >Add</Button></div>
-                <div className='columAdd'>
-
-                </div>
               </div>
 
             </Container.Add>
-
           </Antmodal>
-          <div onClick={modalAdd}>
+          <Container.AddFaculTypeBtn onClick={modalAdd}>
             <Plus /> &nbsp;   Qo’shish
-          </div>
+          </Container.AddFaculTypeBtn>
         </Container.Bottom>
         <Container.Table>
           <Container.Scrool style={{ overflowY: "scroll" }}>
@@ -185,30 +186,29 @@ export const TalimYunalishTypeAddCom = () => {
                     <div className='colum'>Talim tili</div>
                     <div className='colum'>Ta`lim turi</div>
                     <div className='colum'>Tahrirlash</div>
-                    <div className="colum">Action</div>
                   </div>
                 </Container.Nav>
               </div>
             </Container.Top>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
               {data?.map((value, index) => {
                 return (
                     <ConTable key={value.id}>
-                      <div className="row">
-                        <div>{index + 1}</div>
+                      <div className='row'>
+                        <div >{index + 1}</div>
                         <div className='colum'>
                           {value?.checkInput ?
-                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value?.contractPrice} onchange={(e) => setData(data.map((v) => ({
+                              <Input size={'17px'} radius={'5px'} height={'50px'} value={value.contractPrice} onchange={(e) => setData(data.map((v) => ({
                                 id: v.id,
-                                contractPrice: value.id === v.id ? e.target.value : v?.contractPrice,
-                                admissionStudentCount: v?.admissionStudentCount,
-                                studyLanguage: v?.studyLanguage,
-                                educationType: v?.educationType,
-                                checkInput: v?.checkInput
+                                contractPrice: value.id === v.id ? e.target.value : v.contractPrice,
+                                admissionStudentCount: v.admissionStudentCount,
+                                studyLanguage: v.studyLanguage,
+                                educationType: v.educationType,
+                                checkInput: v.checkInput
                               })))} />
                               :
                               <>
-                                {value?.contractPrice || '9998'}
+                                {value.contractPrice || '9998'}
                               </>
                           }
                         </div>

@@ -1,19 +1,17 @@
-import { useRouter } from 'next/router.js'
-import React from 'react'
-import Button from '../../../generic/Button/index.jsx'
+// import { useRouter } from 'next/router.js'
+// import React from 'react'
+// import Button from '../../../generic/Button/index.jsx'
 
-import Container from './style.js'
+// import Container from './style.js'
 
-export const TalimYunalishType = () => {
-  const  quary = useRouter()
-  return (
-    <Container>
-      <Container.Block>
-  
-       
-      </Container.Block>
-      </Container>
-  )
-}
+// export const TalimYunalishType = () => {
+//   const  quary = useRouter()
+//   return (
+//     <Container>
+//       <Container.Block>
+//       </Container.Block>
+//       </Container>
+//   )
+// }
 
-export default TalimYunalishType
+// export default TalimYunalishType

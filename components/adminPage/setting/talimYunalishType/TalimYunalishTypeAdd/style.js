@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 50px 20px;
+  padding: 20px 20px;
   @media only screen and (max-width: 1000px) {}
 `
 const Antmodal = styled(Modal)`
@@ -39,32 +39,6 @@ Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  >h1{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
-    display: flex;
-    align-items: center;
-    color: #FFFFFF;
-  }
-  >div {
-    display: flex;
-    align-items: center;
-    justify-content:  space-around;
-    width: 150px;
-    height: 50px;
-    background: #221F51;
-    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    cursor: pointer;
-
-    color: #FFFFFF;
-  }
-
 `
 Container.Scrool = styled.div`
   width: 100%;
@@ -133,7 +107,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 300px 300px 300px 300px 300px  200px ;
+    grid-template-columns: 60px 300px 300px 300px 200px  120px;
     padding-left: 15px;
     background: #241F69;
     border-radius: 5px;
@@ -150,11 +124,9 @@ const ConTable = styled.div`
     padding-right: 10px;
     >button {
       background: #241F69;  ;
-    }
-
-  }
-
+    } }
 `
+
 Container.Nav = styled.div`
   display: grid;
   gap: 10px;
@@ -171,7 +143,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 300px 300px 300px 300px 300px  200px ;
+    grid-template-columns: 60px 300px 300px 300px 200px  120px;
     padding-left: 15px;
     background: #221F51;
     border-radius: 5px;
@@ -215,6 +187,7 @@ const AntSelect = styled(Select)`
   .ant-select-selection-search-input{
     display: none !important;
   }
+
   .ant-select-selection-placeholder{
     display: flex;
     align-items: center;
@@ -235,8 +208,34 @@ const AntSelect = styled(Select)`
   border-radius: 0 !important;
 }
 `
+const TextStart = styled.div`
+>h1{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+`
 
-export { ConTable, Antmodal ,AntSelect}
+Container.AddFaculTypeBtn =styled.div`
+  display: flex;
+  align-items: center;
+  justify-content:  space-around;
+  width: 150px;
+  height: 50px;
+  background: #221F51;
+  box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #FFFFFF;
+`
+export { ConTable, Antmodal ,AntSelect,TextStart}
 export default Container
 
 

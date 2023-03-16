@@ -39,7 +39,7 @@ const facultetsselectAdd = createSlice({
             }
             else if (payload.success === false) {
                 state.status = 'notFound'
-                state.message = 'Not Found Edication Type'
+                state.message = payload.errors[0].errorMsg
             }
         },
         [facultetsselectAddPost.rejected]: (state) => {

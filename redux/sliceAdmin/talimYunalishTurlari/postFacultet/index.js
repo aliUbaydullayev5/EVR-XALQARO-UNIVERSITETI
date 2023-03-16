@@ -19,7 +19,7 @@ const facultytypesId = createSlice({
     name: 'facultytypesId',
     initialState: {
         status: null,
-        data: {},
+        data: [],
         message: '',
         id: null,
     },
