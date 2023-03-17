@@ -37,7 +37,7 @@ Container.Navbar = styled.div`
 `
 Container.Menu = styled.div`
   display: grid;
-  grid-template-columns: 256px 1fr;
+  grid-template-columns: 280px 1fr;
   height: 100%;
   width: 100%;
   
