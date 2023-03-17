@@ -39,7 +39,8 @@ Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  >h1{
+
+  > h1 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -49,10 +50,11 @@ Container.Bottom = styled.div`
     align-items: center;
     color: #FFFFFF;
   }
-  >div {
+
+  > div {
     display: flex;
     align-items: center;
-    justify-content:  space-around;
+    justify-content: space-around;
     width: 150px;
     height: 50px;
     background: #221F51;
@@ -64,11 +66,10 @@ Container.Bottom = styled.div`
     line-height: 24px;
     align-items: center;
     cursor: pointer;
-
     color: #FFFFFF;
   }
 
-`
+`;
 Container.Scrool = styled.div`
   width: 100%;
   height: 510px !important;

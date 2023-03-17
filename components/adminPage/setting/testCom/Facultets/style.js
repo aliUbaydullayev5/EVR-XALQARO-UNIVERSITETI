@@ -14,11 +14,11 @@ const Container = styled.div`
 
 const AntSelect = styled(Select)`
 .ant-select-selector{
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
   .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
       background-color: transparent !important;
-      border-radius: 0px;
+      border-radius: 0;
   }
   .ant-select-selection-item{
     color: #fff !important;
@@ -27,7 +27,6 @@ const AntSelect = styled(Select)`
     padding: 0 20px !important;
     font-size: 16px !important;
     font-weight: 400 !important;
-    font-family: 'Montserrat' !important;
     @media only screen and (max-width: 1000px) {
       font-size: 16px !important;
       padding: 0 12px !important;
@@ -68,7 +67,6 @@ Container.Scrool = styled.div`
    height: 600px !important;
    overflow-y: scroll;
    padding: 0 10px 0 0;
-   height: 100%;
    display: grid;
   ::-webkit-scrollbar {
     width: 5px;
@@ -77,11 +75,9 @@ Container.Scrool = styled.div`
   /* Track */
   ::-webkit-scrollbar-track {
     width: 10px !important;
-    padding: 0 5px 0 0;
     background: #9a9a9a;
     opacity: 0.5;
     border-radius: 30px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
     transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px !important;
   }
@@ -174,13 +170,10 @@ Container.Btn = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
   line-height: 39px;
-  display: flex;
-  align-items: center;
   text-align: center;
   color: #FFFFFF;
 `
@@ -189,7 +182,6 @@ display: flex;
 justify-content: space-between;
 align-items: center;
  >h1{
- font-family: 'Montserrat';
  font-style: normal;
  font-weight: 500;
  font-size: 36px;

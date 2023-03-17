@@ -99,7 +99,6 @@ useEffect(()=>{
                         </div>
 
                     </Container.Add>
-
                 </Antmodal>
                 <div onClick={modalAdd}>
                     <Plus /> &nbsp;   Qo’shish

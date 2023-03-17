@@ -86,54 +86,32 @@ const FacultetsImthonCom = () => {
     }
   }, [facultetsselectAdd, facultetsdeleteId])
 
-  const changeAllDataFunc = ({id, value, type}) => {
-    // const fakeData = data;
-    // fakeData[type] = value;
-    // setData(fakeData);
-    // setData({ ...data, [type]: value });
-    // console.log({ id, value, type }, 'dsadasdasd')
-    // setData(
-    //     data?.map((mainValue) => ({
-    //       ...value,
-    //       [type] : id === mainValue.id ? value : mainValue[type]
-    //     }))
-    // )
-  }
 
 
-  // value.faculty?.name
-  // value?.firstExamSubject?.name
-  // value?.secondExamSubject?.name
-  const changeEditFuncFaculty = ({id, value}) => {
-    setData(data?.map((mainValue)=> ({
-      ...value,
-      faculty: id === mainValue.id ? {...mainValue.faculty, name: value} : mainValue.faculty
-    })))
+  const changeEditFuncFaculty = ({id, value, first, second}) => {
+    setData(
+        data.map((v) => ({
+          ...v,
+          [first]: id === v.id ? {
+            ...v[first],
+            [second]: value
+          } : {
+            ...v[first]
+          },
+        }))
+    )
+
   }
 
-  const changeEditFuncfirstExamSubject = ({id, value}) => {
-    console.log({id, value}, 'dsadassad')
-    setData(data?.map((value)=> ({
-      ...value,
-      checkInput: id === value.id ? !value.checkInput : value.checkInput
-    })))
-  }
-  const changeEditFuncsecondExamSubject = ({id, value}) => {
-    console.log({id, value}, 'dsadassad')
-    // setData(data?.map((value)=> ({
-    //   ...value,
-    //   checkInput: id === value.id ? !value.checkInput : value.checkInput
-    // })))
-  }
 
 
   const addFunc = () => {
     dispatch(facultetsselectAddPost(
       {
         id: 0,
-        facultyId: facul.facultet,
-        firstExamSubjectId: facul.firstExamSubjectId,
-        secondExamSubjectId: facul.secondExamSubjectId,
+        faculty: facul.facultet,
+        firstExamSubject: facul.firstExamSubjectId,
+        secondExamSubject: facul.secondExamSubjectId,
         firstExamSubjectBall: facul.firstExamSubjectBall,
         secondExamSubjectBall: facul.secondExamSubjectBall,
       }
@@ -142,21 +120,21 @@ const FacultetsImthonCom = () => {
   const findEditID = (id) => {
     setData(data?.map((value)=> ({
       ...value,
-      checkInput: id === value.id ? !value.checkInput : value.checkInput
+      checkInput: id === value.id ? !value.checkInput : false
     })))
   }
 
   const editPush = (id, i) => dispatch(facultetsselectAddPost({
     id: id,
-    faculty: data[i]?.faculty,
-    firstExamSubject: data[i]?.firstExamSubject,
-    secondExamSubject: data[i]?.secondExamSubject,
+    faculty: data[i]?.faculty?.id,
+    firstExamSubject: data[i]?.firstExamSubject?.name,
+    secondExamSubject: data[i]?.secondExamSubject?.name,
+
   }));
   const modalAdd = () => setOpen(true);
   return (
-    <Container>
-
-      <Container.Text>
+      <Container>
+       <Container.Text>
         <h1>Facultet Imthon Fanlar</h1>
         <Antmodal open={open} onOk={() => addFunc()}  onCancel={handleCancel}>
           <Container.Add>
@@ -223,46 +201,60 @@ const FacultetsImthonCom = () => {
               return (
                 <ConTable key={value?.id}>
                   <div className='row'>
+                    <div className='colum'>
+                        <Input
+                            padding={"0 0px"}
+                            size={'17px'}
+                            height={'40px'}
+                            width={'280px'}
+                            bc={'#241F69'}
+                            radius={'0px'}
+                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value, first: 'faculty', second: 'name'})}
+                            value={value.faculty.name}
+                            disabled={!value?.checkInput}
+                        />
+
+                    </div>
 
                     <div className='colum'>
                       {value?.checkInput ?
                         <Input
                             size={'17px'}
-                            radius={'5px'}
-                            height={'50px'}
-                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value})}
-                            value={value.faculty.name}
+                            height={'40px'}
+                            width={'180px'}
+                            bc={'#241F69'}
+                            radius={'0px'}
+                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value, first: 'firstExamSubject', second: 'name'})}
+                            value={value?.firstExamSubject?.name}
                         />
                         :
                         <>
-                          {value.faculty?.name}
+                          {value?.firstExamSubject?.name}
                         </>
                       }
                     </div>
-
-                    {/*<div className='colum'>*/}
-                    {/*  {value?.checkInput ?*/}
-                    {/*    <Input size={'17px'} radius={'5px'} height={'50px'} onchange={(e)=> changeEditFuncfirstExamSubject({id: value.id, value: e.target.value})} />*/}
-                    {/*    :*/}
-                    {/*    <>*/}
-                    {/*      {value?.firstExamSubject?.name}*/}
-                    {/*    </>*/}
-                    {/*  }*/}
-                    {/*</div>*/}
-                    {/*<div className='colum'>*/}
-                    {/*  {value?.checkInput ?*/}
-                    {/*    <Input size={'17px'} radius={'5px'} height={'50px'} onchange={(e)=> changeEditFuncsecondExamSubject({id: value.id, value: e.target.value})} />*/}
-                    {/*    :*/}
-                    {/*    <>*/}
-                    {/*      {value?.secondExamSubject?.name}*/}
-                    {/*    </>}*/}
-                    {/*</div>*/}
+                    <div className='colum'>
+                      {value?.checkInput ?
+                        <Input
+                            size={'17px'}
+                            height={'40px'}
+                            width={'180px'}
+                            bc={'#241F69'}
+                            radius={'0px'}
+                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value, first: 'secondExamSubject', second: 'name'})}
+                            value={value?.secondExamSubject?.name}
+                        />
+                        :
+                        <>
+                          {value?.secondExamSubject?.name}
+                        </>}
+                    </div>
                     <div className='colum'>
                       <div className="action">
                         {value?.checkInput ?
-                          <Button onclick={() => editPush(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
+                          <Button onclick={() => editPush(value.id,index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                           :
-                          <Button onclick={() => findEditID(value.id)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Edit/></Button>
+                          <Button onclick={() => findEditID(value.id )} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}><Edit/></Button>
                         }
                       </div>
                     </div>

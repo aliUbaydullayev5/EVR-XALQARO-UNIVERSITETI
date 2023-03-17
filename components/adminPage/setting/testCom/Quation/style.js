@@ -1,15 +1,30 @@
 import styled from "styled-components";
+
+const Wrapper =styled.div`
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  >h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+`
 const Container = styled.div`
  width: 100%;
  display: grid; 
- padding: 0px 40px;
+ padding: 0 40px;
  gap: 10px;
  background: rgba(34, 31, 81, 0.95);
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
-  width: 100%;
   height: 530px;
-  width: 100%;
+  
+
  .btneEnd {
   display: flex;
   justify-content: end;
@@ -53,7 +68,7 @@ const QuationUz = styled.div`
 `
 const QuationRu = styled.div`
   background: rgba(34, 31, 81, 0.95);
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   width: 470px;
   height: 480px;
@@ -68,5 +83,5 @@ const QuationRu = styled.div`
 
 `
 
-export { QuationUz }
+export { QuationUz ,Wrapper}
 export default Container
