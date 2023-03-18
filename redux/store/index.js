@@ -61,6 +61,8 @@ import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
 import solveTest from '../slices/solveTheTest'
 import getTestQuestion from '../slices/getTestQuestion'
+import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
+
 
 export default configureStore({
         reducer: {
@@ -125,6 +127,7 @@ export default configureStore({
                 bookDeleteId,
                 bookGet,
                 solveTest,
-                getTestQuestion
+                getTestQuestion,
+                xarajatlar
         },
 });

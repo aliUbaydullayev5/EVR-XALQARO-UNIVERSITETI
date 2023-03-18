@@ -10,6 +10,7 @@
     "export": "npm run build && next export -o _static"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.1",
@@ -19,6 +20,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
+    "react-intersection-observer": "^9.4.3",
     "react-phone-number-input": "^3.2.16",
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
