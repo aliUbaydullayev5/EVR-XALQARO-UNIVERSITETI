@@ -91,11 +91,12 @@ export const AbiturientQabul = () => {
 		changeAllDataFunc({type: by, value: fileId})
 		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
 		if(status === 'error') dispatch(startMessage({time: 2, message}))
-		console.log(fileId, by, status, '======', message, 'dsadasdas')
+
 	}, [status])
 
 
 	useEffect(() => changeAllDataFunc({ type: 'studyType', value: 'BACHELOR' }), []);
+
 	const checkAllInputs = () => {
 		const result = checkAllInputs2({ allData });
 		if (result?.status) return true;
@@ -382,7 +383,7 @@ export const AbiturientQabul = () => {
 				</div>
 
 				<IconBox className='row7'>
-					<select name="cars" id="cars" style={{ width }} onChange={(e) => selectDirectFunc({ type: 'facultyId', value: e.target.value })} >
+					<select name="cars" id="cars" style={{width}} onChange={(e) => selectDirectFunc({type: 'facultyId', value: e.target.value})} >
 						{
 							getDirectType.length && getDirectType?.map((value) => (
 								<option id={value.id} value={value.id} selected={value.name === 'OQISH FAKULTETINI TALLANG'} disabled={value.name === 'OQISH FAKULTETINI TALLANG'} >{value.name}</option>
@@ -429,7 +430,7 @@ export const AbiturientQabul = () => {
 					</div>
 				</div>
 				<IconBox className='row8'>
-					<select name="cars" id="cars" value={allData.studyLanguage} style={{width}} onChange={(e) => selectLanguageFunc({ type: 'studyLanguage', value: e.target.value })}  >
+					<select name="cars" id="cars" value={allData.studyLanguage} style={{ width }} onChange={(e) => selectLanguageFunc({ type: 'studyLanguage', value: e.target.value })}  >
 						{
 							getFacultyLanguage?.data.length && getFacultyLanguage?.data?.map((value) => (
 								<option selected={value === 'OQISH TILLINI TANLANG'} disabled={value === 'OQISH TILLINI TANLANG'} id={value} value={value} >{value}</option>

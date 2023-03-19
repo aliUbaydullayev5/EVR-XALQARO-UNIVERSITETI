@@ -22,16 +22,15 @@ const SolveTheTestComponent = () => {
         dispatch(solveTestFetch())
         dispatch(getTestQuestionFetch({subjectId: '9', score: '2.1'}))
     }, [])
-
+    console.log(solveTest.status,'solveTest');
     return(
         <Container>
             <Container.Top className={'nocopy'}>
                 Test &nbsp;&nbsp;&nbsp;
                 {
-                    solveTest.status === 'success' ?
+                    solveTest.status === 'success' &&
                         <p>Otish Balli {solveTest?.data?.examInfo?.entranceBall}</p>
-                        :
-                        ''
+                        
                 }
 
             </Container.Top>

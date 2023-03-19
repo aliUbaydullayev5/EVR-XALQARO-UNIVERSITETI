@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Container, { QuationUz } from './style.js'
+import Container, {QuationUz, Wrapper} from './style.js'
 import { Button, Input } from '../../../../generic/index.jsx';
 import { AntSelect } from '../Facultets/style.js';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,8 +37,8 @@ export const QuationCom = () => {
   const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
   const quationCreate = useSelector((store) => store.quationCreate)
   useEffect(() => {
-    if (quationCreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Qo`shildi', type: 'success' }), setName())
-    else if (quationCreate.status === 'notFound') dispatch(startMessage({ time: 4, message: quationCreate.message.split('_').join(' '), type: 'warning' }), setName({}))
+    if (quationCreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Qo`shildi', type: 'success' }), setName({ ...name, examSubjectId: '',textUz: '', textRu: '', answers1NameUz: '', answers1NameRu: '', answers2NameUz: '', answers2NameRu: '', answers3NameUz: '', answers3NameRu: '', answers4NameUz: '', answers4NameRu: '', }))
+    else if (quationCreate.status === 'notFound') dispatch(startMessage({ time: 4, message: quationCreate.message.split('_').join(' '), type: 'warning' }), setName({ ...name, examSubjectId: '',textUz: '', textRu: '', answers1NameUz: '', answers1NameRu: '', answers2NameUz: '', answers2NameRu: '', answers3NameUz: '', answers3NameRu: '', answers4NameUz: '', answers4NameRu: '', }))
     setTimeout(() => { dispatch(reset()) }, 500);
   }, [quationCreate]) 
 
@@ -90,6 +90,14 @@ export const QuationCom = () => {
   }
 
   return (
+
+
+  <Wrapper>
+    <>
+
+    <h1>
+      Test Fan Tanlang Va Tanlagan Fanigiz uchun Test savollari kiriting
+    </h1>
     <Container>
 
       <Container.Select>
@@ -105,7 +113,6 @@ export const QuationCom = () => {
         />
       </Container.Select>
       <QuationUz>
-  
         <div>
           <Input onchange={(e) => setName({ ...name, textUz: e.target.value })} width={'400px'} height={'40px'} radius={'10px'} placeholder={'Uzbek tilida kiriting savol'} size={'17px'} padding={'0px 10px'} />
           <form action="radiochec">
@@ -138,7 +145,7 @@ export const QuationCom = () => {
         </div>
 
         <div>
-          <Input onchange={(e) => setName({ ...name, textRu: e.target.value })} width={'400px'} height={'40px'} radius={'10px'} placeholder={'Uzbek tilida kiriting savol'} size={'17px'} padding={'0px 10px'} />
+          <Input onchange={(e) => setName({ ...name, textRu: e.target.value })} width={'400px'} height={'40px'} radius={'10px'} placeholder={'Rus tilida kiriting savol'} size={'17px'} padding={'0px 10px'} />
           <form action="radiochec">
             <div>
               <label for="html">
@@ -170,6 +177,8 @@ export const QuationCom = () => {
         <Button width={'120px'} height={'40px'} radius={'15px'} size={'15px'} onclick={() => addFunc()}>Qoldirish</Button>
       </div>
     </Container>
+    </>
+  </Wrapper>
   )
 }
 

@@ -6,12 +6,17 @@ import Image from "next/image";
 
 const GalleryComponent = () => {
 
+    const [data,setData] =useState([])
     const getGalleryData = useSelector((store)=> store.getGalleryData)
     const dispatch = useDispatch()
 
     useEffect(()=> {
         dispatch(getGalleryDataFetch())
     }, [])
+
+    useEffect(() => {
+        if (getGalleryData.status === 'success') setData(getGalleryData.data)
+    }, [getGalleryData])
     return (
         <Container>
             <Container.Top className="nocopy">Gallery</Container.Top>
@@ -19,8 +24,8 @@ const GalleryComponent = () => {
                 <Container.BottomDesc>
                     <Container.Img>
                         {
-                            getGalleryData?.data.map((value) => (
-                                    <div key={value.id}>
+                            getGalleryData.status === 'success' && data.map((value) => (
+                                    <div key={value?.id}>
                                         <Image
                                             alt="The guitarist in the concert."
                                             src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}

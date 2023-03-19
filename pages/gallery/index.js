@@ -1,5 +1,5 @@
 import React from 'react'
-import GalleryComponent from '../../components/GalleryComponent'
+import GalleryComponent from '../../components/GalleryComponent/index.jsx'
 import Root from '../../root'
 
 export const Gallery = () => {
