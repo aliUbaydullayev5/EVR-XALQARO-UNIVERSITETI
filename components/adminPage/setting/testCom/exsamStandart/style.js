@@ -3,13 +3,12 @@ import styled from "styled-components"
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-  display: flex;
   display: grid;
   max-width: 1440px;
   grid-template-columns: 5fr ;
-  padding: 0px 40px;
+  padding: 0 40px;
  @media only screen and (max-width: 1000px) {
-   padding: 0px 20px;
+   padding: 0 20px;
   }
 
 `
@@ -18,7 +17,6 @@ Container.Scrool = styled.div`
    height: 615px !important;
    overflow-y: scroll;
    padding: 0 15px 0 0;
-   height: 100%;
    display: grid;
    ::-webkit-scrollbar {
       width: 5px;
@@ -26,11 +24,9 @@ Container.Scrool = styled.div`
     }
     ::-webkit-scrollbar-track {
       width: 10px !important;
-      padding: 0 5px 0 0;
       background: #9a9a9a;
       opacity: 0.5;
       border-radius: 30px;
-      transform: matrix(-1, 0, 0, 1, 0, 0);
       transform: matrix(-1, 0, 0, 1, 0, 0);
       padding: 10px !important;
     }

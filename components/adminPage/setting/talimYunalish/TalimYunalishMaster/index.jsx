@@ -3,17 +3,17 @@ import { useRouter } from "next/router.js";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
-import {getTalimYunalishFetch, reset,} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
-import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.jsx";
-import { startMessage } from "../../../../../../redux/slices/message/index.js";
-import Button from "../../../../../generic/Button/index.jsx";
-import Input from "../../../../../generic/Input/index.jsx";
+import { deleteAbuturentFetch } from "../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent";
+import {getTalimYunalishFetch, reset,} from "../../../../../redux/sliceAdmin/talimyunlishAdd";
+import { getStudyTypesFetch } from "../../../../../redux/slices/getStudyTypes";
+import { startMessage } from "../../../../../redux/slices/message";
+import Button from "../../../../generic/Button";
+import Input from "../../../../generic/Input";
 import Container, { ConTable } from "./style.js";
-import {Antmodal} from "../../../libary/bookLaunguage/style";
-import Plus from "../../../../../../assets/icons/plus.svg";
-import Edit from "../../../../../../assets/icons/edit.svg";
-import Trash from "../../../../../../assets/icons/trash.svg";
+import {Antmodal} from "../../libary/bookLaunguage/style";
+import Plus from "../../../../../assets/icons/plus.svg";
+import Edit from "../../../../../assets/icons/edit.svg";
+import Trash from "../../../../../assets/icons/trash.svg";
 
 export const TalimYunlishMaster = () => {
 
@@ -104,11 +104,11 @@ export const TalimYunlishMaster = () => {
   return (
       (<Container>
               <Container.Bottom>
-                  <h1>Facultet Abuturent </h1>
+                  <h1>Facultet Magistratura </h1>
                   <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
                       <Container.Add>
                           <div>
-                              <h1>Facultet Qo`shish Abuturent </h1>
+                              <h1>Facultet Qo`shish Magistratura </h1>
                           </div>
                           <br />
                           <div>

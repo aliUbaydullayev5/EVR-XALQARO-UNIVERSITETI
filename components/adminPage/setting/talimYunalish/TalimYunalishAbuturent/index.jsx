@@ -1,18 +1,18 @@
-import { getTalimYunalishFetch, reset } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
-import { startMessage } from '../../../../../../redux/slices/message/index.js'
-import Button from '../../../../../generic/Button/index.jsx'
-import Input from '../../../../../generic/Input/index.jsx'
+import { getTalimYunalishFetch, reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd'
+import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes'
+import { startMessage } from '../../../../../redux/slices/message'
+import Button from '../../../../generic/Button'
+import Input from '../../../../generic/Input'
 import Container, { ConTable } from './style.js'
-import {Antmodal} from "../../../libary/bookLaunguage/style";
-import Plus from "../../../../../../assets/icons/plus.svg";
-import Edit from "../../../../../../assets/icons/edit.svg";
-import Trash from "../../../../../../assets/icons/trash.svg";
+import {Antmodal} from "../../libary/bookLaunguage/style";
+import Plus from "../../../../../assets/icons/plus.svg";
+import Edit from "../../../../../assets/icons/edit.svg";
+import Trash from "../../../../../assets/icons/trash.svg";
 import {useEffect ,useState} from "react";
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteAbuturentFetch} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent";
-export const TalimYunlishAddCom = () => {
+import {deleteAbuturentFetch} from "../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent";
+export const TalimYunalishAbuturent = () => {
 
   const quary = useRouter();
   const dispatch = useDispatch();
@@ -109,6 +109,7 @@ export const TalimYunlishAddCom = () => {
               <Container.Bottom>
                   <h1>Facultet Abuturent </h1>
                   <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
+
                       <Container.Add>
                           <div>
                               <h1>Facultet Qo`shish Abuturent </h1>
@@ -124,9 +125,12 @@ export const TalimYunlishAddCom = () => {
 
                       </Container.Add>
                   </Antmodal>
+                  {getStudyTypesAbuturent.data.length < 4 ?
                   <div onClick={modalAdd}>
                       <Plus /> &nbsp;   Qo’shish
-                  </div>
+                  </div>:
+                      <></>
+                  }
               </Container.Bottom>
               <Container.Table>
                   <Container.Scrool style={{ overflowY: "scroll" }}>
@@ -213,4 +217,4 @@ export const TalimYunlishAddCom = () => {
   ))
 };
 
-export default TalimYunlishAddCom;
+export default TalimYunalishAbuturent;

@@ -12,7 +12,7 @@ const router =useRouter()
                 <p>Boshqaruv</p>
                 <p>bo’limi</p>
             </div>
-            <div>
+            <div onClick={() => router.push('/admin/decant')}>
                 <p>Dekanat</p>
                 <p>bo’limi</p>
             </div>
