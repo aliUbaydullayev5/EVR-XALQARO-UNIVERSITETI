@@ -409,9 +409,16 @@ label:before {
   }
 }
 
-
-
 :where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
   background: #000c17;
   border-radius: 15px;
+}
+
+
+
+/* antd upload delete icon uchun */
+
+.ant-upload-list-item, .ant-upload-list-item-done{
+  padding: 0 20px !important;
+  color: #fff !important;
 }

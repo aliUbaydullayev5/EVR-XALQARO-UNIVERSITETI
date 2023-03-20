@@ -37,13 +37,11 @@ const Container = styled.div`
   .viewTag{
     height: 2px;
   }
+  
   .filter {
-    
     display: flex;
     align-items: center;
     gap: 20px;
-    
-    
     .iconSection{
       position: relative;
     }
@@ -75,16 +73,13 @@ const Container = styled.div`
         filter: invert(1);
       }
     }
-    
   }
   
-
   .dataArea {
     overflow-y: scroll;
     overflow-x: scroll;
     height: 560px;
   }
-
 `
 
 Container.ButtonLoader = styled.div`
@@ -102,7 +97,6 @@ Container.DataAreaInset = styled.div`
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  
 `
 Container.Section = styled.div`
   background: #241F69;
@@ -138,14 +132,18 @@ Container.Section = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .textWithTitle {
+    width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `
-
 Container.ModanInset = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   .title{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
@@ -160,22 +158,43 @@ Container.ModanInset = styled.div`
     gap: 20px;
     width: 100%;
   }
-  
-  .inputs{
-    
-  }
-
   .upload-list-inline .ant-upload-list-item {
     float: left;
     width: 200px;
     margin-inline-end: 8px;
   }
-
   .ant-upload-rtl.upload-list-inline .ant-upload-list-item {
     float: right;
   }
-  
+  .buttonArea{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
 `
 
+Container.RefreshArea = styled.div`
+  background: #221F51;
+  box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  .refreshIcon{
+    ${({loading})=> loading && 'animation: 1s infinite anim;'}
+  }
+  @keyframes anim {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  
+`
 
 export default Container

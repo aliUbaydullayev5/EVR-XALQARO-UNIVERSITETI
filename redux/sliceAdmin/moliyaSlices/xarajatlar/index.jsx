@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const xarajatlarFetch = createAsyncThunk('authorCreatePost', async (payload) => {
+export const xarajatlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
     console.log(payload.page, 'page')
     return await fetch(`${API_GLOBAL}v1/cost-income/cost?page=${payload.page}&size=20`, {
         method: 'GET',
@@ -20,7 +20,7 @@ export const xarajatlarFetch = createAsyncThunk('authorCreatePost', async (paylo
 
 
 const xarajatlar = createSlice({
-    name: 'authorCreatePost',
+    name: 'xarajatlar',
     initialState: {
         status: null,
         message: '',
@@ -79,13 +79,19 @@ const xarajatlar = createSlice({
         }
     },
     reducers: {
-        addPageCount(state){
-            state.pageCount = state.pageCount+1
+        addPageCount(state) {
+            state.pageCount = state.pageCount + 1
+        },
+        resetPageToZero(state) {
+            state.status = null
+            state.message = ''
+            state.data = []
+            state.pageCount = 0
         }
     }
 })
 
 
 
-export const { addPageCount } = xarajatlar.actions
+export const { addPageCount, resetPageToZero } = xarajatlar.actions
 export default xarajatlar.reducer
