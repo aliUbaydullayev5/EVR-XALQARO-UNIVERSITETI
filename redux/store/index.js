@@ -65,6 +65,11 @@ import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
 import newsreate from "../sliceAdmin/news/create.js"
 import newsAdminGet from "../sliceAdmin/news/getnews.js"
 import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
+import solveTest from '../slices/solveTheTest'
+import getTestQuestion from '../slices/getTestQuestion'
+import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
+
+
 export default configureStore({
         reducer: {
                 firstVerify,

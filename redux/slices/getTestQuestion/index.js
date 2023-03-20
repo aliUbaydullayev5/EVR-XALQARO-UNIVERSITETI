@@ -24,7 +24,6 @@ const getTestQuestion = createSlice({
         },
         [getTestQuestionFetch.fulfilled]: (state, action)=> {
             state.status = 'success'
-            console.log(action.payload, 'payload')
             if(action?.payload?.success){
                 state.pushAnswer = true
                 state.data = action.payload.data

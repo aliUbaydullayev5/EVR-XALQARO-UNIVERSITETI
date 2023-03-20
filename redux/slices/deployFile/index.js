@@ -2,6 +2,7 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import {API_GLOBAL} from "../../../globalApi";
 
 export const deployFileFetch = createAsyncThunk('deployFetchData', async (payload) => {
+    console.log(payload, 'payload')
     let formData = new FormData()
     formData.append('file', payload.file.target.files[0])
     return await fetch(`${API_GLOBAL}v1/attachment/upload`, {
