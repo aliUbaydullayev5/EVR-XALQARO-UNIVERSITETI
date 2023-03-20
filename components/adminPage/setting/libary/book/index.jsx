@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
-import Container, { Antmodal, ModalaContainer,ConTable, Wrapper} from './style.js'
+import Container, {Antmodal, ModalaContainer, ConTable, Wrapper, AntSelect} from './style.js'
 import { authorCreatePost } from '../../../../../redux/sliceAdmin/libary/author/create.js'
 import { authorGetFetch } from '../../../../../redux/sliceAdmin/libary/author/getAuthor.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
@@ -11,7 +11,6 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
-import { AntSelect } from '../../talimYunalishType/TalimYunalishTypeAdd/style.js'
 import { deployFileFetch } from '../../../../../redux/slices/deployFile/index.js'
 import AddImg from "../../../../../assets/icon/addimg.svg"
 import { bookCreatePost } from '../../../../../redux/sliceAdmin/libary/book/create.js'

@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router.js'
 import React, { useEffect } from 'react'
-import { Button, Input } from '../../../../generic/index.jsx'
+import { Button, Input } from '../../../../generic'
 import Container, { Antmodal, AntSelect, ConTable } from './style.js'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import getStudyTypesAbuturent from "../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin"
-import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes/index.jsx'
-import exsamsubjectcreate, { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate/index.js'
+import { getStudyTypesFetch } from '../../../../../redux/slices/getStudyTypes'
+import exsamsubjectcreate, { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate'
 import { getAllexamsubjectFetch } from "../../../../../redux/sliceAdmin/exam/getAllexamsubject"
-import { facultetsselectAddPost } from '../../../../../redux/sliceAdmin/facultets/facultetsAdd/index.js'
-import { facultetsgetAllFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsgetAll/index.js'
-import { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId/index.js'
-import { startMessage } from '../../../../../redux/slices/message/index.js'
-import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
+import { facultetsselectAddPost } from '../../../../../redux/sliceAdmin/facultets/facultetsAdd'
+import { facultetsgetAllFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsgetAll'
+import { facultetsdeleteIdFetch } from '../../../../../redux/sliceAdmin/facultets/facultetsdeleteId'
+import { startMessage } from '../../../../../redux/slices/message'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd'
 import Edit from "../../../../../assets/icons/edit.svg";
 import Trash from "../../../../../assets/icons/trash.svg";
 import Plus from "../../../../../assets/icons/plus.svg";

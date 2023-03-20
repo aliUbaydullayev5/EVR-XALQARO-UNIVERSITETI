@@ -2,61 +2,56 @@ import { useRouter } from 'next/router.js'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate/index.js'
-import Button from '../../../../generic/Button/index.jsx'
-import Input from '../../../../generic/Input/index.jsx'
-import Edit from "../../../../../assets/icons/edit.svg"
-import Trash from "../../../../../assets/icons/trash.svg"
-import Container, {ConTable, Wrapper} from './style.js'
-import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
-import { startMessage } from '../../../../../redux/slices/message/index.js'
-import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import {getAllexamsubjectFetch} from "../../../../../redux/sliceAdmin/exam/getAllexamsubject";
+import { examsubjectCreatePost } from '../../../../../redux/sliceAdmin/exam/exsamsubjectcreate'
+import Button from '../../../../generic/Button'
+import Input from '../../../../generic/Input'
+import Container, { ConTable } from './style.js'
+import { startMessage } from '../../../../../redux/slices/message'
+import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd'
+import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
 import {Antmodal} from "../../libary/bookLaunguage/style";
 import Plus from "../../../../../assets/icons/plus.svg";
-export const ExamSubjectCreate = () => {
+import Edit from "../../../../../assets/icons/edit.svg";
+
+
+export const SubjectMandatory = () => {
     const quary = useRouter()
     const dispatch = useDispatch()
 
-    const [open, setOpen] = useState(false)
     const [name, setName] = useState({
         nameUz: '',
         nameRu: '',
     })
     const [dataList, setDataList] = useState([])
+    const [open, setOpen] = useState(false)
 
-
-    const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
+    const getAllexamsubject = useSelector((store) => store.subjectMandatoryData)
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
-    const examdeleteId = useSelector((store) => store.examdeleteId)
 
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name, nameUz: '', nameRu:''});
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join(' ') }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [examsubjectcreate])
 
-    useEffect(() => {
-        if (examdeleteId.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name,nameUz:'',nameRu:''})
-        else if (examdeleteId.status === 'notFound') dispatch(startMessage({ time: 3, message: examdeleteId.message.split('_').join(' ') }))
-        setTimeout(() => { dispatch(reset()) }, 500);
-    }, [examdeleteId])
 
 
     useEffect(() => {
-        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
-            dispatch(getAllexamsubjectFetch())
-    }, [examsubjectcreate, examdeleteId])
+        if ((examsubjectcreate.status === 'success'))
+            dispatch(subjectMandatoryFetch())
+    }, [examsubjectcreate])
 
-useEffect(()=>{
-    dispatch(getAllexamsubjectFetch())
-},[getAllexamsubjectFetch])
+
     useEffect(() => {
-        if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
+        dispatch(subjectMandatoryFetch())
+    }, [subjectMandatoryFetch])
+
+    useEffect(() => {
+        setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
-    console.log(getAllexamsubject?.data,'getAllexamsubject')
+
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
             id: value.id,
@@ -66,39 +61,42 @@ useEffect(()=>{
             status: id === value.id ? (!value.id || true) : false
         })))
     }
+
     const editPush = (id, i) => dispatch(examsubjectCreatePost({
         id: id,
         nameUz: dataList[i].nameUz,
         nameRu: dataList[i].nameRu,
+        important: true
     }))
-    const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
         nameUz: name?.nameUz,
         nameRu: name?.nameRu,
+        important: true
     }))
     const modalAdd = () => setOpen(true)
     const handleCancel = () => setOpen(false);
 
-    return (<Container>
+    return (
+        <Container>
             <Container.Bottom>
-                <h1>Imtxon Fanlar </h1>
+                <h1>Majburiy Fanlar</h1>
                 <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
                     <Container.Add>
                         <div>
-                            <h1>Fan yaratish</h1>
+                            <h1>Majburiy Fan yaratish</h1>
                         </div>
                         <br />
                         <div>
                             <p>Yunalish nomi</p>
                         </div> <br />
                         <div>
-                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-
+                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
                         </div>
 
                     </Container.Add>
+
                 </Antmodal>
                 <div onClick={modalAdd}>
                     <Plus /> &nbsp;   Qo’shish
@@ -154,8 +152,7 @@ useEffect(()=>{
                                                                 studyType: val.studyType,
                                                                 status: val.status,
                                                             }))
-                                                        )
-                                                    }
+                                                        )}
                                                 />
                                             ) : (
                                                 <>{value.nameRu}</>
@@ -176,8 +173,6 @@ useEffect(()=>{
                                             ) : (
                                                 <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
                                             )}
-
-                                            <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
                                         </div>
                                     </div>
                                 </ConTable>
@@ -190,5 +185,4 @@ useEffect(()=>{
     )
 }
 
-export default ExamSubjectCreate
-
+export default SubjectMandatory

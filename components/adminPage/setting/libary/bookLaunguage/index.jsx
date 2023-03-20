@@ -37,7 +37,6 @@ export const BookLaunguage = () => {
     }, 500);
   }, [bookLaunguageGet]);
 
-    console.log(name,'name')
   useEffect(() => {
     if (bookLaunguageDeleteId.status === 'success' || bookLaunguageCreate.status === 'success')
       dispatch(bookLaunguageGetFetch())

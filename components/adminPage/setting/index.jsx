@@ -1,16 +1,28 @@
-import { SettingOutlined, AppstoreOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import Container from './style'
 import Logo from "../../../assets/icons/logo.svg";
 import {useState} from "react";
-import {useRouter} from "next/router";
 import {FcTodoList ,FcViewDetails ,FcDam} from "react-icons/fc"
 import TalimYunalishAbuturent from "./talimYunalish/TalimYunalishAbuturent";
 import TalimYunlishMaster from "./talimYunalish/TalimYunalishMaster";
 import TalimYunalishTypeAddCom from "./talimYunalish/TalimYunalishTypeAdd";
+import ExamSubjectCreate from "./exsam/examSubject";
+import SubjectMandatory from "./exsam/subjectMandatory";
+import FacultetsImthonCom from "./exsam/Facultets";
+import { useRouter } from "next/router"
+import QuationCom from "./testCom/Quation";
+import QuationResalt from "./testCom/QuationResalt";
+import ExsamStandart from "./testCom/exsamStandart";
+import AfterComponet from "./libary/after";
+import BookComponet from "./libary/book";
+import BookLaunguage from "./libary/bookLaunguage";
+import BookTypesComponet from "./libary/bookTypes";
+import GalleryaComponet from "./galereya";
+import AboutUsComponents from "./aboutUs";
+
 
 const SettingComponent = () => {
-    const router = useRouter()
+    const quarey = useRouter()
 
     const [page, setPage] = useState('berilganOyliklar')
     function getItem(label, key, icon, children, type) {return {key, icon, children, label, type,}}
@@ -23,30 +35,28 @@ const SettingComponent = () => {
 
         ]),
 
-        getItem('Navigation Two', 'sub2', <FcViewDetails/>, [
-            getItem('Option 5', '5'),
-            getItem('Option 6', '6'),
-            getItem('Option 7', '7')
+        getItem('Imtxon', 'sub2', <FcViewDetails/>, [
+            getItem('Imtxon Fan', 'Imtxon Fan'),
+            getItem('Imthon Majburiy Fan', 'Imthon Majburiy Fan'),
+            getItem('Talim Yunalish Fan Qo`shish', 'Talim Yunalish Fan Qo`shish')
         ]),
 
-        getItem('Navigation Three', 'sub4', <FcDam/>, [
-            getItem('Option 9', '9'),
-            getItem('Option 10', '10'),
-            getItem('Option 11', '11'),
-            getItem('Option 12', '12'),
+        getItem('Test', 'sub4', <FcDam/>, [
+            getItem('Test Savollar Qo`shsih', 'Test Savollar Qo`shsih'),
+            getItem('Test Savollar', 'Test Savollar'),
+            getItem('Test Boshqaruv', 'Test Boshqaruv'),
         ]),
-        getItem('Navigation foo', 'sub5', <FcTodoList/>, [
-            getItem('Option 13', '13'),
-            getItem('Option 14', '14'),
-            getItem('Option 15', '15'),
-            getItem('Option 16', '16'),
+        getItem('Kutubxona', 'sub5', <FcTodoList/>, [
+            getItem('Mualif', 'Mualif'),
+            getItem('Yunalishlar', 'Yunalishlar'),
+            getItem('Til', 'Til'),
+            getItem('Kitoblar', 'Kitoblar'),
         ]),
 
-        getItem('Navigation fiyf', 'sub6', <FcTodoList/>, [
-            getItem('Option 17', '17'),
-            getItem('Option 18', '18'),
-            getItem('Option 19', '19'),
-            getItem('Option 20', '20'),
+        getItem('Biz Haqimizda Gallery', 'sub6', <FcTodoList/>, [
+            getItem('Biz haqimizda', 'Biz haqimizda'),
+            getItem('Gallery', 'Gallery'),
+
         ]),
     ]
     const returnComFunc = (type) => {
@@ -54,16 +64,26 @@ const SettingComponent = () => {
             case 'Abuturent': return <TalimYunalishAbuturent/>
             case 'Magistratura': return <TalimYunlishMaster/>
             case 'Yunalishlar Tartiblash': return <TalimYunalishTypeAddCom />
-            case 'kirim': return <Kirim subTitle={'Kirim'} />
-            case 'maoshNarxlari': return <MaoshNarxlari subTitle={'Maosh narxlari'} />
-            case 'premium': return <Premium subTitle={'Premium'} />
+            case 'Imtxon Fan': return <ExamSubjectCreate/>
+            case 'Imthon Majburiy Fan': return <SubjectMandatory />
+            case 'Talim Yunalish Fan Qo`shish': return <FacultetsImthonCom />
+            case 'Test Savollar Qo`shsih': return <QuationCom />
+            case 'Test Savollar': return <QuationResalt />
+            case 'Test Boshqaruv': return <ExsamStandart />
+            case 'Mualif': return <AfterComponet />
+            case 'Til': return <BookComponet />
+            case 'Yunalishlar': return <BookLaunguage />
+            case 'Kitoblar': return <BookTypesComponet />
+            case 'Biz haqimizda': return <AboutUsComponents />
+            case 'Gallery': return <GalleryaComponet />
+
         }
     }
 
     return(
         <>
             <Container.LeftMenu>
-                <Container.Logo onClick={() => router.push('/admin/home')} >
+                <Container.Logo onClick={() => quarey.push('/admin/home')} >
                     <div>
                         <Logo />
                     </div>

@@ -253,5 +253,6 @@ Container.TextAdd =styled.div`
   }  
     
 `
+
 export { ConTable,Wrapper ,ModalaContainer,Antmodal ,AntSelect}
 export default Container
