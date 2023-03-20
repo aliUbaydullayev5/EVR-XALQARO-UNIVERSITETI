@@ -17,7 +17,6 @@ import Image from "next/image";
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
-
     const exitFromAccount = () => {
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')

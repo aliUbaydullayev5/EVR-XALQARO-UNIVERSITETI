@@ -33,7 +33,7 @@ const MenuComponent = () => {
     ]
 
     const onClick = (e) => {
-        console.log('click ', e)
+        // console.log('click ', e)
     }
 
     return(

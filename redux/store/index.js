@@ -16,7 +16,7 @@ import facultytypesId from "../sliceAdmin/talimYunalishTurlari/postFacultet/inde
 import facultyTypeAdd from "../sliceAdmin/talimYunalishTurlari/postFacultyTypeAdd"
 import editTalimYunalishType from "../sliceAdmin/talimYunalishTurlari/editTalimYunalishType"
 import examsubjectcreate from "../sliceAdmin/exam/exsamsubjectcreate"
-import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject/index.js"
+import getAllexamsubject from "../sliceAdmin/exam/getAllexamsubject"
 import examdeleteId from "../sliceAdmin/exam/examdeleteId"
 import facultetsselectAdd from "../sliceAdmin/facultets/facultetsAdd"
 import facultetsgetAll from "../sliceAdmin/facultets/facultetsgetAll"
