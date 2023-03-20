@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux"
 import React, {useEffect, useState} from "react"
 import {addPageCount, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
 import {Modal, Spin} from 'antd'
-import {InView} from "react-intersection-observer"
 import { UploadOutlined } from '@ant-design/icons'
 import {Button as AntButton, Upload } from 'antd'
 import {deployFileFetch} from "../../../../../redux/slices/deployFile"
