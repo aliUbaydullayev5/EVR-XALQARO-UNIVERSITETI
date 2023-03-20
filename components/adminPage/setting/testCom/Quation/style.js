@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Select} from "antd";
 
 const Wrapper =styled.div`
   padding: 40px;
@@ -76,12 +77,55 @@ const QuationRu = styled.div`
   flex-direction: column;
   align-items:center;
   justify-content: space-between;
-  padding: 30px 0px;
-
-
-
-
+  padding: 30px 0;
 `
+const AntSelect = styled(Select)`
+ .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
+   background-color: transparent !important;
+  }
+  .ant-select-selection-item{
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    padding: 0 10px !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    @media only screen and (max-width: 1000px) {
+      font-size: 16px !important;
+      padding: 0 12px !important;
+    }
+  }
+  .ant-select-arrow{
+    color: white !important;
+    font-size: 20px;
+    @media only screen and (max-width: 1000px) {
+      font-size: 13px;
+    }
+  }
+  .ant-select-selection-search-input{
+    display: none !important;
+  }
+  .ant-select-selection-placeholder{
+    display: flex;
+    align-items: center;
+    padding: 0 0 !important;
+    font-size: 22px !important;
+    color: #ffff;
+    @media only screen and (max-width: 800px) {
+      font-size: 16px !important;
+      padding: 0 8px !important;
+    }
+  }
 
-export { QuationUz ,Wrapper}
+ .ant-select-item-option-content{
+  font-size: 17px !important;
+ } 
+ .ant-select-item .ant-select-item-option .ant-select-item-option-active{
+   font-size: 17px !important;
+ }
+ .ant-select-selector {
+  border-radius: 0 !important;
+}
+`
+export { QuationUz ,Wrapper,AntSelect}
 export default Container

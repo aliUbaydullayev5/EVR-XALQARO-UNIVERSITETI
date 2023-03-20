@@ -18,8 +18,10 @@ import BookLaunguage from "./libary/bookLaunguage";
 import BookTypesComponet from "./libary/bookTypes";
 import GalleryaComponet from "./galereya";
 import AboutUsComponents from "./aboutUs";
-import {MdOutlineWorkspacePremium} from "react-icons/md";
-import {IoLibrarySharp} from "react-icons/all";
+import ExamSubjectCreate from "./exsam/examSubject";
+import FacultetsImthonCom from "./exsam/Facultets";
+import SubjectMandatory from "./exsam/subjectMandatory";
+
 
 
 const SettingComponent = () => {
@@ -36,26 +38,26 @@ const SettingComponent = () => {
 
         ]),
 
-        getItem('Imtxon', 'sub2', <FcViewDetails/>, [
+        getItem('Imtxon', 'sub2', <FcTodoList/>, [
             getItem('Imtxon Fan', 'Imtxon Fan'),
             getItem('Imthon Majburiy Fan', 'Imthon Majburiy Fan'),
             getItem('Talim Yunalish Fan Qo`shish', 'Talim Yunalish Fan Qo`shish')
         ]),
 
-        getItem('Test', 'sub4', <FcDam/>, [
+        getItem('Test', 'sub4', <FcTodoList/>, [
             getItem('Test Savollar Qo`shsih', 'Test Savollar Qo`shsih'),
             getItem('Test Savollar', 'Test Savollar'),
             getItem('Test Boshqaruv', 'Test Boshqaruv'),
         ]),
-        getItem('Kutubxona', 'sub5',<FaUsers/> , [
+        getItem('Kutubxona', 'sub5',<FcTodoList/> , [
             getItem('Mualif', 'Mualif'),
             getItem('Yunalishlar', 'Yunalishlar'),
             getItem('Til', 'Til'),
             getItem('Kitoblar', 'Kitoblar'),
         ]),
 
-        getItem('Biz haqimizda', 'Biz haqimizda', <FaUsers/>),
-        getItem('Gallery', 'Gallery', <GrGallery/>),
+        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList/>),
+        getItem('Gallery', 'Gallery', <FcTodoList/>),
     ]
     const returnComFunc = (type) => {
         switch (type) {

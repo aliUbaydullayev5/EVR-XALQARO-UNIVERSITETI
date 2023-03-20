@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Container, {QuationUz, Wrapper} from './style.js'
+import Container, {QuationUz, Wrapper ,AntSelect} from './style.js'
 import { Button, Input } from '../../../../generic/index.jsx';
-import { AntSelect } from '../../exsam/Facultets/style.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllexamsubjectFetch } from "../.../../../../../../redux/sliceAdmin/exam/getAllexamsubject"
 import { quationCreatePost } from '../../../../../redux/sliceAdmin/quation/quationadd/index.js';
