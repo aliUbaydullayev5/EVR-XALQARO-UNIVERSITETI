@@ -62,7 +62,7 @@ import bookGet from "../sliceAdmin/libary/book/getbook.js"
 import solveTest from '../slices/solveTheTest'
 import getTestQuestion from '../slices/getTestQuestion'
 import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
-
+import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget"
 
 export default configureStore({
         reducer: {
@@ -128,6 +128,7 @@ export default configureStore({
                 bookGet,
                 solveTest,
                 getTestQuestion,
-                xarajatlar
+                xarajatlar,
+                exsamMenegmntget,
         },
 });

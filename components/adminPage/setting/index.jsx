@@ -3,12 +3,11 @@ import Container from './style'
 import Logo from "../../../assets/icons/logo.svg";
 import {useState} from "react";
 import {FcTodoList ,FcViewDetails ,FcDam} from "react-icons/fc"
+import {GrGallery} from "react-icons/gr"
+import {FaUsers} from "react-icons/fa"
 import TalimYunalishAbuturent from "./talimYunalish/TalimYunalishAbuturent";
 import TalimYunlishMaster from "./talimYunalish/TalimYunalishMaster";
 import TalimYunalishTypeAddCom from "./talimYunalish/TalimYunalishTypeAdd";
-import ExamSubjectCreate from "./exsam/examSubject";
-import SubjectMandatory from "./exsam/subjectMandatory";
-import FacultetsImthonCom from "./exsam/Facultets";
 import { useRouter } from "next/router"
 import QuationCom from "./testCom/Quation";
 import QuationResalt from "./testCom/QuationResalt";
@@ -19,12 +18,14 @@ import BookLaunguage from "./libary/bookLaunguage";
 import BookTypesComponet from "./libary/bookTypes";
 import GalleryaComponet from "./galereya";
 import AboutUsComponents from "./aboutUs";
+import {MdOutlineWorkspacePremium} from "react-icons/md";
+import {IoLibrarySharp} from "react-icons/all";
 
 
 const SettingComponent = () => {
     const quarey = useRouter()
 
-    const [page, setPage] = useState('berilganOyliklar')
+    const [page, setPage] = useState('Biz haqimizda')
     function getItem(label, key, icon, children, type) {return {key, icon, children, label, type,}}
 
     const items = [
@@ -46,18 +47,15 @@ const SettingComponent = () => {
             getItem('Test Savollar', 'Test Savollar'),
             getItem('Test Boshqaruv', 'Test Boshqaruv'),
         ]),
-        getItem('Kutubxona', 'sub5', <FcTodoList/>, [
+        getItem('Kutubxona', 'sub5',<FaUsers/> , [
             getItem('Mualif', 'Mualif'),
             getItem('Yunalishlar', 'Yunalishlar'),
             getItem('Til', 'Til'),
             getItem('Kitoblar', 'Kitoblar'),
         ]),
 
-        getItem('Biz Haqimizda Gallery', 'sub6', <FcTodoList/>, [
-            getItem('Biz haqimizda', 'Biz haqimizda'),
-            getItem('Gallery', 'Gallery'),
-
-        ]),
+        getItem('Biz haqimizda', 'Biz haqimizda', <FaUsers/>),
+        getItem('Gallery', 'Gallery', <GrGallery/>),
     ]
     const returnComFunc = (type) => {
         switch (type) {
@@ -94,10 +92,10 @@ const SettingComponent = () => {
                 </Container.Logo>
                 <Menu
                     theme={'dark'}
-                    onClick={(e)=> setPage(e.key)}
+                    onClick={(e)=> setPage(e.key ,true) }
                     style={{width: 280}}
-                    defaultSelectedKeys={['berilganOyliklar']}
-                    defaultOpenKeys={['berilganOyliklar']}
+                    defaultSelectedKeys= {['Biz haqimizda']}
+                    defaultOpenKeys={['Biz haqimizda']}
                     mode="inline"
                     items={items}
                     className={'nocopy'}
