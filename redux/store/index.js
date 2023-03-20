@@ -40,8 +40,12 @@ import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
 import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
 import getManagementData from '../sliceAdmin/management/boshqaruv'
 import aboutCreateData from '../sliceAdmin/about-us/index'
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getGalleryData from '../slices/getGalleryData'
 import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
-import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js"
 import authorCreate from "../sliceAdmin/libary/author/create.js"
 import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
 import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
@@ -55,16 +59,11 @@ import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
 import bookCreate from "../sliceAdmin/libary/book/create.js"
 import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
-import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
-import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
-import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
-import getLibraryData from '../slices/kutubxona/kutubxona-all'
-import getGalleryData from '../slices/getGalleryData'
-import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
-import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
-import newsreate from "../sliceAdmin/news/create.js"
-import newsAdminGet from "../sliceAdmin/news/getnews.js"
-import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
+import solveTest from '../slices/solveTheTest'
+import getTestQuestion from '../slices/getTestQuestion'
+import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
+
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -107,6 +106,12 @@ export default configureStore({
                 subjectMandatoryData,
                 getManagementData,
                 aboutCreateData,
+                getLibraryAuthorData,
+                getLibraryLangData,
+                getLibraryWayData,
+                getLibraryData,
+                exsamManegemnt,
+                getGalleryData,
                 getKutubxonaMuallifData,
                 authorCreate,
                 authorGet,
@@ -121,18 +126,8 @@ export default configureStore({
                 bookCreate,
                 bookDeleteId,
                 bookGet,
-                getLibraryAuthorData,
-                getLibraryLangData,
-                getLibraryWayData,
-                getLibraryData,
-                exsamManegemnt,
-                exsamMenegmntget,
-                getGalleryData,
-                galleryCreate,
-                galleryDeleteId,
-                newsreate,
-                newsAdminGet,
-                getGalleryAdmin,
-
-        }
-})
+                solveTest,
+                getTestQuestion,
+                xarajatlar
+        },
+});
