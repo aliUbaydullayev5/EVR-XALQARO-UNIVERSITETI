@@ -28,21 +28,19 @@ export const TalimYunlishAddCom = () => {
   const [deletId, setDeletId] = useState("");
 
   const getStudyTypes = useSelector((store) => store.getStudyTypes);
-  const getStudyTypesAbuturent = useSelector(
-    (store) => store.getStudyTypesAbuturent
-  );
+  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
   const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId);
   const getTalimYunalish = useSelector((store) => store.getTalimYunalish);
   const editAbuturentId = useSelector((store) => store.editAbuturentId);
 
   useEffect(() => {
     if (getTalimYunalish.status === "success")
-      dispatch(startMessage({time: 3,message: "Muvofiyaqatli Yakulandi",type: "success", }),
-        setName({
- ...name,nameUz: "",
-          ...name, nameRu: "",
-        })
-      );
+        dispatch(startMessage({time: 3, message: "Muvofiyaqatli Yakulandi", type: "success",}),
+            setName({
+                ...name, nameUz: "",
+                ...name, nameRu: "",
+            })
+        );
     else if (getTalimYunalish.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {

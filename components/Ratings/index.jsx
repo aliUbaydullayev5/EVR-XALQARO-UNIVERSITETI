@@ -1,8 +1,25 @@
-import StudentCard from "./studentCard"
-import Container from "./style"
-import ratings from "../Mock/ratings"
+import StudentCard from "./studentCard";
+import Container from "./style";
+import ratings from "../Mock/ratings";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { testGetFetch } from "../../redux/testSlice";
+// import { useState } from "react";
 
 const RatingsComponent = () => {
+  // const dispatch = useDispatch();
+  // const [data, setData] = useState([]);
+  // const testGet = useSelector((store) => store.testGet);
+
+  // useEffect(() => {
+  //   dispatch(testGetFetch({ type: "BACHELOR" }));
+  // }, []);
+
+  // useEffect(() => {
+  //   if (testGet.status === "success") setData(testGet.data);
+  // }, [testGet]);
+
+
   return (
     <Container>
       <Container.Top className="nocopy">Talabalar reytingi</Container.Top>

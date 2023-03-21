@@ -1,24 +1,28 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../../globalApi";
 
-export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/admission/passed`, {
+export const getAdmissionFetch = createAsyncThunk('getAdmissionFetch', async (payload, {
+    page = payload.page,
+    search = payload.search
+}) => {
+    return await fetch(`${API_GLOBAL}v1/admission/passed?page=${page}&size=20&q=${search}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            courseLevel: payload.courseLevelId,
+            courseLevel: payload.courseLevel,
             facultyTypeId: payload.facultyTypeId,
             facultyId: payload.facultyId,
+            agentId: payload.agentId,
             lang: payload.lang,
-            paymentType: payload.paymentType
+            paymentType: payload.paymentType,
+            fromDate: payload.fromDate,
+            toDate: payload.toDate
         })
     })
         .then(res => res.json())
-        .then(res => {
-            return { ...res }
-        })
 })
 
 const getAdmissionData = createSlice({
@@ -32,8 +36,7 @@ const getAdmissionData = createSlice({
             state.status = 'Loading'
         },
         [getAdmissionFetch.fulfilled]: (state, { payload }) => {
-            console.log(payload)
-            if (payload.data) {
+            if (payload.success) {
                 state.data = payload.data
                 state.status = 'Success'
             } else {

@@ -1,12 +1,13 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../../globalApi";
 
-export const getApplications = createAsyncThunk('getApplications', async ({
-      page = 0,
-      size = 20,
-      fromDate = 1672531200000,
-      toDate = new Date().getTime()
-    }) => {
-    return await fetch(`${API_GLOBAL}v1/application?page=${page}&size=${size}&fromDate=${fromDate}&toDate=${toDate}`, {
+export const getApplicationsFetch = createAsyncThunk('getApplicationsFetch', async ({
+    page = 0,
+    search = '',
+    fromDate = 1672531200000,
+    toDate = new Date().getTime()
+}) => {
+    return fetch(`${API_GLOBAL}v1/application?page=${page}&size=20&q=${search}&fromDate=${fromDate}&toDate=${toDate}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -16,7 +17,7 @@ export const getApplications = createAsyncThunk('getApplications', async ({
         .then(res => res.json())
 })
 
-const getApplicationData = createSlice({
+const getApplicationsData = createSlice({
     name: 'getApplicationData',
     initialState: {
         status: null,
@@ -25,11 +26,10 @@ const getApplicationData = createSlice({
         loading: null
     },
     extraReducers: {
-        [getApplications.pending]: (state) => {
+        [getApplicationsFetch.pending]: (state) => {
             state.status = 'Loading'
         },
-        [getApplications.fulfilled]: (state, { payload }) => {
-            console.log(payload.data)
+        [getApplicationsFetch.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
                 state.data = payload.data
                 state.status = 'Success'
@@ -37,10 +37,10 @@ const getApplicationData = createSlice({
                 state.status = 'Not found, try again please'
             }
         },
-        [getApplications.rejected]: (state) => {
+        [getApplicationsFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     }
 })
 
-export default getApplicationData.reducer
+export default getApplicationsData.reducer

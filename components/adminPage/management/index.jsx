@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Container, {Dean, Founder, Rector, Prorektor, Center, Bolim1, Bolim2,} from './stayle.js'
 import {useDispatch, useSelector} from "react-redux";
-import {getManagementFetch} from "../../../redux/sliceAdmin/management/boshqaruv";
+import {getManagementFetch, reset} from "../../../redux/sliceAdmin/management/boshqaruv";
 
 export const ManagementCom = () => {
 
@@ -10,22 +10,48 @@ export const ManagementCom = () => {
 
     // get data
     const getManagementData = useSelector(store => store.getManagementData)
-    const [data, setData] = useState([])
+
+    // const [allData, setAllData] = useState([])
+    // const [data, setData] = useState([])
+
     useEffect(() => {
         dispatch(getManagementFetch())
     }, [])
-    useEffect(() => {
-        setData(getManagementData.data)
-    }, [getManagementData])
+
+    // function flattenData(data) {
+    //     data.forEach(item => {
+    //         setAllData(prevData => [...prevData, item])
+    //         if (item.managements && item.managements.length > 0) flattenData(item.managements)
+    //     })
+    // }
+    //
+    // useEffect(() => {
+    //     if(getManagementData.status === 'Success') {
+    //         setAllData(getManagementData.data)
+    //         flattenData()
+    //     }
+    // }, [getManagementData])
 
 
-    function go(managements = []) {
-        if (!managements.length) {
-            return
+    const [allData, setAllData] = useState([]);
+
+    function flattenData(data) {
+        if(getManagementData.status === 'success'){
+            data.forEach(item => {
+                setAllData(prevData => [...prevData, item])
+                if (item.managements && item.managements.length > 0) flattenData(item.managements)
+            })
         }
-        go(managements.managements);
 
     }
+
+    useEffect(() => {
+        if(getManagementData.status === 'success'){
+            flattenData(getManagementData.data)
+            dispatch(reset())
+            console.log('dsadasdasd')
+        }
+    }, [getManagementData.status])
 
     return (
         <Container>
@@ -56,7 +82,7 @@ export const ManagementCom = () => {
                 {/*    </Bolim1>*/}
                 {/*))}*/}
                 {
-                    data.map(i => (
+                    allData.slice(0, allData.length / 2).map(i => (
                         <Bolim1 key={i.id}>
                             <div><p>{i.name}</p></div>
                         </Bolim1>

@@ -70,7 +70,7 @@ const Tolovlar = ({subTitle}) => {
     }
 
     useEffect(()=> {
-        if(xarajatlarAdd.status === 'success'){
+        if(xarajatlarAdd?.status === 'success'){
             dispatch(startMessage({time: 3, type: 'success', message: ''}))
             refreshDataFunc()
             setFileList([])
@@ -257,7 +257,7 @@ const Tolovlar = ({subTitle}) => {
                     </div>
                     <div className={'buttonArea'}>
                         {
-                            xarajatlarAdd.status === 'loading' ?
+                            xarajatlarAdd?.status === 'loading' ?
                                 <Button
                                     width={'157px'}
                                     mwidth={'157px'}

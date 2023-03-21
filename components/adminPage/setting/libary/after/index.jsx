@@ -122,61 +122,61 @@ export const AfterComponet = () => {
                     <div className="colum nocopy">Nomi</div>
                     <div className="colum nocopy">Vaqt</div>
 
-                    <div className="colum">Action</div>
-                  </div>
-                </Container.Nav>
-              </div>
-            </Container.Top>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {dataList?.map((value, index) => {
-                return (
-                    <ConTable key={value.id}>
-                      <div className="row">
-                        <div>{index + 1}</div>
-                        <div className='colum'>
-                          {
-                            value?.status ?
-                                <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  name: value.id === val.id ? e.target.value : val.name,
-                                  status: val.status
-                                })))} />
-                                :
-                                <>
-                                  {value.name}
-                                </>
-                          }
-                        </div>
-                        <div className='colum'>
-                          {
-                            value?.status ?
-                                <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
-                                  id: val.id,
-                                  date: value.id === val.id ? e.target.value : val.date,
-                                  name: value.name,
-                                  status: val.status
-                                })))} />
-                                :
-                                <>
-                                  {value.date || 'date'}
-                                </>
-                          }
-                        </div>
-                        <div className="action">
-                          {value?.status ? (
-                              <Button
-                                  onclick={() => editPush(value.id, index)}
-                                  width={"70px"}
-                                  height={"40px"}
-                                  size={"18px"}
-                                  radius={"5px"}
-                                  border={"1px solid red"}
-                              >
-                                OK
-                              </Button>
-                          ) : (
-                              <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
-                          )}
+                  <div className="colum">Action</div>
+                </div>
+              </Container.Nav>
+            </div>
+          </Container.Top>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {dataList?.map((value, index) => {
+              return (
+                <ConTable key={value.id}>
+                  <div className="row">
+                    <div>{index + 1}</div>
+                    <div className='colum'>
+                      {
+                        value?.status ?
+                          <input value={value.name} onChange={(e) => setDataList(dataList.map((val) => ({
+                            id: val.id,
+                            name: value.id === val.id ? e.target.value : val.name,
+                            status: val.status
+                          })))} />
+                          :
+                          <>
+                            {value.name}
+                          </>
+                      }
+                    </div>
+                    <div className='colum'>
+                      {
+                        value?.status ?
+                          <input value={value.date} onChange={(e) => setDataList(dataList.map((val) => ({
+                            id: val.id,
+                            date: value.id === val.id ? e.target.value : val.date,
+                            name: value.name,
+                            status: val.status
+                          })))} />
+                          :
+                          <>
+                            {value.date || 'date'}
+                          </>
+                      }
+                    </div>
+                    <div className="action">
+                      {value?.status ? (
+                        <Button
+                          onclick={() => editPush(value.id, index)}
+                          width={"70px"}
+                          height={"40px"}
+                          size={"18px"}
+                          radius={"5px"}
+                          border={"1px solid red"}
+                        >
+                          OK
+                        </Button>
+                      ) : (
+                        <Button onclick={() => findEditID(value.id)} width={"70px"} height={"40px"} size={"12px"} radius={"5px"} border={"1px solid red"}  > <Edit /> </Button>
+                      )}  
 
                           <Button onclick={() => findDeleteID(value.id)} width={"70px"} height={"40px"} size={"13px"} radius={"5px"} border={"1px solid red"}> <Trash /></Button>
                         </div>

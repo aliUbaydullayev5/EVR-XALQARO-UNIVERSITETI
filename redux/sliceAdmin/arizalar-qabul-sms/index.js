@@ -1,22 +1,19 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_GLOBAL} from "../../../globalApi";
 
-export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async ({
-}) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/' }v1/sms`, {
+export const sendSmsFetch = createAsyncThunk('sendSmsFetch', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/sms`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            text: 'Ilhomjon qondaysiz',
-            users: ['30bda412-6e51-483d-8019-5386aa2b7615']
+            text: payload.text,
+            users: payload.users
         })
     })
         .then(res => res.json())
-        .then(res => {
-            console.log(res)
-        })
 })
 
 const sendSmsData = createSlice({
@@ -35,7 +32,7 @@ const sendSmsData = createSlice({
                 state.data = payload.data
                 state.status = 'Success'
             } else {
-                state.status = 'Not found, try again please'
+                state.status = 'No payload'
             }
         },
         [sendSmsFetch.rejected]: state => {
