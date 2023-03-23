@@ -94,7 +94,7 @@ const SettingComponent = () => {
                 </Container.Logo>
                 <Menu
                     theme={'dark'}
-                    onClick={(e)=> setPage(e.key ,true) }
+                    onClick={(e)=> setPage(e.key ) }
                     style={{width: 280}}
                     defaultSelectedKeys= {['Biz haqimizda']}
                     defaultOpenKeys={['Biz haqimizda']}
