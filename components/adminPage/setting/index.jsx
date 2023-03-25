@@ -2,9 +2,7 @@ import { Menu } from 'antd'
 import Container from './style'
 import Logo from "../../../assets/icons/logo.svg";
 import {useState} from "react";
-import {FcTodoList ,FcViewDetails ,FcDam} from "react-icons/fc"
-import {GrGallery} from "react-icons/gr"
-import {FaUsers} from "react-icons/fa"
+import {FcTodoList } from "react-icons/fc"
 import TalimYunalishAbuturent from "./talimYunalish/TalimYunalishAbuturent";
 import TalimYunlishMaster from "./talimYunalish/TalimYunalishMaster";
 import TalimYunalishTypeAddCom from "./talimYunalish/TalimYunalishTypeAdd";
