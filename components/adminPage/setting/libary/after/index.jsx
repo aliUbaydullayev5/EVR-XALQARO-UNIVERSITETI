@@ -13,6 +13,7 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
+import { HiOutlineRefresh } from 'react-icons/hi'
 
 
 
@@ -88,10 +89,20 @@ export const AfterComponet = () => {
     setOpen(false);
   };
 
+  const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
+  const refreshDataFunc = () => {
+    dispatch(authorGetFetch())
+    setRefreshButtonLogin(true)
+    setTimeout(() => {
+      setRefreshButtonLogin(false)
+    }, 1000)
+  }
+
+
   return (
       <Container>
         <Container.Bottom>
-          <h1>Tillar</h1>
+          <h1>Muallif</h1>
           <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
             <Container.Add>
               <div>
@@ -102,15 +113,18 @@ export const AfterComponet = () => {
                 <p>Yunalish nomi</p>
               </div> <br />
               <div>
-                <Input onchange={(e) => setName(e.target.value )} value={name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                <Input onchange={(e) => setName(e.target.value )} value={name?.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
                 <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
               </div>
             </Container.Add>
 
-          </Antmodal>
-          <div onClick={modalAdd}>
+        </Antmodal>
+        <div onClick={modalAdd}>
             <Plus /> &nbsp;   Qo’shish
-          </div>
+        </div>
+        <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
+          <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
+        </Container.RefreshArea>
         </Container.Bottom>
         <Container.Table>
           <Container.Scrool style={{ overflowY: "scroll" }}>
