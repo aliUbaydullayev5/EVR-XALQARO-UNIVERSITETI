@@ -109,7 +109,7 @@ export const AboutUsComponents = () => {
       <Container>
         <Container.Bottom>
           <Container.TextAdd>
-            <h1>Yangliklar  </h1>
+            <h1>Biz Haqimizda</h1>
           </Container.TextAdd>
           <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
             <Container.Add>

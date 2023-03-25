@@ -53,7 +53,7 @@ export const NewsComponents = () => {
     }, 500);
   }, [newsreate]);
 
-
+    console.log(dataList,'dataList')
   const addFacultet = () =>
       dispatch(newsreatePost({
          id: 0,
@@ -88,9 +88,9 @@ export const NewsComponents = () => {
 
     useEffect(() => {
         if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
-    }, [newsAdminGet]);
+    }, []);
 
-
+    console.log(newsAdminGet,'newsAdminGet')
     useEffect(() => {
         if ( newsreate?.status === 'success')
             dispatch(newsGetFetch())

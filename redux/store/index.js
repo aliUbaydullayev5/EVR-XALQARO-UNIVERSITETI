@@ -63,7 +63,7 @@ import solveTest from '../slices/solveTheTest'
 import getTestQuestion from '../slices/getTestQuestion'
 import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget"
-
+import newsAdminGet from "../sliceAdmin/news/getnews"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -130,5 +130,6 @@ export default configureStore({
                 getTestQuestion,
                 xarajatlar,
                 exsamMenegmntget,
+                newsAdminGet,
         },
 });

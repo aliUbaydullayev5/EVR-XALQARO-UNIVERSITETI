@@ -21,6 +21,7 @@ import AboutUsComponents from "./aboutUs";
 import ExamSubjectCreate from "./exsam/examSubject";
 import FacultetsImthonCom from "./exsam/Facultets";
 import SubjectMandatory from "./exsam/subjectMandatory";
+import NewsComponents from "./news";
 
 
 
@@ -56,8 +57,9 @@ const SettingComponent = () => {
             getItem('Kitoblar', 'Kitoblar'),
         ]),
 
-        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList/>),
+        getItem('Yangiliklar', 'Yangiliklar', <FcTodoList/>),
         getItem('Gallery', 'Gallery', <FcTodoList/>),
+        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList/>),
     ]
     const returnComFunc = (type) => {
         switch (type) {
@@ -74,9 +76,9 @@ const SettingComponent = () => {
             case 'Til': return <BookComponet />
             case 'Yunalishlar': return <BookLaunguage />
             case 'Kitoblar': return <BookTypesComponet />
-            case 'Biz haqimizda': return <AboutUsComponents />
             case 'Gallery': return <GalleryaComponet />
-
+            case 'Yangiliklar' :return  <NewsComponents/>
+            case 'Biz haqimizda': return <AboutUsComponents />
         }
     }
 
