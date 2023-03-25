@@ -5,13 +5,30 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js'
+// import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
 import { getTalimYunalishFetch, reset } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { getStudyTypesFetch } from '../../../../../../redux/slices/getStudyTypes/index.jsx'
 import { startMessage } from '../../../../../../redux/slices/message/index.js'
 import Button from '../../../../../generic/Button/index.jsx'
 import Input from '../../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
+
+// =======
 import { Modal } from "antd";
+// import { useRouter } from "next/router.js";
+// import React, { useState } from "react";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
+// // import { editAbuturentFetch } from '../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js'
+// import {
+//   getTalimYunalishFetch,
+// reset,} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
+// import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.js";
+// import { startMessage } from "../../../../../../redux/slices/message/index.js";
+// import Button from "../../../../../generic/Button/index.js";
+// import Input from "../../../../../generic/Input/index.js";
+// import Container, { ConTable } from "./style.js";
 
 export const TalimYunlishAddCom = () => {
   const quary = useRouter();
@@ -28,19 +45,21 @@ export const TalimYunlishAddCom = () => {
   const [deletId, setDeletId] = useState("");
 
   const getStudyTypes = useSelector((store) => store.getStudyTypes);
-  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
+  const getStudyTypesAbuturent = useSelector(
+    (store) => store.getStudyTypesAbuturent
+  );
   const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId);
   const getTalimYunalish = useSelector((store) => store.getTalimYunalish);
   const editAbuturentId = useSelector((store) => store.editAbuturentId);
 
   useEffect(() => {
     if (getTalimYunalish.status === "success")
-        dispatch(startMessage({time: 3, message: "Muvofiyaqatli Yakulandi", type: "success",}),
-            setName({
-                ...name, nameUz: "",
-                ...name, nameRu: "",
-            })
-        );
+      dispatch(startMessage({time: 3,message: "Muvofiyaqatli Yakulandi",type: "success", }),
+        setName({
+ ...name,nameUz: "",
+          ...name, nameRu: "",
+        })
+      );
     else if (getTalimYunalish.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {

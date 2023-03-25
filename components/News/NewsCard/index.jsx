@@ -13,42 +13,42 @@ export const NewsCard = ({ data = {} }) => {
   const { img, name,id,date, views,namechild, } = data;
 
   return (
-    <div style={{ display: "flex",cursor:'pointer' }} onClick={()=>query.push(`/news/${id}`)}>
-      <Container>
-        <Image className="img" src={img} alt={"Yuklab Olinmadi"} />
-        <Container.Bottom>
-          <Container.BottomText>
-             {
-              name.split(' ').length > 4 ?
-              <>
-                {name.split(' ').slice(0, 3).join(' ')}....
-              </>
-              :
-              <>
-                {name}
-              </>
-            } 
-          </Container.BottomText>
-          <Container.Footer>
-            <Container.Box>
-              <button>{namechild}</button>
-              <Arrow className="arrow" />
-            </Container.Box>
-            <Container.Box>
+      <div style={{display: "flex", cursor: 'pointer'}} onClick={() => query.push(`/news/${id}`)}>
+        <Container>
+          <Image className="img" src={img} alt={"Yuklab Olinmadi"}/>
+          <Container.Bottom>
+            <Container.BottomText>
+              {
+                name.split(' ').length > 4 ?
+                    <>
+                      {name.split(' ').slice(0, 3).join(' ')}....
+                    </>
+                    :
+                    <>
+                      {name}
+                    </>
+              }
+            </Container.BottomText>
+            <Container.Footer>
               <Container.Box>
+                <button>{namechild}</button>
+                <Arrow className="arrow"/>
+              </Container.Box>
+              <Container.Box>
+                <Container.Box>
 
+                </Container.Box>
+                <Date/>
+                <p>{date}</p>
+                <Container.Box>
+                  <Views/>
+                  <p>{views}</p>
+                </Container.Box>
               </Container.Box>
-                <Date />
-            <p>{date}</p>
-              <Container.Box>
-                <Views />
-                <p>{views}</p>
-              </Container.Box>
-            </Container.Box>
-          </Container.Footer>
-        </Container.Bottom>
-      </Container>
-    </div>
+            </Container.Footer>
+          </Container.Bottom>
+        </Container>
+      </div>
   );
 };
 

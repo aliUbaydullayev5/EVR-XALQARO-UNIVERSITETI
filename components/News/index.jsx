@@ -10,9 +10,13 @@ const NewsComponent = () => {
   const onSearch = ({ target: { value } }) => {
     let res = dataNews.filter((val) =>
       val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    );
-    setSearch(res);
-  };
+    )
+    setSearch(res)
+  }
+
+  const selectOne = () => {
+
+  }
 
   return (
     <Container>

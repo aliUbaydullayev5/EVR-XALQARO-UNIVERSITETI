@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-import Root from "../../../root";
-import {getInfoUserCabinetFetch, resetStatusCode} from "../../../redux/slices/getInfoUserCabinet";
-import {useDispatch, useSelector} from "react-redux";
-import ShaxsiyKabinetComponent from "../../../components/personalAccount/ShaxsiyKabinetComponent";
-import {useRouter} from "next/router";
-import Agentomponent from "../../../components/personalAccount/AgentComponent";
-import styled from "styled-components";
-import Container from "../../../components/personalAccount/AgentAddUserComponent/style";
-import {Spin} from "antd";
-import {startMessage} from "../../../redux/slices/message";
+import Root from "../../../root"
+import {getInfoUserCabinetFetch, resetStatusCode} from "../../../redux/slices/getInfoUserCabinet"
+import {useDispatch, useSelector} from "react-redux"
+import ShaxsiyKabinetComponent from "../../../components/personalAccount/ShaxsiyKabinetComponent"
+import {useRouter} from "next/router"
+import Agentomponent from "../../../components/personalAccount/AgentComponent"
+import styled from "styled-components"
+import Container from "../../../components/personalAccount/AgentAddUserComponent/style"
+import {Spin} from "antd"
+import {startMessage} from "../../../redux/slices/message"
 
 const Account = () => {
     const router = useRouter()
