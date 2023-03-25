@@ -20,7 +20,7 @@ const AccountingComponent = () => {
     function getItem(label, key, icon, children, type) {return {key, icon, children, label, type,}}
 
     const items = [
-        getItem('Barcha ma\'lumotlar', 'barchaMalumotlar', <AiOutlineDatabase size={'24px'} color={'#fff'} />),
+        // getItem('Barcha ma\'lumotlar', 'barchaMalumotlar', <AiOutlineDatabase size={'24px'} color={'#fff'} />),
         getItem('Berilgan oyliklar', 'berilganOyliklar', <TbPigMoney size={'24px'} color={'#fff'} />),
         getItem('Xarajatlar', 'xarajatlar', <FaRegMoneyBillAlt size={'24px'} color={'#fff'} /> ),
         getItem('Kirim', 'kirim', <GiReceiveMoney size={'24px'} color={'#fff'} />),

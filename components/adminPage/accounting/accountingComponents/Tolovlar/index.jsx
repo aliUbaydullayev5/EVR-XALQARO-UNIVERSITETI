@@ -86,12 +86,14 @@ const Tolovlar = ({subTitle}) => {
 
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
-        dispatch(xarajatlarFetch({page: 0, query: ''}))
-        dispatch(resetPageToZero())
-        setRefreshButtonLogin(true)
-        setTimeout(()=> {
-            setRefreshButtonLogin(false)
-        }, 1000)
+        if (!refreshButtonLogin) {
+            dispatch(xarajatlarFetch({page: 0, query: ''}))
+            dispatch(resetPageToZero())
+            setRefreshButtonLogin(true)
+            setTimeout(() => {
+                setRefreshButtonLogin(false)
+            }, 1000)
+        }
     }
 
     return (
@@ -151,9 +153,10 @@ const Tolovlar = ({subTitle}) => {
                     color={'#fff'}
                     size={'14px'}
                     msize={'14px'}
-                    className={'nocopy'}
                 >
-                    Tartiblash
+                    <p className={'nocopy'}>
+                        Tartiblash
+                    </p>
                 </Button>
                 <Container.RefreshArea loading={refreshButtonLogin} onClick={()=> refreshDataFunc()}>
                     <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />

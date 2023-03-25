@@ -2,8 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import firstVerify from '../slices/firstVerify/index'
 import firstSmsCodeFetch from "../slices/firstSmsVerifyCode"
 import homeAllData from '../slices/homeAllData'
-import deployFile from '../slices/deployFile'
 import receptionPost from '../slices/receptionPost'
+import deployFile from '../slices/deployFile'
 import messageSlice from '../slices/message'
 import getDirectType from '../slices/getStudyTypes/getDirectType'
 import reseptionCheckPhoneSlice from '../slices/receptionVerifyPhone'
@@ -63,7 +63,8 @@ import solveTest from '../slices/solveTheTest'
 import getTestQuestion from '../slices/getTestQuestion'
 import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
-
+import premium from '../sliceAdmin/moliyaSlices/premium'
+import premiumAdd from '../sliceAdmin/moliyaSlices/premiumAdd'
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -129,6 +130,8 @@ export default configureStore({
                 solveTest,
                 getTestQuestion,
                 xarajatlar,
-                xarajatlarAdd
+                xarajatlarAdd,
+                premium,
+                premiumAdd
         },
 });
