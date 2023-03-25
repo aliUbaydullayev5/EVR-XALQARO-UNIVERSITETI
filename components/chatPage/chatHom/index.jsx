@@ -3,7 +3,7 @@ import {Button, Input} from "../../generic";
 import {useRouter} from "next/router";
 import chatData from "../../Mock/chatData/index.js";
 import { useState } from "react";
-import Image from "next/image.js";
+import Image from "next/image";
 import Send from "../../../assets/mobile/icon/send.svg"
 const ChatComponents = () => {
     const router = useRouter()

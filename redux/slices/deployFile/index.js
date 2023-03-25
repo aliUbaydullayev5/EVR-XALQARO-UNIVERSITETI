@@ -39,7 +39,7 @@ const deployFile = createSlice({
             }
             if(success == false){
                 state.status = 'error'
-                state.message = payload?.errors[0]?.errorMsg.join('')
+                state.message = payload?.errors[0]?.errorMsg
             }
         },
         [deployFileFetch.rejected]: (state)=> {

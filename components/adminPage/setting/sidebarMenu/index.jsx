@@ -3,8 +3,6 @@ import React from 'react'
 import Container, { UserCon } from './stayle.js';
 import { useRouter } from "next/router"
 import { useState } from 'react';
-import arrow from "../../../../assets/icon/arrow.svg"
-import Image from 'next/image.js';
 import Logo from "../../../../assets/icons/logo.svg"
 import imgArow from "../../../../assets/icons/arrowLeft.svg"
 export const SidebarAdmin = () => {
@@ -104,11 +102,18 @@ export const SidebarAdmin = () => {
     },
     {
       id: 14,
+<<<<<<< HEAD
       name: 'Yangliklar',
       clicked: false,
       img: imgArow,
     },
  
+=======
+      name: 'Moliya',
+      clicked: false,
+      img: imgArow,
+    },
+>>>>>>> main
   ]
   const CheckId = (id) => {
     if (id === 1) quarey.push('/admin/setting/menagement')
@@ -124,9 +129,13 @@ export const SidebarAdmin = () => {
     else if (id === 11) quarey.push('/admin/setting/aboutUs')
     else if (id === 12) quarey.push('/admin/setting/library')
     else if (id === 13) quarey.push('/admin/setting/galereya')
+<<<<<<< HEAD
     else if (id === 14) quarey.push('/admin/setting/news')
 
 
+=======
+    else if (id === 14) quarey.push('/admin/setting/finance')
+>>>>>>> main
 
 
   }

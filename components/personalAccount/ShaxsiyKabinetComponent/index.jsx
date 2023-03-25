@@ -17,7 +17,6 @@ import Image from "next/image";
 const ShaxsiyKabinetComponent = () => {
 
     const query = useRouter()
-
     const exitFromAccount = () => {
         localStorage.removeItem('talaba-token')
         localStorage.removeItem('admin_AccessToken')
@@ -63,7 +62,7 @@ const ShaxsiyKabinetComponent = () => {
                                     <MobileFile className={'mobileIcon icon'} />
                                 </div>
                                 <div>
-                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} onclick={()=> query.push('/personalAccount/talaba/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
+                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} onclick={()=> query.push('/personalAccount/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
                                     <BlockIcon className={'icon laptopIcon'} />
                                     <MobileRestor className={'mobileIcon icon'} />
                                 </div>
@@ -79,7 +78,7 @@ const ShaxsiyKabinetComponent = () => {
                             <Container.Row>
                                 <div>
                                     <p>FIO</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.lastName}, ${data.firstName}, ${data.patron}`} />
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.lastName}, ${data.firstName}, ${data.patron}`} />
                                 </div>
                             </Container.Row>
 
@@ -87,15 +86,15 @@ const ShaxsiyKabinetComponent = () => {
                                 data.takeExam && <Container.Row columns={'1fr 1fr 1fr'} gap={'31px'} mgap={'15px'}>
                                     <div>
                                         <p>Test natijasi</p>
-                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'87.6 %'} />
+                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'87.6 %'} />
                                     </div>
                                     <div>
                                         <p>Kursingiz</p>
-                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'3-kurs'} />
+                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'3-kurs'} />
                                     </div>
                                     <div>
                                         <p>ID raqam</p>
-                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
+                                        <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'101006'} />
                                     </div>
                                 </Container.Row>
                             }
@@ -104,29 +103,29 @@ const ShaxsiyKabinetComponent = () => {
                             <Container.Row columns={'1fr 1fr'} gap={'31px'} mgap={'15px'}>
                                 <div>
                                     <p>Ta’lim turi</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.studyType}`} />
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.studyType}`} />
                                 </div>
                                 <div>
                                     <p>Yo‘nalishingiz</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.facultyName}`} />
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.facultyName}`} />
                                 </div>
                             </Container.Row>
 
                             <Container.Row columns={'1fr 1fr'} gap={'31px'} mgap={'15px'}>
                                 <div>
                                     <p>Telefon raqam</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`+${data.phoneNumber}`} />
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`+${data.phoneNumber}`} />
                                 </div>
                                 <div>
-                                    <p>Qoshimcha telefon raqam</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`+${data.extraPhoneNumber}`} />
+                                    <p>Qoshimcha telefon...</p>
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`+${data.extraPhoneNumber}`} />
                                 </div>
                             </Container.Row>
 
                             <Container.Row>
                                 <div>
                                     <p>Ta’lim shakli</p>
-                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 20px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.facultyType.educationType}, ${data.admissionStudentDTO.facultyType.studyLanguage}`} />
+                                    <Input mradius={'5px'} mheight={'30px'} mpadding={'0 10px'} msize={'16px'} disabled={true} height={'33px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={`${data.admissionStudentDTO.facultyType.educationType}, ${data.admissionStudentDTO.facultyType.studyLanguage}`} />
                                 </div>
                             </Container.Row>
 

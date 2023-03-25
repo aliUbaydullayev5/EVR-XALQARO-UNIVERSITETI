@@ -13,6 +13,7 @@ import { authorDeletePost } from '../../../../../redux/sliceAdmin/libary/author/
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
 import Plus from "../../../../../assets/icons/plus.svg"
+<<<<<<< HEAD
 import { Modal } from 'antd'
 import {ModalaContainer, Wrapper} from "../book/style";
 import {AntSelect} from "../../talimYunalishType/TalimYunalishTypeAdd/style";
@@ -21,6 +22,8 @@ import AddImg from "../../../../../assets/icon/addimg.svg";
 import Image from "next/image";
 
 
+=======
+>>>>>>> main
 
 
 export const AfterComponet = () => {
@@ -92,8 +95,12 @@ export const AfterComponet = () => {
   }
   const handleCancel = () => {
     setOpen(false);
+<<<<<<< HEAD
   };
 
+=======
+  }
+>>>>>>> main
   return (
       <Container>
         <Container.Bottom>

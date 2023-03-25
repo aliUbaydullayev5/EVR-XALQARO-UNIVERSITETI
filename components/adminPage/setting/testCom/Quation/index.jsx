@@ -24,7 +24,10 @@ export const QuationCom = () => {
     answers3NameUz: '',
     answers3NameRu: '',
     answers4NameUz: '',
+<<<<<<< HEAD
     answers4NameRu: '',
+=======
+>>>>>>> main
   })
   const [Intput, setInput] = useState({
     check1: false,
@@ -69,7 +72,10 @@ export const QuationCom = () => {
       answers3NameUz: name.answers3NameUz,
       answers3NameRu: name.answers3NameRu,
       answers4NameUz: name.answers4NameUz,
+<<<<<<< HEAD
       answers4NameRu: name.answers4NameRu,
+=======
+>>>>>>> main
 
       check1: Intput.check1,
       check2: Intput.check2,

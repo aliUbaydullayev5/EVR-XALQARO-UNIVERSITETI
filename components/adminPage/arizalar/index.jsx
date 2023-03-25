@@ -85,10 +85,13 @@ export const ArizalarCom = () => {
 
   const handleOk = () => {
     dispatch(sendSmsFetch(smsRef))
+<<<<<<< HEAD
     dispatch(sendSmsFetch({
       text: smsRef.current?.value
     }))
 
+=======
+>>>>>>> main
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);

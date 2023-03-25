@@ -73,7 +73,6 @@ export const LoginCom = () => {
               onChange={Phonehandle}
               value={phoneFace}
             />
-            {/* <Input onchange={Phonehandle}  mwidth={'220px'} mpadding={'0px 14px'} msize={"18px"} mradius={'5px'} mheight={'40px'} width={'310px'} height={'45px'} padding={'0px 20px'} radius={'5px'}  size={'20px'} /> */}
           </Container.Number>
           <Container.Input className='nocopy'>
             <p> Password</p>
@@ -91,7 +90,6 @@ export const LoginCom = () => {
               :
               <Button onclick={() => loginFunc()} width={'260px'} mwidth={'180px'} mpadding={'0px 14px'} msize={"18px"} mradius={'5px'} mheight={'40px'} height={'45px'} radius={'5px'} margin={'10px 0px'}>Kirish</Button>
           }
-
         </div>
       </Container.Box>
     </Container>

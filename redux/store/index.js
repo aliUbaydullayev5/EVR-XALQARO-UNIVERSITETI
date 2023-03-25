@@ -40,8 +40,15 @@ import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
 import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
 import getManagementData from '../sliceAdmin/management/boshqaruv'
 import aboutCreateData from '../sliceAdmin/about-us/index'
+<<<<<<< HEAD
+=======
+import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
+import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
+import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
+import getLibraryData from '../slices/kutubxona/kutubxona-all'
+import getGalleryData from '../slices/getGalleryData'
+>>>>>>> main
 import getKutubxonaMuallifData from '../slices/kutubxona/kutubxona-mualif/index'
-import exsamMenegmntget from "../sliceAdmin/quation/exsamMenegmnt/exsamMenegmntget/index.js"
 import authorCreate from "../sliceAdmin/libary/author/create.js"
 import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
 import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
@@ -55,6 +62,7 @@ import bookLaunguageCreate from "../sliceAdmin/libary/bookLaunguage/create.js"
 import bookCreate from "../sliceAdmin/libary/book/create.js"
 import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
+<<<<<<< HEAD
 import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
 import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
@@ -66,6 +74,12 @@ import newsreate from "../sliceAdmin/news/create.js"
 import newsGet from "../sliceAdmin/news/getnews.js"
 import aboutGetUserData from "../slices/aboutUsGet/getAbout"
 import newsGetData from "../slices/newsGet/getnews.js"
+=======
+import solveTest from '../slices/solveTheTest'
+import getTestQuestion from '../slices/getTestQuestion'
+import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
+import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
+>>>>>>> main
 
 export default configureStore({
         reducer: {
@@ -109,6 +123,15 @@ export default configureStore({
                 subjectMandatoryData,
                 getManagementData,
                 aboutCreateData,
+<<<<<<< HEAD
+=======
+                getLibraryAuthorData,
+                getLibraryLangData,
+                getLibraryWayData,
+                getLibraryData,
+                exsamManegemnt,
+                getGalleryData,
+>>>>>>> main
                 getKutubxonaMuallifData,
                 authorCreate,
                 authorGet,
@@ -123,6 +146,7 @@ export default configureStore({
                 bookCreate,
                 bookDeleteId,
                 bookGet,
+<<<<<<< HEAD
                 getLibraryAuthorData,
                 getLibraryLangData,
                 getLibraryWayData,
@@ -139,3 +163,11 @@ export default configureStore({
 
         }
 })
+=======
+                solveTest,
+                getTestQuestion,
+                xarajatlar,
+                xarajatlarAdd
+        },
+});
+>>>>>>> main

@@ -11,12 +11,19 @@ import Trash from "../../../../assets/icons/trash.svg"
 import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
+<<<<<<< HEAD
 import Image from "next/image";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
 import {newsreatePost} from "../../../../redux/sliceAdmin/news/create";
 import {newsGetFetch} from "../../../../redux/sliceAdmin/news/getnews";
 import {aboutGetFetch} from "../../../../redux/sliceAdmin/about-us/getAbout";
 import {aboutCreateFetch} from "../../../../redux/sliceAdmin/about-us";
+=======
+import { useDispatch, useSelector } from "react-redux";
+import { aboutCreateFetch } from "../../../../redux/sliceAdmin/about-us";
+import { deployFileFetch } from "../../../../redux/slices/deployFile";
+import { aboutGetFetch } from '../../../../redux/sliceAdmin/about-us/getAbout';
+>>>>>>> main
 
 export const AboutUsComponents = () => {
   const dispatch = useDispatch();

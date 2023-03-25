@@ -30,15 +30,12 @@ Container.Logo = styled.div`
     font-weight: 700;
     font-size: 34px;
     line-height: 64px;
-    display: flex;
-    align-items: center;
     color: #FFFFFF;
   }
 `
 
 Container.Text = styled.div`
  >h1{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
@@ -54,7 +51,6 @@ Container.Input = styled.div`
   display: flex;
   gap: 30px;
   >p{
-   font-family: 'Montserrat';
    font-style: normal;
    font-weight: 400;
    font-size: 24px;
@@ -67,23 +63,8 @@ Container.Input = styled.div`
   }
 `
 
-Container.Placeholder = styled.div`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 105.9%;
-  letter-spacing: -0.025em;
-  color: #FFFFFF;
-  opacity: 0.5;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`
-
 Container.Btn = styled.div`
   >button{
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 36px;

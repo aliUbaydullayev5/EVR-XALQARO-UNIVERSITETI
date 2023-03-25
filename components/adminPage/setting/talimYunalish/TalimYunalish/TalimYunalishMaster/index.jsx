@@ -5,10 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/deleteAbuturent/index.js";
 import { editAbuturentFetch } from "../../../../../../redux/sliceAdmin/talimyunlishAdd/editPutAbuturent/index.js";
-import {
-  getTalimYunalishFetch,
-  reset,
-} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
+import {getTalimYunalishFetch,reset,} from "../../../../../../redux/sliceAdmin/talimyunlishAdd/index.js";
 import { getStudyTypesFetch } from "../../../../../../redux/slices/getStudyTypes/index.jsx";
 import { startMessage } from "../../../../../../redux/slices/message/index.js";
 import Button from "../../../../../generic/Button/index.jsx";

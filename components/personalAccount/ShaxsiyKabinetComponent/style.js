@@ -72,7 +72,10 @@ Container.Left = styled.div`
     .person{
       width: 20vw;
       height: 20vw;
-      max-width: 190px;
+      max-width: 100px;
+      max-height: 100px;
+      min-width: 80px;
+      min-height: 80px;
     }
   }
 `
@@ -113,8 +116,17 @@ Container.LeftMenu = styled.div`
 Container.Right = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  
+  //border: 1px solid red;
+  //>div{
+  //  border: 1px solid red;
+  //  >div{
+  //    border: 1px solid white;
+  //  }
+  //}
+
   @media only screen and (max-width: 1000px) {
-    grid-gap: 6px;
+    grid-gap: 0;
   }
 `
 Container.Row = styled.div`
@@ -142,10 +154,11 @@ Container.Row = styled.div`
     bottom: 5px;
     right: 31px;
   }
+  
   @media only screen and (max-width: 1000px){
     .icon{
       position: absolute;
-      bottom: 15px;
+      bottom: 7px;
       right: 10px;
     }
   }

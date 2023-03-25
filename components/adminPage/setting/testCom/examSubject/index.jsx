@@ -52,7 +52,11 @@ useEffect(()=>{
     useEffect(() => {
         if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
+<<<<<<< HEAD
     console.log(getAllexamsubject?.data,'getAllexamsubject')
+=======
+
+>>>>>>> main
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
             id: value.id,

@@ -17,7 +17,7 @@ const Account = () => {
     const { data, status, errorCode, message } = useSelector((store)=> store.getInfoUserCabinet)
 
     useEffect(()=> {
-        if(errorCode === 401 || errorCode === 403) {
+        if(errorCode === 401 || errorCode === 403 || status === 'error') {
             localStorage.removeItem('access-token')
             router.push('/auth')
             dispatch(resetStatusCode())
@@ -33,9 +33,6 @@ const Account = () => {
             case 'AGENT': return  <Agentomponent />
         }
     }
-
-
-
 
 
     const Container = styled.div`

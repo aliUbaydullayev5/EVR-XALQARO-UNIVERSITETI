@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { Modal } from "antd"
 import styled from "styled-components"
+=======
+import { Upload } from "antd"
+import styled from "styled-components"
+
+>>>>>>> main
 
 const Container = styled.div`
   width: 100%;

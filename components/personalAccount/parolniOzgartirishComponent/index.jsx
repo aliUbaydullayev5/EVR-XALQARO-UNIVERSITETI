@@ -33,7 +33,7 @@ const ParolniOzgartirishComponent = ({name, backPath, savePath}) => {
                     <Container.Row>
                         <div>
                             <p>FIO</p>
-                            <Input mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={'G‘ulomov Elbek Ilg‘or o‘g ‘li'} />
+                            <Input disabled={true} mwidth={'290px'} mheight={'34px'} msize={'16px'} mradius={'5px'} mpadding={'0 19px'} width={'575px'} height={'38px'} padding={'0 0 0 40px'} size={'20px'} weight={'600'} radius={'5px'} placeholder={name} />
                         </div>
                     </Container.Row>
                     <Container.Row>

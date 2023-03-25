@@ -1,12 +1,9 @@
-
-import TestTopshirishComp from "../../components/testTopshirish/TestTopshirish/index.jsx";
-import Root from "../../root";
+import TestTopshirishComp from "../../components/testTopshirish/TestTopshirish/index.jsx"
+import Root from "../../root"
 
 export const TtestTopshirish = () => {
   return (
-    <Root>
-        <TestTopshirishComp/>
-      </Root>
+    <Root><TestTopshirishComp/></Root>
   )
 }
 
