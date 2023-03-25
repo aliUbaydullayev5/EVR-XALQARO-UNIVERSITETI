@@ -1,9 +1,10 @@
 import NewsCard from "./NewsCard";
 import Container from "./style";
 // import Search from "../../assets/icon/search.svg";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {newsGet} from "../../redux/slices/newsGet/getnews";
 import {useDispatch, useSelector} from "react-redux";
+import {Spin} from "antd";
 
 const NewsComponent = () => {
   const dispatch = useDispatch()
@@ -48,9 +49,15 @@ const NewsComponent = () => {
         </Container.Top>
         <Container.Bottom>
           <Container.BottomDesc>
-            {dataList?.map((value) => {
+            {newsGetData.status==="loading" ? <div style={{color:"#fff", fontSize:"14px"}}>Loading <Spin/></div>
+              :
+             dataList?.length ?
+              dataList?.map((value) => {
               return <NewsCard data={value} key={value.id} />;
-            })}
+            })
+            : <p style={{color: '#fff', padding: '1rem'}}>No data !</p>
+
+            }
           </Container.BottomDesc>
           <Container.BottomLine />
         </Container.Bottom>

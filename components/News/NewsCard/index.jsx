@@ -11,12 +11,11 @@ export const NewsCard = ({ data = {} }) => {
   const query = useRouter()
 
   const { description, title,id,date, views,attachment, } = data;
-  console.log(data,'data')
 
   return (
     <div style={{ display: "flex",cursor:'pointer' }} onClick={()=>query.push(`/news/${id}`)}>
       <Container>
-        <Image className="img" width={200} height={200} src={`http://185.217.131.147:8088/api/v1/attachment/download/${attachment?.contentType}`} alt={"Yuklab Olinmadi"} />
+        <Image className="img" width={200} height={200} src={`http://185.217.131.147:8088/api/v1/attachment/download/${attachment?.fileOriginalName}`} alt={"Yuklab Olinmadi"} />
         <Container.Bottom>
           <Container.BottomText> {title.split(' ').length > 3 ? <> {title.split(' ').slice(0, 3).join(' ')}.... </> : <>{title}</>}</Container.BottomText>
           <Container.Footer>
