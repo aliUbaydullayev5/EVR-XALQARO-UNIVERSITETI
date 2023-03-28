@@ -88,7 +88,7 @@ export const NewsComponents = () => {
 
     useEffect(() => {
         if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
-    }, []);
+    }, [newsAdminGet]);
 
     console.log(newsAdminGet,'newsAdminGet')
     useEffect(() => {

@@ -20,6 +20,7 @@ import ExamSubjectCreate from "./exsam/examSubject";
 import FacultetsImthonCom from "./exsam/Facultets";
 import SubjectMandatory from "./exsam/subjectMandatory";
 import NewsComponents from "./news";
+import TeacherComponent from './employees/teacher/index.jsx';
 
 
 
@@ -54,6 +55,11 @@ const SettingComponent = () => {
             getItem('Til', 'Til'),
             getItem('Kitoblar', 'Kitoblar'),
         ]),
+        getItem('Xodimlar', 'sub6',<FcTodoList/> , [
+            getItem('`Oqtuvchi', 'Oqtuvchi'),
+            getItem('Xodim', 'Xodim'),
+
+        ]),
 
         getItem('Yangiliklar', 'Yangiliklar', <FcTodoList/>),
         getItem('Gallery', 'Gallery', <FcTodoList/>),
@@ -77,6 +83,11 @@ const SettingComponent = () => {
             case 'Gallery': return <GalleryaComponet />
             case 'Yangiliklar' :return  <NewsComponents/>
             case 'Biz haqimizda': return <AboutUsComponents />
+            case 'Oqtuvchi': return <TeacherComponent />
+
+
+                
+                
         }
     }
 

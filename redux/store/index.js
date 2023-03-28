@@ -65,6 +65,8 @@ import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
 import premium from '../sliceAdmin/moliyaSlices/premium'
 import premiumAdd from '../sliceAdmin/moliyaSlices/premiumAdd'
+import newsAdminGet from "../sliceAdmin/news/getnews.js"
+import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -132,6 +134,8 @@ export default configureStore({
                 xarajatlar,
                 xarajatlarAdd,
                 premium,
-                premiumAdd
+                premiumAdd,
+                newsAdminGet,
+                getGalleryAdmin,
         },
 });
