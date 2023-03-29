@@ -45,7 +45,7 @@ export const AboutCaruselComp = () => {
                 <Container.Img>
                     <Swiper autoplay={{delay: 2500, disableOnInteraction: false,}} pagination={{clickable: true,}}
                             modules={[Autoplay, Pagination]} className="mySwiper">
-                        {AboutGetData?.status === "loading" ? <div><Spin/></div>
+                        {AboutGetData?.status === "loading" ? <span><Spin/></span>
                            : data?.length?
                             data?.map((val) => {
 
