@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import Container from "./style";
-import dataNews from "../Mock/newsdata";
 import Search from "../../assets/icon/search.svg";
 import LibraryCard from "./LibraryCards";
 import {useDispatch, useSelector} from "react-redux";
@@ -12,16 +11,6 @@ import {getLibraryFetch} from "../../redux/slices/kutubxona/kutubxona-all";
 const LibraryComponent = () => {
 
   const dispatch = useDispatch()
-
-  const [search, setSearch] = useState(dataNews)
-
-  const onSearch = ({ target: { value } }) => {
-
-    let res = dataNews.filter((val) =>
-      val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    )
-    setSearch(res)
-  }
 
 
   // get all data
@@ -112,10 +101,6 @@ const LibraryComponent = () => {
               <option value="">Pastdan yuqoriga</option>
             </select>
           </Container.BottomTopSelect>
-          <Container.Search>
-            <input onChange={onSearch} type="text" placeholder={"Qidiruv"} />
-            <Search className="search" />
-          </Container.Search>
         </Container.BottomTop>
 
         <Container.BottomDesc>
