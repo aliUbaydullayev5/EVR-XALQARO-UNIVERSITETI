@@ -5,38 +5,16 @@ import dataNews from "../Mock/newsdata";
 import { useState } from "react";
 
 const NewsComponent = () => {
-  const [ search, setSearch ] = useState(dataNews);
-
-  const onSearch = ({ target: { value } }) => {
-    let res = dataNews.filter((val) =>
-      val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-    )
-    setSearch(res)
-  }
-
-  const selectOne = () => {
-
-  }
 
   return (
     <Container>
       <Container.Inset>
         <Container.Top>
           <Container.TopTitle className="nocopy">Yangiliklar</Container.TopTitle>
-
-          <Container.Search>
-            <input
-              onChange={onSearch}
-              type="text"
-              placeholder={"Qidiruv"}
-            />
-            <Search className="search" />
-          </Container.Search>
-          
         </Container.Top>
         <Container.Bottom>
           <Container.BottomDesc>
-            {search.map((value) => {
+            {dataNews.map((value) => {
               return <NewsCard data={value} key={value.id} />;
             })}
           </Container.BottomDesc>
