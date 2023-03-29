@@ -1,18 +1,17 @@
 import Container from './style'
 import {Menu} from "antd";
-import {AiOutlineDatabase} from "react-icons/ai"
 import {TbPigMoney, TbReportMoney} from "react-icons/tb"
 import {FaRegMoneyBillAlt} from "react-icons/fa"
 import {GiReceiveMoney} from "react-icons/gi"
-import {MdOutlineWorkspacePremium} from "react-icons/md";
-import {useState} from "react";
-import Tolovlar from "./accountingComponents/Tolovlar";
+import {MdOutlineWorkspacePremium} from "react-icons/md"
+import {useState} from "react"
+import Tolovlar from "./accountingComponents/Tolovlar"
 import Logo from "../../../assets/icons/logo.svg"
-import {useRouter} from "next/router";
-import Xarajatlar from "./accountingComponents/Xarajatlar";
-import Kirim from "./accountingComponents/Kirim";
-import MaoshNarxlari from "./accountingComponents/MaoshNarxlari";
-import Premium from "./accountingComponents/Premium";
+import {useRouter} from "next/router"
+import Xarajatlar from "./accountingComponents/Xarajatlar"
+import Kirim from "./accountingComponents/Kirim"
+import MaoshNarxlari from "./accountingComponents/MaoshNarxlari"
+import Premium from "./accountingComponents/Premium"
 const AccountingComponent = () => {
 
     const router = useRouter()
@@ -21,19 +20,18 @@ const AccountingComponent = () => {
 
     const items = [
         // getItem('Barcha ma\'lumotlar', 'barchaMalumotlar', <AiOutlineDatabase size={'24px'} color={'#fff'} />),
-        getItem('Berilgan oyliklar', 'berilganOyliklar', <TbPigMoney size={'24px'} color={'#fff'} />),
+        getItem('Tolovlar', 'berilganOyliklar', <TbPigMoney size={'24px'} color={'#fff'} />),
         getItem('Xarajatlar', 'xarajatlar', <FaRegMoneyBillAlt size={'24px'} color={'#fff'} /> ),
         getItem('Kirim', 'kirim', <GiReceiveMoney size={'24px'} color={'#fff'} />),
         getItem('Maosh narxlari', 'maoshNarxlari', <TbReportMoney size={'24px'} color={'#fff'} />),
         getItem('Premium', 'premium', <MdOutlineWorkspacePremium size={'24px'} color={'#fff'} />),
     ]
-// #211E51
 
     const returnComFunc = (type) => {
         switch (type) {
             case 'barchaMalumotlar': return <div>1</div>
-            case 'berilganOyliklar': return <Tolovlar subTitle={'Berilgan oyliklar'} />
-            case 'xarajatlar': return <Xarajatlar subTitle={'Xarajatlar'} />
+            case 'berilganOyliklar': return <Xarajatlar subTitle={'Tolovlar'} />
+            case 'xarajatlar': return <Tolovlar subTitle={'Xarajatlar'} />
             case 'kirim': return <Kirim subTitle={'Kirim'} />
             case 'maoshNarxlari': return <MaoshNarxlari subTitle={'Maosh narxlari'} />
             case 'premium': return <Premium subTitle={'Premium'} />

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const xarajatlarAddFetch = createAsyncThunk('xarajatlarAddFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/cost/cost`, {
+export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAdd', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/content-price/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,37 +10,35 @@ export const xarajatlarAddFetch = createAsyncThunk('xarajatlarAddFetch', async (
         },
         body:JSON.stringify({
             name: payload.name,
-            paymentType: payload.paymentType,
             amount: payload.amount,
-            description: payload.description,
-            attachmentIds: payload.attachmentIds
+            type: payload.type
         })
     }).then((res)=> res.json())
 })
 
 
-const xarajatlarAdd = createSlice({
-    name: 'xarajatlarAdd',
+const mashNarxlariAdd = createSlice({
+    name: 'mashNarxlari',
     initialState: {
         status: null,
         message: '',
         data: [],
     },
     extraReducers: {
-        [xarajatlarAddFetch.pending]: (state) => {
+        [mashNarxlariAddFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [xarajatlarAddFetch.fulfilled]: (state, action) => {
+        [mashNarxlariAddFetch.fulfilled]: (state, action) => {
             console.log(action.payload, 'payload')
             if (action.payload.success === true) {
                 state.status = 'success'
             }
             else if (action.payload.success === false) {
-                state.status = 'notFound'
+                state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg
             }
         },
-        [xarajatlarAddFetch.rejected]: (state) => {
+        [mashNarxlariAddFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     }
@@ -48,4 +46,4 @@ const xarajatlarAdd = createSlice({
 
 
 
-export default xarajatlarAdd.reducer
+export default mashNarxlariAdd.reducer

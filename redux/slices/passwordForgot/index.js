@@ -11,7 +11,7 @@ export const forgotPasswordFetch = createAsyncThunk('forgotPasswordFetch', async
         body: JSON.stringify({
             phoneNumber: payload.phoneNumber.match(/[0-9]+/g).join(''),
             idNumber: payload.idNumber,
-            verifyDode: payload.verifyDode,
+            verifyCode: payload.verifyDode,
             password: payload.password,
             prePassword: payload.prePassword
         }),
@@ -33,7 +33,7 @@ const forgotPassword = createSlice({
                 state.status = 'success'
                 state.message = payload?.message.split('_').join(' ')
             }
-            if(payload?.success == false){
+            if(!payload?.success){
                 state.status = 'error'
                 state.message = payload?.errors[0]?.errorMsg.split('_').join(' ')
             }

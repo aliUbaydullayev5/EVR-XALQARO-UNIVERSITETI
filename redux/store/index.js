@@ -65,6 +65,9 @@ import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
 import premium from '../sliceAdmin/moliyaSlices/premium'
 import premiumAdd from '../sliceAdmin/moliyaSlices/premiumAdd'
+import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
+import mashNarxlariAdd from '../sliceAdmin/moliyaSlices/mashNaxlariAdd'
+import forgotPassword from '../slices/passwordForgot'
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -132,6 +135,9 @@ export default configureStore({
                 xarajatlar,
                 xarajatlarAdd,
                 premium,
-                premiumAdd
+                premiumAdd,
+                mashNarxlari,
+                mashNarxlariAdd,
+                forgotPassword
         },
 });

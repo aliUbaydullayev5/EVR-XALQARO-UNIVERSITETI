@@ -13,8 +13,8 @@ const Container = styled.div`
  
   .close{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 23px;
+    right: 32px;
     cursor: pointer;
     transition: .1s;
     :hover{
@@ -26,8 +26,8 @@ const Container = styled.div`
   }
   .closeMobile{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 27px;
+    right: 30px;
     cursor: pointer;
     transition: .1s;
     :hover{

@@ -19,15 +19,21 @@ const firstVerify = createSlice({
     initialState: {
         verifyCode: false,
         status: null,
+        message: ''
     },
     extraReducers: {
         [firstVerifyFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [firstVerifyFetch.fulfilled]: (state, action) => {
-            state.status = 'success'
-            if (action.payload.success) {
+        [firstVerifyFetch.fulfilled]: (state, {payload}) => {
+            if(payload?.success){
                 state.verifyCode = true
+                state.status = 'success'
+                state.message = payload?.message.split('_').join(' ')
+            }
+            if(!payload?.success){
+                state.status = 'error'
+                state.message = payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
         },
         [firstVerifyFetch.rejected]: (state) => {

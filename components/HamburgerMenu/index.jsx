@@ -13,9 +13,9 @@ const HamburgerMenu = ({changeHidden}) => {
             <Close className={'close'} onClick={()=> changeHidden()} />
             <MobileClose className={'closeMobile'} onClick={()=> changeHidden()} />
             <Container.ButtonArea>
-                <Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>UZ</Button>
-                <Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>RUS</Button>
-                <Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>ENG</Button>
+                {/*<Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>UZ</Button>*/}
+                {/*<Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>RUS</Button>*/}
+                {/*<Button mwidth={'41px'} mheight={'20px'} msize={'14px'} width={'64px'} height={'32px'} size={'19px'} padding={'4px'}>ENG</Button>*/}
             </Container.ButtonArea>
             <ul className={'nocopy'}>
                 <li onClick={()=> query.push('/ourTeamPage')}>Bizning jamoa</li>

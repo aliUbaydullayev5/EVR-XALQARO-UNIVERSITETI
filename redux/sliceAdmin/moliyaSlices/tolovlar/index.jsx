@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const xarajatlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
+export const tolovlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
     console.log(payload.page, 'page')
     return await fetch(`${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`, {
         method: 'GET',
@@ -19,7 +19,7 @@ export const xarajatlarFetch = createAsyncThunk('xarajatlarFetch', async (payloa
 })
 
 
-const xarajatlar = createSlice({
+const tolovlar = createSlice({
     name: 'xarajatlar',
     initialState: {
         status: null,
@@ -28,10 +28,10 @@ const xarajatlar = createSlice({
         pageCount: 0
     },
     extraReducers: {
-        [xarajatlarFetch.pending]: (state) => {
+        [tolovlarFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [xarajatlarFetch.fulfilled]: (state, action) => {
+        [tolovlarFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
 
@@ -74,7 +74,7 @@ const xarajatlar = createSlice({
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [xarajatlarFetch.rejected]: (state) => {
+        [tolovlarFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     },
@@ -93,5 +93,5 @@ const xarajatlar = createSlice({
 
 
 
-export const { addPageCount, resetPageToZero } = xarajatlar.actions
-export default xarajatlar.reducer
+export const { addPageCount, resetPageToZero } = tolovlar.actions
+export default tolovlar.reducer

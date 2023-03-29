@@ -16,6 +16,7 @@ const LibraryComponent = () => {
   const [search, setSearch] = useState(dataNews)
 
   const onSearch = ({ target: { value } }) => {
+
     let res = dataNews.filter((val) =>
       val.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     )

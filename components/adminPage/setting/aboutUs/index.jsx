@@ -38,7 +38,6 @@ export const AboutUsComponents = () => {
   const aboutGetData = useSelector((store) => store.aboutGetData);
 
 
-
   useEffect(() => {
     if (newsreate?.status === "success" )
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
