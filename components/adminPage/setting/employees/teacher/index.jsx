@@ -7,22 +7,24 @@ import Button from '../../../../generic/Button/index.jsx'
 import Input from '../../../../generic/Input/index.jsx'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
-import Container, { ConTable, Wrapper } from './style.js'
+import Container, { Antmodal, AntSelect, ConTable, Wrapper } from './style.js'
 import { examdeleteIdFetch } from '../../../../../redux/sliceAdmin/exam/examdeleteId/index.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { getAllexamsubjectFetch } from "../../../../../redux/sliceAdmin/exam/getAllexamsubject";
-import { Antmodal } from "../../libary/bookLaunguage/style";
 import Plus from "../../../../../assets/icons/plus.svg";
+import CustomInput from 'react-phone-number-input/input'
 
 export const TeacherComponent = () => {
     const quary = useRouter()
     const dispatch = useDispatch()
 
+    const [phoneFace, setphoneFace] = useState('+998')
     const [open, setOpen] = useState(false)
-    const [name, setName] = useState({
+    const [dataPush, setDataPush] = useState({
         nameUz: '',
         nameRu: '',
+        phoneNumber: '',
     })
     const [dataList, setDataList] = useState([])
 
@@ -57,7 +59,7 @@ export const TeacherComponent = () => {
     useEffect(() => {
         if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
-    console.log(getAllexamsubject?.data, 'getAllexamsubject')
+
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
             id: value.id,
@@ -72,14 +74,24 @@ export const TeacherComponent = () => {
         nameUz: dataList[i].nameUz,
         nameRu: dataList[i].nameRu,
     }))
+    // delete id 
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
+    // add funck
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
         nameUz: name?.nameUz,
         nameRu: name?.nameRu,
     }))
+
     const modalAdd = () => setOpen(true)
     const handleCancel = () => setOpen(false);
+
+    // time toDate ~ fromDate
+    let defaultDate = new Date()
+    const [fromDate, setFromDate] = useState(new Date(1672531200000))
+    const [toDate, setToDate] = useState(defaultDate)
+    const onSetFromDate = (e) => setFromDate(new Date(e.target.value))
+    const onSetToDate = (e) => setToDate(new Date(e.target.value))
 
     return (<Container>
         <Container.Bottom>
@@ -87,18 +99,114 @@ export const TeacherComponent = () => {
             <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
                 <Container.Add>
                     <div>
-                        <h1>O’qtuvchilar</h1>
-                    </div>
-                    <br />
-                    <div>
-                        <p>Yunalish nomi</p>
-                    </div> <br />
-                    <div>
-                        <Input onchange={(e) => setName({ ...name, nameUz: e.target.value })} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-                        <Input onchange={(e) => setName({ ...name, nameRu: e.target.value })} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                        <div className='inputCon'>
+                            <p>Ismi *</p>
+                            <Input bc={"#241F69"} width={'470px'} height={'40px'} radius={'0px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Ismi'} />
+                        </div>
+                        <br />
+                        <div className='inputCon'>
+                            <p>Otasining ismi</p>
+                            <Input bc={"#241F69"} width={'470px'} height={'40px'} radius={'0px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Otasining ismi'} />
+                        </div>
+                        <br />
+                        <Container.Grid>
+                            <div>
+                                <p>Guruh</p>
+                                <AntSelect
+                                    style={{ width: '230px', }}
+                                    placeholder='Guruh'
+                                    optionFilterProp="children"
+                                // options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
+                                //     value: value.id,
+                                //     label: value.name,
+                                // })) || []}
+                                // onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
+                                />
+                            </div>
 
-                    </div>
+                            <div>
+                                <p>Boshqaruv *</p>
+                                <AntSelect
+                                    style={{ width: '230px', }}
+                                    placeholder='Boshqaruv *'
+                                    optionFilterProp="children"
+                                // options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
+                                //     value: value.id,
+                                //     label: value.name,
+                                // })) || []}
+                                // onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
+                                />
+                            </div>
+                        </Container.Grid>
 
+                        <Container.Grid>
+                            <div>
+                                <p>Ish turi*</p>
+                                <AntSelect
+                                    style={{ width: '230px', }}
+                                    placeholder='Ish turi*'
+                                    optionFilterProp="children"
+                                // options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
+                                //     value: value.id,
+                                //     label: value.name,
+                                // })) || []}
+                                // onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
+                                />
+                            </div>
+
+                            <div>
+                                <p>Jinsi*</p>
+                                <AntSelect
+                                    style={{ width: '230px', }}
+                                    placeholder='Jinsi*'
+                                    optionFilterProp="children"
+                                // options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
+                                //     value: value.id,
+                                //     label: value.name,
+                                // })) || []}
+                                // onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
+                                />
+                            </div>
+                        </Container.Grid>
+                    </div>
+                    <div>
+                        <div className='inputCon'>
+                            <p>Familiya *</p>
+                            <Input radius={'0xp'} bc={"#241F69"} width={'470px'} height={'40px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Familiya *'} />
+                        </div>
+                        <br />
+                        <div className='inputCon'>
+                            <p>Paroli *</p>
+                            <Input radius={'0xp'} bc={"#241F69"} width={'470px'} height={'40px'}  padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Paroli *'} />
+                        </div>
+                        <br />
+                        <Container.Grid>
+                            <div>
+                                <p>Telefon raqami *</p>
+                                <Container.PhoneIn>
+                                    <CustomInput
+                                        maxLength={17}
+                                        className={'customPhoneInput'}
+                                        onChange={(e) => setDataPush({ ...dataPush, phoneNumber: e })}
+                                        value={phoneFace}
+                                    />
+                                </Container.PhoneIn>
+                            </div>
+
+                            <div>
+                                <p>Tug’ilgan sanasi *</p>
+                                <Input radius={'0xp'} value={fromDate.toLocaleDateString('en-CA')} onchange={onSetFromDate} min="2023-01-01" max="9999-12-31" bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'230px'} type="date" id="start" name="trip-start" />
+                            </div>
+                        </Container.Grid>
+
+                        <Container.Grid>
+                            <div>
+                                <p>Premium *</p>
+                                <Input bc={"#241F69"} width={'470px'} height={'40px'} radius={'5px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Premium *'} />
+
+                            </div>
+                        </Container.Grid>
+                    </div>
                 </Container.Add>
             </Antmodal>
             <div onClick={modalAdd}>

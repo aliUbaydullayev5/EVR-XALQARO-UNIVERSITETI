@@ -337,16 +337,19 @@ select option {
   color: red;
 }
 
-label {position:relative}
+label {
+  position: relative
+}
+
 label:after {
-  content:'';
-  font:14px "Consolas", monospace;
-  color:#333;
-  -webkit-transform:rotate(90deg);
-  -moz-transform:rotate(90deg);
-  -ms-transform:rotate(90deg);
-  transform:rotate(90deg);
-  right:8px;
+  content: '';
+  font: 14px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 8px;
   top: 0;
   padding: 0 0 2px;
   border-bottom: 1px solid #ddd;
@@ -403,6 +406,7 @@ label:before {
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
+
   select option {
     padding: 8px 5px;
   }
@@ -410,10 +414,15 @@ label:before {
 
 
 
-:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
+:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline {
   background: #000c17;
   border-radius: 15px;
 }
-.kOCVyk{
+
+.kOCVyk {
   justify-content: center !important;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  background: #241F69 !important;
 }
