@@ -116,7 +116,8 @@ const Tolovlar = ({subTitle}) => {
                         shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
                         bc={'#221F51'}
                         onclick={() => setModalHidden(!modalHidden)}
-                    > + Moash berish</Button>
+                    > + Moash berish
+                    </Button>
                 </div>
             </div>
             <div className={'filter'}>

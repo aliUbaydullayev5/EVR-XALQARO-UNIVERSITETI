@@ -47,6 +47,7 @@ const FacultetsImthonCom = () => {
   const facultetsdeleteId = useSelector((store) => store.facultetsdeleteId)
   const facultetsselectAdd = useSelector((store) => store.facultetsselectAdd)
 
+  
 
   useEffect(() => {
     if (facultetsselectAdd.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' }))

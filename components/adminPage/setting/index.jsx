@@ -1,8 +1,8 @@
 import { Menu } from 'antd'
 import Container from './style'
 import Logo from "../../../assets/icons/logo.svg";
-import {useState} from "react";
-import {FcTodoList } from "react-icons/fc"
+import { useState } from "react";
+import { FcTodoList } from "react-icons/fc"
 import TalimYunalishAbuturent from "./talimYunalish/TalimYunalishAbuturent";
 import TalimYunlishMaster from "./talimYunalish/TalimYunalishMaster";
 import TalimYunalishTypeAddCom from "./talimYunalish/TalimYunalishTypeAdd";
@@ -21,6 +21,7 @@ import FacultetsImthonCom from "./exsam/Facultets";
 import SubjectMandatory from "./exsam/subjectMandatory";
 import NewsComponents from "./news";
 import TeacherComponent from './employees/teacher/index.jsx';
+import GroupComponet from './group/index.jsx';
 
 
 
@@ -28,49 +29,50 @@ const SettingComponent = () => {
     const quarey = useRouter()
 
     const [page, setPage] = useState('Biz haqimizda')
-    function getItem(label, key, icon, children, type) {return {key, icon, children, label, type,}}
+    function getItem(label, key, icon, children, type) { return { key, icon, children, label, type, } }
 
     const items = [
-        getItem('Ta’lim yo’nalishlari', 'sub1', <FcTodoList/>, [
+        getItem('Ta’lim yo’nalishlari', 'sub1', <FcTodoList />, [
             getItem('Abuturent', 'Abuturent'),
             getItem('Magistratura', 'Magistratura'),
             getItem('Yunalishlar Tartiblash ', 'Yunalishlar Tartiblash'),
 
         ]),
 
-        getItem('Imtxon', 'sub2', <FcTodoList/>, [
+        getItem('Imtxon', 'sub2', <FcTodoList />, [
             getItem('Imtxon Fan', 'Imtxon Fan'),
             getItem('Imthon Majburiy Fan', 'Imthon Majburiy Fan'),
             getItem('Talim Yunalish Fan Qo`shish', 'Talim Yunalish Fan Qo`shish')
         ]),
 
-        getItem('Test', 'sub4', <FcTodoList/>, [
+        getItem('Test', 'sub4', <FcTodoList />, [
             getItem('Test Savollar Qo`shsih', 'Test Savollar Qo`shsih'),
             getItem('Test Savollar', 'Test Savollar'),
             getItem('Test Boshqaruv', 'Test Boshqaruv'),
         ]),
-        getItem('Kutubxona', 'sub5',<FcTodoList/> , [
+        getItem('Kutubxona', 'sub5', <FcTodoList />, [
             getItem('Mualif', 'Mualif'),
             getItem('Yunalishlar', 'Yunalishlar'),
             getItem('Til', 'Til'),
             getItem('Kitoblar', 'Kitoblar'),
         ]),
-        getItem('Xodimlar', 'sub6',<FcTodoList/> , [
+        getItem('Xodimlar', 'sub6', <FcTodoList />, [
             getItem('`Oqtuvchi', 'Oqtuvchi'),
             getItem('Xodim', 'Xodim'),
 
         ]),
+        getItem('Yangiliklar', 'Yangiliklar', <FcTodoList />),
+        getItem('Gallery', 'Gallery', <FcTodoList />),
+        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList />),
+        getItem('Gruhlar', 'Gruhlar', <FcTodoList />),
 
-        getItem('Yangiliklar', 'Yangiliklar', <FcTodoList/>),
-        getItem('Gallery', 'Gallery', <FcTodoList/>),
-        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList/>),
     ]
     const returnComFunc = (type) => {
         switch (type) {
-            case 'Abuturent': return <TalimYunalishAbuturent/>
-            case 'Magistratura': return <TalimYunlishMaster/>
+            case 'Abuturent': return <TalimYunalishAbuturent />
+            case 'Magistratura': return <TalimYunlishMaster />
             case 'Yunalishlar Tartiblash': return <TalimYunalishTypeAddCom />
-            case 'Imtxon Fan': return <ExamSubjectCreate/>
+            case 'Imtxon Fan': return <ExamSubjectCreate />
             case 'Imthon Majburiy Fan': return <SubjectMandatory />
             case 'Talim Yunalish Fan Qo`shish': return <FacultetsImthonCom />
             case 'Test Savollar Qo`shsih': return <QuationCom />
@@ -81,17 +83,19 @@ const SettingComponent = () => {
             case 'Yunalishlar': return <BookLaunguage />
             case 'Kitoblar': return <BookTypesComponet />
             case 'Gallery': return <GalleryaComponet />
-            case 'Yangiliklar' :return  <NewsComponents/>
+            case 'Yangiliklar': return <NewsComponents />
             case 'Biz haqimizda': return <AboutUsComponents />
             case 'Oqtuvchi': return <TeacherComponent />
+            case 'Gruhlar': return <GroupComponet />
 
 
-                
-                
+
+
+
         }
     }
 
-    return(
+    return (
         <>
             <Container.LeftMenu>
                 <Container.Logo onClick={() => quarey.push('/admin/home')} >
@@ -105,9 +109,9 @@ const SettingComponent = () => {
                 </Container.Logo>
                 <Menu
                     theme={'dark'}
-                    onClick={(e)=> setPage(e.key ) }
-                    style={{width: 280}}
-                    defaultSelectedKeys= {['Biz haqimizda']}
+                    onClick={(e) => setPage(e.key)}
+                    style={{ width: 280 }}
+                    defaultSelectedKeys={['Biz haqimizda']}
                     defaultOpenKeys={['Biz haqimizda']}
                     mode="inline"
                     items={items}

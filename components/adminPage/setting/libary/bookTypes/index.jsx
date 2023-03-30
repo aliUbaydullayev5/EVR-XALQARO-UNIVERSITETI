@@ -47,8 +47,7 @@ export const BookTypesComponet = () => {
       dispatch(bookTypesGetFetch())
   }, [bookTypesDeleteId, bookTypesCreate])
 
-  const addFacultet = () =>
-    dispatch(bookTypesCreatePost({
+  const addFacultet = () => dispatch(bookTypesCreatePost({
       id: 0,
       name: name,
     }));

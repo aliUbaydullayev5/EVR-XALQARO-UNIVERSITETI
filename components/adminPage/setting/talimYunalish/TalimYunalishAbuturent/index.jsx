@@ -26,8 +26,7 @@ export const TalimYunalishAbuturent = () => {
   const [open, setOpen] = useState(false);
 
   const getStudyTypes = useSelector((store) => store.getStudyTypes);
-  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent
-  );
+  const getStudyTypesAbuturent = useSelector((store) => store.getStudyTypesAbuturent);
   const deleteAbuturentId = useSelector((store) => store.deleteAbuturentId);
   const getTalimYunalish = useSelector((store) => store.getTalimYunalish);
   const editAbuturentId = useSelector((store) => store.editAbuturentId);
@@ -102,6 +101,7 @@ export const TalimYunalishAbuturent = () => {
     if (getStudyTypesAbuturent.status === "success")
       setDataList(getStudyTypesAbuturent.data);
   }, [getStudyTypesAbuturent]);
+    
     const modalAdd = () => setOpen(true)
     const handleCancel = () => setOpen(false);
   return ((

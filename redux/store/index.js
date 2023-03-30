@@ -67,6 +67,10 @@ import premium from '../sliceAdmin/moliyaSlices/premium'
 import premiumAdd from '../sliceAdmin/moliyaSlices/premiumAdd'
 import newsAdminGet from "../sliceAdmin/news/getnews.js"
 import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
+import groupCreate from "../sliceAdmin/group/create.js"
+import groupDeleteId from "../sliceAdmin/group/deleteId.js"
+import groupGet from "../sliceAdmin/group/getbook.js"
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -137,5 +141,7 @@ export default configureStore({
                 premiumAdd,
                 newsAdminGet,
                 getGalleryAdmin,
+                groupCreate,
+                groupDeleteId,
         },
 });
