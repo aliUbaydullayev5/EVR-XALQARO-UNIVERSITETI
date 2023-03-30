@@ -11,6 +11,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 
   @media only screen and (max-width: 1000px){
    grid-template-rows: 40px 1fr;
@@ -47,8 +50,6 @@ Container.Header = styled.div`
 `
 
 Container.Img=styled.div`
- width: 100%;
- max-width: 1276px;
  height: 380px;
  .mySwiper{
   width: 100%;
@@ -82,11 +83,11 @@ Container.Img=styled.div`
  }
  @media only screen and (max-width: 1000px){
   .mySwiper{
-    max-width: 355px;
+    max-width: 325px;
     width: 100%;
   }
   .SwiperSlide{
-    margin-top: 10px;
+    margin-top: 1px;
   }
   .mySwiper .SwiperSlide p{
     font-size: 12px;
@@ -112,7 +113,7 @@ Container.MainCarousel = styled.div`
 const ContainerDow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
+  gap: 23px;
   align-items: center;
   justify-content: center;
   a{
