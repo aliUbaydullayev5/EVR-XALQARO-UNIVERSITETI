@@ -8,8 +8,8 @@ import Input from '../../../../generic/Input/index.jsx'
 import Container, { ConTable } from './style.js'
 import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
-import {subjectMandatoryFetch} from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
-import {Antmodal} from "../../libary/bookLaunguage/style";
+import { subjectMandatoryFetch } from "../../../../../redux/sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch";
+import { Antmodal } from "../../libary/bookLaunguage/style";
 import Plus from "../../../../../assets/icons/plus.svg";
 import Edit from "../../../../../assets/icons/edit.svg";
 
@@ -31,7 +31,7 @@ export const SubjectMandatory = () => {
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({...name, nameUz: '', nameRu:''});
+        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setName({ ...name, nameUz: '', nameRu: '' });
         else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join(' ') }))
         setTimeout(() => { dispatch(reset()) }, 500);
     }, [examsubjectcreate])
@@ -52,16 +52,15 @@ export const SubjectMandatory = () => {
         setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
 
+
     const findEditID = (id) => {
-        setDataList(dataList.map((value) => ({
-            id: value.id,
-            nameUz: value.nameUz,
-            nameRu: value.nameRu,
-            studyType: value.studyType,
-            status: id === value.id ? (!value.id || true) : false
+        setData(data?.map((value) => ({
+            ...value,
+            checkInput: id === value.id ? !value.checkInput : false
         })))
     }
 
+ 
     const editPush = (id, i) => dispatch(examsubjectCreatePost({
         id: id,
         nameUz: dataList[i].nameUz,
@@ -91,8 +90,8 @@ export const SubjectMandatory = () => {
                             <p>Yunalish nomi</p>
                         </div> <br />
                         <div>
-                            <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
-                            <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({ ...name, nameUz: e.target.value })} value={name.nameUz} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+                            <Input onchange={(e) => setName({ ...name, nameRu: e.target.value })} value={name.nameRu} mwidth={"240px"} mheight={"40px"} width={"340px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
                         </div>
 
                     </Container.Add>
@@ -130,7 +129,8 @@ export const SubjectMandatory = () => {
                                                     nameUz: value.id === val.id ? e.target.value : val.nameUz,
                                                     nameRu: val.nameRu,
                                                     studyType: val.studyType,
-                                                    status: val.status, })) )}
+                                                    status: val.status,
+                                                })))}
                                                 />
                                             ) : (
                                                 <>{value.nameUz}</>

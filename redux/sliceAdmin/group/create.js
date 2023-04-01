@@ -45,7 +45,7 @@ const groupCreate = createSlice({
         }
     },
     reducers: {
-        reset(state) {
+        resetgroupCreate(state) {
             state.status = null
             state.message = ''
         }
@@ -53,5 +53,5 @@ const groupCreate = createSlice({
 })
 
 
-export const { reset } = groupCreate.actions
+export const { resetgroupCreate } = groupCreate.actions
 export default groupCreate.reducer

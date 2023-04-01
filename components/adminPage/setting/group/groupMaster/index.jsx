@@ -2,20 +2,16 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '../../../generic/Button/index.jsx'
-import Input from '../../../generic/Input/index.jsx'
 import Container, { Antmodal, AntSelect, ConTable, ContainerDel } from './style.js'
-import { authorGetFetch } from '../../../../redux/sliceAdmin/libary/author/getAuthor.js'
-import { startMessage } from '../../../../redux/slices/message/index.js'
-import Edit from "../../../../assets/icons/edit.svg"
-import Trash from "../../../../assets/icons/trash.svg"
+import Edit from "../../../../../assets/icons/edit.svg"
+import Trash from "../../../../../assets/icons/trash.svg"
 import { HiOutlineRefresh } from 'react-icons/hi'
-import { getAbuturentTypeFetch } from '../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx'
-import { groupCreatePost, resetgroupCreate } from '../../../../redux/sliceAdmin/group/create.js'
-import { groupGetFetch } from '../../../../redux/sliceAdmin/group/getbook.js'
-import { groupDeleteIdDel } from '../../../../redux/sliceAdmin/group/deleteId.js'
-
-
+import { groupCreatePost, resetgroupCreate } from '../../../../../redux/sliceAdmin/group/create.js'
+import { groupGetFetch } from '../../../../../redux/sliceAdmin/group/getbook.js'
+import { groupDeleteIdDel } from '../../../../../redux/sliceAdmin/group/deleteId.js'
+import { Button, Input } from '../../../../generic/index.jsx'
+import { getAbuturentTypeFetch } from '../../../../../redux/sliceAdmin/talimyunlishAdd/getStudyTypesAdmin/index.jsx'
+import { startMessage } from '../../../../../redux/slices/message/index.js'
 
 export const GroupMasterComponet = () => {
   const dispatch = useDispatch();
@@ -79,7 +75,6 @@ export const GroupMasterComponet = () => {
       facultyId: name.faculId,
     }));
 
-  console.log(name?.faculId,'name?.faculId');
   const modalAdd = () => {
     setOpen(true)
   }
@@ -95,14 +90,14 @@ export const GroupMasterComponet = () => {
 
   const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
   const refreshDataFunc = () => {
-    dispatch(authorGetFetch())
+    dispatch(groupGetFetch())
     setRefreshButtonLogin(true)
     setTimeout(() => {
       setRefreshButtonLogin(false)
     }, 1000)
   }
   useEffect(() => {
-      dispatch(getAbuturentTypeFetch({ type: 'BACHELOR' }))
+    dispatch(getAbuturentTypeFetch({ type: 'MASTERS' }))
   }, [getAbuturentTypeFetch])
 
   useEffect(() => {
@@ -123,11 +118,11 @@ export const GroupMasterComponet = () => {
   return (
     <Container>
       <Container.Bottom>
-        <h1>Gruhlar</h1>
+        <h1>Gruhlar Master</h1>
 
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
-            <h1>Gruh Abuturent Qo`shish</h1>
+            <h1>Gruh Magistratura Q'oshish</h1>
             <Input onchange={(e) => setName({ ...name, name: e.target.value })} value={name?.name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Name`} />
             <Input onchange={(e) => setName({ ...name, opacity: e.target.value })} value={name?.opacity} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`opacity`} />
             <AntSelect
@@ -230,8 +225,8 @@ export const GroupMasterComponet = () => {
                             placeholder='facultyId *'
                             optionFilterProp="children"
                             options={getStudyTypesAbuturent?.status === 'success' && facul?.map((value) => ({
-                            value: value.id,
-                            label: value.name,
+                              value: value.id,
+                              label: value.name,
                             })) || []}
                             onChange={(e) => setName({ ...name, faculId: e })}
                           />

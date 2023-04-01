@@ -22,7 +22,7 @@ import SubjectMandatory from "./exsam/subjectMandatory";
 import NewsComponents from "./news";
 import TeacherComponent from './employees/teacher/index.jsx';
 import GroupComponet from './group/index.jsx';
-
+import GroupMasterComponet from './group/groupMaster/index.jsx';
 
 
 const SettingComponent = () => {
@@ -61,10 +61,15 @@ const SettingComponent = () => {
             getItem('Xodim', 'Xodim'),
 
         ]),
+        getItem('Gruh', 'Gruh', <FcTodoList />, [
+            getItem('GruhAbuturent', 'GruhAbuturent'),
+            getItem('GruhMaster', 'GruhMagistratura'),
+
+        ]),
+
         getItem('Yangiliklar', 'Yangiliklar', <FcTodoList />),
         getItem('Gallery', 'Gallery', <FcTodoList />),
         getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList />),
-        getItem('Gruhlar', 'Gruhlar', <FcTodoList />),
 
     ]
     const returnComFunc = (type) => {
@@ -86,12 +91,8 @@ const SettingComponent = () => {
             case 'Yangiliklar': return <NewsComponents />
             case 'Biz haqimizda': return <AboutUsComponents />
             case 'Oqtuvchi': return <TeacherComponent />
-            case 'Gruhlar': return <GroupComponet />
-
-
-
-
-
+            case 'GruhAbuturent': return <GroupComponet />
+            case 'GruhMagistratura': return <GroupMasterComponet/>
         }
     }
 

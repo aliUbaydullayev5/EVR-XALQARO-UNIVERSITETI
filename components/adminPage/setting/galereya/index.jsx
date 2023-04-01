@@ -80,6 +80,7 @@ export const GalleryaComponet = () => {
        status: id === value.id ? (!value.id || true) : false
     })))
   }
+  
   const editPush = (id, i) => dispatch(
       authorCreatePost({
         id: id,

@@ -101,7 +101,6 @@ const FacultetsImthonCom = () => {
           },
         }))
     )
-
   }
 
 
@@ -116,8 +115,7 @@ const FacultetsImthonCom = () => {
         firstExamSubjectBall: facul.firstExamSubjectBall,
         secondExamSubjectBall: facul.secondExamSubjectBall,
       }
-    ))
-  }
+    ))}
   const findEditID = (id) => {
     setData(data?.map((value)=> ({
       ...value,
@@ -242,7 +240,7 @@ const FacultetsImthonCom = () => {
                             width={'180px'}
                             bc={'#241F69'}
                             radius={'0px'}
-                            onchange={(e)=> changeEditFuncFaculty({id: value.id, value: e.target.value, first: 'secondExamSubject', second: 'name'})}
+                            onchange={(e)=> changeEditFuncFxaculty({id: value.id, value: e.target.value, first: 'secondExamSubject', second: 'name'})}
                             value={value?.secondExamSubject?.name}
                         />
                         :

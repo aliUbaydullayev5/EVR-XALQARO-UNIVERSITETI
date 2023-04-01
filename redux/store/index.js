@@ -143,5 +143,6 @@ export default configureStore({
                 getGalleryAdmin,
                 groupCreate,
                 groupDeleteId,
+                groupGet,
         },
 });

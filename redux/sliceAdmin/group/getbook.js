@@ -3,18 +3,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const groupGetFetch = createAsyncThunk('groupGetFetch', async (payload) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/group`,
         {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
             },
-            body: JSON.stringify({}),
+            body: JSON.stringify(),
         })
         .then((res) => res.json())
 })
 
 const groupGet = createSlice({
-    name: 'groupGet',
+    name: 'groupGetFetch',
     initialState: {
         data: {},
         status: null,
@@ -26,19 +26,20 @@ const groupGet = createSlice({
         [groupGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
-                state.data = payload?.data
+                console.log(payload, 'payload')
+            state.data = payload?.data
         },
         [groupGetFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
     reducers: {
-        resetGroupGet(state) {
+        resetgroupGetFetch(state) {
             state.data = {}
             state.status = null
         }
     }
 })
 
-export const { resetGroupGet } = groupGet.actions
+export const { resetgroupGetFetch } = groupGet.actions
 export default groupGet.reducer

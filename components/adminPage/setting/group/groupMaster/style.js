@@ -83,16 +83,7 @@ Container.Add = styled.div`
  flex-direction: column;
  align-items: center;
  gap: 10px;
- >h1{
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 34px;
-  display: flex;
-  align-items: center;
-  color: white;
- }
+ 
 `
 const ConTable = styled.div`
   display: grid;

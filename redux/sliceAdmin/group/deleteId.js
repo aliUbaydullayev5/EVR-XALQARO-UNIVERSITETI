@@ -26,7 +26,7 @@ const groupDeleteId = createSlice({
                 state.status = 'success'
             } else if (payload.success === false) {
                 state.status = 'notFound'
-                state.message = 'Not Found'
+                state.message = payload.errors[0].errorMsg
             }
         },
         [groupDeleteIdDel.rejected]: (state) => {
