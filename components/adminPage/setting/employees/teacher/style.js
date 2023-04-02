@@ -277,7 +277,7 @@ Container.PhoneIn = styled.div`
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #fff;
-    width: 230px !important;
+    width: 240px !important;
     padding: 0 0 0 20px !important;
     height: 46px;
   } 

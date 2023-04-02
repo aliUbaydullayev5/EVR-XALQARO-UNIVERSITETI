@@ -9,7 +9,7 @@ const facultyTypeUz = [
     }
 ]
 
-export  const facultySirtqi = [
+export const facultySirtqi = [
     {
         id: 1,
         name: 'SIRTQI'
@@ -22,6 +22,19 @@ export  const facultySirtqi = [
         id: 3,
         name: 'KECHKI'
     }
+]
+
+export  const genderData = [
+    {
+        id: 1,
+        name: 'Erkak',
+        gender: true,
+    },
+    {
+        id: 2,
+        name: 'Ayol',
+        gender: false,
+    },
 ]
 
 export default facultyTypeUz

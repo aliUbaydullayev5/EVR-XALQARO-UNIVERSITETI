@@ -79,7 +79,7 @@ export const GroupMasterComponet = () => {
       facultyId: name.faculId,
     }));
 
-  console.log(name?.faculId,'name?.faculId');
+
   const modalAdd = () => {
     setOpen(true)
   }

@@ -49,7 +49,6 @@ export const ManagementCom = () => {
         if(getManagementData.status === 'success'){
             flattenData(getManagementData.data)
             dispatch(reset())
-            console.log('dsadasdasd')
         }
     }, [getManagementData.status])
 

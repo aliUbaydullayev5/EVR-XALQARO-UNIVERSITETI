@@ -11,7 +11,8 @@ import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import { useRouter } from 'next/router.js'
 import Edit from "../../../../../assets/icons/edit.svg";
 import Plus from "../../../../../assets/icons/plus.svg";
-import {Antmodal} from "../../libary/bookLaunguage/style";
+import { Antmodal } from "../../libary/bookLaunguage/style";
+
 export const ExsamStandart = () => {
     const dispatch = useDispatch()
     const quary = useRouter()
@@ -53,7 +54,6 @@ export const ExsamStandart = () => {
 
     // hours change secondd
     function handleTimeChange(event) {
-
         const timeValue = event.target.value;
         const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
         setName({...name, examTime: timeInMilliseconds})

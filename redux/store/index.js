@@ -39,6 +39,7 @@ import forgonPassword from '../slices/passwordForgot'
 import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
 import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
 import getManagementData from '../sliceAdmin/management/boshqaruv'
+import getManagementUsers from "../sliceAdmin/management/menegementUsers"
 import aboutCreateData from '../sliceAdmin/about-us/index'
 import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
 import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
@@ -112,6 +113,7 @@ export default configureStore({
                 forgonPassword,
                 subjectMandatoryData,
                 getManagementData,
+                getManagementUsers,
                 aboutCreateData,
                 getLibraryAuthorData,
                 getLibraryLangData,
