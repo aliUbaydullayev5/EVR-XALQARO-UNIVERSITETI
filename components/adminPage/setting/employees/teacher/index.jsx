@@ -15,15 +15,20 @@ import { getAllexamsubjectFetch } from "../../../../../redux/sliceAdmin/exam/get
 import Plus from "../../../../../assets/icons/plus.svg";
 import CustomInput from 'react-phone-number-input/input'
 import { groupGetFetch } from '../../../../../redux/sliceAdmin/group/getbook.js'
-import { getManagementUsersFetch } from '../../../../../redux/sliceAdmin/management/menegementUsers/index.js'
 import { genderData } from '../../../../Mock/facultyType/index.js'
+import { getManagementFetch } from '../../../../../redux/sliceAdmin/management/boshqaruv/index.js'
+import { contentPriceGetFetch } from '../../../../../redux/sliceAdmin/moliyaSlices/contentPrice/contentPriceGet/index.js'
 
 export const TeacherComponent = () => {
     const quary = useRouter()
     const dispatch = useDispatch()
 
-    const [phoneFace, setphoneFace] = useState('+998')
     const [open, setOpen] = useState(false)
+    const [phoneFace, setphoneFace] = useState('+998')
+    const [content, setcontent] = useState([]);
+    const [dataList, setDataList] = useState([])
+    const [group, setGroup] = useState([])
+
     const [dataPush, setDataPush] = useState({
         firstName: '',
         lastName: '',
@@ -33,22 +38,24 @@ export const TeacherComponent = () => {
         managementId: '',
         password: '',
         gender: '',
+        lessonTime: '',
         premiumId: '',
         logoId: '',
         type: '',
         documents: '',
         contentPriceId: '',
     })
-    const [dataList, setDataList] = useState([])
-    const [group, setGroup] = useState([])
+
     const [manegemnt, setManegemnt] = useState([])
     const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
     const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
     const examdeleteId = useSelector((store) => store.examdeleteId)
     const groupGet = useSelector((store) => store.groupGet);
-    const getManagementUsers = useSelector((store) => store.getManagementUsers);
+    const getManagementData = useSelector((store) => store.getManagementData);
+    const contentPriceGet = useSelector((store) => store.contentPriceGet);
 
-    
+
+
 
 
 
@@ -74,16 +81,21 @@ export const TeacherComponent = () => {
         dispatch(getAllexamsubjectFetch())
     }, [getAllexamsubjectFetch])
 
+    // useEffect(() => {
+    //     dispatch(contentPriceGetFetch())
+    // }, [contentPriceGetFetch])
     useEffect(() => {
         if (open === true) dispatch(groupGetFetch())
-        if (open === true) dispatch(getManagementUsersFetch())
-    }, [groupGetFetch, getManagementUsersFetch, open])
+        if (open === true) dispatch(getManagementFetch())
+        if (open === true) dispatch(contentPriceGetFetch())
+    }, [groupGetFetch, contentPriceGetFetch, open])
 
     useEffect(() => {
         if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
         if (groupGet.status === 'success') setGroup(groupGet.data)
-        if (getManagementUsers.status === 'success') setManegemnt(getManagementUsers.data)
-    }, [getAllexamsubject, groupGet, getManagementUsers])
+        if (getManagementData.status === 'success') setManegemnt(getManagementData.data)
+        if (contentPriceGet.status === 'success') setcontent(contentPriceGet.data)
+    }, [getAllexamsubject, groupGet, getManagementData, contentPriceGet])
 
     const findEditID = (id) => {
         setDataList(dataList.map((value) => ({
@@ -102,21 +114,30 @@ export const TeacherComponent = () => {
     // delete id 
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
     // add funck
+
+
+    const modalAdd = () => setOpen(true)
+    const handleCancel = () => setOpen(false);
+
+    // // hours change secondd
+    // function handleTimeChange(event) {
+    //     const timeValue = event.target.value;
+    //     const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
+    //     setDataPush({ ...dataPush, date: timeInMilliseconds })
+    // }
+
+    // date conver long
+    const dates = new Date(dataPush.date)
+    const timestamp = dates.getTime()
+
+    console.log(dataPush, 'contendataPushtPriceGet ');
+    console.log(timestamp,'timestamp');
+
     const addFacultet = () => dispatch(examsubjectCreatePost({
         id: 0,
         nameUz: name?.nameUz,
         nameRu: name?.nameRu,
     }))
-
-    const modalAdd = () => setOpen(true)
-    const handleCancel = () => setOpen(false);
-
-    // hours change secondd
-    function handleTimeChange(event) {
-        const timeValue = event.target.value;
-        const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
-        setDataPush({ ...dataPush, date: timeInMilliseconds })
-    }
     return (<Container>
         <Container.Bottom>
             <h1>O’qtuvchilar </h1>
@@ -154,7 +175,7 @@ export const TeacherComponent = () => {
                                     style={{ width: '230px', }}
                                     placeholder='Boshqaruv *'
                                     optionFilterProp="children"
-                                    options={getManagementUsers.status === 'success' && manegemnt?.map((value) => ({
+                                    options={getManagementData.status === 'success' && manegemnt?.map((value) => ({
                                         value: value.id,
                                         label: value.name,
                                     })) || []}
@@ -164,17 +185,18 @@ export const TeacherComponent = () => {
                         </Container.Grid>
 
                         <Container.Grid>
+
                             <div>
-                                <p>Ish turi*</p>
+                                <p>Ish turi **</p>
                                 <AntSelect
                                     style={{ width: '230px', }}
-                                    placeholder='Ish turi*'
+                                    placeholder='Ish turi *'
                                     optionFilterProp="children"
-                                // options={getAllexamsubject.status === 'success' && datafan?.map((value) => ({
-                                //     value: value.id,
-                                //     label: value.name,
-                                // })) || []}
-                                // onChange={(e) => setFacul({ ...facul, secondExamSubjectId: e })}
+                                    options={content?.map((value) => ({
+                                        value: value.id,
+                                        label: value.name,
+                                    })) || []}
+                                    onChange={(e) => setDataPush({ ...dataPush, contentPriceId: e })}
                                 />
                             </div>
 
@@ -219,14 +241,19 @@ export const TeacherComponent = () => {
 
                             <div>
                                 <p>Tug’ilgan sanasi *</p>
-                                <Input radius={'0xp'} onchange={handleTimeChange} min="1950-01-01" max="9999-12-31" bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'230px'} type="date" id="start" name="trip-start" />
+                                <Input radius={'0xp'} onchange={(e) => setDataPush({ ...dataPush, date: e.target.value })} min="1950-01-01" max="9999-12-31" bc={"#241F69"} mheight={'48px'} msize={'20px'} mwidth={'175px'} mpadding={'0px 18px'} height={'45px'} size={'23px'} width={'230px'} type="date" id="start" name="trip-start" />
                             </div>
                         </Container.Grid>
 
                         <Container.Grid>
                             <div>
                                 <p>Premium *</p>
-                                <Input onchange={() => setDataPush({ ...dataPush, premiumId: e.target.value })} bc={"#241F69"} width={'470px'} height={'40px'} radius={'5px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Premium *'} />
+                                <Input onchange={(e) => setDataPush({ ...dataPush, premiumId: e.target.value })} bc={"#241F69"} width={'230px'} height={'40px'} radius={'5px'} mwidth={'470px'} mheight={'40px'} mradius={'5px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Premium *'} />
+                            </div>
+                            <div>
+                                <p>Dars Vaqti*</p>
+                                <Input onchange={(e) => setDataPush({ ...dataPush, lessonTime: e.target.value })} radius={'0xp'} bc={"#241F69"} height={'45px'} width={'230px'} mheight={'45px'} mwidth={'230px'} mradius={'0px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Dars Vaqti *'} />
+
                             </div>
                         </Container.Grid>
                     </div>

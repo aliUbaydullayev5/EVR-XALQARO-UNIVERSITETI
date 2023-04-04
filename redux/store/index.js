@@ -71,7 +71,7 @@ import getGalleryAdmin from "../sliceAdmin/gallerya/galleryGet.js"
 import groupCreate from "../sliceAdmin/group/create.js"
 import groupDeleteId from "../sliceAdmin/group/deleteId.js"
 import groupGet from "../sliceAdmin/group/getbook.js"
-
+import contentPriceGet from "../sliceAdmin/moliyaSlices/contentPrice/contentPriceGet"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -146,5 +146,6 @@ export default configureStore({
                 groupCreate,
                 groupDeleteId,
                 groupGet,
+                contentPriceGet,
         },
 });
