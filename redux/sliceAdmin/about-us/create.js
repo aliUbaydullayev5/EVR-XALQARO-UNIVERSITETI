@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-export const galleryCreatePost = createAsyncThunk('galleryCreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/gallery/create`, {
+export const aboutreatePostFetch = createAsyncThunk('aboutreatePostFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/about-us/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            id: payload.id,
-            title: payload.title,
-            description: payload.description,
-            attachmentId: payload.attachmentId
+            id: 0,
+            textRu: payload.textRu,
+            textUz: payload.textUz,
+            photoId: payload.attachmentId,
 
         }),
     }).then((res) => res.json())
@@ -24,14 +24,14 @@ const initialState = {
     data: [],
 }
 
-const galleryCreate = createSlice({
-    name: 'galleryaCreate',
+const aboutreatePost = createSlice({
+    name: 'aboutreatePost',
     initialState,
     extraReducers: {
-        [galleryCreatePost.pending]: (state) => {
+        [aboutreatePostFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [galleryCreatePost.fulfilled]: (state, action) => {
+        [aboutreatePostFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.data = action.payload.data
                 state.status = 'success'
@@ -43,12 +43,12 @@ const galleryCreate = createSlice({
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [galleryCreatePost.rejected]: (state) => {
+        [aboutreatePostFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     },
     reducers: {
-        resetgalleryCreate(state) {
+        resetaboutreatePost(state) {
             state.status = null
             state.message = ''
         }
@@ -56,5 +56,5 @@ const galleryCreate = createSlice({
 })
 
 
-export const { resetgalleryCreate } = galleryCreate.actions
-export default galleryCreate.reducer
+export const { resetaboutreatePost } = aboutreatePost.actions
+export default aboutreatePost.reducer

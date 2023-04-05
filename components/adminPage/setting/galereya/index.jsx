@@ -5,17 +5,15 @@ import Input from '../../../generic/Input'
 import Container, { Antmodal, ModalaContainer,ConTable, Wrapper} from './style.js'
 import { authorCreatePost } from '../../../../redux/sliceAdmin/libary/author/create.js'
 import { startMessage } from '../../../../redux/slices/message'
-import { reset } from '../../../../redux/sliceAdmin/talimyunlishAdd'
 import Edit from "../../../../assets/icons/edit.svg"
 import Trash from "../../../../assets/icons/trash.svg"
 import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
-import { bookCreatePost } from '../../../../redux/sliceAdmin/libary/book/create.js'
 import Image from "next/image";
 import {getGalleryDataFetch} from "../../../../redux/slices/getGalleryData";
 import {galleryDeleteIdDel} from "../../../../redux/sliceAdmin/gallerya/galleryDeleteId";
-import {galleryCreatePost} from "../../../../redux/sliceAdmin/gallerya/galleryCreate";
+import {galleryCreatePost, resetgalleryCreate, resetgalleryCreatePost} from "../../../../redux/sliceAdmin/gallerya/galleryCreate";
 import {getGalleryAdminFetch} from "../../../../redux/sliceAdmin/gallerya/galleryGet";
 
 
@@ -40,26 +38,27 @@ export const GalleryaComponet = () => {
 
 
 
+  
   useEffect(() => {
-    if (galleryCreate?.status === "success" ||galleryDeleteId?.status==='success' )
+    if (galleryCreate?.status === "success" || galleryDeleteId?.status === 'success')
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
-          setName({
-            id: '',
-              title: '',
-              description: '',
-              attachmentId: '',
-          }));
-    else if (galleryCreate?.status === "notFound")
-      dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
-       setTimeout(() => {
-      dispatch(reset());
+        setName({
+          id: '',
+          title: '',
+          description: '',
+          attachmentId: '',
+        }));
+    else if (galleryCreate?.status === "notFound" || galleryDeleteId?.status === 'success')
+      dispatch(startMessage({ time: 3, message: galleryCreate?.message.split('_').join(' ') }));
+    setTimeout(() => {
+      dispatch(resetgalleryCreate());
     }, 500);
-  }, [galleryCreate,galleryDeleteId]);
+  }, [galleryCreate, galleryDeleteId]);
 
 
 
   const addFacultet = () =>
-      dispatch(galleryCreatePost({
+    dispatch(resetgalleryCreate({
          id: 0,
           title: name.title,
           description: name.description,

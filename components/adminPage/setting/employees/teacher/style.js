@@ -38,9 +38,7 @@ Container.Table = styled.div`
 Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  > h1 {
+  >h1{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -49,27 +47,8 @@ Container.Bottom = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-  }
-
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 150px;
-    height: 50px;
-    background: #221F51;
-    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    align-items: center;
-    cursor: pointer;
-    color: #FFFFFF;
-  }
-
-`;
+  }`
+  
 Container.Scrool = styled.div`
   width: 100%;
   height: 510px !important;
@@ -282,6 +261,41 @@ Container.PhoneIn = styled.div`
     height: 46px;
   } 
 
+`
+
+Container.ButtonLoader = styled.div`
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+`
+
+Container.RefreshArea = styled.div`
+  background: #221F51;
+  box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  .refreshIcon{
+    ${({ loading }) => loading && 'animation: 1s infinite anim;'}
+  }
+  @keyframes anim {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  
+`
+Container.BtnRef = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
 `
 
 export { ConTable, Antmodal, AntSelect }

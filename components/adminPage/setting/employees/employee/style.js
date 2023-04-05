@@ -1,4 +1,4 @@
-import { Modal } from "antd"
+import { Modal, Select } from "antd"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -11,9 +11,9 @@ const Container = styled.div`
   @media only screen and (max-width: 1000px) {}
 `
 const Antmodal = styled(Modal)`
-  width: 700px!important;
-  left: 100px;
-  top: 200px;
+  width: 800px!important;
+  left: 100px !important;
+  top: 100px !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,9 +38,7 @@ Container.Table = styled.div`
 Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  > h1 {
+  >h1{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -49,27 +47,8 @@ Container.Bottom = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-  }
-
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 150px;
-    height: 50px;
-    background: #221F51;
-    box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    align-items: center;
-    cursor: pointer;
-    color: #FFFFFF;
-  }
-
-`;
+  }`
+  
 Container.Scrool = styled.div`
   width: 100%;
   height: 510px !important;
@@ -97,31 +76,41 @@ Container.Scrool = styled.div`
 `
 
 Container.Add = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+
+  
+.inputCon{
+>p{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}}
+
+`
+
+Container.Grid = styled.div`
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  gap: 10px;
   >div{
-    display: flex ;
-    align-items: center;
-    gap: 20px;
-    >h1{
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 28px;
-      line-height: 34px;
-      display: flex;
-      align-items: center;
-      color: #FFFFFF;
-    }
+    display: grid;
+    gap: 5px;
+    margin: 10px 0px;
     >p{
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 20px;
-      display: flex;
-      align-items: center;
-      color: #FFFFFF;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 17px;
+     display: flex;
+     align-items: center;
+     color: #FFFFFF;
     }
   }
+
 `
 const ConTable = styled.div`
   display: grid;
@@ -140,7 +129,7 @@ const ConTable = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns: 50px 10fr 200px  200px ;
+    grid-template-columns: 50px    200px  200px  200px 200px  200px 200px  200px 200px  200px 200px  200px 200px  200px 200px;
     padding-left: 15px;
     background: #241F69;
     border-radius: 5px;
@@ -179,7 +168,7 @@ Container.Nav = styled.div`
   }
   .row{
     display: grid;
-    grid-template-columns:  50px 10fr 200px 200px;
+    grid-template-columns: 50px    200px  200px  200px 200px  200px 200px  200px 200px  200px 200px  200px 200px  200px 200px;
     padding-left: 15px;
     background: #221F51;
     border-radius: 5px;
@@ -198,7 +187,116 @@ Container.ButtonLoader = styled.div`
   background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 `
+const AntSelect = styled(Select)`
+.ant-select-selector{
+  border-radius: 0 !important;
+}
+  .ant-select-dropdown, .css-dev-only-do-not-override-1s3dcof, .ant-select-dropdown-placement-topLeft{
+      background-color: transparent !important;
+      border-radius: 0;
+  }
+  .ant-select-selection-item{
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    padding: 0 20px !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    @media only screen and (max-width: 1000px) {
+      font-size: 16px !important;
+      padding: 0 12px !important;
+    }
+  }
+  .ant-select-arrow{
+    color: white !important;
+    font-size: 30px;
+    @media only screen and (max-width: 1000px) {
+      font-size: 13px;
+    }
+  }
+  .ant-select-selection-search-input{
+    display: none !important;
+  }
+  .ant-select-selection-placeholder{
+    display: flex;
+    align-items: center;
+    padding: 0 20px !important;
+    font-size: 22px !important;
+    color: #ffff;
+    @media only screen and (max-width: 800px) {
+      font-size: 16px !important;
+      padding: 0 8px !important;
+    }
+  }
 
+ .ant-select-item-option-content{
+  font-size: 17px !important;
+ } 
+ .ant-select-item .ant-select-item-option .ant-select-item-option-active{
+   font-size: 17px !important;
+ }
 
-export { ConTable, Antmodal }
+`
+
+Container.PhoneIn = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+>p{
+  margin: 5px 0px;
+}
+  .customPhoneInput{
+    background:  #241F69 !important;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 105.9%;
+    letter-spacing: -0.025em;
+    color: #fff;
+    width: 240px !important;
+    padding: 0 0 0 20px !important;
+    height: 46px;
+  } 
+
+`
+
+Container.ButtonLoader = styled.div`
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+`
+
+Container.RefreshArea = styled.div`
+  background: #221F51;
+  box-shadow: 0 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  .refreshIcon{
+    ${({ loading }) => loading && 'animation: 1s infinite anim;'}
+  }
+  @keyframes anim {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  
+`
+Container.BtnRef = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
+
+export { ConTable, Antmodal, AntSelect }
 export default Container

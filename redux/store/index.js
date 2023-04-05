@@ -40,7 +40,6 @@ import exsamManegemnt from "../sliceAdmin/quation/exsamMenegmnt/index.js"
 import subjectMandatoryData from '../sliceAdmin/majburiy-fanlar/majburiy-fanlar-fetch/index.js'
 import getManagementData from '../sliceAdmin/management/boshqaruv'
 import getManagementUsers from "../sliceAdmin/management/menegementUsers"
-import aboutCreateData from '../sliceAdmin/about-us/index'
 import getLibraryAuthorData from '../slices/kutubxona/kutubxona-mualif'
 import getLibraryLangData from '../slices/kutubxona/kutubxona-tili'
 import getLibraryWayData from '../slices/kutubxona/kutubxona-yonalish'
@@ -51,6 +50,7 @@ import authorCreate from "../sliceAdmin/libary/author/create.js"
 import authorGet from "../sliceAdmin/libary/author/getAuthor.js"
 import authorDelete from "../sliceAdmin/libary/author/deleteId.js"
 import aboutGetData from "../sliceAdmin/about-us/getAbout.js"
+import aboutreatePost from "../sliceAdmin/about-us/create.js"
 import bookTypesGet from "../sliceAdmin/libary/booksTypes/getbooksType.js"
 import bookTypesCreate from "../sliceAdmin/libary/booksTypes/create.js"
 import bookTypesDeleteId from "../sliceAdmin/libary/booksTypes/deleteId.js"
@@ -72,6 +72,10 @@ import groupCreate from "../sliceAdmin/group/create.js"
 import groupDeleteId from "../sliceAdmin/group/deleteId.js"
 import groupGet from "../sliceAdmin/group/getbook.js"
 import contentPriceGet from "../sliceAdmin/moliyaSlices/contentPrice/contentPriceGet"
+import teacherCreate from "../sliceAdmin/employees/teacher/teacheeCreate/index.js"
+import teacherGet from "../sliceAdmin/employees/teacher/teacherGet/index.js"
+import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index.js"
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -114,7 +118,7 @@ export default configureStore({
                 subjectMandatoryData,
                 getManagementData,
                 getManagementUsers,
-                aboutCreateData,
+                aboutreatePost,
                 getLibraryAuthorData,
                 getLibraryLangData,
                 getLibraryWayData,
@@ -147,5 +151,8 @@ export default configureStore({
                 groupDeleteId,
                 groupGet,
                 contentPriceGet,
+                teacherCreate,
+                teacherGet,
+                employeeCreate,
         },
 });

@@ -18,6 +18,10 @@ import { groupGetFetch } from '../../../../../redux/sliceAdmin/group/getbook.js'
 import { genderData } from '../../../../Mock/facultyType/index.js'
 import { getManagementFetch } from '../../../../../redux/sliceAdmin/management/boshqaruv/index.js'
 import { contentPriceGetFetch } from '../../../../../redux/sliceAdmin/moliyaSlices/contentPrice/contentPriceGet/index.js'
+import { teacherCreatePost } from '../../../../../redux/sliceAdmin/employees/teacher/teacheeCreate/index.js'
+import { premiumFetch } from '../../../../../redux/sliceAdmin/moliyaSlices/premium/index.js'
+import { teacherGetFetch } from '../../../../../redux/sliceAdmin/employees/teacher/teacherGet/index.js'
+import { HiOutlineRefresh } from 'react-icons/hi'
 
 export const TeacherComponent = () => {
     const quary = useRouter()
@@ -41,18 +45,19 @@ export const TeacherComponent = () => {
         lessonTime: '',
         premiumId: '',
         logoId: '',
-        type: '',
         documents: '',
         contentPriceId: '',
+        groupId: ''
     })
 
     const [manegemnt, setManegemnt] = useState([])
     const getAllexamsubject = useSelector((store) => store.getAllexamsubject)
-    const examsubjectcreate = useSelector((store) => store.examsubjectcreate)
     const examdeleteId = useSelector((store) => store.examdeleteId)
     const groupGet = useSelector((store) => store.groupGet);
     const getManagementData = useSelector((store) => store.getManagementData);
     const contentPriceGet = useSelector((store) => store.contentPriceGet);
+    const premium = useSelector((store) => store.premium);
+    const teacherCreate = useSelector((store) => store.teacherCreate);
 
 
 
@@ -60,10 +65,18 @@ export const TeacherComponent = () => {
 
 
     useEffect(() => {
-        if (examsubjectcreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setDataPush({ ...name, nameUz: '', nameRu: '' })
-        else if (examsubjectcreate.status === 'notFound') dispatch(startMessage({ time: 3, message: examsubjectcreate.message.split('_').join(' ') }))
+        if (teacherCreate.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setDataPush({
+            ...dataPush,
+            firstName: '',
+            lastName: '',
+            patron: '',
+            phoneNumber: '',
+            password: '',
+            lessonTime: '',
+        })
+        else if (teacherCreate.status === 'notFound') dispatch(startMessage({ time: 3, message: teacherCreate.message.split('_').join(' ') }))
         setTimeout(() => { dispatch(reset()) }, 500);
-    }, [examsubjectcreate])
+    }, [teacherCreate])
 
     useEffect(() => {
         if (examdeleteId.status === 'success') dispatch(startMessage({ time: 3, message: 'Muvofiyaqatli Yakulandi', type: 'success' })), setDataPush({ ...name, nameUz: '', nameRu: '' })
@@ -73,22 +86,23 @@ export const TeacherComponent = () => {
 
 
     useEffect(() => {
-        if ((examsubjectcreate.status === 'success' || examdeleteId.status === 'success'))
+        if ((teacherCreate.status === 'success' || examdeleteId.status === 'success'))
             dispatch(getAllexamsubjectFetch())
-    }, [examsubjectcreate, examdeleteId])
-
-    useEffect(() => {
-        dispatch(getAllexamsubjectFetch())
-    }, [getAllexamsubjectFetch])
+    }, [teacherCreate, examdeleteId])
 
     // useEffect(() => {
-    //     dispatch(contentPriceGetFetch())
-    // }, [contentPriceGetFetch])
+    //     dispatch(getAllexamsubjectFetch())
+    // }, [getAllexamsubjectFetch])
+
+
     useEffect(() => {
+        dispatch(teacherGetFetch())
         if (open === true) dispatch(groupGetFetch())
         if (open === true) dispatch(getManagementFetch())
         if (open === true) dispatch(contentPriceGetFetch())
-    }, [groupGetFetch, contentPriceGetFetch, open])
+        if (open === true) dispatch(premiumFetch())
+
+    }, [groupGetFetch, contentPriceGetFetch, premiumFetch, open, teacherGetFetch])
 
     useEffect(() => {
         if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
@@ -111,36 +125,47 @@ export const TeacherComponent = () => {
         nameUz: dataList[i].nameUz,
         nameRu: dataList[i].nameRu,
     }))
+
     // delete id 
     const findDeleteID = (findDeleteID) => dispatch(examdeleteIdFetch({ id: findDeleteID }))
+
     // add funck
-
-
     const modalAdd = () => setOpen(true)
     const handleCancel = () => setOpen(false);
 
-    // // hours change secondd
-    // function handleTimeChange(event) {
-    //     const timeValue = event.target.value;
-    //     const timeInMilliseconds = new Date(`1970-01-01T${timeValue}:00Z`).getTime()
-    //     setDataPush({ ...dataPush, date: timeInMilliseconds })
-    // }
+    const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
+    const refreshDataFunc = () => {
+        dispatch(teacherGetFetch())
+        setRefreshButtonLogin(true)
+        setTimeout(() => {
+            setRefreshButtonLogin(false)
+        }, 1000)
+    }
 
     // date conver long
     const dates = new Date(dataPush.date)
     const timestamp = dates.getTime()
 
-    console.log(dataPush, 'contendataPushtPriceGet ');
-    console.log(timestamp,'timestamp');
-
-    const addFacultet = () => dispatch(examsubjectCreatePost({
-        id: 0,
-        nameUz: name?.nameUz,
-        nameRu: name?.nameRu,
+    const addFacultet = () => dispatch(teacherCreatePost({
+        firstName: dataPush.firstName,
+        lastName: dataPush.lastName,
+        patron: dataPush.patron,
+        phoneNumber: dataPush.phoneNumber.slice(1),
+        date: timestamp,
+        groupId: dataPush.groupId,
+        managementId: dataPush.managementId,
+        password: dataPush.password,
+        gender: dataPush.gender,
+        lessonTime: dataPush.lessonTime,
+        premiumId: dataPush.premiumId,
+        logoId: dataPush.logoId,
+        documents: dataPush.documents,
+        contentPriceId: dataPush.contentPriceId,
     }))
     return (<Container>
+
         <Container.Bottom>
-            <h1>O’qtuvchilar </h1>
+            <h1>'Oqtuvchi</h1>
             <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
                 <Container.Add>
                     <div>
@@ -165,7 +190,7 @@ export const TeacherComponent = () => {
                                         value: value.id,
                                         label: value.name,
                                     })) || []}
-                                    onChange={(e) => setDataPush({ ...dataPush, group: e })}
+                                    onChange={(e) => setDataPush({ ...dataPush, groupId: e })}
                                 />
                             </div>
 
@@ -247,8 +272,17 @@ export const TeacherComponent = () => {
 
                         <Container.Grid>
                             <div>
-                                <p>Premium *</p>
-                                <Input onchange={(e) => setDataPush({ ...dataPush, premiumId: e.target.value })} bc={"#241F69"} width={'230px'} height={'40px'} radius={'5px'} mwidth={'470px'} mheight={'40px'} mradius={'5px'} padding={'10px'} size={'19px'} margin={'10px 0px 0px 0px'} placeholder={'Premium *'} />
+                                <p>Premium*</p>
+                                <AntSelect
+                                    style={{ width: '230px', }}
+                                    placeholder='Premium*'
+                                    optionFilterProp="children"
+                                    options={premium.data.length && premium.data?.map((value) => ({
+                                        value: value.id,
+                                        label: value.name,
+                                    })) || []}
+                                    onChange={(e) => setDataPush({ ...dataPush, premiumId: e })}
+                                />
                             </div>
                             <div>
                                 <p>Dars Vaqti*</p>
@@ -259,14 +293,36 @@ export const TeacherComponent = () => {
                     </div>
                 </Container.Add>
             </Antmodal>
-            <div onClick={modalAdd}>
-                <Plus /> &nbsp;   Qo’shish
-            </div>
+            <Container.BtnRef>
+                <div>
+                    <Button
+                        mwidth={'204px'}
+                        width={'204px'}
+                        mheight={'48px'}
+                        height={'48px'}
+                        msize={'20px'}
+                        size={'20px'}
+                        mweight={'400'}
+                        weight={'400'}
+                        radius={'10px'}
+                        mradius={'10px'}
+                        shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
+                        bc={'#221F51'}
+                        onclick={modalAdd}
+                    >  Q'oshish
+                    </Button>
+                </div>
+                <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
+                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
+                </Container.RefreshArea>
+            </Container.BtnRef>
         </Container.Bottom>
+        
+
         <Container.Table>
             <Container.Scrool style={{ overflowY: "scroll" }}>
                 <Container.Top>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", } }>
                         <Container.Nav>
                             <div className="row">
                                 <div>№</div>

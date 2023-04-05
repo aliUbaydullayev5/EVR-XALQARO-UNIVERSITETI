@@ -90,7 +90,7 @@ export const BookTypesComponet = () => {
   return (
       <Container>
         <Container.Bottom>
-          <h1>Kitib Yunalishlari</h1>
+          <h1>Kitob Yunalishlari</h1>
           <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
             <Container.Add>
               <div>

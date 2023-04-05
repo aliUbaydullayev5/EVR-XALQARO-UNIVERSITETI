@@ -23,6 +23,7 @@ import NewsComponents from "./news";
 import TeacherComponent from './employees/teacher/index.jsx';
 import GroupComponet from './group/index.jsx';
 import GroupMasterComponet from './group/groupMaster/index.jsx';
+import EmployeeComponent from './employees/employee/index.jsx';
 
 
 const SettingComponent = () => {
@@ -84,15 +85,18 @@ const SettingComponent = () => {
             case 'Test Savollar': return <QuationResalt />
             case 'Test Boshqaruv': return <ExsamStandart />
             case 'Mualif': return <AfterComponet />
-            case 'Til': return <BookComponet />
-            case 'Yunalishlar': return <BookLaunguage />
-            case 'Kitoblar': return <BookTypesComponet />
+            case 'Kitoblar': return <BookComponet />
+            case 'Til': return <BookLaunguage />
+            case 'Yunalishlar': return <BookTypesComponet />
             case 'Gallery': return <GalleryaComponet />
             case 'Yangiliklar': return <NewsComponents />
             case 'Biz haqimizda': return <AboutUsComponents />
             case 'Oqtuvchi': return <TeacherComponent />
             case 'GruhAbuturent': return <GroupComponet />
-            case 'GruhMagistratura': return <GroupMasterComponet/>
+            case 'GruhMagistratura': return <GroupMasterComponet />
+            case 'Xodim': return <EmployeeComponent />
+
+                
         }
     }
 

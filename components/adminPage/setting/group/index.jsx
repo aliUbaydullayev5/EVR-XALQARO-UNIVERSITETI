@@ -122,9 +122,9 @@ export const GroupMasterComponet = () => {
 
   return (
     <Container>
+      
       <Container.Bottom>
         <h1>Gruhlar</h1>
-
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <h1>Gruh Abuturent Qo`shish</h1>
@@ -165,8 +165,8 @@ export const GroupMasterComponet = () => {
             <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
           </Container.RefreshArea>
         </Container.BtnRef>
-
       </Container.Bottom>
+
       <Container.Table>
         <Container.Scrool style={{ overflowY: "scroll" }}>
           <Container.Top>
