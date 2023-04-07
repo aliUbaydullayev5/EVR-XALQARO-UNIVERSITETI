@@ -73,7 +73,7 @@ Container.InputArea = styled.div`
 
   .customPhoneInput {
     height: 30px;
-    background: rgba(255, 255, 255, 0);
+    background: #241F69 !important;
     border-bottom: 2px solid #fff;
     width: 333px;
     font-size: 24px;

@@ -4,7 +4,7 @@ const Container = styled.button`
   @media only screen and (min-width: 1000px) {
     width: ${({ width }) => width ? `${width}` : '100%'};
     height: ${({ height }) => height ? `${height}` : '80px'};
-    background: ${({bc})=> bc ? bc : `linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%)`};
+    background: ${({ bc }) => bc ? bc : '#241F69'};
     font-size: ${({ size }) => size ? `${size}` : '34px'};
     padding: ${({ padding }) => padding ? `${padding}` : '0px'};
     margin: ${({ margin }) => margin ? `${margin}` : '0px'};
@@ -38,7 +38,7 @@ const Container = styled.button`
     max-width: ${({ mwidth }) => mwidth ? `${mwidth}` : '100%'};
     width: ${({ mwidth }) => mwidth ? `${mwidth}` : '100%'};
     height: ${({ mheight }) => mheight ? `${mheight}` : '80px'};
-    background: ${({bc})=> bc ? bc : `linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%)`};
+    background: ${({ bc }) => bc ? bc : '#241F69'};
     font-size: ${({ msize }) => msize ? `${msize}` : '34px'};
     padding: ${({ mpadding }) => mpadding ? `${mpadding}` : '0px'};
     margin: ${({ mmargin }) => mmargin ? `${mmargin}` : '0px'};

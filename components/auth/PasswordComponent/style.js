@@ -10,12 +10,7 @@ const Container = styled.div`
   gap: 20px;
   .customPhoneInput {
     border-radius: 15px !important;
-    background: linear-gradient(
-            90deg,
-            #1e3c72 0%,
-            #1e3c72 1%,
-            #2a5298 100%
-    ) !important;
+    background: #241F69 !important;
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;
     font-style: normal;
     font-weight: 400;
@@ -109,7 +104,7 @@ Container.InputArea = styled.div`
   }
   .customPhoneInput {
     height: 30px;
-    background: rgba(255, 255, 255, 0);
+    background: #241F69 !important;
     border-bottom: 2px solid #fff;
     width: 333px;
     font-size: 24px;

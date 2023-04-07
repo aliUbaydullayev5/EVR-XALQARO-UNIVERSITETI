@@ -247,7 +247,7 @@ Container.PhoneIn = styled.div`
   margin: 5px 0px;
 }
   .customPhoneInput{
-    background:  #241F69 !important;
+     background: #241F69 !important;
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
     font-family: 'Montserrat';
     font-style: normal;

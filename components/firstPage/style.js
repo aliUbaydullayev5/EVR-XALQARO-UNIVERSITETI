@@ -162,7 +162,7 @@ Container.Number = styled.div`
     border-radius: 15px !important;
     height: 60px !important;
     width: 100% !important;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+    background: #241F69 !important;
     box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
     padding: 0 20px;
 

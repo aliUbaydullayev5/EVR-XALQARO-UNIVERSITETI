@@ -74,7 +74,7 @@ Container.Number = styled.div`
   justify-content: center;
   .customPhoneInput{
     border-radius: 15px !important;
-    background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+     background: #241F69 !important;
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;    
     font-family: 'Montserrat';
     font-style: normal;
