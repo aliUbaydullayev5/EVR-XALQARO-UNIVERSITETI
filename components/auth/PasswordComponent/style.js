@@ -29,7 +29,7 @@ const Container = styled.div`
       border-radius: 5px !important;
     }
   }
-  
+
 `
 
 Container.Block = styled.div`
@@ -40,6 +40,12 @@ Container.Block = styled.div`
   border-radius: 30px;
   display: grid;
   grid-template-rows: 130px 1fr;
+
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+    grid-template-rows: 60px 1fr;
+  }
+  
 `
 Container.BlockTop = styled.div`
   background: #221F51;
@@ -52,6 +58,13 @@ Container.BlockTop = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #FFFFFF;
+
+  @media only screen and (max-width: 800px) {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 49px;
+    color: #FFFFFF;
+  }
 
 `
 

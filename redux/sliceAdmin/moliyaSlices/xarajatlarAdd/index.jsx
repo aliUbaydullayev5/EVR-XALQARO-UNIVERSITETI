@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
 export const xarajatlarAddFetch = createAsyncThunk('xarajatlarAddFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/cost-income/cost`, {
+    return await fetch(`${API_GLOBAL}v1/cost/cost`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -31,7 +31,7 @@ export const AboutUsComponents = () => {
   const aboutreatePost = useSelector((store) => store.aboutreatePost);
   const aboutGetData = useSelector((store) => store.aboutGetData);
 
-  
+
   useEffect(() => {
     if (aboutreatePost?.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),

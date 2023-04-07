@@ -3,11 +3,8 @@ import {Button} from '../../generic'
 import Image from "next/image";
 import Evr from "../../../assets/image/evr.jpg"
 import { useRouter } from "next/router";
-import dataNews from "../../Mock/newsdata/index";
-import { useState } from "react";
 
 const NewsInfoComponent = () => {
-  const [data, setData] =useState(dataNews)
 
     const query = useRouter();
 

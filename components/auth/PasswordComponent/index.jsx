@@ -7,7 +7,7 @@ import {firstVerifyFetch, resetTimerVerify} from "../../../redux/slices/firstVer
 import {useRouter} from "next/router"
 import {startMessage} from "../../../redux/slices/message"
 import {getUserIdFetch, resetData} from "../../../redux/slices/getId"
-import { Modal, Spin } from 'antd'
+import { Modal } from 'antd'
 import {forgotPasswordFetch, resetForgotData} from "../../../redux/slices/passwordForgot"
 
 const PasswordComponent = () => {
@@ -65,6 +65,7 @@ const PasswordComponent = () => {
 
     useEffect(()=> {
         if(firstVerify?.status === 'success') setModalHidden(true)
+        if(firstVerify?.status === 'error') dispatch(startMessage({time: 3, type: 'error', message: firstVerify.message}))
     }, [firstVerify])
 
 

@@ -3,7 +3,7 @@ import {API_GLOBAL} from "../../../../globalApi"
 
 export const xarajatlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
     console.log(payload.page, 'page')
-    return await fetch(`${API_GLOBAL}v1/cost-income/cost?page=${payload.page}&size=20`, {
+    return await fetch(`${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

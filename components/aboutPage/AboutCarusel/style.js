@@ -104,6 +104,9 @@ Container.MainCarousel = styled.div`
   flex-direction: column;
   gap: 16px;
   background-size: cover;
+  .text{
+    text-shadow: 1px 1px 8px black;
+  }
 `
 
 const ContainerDow = styled.div`
