@@ -9,7 +9,7 @@ import Image from 'next/image.js'
 
 // mobile Img 
 import PaymeMobile from "../../../../assets/mobile/image/payme.png"
-// import OrqagaMobile from "../../../../assets/mobile/icon/Orqaga.svg"
+
 
 
 export const Paymepay = () => {
@@ -92,6 +92,9 @@ export const Paymepay = () => {
                     <Input mradius='5px' mpadding='0px 0px 0px 10px' msize="16px" mwidth="117px" mheight="21px" size="29px" width="290px" defaultValue={'AA 000 00 00'} disabled={true} maxlength={'12'} height="55px" margin='10px 0px 0px 0px' placeholder={'AA 000 00 00'} />
                 </div>
             </BoxCon>
+
+
+
             <BoxCon>
                 <div>
                     <Button onclick={() => query.push('/receptionPage/application/UsersCardInfo')} className='nocopy' mpadding={'0px 0px 0px 30px'} mheight={"30px"} mwidth={'143.47px'} msize={'13px'} mradius='5px' height={"40px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
@@ -108,6 +111,6 @@ export const Paymepay = () => {
 }
 export default Paymepay
 
-    
-    
-    
+
+
+

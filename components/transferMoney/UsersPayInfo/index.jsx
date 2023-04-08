@@ -1,5 +1,5 @@
 import { Button, Input } from '../../generic/index.jsx'
-import Container, { BoxCon, BtnCon, ConTainerImg, HerBox, ImgBox,  InputCon, TextBox, TextCon } from './style.js'
+import Container, { BoxCon, BtnCon, ConTainerImg, HerBox, ImgBox, InputCon, TextBox, TextCon } from './style.js'
 import Orqaga from "../../../assets/icons/orqaga.svg"
 import Click from "../../../assets/icons/click.png"
 import Paynet from "../../../assets/icons/paynet.png"
@@ -53,7 +53,7 @@ export const UsersPayInfo = () => {
 
           <InputCon>
             <p>Pasport seriyangiz</p>
-            <Input  mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'AA 222 33 44'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
+            <Input mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} size={'20px'} weight={'600'} placeholder={'AA 222 33 44'} width={'459px'} height={'33px'} padding={'6px 30px'} disabled={true} />
           </InputCon>
           <InputCon>
             <p>Ta’lim tilingiz</p>
@@ -75,7 +75,7 @@ export const UsersPayInfo = () => {
           </InputCon>
 
           <BtnCon>
-            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy'  margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
+            <Button mradius={'5px'} mpadding={'0 0 0 19px '} mwidth={'290px'} mheight={'21px'} msize={'16px'} onclick={() => query.push('/receptionPage/abiturient')} className='nocopy' margin={'10px 0px 17px 0px'} height={"37px"} width={'267.47px'} size={'22px'}>Ortga qaytish</Button>
             <Orqaga className={'BtnCon'} />
           </BtnCon>
         </BoxCon>
@@ -85,35 +85,45 @@ export const UsersPayInfo = () => {
             <p>Siz muvaffaqiyatli ro’yxatdan o’tdingiz imtihonga kirish uchun quyidagi usullardan bir orqali yarim aklatga teng 150 ming so’m to’lovni amalga oshirishingiz kerak.</p>
           </TextBox>
           <ConTainerImg>
-              <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>
-                <Image src={Click} alt='click' className='Click' />
-                <Image src={CilckMobile} alt='click' className='CilckMobile' />
-              </div>
-              <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/payme')}>
-                < Image src={Payme} alt='click' className='Payme' />
-                <Image src={PaymeMobile} alt='click' className='PaymeMobile' />
-              </div>
-              <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
-                <Image src={Paynet} alt='click' className='Paynet' />
-                <Image src={PaynetMobile} alt='click' className='PaynetMobile' />
-              </div>
-              <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/appelsin')}>
-                <Image src={Apelsin} alt='click' className='Apelsin' />
-                <Image src={AppelsinMobile} alt='click' className='ApelsinMobile' />
-              </div>
+            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>
+              <Image src={Click} alt='click' className='Click' />
+              <Image src={CilckMobile} alt='click' className='CilckMobile' />
+            </div>
 
-              <div>
-                <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
-                <NaqtTulov type="primary" alt='click' onClick={showModal} className='TolovMobile' />
-                <AntModal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                  <p className='talaba'>Hurmatli talaba, agar naqd pul ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa  ilovalar orqali to'lashingiz mumkin.</p>
-                </AntModal>
-              </div>
+            <div>
+              <form method="POST" action="https://checkout.paycom.uz">
+                <Input type="hidden" name="merchant"
+                  value="63fc573ec6ebaa46493d6ee4" />
+                <Input type="hidden" name="amount" value="20000000" />
+                <Input type="hidden" name="account[order]" value="1111" />
+                <button type="submit" style={{ border: 'none' }}>
+                  < Image src={Payme} alt='click' className='Payme' />
+                  <Image src={PaymeMobile} alt='click' className='PaymeMobile' />
+                </button>
+              </form>
+            </div>
+            
+            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
+              <Image src={Paynet} alt='click' className='Paynet' />
+              <Image src={PaynetMobile} alt='click' className='PaynetMobile' />
+            </div>
+            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/appelsin')}>
+              <Image src={Apelsin} alt='click' className='Apelsin' />
+              <Image src={AppelsinMobile} alt='click' className='ApelsinMobile' />
+            </div>
 
-              <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
-                <Image src={AlifMobile} alt='click' className='Oson' />
-                <Image src={AlifMobile} alt='click' className='OsonMobile' />
-              </div>
+            <div>
+              <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
+              <NaqtTulov type="primary" alt='click' onClick={showModal} className='TolovMobile' />
+              <AntModal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <p className='talaba'>Hurmatli talaba, agar naqd pul ko'rinishida to'lovni amalga oshirmoqchi bo'lsangiz institutimizga borgan holda to'lovni amalga oshirishingiz kerak bo'ladi. Shunda xodimlarimiz pul qabul qilinganligini tasdiqlashadi. Agarda bu sizga noqulaylik tug'dirsa  ilovalar orqali to'lashingiz mumkin.</p>
+              </AntModal>
+            </div>
+
+            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
+              <Image src={AlifMobile} alt='click' className='Oson' />
+              <Image src={AlifMobile} alt='click' className='OsonMobile' />
+            </div>
           </ConTainerImg>
           <div className='btnEnd'>
           </div>
