@@ -131,7 +131,6 @@ Container.Bottom = styled.div`
     align-items: center;
     color: #FFFFFF;
   }
-
 `
 
 const ModalaContainer = styled.div`

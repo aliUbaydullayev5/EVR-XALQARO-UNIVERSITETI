@@ -9,11 +9,10 @@ import { startMessage } from '../../../../../redux/slices/message/index.js'
 import { reset } from '../../../../../redux/sliceAdmin/talimyunlishAdd/index.js'
 import Edit from "../../../../../assets/icons/edit.svg"
 import Trash from "../../../../../assets/icons/trash.svg"
-import Plus from "../../../../../assets/icons/plus.svg"
-import { Modal } from 'antd'
 import { bookLaunguageCreatePost } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/create.js'
 import { bookLaunguageGetFetch } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/getbooksLaunguage.js'
 import { bookLaunguageDeleteIdDel } from '../../../../../redux/sliceAdmin/libary/bookLaunguage/deleteId.js'
+import { HiOutlineRefresh } from 'react-icons/hi'
 
 export const BookLaunguage = () => {
   const dispatch = useDispatch();
@@ -64,7 +63,7 @@ export const BookLaunguage = () => {
     bookLaunguageCreatePost({
       id: id,
       name: dataList[i].name,
- }));
+    }));
 
   useEffect(() => {
     dispatch(bookLaunguageGetFetch())
@@ -77,33 +76,65 @@ export const BookLaunguage = () => {
 
 
   const modalAdd = () => setOpen(true)
-
   const handleCancel = () => setOpen(false);
+
+  const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
+  const refreshDataFunc = () => {
+    dispatch(authorGetFetch())
+    setRefreshButtonLogin(true)
+    setTimeout(() => {
+      setRefreshButtonLogin(false)
+    }, 1000)
+  }
+
 
   return (
     <Container>
       <Container.Bottom>
-        <h1>Tillar</h1>
+        <Container.TextAdd>
+          <h1>Mualliflar</h1>
+        </Container.TextAdd>
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <div>
-              <h1>Yunalish yaratish</h1>
+              <h1>Kitob Muallifi</h1>
             </div>
             <br />
             <div>
-              <p>Yunalish nomi</p>
+              <p>Kitob Muallifi Yratish</p>
             </div> <br />
             <div>
-              <Input onchange={(e) => setName(e.target.value )} value={name} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+              <Input onchange={(e) => setName({ ...name, name: e.target.value })} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
               <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>
             </div>
           </Container.Add>
-
         </Antmodal>
-        <div onClick={modalAdd}>
-          <Plus /> &nbsp;   Qo’shish
-        </div>
+
+        <Container.BtnRef>
+          <div>
+            <Button
+              mwidth={'204px'}
+              width={'204px'}
+              mheight={'48px'}
+              height={'48px'}
+              msize={'20px'}
+              size={'20px'}
+              mweight={'400'}
+              weight={'400'}
+              radius={'10px'}
+              mradius={'10px'}
+              shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
+              bc={'#221F51'}
+              onclick={modalAdd}
+            >  Q'oshish
+            </Button>
+          </div>
+          <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
+            <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
+          </Container.RefreshArea>
+        </Container.BtnRef>
       </Container.Bottom>
+
       <Container.Table>
         <Container.Scrool style={{ overflowY: "scroll" }}>
           <Container.Top>

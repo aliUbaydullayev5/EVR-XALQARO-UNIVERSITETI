@@ -34,11 +34,10 @@ Container.Table = styled.div`
   border-radius: 12px;
   margin: 30px 0px;
 `
-
 Container.Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 10px;
   >h1{
     font-family: 'Montserrat';
     font-style: normal;
@@ -49,27 +48,6 @@ Container.Bottom = styled.div`
     align-items: center;
     color: #FFFFFF;
   }
-  >div {
-    display: flex;
-    align-items: center;
-    justify-content:  space-around;
-    width: 150px;
-    height: 50px;
-    background: #221F51;
-    box-shadow: 0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54);
-    border-radius: 10px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    color: #FFFFFF;
-  }
-
 `
 Container.Scrool = styled.div`
   width: 100%;
@@ -197,6 +175,32 @@ Container.Nav = styled.div`
   }
 
 `
+Container.BtnAdd = styled.div`
+  >button{
+    background: #221F51;
+    border-radius: 10px;
+  }
+`
+Container.TextAdd = styled.div`
+  >h1{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+  }  
+`
+Container.Texth1 = styled.h1`
+   font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+`
 Container.ButtonLoader = styled.div`
   text-align: center;
   background: rgba(0, 0, 0, 0.05);
@@ -226,7 +230,11 @@ Container.RefreshArea = styled.div`
   }
   
 `
-
+Container.BtnRef = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
 
 export { ConTable, Antmodal }
 export default Container

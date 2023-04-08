@@ -58,7 +58,6 @@ export const AboutUsComponents = () => {
 
     }));
 
-  console.log(name,'name');
   const findEditID = (id) => {
     setDataList(dataList?.map((value) => ({
       id: value.id,
@@ -129,8 +128,6 @@ export const AboutUsComponents = () => {
                 <Input onchange={(e) => setName({ ...name, description: e.target.value })} value={name.direction} mwidth={"340px"} mheight={"40px"} width={"640px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"0px"} placeholder={`Batafsil`} />
               </div>
             </ModalaContainer>
-
-
           </Container.Add>
           <Container.Upload
             listType="picture-card"

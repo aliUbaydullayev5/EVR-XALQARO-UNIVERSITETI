@@ -45,7 +45,7 @@ const authorCreate = createSlice({
         }
     },
     reducers: {
-        reset(state) {
+        resetauthorCreate(state) {
             state.status = null
             state.message = ''
         }
@@ -53,5 +53,5 @@ const authorCreate = createSlice({
 })
 
 
-export const { reset } = authorCreate.actions
+export const { resetauthorCreate } = authorCreate.actions
 export default authorCreate.reducer

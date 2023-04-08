@@ -2,7 +2,6 @@ import { Menu } from 'antd'
 import Container from './style'
 import Logo from "../../../assets/icons/logo.svg";
 import { useState } from "react";
-import { FcTodoList } from "react-icons/fc"
 import TalimYunalishAbuturent from "./talimYunalish/TalimYunalishAbuturent";
 import TalimYunlishMaster from "./talimYunalish/TalimYunalishMaster";
 import TalimYunalishTypeAddCom from "./talimYunalish/TalimYunalishTypeAdd";
@@ -24,8 +23,8 @@ import TeacherComponent from './employees/teacher/index.jsx';
 import GroupComponet from './group/index.jsx';
 import GroupMasterComponet from './group/groupMaster/index.jsx';
 import EmployeeComponent from './employees/employee/index.jsx';
-
-
+import { FcAbout ,FcGallery,FcNews,FcBriefcase,FcGraduationCap,FcReading ,FcPortraitMode,FcDocument} from "react-icons/fc";
+import {TiGroupOutline} from  "react-icons/ti"
 const SettingComponent = () => {
     const quarey = useRouter()
 
@@ -33,44 +32,44 @@ const SettingComponent = () => {
     function getItem(label, key, icon, children, type) { return { key, icon, children, label, type, } }
 
     const items = [
-        getItem('Ta’lim yo’nalishlari', 'sub1', <FcTodoList />, [
+        getItem('Ta’lim yo’nalishlari', 'sub1', <FcDocument />, [
             getItem('Abuturent', 'Abuturent'),
             getItem('Magistratura', 'Magistratura'),
             getItem('Yunalishlar Tartiblash ', 'Yunalishlar Tartiblash'),
 
         ]),
 
-        getItem('Imtxon', 'sub2', <FcTodoList />, [
+        getItem('Imtxon', 'sub2', <FcPortraitMode />, [
             getItem('Imtxon Fan', 'Imtxon Fan'),
             getItem('Imthon Majburiy Fan', 'Imthon Majburiy Fan'),
             getItem('Talim Yunalish Fan Qo`shish', 'Talim Yunalish Fan Qo`shish')
         ]),
 
-        getItem('Test', 'sub4', <FcTodoList />, [
+        getItem('Test', 'sub4', <FcGraduationCap />, [
             getItem('Test Savollar Qo`shsih', 'Test Savollar Qo`shsih'),
             getItem('Test Savollar', 'Test Savollar'),
             getItem('Test Boshqaruv', 'Test Boshqaruv'),
         ]),
-        getItem('Kutubxona', 'sub5', <FcTodoList />, [
+        getItem('Kutubxona', 'sub5', <FcReading />, [
             getItem('Mualif', 'Mualif'),
             getItem('Yunalishlar', 'Yunalishlar'),
             getItem('Til', 'Til'),
             getItem('Kitoblar', 'Kitoblar'),
         ]),
-        getItem('Xodimlar', 'sub6', <FcTodoList />, [
+        getItem('Xodimlar', 'sub6', <FcBriefcase />, [
             getItem('`Oqtuvchi', 'Oqtuvchi'),
             getItem('Xodim', 'Xodim'),
 
         ]),
-        getItem('Gruh', 'Gruh', <FcTodoList />, [
+        getItem('Gruh', 'Gruh', <TiGroupOutline />, [
             getItem('GruhAbuturent', 'GruhAbuturent'),
             getItem('GruhMaster', 'GruhMagistratura'),
 
         ]),
 
-        getItem('Yangiliklar', 'Yangiliklar', <FcTodoList />),
-        getItem('Gallery', 'Gallery', <FcTodoList />),
-        getItem('Biz haqimizda', 'Biz haqimizda', <FcTodoList />),
+        getItem('Yangiliklar', 'Yangiliklar', <FcNews />),
+        getItem('Gallery', 'Gallery', <FcGallery />),
+        getItem('Biz haqimizda', 'Biz haqimizda', <FcAbout />),
 
     ]
     const returnComFunc = (type) => {
