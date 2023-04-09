@@ -82,35 +82,37 @@ export const UsersPayInfo = () => {
         {/* Con2 pul o`tqazish */}
         <BoxCon>
           <TextBox>
-            <p>Siz muvaffaqiyatli ro’yxatdan o’tdingiz imtihonga kirish uchun quyidagi usullardan bir orqali yarim aklatga teng 150 ming so’m to’lovni amalga oshirishingiz kerak.</p>
+            <p>Siz muvaffaqiyatli ro’yxatdan o’tdingiz imtihonga kirish uchun quyidagi usullardan orqali yarim aklatga teng 200 ming so’m to’lovni amalga oshirishingiz kerak.</p>
           </TextBox>
           <ConTainerImg>
-            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>
+            {/* <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/click')}>
               <Image src={Click} alt='click' className='Click' />
               <Image src={CilckMobile} alt='click' className='CilckMobile' />
-            </div>
+            </div> */}
 
             <div>
+              {/* onClick={() => query.push('/receptionPage/application/UsersCardInfo/payme')} */}
               <form method="POST" action="https://checkout.paycom.uz">
                 <Input type="hidden" name="merchant"
                   value="63fc573ec6ebaa46493d6ee4" />
                 <Input type="hidden" name="amount" value="20000000" />
                 <Input type="hidden" name="account[order]" value="1111" />
-                <button type="submit" style={{ border: 'none' }}>
+                <button type="submit" style={{border:'none',cursor:'pointer'}}>
                   < Image src={Payme} alt='click' className='Payme' />
                   <Image src={PaymeMobile} alt='click' className='PaymeMobile' />
+                  {/* <Image width={120} src={"http://cdn.payme.uz/buttons/buttonbig_UZ_CYRL_UZ.svg"} alt='img' /> */}
                 </button>
               </form>
             </div>
-            
-            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
+
+            {/* <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
               <Image src={Paynet} alt='click' className='Paynet' />
               <Image src={PaynetMobile} alt='click' className='PaynetMobile' />
-            </div>
-            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/appelsin')}>
+            </div> */}
+            {/* <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/appelsin')}>
               <Image src={Apelsin} alt='click' className='Apelsin' />
               <Image src={AppelsinMobile} alt='click' className='ApelsinMobile' />
-            </div>
+            </div> */}
 
             <div>
               <Tolov type="primary" alt='click' onClick={showModal} className='Tolov' />
@@ -120,10 +122,10 @@ export const UsersPayInfo = () => {
               </AntModal>
             </div>
 
-            <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
+            {/* <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/oson')}>
               <Image src={AlifMobile} alt='click' className='Oson' />
               <Image src={AlifMobile} alt='click' className='OsonMobile' />
-            </div>
+            </div> */}
           </ConTainerImg>
           <div className='btnEnd'>
           </div>
