@@ -11,12 +11,12 @@ import React from "react";
 
 const NewsInfoComponent = ({id}) => {
 
-    const newsGet = useSelector((store)=> store.newsGet.data)
-    const query = useRouter()
+    const router = useRouter()
+
+    const newsGet = useSelector((store)=> store?.newsGet?.data)
 
     const uniqData = newsGet.filter((value)=> value.id === Number(id))[0]
 
-    console.log(newsGet, 'sdfdsfd')
 
     return (
         <Container>
@@ -42,10 +42,11 @@ const NewsInfoComponent = ({id}) => {
 
             </Container.Top>
             <Container.Bottom>
-                <h1>{uniqData.title}</h1>
+                <h1>{uniqData?.title}</h1>
                 <p>
                     {uniqData?.description}
                 </p>
+                <Button onclick={()=> router.push(`/news`)} width={'300px'} size={'20px'} mwidth={'300px'} mheight={'50px'} height={'50px'}>Ortga Qaytish</Button>
             </Container.Bottom>
             <Container.Right>
                 {newsGet?.map((value) => {
