@@ -104,7 +104,11 @@ Container.Section = styled.div`
   border-radius: 6.10625px;
   padding: 10px 10px;
   display: grid;
-  grid-template-columns: 20px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
+  width: 2000px;
+  //grid-template-columns: 20px 1fr 2px 130px 2px 100px 2px 1fr 2px 1fr;
+  grid-template-columns: 20px 400px 2px repeat(6, 1fr 2px);
+  
+
   align-items: center;
   gap: 10px;
   .line{
@@ -133,7 +137,6 @@ Container.Section = styled.div`
     justify-content: center;
   }
   .textWithTitle {
-    width: 220px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

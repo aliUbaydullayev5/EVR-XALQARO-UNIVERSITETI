@@ -11,9 +11,10 @@ const Container = styled.div`
   background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
   border-radius: 20px 20px 10px 10px;
   .img{
-    width: 100%;
+    width: 300px;
     height: 157.33px;
     background-size: cover;
+    border-radius: 20px;
   }
 
   @media only screen and (max-width:1000px){
@@ -21,15 +22,13 @@ const Container = styled.div`
   }
 
 `
-
 Container.Bottom = styled.div`
+  padding: 6px;
   max-width: 318px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-left: 17px;
-
   @media only screen and (max-width:1000px){
     margin-left: 7px;
     padding-right: 10px;
@@ -53,19 +52,19 @@ Container.BottomText = styled.div`
 `
 
 Container.Footer = styled.div`
- width: 100%;
- height: 13px;
- display: flex;
- justify-content: space-between;
- a{ 
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-size: 12px;
-   line-height: 15px;
+  display: flex;
+  justify-content: space-between;
+  height: 13px;
+
+  a {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
     color: #FFFFFF;
- }
-`
+  }
+`;
 
 Container.Box = styled.div`
  display: flex;

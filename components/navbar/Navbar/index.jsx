@@ -1,7 +1,6 @@
 import Container from './style'
 import {Button} from "../../generic";
 import User from '../../../assets/icon/person.svg'
-import Notif from '../../../assets/icon/noti.svg'
 import Chat from '../../../assets/icon/chat.svg'
 import MenuIcon from '../../../assets/icons/menu.svg'
 import Logo from '../../../assets/icon/logo.svg'
@@ -10,12 +9,10 @@ import {useState} from "react";
 import PersonComponent from "../PersonComponent";
 import HamburgerMenu from "../../HamburgerMenu";
 import MobileLogo from '../../../assets/mobile/icon/logoMobile.svg'
-import MobilNotif from '../../../assets/mobile/icon/notif.svg'
 import MobileChat from '../../../assets/mobile/icon/chat.svg'
 import MobilProfile from '../../../assets/mobile/icon/profile.svg'
 import MobileHamburgerIcon from '../../../assets/mobile/icon/menu.svg'
 import {useDispatch} from "react-redux";
-import {startMessage} from "../../../redux/slices/message";
 
 
 const Navbar = () => {
@@ -66,13 +63,10 @@ const Navbar = () => {
                     {
                         hidden && <PersonComponent onclick={()=> changeHidden()} />
                     }
+                    <div></div>
                 </Container.UserBlock>
-                <MobilNotif className={'scale iconMobile'} />
                 <MobileChat className={'scale iconMobile'} onClick={() => query.push('/chat')} />
-
-                <Notif className={'scale iconLaptop'}  />
                 <Chat className={'scale iconLaptop'} onClick={() => query.push('/chat')} />
-
                 <Container.MenuArea>
                     <MenuIcon onClick={()=> changeHiddenMenu()} className={'scale iconLaptop'} />
                     <MobileHamburgerIcon onClick={()=> changeHiddenMenu()} className={'scale iconMobile'} />
