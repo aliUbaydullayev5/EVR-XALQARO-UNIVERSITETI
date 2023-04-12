@@ -17,6 +17,7 @@ const GalleryComponent = () => {
     useEffect(() => {
         if (getGalleryData.status === 'success') setData(getGalleryData.data)
     }, [getGalleryData])
+
     return (
         <Container>
             <Container.Top className="nocopy">Gallery</Container.Top>
