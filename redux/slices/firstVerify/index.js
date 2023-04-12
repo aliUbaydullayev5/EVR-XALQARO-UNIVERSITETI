@@ -11,7 +11,7 @@ export const firstVerifyFetch = createAsyncThunk('postFirstVerify', async (paylo
             firstName: payload.firstName,
             phoneNumber: payload.phoneNumber.match(/[0-9]+/g).join('')
         }),
-    }).then((res) => res.json())
+    }).then((res) => res.json().then((res) => console.log(res, 'phoneNumber')))
 })
 
 const firstVerify = createSlice({

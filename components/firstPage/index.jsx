@@ -90,7 +90,7 @@ const FirstPageMainCom = () => {
             phoneNumber: (numberState.match(/[0-9]+/g) || []).join('')
         }))
     }
-
+    console.log(numberState,'numberState');
     return(
         <Container>
             <Container.AreaLogo>
