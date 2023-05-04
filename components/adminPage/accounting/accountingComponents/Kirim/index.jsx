@@ -1,36 +1,30 @@
 import Container from './style'
 import {GiReceiveMoney} from "react-icons/gi"
-import {Button, Input} from "../../../../generic";
-import {IoSearch} from "react-icons/io5";
-import {HiOutlineRefresh} from "react-icons/hi";
-import {Button as AntButton, Modal, Spin, Upload} from "antd";
-import {InView} from "react-intersection-observer";
-import {API_GLOBAL} from "../../../../../globalApi";
-import {FiUpload} from "react-icons/fi";
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar";
-import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd";
-import {startMessage} from "../../../../../redux/slices/message";
+import {Button, Input} from "../../../../generic"
+import {IoSearch} from "react-icons/io5"
+import {HiOutlineRefresh} from "react-icons/hi"
+import {Button as AntButton, Modal, Spin, Upload} from "antd"
+import {API_GLOBAL} from "../../../../../globalApi"
+import {FiUpload} from "react-icons/fi"
+import React, {useEffect, useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
+import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd"
+import {startMessage} from "../../../../../redux/slices/message"
+import {kirimFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/kirim"
 
 
 const Kirim = ({subTitle}) => {
 
 
     const dispatch = useDispatch()
-    const xarajatlar = useSelector((store)=> store.xarajatlar)
+    const kirim = useSelector((store)=> store.kirim)
     const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
     const [inView, setInView] = useState(false);
     const [modalHidden, setModalHidden] = useState(false)
 
     useEffect(()=> {
-        if (inView){
-            if((xarajatlar.data.length % 20 === 0) || (xarajatlar.data.length === 0)){
-                dispatch(addPageCount())
-                dispatch(xarajatlarFetch({page: xarajatlar?.pageCount, query: ''}))
-            }
-        }
-    }, [inView])
+        dispatch(kirimFetch())
+    }, [])
 
     const [fileList, setFileList] = useState([])
     const [pushData, setPushData] = useState({
@@ -88,8 +82,7 @@ const Kirim = ({subTitle}) => {
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
-            dispatch(xarajatlarFetch({page: 0, query: ''}))
-            dispatch(resetPageToZero())
+            dispatch(kirimFetch())
             setRefreshButtonLogin(true)
             setTimeout(() => {
                 setRefreshButtonLogin(false)
@@ -164,29 +157,30 @@ const Kirim = ({subTitle}) => {
                 </Container.RefreshArea>
             </div>
             <div className={'dataArea'}>
-                {xarajatlar.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
+                {kirim.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
                 {
                     <Container.DataAreaInset>
                         {
-                            xarajatlar?.data?.map((value, index) => (
+                            kirim?.data?.map((value, index) => (
                                     <Container.Section>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
+                                        <p className={'textWithTitle'} title={value.user.firstName+' '+value.user.lastName}>{`${value.user.firstName}, ${value.user.lastName}`}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
+                                        <p className={'textWithTitle'} title={value.user.passportSeries}>P.Seriya: {value.user.passportSeries}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.paymentType}>{value.paymentType}</p>
+                                        <p className={'textWithTitle'} title={value.user.role.name}>{value.user.role.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.date}>{value.date}</p>
+                                        <p className={'textWithTitle'} title={value.user.patron}>Sharif: {value.user.patron}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.description}>{value.description}</p>
+                                        <p className={'textWithTitle'} title={value.user.idNumber}>ID: {value.user.idNumber}</p>
+                                        <div className="line"></div>
+                                        <p className={'textWithTitle'} title={value.user.phoneNumber}>Nomer: +{value.user.phoneNumber}</p>
+                                        <div className="line"></div>
+                                        <p className={'textWithTitle'} title={value.user.extraPhoneNumber}>Q. Nomer: +{value.user.extraPhoneNumber}</p>
                                     </Container.Section>
                                 )
                             )
                         }
-                        <div className="viewTag">
-                            <InView onChange={setInView} className={'viewTag'}/>
-                        </div>
                     </Container.DataAreaInset>
                 }
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -10,6 +9,8 @@ const Container = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  height: 100%;
+  max-height: 700px;
   @media only screen and (max-width: 1000px) {
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +34,7 @@ const Container = styled.div`
       min-height: 140px ;
     }
     cursor: pointer;
+    transition: .2s;
     :hover {
       transform: scale(1.02);
     }

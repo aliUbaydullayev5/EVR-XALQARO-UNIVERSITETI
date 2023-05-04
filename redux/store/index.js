@@ -75,6 +75,7 @@ import contentPriceGet from "../sliceAdmin/moliyaSlices/contentPrice/contentPric
 import teacherCreate from "../sliceAdmin/employees/teacher/teacheeCreate/index.js"
 import teacherGet from "../sliceAdmin/employees/teacher/teacherGet/index.js"
 import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index.js"
+import newsGet from '../slices/news'
 
 export default configureStore({
         reducer: {
@@ -154,5 +155,6 @@ export default configureStore({
                 teacherCreate,
                 teacherGet,
                 employeeCreate,
+                newsGet
         },
 });

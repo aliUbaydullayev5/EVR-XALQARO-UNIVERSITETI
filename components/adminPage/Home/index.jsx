@@ -1,9 +1,5 @@
 import { useRouter } from 'next/router.js'
-
 import Container from './style'
-
-
-
 const HomeComponent = () => {
 const router =useRouter()
     return (

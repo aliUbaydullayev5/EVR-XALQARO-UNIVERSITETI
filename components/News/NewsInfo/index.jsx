@@ -1,67 +1,62 @@
 import Container from "./style";
 import {Button} from '../../generic'
-import Image from "next/image";
-import Evr from "../../../assets/image/evr.jpg"
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
+import {useSelector} from "react-redux"
+import { Autoplay, Pagination } from "swiper"
+import "swiper/css"
+import "swiper/css/pagination"
+import {Swiper, SwiperSlide} from "swiper/react";
+import NewsCard from "../NewsCard";
+import React from "react";
 
-const NewsInfoComponent = () => {
+const NewsInfoComponent = ({id}) => {
 
-    const query = useRouter();
+    const router = useRouter()
+
+    const newsGet = useSelector((store)=> store?.newsGet?.data)
+
+    const uniqData = newsGet.filter((value)=> value.id === Number(id))[0]
+
 
     return (
         <Container>
-            <Container.Inset>
+            <Container.Top>
+                {
+                    uniqData?.attachments.length ?
+                        <Swiper autoplay={{delay: 2500, disableOnInteraction: false,}} pagination={{clickable: true,}}
+                                modules={[Autoplay, Pagination]} className="mySwiper">
+                            {
+                                uniqData?.attachments?.map((val) => (
+                                        <SwiperSlide key={val.id} className="SwiperSlide">
+                                            <Container.CaruselInset imgBack={val.id}/>
+                                        </SwiperSlide>
+                                    )
+                                )
+                            }
+                        </Swiper>
+                        :
+                        <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                            <h1>Img Not Found</h1>
+                        </div>
+                }
 
-                <Container.Bottom>
-
-                    <Container.BottomBox top>
-                        <Container.BottomDesc>
-                            <div>
-                                <Image className="newsImg" src={Evr}/>
-                                <audio controls>
-                                    <source src="./kenjebek-nurdolday-shokolad.mp3" type="audio/mp3"/>
-                                    Your browser does not support the audio element.
-                                </audio>
-                                <p>Lorem ipsum dolor sit amet consectetur. Nunc quisque commodo tristique consectetur
-                                    non ullamcorper. At elit enim ac at ac risus. Ac et imperdiet nec eget nibh
-                                    vestibulum. Fames gravida faucibus pellentesque aliquam pulvinar in libero
-                                    adipiscing in. Magna ipsum varius vestibulum suspendisse egestas. Elit a neque nunc
-                                    ultricies erat nec lectus tempus et. Enim egestas est lectus dolor nulla ultrices
-                                    aliquam nulla consequat. Mauris magna aenean cras vel fames. Odio est lectus nibh
-                                    nam mus arcu enim. Vulputate sodales scelerisque sed ipsum a. Gravida eget pulvinar
-                                    condimentum volutpat potenti purus vitae nulla. Varius curabitur velit diam eu. Leo
-                                    phasellus diam sed consequat eget justo sollicitudin. Ultricies tincidunt tortor
-                                    arcu tincidunt arcu feugiat purus netus</p>
-                            </div>
-                        </Container.BottomDesc>
-                    </Container.BottomBox>
-
-                    <Container.BottomBox>
-                        <Container.BottomDesc bot>
-                            <Container.Img>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                                <Image className="newsImgs" src={Evr}/>
-                            </Container.Img>
-                        </Container.BottomDesc>
-                    </Container.BottomBox>
-
-                </Container.Bottom>
-                <Container.BottomLine/>
-                <div className="but">
-                    <Button onclick={() => query.push(`/news`)} mwidth={'139px'} width={'139px'} height={'23px'}
-                            mheight={'23px'} msize={'7px'} size={'14px'}>Ortga</Button>
-                </div>
-            </Container.Inset>
+            </Container.Top>
+            <Container.Bottom>
+                <h1>{uniqData?.title}</h1>
+                <p>
+                    {uniqData?.description}
+                </p>
+                <Button onclick={()=> router.push(`/news`)} width={'300px'} size={'20px'} mwidth={'300px'} mheight={'50px'} height={'50px'}>Ortga Qaytish</Button>
+            </Container.Bottom>
+            <Container.Right>
+                {newsGet?.map((value) => {
+                    return <NewsCard data={value} key={value.id}/>;
+                })}
+            </Container.Right>
         </Container>
     );
-};
+}
 
-export default NewsInfoComponent;
+// query.push(`/news`)
+
+export default NewsInfoComponent

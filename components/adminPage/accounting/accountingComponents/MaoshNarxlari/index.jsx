@@ -28,7 +28,6 @@ const MaoshNarxlari = ({subTitle}) => {
         type: ''
     })
 
-    console.log(mashNarxlariAdd, 'mashNarxlariAdd')
     // error
     const pushToSliceFunc = () => {
         if(!!pushData.name.length && !!pushData.amount.length && !!pushData.type.length){
