@@ -34,6 +34,7 @@ const getUserId = createSlice({
         },
         [getUserIdFetch.rejected]: (state) => {
             state.loading = 'Error'
+            state.message = 'Back-end ishlamayapti hapa bomes ☹'
         }
     },
     reducers: {

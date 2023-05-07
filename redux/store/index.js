@@ -77,6 +77,7 @@ import teacherGet from "../sliceAdmin/employees/teacher/teacherGet/index.js"
 import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index.js"
 import newsGet from '../slices/news'
 import forgotPassword from '../slices/passwordForgot'
+import chatSlice from '../slices/chatSlice'
 
 export default configureStore({
         reducer: {
@@ -157,6 +158,7 @@ export default configureStore({
                 teacherGet,
                 employeeCreate,
                 newsGet,
-                forgotPassword
+                forgotPassword,
+                chatSlice
         },
 });
