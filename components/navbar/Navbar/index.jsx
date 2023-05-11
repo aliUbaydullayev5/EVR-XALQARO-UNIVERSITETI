@@ -65,8 +65,8 @@ const Navbar = () => {
                     }
                     <div></div>
                 </Container.UserBlock>
-                <MobileChat className={'scale iconMobile'} onClick={() => query.push('/chat')} />
-                <Chat className={'scale iconLaptop'} onClick={() => query.push('/chat')} />
+                <MobileChat className={'scale iconMobile'} onClick={() => query.push('/Chat')} />
+                <Chat className={'scale iconLaptop'} onClick={() => query.push('/Chat')} />
                 <Container.MenuArea>
                     <MenuIcon onClick={()=> changeHiddenMenu()} className={'scale iconLaptop'} />
                     <MobileHamburgerIcon onClick={()=> changeHiddenMenu()} className={'scale iconMobile'} />
