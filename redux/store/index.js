@@ -78,6 +78,8 @@ import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index
 import newsGet from '../slices/news'
 import forgotPassword from '../slices/passwordForgot'
 import chatSlice from '../slices/chatSlice'
+
+import chatSlice from '../slices/chatSlice'
 import caruselcreate from "../sliceAdmin/carusel/caruselCreate/create.js"
 import caruselAdminGet from "../sliceAdmin/carusel/caruselGet/getCarusel.js"
 export default configureStore({
@@ -163,5 +165,6 @@ export default configureStore({
                 chatSlice,
                 caruselcreate,
                 caruselAdminGet,
+                chatSlice
         },
 });

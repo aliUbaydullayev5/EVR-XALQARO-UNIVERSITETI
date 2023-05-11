@@ -1,4 +1,5 @@
-import Root from "../../root";
+
+import Root from "../../root"
 import ChatComponent from "../../components/Chat"
 
 const ChatPage = () => {

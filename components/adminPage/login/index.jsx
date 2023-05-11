@@ -28,9 +28,6 @@ export const LoginCom = () => {
     setpassword(event.target.value);
   };
 
-  const Phonehandle = (event) => {
-    setPhonecheck(event);
-  }
 
   const loginAdminThunk = useSelector((store) => store.loginAdminThunk)
 
@@ -70,7 +67,7 @@ export const LoginCom = () => {
             <CustomInput
               maxLength={17}
               className={'customPhoneInput'}
-              onChange={Phonehandle}
+              onChange={(e) => setPhonecheck(e)}
               value={phoneFace}
             />
           </Container.Number>

@@ -16,6 +16,9 @@ const Account = () => {
     useEffect(()=> {dispatch(getInfoUserCabinetFetch())}, [])
     const { data, status, errorCode, message } = useSelector((store)=> store.getInfoUserCabinet)
 
+
+    // ---------- useEffect ni comment ga olib koyilishi kere chatni test versiyasida
+
     useEffect(()=> {
         if(errorCode === 401 || errorCode === 403 || status === 'error') {
             localStorage.removeItem('access-token')
@@ -24,6 +27,8 @@ const Account = () => {
         }
         if (status === 'error') dispatch(startMessage({time: 5, type: 'error', message}))
     }, [status])
+
+    // ---------------------------------------------------------------------
 
     const ruleComTypeFunc = (type) => {
         switch (type){

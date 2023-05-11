@@ -24,10 +24,6 @@ const NewsComponent = () => {
         dispatch(addPageCount())
         dispatch(newsGetFetch({page: newsGet?.pageCount, query: ''}))
       }
-    }
-  }, [inView])
-
-
 
   return (
     <Container>

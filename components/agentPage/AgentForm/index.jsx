@@ -30,11 +30,11 @@ const AgentFormComponent = () => {
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
-    const {fileId, by} = useSelector((store) => store.deployFile);
+    const { fileId, by } = useSelector((store) => store.deployFile);
 
     const dispatch = useDispatch()
 
-    const findFileFunc = ({file, by}) => dispatch(deployFileFetch({file: file, by}));
+    const findFileFunc = ({ file, by }) => dispatch(deployFileFetch({ file: file, by }));
     const receptionData = useSelector((store) => store.agentAuth);
 
     const reseptionCheckPhoneSlice = useSelector(
@@ -42,7 +42,7 @@ const AgentFormComponent = () => {
     );
 
     useEffect(() => {
-        changeAllDataFunc({type: by, value: fileId});
+        changeAllDataFunc({ type: by, value: fileId });
     }, [fileId]);
 
     const [allData, setAllData] = useState({
@@ -61,11 +61,11 @@ const AgentFormComponent = () => {
 
     const receptionSmsVerify = useSelector((store) => store.receptionSmsVerify);
 
-    const changeAllDataFunc = ({type, value}) => {
+    const changeAllDataFunc = ({ type, value }) => {
         const fakeData = allData
         fakeData[type] = value
         setAllData(fakeData)
-        setAllData({...allData, [type]: value})
+        setAllData({ ...allData, [type]: value })
     }
 
     const changeMumPass = (event) => {
@@ -86,7 +86,7 @@ const AgentFormComponent = () => {
 
 
     const checkAllInputs = () => {
-        const result = checkAllInputs2({allData});
+        const result = checkAllInputs2({ allData });
         if (result?.status) return true;
         else {
             dispatch(
@@ -117,13 +117,16 @@ const AgentFormComponent = () => {
                     phoneNumber: allData.phoneNumber,
                 }),
             );
+        if (receptionSmsVerify.status === 'success') localStorage.setItem('receptionUserId', allData.phoneNumber)
+
         else
             dispatch(
-                startMessage({time: 3, message: 'Sms 6 honali bolishi kerak'}),
+                startMessage({ time: 3, message: 'Sms 6 honali bolishi kerak' }),
             )
     };
-
-    useEffect(()=> {
+    console.log(receptionSmsVerify.status,'receptionSmsVerify.status');
+    console.log(allData.phoneNumber,'allData.phoneNumber');
+    useEffect(() => {
         dispatch(resetSmsVerify())
         setSmsInput('')
     }, [allData.phoneNumber])
@@ -151,7 +154,7 @@ const AgentFormComponent = () => {
 
     useEffect(() => {
         receptionSmsVerify?.status === 'success' && setModalHidden(false);
-        receptionSmsVerify?.status === 'error' && dispatch(startMessage({time: 3, message: 'Sms no togri'}));
+        receptionSmsVerify?.status === 'error' && dispatch(startMessage({ time: 3, message: 'Sms no togri' }));
     }, [receptionSmsVerify]);
 
     useEffect(() => {

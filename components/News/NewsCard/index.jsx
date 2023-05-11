@@ -1,4 +1,3 @@
-import React from "react";
 import {useRouter} from "next/router";
 import Container from "./style";
 import Arrow from "../../../assets/icon/arrow.svg";
@@ -8,6 +7,7 @@ import Image from "next/image";
 export const NewsCard = (data) => {
   
   const query = useRouter()
+
 
 
   return (
