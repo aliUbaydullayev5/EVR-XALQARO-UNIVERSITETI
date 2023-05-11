@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const groupGetFetch = createAsyncThunk('groupGetFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/group`,
+export const caruselGetFetch = createAsyncThunk('caruselGetFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/carousel/get-all`,
         {
             method: 'GET',
             headers: {
@@ -13,32 +13,32 @@ export const groupGetFetch = createAsyncThunk('groupGetFetch', async (payload) =
         .then((res) => res.json())
 })
 
-const groupGet = createSlice({
-    name: 'groupGetFetch',
+const caruselAdminGet = createSlice({
+    name: 'caruselAdminGet',
     initialState: {
-        data: {},
+        data:[],
         status: null,
     },
     extraReducers: {
-        [groupGetFetch.pending]: (state) => {
+        [caruselGetFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [groupGetFetch.fulfilled]: (state, { payload }) => {
+        [caruselGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
-            state.data = payload?.data
+                state.data = payload?.data
         },
-        [groupGetFetch.rejected]: (state) => {
+        [caruselGetFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
     reducers: {
-        resetgroupGetFetch(state) {
+        resetcaruselAdmin(state) {
             state.data = {}
             state.status = null
         }
     }
 })
 
-export const { resetgroupGetFetch } = groupGet.actions
-export default groupGet.reducer
+export const { resetcaruselAdmin } = caruselAdminGet.actions
+export default caruselAdminGet.reducer

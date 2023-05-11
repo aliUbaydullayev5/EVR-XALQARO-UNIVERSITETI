@@ -1,4 +1,3 @@
-import React from "react";
 import {useRouter} from "next/router";
 import Container from "./style";
 import Arrow from "../../../assets/icon/arrow.svg";
@@ -9,7 +8,7 @@ export const NewsCard = (data) => {
   
   const query = useRouter()
 
-    console.log(data.data.attachment.id, 'data')
+
 
   return (
       <div style={{display: "flex", cursor: 'pointer'}} onClick={() => query.push(`/news/${data.data.id}`)}>

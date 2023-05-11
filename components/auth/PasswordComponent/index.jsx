@@ -10,6 +10,7 @@ import {getUserIdFetch, resetData} from "../../../redux/slices/getId"
 import { Modal } from 'antd'
 import {forgotPasswordFetch, resetForgotData} from "../../../redux/slices/passwordForgot"
 
+
 const PasswordComponent = () => {
 
     const router = useRouter()
@@ -61,6 +62,7 @@ const PasswordComponent = () => {
 
     useEffect(()=> {
         if(getUserId?.status === 'success') changeAllDataFunc({type: 'idNumber', value: getUserId.message})
+        if(getUserId?.status === 'Error') dispatch(startMessage({time: 3, type: 'error', message: firstVerify.message}))
     }, [getUserId])
 
     useEffect(()=> {

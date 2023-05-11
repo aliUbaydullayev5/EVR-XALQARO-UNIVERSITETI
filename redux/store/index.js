@@ -78,6 +78,9 @@ import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index
 import newsGet from '../slices/news'
 import forgotPassword from '../slices/passwordForgot'
 
+import chatSlice from '../slices/chatSlice'
+import caruselcreate from "../sliceAdmin/carusel/caruselCreate/create.js"
+import caruselAdminGet from "../sliceAdmin/carusel/caruselGet/getCarusel.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -157,6 +160,9 @@ export default configureStore({
                 teacherGet,
                 employeeCreate,
                 newsGet,
-                forgotPassword
+                forgotPassword,
+                chatSlice,
+                caruselcreate,
+                caruselAdminGet,
         },
 });

@@ -23,11 +23,13 @@ import TeacherComponent from './employees/teacher/index.jsx';
 import GroupComponet from './group/index.jsx';
 import GroupMasterComponet from './group/groupMaster/index.jsx';
 import EmployeeComponent from './employees/employee/index.jsx';
-import { FcAbout ,FcGallery,FcNews,FcBriefcase,FcGraduationCap,FcReading ,FcPortraitMode,FcDocument} from "react-icons/fc";
-import {TiGroupOutline} from  "react-icons/ti"
-const SettingComponent = () => {
-    const quarey = useRouter()
+import { FcAbout ,FcGallery,FcNews,FcBriefcase,FcGraduationCap,FcReading ,FcPortraitMode,FcDocument, FcHome} from "react-icons/fc";
+import { TiGroupOutline } from "react-icons/ti"
+import CaruselComponents from './carusel/index.jsx';
 
+const SettingComponent = () => {
+
+    const quarey = useRouter()
     const [page, setPage] = useState('Biz haqimizda')
     function getItem(label, key, icon, children, type) { return { key, icon, children, label, type, } }
 
@@ -67,9 +69,12 @@ const SettingComponent = () => {
 
         ]),
 
-        getItem('Yangiliklar', 'Yangiliklar', <FcNews />),
         getItem('Gallery', 'Gallery', <FcGallery />),
+        getItem('HomePage Q`shsih', 'HomePage', <FcHome />),
+        getItem('Yangiliklar', 'Yangiliklar', <FcNews />),
         getItem('Biz haqimizda', 'Biz haqimizda', <FcAbout />),
+
+        
 
     ]
     const returnComFunc = (type) => {
@@ -94,6 +99,9 @@ const SettingComponent = () => {
             case 'GruhAbuturent': return <GroupComponet />
             case 'GruhMagistratura': return <GroupMasterComponet />
             case 'Xodim': return <EmployeeComponent />
+            case 'HomePage': return <CaruselComponents />
+
+            
 
                 
         }
