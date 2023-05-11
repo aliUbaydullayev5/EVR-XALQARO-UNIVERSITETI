@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import {API_GLOBAL} from "../../../../globalApi"
+import {API_GLOBAL} from "../../../globalApi"
 
-export const tolovlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`, {
+export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/news/get?page=${payload.page}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -18,8 +18,8 @@ export const tolovlarFetch = createAsyncThunk('xarajatlarFetch', async (payload)
 })
 
 
-const tolovlar = createSlice({
-    name: 'xarajatlar',
+const newsGet = createSlice({
+    name: 'newsGet',
     initialState: {
         status: null,
         message: '',
@@ -27,10 +27,10 @@ const tolovlar = createSlice({
         pageCount: 0
     },
     extraReducers: {
-        [tolovlarFetch.pending]: (state) => {
+        [newsGetFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [tolovlarFetch.fulfilled]: (state, action) => {
+        [newsGetFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
 
@@ -45,35 +45,19 @@ const tolovlar = createSlice({
                 }else{
                     if(action.payload.success === true && action.payload.data.length) {
                         state.status = 'success'
-
-                        let newData = action.payload.data.map((value)=> {
-                            const date = new Date(value.date)
-                            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-                            const dateString = date.toLocaleString('en-US', options);
-                            const timeString = date.toLocaleTimeString('en-US');
-                            const formattedString = `${dateString.replace(/\//g, '.')} ${timeString.replace(/([\d]+:[\d]{2}):[\d]{2} ([A-Z]{2})/, '$1')}`;
-                            return ({
-                                ...value,
-                                date: formattedString
-                            })
-                        })
-
-                        state.data = [...state.data, ...newData]
+                        state.data = [...state.data, ...action.payload.data]
                     }
                     else if(action.payload?.success === false){
                         state.status = 'warning'
                     }
-
                 }
-
-
             }
             else if (action.payload.success === false) {
                 state.status = 'notFound'
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [tolovlarFetch.rejected]: (state) => {
+        [newsGetFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     },
@@ -92,5 +76,5 @@ const tolovlar = createSlice({
 
 
 
-export const { addPageCount, resetPageToZero } = tolovlar.actions
-export default tolovlar.reducer
+export const { addPageCount, resetPageToZero } = newsGet.actions
+export default newsGet.reducer

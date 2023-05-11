@@ -2,48 +2,45 @@ import React from "react";
 import {useRouter} from "next/router";
 import Container from "./style";
 import Arrow from "../../../assets/icon/arrow.svg";
-import Views from "../../../assets/icon/views.svg";
 import Date from "../../../assets/icon/date.svg";
 import Image from "next/image";
 
-export const NewsCard = ({ data = {} }) => {
+export const NewsCard = (data) => {
   
   const query = useRouter()
 
-  const { img, name,id,date, views,namechild, } = data;
 
   return (
-      <div style={{display: "flex", cursor: 'pointer'}} onClick={() => query.push(`/news/${id}`)}>
+      <div style={{display: "flex", cursor: 'pointer'}} onClick={() => query.push(`/news/${data.data.id}`)}>
         <Container>
-          <Image className="img" src={img} alt={"Yuklab Olinmadi"}/>
+            <Image
+                alt="The guitarist in the concert."
+                src={`http://185.217.131.147:8088/api/v1/attachment/download/${data.data.attachment.id}`}
+                width={200}
+                height={160}
+                className={"img"}
+            />
           <Container.Bottom>
             <Container.BottomText>
               {
-                name.split(' ').length > 4 ?
+                  data.data.title.split(' ').length > 4 ?
                     <>
-                      {name.split(' ').slice(0, 3).join(' ')}....
+                      {data.data.title.split(' ').slice(0, 3).join(' ')}....
                     </>
                     :
                     <>
-                      {name}
+                      {data.data.title}
                     </>
               }
             </Container.BottomText>
             <Container.Footer>
               <Container.Box>
-                <button>{namechild}</button>
+                <button>{data.data.description}</button>
                 <Arrow className="arrow"/>
               </Container.Box>
               <Container.Box>
-                <Container.Box>
-
-                </Container.Box>
                 <Date/>
-                <p>{date}</p>
-                <Container.Box>
-                  <Views/>
-                  <p>{views}</p>
-                </Container.Box>
+                <p>{data.data.date}</p>
               </Container.Box>
             </Container.Footer>
           </Container.Bottom>

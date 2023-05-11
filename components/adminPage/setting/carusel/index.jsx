@@ -4,15 +4,12 @@ import Button from '../../../generic/Button'
 import Input from '../../../generic/Input'
 import Container, { Antmodal, ModalaContainer, ConTable, Wrapper } from './style.js'
 import { startMessage } from '../../../../redux/slices/message'
-import { reset } from '../../../../redux/sliceAdmin/talimyunlishAdd'
-import Edit from "../../../../assets/icons/edit.svg"
 import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
 import Image from "next/image";
-import { newsreatePost } from "../../../../redux/sliceAdmin/news/create";
-import { newsGetFetch } from "../../../../redux/sliceAdmin/news/getnews";
-import { API_GLOBAL } from '../../../../globalApi.js'
+import { caruselcreatePost, resetCarusel } from '../../../../redux/sliceAdmin/carusel/caruselCreate/create.js'
+import { caruselGetFetch, resetcaruselAdmin } from "../../../../redux/sliceAdmin/carusel/caruselGet/getCarusel.js"
 
 
 export const NewsComponents = () => {
@@ -30,12 +27,11 @@ export const NewsComponents = () => {
   const [open, setOpen] = useState(false)
 
   const { fileId, by } = useSelector((store) => store.deployFile);
-  const newsreate = useSelector((store) => store.newsreate);
-  const newsAdminGet = useSelector((store) => store.newsAdminGet);
-
+  const caruselcreate = useSelector((store) => store.caruselcreate);
+  const caruselAdminGet = useSelector((store) => store.caruselAdminGet);
 
   useEffect(() => {
-    if (newsreate?.status === "success")
+    if (caruselcreate?.status === "success")
       dispatch(startMessage({ time: 3, message: "Muvofiyaqatli Yakulandi", type: "success", }),
         setName({
           id: '',
@@ -43,15 +39,14 @@ export const NewsComponents = () => {
           description: '',
           attachmentId: '',
         }));
-    else if (newsreate?.status === "error")
+    else if (caruselcreate?.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
-      dispatch(reset());
+      dispatch(resetCarusel());
     }, 500);
-  }, [newsreate]);
-
+  }, [caruselcreate]);
   const addFacultet = () =>
-    dispatch(newsreatePost({
+    dispatch(caruselcreatePost({
       id: 0,
       title: name?.title,
       description: name?.description,
@@ -60,35 +55,18 @@ export const NewsComponents = () => {
     }));
 
 
-
-  const findEditID = (id) => {
-    setDataList(dataList?.map((value) => ({
-      id: value.id,
-      title: value.title,
-      description: value?.description,
-      status: id === value.id ? (!value.id || true) : false
-    })))
-  }
-  const editPush = (id, i) => dispatch(
-    newsreatePost({
-      id: id,
-      title: dataList[i].title,
-      description: dataList[i].description,
-      attachmentId: [fileId],
-    }));
+  useEffect(() => {
+    if (caruselAdminGet?.status === "success") setDataList(caruselAdminGet.data)
+  }, [caruselAdminGet]);
 
   useEffect(() => {
-    if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
-  }, [newsAdminGet]);
+    if (caruselcreate?.status === 'success')
+      dispatch(caruselGetFetch())
+  }, [caruselGetFetch])
 
   useEffect(() => {
-    if (newsreate?.status === 'success')
-      dispatch(newsGetFetch())
-  }, [newsGetFetch])
-
-  useEffect(() => {
-    dispatch(newsGetFetch())
-  }, [newsGetFetch])
+    dispatch(caruselGetFetch())
+  }, [caruselGetFetch])
   const modalAdd = () => {
     setOpen(true)
   }
@@ -98,27 +76,14 @@ export const NewsComponents = () => {
     <Container>
       <Container.Bottom>
         <Container.TextAdd>
-          <h1>Yangliklar  </h1>
+          <h1>Carusel Rasm</h1>
         </Container.TextAdd>
         <Antmodal open={open} onOk={addFacultet} onCancel={handleCancel}>
           <Container.Add>
             <Container.Texth1>
-              Yangliklar
+             Caruselga rasim qo`shish
             </Container.Texth1>
             <br />
-            <ModalaContainer>
-              <div>
-                <p>Sarlavha nomi</p>
-                <Input onchange={(e) => setName({ ...name, title: e.target.value })} value={name.title} mwidth={"340px"} mheight={"40px"} width={"640px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"0px"} placeholder={`Sarlavha nomi`} />
-              </div>
-            </ModalaContainer>
-
-            <ModalaContainer>
-              <div>
-                <p>Batafsi ma’lumot</p>
-                <Input onchange={(e) => setName({ ...name, description: e.target.value })} value={name.direction} mwidth={"340px"} mheight={"40px"} width={"640px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"0px"} placeholder={`Batafsil`} />
-              </div>
-            </ModalaContainer>
           </Container.Add>
           <Container.Upload
             listType="picture-card"
@@ -152,18 +117,17 @@ export const NewsComponents = () => {
               <div >№</div>
               <div className='colum'>Sarlavha</div>
               <div className='colum'>Batafsil ma’lumot</div>
-              <div className='colum' >Tahrirlash</div>
             </div>
           </Container.Nav>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
             {dataList?.map((value, index) => {
               return (
-                <ConTable key={value.id}>
+                <ConTable key={value?.id}>
                   <div>
                     <Image
                       alt="img"
-                      src={`${API_GLOBAL}v1/attachment/download/${value.attachment.id}`}
+                      src={`http://evruniversity.uz/api/v1/attachment/download/${value?.id}`}
                       width={60}
                       height={60}
 
@@ -171,47 +135,17 @@ export const NewsComponents = () => {
                       style={{ height: '100%', width: '100%' }}
                       className={"img"}
                     />
-
                   </div>
                   <div className='row'>
                     <div >{index + 1}</div>
                     <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.title} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val?.id,
-                            description: val?.description,
-                            title: value?.id === val.id ? e.target.value : val?.title,
-                            status: val?.status,
-                          })))} />
-                          :
-                          <>
-                            {value.title}
-                          </>}
+                      {value?.title}
                     </div>
                     <div className='colum'>
-                      {
-                        value?.status ?
-                          <input value={value.description} onChange={(e) => setDataList(dataList.map((val) => ({
-                            id: val?.id,
-                            description: value?.id === val.id ? e.target.value : val?.description,
-                            title: val?.title,
-                            status: val?.status,
-                          })))} />
-                          :
-                          <>
-                            {value?.description}
-                          </>
-                      }
+
+                      {value?.description}
                     </div>
-                    <div className='colum'>
-                      {
-                        value?.status ?
-                          <Button shadow={'0px'} onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
-                          :
-                          <Edit onClick={() => findEditID(value.id)} />
-                      }
-                    </div>
+
                   </div>
                 </ConTable>
               )

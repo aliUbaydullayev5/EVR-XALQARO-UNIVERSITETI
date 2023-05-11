@@ -58,7 +58,7 @@ export const GalleryaComponet = () => {
 
 
   const addFacultet = () =>
-    dispatch(resetgalleryCreate({
+    dispatch(galleryCreatePost({
          id: 0,
           title: name.title,
           description: name.description,
@@ -152,7 +152,7 @@ export const GalleryaComponet = () => {
             >
               {fileList.length < 1 && <AddImg />}
             </Container.Upload>
-            {/*<Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button>*/}
+            {/* <Button onclick={() => addFacultet()} mradius={" 5px"} msize={'15px'} mwidth={"80px"} mheight={"40px"} width={"100px"} height={"45px"} size={"20px"} padding={"0px 10px"} radius={" 5px"}>  Qo'shish  </Button> */}
           </Antmodal>
           <Container.BtnAdd>
             <Button onclick={modalAdd} width={'100px'} height={'50px'} radius={"5px"} size={'12px'}> <Plus /> &nbsp;   Qo’shish</Button>

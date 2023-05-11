@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAdd', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/content-price/create`, {
+export const tolovAddFetch = createAsyncThunk('tolovAddFetch', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/cost/cost`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,34 +10,36 @@ export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAdd', async (p
         },
         body:JSON.stringify({
             name: payload.name,
+            paymentType: payload.paymentType,
             amount: payload.amount,
-            type: payload.type
+            description: payload.description,
+            attachmentIds: payload.attachmentIds
         })
     }).then((res)=> res.json())
 })
 
 
-const mashNarxlariAdd = createSlice({
-    name: 'mashNarxlari',
+const tolovAdd = createSlice({
+    name: 'tolovAdd',
     initialState: {
         status: null,
         message: '',
         data: [],
     },
     extraReducers: {
-        [mashNarxlariAddFetch.pending]: (state) => {
+        [tolovAddFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [mashNarxlariAddFetch.fulfilled]: (state, action) => {
+        [tolovAddFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
             }
             else if (action.payload.success === false) {
-                state.status = 'error'
+                state.status = 'notFound'
                 state.message = action?.payload?.errors[0]?.errorMsg
             }
         },
-        [mashNarxlariAddFetch.rejected]: (state) => {
+        [tolovAddFetch.rejected]: (state) => {
             state.loading = 'error'
         }
     }
@@ -45,4 +47,4 @@ const mashNarxlariAdd = createSlice({
 
 
 
-export default mashNarxlariAdd.reducer
+export default tolovAdd.reducer

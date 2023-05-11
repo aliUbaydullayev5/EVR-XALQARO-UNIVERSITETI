@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/news/get`,
+export const caruselGetFetch = createAsyncThunk('caruselGetFetch', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/carousel/get-all`,
         {
             method: 'GET',
             headers: {
@@ -13,33 +13,32 @@ export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => 
         .then((res) => res.json())
 })
 
-const newsAdminGet = createSlice({
-    name: 'newsAdminGet',
+const caruselAdminGet = createSlice({
+    name: 'caruselAdminGet',
     initialState: {
-        data: {},
+        data:[],
         status: null,
     },
     extraReducers: {
-        [newsGetFetch.pending]: (state) => {
+        [caruselGetFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [newsGetFetch.fulfilled]: (state, { payload }) => {
+        [caruselGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
-                console.log(payload,'payload')
                 state.data = payload?.data
         },
-        [newsGetFetch.rejected]: (state) => {
+        [caruselGetFetch.rejected]: (state) => {
             state.status = 'error'
         }
     },
     reducers: {
-        resetnewsAdmin(state) {
+        resetcaruselAdmin(state) {
             state.data = {}
             state.status = null
         }
     }
 })
 
-export const { resetnewsAdmin } = newsAdminGet.actions
-export default newsAdminGet.reducer
+export const { resetcaruselAdmin } = caruselAdminGet.actions
+export default caruselAdminGet.reducer

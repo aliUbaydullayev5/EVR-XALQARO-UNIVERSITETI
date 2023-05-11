@@ -2,17 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const caruselcreatePost = createAsyncThunk('caruselcreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/news/create`, {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/carousel`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            id: payload.id,
-            description: payload.description,
-            title: payload.title,
-            attachmentId: payload.attachmentId,
+            attachmentIds: payload.attachmentIds,
         }),
     }).then((res) => res.json())
 })
@@ -23,8 +20,8 @@ const initialState = {
     data: [],
 }
 
-const caruselreate = createSlice({
-    name: 'caruselreate',
+const caruselcreate = createSlice({
+    name: 'caruselcreate',
     initialState,
     extraReducers: {
         [caruselcreatePost.pending]: (state) => {
@@ -47,7 +44,7 @@ const caruselreate = createSlice({
         }
     },
     reducers: {
-        resetcarusel(state) {
+        resetCarusel(state) {
             state.status = null
             state.message = ''
         }
@@ -55,5 +52,5 @@ const caruselreate = createSlice({
 })
 
 
-export const { resetcarusel } = caruselreate.actions
-export default caruselreate.reducer
+export const { resetCarusel } = caruselcreate.actions
+export default caruselcreate.reducer

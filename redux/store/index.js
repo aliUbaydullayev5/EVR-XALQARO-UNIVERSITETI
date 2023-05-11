@@ -75,7 +75,11 @@ import contentPriceGet from "../sliceAdmin/moliyaSlices/contentPrice/contentPric
 import teacherCreate from "../sliceAdmin/employees/teacher/teacheeCreate/index.js"
 import teacherGet from "../sliceAdmin/employees/teacher/teacherGet/index.js"
 import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index.js"
-
+import newsGet from '../slices/news'
+import forgotPassword from '../slices/passwordForgot'
+import chatSlice from '../slices/chatSlice'
+import caruselcreate from "../sliceAdmin/carusel/caruselCreate/create.js"
+import caruselAdminGet from "../sliceAdmin/carusel/caruselGet/getCarusel.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -154,5 +158,10 @@ export default configureStore({
                 teacherCreate,
                 teacherGet,
                 employeeCreate,
+                newsGet,
+                forgotPassword,
+                chatSlice,
+                caruselcreate,
+                caruselAdminGet,
         },
 });

@@ -12,6 +12,7 @@ import Image from "next/image";
 import { aboutGetFetch } from "../../../../redux/sliceAdmin/about-us/getAbout";
 import { HiOutlineRefresh } from 'react-icons/hi'
 import { aboutreatePostFetch, resetaboutreatePost } from '../../../../redux/sliceAdmin/about-us/create.js'
+import { API_GLOBAL } from '../../../../globalApi.js'
 
 export const AboutUsComponents = () => {
   const dispatch = useDispatch();
@@ -194,7 +195,7 @@ export const AboutUsComponents = () => {
                   <div>
                     <Image
                       alt="img"
-                      src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.photoId}`}
+                      src={`${API_GLOBAL}v1/attachment/download/${value?.id}`}
                       width={60}
                       height={60}
 

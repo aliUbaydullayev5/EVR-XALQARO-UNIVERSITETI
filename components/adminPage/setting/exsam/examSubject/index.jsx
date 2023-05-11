@@ -56,8 +56,8 @@ useEffect(()=>{
     useEffect(() => {
         if (getAllexamsubject.status === 'success') setDataList(getAllexamsubject.data)
     }, [getAllexamsubject])
-    
     const findEditID = (id) => {
+
         setDataList(dataList.map((value) => ({
             id: value.id,
             nameUz: value.nameUz,
@@ -95,6 +95,7 @@ useEffect(()=>{
                         <div>
                             <Input onchange={(e) => setName({...name, nameUz: e.target.value} )} value={name.nameUz} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
                             <Input onchange={(e) => setName({...name, nameRu: e.target.value} )} value={name.nameRu} mwidth={"340px"} mheight={"40px"} width={"440px"} height={"45px"} padding={"0px 10px"} size={"20px"} radius={"5px"} placeholder={`Nomi`} />
+
                         </div>
 
                     </Container.Add>

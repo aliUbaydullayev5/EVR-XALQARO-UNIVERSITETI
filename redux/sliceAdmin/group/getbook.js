@@ -26,7 +26,6 @@ const groupGet = createSlice({
         [groupGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
-                console.log(payload, 'payload')
             state.data = payload?.data
         },
         [groupGetFetch.rejected]: (state) => {
