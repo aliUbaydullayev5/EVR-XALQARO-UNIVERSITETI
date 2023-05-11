@@ -1,10 +1,10 @@
-import ChatComponents from "../../components/chatPage/chatHom/index.jsx";
 import Root from "../../root";
+import ChatComponent from "../../components/Chat"
 
 const ChatPage = () => {
     return (
         <Root>
-            <ChatComponents/>
+            <ChatComponent />
         </Root>
     )
 }
