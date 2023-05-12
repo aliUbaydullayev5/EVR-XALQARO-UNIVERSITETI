@@ -14,6 +14,7 @@ import PaymeMobile from "../../../../assets/mobile/image/payme.png"
 
 export const Paymepay = () => {
     const query = useRouter()
+
     const [numState, setNumState] = useState('')
     const [length, setLength] = useState(0)
     const changeNumState = (event) => {
@@ -67,7 +68,7 @@ export const Paymepay = () => {
                 </ImgBox>
                 <div>
                     <p className='textSmall'>To‘lov miqdori</p>
-                    <Input mradius='5px' mpadding='0px 0px 0px 20px' mwidth="136px" mheight="36px" msize='13px' width="410px" disabled={true} defaultValue="150 000 so’m" height="48px" />
+                    <Input mradius='5px' mpadding='0px 0px 0px 20px' mwidth="136px" mheight="36px" msize='13px' width="410px" disabled={true} defaultValue="200 000 so’m" height="48px" />
                 </div>
             </BoxCon>
 
