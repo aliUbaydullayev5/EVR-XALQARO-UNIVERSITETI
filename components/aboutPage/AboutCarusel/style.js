@@ -7,10 +7,10 @@ const Container = styled.div`
   border-radius: 30px;  
   display: grid;
   grid-template-rows: 84px 1fr;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  //flex-direction: column;
 
   @media only screen and (max-width: 1000px){
    grid-template-rows: 40px 1fr;
@@ -112,7 +112,7 @@ Container.MainCarousel = styled.div`
 const ContainerDow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   a{

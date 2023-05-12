@@ -296,7 +296,8 @@ Container.InputCustom1 = styled.input`
 	width: 251px;
 	height: 46px;
 	padding: 3px 0 3px 40px;
-	background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+	//background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    background: #241F69;
 	border-bottom: 0;
 	border-radius: 15px;
 	outline: none;
@@ -362,7 +363,8 @@ Container.InputCustom2 = styled.input`
   height: 46px;
   padding: 3px 0 3px 40px;
   font-size: 22px;
-  background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  //background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  background: #241F69;
   border-bottom: 0;
   border-radius: 15px;
   outline: none;

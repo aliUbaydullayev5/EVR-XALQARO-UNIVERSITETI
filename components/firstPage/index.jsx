@@ -11,6 +11,7 @@ import CustomInput from "react-phone-number-input/input"
 
 import {useSelector, useDispatch} from "react-redux"
 import {useRouter} from "next/router"
+import {homeCarouselFetch} from "../../redux/slices/homeCarusel";
 
 
 
@@ -42,6 +43,7 @@ const FirstPageMainCom = () => {
     }, [pushToHome, status])
 
     useEffect(()=> {
+        dispatch(homeCarouselFetch())
         if(localStorage.getItem('firstToken')) router.push('/homePage')
     }, [])
 
@@ -90,6 +92,7 @@ const FirstPageMainCom = () => {
             phoneNumber: (numberState.match(/[0-9]+/g) || []).join('')
         }))
     }
+
 
     return(
         <Container>

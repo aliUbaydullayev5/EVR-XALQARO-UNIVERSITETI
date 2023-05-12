@@ -5,43 +5,45 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-	width: 100%;
-	display: grid;
-	grid-template-rows: 84px 1fr;
-	@media only screen and (max-width: 1000px) {
-		grid-template-rows: 31px 1fr;
-	}
+  width: 100%;
+  display: grid;
+  grid-template-rows: 84px 1fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-rows: 31px 1fr;
+  }
 `;
 Container.Number = styled.div`
 	display: flex;
 	justify-content: center;
 	position: relative;
 	.customPhoneInput {
-		border-radius: 15px !important;
-		background: linear-gradient(
-			90deg,
-			#1e3c72 0%,
-			#1e3c72 1%,
-			#2a5298 100%
-		) !important;
-		box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 32px;
-		line-height: 105.9%;
-		letter-spacing: -0.025em;
-		color: #fff;
-		width: 513px !important;
-		padding: 0 0 0 20px !important;
-		height: 46px;
-		@media only screen and (max-width: 800px) {
-			width: 100% !important;
-			font-size: 16px;
-			height: 26px !important;
-			border-radius: 5px !important;
-          
-		}
-	}
+      border-radius: 15px !important;
+
+      background: linear-gradient(
+      	90deg,
+      	#1e3c72 0%,
+      	#1e3c72 1%,
+      	#2a5298 100%
+      ) !important;
+
+      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25) !important;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 105.9%;
+      letter-spacing: -0.025em;
+      color: #fff;
+      width: 513px !important;
+      padding: 0 0 0 20px !important;
+      height: 46px;
+      @media only screen and (max-width: 800px) {
+        width: 100% !important;
+        font-size: 16px;
+        height: 26px !important;
+        border-radius: 5px !important;
+
+      }
+    }
 	@media only screen and (max-width: 800px) {
 		width: 100%;
 	}
@@ -127,31 +129,26 @@ const InputCont = styled.div`
 	}
 
 	.phoNumber {
-		border-radius: 15px !important;
-		background: linear-gradient(
-			90deg,
-			#1e3c72 0%,
-			#1e3c72 1%,
-			#2a5298 100%
-		) !important;
-		box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
-		font-family: 'Montserrat';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 32px;
-		line-height: 105.9%;
-		letter-spacing: -0.025em;
-		color: #fff;
-		width: 513px !important;
-		padding: 0px 0px 0px 20px !important;
-		height: 46px;
-		@media only screen and (max-width: 800px) {
-			width: 100% !important;
-			font-size: 16px;
-			height: 26px !important;
-			border-radius: 5px !important;
-		}
-	}
+      border-radius: 15px !important;
+      background: #241F69;
+      box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 105.9%;
+      letter-spacing: -0.025em;
+      color: #fff;
+      width: 513px !important;
+      padding: 0px 0px 0px 20px !important;
+      height: 46px;
+      @media only screen and (max-width: 800px) {
+        width: 100% !important;
+        font-size: 16px;
+        height: 26px !important;
+        border-radius: 5px !important;
+      }
+    }
 	.phoNumbers {
 		position: absolute;
 		left: 30px;
@@ -310,7 +307,7 @@ Container.InputCustom1 = styled.input`
   width: 251px;
   height: 46px;
   padding: 3px 0 3px 40px;
-  background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  background: #241F69;
   border-bottom: 0;
   border-radius: 15px;
   outline: none;
@@ -368,7 +365,7 @@ Container.InputCustom2 = styled.input`
   height: 46px;
   padding: 3px 0 3px 40px;
   font-size: 22px;
-  background: linear-gradient(90deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  background: #241F69;
   border-bottom: 0px;
   border-radius: 15px;
   outline: none;

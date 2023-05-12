@@ -1,8 +1,7 @@
 import Container from "./style"
 import Close from '../../assets/icon/bigClose.svg'
 import MobileClose from '../../assets/mobile/icon/closeMobile.svg'
-import {Button} from "../generic";
-import {useRouter} from "next/router";
+import {useRouter} from "next/router"
 
 const HamburgerMenu = ({changeHidden}) => {
 
@@ -28,8 +27,7 @@ const HamburgerMenu = ({changeHidden}) => {
                 {/* <li>Savol-javoblar</li> */}
                 <li onClick={()=> query.push('/license')}>Litsenziya</li>
                 <li onClick={()=> query.push('/gallery')}>Galereya</li>
-                <li onClick={()=> query.push('/Chat')}>Umumiy chat</li>
-                <li onClick={()=> query.push('/ratings')}>Reytinglar</li>
+                {/*<li onClick={()=> query.push('/ratings')}>Reytinglar</li>*/}
             </ul>
         </Container>
     )

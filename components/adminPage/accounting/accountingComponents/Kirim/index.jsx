@@ -14,8 +14,6 @@ import {kirimFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/kirim"
 
 
 const Kirim = ({subTitle}) => {
-
-
     const dispatch = useDispatch()
     const kirim = useSelector((store)=> store.kirim)
     const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
@@ -157,7 +155,7 @@ const Kirim = ({subTitle}) => {
                 </Container.RefreshArea>
             </div>
             <div className={'dataArea'}>
-                {kirim.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
+                {kirim?.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
                 {
                     <Container.DataAreaInset>
                         {
