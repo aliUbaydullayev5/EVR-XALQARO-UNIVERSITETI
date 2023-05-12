@@ -78,7 +78,6 @@ import employeeCreate from "../sliceAdmin/employees/employee/teacheeCreate/index
 import newsGet from '../slices/news'
 import forgotPassword from '../slices/passwordForgot'
 import chatSlice from '../slices/chatSlice'
-import userInfo from '../slices/userInfo'
 import kirim from '../sliceAdmin/moliyaSlices/kirim'
 import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import homeCarousel from '../slices/homeCarusel'
@@ -163,7 +162,6 @@ export default configureStore({
                 newsGet,
                 forgotPassword,
                 chatSlice,
-                userInfo,
                 kirim,
                 mashNarxlari,
                 homeCarousel
