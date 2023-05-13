@@ -49,7 +49,7 @@ const receptionPost = createSlice({
                 state.pushAnswer = true
                 // localStorage.setItem('user-info')
             }
-            if(action?.payload?.success == false){
+            if(!action?.payload?.success){
                 state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
