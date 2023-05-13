@@ -40,7 +40,7 @@ export const UsersPayInfo = () => {
     const data = localStorage.getItem("user-info");
     setObj(JSON.parse(data))
     if (!localStorage.getItem("user-info")) {
-       query.push('/receptionPage')
+     query.push('/receptionPage')
     }
   }, []);
 
