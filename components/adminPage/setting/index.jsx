@@ -70,7 +70,7 @@ const SettingComponent = () => {
         getItem('Yangiliklar', 'Yangiliklar', <FcNews />),
         getItem('Gallery', 'Gallery', <FcGallery />),
         getItem('Biz haqimizda', 'Biz haqimizda', <FcAbout />),
-        getItem('Home page', 'Home page', <FcGallery />),
+       getItem('Home page', 'Home page', <FcGallery />),
 
 
 
