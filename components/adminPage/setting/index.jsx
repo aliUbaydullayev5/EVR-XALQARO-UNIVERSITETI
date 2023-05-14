@@ -25,6 +25,7 @@ import GroupMasterComponet from './group/groupMaster/index.jsx';
 import EmployeeComponent from './employees/employee/index.jsx';
 import { FcAbout ,FcGallery,FcNews,FcBriefcase,FcGraduationCap,FcReading ,FcPortraitMode,FcDocument} from "react-icons/fc";
 import {TiGroupOutline} from  "react-icons/ti"
+import CaruselComponents from './carusel/index.jsx';
 const SettingComponent = () => {
     const quarey = useRouter()
 
@@ -36,7 +37,6 @@ const SettingComponent = () => {
             getItem('Abuturent', 'Abuturent'),
             getItem('Magistratura', 'Magistratura'),
             getItem('Yunalishlar Tartiblash ', 'Yunalishlar Tartiblash'),
-
         ]),
 
         getItem('Imtxon', 'sub2', <FcPortraitMode />, [
@@ -70,7 +70,11 @@ const SettingComponent = () => {
         getItem('Yangiliklar', 'Yangiliklar', <FcNews />),
         getItem('Gallery', 'Gallery', <FcGallery />),
         getItem('Biz haqimizda', 'Biz haqimizda', <FcAbout />),
+        getItem('Home page', 'Home page', <FcGallery />),
 
+
+
+        
     ]
     const returnComFunc = (type) => {
         switch (type) {
@@ -94,6 +98,8 @@ const SettingComponent = () => {
             case 'GruhAbuturent': return <GroupComponet />
             case 'GruhMagistratura': return <GroupMasterComponet />
             case 'Xodim': return <EmployeeComponent />
+            case 'Home page': return <CaruselComponents />
+
 
                 
         }

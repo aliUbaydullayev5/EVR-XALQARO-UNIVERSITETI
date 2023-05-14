@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const bookDeleteIdDel = createAsyncThunk('bookDeleteIdDel', async ({ id }) => {
+export const newsDeleteIdFetch = createAsyncThunk('newsDeleteIdFetch', async ({ id }) => {
     return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/book/delete/${id}`, {
         method: 'DELETE',
         headers: {
@@ -14,14 +14,14 @@ const initialState = {
     status: null,
     message: '',
 }
-const bookDeleteId = createSlice({
-    name: 'bookDeleteId',
+const newDeleteId = createSlice({
+    name: 'newDeleteId',
     initialState,
     extraReducers: {
-        [bookDeleteIdDel.pending]: (state) => {
+        [newsDeleteIdFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [bookDeleteIdDel.fulfilled]: (state, { payload }) => {
+        [newsDeleteIdFetch.fulfilled]: (state, { payload }) => {
             if (payload.success === true) {
                 state.status = 'success'
             } else if (payload.success === false) {
@@ -29,11 +29,11 @@ const bookDeleteId = createSlice({
                 state.message = 'Not Found'
             }
         },
-        [bookDeleteIdDel.rejected]: (state) => {
+        [newsDeleteIdFetch.rejected]: (state) => {
             state.loading = 'error';
         }
     },
 })
 
 
-export default bookDeleteId.reducer
+export default newDeleteId.reducer

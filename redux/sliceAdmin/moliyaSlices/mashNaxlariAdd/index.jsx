@@ -29,7 +29,6 @@ const mashNarxlariAdd = createSlice({
             state.status = 'loading'
         },
         [mashNarxlariAddFetch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'payload')
             if (action.payload.success === true) {
                 state.status = 'success'
             }
