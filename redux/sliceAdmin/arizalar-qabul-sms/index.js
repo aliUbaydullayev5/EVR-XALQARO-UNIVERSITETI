@@ -27,6 +27,7 @@ const sendSmsData = createSlice({
             state.status = 'Loading'
         },
         [sendSmsFetch.fulfilled]: (state, { payload }) => {
+            console.log(payload)
             if (payload?.data) {
                 state.data = payload.data
                 state.status = 'Success'

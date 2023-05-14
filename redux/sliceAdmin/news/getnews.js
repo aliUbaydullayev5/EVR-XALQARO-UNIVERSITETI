@@ -26,6 +26,7 @@ const newsAdminGet = createSlice({
         [newsGetFetch.fulfilled]: (state, { payload }) => {
             state.status = 'success'
             if (payload?.success == true)
+                console.log(payload,'payload')
                 state.data = payload?.data
         },
         [newsGetFetch.rejected]: (state) => {

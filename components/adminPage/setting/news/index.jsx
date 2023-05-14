@@ -82,6 +82,7 @@ export const NewsComponents = () => {
     if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
   }, [newsAdminGet]);
 
+  console.log(newsAdminGet, 'newsAdminGet')
   useEffect(() => {
     if (newsreate?.status === 'success')
       dispatch(newsGetFetch())

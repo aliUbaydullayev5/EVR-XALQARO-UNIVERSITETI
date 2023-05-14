@@ -24,6 +24,7 @@ const chatSlice = createSlice({
             state.status = 'loading'
         },
         [fetchChatSlice.fulfilled]: (state, action)=> {
+            console.log(action, "action payload")
             if(action.payload.success === true){
                 state.data = action.payload.data
                 state.status = 'success'

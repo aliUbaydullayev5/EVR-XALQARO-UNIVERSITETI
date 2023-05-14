@@ -92,6 +92,7 @@ export const TeacherComponent = () => {
     // useEffect(() => {
     //     dispatch(getAllexamsubjectFetch())
     // }, [getAllexamsubjectFetch])
+    console.log(dataList, 'dataList');
 
     useEffect(() => {
         dispatch(teacherGetFetch())

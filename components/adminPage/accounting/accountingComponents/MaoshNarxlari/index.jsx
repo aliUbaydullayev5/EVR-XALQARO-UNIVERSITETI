@@ -41,7 +41,7 @@ const MaoshNarxlari = ({subTitle}) => {
 
     useEffect(()=> {
         if(mashNarxlariAdd?.status === 'success'){
-            // dispatch(startMessage({time: 3, type: 'success', message: ''}))
+            dispatch(startMessage({time: 3, type: 'success', message: ''}))
             refreshDataFunc()
             setPushData({
                 name: '',
@@ -49,7 +49,7 @@ const MaoshNarxlari = ({subTitle}) => {
                 type: ''
             })
         }
-        if(mashNarxlariAdd?.status === 'error'){
+        if(mashNarxlariAdd.status === 'error'){
             dispatch(startMessage({time: 3, type: 'error', message: mashNarxlariAdd.message.split('.').join(' ')}))
         }
     }, [mashNarxlariAdd])
@@ -137,13 +137,13 @@ const MaoshNarxlari = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             mashNarxlari?.data?.map((value, index) => (
-                                    <Container.Section key={value?.id}>
+                                    <Container.Section key={value.id}>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.type}>{value?.type}</p>
+                                        <p className={'textWithTitle'} title={value.type}>{value.type}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
                                     </Container.Section>
                                 )
                             )

@@ -1,31 +1,32 @@
 import Container from './style'
-import {FaRegMoneyBillAlt} from "react-icons/fa"
+import {TbPigMoney} from "react-icons/tb"
 import {Button, Input} from "../../../../generic"
 import {IoSearch} from "react-icons/io5"
-import {HiOutlineRefresh} from "react-icons/hi"
-import {Button as AntButton, Modal, Spin, Upload} from "antd"
-import {InView} from "react-intersection-observer"
-import {API_GLOBAL} from "../../../../../globalApi"
-import {FiUpload} from "react-icons/fi"
-import React, {useEffect, useState, memo} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {addPageCount, resetPageToZero, tolovlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlar"
+import React, {useEffect, useState} from "react"
+import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
+import {Modal, Spin} from 'antd'
+import {InView} from "react-intersection-observer"
+import {Button as AntButton, Upload } from 'antd'
+import {API_GLOBAL} from "../../../../../globalApi"
 import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd"
 import {startMessage} from "../../../../../redux/slices/message"
+import {FiUpload} from "react-icons/fi"
+import {HiOutlineRefresh} from "react-icons/hi";
 
-const Tolovlar = memo(({subTitle}) => {
+const Tolovlar = ({subTitle}) => {
 
     const dispatch = useDispatch()
-    const tolovlar = useSelector((store) => store.tolovlar)
-    const xarajatlarAdd = useSelector((store) => store.xarajatlarAdd)
-    const [inView, setInView] = useState(false)
+    const xarajatlar = useSelector((store)=> store.xarajatlar)
+    const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
+    const [inView, setInView] = useState(false);
     const [modalHidden, setModalHidden] = useState(false)
 
-    useEffect(() => {
-        if (inView) {
-            if ((tolovlar.data.length % 20 === 0) || (tolovlar.data.length === 0)) {
+    useEffect(()=> {
+        if (inView){
+            if((xarajatlar.data.length % 20 === 0) || (xarajatlar.data.length === 0)){
                 dispatch(addPageCount())
-                dispatch(tolovlarFetch({page: tolovlar?.pageCount, query: ''}), 'inView')
+                dispatch(xarajatlarFetch({page: xarajatlar?.pageCount, query: ''}))
             }
         }
     }, [inView])
@@ -40,8 +41,8 @@ const Tolovlar = memo(({subTitle}) => {
     })
     const uploadFunc = (event) => {
         setFileList([...event.fileList])
-        if (event.file.status === 'done') {
-            if (event?.file?.response?.success) {
+        if(event.file.status === 'done'){
+            if(event?.file?.response?.success){
                 setPushData({
                     ...pushData,
                     attachment: [
@@ -51,14 +52,13 @@ const Tolovlar = memo(({subTitle}) => {
                 })
             }
         }
-
-        if (event.file.status === 'removed') {
-            let attachment = pushData.attachment.filter((value) => value !== event.file.response.data)
+        if(event.file.status === 'removed'){
+            let attachment = pushData.attachment.filter((value)=> value !== event.file.response.data)
             setPushData({...pushData, attachment})
         }
     }
     const pushToSliceFunc = () => {
-        if (!!pushData.name.length && !!pushData.amount.length && !!pushData.paymentType && !!pushData.attachment.length) {
+        if(!!pushData.name.length && !!pushData.amount.length && !!pushData.paymentType && !!pushData.attachment.length){
             dispatch(xarajatlarAddFetch({
                 name: pushData.name,
                 paymentType: pushData.paymentType,
@@ -66,12 +66,12 @@ const Tolovlar = memo(({subTitle}) => {
                 description: pushData.description,
                 attachmentIds: pushData.attachment
             }))
-        } else dispatch(startMessage({time: 3, message: 'Toliq toldiring'}))
+        }else dispatch(startMessage({time: 3, message: 'Toliq toldiring'}))
     }
 
-    useEffect(() => {
-        if (xarajatlarAdd?.status === 'success') {
-            // dispatch(startMessage({time: 3, type: 'success', message: ''}))
+    useEffect(()=> {
+        if(xarajatlarAdd?.status === 'success'){
+            dispatch(startMessage({time: 3, type: 'success', message: ''}))
             refreshDataFunc()
             setFileList([])
             setPushData({
@@ -87,7 +87,7 @@ const Tolovlar = memo(({subTitle}) => {
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
-            dispatch(tolovlarFetch({page: 0, query: ''}))
+            dispatch(xarajatlarFetch({page: 0, query: ''}))
             dispatch(resetPageToZero())
             setRefreshButtonLogin(true)
             setTimeout(() => {
@@ -96,11 +96,10 @@ const Tolovlar = memo(({subTitle}) => {
         }
     }
 
-
     return (
         <Container>
             <div className={'title nocopy'}>
-                <div><FaRegMoneyBillAlt size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span
+                <div><TbPigMoney size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span
                     className={'subTitle'}> &gt; {subTitle}</span></div>
                 <div>
                     <Button
@@ -117,7 +116,8 @@ const Tolovlar = memo(({subTitle}) => {
                         shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
                         bc={'#221F51'}
                         onclick={() => setModalHidden(!modalHidden)}
-                    > + Moash berish</Button>
+                    > + Moash berish
+                    </Button>
                 </div>
             </div>
             <div className={'filter'}>
@@ -141,27 +141,45 @@ const Tolovlar = memo(({subTitle}) => {
                     />
                 </div>
 
-                <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
-                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'}/>
+                <input type="date" className={'dataInput'}/>
+                <input type="date" className={'dataInput'}/>
+
+                <Button
+                    width={'92px'}
+                    mwidth={'92px'}
+                    height={'36px'}
+                    mheight={'36px'}
+                    radius={'7px'}
+                    mradius={'7px'}
+                    color={'#fff'}
+                    size={'14px'}
+                    msize={'14px'}
+                >
+                    <p className={'nocopy'}>
+                        Tartiblash
+                    </p>
+                </Button>
+                <Container.RefreshArea loading={refreshButtonLogin} onClick={()=> refreshDataFunc()}>
+                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
                 </Container.RefreshArea>
             </div>
             <div className={'dataArea'}>
-                {tolovlar.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
+                {xarajatlar.status === 'loading' && <Container.ButtonLoader><Spin/></Container.ButtonLoader>}
                 {
                     <Container.DataAreaInset>
                         {
-                            tolovlar?.data?.map((value, index) => (
-                                    <Container.Section key={value?.id}>
+                            xarajatlar?.data?.map((value, index) => (
+                                    <Container.Section>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.paymentType}>{value?.paymentType}</p>
+                                        <p className={'textWithTitle'} title={value.paymentType}>{value.paymentType}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
+                                        <p className={'textWithTitle'} title={value.date}>{value.date}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.description}>{value?.description}</p>
+                                        <p className={'textWithTitle'} title={value.description}>{value.description}</p>
                                     </Container.Section>
                                 )
                             )
@@ -205,10 +223,7 @@ const Tolovlar = memo(({subTitle}) => {
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            onchange={(e) => setPushData({
-                                ...pushData,
-                                amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : ''
-                            })}
+                            onchange={(e) => setPushData({...pushData, amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : '' })}
                             value={pushData.amount}
                         />
                         <Input
@@ -285,7 +300,7 @@ const Tolovlar = memo(({subTitle}) => {
                 </Container.ModanInset>
             </Modal>
         </Container>
-    )
-})
+    );
+}
 
 export default Tolovlar

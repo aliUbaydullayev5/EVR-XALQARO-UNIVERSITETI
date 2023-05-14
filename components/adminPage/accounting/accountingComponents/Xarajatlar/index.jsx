@@ -1,20 +1,20 @@
 import Container from './style'
-import {TbPigMoney} from "react-icons/tb"
+import {FaRegMoneyBillAlt} from "react-icons/fa"
 import {Button, Input} from "../../../../generic"
 import {IoSearch} from "react-icons/io5"
-import {useDispatch, useSelector} from "react-redux"
-import React, {useEffect, useState} from "react"
-import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
-import {Modal, Spin} from 'antd'
+import {HiOutlineRefresh} from "react-icons/hi"
+import {Button as AntButton, Modal, Spin, Upload} from "antd"
 import {InView} from "react-intersection-observer"
-import {Button as AntButton, Upload } from 'antd'
 import {API_GLOBAL} from "../../../../../globalApi"
+import {FiUpload} from "react-icons/fi"
+import React, {useEffect, useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
+import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
 import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd"
 import {startMessage} from "../../../../../redux/slices/message"
-import {FiUpload} from "react-icons/fi"
-import {HiOutlineRefresh} from "react-icons/hi";
 
 const Xarajatlar = ({subTitle}) => {
+
 
     const dispatch = useDispatch()
     const xarajatlar = useSelector((store)=> store.xarajatlar)
@@ -71,6 +71,9 @@ const Xarajatlar = ({subTitle}) => {
 
     useEffect(()=> {
         if(xarajatlarAdd?.status === 'success'){
+            dispatch(startMessage({time: 3, type: 'success', message: ''}))
+            refreshDataFunc()
+            setFileList([])
             setPushData({
                 name: '',
                 amount: '',
@@ -78,15 +81,14 @@ const Xarajatlar = ({subTitle}) => {
                 description: '',
                 attachment: []
             })
-            refreshDataFunc()
         }
     }, [xarajatlarAdd])
 
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
-            dispatch(resetPageToZero())
             dispatch(xarajatlarFetch({page: 0, query: ''}))
+            dispatch(resetPageToZero())
             setRefreshButtonLogin(true)
             setTimeout(() => {
                 setRefreshButtonLogin(false)
@@ -94,12 +96,11 @@ const Xarajatlar = ({subTitle}) => {
         }
     }
 
-    return (
+
+    return(
         <Container>
             <div className={'title nocopy'}>
-                <div>
-                    <TbPigMoney size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span className={'subTitle'}> &gt; {subTitle}</span>
-                </div>
+                <div><FaRegMoneyBillAlt size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span className={'subTitle'}> &gt; {subTitle}</span></div>
                 <div>
                     <Button
                         mwidth={'204px'}
@@ -115,8 +116,7 @@ const Xarajatlar = ({subTitle}) => {
                         shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
                         bc={'#221F51'}
                         onclick={() => setModalHidden(!modalHidden)}
-                    > + Moash berish
-                    </Button>
+                    > + Moash berish</Button>
                 </div>
             </div>
             <div className={'filter'}>
@@ -168,17 +168,17 @@ const Xarajatlar = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             xarajatlar?.data?.map((value, index) => (
-                                    <Container.Section key={value?.id}>
+                                    <Container.Section>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.paymentType}>{value?.paymentType}</p>
+                                        <p className={'textWithTitle'} title={value.paymentType}>{value.paymentType}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
+                                        <p className={'textWithTitle'} title={value.date}>{value.date}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.description}>{value?.description}</p>
+                                        <p className={'textWithTitle'} title={value.description}>{value.description}</p>
                                     </Container.Section>
                                 )
                             )
@@ -299,7 +299,7 @@ const Xarajatlar = ({subTitle}) => {
                 </Container.ModanInset>
             </Modal>
         </Container>
-    );
+    )
 }
 
 export default Xarajatlar

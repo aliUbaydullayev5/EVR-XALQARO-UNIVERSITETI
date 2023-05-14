@@ -24,6 +24,7 @@ const NewsComponent = () => {
         dispatch(addPageCount())
         dispatch(newsGetFetch({page: newsGet?.pageCount, query: ''}))
       }
+      console.log(inView, 'inView')
     }
   }, [inView])
 

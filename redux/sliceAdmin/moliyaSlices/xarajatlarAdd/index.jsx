@@ -31,6 +31,7 @@ const xarajatlarAdd = createSlice({
             state.status = 'loading'
         },
         [xarajatlarAddFetch.fulfilled]: (state, action) => {
+            console.log(action.payload, 'payload')
             if (action.payload.success === true) {
                 state.status = 'success'
             }

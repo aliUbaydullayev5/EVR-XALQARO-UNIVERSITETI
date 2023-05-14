@@ -53,6 +53,7 @@ const receptionPost = createSlice({
                 state.status = 'error'
                 state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
+            console.log(action.payload, 'payload user info')
             const jsonInfo = JSON.stringify(action.payload.info)
             localStorage.setItem('user-info', jsonInfo)
         },

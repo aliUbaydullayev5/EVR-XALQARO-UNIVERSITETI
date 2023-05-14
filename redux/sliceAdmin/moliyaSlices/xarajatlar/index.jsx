@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
 export const xarajatlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
+    console.log(payload.page, 'page')
     return await fetch(`${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`, {
         method: 'GET',
         headers: {
@@ -63,7 +64,10 @@ const xarajatlar = createSlice({
                     else if(action.payload?.success === false){
                         state.status = 'warning'
                     }
+
                 }
+
+
             }
             else if (action.payload.success === false) {
                 state.status = 'notFound'

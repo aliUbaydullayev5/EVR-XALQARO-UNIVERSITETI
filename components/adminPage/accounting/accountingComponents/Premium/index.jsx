@@ -36,7 +36,7 @@ const Premium = ({subTitle}) => {
 
     useEffect(()=> {
         if(premiumAdd.status === 'success'){
-            // dispatch(startMessage({time: 3, type: 'success', message: ''}))
+            dispatch(startMessage({time: 3, type: 'success', message: ''}))
             refreshDataFunc()
             setPushData({
                 name: '',
@@ -130,11 +130,11 @@ const Premium = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             premium?.data?.map((value, index) => (
-                                    <Container.Section key={value?.id}>
+                                    <Container.Section>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
                                     </Container.Section>
                                 )
                             )

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../globalApi"
 
 export const newsGetFetch = createAsyncThunk('newsGetFetch', async (payload) => {
+    console.log(payload.page, 'page')
     return await fetch(`${API_GLOBAL}v1/news/get?page=${payload.page}`, {
         method: 'GET',
         headers: {
