@@ -83,6 +83,9 @@ import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import homeCarousel from '../slices/homeCarusel'
 import caruselGet from "../sliceAdmin/carusel/getCarusel/getcarusel.js"
 import caruselcreate from "../sliceAdmin/carusel/caruselCreate/create.js"
+import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
+import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
+import newsreate from "../sliceAdmin/news/create.js"
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -169,6 +172,8 @@ export default configureStore({
                 homeCarousel,
                 caruselcreate,
                 caruselGet,
-
+                galleryCreate,
+                galleryDeleteId,
+                newsreate,
         },
 });

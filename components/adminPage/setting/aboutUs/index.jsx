@@ -104,6 +104,7 @@ export const AboutUsComponents = () => {
       setRefreshButtonLogin(false)
     }, 1000)
   }
+
   return (
     <Container>
       <Container.Bottom>
@@ -195,7 +196,7 @@ export const AboutUsComponents = () => {
                   <div>
                     <Image
                       alt="img"
-                      src={`${API_GLOBAL}v1/attachment/download/${value?.id}`}
+                      src={`${API_GLOBAL}v1/attachment/download/${value?.photoId}`}
                       width={60}
                       height={60}
 
@@ -238,12 +239,12 @@ export const AboutUsComponents = () => {
                       }
                     </div>
                     <div className='colum'>
-                      {
+                      {/* {
                         value?.status ?
                           <Button shadow={'0px'} onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                           :
                           <Edit onClick={() => findEditID(value.id)} />
-                      }
+                      } */}
                     </div>
                   </div>
                 </ConTable>

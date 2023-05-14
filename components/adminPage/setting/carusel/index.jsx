@@ -61,7 +61,6 @@ export const CaruselComponents = () => {
     setOpen(true)
   }
   const handleCancel = () => setOpen(false)
-  console.log(dataList,'dataList');
   return (
     <Container>
       <Container.Bottom>

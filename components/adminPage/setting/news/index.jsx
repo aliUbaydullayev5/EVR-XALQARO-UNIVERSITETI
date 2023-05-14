@@ -11,9 +11,10 @@ import Plus from "../../../../assets/icons/plus.svg"
 import { deployFileFetch } from '../../../../redux/slices/deployFile'
 import AddImg from "../../../../assets/icon/addimg.svg"
 import Image from "next/image";
-import { newsreatePost } from "../../../../redux/sliceAdmin/news/create";
-import { newsGetFetch } from "../../../../redux/sliceAdmin/news/getnews";
+import { newsGetFetch, resetnewsAdmin } from "../../../../redux/sliceAdmin/news/getnews";
 import { API_GLOBAL } from '../../../../globalApi.js'
+import { newsDeleteIdFetch } from '../../../../redux/sliceAdmin/news/deleteId.js'
+import { newsreatePost } from '../../../../redux/sliceAdmin/news/create.js'
 
 
 export const NewsComponents = () => {
@@ -48,7 +49,7 @@ export const NewsComponents = () => {
     else if (newsreate?.status === "notFound")
       dispatch(startMessage({ time: 3, message: 'hatolik bor' }));
     setTimeout(() => {
-      dispatch(reset());
+      dispatch(resetnewsAdmin());
     }, 500);
   }, [newsreate]);
 
@@ -95,7 +96,7 @@ export const NewsComponents = () => {
     setOpen(true)
   }
   const handleCancel = () => setOpen(false)
-
+  console.log(dataList,'dataList');
   return (
     <Container>
       <Container.Bottom>
@@ -165,7 +166,7 @@ export const NewsComponents = () => {
                   <div>
                     <Image
                       alt="img"
-                      src={`${API_GLOBAL}v1/attachment/download/${value?.id}`}
+                      src={`${API_GLOBAL}v1/attachment/download/${value?.attachment?.id}`}
                       width={60}
                       height={60}
 
@@ -206,12 +207,12 @@ export const NewsComponents = () => {
                       }
                     </div>
                     <div className='colum'>
-                      {
+                      {/* {
                         value?.status ?
                           <Button shadow={'0px'} onclick={() => editPush(value.id, index)} width={'70px'} height={'40px'} size={'18px'} radius={'5px'} border={'1px solid red'}>OK</Button>
                           :
                           <Edit onClick={() => findEditID(value.id)} />
-                      }
+                      } */}
                     </div>
                   </div>
                 </ConTable>
