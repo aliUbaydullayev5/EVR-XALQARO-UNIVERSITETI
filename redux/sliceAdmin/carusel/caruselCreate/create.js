@@ -1,18 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-export const newsreatePost = createAsyncThunk('newsreatePost', async (payload) => {
-    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/news/create`, {
+export const caruselcreatePost = createAsyncThunk('caruselcreatePost', async (payload) => {
+    return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://evredu.uz/api/'}v1/carousel`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body: JSON.stringify({
-            id: payload.id,
-            description: payload.description,
-            title: payload.title,
-            attachmentId: payload.attachmentId,
+            attachmentIds: payload.attachmentId,
         }),
     }).then((res) => res.json())
 })
@@ -23,14 +20,14 @@ const initialState = {
     data: [],
 }
 
-const newsreate = createSlice({
-    name: 'newsreate',
+const caruselcreate = createSlice({
+    name: 'caruselcreate',
     initialState,
     extraReducers: {
-        [newsreatePost.pending]: (state) => {
+        [caruselcreatePost.pending]: (state) => {
             state.status = 'loading'
         },
-        [newsreatePost.fulfilled]: (state, action) => {
+        [caruselcreatePost.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.data = action.payload.data
                 state.status = 'success'
@@ -42,12 +39,12 @@ const newsreate = createSlice({
                 state.message = action.payload.errors[0].errorMsg
             }
         },
-        [newsreatePost.rejected]: (state) => {
+        [caruselcreatePost.rejected]: (state) => {
             state.loading = 'error'
         }
     },
     reducers: {
-        reset(state) {
+        caruselreset(state) {
             state.status = null
             state.message = ''
         }
@@ -55,5 +52,5 @@ const newsreate = createSlice({
 })
 
 
-export const { reset } = newsreate.actions
-export default newsreate.reducer
+export const { caruselreset } = caruselcreate.actions
+export default caruselcreate.reducer

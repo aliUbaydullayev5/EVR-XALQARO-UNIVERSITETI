@@ -44,7 +44,6 @@ export const UsersPayInfo = () => {
     }
   }, []);
 
-  console.log(obj, 'obj');
   return (
       <Container>
         <TextCon>

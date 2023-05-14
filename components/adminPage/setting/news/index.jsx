@@ -13,6 +13,7 @@ import AddImg from "../../../../assets/icon/addimg.svg"
 import Image from "next/image";
 import { newsreatePost } from "../../../../redux/sliceAdmin/news/create";
 import { newsGetFetch } from "../../../../redux/sliceAdmin/news/getnews";
+import { API_GLOBAL } from '../../../../globalApi.js'
 
 
 export const NewsComponents = () => {
@@ -82,7 +83,6 @@ export const NewsComponents = () => {
     if (newsAdminGet?.status === "success") setDataList(newsAdminGet.data)
   }, [newsAdminGet]);
 
-  console.log(newsAdminGet, 'newsAdminGet')
   useEffect(() => {
     if (newsreate?.status === 'success')
       dispatch(newsGetFetch())
@@ -165,7 +165,7 @@ export const NewsComponents = () => {
                   <div>
                     <Image
                       alt="img"
-                      src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}
+                      src={`${API_GLOBAL}v1/attachment/download/${value?.id}`}
                       width={60}
                       height={60}
 
