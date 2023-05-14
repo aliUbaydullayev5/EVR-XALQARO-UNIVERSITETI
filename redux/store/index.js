@@ -81,6 +81,8 @@ import chatSlice from '../slices/chatSlice'
 import kirim from '../sliceAdmin/moliyaSlices/kirim'
 import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import homeCarousel from '../slices/homeCarusel'
+import tolovlar from '../sliceAdmin/moliyaSlices/tolovlar'
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -164,6 +166,7 @@ export default configureStore({
                 chatSlice,
                 kirim,
                 mashNarxlari,
-                homeCarousel
+                homeCarousel,
+                tolovlar
         },
 });

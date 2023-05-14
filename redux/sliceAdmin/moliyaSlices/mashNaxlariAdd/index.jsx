@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAdd', async (payload) => {
+export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAddFetch', async (payload) => {
     return await fetch(`${API_GLOBAL}v1/content-price/create`, {
         method: 'POST',
         headers: {
@@ -18,7 +18,7 @@ export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAdd', async (p
 
 
 const mashNarxlariAdd = createSlice({
-    name: 'mashNarxlari',
+    name: 'mashNarxlariAdd',
     initialState: {
         status: null,
         message: '',
@@ -29,7 +29,6 @@ const mashNarxlariAdd = createSlice({
             state.status = 'loading'
         },
         [mashNarxlariAddFetch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'payload')
             if (action.payload.success === true) {
                 state.status = 'success'
             }

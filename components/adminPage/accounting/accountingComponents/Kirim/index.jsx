@@ -14,6 +14,8 @@ import {kirimFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/kirim"
 
 
 const Kirim = ({subTitle}) => {
+
+
     const dispatch = useDispatch()
     const kirim = useSelector((store)=> store.kirim)
     const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
@@ -64,7 +66,7 @@ const Kirim = ({subTitle}) => {
 
     useEffect(()=> {
         if(xarajatlarAdd?.status === 'success'){
-            dispatch(startMessage({time: 3, type: 'success', message: ''}))
+            // dispatch(startMessage({time: 3, type: 'success', message: ''}))
             refreshDataFunc()
             setFileList([])
             setPushData({
@@ -160,21 +162,21 @@ const Kirim = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             kirim?.data?.map((value, index) => (
-                                    <Container.Section>
+                                    <Container.Section key={value?.id}>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value.user.firstName+' '+value.user.lastName}>{`${value.user.firstName}, ${value.user.lastName}`}</p>
+                                        <p className={'textWithTitle'} title={value?.user.firstName+' '+value?.user.lastName}>{`${value?.user.firstName}, ${value?.user.lastName}`}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.passportSeries}>P.Seriya: {value.user.passportSeries}</p>
+                                        <p className={'textWithTitle'} title={value?.user.passportSeries}>P.Seriya: {value?.user.passportSeries}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.role.name}>{value.user.role.name}</p>
+                                        <p className={'textWithTitle'} title={value?.user.role.name}>{value?.user.role.name}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.patron}>Sharif: {value.user.patron}</p>
+                                        <p className={'textWithTitle'} title={value?.user.patron}>Sharif: {value?.user.patron}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.idNumber}>ID: {value.user.idNumber}</p>
+                                        <p className={'textWithTitle'} title={value?.user.idNumber}>ID: {value?.user.idNumber}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.phoneNumber}>Nomer: +{value.user.phoneNumber}</p>
+                                        <p className={'textWithTitle'} title={value?.user.phoneNumber}>Nomer: +{value?.user.phoneNumber}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.user.extraPhoneNumber}>Q. Nomer: +{value.user.extraPhoneNumber}</p>
+                                        <p className={'textWithTitle'} title={value?.user.extraPhoneNumber}>Q. Nomer: +{value?.user.extraPhoneNumber}</p>
                                     </Container.Section>
                                 )
                             )
