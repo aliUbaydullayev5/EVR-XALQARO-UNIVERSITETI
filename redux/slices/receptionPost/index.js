@@ -51,13 +51,15 @@ const receptionPost = createSlice({
             }
             if(!action?.payload?.success){
                 state.status = 'error'
-                state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
+                // state.message = action?.payload?.errors[0]?.errorMsg.split('_').join(' ')
             }
             const jsonInfo = JSON.stringify(action.payload.info)
             localStorage.setItem('user-info', jsonInfo)
+            console.log(action, 'payload')
         },
         [receptionPostFetch.rejected]: (state)=> {
             state.status = 'error'
+            console.log(state, 'payload')
         }
     },
     reducers:{
