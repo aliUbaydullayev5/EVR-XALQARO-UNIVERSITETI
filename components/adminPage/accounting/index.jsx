@@ -15,12 +15,12 @@ import Premium from "./accountingComponents/Premium"
 const AccountingComponent = () => {
 
     const router = useRouter()
-    const [page, setPage] = useState('berilganOyliklar')
+    const [page, setPage] = useState('tolovlar')
     function getItem(label, key, icon, children, type) {return {key, icon, children, label, type,}}
 
     const items = [
         // getItem('Barcha ma\'lumotlar', 'barchaMalumotlar', <AiOutlineDatabase size={'24px'} color={'#fff'} />),
-        getItem('Tolovlar', 'berilganOyliklar', <TbPigMoney size={'24px'} color={'#fff'} />),
+        getItem('Tolovlar', 'tolovlar', <TbPigMoney size={'24px'} color={'#fff'} />),
         getItem('Xarajatlar', 'xarajatlar', <FaRegMoneyBillAlt size={'24px'} color={'#fff'} /> ),
         getItem('Kirim', 'kirim', <GiReceiveMoney size={'24px'} color={'#fff'} />),
         getItem('Maosh narxlari', 'maoshNarxlari', <TbReportMoney size={'24px'} color={'#fff'} />),
@@ -30,8 +30,8 @@ const AccountingComponent = () => {
     const returnComFunc = (type) => {
         switch (type) {
             case 'barchaMalumotlar': return <div>1</div>
-            case 'berilganOyliklar': return <Xarajatlar subTitle={'Tolovlar'} />
-            case 'xarajatlar': return <Tolovlar subTitle={'Xarajatlar'} />
+            case 'tolovlar': return <Tolovlar subTitle={'Tolovlar'} />
+            case 'xarajatlar': return <Xarajatlar subTitle={'Xarajatlat'} />
             case 'kirim': return <Kirim subTitle={'Kirim'} />
             case 'maoshNarxlari': return <MaoshNarxlari subTitle={'Maosh narxlari'} />
             case 'premium': return <Premium subTitle={'Premium'} />
@@ -54,8 +54,8 @@ const AccountingComponent = () => {
                     theme={'dark'}
                     onClick={(e)=> setPage(e.key)}
                     style={{width: 280}}
-                    defaultSelectedKeys={['berilganOyliklar']}
-                    defaultOpenKeys={['berilganOyliklar']}
+                    defaultSelectedKeys={page}
+                    defaultOpenKeys={page}
                     mode="inline"
                     items={items}
                     className={'nocopy'}

@@ -18,6 +18,11 @@ export const tolovAddFetch = createAsyncThunk('tolovAddFetch', async (payload) =
     }).then((res)=> res.json())
 })
 
+//     "amount":500000,
+//     "paymentType":"CLICK",   //  PAYME, CLICK, CASH, APELSIN
+//     "payType":"CONTRACT",   // APPLICATION,  CONTRACT
+//     "courseLevel": 2,     //agar bu contract uchun bo'lmasa shart emas
+//     "idNumber":"ID-A0000001"
 
 const tolovAdd = createSlice({
     name: 'tolovAdd',

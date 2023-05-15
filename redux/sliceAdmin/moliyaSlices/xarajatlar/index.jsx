@@ -63,10 +63,7 @@ const xarajatlar = createSlice({
                     else if(action.payload?.success === false){
                         state.status = 'warning'
                     }
-
                 }
-
-
             }
             else if (action.payload.success === false) {
                 state.status = 'notFound'

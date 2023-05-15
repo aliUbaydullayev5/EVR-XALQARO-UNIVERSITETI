@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const tolovlarFetch = createAsyncThunk('xarajatlarFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`, {
+export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/payment?paymentType=CLICK&payType=CONTRACT&q=&page=${payload.page}&size=20`, {
+        // `${API_GLOBAL}v1/payment?paymentType=CLICK&payType=CONTRACT&q=nimadur&page=${payload.page}&size=20`
+        // `${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -18,8 +20,8 @@ export const tolovlarFetch = createAsyncThunk('xarajatlarFetch', async (payload)
 })
 
 
-const tolovlar = createSlice({
-    name: 'xarajatlar',
+    const tolovlar = createSlice({
+    name: 'tolovlar',
     initialState: {
         status: null,
         message: '',
@@ -33,40 +35,20 @@ const tolovlar = createSlice({
         [tolovlarFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
-
                 if(action.payload.search){
                     if(action.payload.success === true && action.payload.data.length) {
                         state.status = 'success'
                         state.data = action.payload.data
                     }
-                    else if(action.payload?.success === false){
-                        state.status = 'warning'
-                    }
+                    else if(action.payload?.success === false) state.status = 'warning'
                 }else{
                     if(action.payload.success === true && action.payload.data.length) {
                         state.status = 'success'
-
-                        let newData = action.payload.data.map((value)=> {
-                            const date = new Date(value.date)
-                            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-                            const dateString = date.toLocaleString('en-US', options);
-                            const timeString = date.toLocaleTimeString('en-US');
-                            const formattedString = `${dateString.replace(/\//g, '.')} ${timeString.replace(/([\d]+:[\d]{2}):[\d]{2} ([A-Z]{2})/, '$1')}`;
-                            return ({
-                                ...value,
-                                date: formattedString
-                            })
-                        })
-
-                        state.data = [...state.data, ...newData]
+                        state.data = [...state.data, ...action.payload.data]
                     }
-                    else if(action.payload?.success === false){
-                        state.status = 'warning'
-                    }
-
+                    else if(action.payload?.success === false) state.status = 'warning'
                 }
-
-
+                console.log(action.payload, 'payload')
             }
             else if (action.payload.success === false) {
                 state.status = 'notFound'
