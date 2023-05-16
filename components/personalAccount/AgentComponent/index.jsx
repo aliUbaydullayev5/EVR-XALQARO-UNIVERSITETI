@@ -2,7 +2,7 @@ import Container from './style'
 import CloseIcon from "../../../assets/icon/rahmariyatCloseIcon.svg";
 import Image from "next/image";
 import personImg from "../../../assets/icon/personalAcauntPerson.png";
-import {Button, Input} from "../../generic";
+import { Button, Input } from "../../generic";
 import FileIcon from "../../../assets/icon/personalAcauntFile.svg";
 import BlockIcon from "../../../assets/icon/personalAcauntBlock.svg";
 import ExitIcon from "../../../assets/icon/personalAcauntExit.svg";
@@ -10,9 +10,9 @@ import DownIcon from "../../../assets/icon/personDown.svg";
 import MobileFile from '../../../assets/mobile/icon/mobileFile.svg'
 import MobileRestor from '../../../assets/mobile/icon/mobileRestor.svg'
 import MobileExit from '../../../assets/mobile/icon/mobileExit.svg'
-import {useSelector} from "react-redux"
-import {Spin} from "antd"
-import {useRouter} from "next/router"
+import { useSelector } from "react-redux"
+import { Spin } from "antd"
+import { useRouter } from "next/router"
 
 const Agentomponent = () => {
 
@@ -20,17 +20,17 @@ const Agentomponent = () => {
 
     const exitFromAccount = () => {
         localStorage.removeItem('access-token')
-        query.push('/homePage')
+        query.push('/')
     }
 
-    const {data, status} = useSelector((store)=> store.getInfoUserCabinet)
+    const { data, status } = useSelector((store) => store.getInfoUserCabinet)
 
 
-    return(
+    return (
         <Container>
             <Container.Top>
                 Shaxsiy kabinet
-                <CloseIcon className={'closeIcon'} onClick={()=> query.push('/homePage')} />
+                <CloseIcon className={'closeIcon'} onClick={() => query.push('/homePage')} />
             </Container.Top>
             <Container.Bottom>
                 {
@@ -55,12 +55,12 @@ const Agentomponent = () => {
                                     <MobileFile className={'mobileIcon icon'} />
                                 </div>
                                 <div>
-                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} onclick={()=> query.push('/personalAccount/agent/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
+                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} onclick={() => query.push('/personalAccount/agent/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
                                     <BlockIcon className={'icon laptopIcon'} />
                                     <MobileRestor className={'mobileIcon icon'} />
                                 </div>
                                 <div>
-                                    <Button onclick={()=> exitFromAccount()} mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
+                                    <Button onclick={() => exitFromAccount()} mwidth={'171px'} mheight={'20px'} msize={'12px'} mradius={'5px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
                                     <ExitIcon className={'icon laptopIcon'} />
                                     <MobileExit className={'mobileIcon icon'} />
                                 </div>
@@ -109,7 +109,7 @@ const Agentomponent = () => {
                             </Container.Row>
                             <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'}>
                                 <div></div>
-                                <Button onclick={()=> query.push('/personalAccount/agent/addUserAgent')} mheight={'31px'} msize={'16px'} mpadding={'0 5px'} wrap={true} height={'36px'} size={'20px'} width={'240px'} color={'#fff'}>Ro’yxatdan o’tkazish</Button>
+                                <Button onclick={() => query.push('/personalAccount/agent/addUserAgent')} mheight={'31px'} msize={'16px'} mpadding={'0 5px'} wrap={true} height={'36px'} size={'20px'} width={'240px'} color={'#fff'}>Ro’yxatdan o’tkazish</Button>
                                 <div></div>
                             </Container.Row>
                         </Container.Right>

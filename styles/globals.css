@@ -7,9 +7,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --grean: #198A29 ;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #211E51;
+  background: var(--grean);
   position: relative;
   width: 100%;
 
@@ -426,3 +430,8 @@ label:before {
   background: #241F69 !important;
 }
 
+.btn-img[data-v-e648039c] {
+  width: 40px !important;
+  height: 40px !important;
+
+}

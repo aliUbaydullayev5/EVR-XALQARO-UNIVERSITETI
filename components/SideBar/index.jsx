@@ -84,7 +84,7 @@ const SideBar = () => {
             <Container.Messanger>
                 <Voise className={'voice mobileIcon'} />
                 <MobileVoise className={'voice laptopIcon'} />
-                <Container.MeesengerArea className={'nocopy'}>
+                {/* <Container.MeesengerArea className={'nocopy'}>
                     <Message className={'message mobileIcon'} onClick={()=> changeHidden()} />
                     <MobileChat className={'laptopIcon message'} onClick={()=> changeHidden()} />
 
@@ -93,7 +93,7 @@ const SideBar = () => {
                         hidden &&
                         <MassageComponent changeHidden={changeHidden} />
                     }
-                </Container.MeesengerArea>
+                </Container.MeesengerArea> */}
             </Container.Messanger>
         </div>
     </Container>
