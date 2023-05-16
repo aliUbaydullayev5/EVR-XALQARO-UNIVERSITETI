@@ -85,7 +85,6 @@ const Kirim = ({subTitle}) => {
         if (kirimUserInfo.status === 'success') changeAllDataFunc({type: 'userId', value: kirimUserInfo?.data[0]?.id})
     }, [kirimUserInfo])
 
-    console.log(kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}`.length, kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}` && kirimUserInfo?.data[0]?.id !== undefined, 'pushData')
 
     return (
         <Container>
@@ -322,7 +321,7 @@ const Kirim = ({subTitle}) => {
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            disabled={kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}`.length, kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}` && kirimUserInfo?.data[0]?.id !== undefined}
+                            disabled={kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}`.length && kirimUserInfo.status === 'success' && `${kirimUserInfo?.data[0]?.id}` && kirimUserInfo?.data[0]?.id !== undefined}
                             onchange={(e) => changeAllDataFunc({type: 'userId', value: e.target.value})}
                             value={pushData.userId}
                         />

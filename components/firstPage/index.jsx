@@ -1,5 +1,5 @@
 import Container from "./style"
-import Logo from "../../assets/icon/firstlogo.svg"
+import Logo from "../../assets/image/logo-icon.png"
 import {Input, Button} from "../generic"
 import {useEffect, useState} from "react"
 import LogoMobile from "../../assets/icon/download.svg"
@@ -12,6 +12,7 @@ import CustomInput from "react-phone-number-input/input"
 import {useSelector, useDispatch} from "react-redux"
 import {useRouter} from "next/router"
 import {homeCarouselFetch} from "../../redux/slices/homeCarusel";
+import Image from "next/image.js"
 
 
 
@@ -44,7 +45,13 @@ const FirstPageMainCom = () => {
 
     useEffect(()=> {
         dispatch(homeCarouselFetch())
-        if(localStorage.getItem('firstToken')) router.push('/homePage')
+        if (localStorage.getItem('firstToken')) router.push('/homePage')
+        window.replainSettings = { id: '04126892-e354-4d48-bed4-735146300ac8' };
+        (function (u) {
+            var s = document.createElement('script'); s.async = true; s.src = u;
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })('https://widget.replain.cc/dist/client.js');
+
     }, [])
 
     // ---------------------- Timer Logic ----------------------
@@ -98,12 +105,12 @@ const FirstPageMainCom = () => {
         <Container>
             <Container.AreaLogo>
                 <div className={'logoMain'}>
-                    <Logo className={'logo'} />
+                    <Image className={'logo'} src={Logo}/>
                 </div>
                 <Container.LogoLine />
                 <Container.LogoTitle className={'g'}>
-                    EVR XALQARO <br />
-                    UNIVERSITETI
+                    NAVOIY INSTITUTI  <br />
+                    INNOVATSIYALAR
                 </Container.LogoTitle>
             </Container.AreaLogo>
 

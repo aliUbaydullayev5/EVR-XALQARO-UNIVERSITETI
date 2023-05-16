@@ -181,7 +181,6 @@ const OqishniKochirishComponent = () => {
 	}
 
 
-
 	useEffect(() => {
 		if (reseptionCheckPhoneSlice.status === 'success') setModalHidden(true);
 	}, [reseptionCheckPhoneSlice]);
@@ -509,6 +508,7 @@ const OqishniKochirishComponent = () => {
 							height={'43px'}
 							size={'21px'}
 							mpadding={'0px 5px'}
+							padding={'0 20px'}
 							margin={'0 60px 0 0'}
 							wrap={true}
 							onclick={() => smsFunc()}>

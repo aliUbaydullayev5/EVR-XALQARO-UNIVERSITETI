@@ -57,14 +57,14 @@ const ShaxsiyKabinetComponent = () => {
                             </div>
                             <Container.LeftMenu>
                                 <div>
-                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>
-                                    <FileIcon className={'icon laptopIcon'} />
-                                    <MobileFile className={'mobileIcon icon'} />
+                                    {/*<Button mwidth={'171px'} mheight={'20px'} msize={'12px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Rasm yuklash</Button>*/}
+                                    {/*<FileIcon className={'icon laptopIcon'} />*/}
+                                    {/*<MobileFile className={'mobileIcon icon'} />*/}
                                 </div>
                                 <div>
-                                    <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} onclick={()=> query.push('/personalAccount/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>
-                                    <BlockIcon className={'icon laptopIcon'} />
-                                    <MobileRestor className={'mobileIcon icon'} />
+                                    {/*<Button mwidth={'171px'} mheight={'20px'} msize={'12px'} onclick={()=> query.push('/personalAccount/parolniOzgartirish')} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Parolni o’zgartirish</Button>*/}
+                                    {/*<BlockIcon className={'icon laptopIcon'} />*/}
+                                    {/*<MobileRestor className={'mobileIcon icon'} />*/}
                                 </div>
                                 <div onClick={()=> exitFromAccount()}>
                                     <Button mwidth={'171px'} mheight={'20px'} msize={'12px'} justify={'start'} padding={'0 0 0 82px'} height={'35px'} width={'305px'} size={'20px'} color={'rgba(255, 255, 255, 0.5);'}>Chiqish</Button>
@@ -155,9 +155,9 @@ const ShaxsiyKabinetComponent = () => {
                                 </div>
                             </Container.Row>
                             <Container.Row columns={'1fr 1fr 1fr'} gap={'30px'} mgap={'15px'}>
-                                <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/personalAccount/talaba/tolovlar')}>To’lovlar</Button>
-                                <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>EK-101</Button>
-                                <Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>Xabarlar</Button>
+                                {/*<Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'} onclick={()=> query.push('/personalAccount/talaba/tolovlar')}>To’lovlar</Button>*/}
+                                {/*<Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>EK-101</Button>*/}
+                                {/*<Button mheight={'28px'} msize={'16px'} height={'31px'} size={'24px'} color={'#fff'}>Xabarlar</Button>*/}
                             </Container.Row>
                         </Container.Right>
                     </>

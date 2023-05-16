@@ -2,17 +2,18 @@ import styled from 'styled-components'
 import Image from "next/image"
 
 const Container = styled.div`
- height: 100%;
- background: #221F51;
- box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
- border-radius: 30px;  
- display: grid;
- grid-template-rows: 84px 1fr;
-  
- @media only screen and (max-width: 1000px){
-   box-shadow: 0 0 0 0;
-   grid-template-rows: 44px 470px;
- }
+  height: 100%;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
+  border-radius: 30px;
+  display: grid;
+  grid-template-rows: 84px 1fr;
+
+  @media only screen and (max-width: 1000px) {
+    box-shadow: 0 0 0 0;
+    grid-template-rows: 44px 470px;
+  }
 `
 Container.Top = styled.div`
   display: flex;
@@ -22,7 +23,8 @@ Container.Top = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #fff;
-  background: #221F51;
+  background: var(--green);
+  //background: #221F51;
   box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0 0;
 

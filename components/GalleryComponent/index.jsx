@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {useEffect, useState} from "react"
 import {getGalleryDataFetch} from "../../redux/slices/getGalleryData"
 import Image from "next/image";
+import {API_GLOBAL} from "../../globalApi"
 
 const GalleryComponent = () => {
 
@@ -28,7 +29,7 @@ const GalleryComponent = () => {
                                     <div key={value?.id}>
                                         <Image
                                             alt="The guitarist in the concert."
-                                            src={`http://185.217.131.147:8088/api/v1/attachment/download/${value?.attachmentId}`}
+                                            src={`${API_GLOBAL}v1/attachment/download/${value?.attachmentId}`}
                                             width={200}
                                             height={160}
                                             sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"

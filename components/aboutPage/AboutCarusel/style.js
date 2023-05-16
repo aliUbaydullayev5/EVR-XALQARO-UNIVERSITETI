@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 100%;
-  background: #221F51;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px;  
   display: grid;
   grid-template-rows: 84px 1fr;
@@ -20,8 +22,8 @@ const Container = styled.div`
 Container.Header = styled.div`
   width: 100%;
   height: 84px;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   font-weight: 500;
   font-size: 32px;
   line-height: 39px;
@@ -47,54 +49,62 @@ Container.Header = styled.div`
 `
 
 Container.Img=styled.div`
- width: 100%;
- max-width: 1276px;
- height: 380px;
- .mySwiper{
   width: 100%;
-  height: 100%;
-  cursor: pointer;
-  .wrap{
-    display: flex;
-    flex-direction: column;
-  }
- 
-  .SwiperSlide{
-    height: 380px;
-    .img{
-      width: 100%;
-      height: 100%;
-    }
-    p{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: justify;
-    color: #FFFFFF;
-    position: absolute;
-    z-index: 2;
-    bottom: 30px;
-    padding: 0 50px;
-    }
-  }
- }
- @media only screen and (max-width: 1000px){
-  .mySwiper{
-    max-width: 355px;
+  max-width: 1276px;
+  height: 380px;
+
+  .mySwiper {
+    max-width: 1200px;
     width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .SwiperSlide {
+      height: 380px;
+
+      .img {
+        width: 100%;
+        height: 100%;
+      }
+
+      p {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: justify;
+        color: #FFFFFF;
+        position: absolute;
+        z-index: 2;
+        bottom: 30px;
+        padding: 0 50px;
+      }
+    }
   }
-  .SwiperSlide{
-    margin-top: 10px;
+
+  @media only screen and (max-width: 1000px) {
+    .mySwiper {
+      max-width: 355px;
+      width: 100%;
+    }
+
+    .SwiperSlide {
+      margin-top: 10px;
+    }
+
+    .mySwiper .SwiperSlide p {
+      font-size: 12px;
+      line-height: 12px;
+      padding: 0 20px;
+      bottom: 40px;
+    }
   }
-  .mySwiper .SwiperSlide p{
-    font-size: 12px;
-    line-height: 12px;
-    padding: 0 20px;
-    bottom: 40px;
-  }
- }
 `
 
 
@@ -110,20 +120,24 @@ Container.MainCarousel = styled.div`
 `
 
 const ContainerDow = styled.div`
+  padding: 0 0 10px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   justify-content: center;
-  a{
-    >button{
-      background: #241F69;
+
+  a {
+    > button {
+      //background: #241F69;
+      background: var(--green);
     }
   }
- 
 
-  @media only screen and (max-width: 1000px){
-   gap: 12px;
+
+  @media only screen and (max-width: 1000px) {
+    gap: 12px;
+    padding: 0;
   }
 `
 

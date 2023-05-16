@@ -1,19 +1,24 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/SideBar";
 import Container from "./style.js";
 import LineComponent from "../components/LineComponent";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Root = ({ children }) => {
     const { pathname } = useRouter()
-    const { status, pushToHome } = useSelector((store)=> store.firstSmsCodeFetch)
+    const { status, pushToHome } = useSelector((store) => store.firstSmsCodeFetch)
     const router = useRouter()
 
 
-    useEffect(()=> {
-        if(!localStorage.getItem('firstToken')) router.push('/firstPage')
+    useEffect(() => {
+        if (!localStorage.getItem('firstToken')) router.push('/firstPage')
+        window.replainSettings = { id: '04126892-e354-4d48-bed4-735146300ac8' };
+        (function (u) {
+            var s = document.createElement('script'); s.async = true; s.src = u;
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })('https://widget.replain.cc/dist/client.js');
     }, [])
 
     return (
@@ -40,7 +45,7 @@ const Root = ({ children }) => {
                         {
                             pathname !== '/firstPage' &&
                             <Container.SideBarLaptop>
-                                <SideBar/>
+                                <SideBar />
                             </Container.SideBarLaptop>
                         }
                     </Container.MainMiniBlock>
@@ -48,7 +53,7 @@ const Root = ({ children }) => {
                     {
                         pathname !== '/firstPage' &&
                         <Container.SideBarMobile>
-                            <SideBar/>
+                            <SideBar />
                         </Container.SideBarMobile>
                     }
                 </Container.MainOfInset>

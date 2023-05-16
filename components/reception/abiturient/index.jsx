@@ -91,7 +91,6 @@ export const AbiturientQabul = () => {
 		changeAllDataFunc({type: by, value: fileId})
 		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
 		if(status === 'error') dispatch(startMessage({time: 2, message}))
-
 	}, [status])
 
 

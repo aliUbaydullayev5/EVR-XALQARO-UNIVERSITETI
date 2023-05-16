@@ -4,6 +4,7 @@ import Container from "./style";
 import Arrow from "../../../assets/icon/arrow.svg";
 import Date from "../../../assets/icon/date.svg";
 import Image from "next/image";
+import {API_GLOBAL} from "../../../globalApi"
 
 export const NewsCard = (data) => {
   
@@ -15,7 +16,7 @@ export const NewsCard = (data) => {
         <Container>
             <Image
                 alt="The guitarist in the concert."
-                src={`http://185.217.131.147:8088/api/v1/attachment/download/${data.data.attachment.id}`}
+                src={`${API_GLOBAL}v1/attachment/download/${data.data.attachment.id}`}
                 width={200}
                 height={160}
                 className={"img"}

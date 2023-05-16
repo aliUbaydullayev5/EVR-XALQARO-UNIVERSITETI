@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100vh;
-  background: #211E51;
+  background:  var(--green);
   padding: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   @media only screen and (max-width: 1000px) {
     height: 100vh;
-    background: #211E51;
+    background: var(--green);
     padding: 22px 20px;
     display: flex;
     justify-content: center;
@@ -24,8 +24,8 @@ Container.Inset = styled.div`
   max-width: 1440px;
   min-width: 1200px;
   width: 100%;
-  background: #211E51;
-  box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.48);
+  background: var(--green);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.48);
   border-radius: 45px;
   @media only screen and (max-width: 1000px) {
     padding: 20px 0 20px 0;
@@ -99,7 +99,9 @@ Container.SideBarMobile = styled.div`
 `
 Container.Line = styled.div`
   height: 18px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  background: var(--homePageLineColor);
+  
 `
 
 

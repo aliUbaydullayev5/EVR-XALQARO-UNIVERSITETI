@@ -4,8 +4,9 @@ const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 84px 1fr;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
 `
 
@@ -17,9 +18,10 @@ Container.Top = styled.div`
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
 
 `
 

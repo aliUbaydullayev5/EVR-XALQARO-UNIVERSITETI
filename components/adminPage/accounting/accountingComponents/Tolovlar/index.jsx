@@ -91,7 +91,7 @@ const Tolovlar = memo(({subTitle}) => {
     }
 
     const searchFunc = (e) => {
-        console.log(e, 'search_text')
+        // console.log(e, 'search_text')
     }
 
     const xarajatlar = useSelector((store)=> store.xarajatlar)

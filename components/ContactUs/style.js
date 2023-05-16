@@ -2,14 +2,15 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100%;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;  
   display: grid;
   grid-template-rows: 84px 1fr;
   
   @media only screen and (max-width: 1000px){
-   box-shadow: 0px 0px 0px 0px;
+   box-shadow: 0 0 0 0;
    grid-template-rows: 40px 1fr;
   }
 `
@@ -21,9 +22,10 @@ Container.Top = styled.div`
   font-size: 40px;
   line-height: 49px;
   color: #fff;
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   @media only screen and (max-width: 1000px){
     height: 100%;
     font-weight: 500;
@@ -64,7 +66,8 @@ Container.Box = styled.div`
   max-width: 260px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  background: var(--buttonColor);
   box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 27px;
   display: flex;

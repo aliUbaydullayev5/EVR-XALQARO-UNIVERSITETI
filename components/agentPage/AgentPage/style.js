@@ -10,8 +10,9 @@ const Container = styled.div`
 
 Container.Inset = styled.div`
   width: 100%;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   height: 474px;
   display: grid;
@@ -23,17 +24,19 @@ Container.Inset = styled.div`
 
 `
 Container.Top = styled.div`
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media only screen and (max-width: 1000px) {
-     background: #221F51;
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 30px 30px 0px 0px;
+    //background: #221F51;
+    background: var(--green);
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0 0;
     height: 31px;
   }
 `
@@ -46,7 +49,7 @@ Container.TopTitle = styled.div`
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-  } 
+  }
 
 `
 
@@ -58,13 +61,12 @@ Container.Bottom = styled.div`
   @media only screen and (max-width: 1000px) {
     padding: 25px 15px;
   }
-  
+
 `
 
 Container.BottomDesc = styled.div`
   height: 247px !important;
   border: 1px solid #FFFFFF;
-  height: 100%;
   padding: 15px;
   @media only screen and (max-width: 1000px) {
     height: 310px !important;
@@ -75,7 +77,8 @@ Container.BottomDescInset = styled.div`
   height: 215px !important;
   overflow-y: scroll;
   padding: 0 10px 0 0;
-  >p{
+
+  > p {
     font-weight: 400;
     font-size: 16px;
     line-height: 105.9%;
@@ -85,15 +88,17 @@ Container.BottomDescInset = styled.div`
     letter-spacing: -0.025em;
     color: #FFFFFF;
   }
+
   @media only screen and (max-width: 1000px) {
     height: 290px !important;
-    >p{
+    > p {
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
       line-height: 105.9%;
     }
   }
+
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -128,7 +133,8 @@ Container.SelectSection = styled.div`
   display: grid;
   align-items: center;
   grid-gap: 10px;
-  >div{
+
+  > div {
     display: flex;
     align-items: center;
     gap: 15px;

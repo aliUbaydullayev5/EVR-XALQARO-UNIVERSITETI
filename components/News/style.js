@@ -15,8 +15,9 @@ const Container = styled.div`
 
 Container.Inset = styled.div`
   width: 100%;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   height: 520px;
   display: grid;
@@ -29,9 +30,10 @@ Container.Inset = styled.div`
 
 `
 Container.Top = styled.div`
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,9 +41,10 @@ Container.Top = styled.div`
   position: relative;
 
   @media only screen and (max-width: 1000px) {
-    background: #221F51;
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 15px 15px 0px 0px;
+    //background: #221F51;
+    background: var(--green);
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 15px 15px 0 0;
     height: 31px;
     padding: 0;
   }
@@ -75,10 +78,11 @@ Container.Search = styled.div`
     height: 38px;
     width: 100%;
     color: #ffff;
-    background: linear-gradient(90deg, 
-    #1E3C72 0%, #1E3C72 1%, #2A5298 
-    100%);
-    box-shadow: 0px 4px 17px rgba(0, 0, 
+    //background: linear-gradient(90deg, 
+    //#1E3C72 0%, #1E3C72 1%, #2A5298 
+    //100%);
+   background: var(--buttonColor);
+    box-shadow: 0 4px 17px rgba(0, 0, 
     0, 0.25);
     border-radius: 100px;
     padding-left: 18px;
