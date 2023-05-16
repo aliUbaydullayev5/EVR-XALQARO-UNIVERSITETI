@@ -19,7 +19,6 @@ const Xarajatlar = ({subTitle}) => {
 
     const dispatch = useDispatch()
     const xarajatlar = useSelector((store)=> store.xarajatlar)
-    console.log('xarajatlar ______ 2', xarajatlar)
     const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
     const [inView, setInView] = useState(false);
     const [modalHidden, setModalHidden] = useState(false)

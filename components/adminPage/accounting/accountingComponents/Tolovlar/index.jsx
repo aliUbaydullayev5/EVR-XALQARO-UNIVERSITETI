@@ -96,8 +96,6 @@ const Tolovlar = memo(({subTitle}) => {
 
     const xarajatlar = useSelector((store)=> store.xarajatlar)
 
-    console.log(xarajatlar, 'xarajatlar')
-
     return (
         <Container>
             <div className={'title nocopy'}>

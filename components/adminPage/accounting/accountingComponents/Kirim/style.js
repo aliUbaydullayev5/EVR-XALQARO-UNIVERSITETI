@@ -174,6 +174,12 @@ Container.ModanInset = styled.div`
     align-items: center;
     justify-content: end;
   }
+  pre{
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 4px;
+    
+  }
 `
 
 Container.RefreshArea = styled.div`

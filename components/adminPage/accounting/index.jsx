@@ -23,8 +23,8 @@ const AccountingComponent = () => {
         getItem('Tolovlar', 'tolovlar', <TbPigMoney size={'24px'} color={'#fff'} />),
         getItem('Xarajatlar', 'xarajatlar', <FaRegMoneyBillAlt size={'24px'} color={'#fff'} /> ),
         getItem('Kirim', 'kirim', <GiReceiveMoney size={'24px'} color={'#fff'} />),
-        getItem('Maosh narxlari', 'maoshNarxlari', <TbReportMoney size={'24px'} color={'#fff'} />),
-        getItem('Premium', 'premium', <MdOutlineWorkspacePremium size={'24px'} color={'#fff'} />),
+        // getItem('Maosh narxlari', 'maoshNarxlari', <TbReportMoney size={'24px'} color={'#fff'} />),
+        // getItem('Premium', 'premium', <MdOutlineWorkspacePremium size={'24px'} color={'#fff'} />),
     ]
 
     const returnComFunc = (type) => {

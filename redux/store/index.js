@@ -88,6 +88,8 @@ import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
 import tolovAdd from '../sliceAdmin/moliyaSlices/tolovlarAdd'
+import kirimAdd from '../sliceAdmin/moliyaSlices/kirimAdd'
+import kirimUserInfo from '../sliceAdmin/moliyaSlices/kirimUserInfo'
 
 export default configureStore({
         reducer: {
@@ -170,7 +172,6 @@ export default configureStore({
                 newsGet,
                 forgotPassword,
                 chatSlice,
-                kirim,
                 mashNarxlari,
                 homeCarousel,
                 caruselcreate,
@@ -179,6 +180,9 @@ export default configureStore({
                 galleryDeleteId,
                 newsreate,
                 tolovlar,
-                tolovAdd
+                tolovAdd,
+                kirim,
+                kirimAdd,
+                kirimUserInfo
         },
 });
