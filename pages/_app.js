@@ -6,12 +6,12 @@ import 'react-phone-number-input/style.css'
 
 function MyApp({ Component, pageProps }) {
 
-  return (
-      <Provider store={store}>
-          <Message />
-          <Component {...pageProps} />
-      </Provider>
-  )
+    return (
+        <Provider store={store}>
+            <Message/>
+            <Component {...pageProps} />
+        </Provider>
+    )
 }
 
 export default MyApp

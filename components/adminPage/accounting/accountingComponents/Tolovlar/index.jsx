@@ -1,101 +1,102 @@
-import Container from './style'
-import {FaRegMoneyBillAlt} from "react-icons/fa"
-import {Button, Input} from "../../../../generic"
-import {IoSearch} from "react-icons/io5"
-import {HiOutlineRefresh} from "react-icons/hi"
-import {Button as AntButton, Modal, Spin, Upload} from "antd"
-import {InView} from "react-intersection-observer"
-import {API_GLOBAL} from "../../../../../globalApi"
-import {FiUpload} from "react-icons/fi"
 import React, {useEffect, useState, memo} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {addPageCount, resetPageToZero, tolovlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlar"
-import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd"
+import {HiOutlineRefresh} from "react-icons/hi"
+import {FaRegMoneyBillAlt} from "react-icons/fa"
+import {FiUpload} from "react-icons/fi"
+import {IoSearch} from "react-icons/io5"
+
+import Container from './style'
+
+import {Button, Input} from "../../../../generic"
+import {Button as AntButton, Modal, Spin, Upload} from "antd"
+
+import {InView} from "react-intersection-observer"
+import {API_GLOBAL} from "../../../../../globalApi"
+
+// tolov get slice and with pagination functions
+import {resetPageToZero, tolovlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlar"
+
+// tolov slice add new section
+import {tolovAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlarAdd"
+
+// message slice
 import {startMessage} from "../../../../../redux/slices/message"
 
 const Tolovlar = memo(({subTitle}) => {
 
-    const dispatch = useDispatch()
+    const dispatch= useDispatch()
     const tolovlar = useSelector((store) => store.tolovlar)
-    const xarajatlarAdd = useSelector((store) => store.xarajatlarAdd)
-    const [inView, setInView] = useState(false)
+    const tolovAdd = useSelector((store) => store.tolovAdd)
     const [modalHidden, setModalHidden] = useState(false)
+    const [inView, setInView] = useState(null)
 
     useEffect(() => {
         if (inView) {
             if ((tolovlar?.data.length % 20 === 0) || (tolovlar?.data.length === 0)) {
-                dispatch(addPageCount())
-                dispatch(tolovlarFetch({page: tolovlar?.pageCount, query: ''}), 'inView')
+                dispatch(tolovlarFetch({pageCount: tolovlar?.pageCount}))
             }
         }
     }, [inView])
 
-    const [fileList, setFileList] = useState([])
     const [pushData, setPushData] = useState({
-        name: '',
         amount: '',
-        paymentType: 'CASH',
-        description: '',
-        attachment: []
+        paymentType: 'PAYME',
+        payType: 'APPLICATION',
+        courseLevel: '0',
+        idNumber: ''
     })
-    const uploadFunc = (event) => {
-        setFileList([...event.fileList])
-        if (event.file.status === 'done') {
-            if (event?.file?.response?.success) {
-                setPushData({
-                    ...pushData,
-                    attachment: [
-                        ...pushData.attachment,
-                        event.file.response.data
-                    ]
-                })
-            }
-        }
 
-        if (event.file.status === 'removed') {
-            let attachment = pushData.attachment.filter((value) => value !== event.file.response.data)
-            setPushData({...pushData, attachment})
-        }
+    const changeAllDataFunc = ({ type, value }) => {
+        const fakeData = pushData
+        fakeData[type] = value
+        setPushData(fakeData)
+        setPushData({ ...pushData, [type]: value })
     }
+
     const pushToSliceFunc = () => {
-        if (!!pushData.name.length && !!pushData.amount.length && !!pushData.paymentType && !!pushData.attachment.length) {
-            dispatch(xarajatlarAddFetch({
-                name: pushData.name,
-                paymentType: pushData.paymentType,
+        if (!!pushData.amount.length && !!pushData.idNumber.length) {
+            dispatch(tolovAddFetch({
                 amount: pushData.amount,
-                description: pushData.description,
-                attachmentIds: pushData.attachment
+                paymentType: pushData.paymentType,
+                payType: pushData.payType,
+                courseLevel: pushData.courseLevel,
+                idNumber: pushData.idNumber
             }))
         } else dispatch(startMessage({time: 3, message: 'Toliq toldiring'}))
     }
 
     useEffect(() => {
-        if (xarajatlarAdd?.status === 'success') {
-            // dispatch(startMessage({time: 3, type: 'success', message: ''}))
+        if (tolovAdd?.status === 'success') {
             refreshDataFunc()
-            setFileList([])
             setPushData({
-                name: '',
                 amount: '',
-                paymentType: 'CASH',
-                description: '',
-                attachment: []
+                paymentType: 'CLICK',
+                payType: 'APPLICATION',
+                courseLevel: '0',
+                idNumber: ''
             })
         }
-    }, [xarajatlarAdd])
+    }, [tolovAdd])
 
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
-            dispatch(tolovlarFetch({page: 0, query: ''}))
-            dispatch(resetPageToZero())
             setRefreshButtonLogin(true)
+            dispatch(resetPageToZero())
+            dispatch(tolovlarFetch({pageCount: 0}))
             setTimeout(() => {
                 setRefreshButtonLogin(false)
             }, 1000)
         }
     }
 
+    const searchFunc = (e) => {
+        console.log(e, 'search_text')
+    }
+
+    const xarajatlar = useSelector((store)=> store.xarajatlar)
+
+    console.log(xarajatlar, 'xarajatlar')
 
     return (
         <Container>
@@ -138,6 +139,7 @@ const Tolovlar = memo(({subTitle}) => {
                         className={'input'}
                         padding={'0 0 0 50px'}
                         mpadding={'0 0 0 50px'}
+                        onchange={(e)=> searchFunc(e.target.value)}
                     />
                 </div>
 
@@ -151,18 +153,43 @@ const Tolovlar = memo(({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             tolovlar?.data?.map((value, index) => (
+                                <>
+                                    {
+                                        index === 0 &&
+                                        <Container.Section key={value?.id}>
+                                            <p className="number">%</p>
+                                            <p className={'textWithTitle'} title={'Toliq ismi sharif'}>Toliq ismi sharif</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={'Id nomer'}>Id nomer</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={`pull narhi va tolov turi`}>pull narhi va tolov turi</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={'tolov turi'}>tolov turi</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={'telefon raqam'}>telefon raqam</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={'Qoshimcha tel nomer'}>Qoshimcha tel nomer</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={'kurs'}>kurs</p>
+                                        </Container.Section>
+                                    }
                                     <Container.Section key={value?.id}>
                                         <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                        <p className={'textWithTitle'} title={value?.user?.fullName}>{value?.user?.fullName}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                        <p className={'textWithTitle'} title={value?.user?.idNumber}>{value?.user?.idNumber}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.paymentType}>{value?.paymentType}</p>
+                                        <p className={'textWithTitle'} title={`${value?.amount} ${value.paymentType}`}>{value?.amount} &nbsp;&nbsp; {value.paymentType}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
+                                        <p className={'textWithTitle'} title={value?.payType}>{value?.payType}</p>
                                         <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.description}>{value?.description}</p>
+                                        <p className={'textWithTitle'} title={value?.user?.phoneNumber}>{value?.user?.phoneNumber}</p>
+                                        <div className="line"></div>
+                                        <p className={'textWithTitle'} title={value?.user?.extraPhoneNumber}>{value?.user?.extraPhoneNumber}</p>
+                                        <div className="line"></div>
+                                        <p className={'textWithTitle'} title={value?.courseLevel}>{value?.courseLevel}</p>
                                     </Container.Section>
+                                </>
                                 )
                             )
                         }
@@ -188,12 +215,13 @@ const Tolovlar = memo(({subTitle}) => {
                         height={'40px'}
                         mradius={'8px'}
                         radius={'8px'}
-                        placeholder={'Name'}
+                        placeholder={'Amount'}
                         msize={'22px'}
                         size={'22px'}
                         bc={'#241F69'}
-                        onchange={(e) => setPushData({...pushData, name: e.target.value})}
-                        value={pushData.name}
+                        type={'number'}
+                        onchange={(e) => changeAllDataFunc({type: 'amount', value: e.target.value})}
+                        value={pushData.amount}
                     />
                     <div className="twoInput">
                         <Input
@@ -201,53 +229,42 @@ const Tolovlar = memo(({subTitle}) => {
                             height={'40px'}
                             mradius={'8px'}
                             radius={'8px'}
-                            placeholder={'Maoshi'}
+                            placeholder={'course level'}
+                            type={'number'}
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            onchange={(e) => setPushData({
-                                ...pushData,
-                                amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : ''
-                            })}
-                            value={pushData.amount}
+                            onchange={(e) => changeAllDataFunc({type: 'courseLevel', value: e.target.value})}
+                            value={pushData.courseLevel}
                         />
                         <Input
                             mheight={'40px'}
                             height={'40px'}
                             mradius={'8px'}
                             radius={'8px'}
-                            placeholder={'Tafsif'}
+                            placeholder={'Id Number'}
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            onchange={(e) => setPushData({...pushData, description: e.target.value})}
-                            value={pushData.description}
+                            onchange={(e) => changeAllDataFunc({type: 'idNumber', value: e.target.value})}
+                            value={pushData.idNumber}
                         />
                     </div>
-                    <div className="inputs">
-                        <Upload
-                            listType="picture"
-                            defaultFileList={fileList}
-                            className="upload-list-inline"
-                            action={`${API_GLOBAL}v1/attachment/upload`}
-                            method={"POST"}
-                            onChange={(e) => uploadFunc(e)}
-                            fileList={fileList}
-                            headers={{
-                                "Secret": "eyJhbGciOiJIUzI1NiJ9.e30.ZRrHA1JJJW8opsbCGfG_HACGpVUMN_a9IV7pAx"
-                            }}
-                        >
-                            <AntButton style={{
-                                backgroundColor: '#221F51',
-                                color: '#fff',
-                                border: '0',
-                                boxShadow: '0 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'
-                            }} icon={<span> <FiUpload/> &nbsp; </span>}>Upload</AntButton>
-                        </Upload>
+                    <div className="twoInput">
+                        <select defaultChecked={'PAYME'} defaultValue={'PAYME'} onChange={(e) => changeAllDataFunc({type: 'paymentType', value: e.target.value})}>
+                            <option value={'PAYME'}>PAYME</option>
+                            <option value={'CLICK'}>CLICK</option>
+                            <option value={'CASH'}>CASH</option>
+                            <option value={'APELSIN'}>APELSIN</option>
+                        </select>
+                        <select defaultChecked={'APPLICATION'} defaultValue={'APPLICATION'} onChange={(e) => changeAllDataFunc({type: 'payType', value: e.target.value})}>
+                            <option value={'APPLICATION'}>APPLICATION</option>
+                            <option value={'CONTRACT'}>CONTRACT</option>
+                        </select>
                     </div>
                     <div className={'buttonArea'}>
                         {
-                            xarajatlarAdd?.status === 'loading' ?
+                            tolovAdd?.status === 'loading' ?
                                 <Button
                                     width={'157px'}
                                     mwidth={'157px'}

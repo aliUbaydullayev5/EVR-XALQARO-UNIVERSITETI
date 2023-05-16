@@ -2,27 +2,22 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
 export const tolovAddFetch = createAsyncThunk('tolovAddFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/cost/cost`, {
+    return await fetch(`${API_GLOBAL}v1/payment`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('admin_AccessToken')}`
         },
         body:JSON.stringify({
-            name: payload.name,
-            paymentType: payload.paymentType,
             amount: payload.amount,
-            description: payload.description,
-            attachmentIds: payload.attachmentIds
+            paymentType: payload.paymentType,
+            payType: payload.payType,
+            courseLevel: payload.courseLevel,
+            idNumber: payload.idNumber
         })
     }).then((res)=> res.json())
 })
 
-//     "amount":500000,
-//     "paymentType":"CLICK",   //  PAYME, CLICK, CASH, APELSIN
-//     "payType":"CONTRACT",   // APPLICATION,  CONTRACT
-//     "courseLevel": 2,     //agar bu contract uchun bo'lmasa shart emas
-//     "idNumber":"ID-A0000001"
 
 const tolovAdd = createSlice({
     name: 'tolovAdd',

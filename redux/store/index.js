@@ -87,6 +87,7 @@ import tolovlar from '../sliceAdmin/moliyaSlices/tolovlar'
 import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
 import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
+import tolovAdd from '../sliceAdmin/moliyaSlices/tolovlarAdd'
 
 export default configureStore({
         reducer: {
@@ -177,6 +178,7 @@ export default configureStore({
                 galleryCreate,
                 galleryDeleteId,
                 newsreate,
-                tolovlar
+                tolovlar,
+                tolovAdd
         },
 });

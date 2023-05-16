@@ -4,7 +4,7 @@ import {Button, Input} from "../../../../generic"
 import {IoSearch} from "react-icons/io5"
 import {useDispatch, useSelector} from "react-redux"
 import React, {useEffect, useState} from "react"
-import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
+import {resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
 import {Modal, Spin} from 'antd'
 import {InView} from "react-intersection-observer"
 import {Button as AntButton, Upload } from 'antd'
@@ -13,20 +13,21 @@ import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/x
 import {startMessage} from "../../../../../redux/slices/message"
 import {FiUpload} from "react-icons/fi"
 import {HiOutlineRefresh} from "react-icons/hi";
+import {tolovlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlar"
 
 const Xarajatlar = ({subTitle}) => {
 
     const dispatch = useDispatch()
     const xarajatlar = useSelector((store)=> store.xarajatlar)
+    console.log('xarajatlar ______ 2', xarajatlar)
     const xarajatlarAdd = useSelector((store)=> store.xarajatlarAdd)
     const [inView, setInView] = useState(false);
     const [modalHidden, setModalHidden] = useState(false)
 
     useEffect(()=> {
-        if (inView){
-            if((xarajatlar.data.length % 20 === 0) || (xarajatlar.data.length === 0)){
-                dispatch(addPageCount())
-                dispatch(xarajatlarFetch({page: xarajatlar?.pageCount, query: ''}))
+        if (inView) {
+            if ((xarajatlar?.data.length % 20 === 0) || (xarajatlar?.data.length === 0)) {
+                dispatch(xarajatlarFetch({pageCount: xarajatlar?.pageCount}))
             }
         }
     }, [inView])
@@ -86,7 +87,7 @@ const Xarajatlar = ({subTitle}) => {
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
             dispatch(resetPageToZero())
-            dispatch(xarajatlarFetch({page: 0, query: ''}))
+            dispatch(xarajatlarFetch({pageCount: 0, query: ''}))
             setRefreshButtonLogin(true)
             setTimeout(() => {
                 setRefreshButtonLogin(false)
@@ -98,7 +99,8 @@ const Xarajatlar = ({subTitle}) => {
         <Container>
             <div className={'title nocopy'}>
                 <div>
-                    <TbPigMoney size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span className={'subTitle'}> &gt; {subTitle}</span>
+                    <TbPigMoney size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span
+                    className={'subTitle'}> &gt; {subTitle}</span>
                 </div>
                 <div>
                     <Button
@@ -158,8 +160,8 @@ const Xarajatlar = ({subTitle}) => {
                         Tartiblash
                     </p>
                 </Button>
-                <Container.RefreshArea loading={refreshButtonLogin} onClick={()=> refreshDataFunc()}>
-                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
+                <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
+                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'}/>
                 </Container.RefreshArea>
             </div>
             <div className={'dataArea'}>
@@ -168,18 +170,37 @@ const Xarajatlar = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             xarajatlar?.data?.map((value, index) => (
-                                    <Container.Section key={value?.id}>
-                                        <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.paymentType}>{value?.paymentType}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value?.description}>{value?.description}</p>
-                                    </Container.Section>
+                                    <>
+                                        {
+                                            index === 0 &&
+                                            <Container.Section key={value?.id}>
+                                                <p className="number">%</p>
+                                                <p className={'textWithTitle'} title={'Isim'}>Isim</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Narxi'}>Narxi</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Tolov turi'}>Tolov turi</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Sana'}>Sana</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Batafsil'}>Batafsil</p>
+                                            </Container.Section>
+                                        }
+                                        <Container.Section key={value?.id}>
+                                            <p className="number">{index + 1}</p>
+                                            <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'}
+                                               title={value?.paymentType}>{value?.paymentType}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'}
+                                               title={value?.description}>{value?.description}</p>
+                                        </Container.Section>
+                                    </>
                                 )
                             )
                         }
@@ -222,7 +243,10 @@ const Xarajatlar = ({subTitle}) => {
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            onchange={(e) => setPushData({...pushData, amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : '' })}
+                            onchange={(e) => setPushData({
+                                ...pushData,
+                                amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : ''
+                            })}
                             value={pushData.amount}
                         />
                         <Input
@@ -299,7 +323,7 @@ const Xarajatlar = ({subTitle}) => {
                 </Container.ModanInset>
             </Modal>
         </Container>
-    );
+    )
 }
 
 export default Xarajatlar

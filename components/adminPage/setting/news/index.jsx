@@ -96,7 +96,6 @@ export const NewsComponents = () => {
     setOpen(true)
   }
   const handleCancel = () => setOpen(false)
-  console.log(dataList,'dataList');
   return (
     <Container>
       <Container.Bottom>

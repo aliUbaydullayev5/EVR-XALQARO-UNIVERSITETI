@@ -81,13 +81,13 @@ Container.DataAreaInset = styled.div`
   padding: 20px;
 `
 Container.Section = styled.div`
-  width: 1300px;
+  width: 1700px;
   background: #241F69;
   box-shadow: 0 1.52656px 12.9758px rgba(0, 0, 0, 0.54);
   border-radius: 6.10625px;
   padding: 10px 10px;
   display: grid;
-  grid-template-columns: 20px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
+  grid-template-columns: 20px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
   align-items: center;
   gap: 10px;
   .line{

@@ -2,9 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
 export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/payment?paymentType=CLICK&payType=CONTRACT&q=&page=${payload.page}&size=20`, {
-        // `${API_GLOBAL}v1/payment?paymentType=CLICK&payType=CONTRACT&q=nimadur&page=${payload.page}&size=20`
-        // `${API_GLOBAL}v1/cost/cost?page=${payload.page}&size=20`
+    return await fetch(`${API_GLOBAL}v1/payment?paymentType=CLICK&payType=APPLICATION&q=&page=${payload.pageCount}&size=20`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -14,13 +12,13 @@ export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) =
         .then((json)=> {
             return{
                 ...json,
-                search: payload.search
+                pageCount: payload.pageCount
             }
         })
 })
 
 
-    const tolovlar = createSlice({
+const tolovlar = createSlice({
     name: 'tolovlar',
     initialState: {
         status: null,
@@ -35,22 +33,14 @@ export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) =
         [tolovlarFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
-                if(action.payload.search){
-                    if(action.payload.success === true && action.payload.data.length) {
-                        state.status = 'success'
-                        state.data = action.payload.data
-                    }
-                    else if(action.payload?.success === false) state.status = 'warning'
-                }else{
-                    if(action.payload.success === true && action.payload.data.length) {
-                        state.status = 'success'
+                let lastData = 0
+                if (lastData % 20 === 0 || !lastData) {
+                    if ((state.data.length / 20) === state.pageCount) {
+                        state.pageCount++
                         state.data = [...state.data, ...action.payload.data]
                     }
-                    else if(action.payload?.success === false) state.status = 'warning'
                 }
-                console.log(action.payload, 'payload')
-            }
-            else if (action.payload.success === false) {
+            } else if (action.payload.success === false) {
                 state.status = 'notFound'
                 state.message = action.payload.errors[0].errorMsg
             }
@@ -60,9 +50,6 @@ export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) =
         }
     },
     reducers: {
-        addPageCount(state) {
-            state.pageCount = state.pageCount + 1
-        },
         resetPageToZero(state) {
             state.status = null
             state.message = ''
@@ -73,6 +60,5 @@ export const tolovlarFetch = createAsyncThunk('tolovlarFetch', async (payload) =
 })
 
 
-
-export const { addPageCount, resetPageToZero } = tolovlar.actions
+export const { resetPageToZero } = tolovlar.actions
 export default tolovlar.reducer
