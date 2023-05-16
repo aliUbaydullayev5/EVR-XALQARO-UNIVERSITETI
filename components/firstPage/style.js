@@ -77,6 +77,7 @@ Container.AreaLogo = styled.div`
   .logo{
     animation: 10s slidein infinite;
     height: 184px;
+    width:150px ;
   }
   @media only screen and (max-width: 1000px) {
     display: none;
@@ -119,12 +120,12 @@ Container.AreaLogo = styled.div`
 `
 
 Container.Logo = styled(Image)`
-  max-height: 184px;
-  max-width: 601px;
+  /* max-height: 184px; */
+  /* max-width: 601px; */
 `
 Container.LogoLine = styled.div`
-  height: 100%;
-  width: 3px;
+  /* height: 100%; */
+  /* width: 3px; */
   background-color: #fff;
 `
 Container.LogoTitle = styled.div`
@@ -162,7 +163,7 @@ Container.Number = styled.div`
     border-radius: 15px !important;
     height: 60px !important;
     width: 100% !important;
-    background: #241F69 !important;
+    background: #45a358 !important;
     box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25) !important;
     padding: 0 20px;
 

@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100vh;
-  background: #211E51;
+  background:  --grean;
   padding: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   @media only screen and (max-width: 1000px) {
     height: 100vh;
-    background: #211E51;
+    background: --grean;
     padding: 22px 20px;
     display: flex;
     justify-content: center;
@@ -24,7 +24,7 @@ Container.Inset = styled.div`
   max-width: 1440px;
   min-width: 1200px;
   width: 100%;
-  background: #211E51;
+  background: --grean;
   box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.48);
   border-radius: 45px;
   @media only screen and (max-width: 1000px) {
