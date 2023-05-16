@@ -49,7 +49,7 @@ export const AboutCaruselComp = () => {
                                     <p className={'text'}>{val.text}</p>
                                     <Image
                                         alt="img"
-                                        src={`http://185.217.131.147:8088/api/v1/attachment/download/${val?.photoId}`}
+                                        src={`${API_GLOBAL}v1/attachment/download/${val?.photoId}`}
                                         width={60}
                                         height={60}
 
