@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js'
-import { Modal, Spin } from 'antd'
-import { Input, Button } from '../../generic'
-import UploadFiler from '../../../assets/icons/uploadeFile.svg'
-import UploadMobile from '../../../assets/mobile/icon/UploadMobile.svg'
-import { useRouter } from 'next/router.js'
-import CustomInput from 'react-phone-number-input/input'
-import { deployFileFetch } from '../../../redux/slices/deployFile'
-import { startMessage } from '../../../redux/slices/message'
-import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType'
-import {receptionPostFetch,resetVerify,} from '../../../redux/slices/receptionPost'
-import {reseptionSmsCheckSliceFetch,resetTimerVerify,} from '../../../redux/slices/receptionVerifyPhone'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Container, { BtnCon, IconBox, InputCont, TextCon } from './style.js';
+import { Modal, Spin } from 'antd';
+import { Input, Button } from '../../generic';
+import UploadFiler from '../../../assets/icons/uploadeFile.svg';
+import UploadMobile from '../../../assets/mobile/icon/UploadMobile.svg';
+import { useRouter } from 'next/router.js';
+import CustomInput from 'react-phone-number-input/input';
+import { deployFileFetch } from '../../../redux/slices/deployFile';
+import { startMessage } from '../../../redux/slices/message';
+import { getDirectTypeFetch } from '../../../redux/slices/getStudyTypes/getDirectType';
+import {receptionPostFetch,resetVerify,} from '../../../redux/slices/receptionPost';
+import {reseptionSmsCheckSliceFetch,resetTimerVerify,} from '../../../redux/slices/receptionVerifyPhone';
 import {receptionSmsVerifyFetch,resetSmsVerify,
-} from '../../../redux/slices/receptionSmsVerify'
-import { checkAllInputs2 } from './checkAllInputs'
-import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage"
-import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType"
+} from '../../../redux/slices/receptionSmsVerify';
+import { checkAllInputs2 } from './checkAllInputs';
+import {getFacultyLanguageFetch} from "../../../redux/slices/getStudyTypes/getFacultyLanguage";
+import {getFacultyTypeFetch, resetData} from "../../../redux/slices/getStudyTypes/getFacultyType";
 
 export const AbiturientQabul = () => {
 
@@ -91,6 +91,7 @@ export const AbiturientQabul = () => {
 		changeAllDataFunc({type: by, value: fileId})
 		if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
 		if(status === 'error') dispatch(startMessage({time: 2, message}))
+
 	}, [status])
 
 
