@@ -46,11 +46,12 @@ const FirstPageMainCom = () => {
     useEffect(()=> {
         dispatch(homeCarouselFetch())
         if (localStorage.getItem('firstToken')) router.push('/homePage')
-        window.replainSettings = { id: '04126892-e354-4d48-bed4-735146300ac8' };
+        window.replainSettings = { id: '94bba5bb-71c4-4fd4-9533-145d5ccd5b9b' };
         (function (u) {
             var s = document.createElement('script'); s.async = true; s.src = u;
             var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
+
 
     }, [])
 
