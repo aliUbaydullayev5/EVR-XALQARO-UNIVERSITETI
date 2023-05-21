@@ -40,7 +40,7 @@ Container.Inset = styled.div`
 Container.NavbarArea = styled.div`
   padding: 0 49px 0 49px;
   @media only screen and (max-width: 1000px) {
-    padding: 0px 18px 0 18px;
+    padding: 0px 18px 0 -5px;
   }
 `
 

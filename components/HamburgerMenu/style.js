@@ -67,7 +67,8 @@ const Container = styled.div`
     width: 90vw;
     height: 567px;
     padding: 52px 0px 60px 0px;
-    background: rgba(34, 31, 81, 0.95);
+    /* background: rgba(34, 31, 81, 0.95); */
+     background: var(--homePageHumbergerColor);
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 15px;
     position: absolute;

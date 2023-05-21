@@ -31,11 +31,11 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 1000px) {
     width: 100%;
-    height: 86px;
+    height: 106px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    padding: 0;
+    padding: 0 0px;
     gap: 0;
     grid-column-gap: 10px;
     .forMobileCenter{
@@ -62,6 +62,7 @@ Container.UserBlock = styled.div`
 `
 
 Container.Logo = styled.div`
+
   .logoIcon{
     transform: rotate3d(0);
   }
@@ -70,6 +71,9 @@ Container.Logo = styled.div`
   gap: 8px !important;
   .logo{
     animation: 10s slidein infinite;
+    height: 75px;
+      max-width: 85px;
+
   }
   .mobileLogo{
     display: none;
@@ -77,12 +81,13 @@ Container.Logo = styled.div`
   @media only screen and (max-width: 1000px) {
     grid-column: 1/2;
     width: 146px;
+    height: 50px;
     .logo{
       display: none;
     }
     .mobileLogo{
       display: block;
-      max-width: 95px;
+      max-width: 75px;
     }
   }
   @keyframes slidein {

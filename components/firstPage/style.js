@@ -22,12 +22,12 @@ Container.Title = styled.div`
   color: #FFFFFF;
   @media only screen and (max-width: 1000px) {
     font-weight: 600;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 105.9%;
     letter-spacing: -0.025em;
     color: #FFFFFF;
     margin: 61px 0 0 0;
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     justify-content: center;
   }
@@ -49,7 +49,7 @@ Container.SubTitle = styled.div`
     letter-spacing: -0.025em;
     color: rgba(255, 255, 255, 0.7);
     margin: 29px 0 0 0;
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     justify-content: center;
   }

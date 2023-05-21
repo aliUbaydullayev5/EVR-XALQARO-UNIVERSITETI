@@ -1,17 +1,17 @@
 import Container from "./style"
 import Logo from "../../assets/image/logo-icon.png"
-import {Input, Button} from "../generic"
-import {useEffect, useState} from "react"
+import { Input, Button } from "../generic"
+import { useEffect, useState } from "react"
 import LogoMobile from "../../assets/icon/download.svg"
-import {firstVerifyFetch, resetTimerVerify} from "../../redux/slices/firstVerify"
-import {firstSmsCodeFetch} from "../../redux/slices/firstSmsVerifyCode"
-import {startMessage} from "../../redux/slices/message"
+import { firstVerifyFetch, resetTimerVerify } from "../../redux/slices/firstVerify"
+import { firstSmsCodeFetch } from "../../redux/slices/firstSmsVerifyCode"
+import { startMessage } from "../../redux/slices/message"
 import CustomInput from "react-phone-number-input/input"
 
 
-import {useSelector, useDispatch} from "react-redux"
-import {useRouter} from "next/router"
-import {homeCarouselFetch} from "../../redux/slices/homeCarusel";
+import { useSelector, useDispatch } from "react-redux"
+import { useRouter } from "next/router"
+import { homeCarouselFetch } from "../../redux/slices/homeCarusel";
 import Image from "next/image.js"
 
 
@@ -35,33 +35,31 @@ const FirstPageMainCom = () => {
     // ---------------------- Redux ----------------------
 
     const dispatch = useDispatch()
-    const {verifyCode} = useSelector((store) => store.firstVerify)
-    const {pushToHome, status, message} = useSelector((store) => store.firstSmsCodeFetch)
+    const { verifyCode } = useSelector((store) => store.firstVerify)
+    const { pushToHome, status, message } = useSelector((store) => store.firstSmsCodeFetch)
 
-    useEffect(()=> {
-        if(pushToHome) router.push('/homePage')
-        if(status === 'error') dispatch(startMessage({time: 3, message}))
+    useEffect(() => {
+        if (pushToHome) router.push('/homePage')
+        if (status === 'error') dispatch(startMessage({ time: 3, message }))
     }, [pushToHome, status])
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(homeCarouselFetch())
         if (localStorage.getItem('firstToken')) router.push('/homePage')
-        window.replainSettings = { id: '94bba5bb-71c4-4fd4-9533-145d5ccd5b9b' };
+        window.replainSettings = { id: '04126892-e354-4d48-bed4-735146300ac8' };
         (function (u) {
             var s = document.createElement('script'); s.async = true; s.src = u;
             var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
-
-
     }, [])
 
     // ---------------------- Timer Logic ----------------------
 
     const getParTime = (time) => time.toString().padStart(2, '0')
-    useEffect(()=> {
+    useEffect(() => {
         setMinut(getParTime(Math.floor(timeLeft / 60)))
         setSecund(getParTime(timeLeft - minut * 60))
-        if(minut == '00' && secund == '00' && verifyCode){
+        if (minut == '00' && secund == '00' && verifyCode) {
             handleStop()
             setHidden(false)
             dispatch(resetTimerVerify())
@@ -85,14 +83,14 @@ const FirstPageMainCom = () => {
 
     const handleStop = () => setIsCounting(false)
 
-    useEffect(()=> {
-        if(verifyCode == true) setHidden(true)
+    useEffect(() => {
+        if (verifyCode == true) setHidden(true)
     }, [verifyCode, status])
 
     const pushFunc = () => {
         handleStart()
-        if(nameState.length >= 3 && (numberState.match(/[0-9]+/g) || []).join('').length == 12) dispatch(firstVerifyFetch({firstName: nameState, phoneNumber: (numberState.match(/[0-9]+/g) || []).join('')}))
-        else dispatch(startMessage({time: '3', message: 'The phone number is incorrect'}))
+        if (nameState.length >= 3 && (numberState.match(/[0-9]+/g) || []).join('').length == 12) dispatch(firstVerifyFetch({ firstName: nameState, phoneNumber: (numberState.match(/[0-9]+/g) || []).join('') }))
+        else dispatch(startMessage({ time: '3', message: 'The phone number is incorrect' }))
     }
     const pushSmsToBackend = () => {
         dispatch(firstSmsCodeFetch({
@@ -102,11 +100,11 @@ const FirstPageMainCom = () => {
     }
 
 
-    return(
+    return (
         <Container>
             <Container.AreaLogo>
                 <div className={'logoMain'}>
-                    <Image className={'logo'} src={Logo}/>
+                    <Image className={'logo'} src={Logo} />
                 </div>
                 <Container.LogoLine />
                 <Container.LogoTitle className={'g'}>
@@ -117,12 +115,14 @@ const FirstPageMainCom = () => {
 
             <Container.AreaLogoMobile>
                 <div>
-                    <LogoMobile alt={'logo'} className={'logo'} />
+                    <Image className={'logo'} src={Logo} />
+
+                    {/* <LogoMobile alt={'logo'} className={'logo'} /> */}
                 </div>
                 <Container.MobileText>
                     <b>  </b>
-                     EVR XALQARO <br />
-                    UNIVERSITETI
+                    NAVOIY INSTITUTI <br />
+                    INNOVATSIYALAR
                 </Container.MobileText>
             </Container.AreaLogoMobile>
 
@@ -140,12 +140,12 @@ const FirstPageMainCom = () => {
                 {
                     hidden ?
                         <>
-                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={smsState} maxlength={6} onchange={(e)=> setSmsState(e.target.value)} />
-                            <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`}  maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
+                            <Input malign={'center'} width={'356px'} mpadding={'0 0 0 0'} padding={'0 0 0 20px'} mradius={'5px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'_ _ _ _ _ _'} align={'center'} value={smsState} maxlength={6} onchange={(e) => setSmsState(e.target.value)} />
+                            <Input align={'center'} malign={'center'} mradius={'5px'} width={'290px'} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={`${minut} : ${secund}`} maxlength={'12'} mpadding={'3px 0px 0px 0px'} padding={'0 20px 0 20px'} />
                         </>
                         :
                         <>
-                            <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e)=> setNameState(e.target.value)} />
+                            <Input mpadding={'0 0 0 10px'} padding={'0 0 0 20px'} mradius={'5px'} value={nameState} mwidth={'80vw'} msize={'26px'} height={'60px'} mheight={'52px'} placeholder={'Ismingiz'} onchange={(e) => setNameState(e.target.value)} />
                             <Container.Number>
                                 <CustomInput
                                     placeholder="+998 __ ___ __ __"
@@ -153,7 +153,7 @@ const FirstPageMainCom = () => {
                                     onChange={setNumberState}
                                     maxLength={17}
                                     className={'customPhoneInput'}
-                                    onKeyDown={(e)=> e.key === 'Enter' && pushSmsToBackend()}
+                                    onKeyDown={(e) => e.key === 'Enter' && pushSmsToBackend()}
                                 />
                             </Container.Number>
                         </>
@@ -162,9 +162,9 @@ const FirstPageMainCom = () => {
             <Container.Row js={'end'} mjs={'center'}>
                 {
                     hidden ?
-                        <Button mradius={'5px'} msize={'32px'}  mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={()=> pushSmsToBackend()}>KIRISH</Button>
+                        <Button mradius={'5px'} msize={'32px'} mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={() => pushSmsToBackend()}>KIRISH</Button>
                         :
-                        <Button mradius={'5px'} msize={'32px'}  mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={()=> pushFunc()}>TASTIQLASH</Button>
+                        <Button mradius={'5px'} msize={'32px'} mpadding={'5px'} mwidth={'80vw'} height={'60px'} mheight={'48px'} width={'290px'} margin={'15px 0 0 0'} onclick={() => pushFunc()}>TASTIQLASH</Button>
                 }
             </Container.Row>
         </Container>

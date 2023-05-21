@@ -35,7 +35,7 @@ const TextCon = styled.div`
     border-radius: 30px 30px 0 0;
   }
 
-  > h1 {
+  >h1 {
     font-style: normal;
     font-weight: 500;
     font-size: 48px;
@@ -100,6 +100,7 @@ Container.Number = styled.div`
       font-size: 16px;
       height: 26px !important;
       border-radius: 5px !important;
+
     }
   }
 

@@ -283,7 +283,7 @@ export const AbiturientQabul = () => {
 				<div className='row5'>
 					<Container.Number>
 						<CustomInput
-							placeholder='Enter phone number'
+							placeholder="Enter phone number"
 							onChange={(value) =>
 								funPhoneNumber({ value, type: 'phoneNumber' })
 							}
