@@ -9,7 +9,6 @@ import {useState} from "react";
 import PersonComponent from "../PersonComponent";
 import HamburgerMenu from "../../HamburgerMenu";
 import MobileLogo from '../../../assets/mobile/icon/logoMobile.svg'
-import MobileChat from '../../../assets/mobile/icon/chat.svg'
 import MobilProfile from '../../../assets/mobile/icon/profile.svg'
 import MobileHamburgerIcon from '../../../assets/mobile/icon/menu.svg'
 import {useDispatch} from "react-redux";
