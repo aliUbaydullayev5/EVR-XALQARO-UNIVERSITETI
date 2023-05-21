@@ -120,6 +120,7 @@ export const AbiturientQabul = () => {
 				}),
 			);
 		}
+		console.log(receptionData.message, 'dasdasdas')
 	}, [receptionData]);
 
 	if (receptionData.pushAnswer) {

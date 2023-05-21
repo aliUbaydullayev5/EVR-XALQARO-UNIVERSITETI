@@ -9,7 +9,7 @@ import Payme from "../../../assets/icons/payme.png"
 import Alif from "../../../assets/icons/Alif.png"
 import osonMobile from '../../../assets/mobile/icon/Oson.png'
 import Image from 'next/image.js'
-// Mobile Img 
+// Mobile Img
 import NaqtTulov from "../../../assets/mobile/icon/NaqtTulov.svg"
 import PaymeMobile from "../../../assets/mobile/icon/payme.png"
 
@@ -91,19 +91,27 @@ export const UsersPayInfo = () => {
             </TextBox>
             <ConTainerImg>
 
-
               <div>
                 <form method="POST" action="https://checkout.paycom.uz">
-                  <Input type="hidden" name="merchant"
-                    value="63fc573ec6ebaa46493d6ee4" />
+                  <Input type="hidden" name="merchant" value="63fc573ec6ebaa46493d6ee4" />
                   <Input type="hidden" name="amount" value="20000000" />
                   <Input type="hidden" name="account[order]" value={obj?.phoneNumber} />
                   <button type="submit" style={{ border: 'none', cursor: 'pointer' }}>
-                    < Image src={Payme} alt='click' className='Payme' />
+                    <Image src={Payme} alt='click' className='Payme' />
                     <Image src={PaymeMobile} alt='click' className='PaymeMobile' />
                   </button>
                 </form>
               </div>
+
+              {/*<form method="POST" action="https://checkout.paycom.uz"> */}
+              {/*  <input type="hidden" name="merchant" value="63fc573ec6ebaa46493d6ee4"/> */}
+              {/*  <input type="hidden" name="amount" value="100000"/> */}
+              {/*  <input type="hidden" name="account[order]" value="user_id"/> */}
+              {/*  <button type="submit" >*/}
+              {/*</button>*/}
+              {/*</form>*/}
+
+
 
               {/* <div onClick={() => query.push('/receptionPage/application/UsersCardInfo/paynet')}>
               <Image src={Paynet} alt='click' className='Paynet' />
