@@ -8,7 +8,8 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  background: var(--buttonColor);
   border-radius: 20px 20px 10px 10px;
   .img{
     width: 300px;

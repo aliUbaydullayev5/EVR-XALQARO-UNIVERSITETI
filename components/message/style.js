@@ -22,7 +22,7 @@ const Container = styled.div`
   border-radius: 13px;
   //background: #fff;
   //box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
-  background: #1E3C72;
+  background: #1ea579;
   transition: .3s;
   z-index: 9999999999999;
   ${({hiddenState}) => hiddenFunc(hiddenState)}
@@ -59,7 +59,7 @@ Container.MessageArea = styled.div`
   }
   .desc{
     font-size: 18px;
-    color: #A09E9E;
+    color: white;
     line-height: 22px;
   }
 `

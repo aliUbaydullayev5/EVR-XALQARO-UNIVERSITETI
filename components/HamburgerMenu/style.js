@@ -3,42 +3,48 @@ import styled from 'styled-components'
 const Container = styled.div`
   width: 510px;
   padding: 20px 30px 60px 60px;
-  background: rgba(34, 31, 81, 0.95);
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: rgba(34, 31, 81, 0.95);
+  background: var(--homePageHumbergerColor);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   position: absolute;
   top: -10px;
   right: -10px;
   z-index: 9999;
- 
-  .close{
+  .close {
     position: absolute;
     top: 23px;
     right: 32px;
     cursor: pointer;
     transition: .1s;
-    :hover{
+
+    :hover {
       transform: scale(1.05);
     }
+
     @media only screen and (max-width: 1000px) {
       display: none;
     }
   }
-  .closeMobile{
+
+  .closeMobile {
     position: absolute;
     top: 27px;
     right: 30px;
     cursor: pointer;
     transition: .1s;
-    :hover{
+
+    :hover {
       transform: scale(1.05);
     }
+
     display: none;
     @media only screen and (max-width: 1000px) {
       display: block;
     }
   }
-  ul>li{
+
+  ul > li {
     font-weight: 300;
     font-size: 28px;
     line-height: 34px;
@@ -46,14 +52,15 @@ const Container = styled.div`
     margin: 10px 0;
     cursor: pointer;
     transition: .2s;
-    :hover{
+
+    :hover {
       font-weight: 500;
     }
-    :active{
+
+    :active {
       transform: scale(1.05);
     }
   }
-
 
 
   @media only screen and (max-width: 1000px) {
@@ -66,15 +73,17 @@ const Container = styled.div`
     position: absolute;
     top: -25px !important;
     right: -25px !important;
-    ul{
+    ul {
       padding: 0 0 0 45px;
     }
-    ul>li{
+
+    ul > li {
       font-weight: 300;
       font-size: 20px;
       line-height: 24px;
       color: #FFFFFF;
-      :active{
+
+      :active {
         transform: scale(1.05);
       }
     }

@@ -6,7 +6,7 @@ const Component = styled.div`
   top: 0;
   left: -177px;
   width: 367px;
-  background: rgba(34, 31, 81, 0.95);
+  background: var(--homePageHumbergerColor);
   box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   z-index: 99999;

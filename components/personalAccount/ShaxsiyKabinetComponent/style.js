@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  background: #221F51;
+  //background: #221F51;
+  background: var(--green);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   display: grid;
@@ -14,7 +15,8 @@ const Container = styled.div`
   }
 `
 Container.Top = styled.div`
-  background: #221F51;
+  //background: #221F51;
+  background: var(--green);
   box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 30px 30px 0 0;
   font-weight: 500;
@@ -169,7 +171,8 @@ Container.InputCustom1 = styled.input`
   height: 33px;
   padding: 0 0 0 40px;
   font-size: 24px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  background: var(--buttonColor);
   border-bottom: 0;
   border-radius: 5px;
   outline: none;

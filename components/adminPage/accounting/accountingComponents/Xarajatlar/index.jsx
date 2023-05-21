@@ -1,20 +1,21 @@
 import Container from './style'
-import {FaRegMoneyBillAlt} from "react-icons/fa"
+import {TbPigMoney} from "react-icons/tb"
 import {Button, Input} from "../../../../generic"
 import {IoSearch} from "react-icons/io5"
-import {HiOutlineRefresh} from "react-icons/hi"
-import {Button as AntButton, Modal, Spin, Upload} from "antd"
-import {InView} from "react-intersection-observer"
-import {API_GLOBAL} from "../../../../../globalApi"
-import {FiUpload} from "react-icons/fi"
-import React, {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {addPageCount, resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
+import React, {useEffect, useState} from "react"
+import {resetPageToZero, xarajatlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlar"
+import {Modal, Spin} from 'antd'
+import {InView} from "react-intersection-observer"
+import {Button as AntButton, Upload } from 'antd'
+import {API_GLOBAL} from "../../../../../globalApi"
 import {xarajatlarAddFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/xarajatlarAdd"
 import {startMessage} from "../../../../../redux/slices/message"
+import {FiUpload} from "react-icons/fi"
+import {HiOutlineRefresh} from "react-icons/hi";
+import {tolovlarFetch} from "../../../../../redux/sliceAdmin/moliyaSlices/tolovlar"
 
 const Xarajatlar = ({subTitle}) => {
-
 
     const dispatch = useDispatch()
     const xarajatlar = useSelector((store)=> store.xarajatlar)
@@ -23,10 +24,9 @@ const Xarajatlar = ({subTitle}) => {
     const [modalHidden, setModalHidden] = useState(false)
 
     useEffect(()=> {
-        if (inView){
-            if((xarajatlar.data.length % 20 === 0) || (xarajatlar.data.length === 0)){
-                dispatch(addPageCount())
-                dispatch(xarajatlarFetch({page: xarajatlar?.pageCount, query: ''}))
+        if (inView) {
+            if ((xarajatlar?.data.length % 20 === 0) || (xarajatlar?.data.length === 0)) {
+                dispatch(xarajatlarFetch({pageCount: xarajatlar?.pageCount}))
             }
         }
     }, [inView])
@@ -71,9 +71,6 @@ const Xarajatlar = ({subTitle}) => {
 
     useEffect(()=> {
         if(xarajatlarAdd?.status === 'success'){
-            dispatch(startMessage({time: 3, type: 'success', message: ''}))
-            refreshDataFunc()
-            setFileList([])
             setPushData({
                 name: '',
                 amount: '',
@@ -81,14 +78,15 @@ const Xarajatlar = ({subTitle}) => {
                 description: '',
                 attachment: []
             })
+            refreshDataFunc()
         }
     }, [xarajatlarAdd])
 
     const [refreshButtonLogin, setRefreshButtonLogin] = useState(false)
     const refreshDataFunc = () => {
         if (!refreshButtonLogin) {
-            dispatch(xarajatlarFetch({page: 0, query: ''}))
             dispatch(resetPageToZero())
+            dispatch(xarajatlarFetch({pageCount: 0, query: ''}))
             setRefreshButtonLogin(true)
             setTimeout(() => {
                 setRefreshButtonLogin(false)
@@ -96,11 +94,13 @@ const Xarajatlar = ({subTitle}) => {
         }
     }
 
-
-    return(
+    return (
         <Container>
             <div className={'title nocopy'}>
-                <div><FaRegMoneyBillAlt size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span className={'subTitle'}> &gt; {subTitle}</span></div>
+                <div>
+                    <TbPigMoney size={'38px'} color={'#fff'}/>&nbsp;&nbsp;Moliya&nbsp;<span
+                    className={'subTitle'}> &gt; {subTitle}</span>
+                </div>
                 <div>
                     <Button
                         mwidth={'204px'}
@@ -116,7 +116,8 @@ const Xarajatlar = ({subTitle}) => {
                         shadow={'0px 3.09677px 11.6129px rgba(0, 0, 0, 0.54)'}
                         bc={'#221F51'}
                         onclick={() => setModalHidden(!modalHidden)}
-                    > + Moash berish</Button>
+                    > + Moash berish
+                    </Button>
                 </div>
             </div>
             <div className={'filter'}>
@@ -158,8 +159,8 @@ const Xarajatlar = ({subTitle}) => {
                         Tartiblash
                     </p>
                 </Button>
-                <Container.RefreshArea loading={refreshButtonLogin} onClick={()=> refreshDataFunc()}>
-                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'} />
+                <Container.RefreshArea loading={refreshButtonLogin} onClick={() => refreshDataFunc()}>
+                    <HiOutlineRefresh color={'#fff'} size={'22px'} className={'refreshIcon'}/>
                 </Container.RefreshArea>
             </div>
             <div className={'dataArea'}>
@@ -168,18 +169,37 @@ const Xarajatlar = ({subTitle}) => {
                     <Container.DataAreaInset>
                         {
                             xarajatlar?.data?.map((value, index) => (
-                                    <Container.Section>
-                                        <p className="number">{index + 1}</p>
-                                        <p className={'textWithTitle'} title={value.name}>{value.name}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.amount}>{value.amount}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.paymentType}>{value.paymentType}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.date}>{value.date}</p>
-                                        <div className="line"></div>
-                                        <p className={'textWithTitle'} title={value.description}>{value.description}</p>
-                                    </Container.Section>
+                                    <>
+                                        {
+                                            index === 0 &&
+                                            <Container.Section key={value?.id}>
+                                                <p className="number">%</p>
+                                                <p className={'textWithTitle'} title={'Isim'}>Isim</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Narxi'}>Narxi</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Tolov turi'}>Tolov turi</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Sana'}>Sana</p>
+                                                <div className="line"></div>
+                                                <p className={'textWithTitle'} title={'Batafsil'}>Batafsil</p>
+                                            </Container.Section>
+                                        }
+                                        <Container.Section key={value?.id}>
+                                            <p className="number">{index + 1}</p>
+                                            <p className={'textWithTitle'} title={value?.name}>{value?.name}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={value?.amount}>{value?.amount}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'}
+                                               title={value?.paymentType}>{value?.paymentType}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'} title={value?.date}>{value?.date}</p>
+                                            <div className="line"></div>
+                                            <p className={'textWithTitle'}
+                                               title={value?.description}>{value?.description}</p>
+                                        </Container.Section>
+                                    </>
                                 )
                             )
                         }
@@ -222,7 +242,10 @@ const Xarajatlar = ({subTitle}) => {
                             msize={'22px'}
                             size={'22px'}
                             bc={'#241F69'}
-                            onchange={(e) => setPushData({...pushData, amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : '' })}
+                            onchange={(e) => setPushData({
+                                ...pushData,
+                                amount: e.target.value.match(/\d+/g) ? e.target.value.match(/\d+/g).join('') : ''
+                            })}
                             value={pushData.amount}
                         />
                         <Input

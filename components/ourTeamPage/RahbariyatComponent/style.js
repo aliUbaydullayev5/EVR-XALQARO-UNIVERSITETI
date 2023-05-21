@@ -8,12 +8,13 @@ const Container = styled.div`
   }
 `
 Container.Top = styled.div`
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 30px 30px 0px 0px;
+  border-radius: 30px 30px 0 0;
   font-weight: 500;
   font-size: 40px;
   line-height: 49px;

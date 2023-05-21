@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import {API_GLOBAL} from "../../../../globalApi"
 
-export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAddFetch', async (payload) => {
-    return await fetch(`${API_GLOBAL}v1/content-price/create`, {
+export const kirimAddFetch = createAsyncThunk('kirimAddFetch', async (payload) => {
+    return await fetch(`${API_GLOBAL}v1/income`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,39 +10,42 @@ export const mashNarxlariAddFetch = createAsyncThunk('mashNarxlariAddFetch', asy
         },
         body:JSON.stringify({
             name: payload.name,
+            paymentType: payload.paymentType,
             amount: payload.amount,
-            type: payload.type
+            description: payload.description,
+            userId: payload.userId,
+            courseLevel: payload.courseLevel || 0
         })
     }).then((res)=> res.json())
 })
 
-
-const mashNarxlariAdd = createSlice({
-    name: 'mashNarxlariAdd',
+const kirimAdd = createSlice({
+    name: 'kirimAdd',
     initialState: {
         status: null,
         message: '',
         data: [],
     },
     extraReducers: {
-        [mashNarxlariAddFetch.pending]: (state) => {
+        [kirimAddFetch.pending]: (state) => {
             state.status = 'loading'
         },
-        [mashNarxlariAddFetch.fulfilled]: (state, action) => {
+        [kirimAddFetch.fulfilled]: (state, action) => {
             if (action.payload.success === true) {
                 state.status = 'success'
             }
             else if (action.payload.success === false) {
-                state.status = 'error'
+                state.status = 'notFound'
                 state.message = action?.payload?.errors[0]?.errorMsg
             }
         },
-        [mashNarxlariAddFetch.rejected]: (state) => {
+        [kirimAddFetch.rejected]: (state) => {
             state.loading = 'error'
         }
-    }
+    },
 })
 
 
+export const { reset } = kirimAdd.actions
 
-export default mashNarxlariAdd.reducer
+export default kirimAdd.reducer

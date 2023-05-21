@@ -33,11 +33,11 @@ const Container = styled.div`
       margin: 5px 0 0 0;
     }
   }
-  
+
   .viewTag{
     height: 2px;
   }
-  
+
   .filter {
     display: flex;
     align-items: center;
@@ -55,26 +55,8 @@ const Container = styled.div`
     .input{
       position: absolute;
     }
-    .dataInput{
-      align-items: center;
-      padding: 5px 10px 5px 20px;
-      font-family: 'Montserrat';
-      width: 133.57px;
-      height: 36.64px;
-      background: #241F69;
-      box-shadow: 0 2.36371px 8.86391px rgba(0, 0, 0, 0.54);
-      border-radius: 7.63281px;
-      font-weight: 500;
-      font-size: 13.7391px;
-      line-height: 17px;
-      font-style: normal;
-      color: #FFFFFF;
-      ::-webkit-calendar-picker-indicator {
-        filter: invert(1);
-      }
-    }
   }
-  
+
   .dataArea {
     overflow-y: scroll;
     overflow-x: scroll;
@@ -99,12 +81,13 @@ Container.DataAreaInset = styled.div`
   padding: 20px;
 `
 Container.Section = styled.div`
+  width: 1700px;
   background: #241F69;
   box-shadow: 0 1.52656px 12.9758px rgba(0, 0, 0, 0.54);
   border-radius: 6.10625px;
   padding: 10px 10px;
   display: grid;
-  grid-template-columns: 20px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
+  grid-template-columns: 20px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
   align-items: center;
   gap: 10px;
   .line{

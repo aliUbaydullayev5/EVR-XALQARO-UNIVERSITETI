@@ -62,8 +62,6 @@ import bookDeleteId from "../sliceAdmin/libary/book/deleteId.js"
 import bookGet from "../sliceAdmin/libary/book/getbook.js"
 import solveTest from '../slices/solveTheTest'
 import getTestQuestion from '../slices/getTestQuestion'
-import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
-import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
 import premium from '../sliceAdmin/moliyaSlices/premium'
 import premiumAdd from '../sliceAdmin/moliyaSlices/premiumAdd'
 import newsAdminGet from "../sliceAdmin/news/getnews.js"
@@ -79,13 +77,20 @@ import newsGet from '../slices/news'
 import forgotPassword from '../slices/passwordForgot'
 import chatSlice from '../slices/chatSlice'
 import kirim from '../sliceAdmin/moliyaSlices/kirim'
-import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
 import homeCarousel from '../slices/homeCarusel'
 import caruselGet from "../sliceAdmin/carusel/getCarusel/getcarusel.js"
 import caruselcreate from "../sliceAdmin/carusel/caruselCreate/create.js"
 import galleryCreate from "../sliceAdmin/gallerya/galleryCreate.js"
 import galleryDeleteId from "../sliceAdmin/gallerya/galleryDeleteId.js"
 import newsreate from "../sliceAdmin/news/create.js"
+import tolovlar from '../sliceAdmin/moliyaSlices/tolovlar'
+import mashNarxlari from '../sliceAdmin/moliyaSlices/mashNaxlari'
+import xarajatlar from '../sliceAdmin/moliyaSlices/xarajatlar'
+import xarajatlarAdd from '../sliceAdmin/moliyaSlices/xarajatlarAdd'
+import tolovAdd from '../sliceAdmin/moliyaSlices/tolovlarAdd'
+import kirimAdd from '../sliceAdmin/moliyaSlices/kirimAdd'
+import kirimUserInfo from '../sliceAdmin/moliyaSlices/kirimUserInfo'
+
 export default configureStore({
         reducer: {
                 firstVerify,
@@ -167,7 +172,6 @@ export default configureStore({
                 newsGet,
                 forgotPassword,
                 chatSlice,
-                kirim,
                 mashNarxlari,
                 homeCarousel,
                 caruselcreate,
@@ -175,5 +179,10 @@ export default configureStore({
                 galleryCreate,
                 galleryDeleteId,
                 newsreate,
+                tolovlar,
+                tolovAdd,
+                kirim,
+                kirimAdd,
+                kirimUserInfo
         },
 });

@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 135px;
-  background: #241F69;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: #241F69;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   display: grid;
-  grid-template-columns: 203px 1fr;
   grid-template-columns: 203px 1fr;
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 100px 1fr;
@@ -17,9 +17,10 @@ const Container = styled.div`
 `
 
 Container.LeftImg = styled.div`
-  .img{
+  .img {
     width: 100%;
   }
+
   @media only screen and (max-width: 1000px) {
     display: flex;
     justify-content: center;
@@ -29,7 +30,8 @@ Container.LeftImg = styled.div`
 
 Container.RightBlock = styled.div`
   padding: 4px 10px;
-  hr{
+
+  hr {
     width: 60%;
   }
 `
@@ -59,10 +61,10 @@ Container.Name = styled.div`
 `
 Container.Text = styled.span`
   @media only screen and (max-width: 1000px) {
-    ${({grey})=> grey ? 'font-weight: 500;\n  font-size: 13px;\n  line-height: 10px;\n  color: #FFFFFF;\n  opacity: 0.5;' : 'font-weight: 400;\n  font-size: 13px;\n color: #FFFFFF;'}
+    ${({grey}) => grey ? 'font-weight: 500;\n  font-size: 13px;\n  line-height: 10px;\n  color: #FFFFFF;\n  opacity: 0.5;' : 'font-weight: 400;\n  font-size: 13px;\n color: #FFFFFF;'}
   }
   @media only screen and (min-width: 1000px) {
-    ${({grey})=> grey ? 'font-weight: 500;\n  font-size: 13px;\n  line-height: 15px;\n  color: #FFFFFF;\n  opacity: 0.5;' : 'font-weight: 400;\n  font-size: 13px;\n color: #FFFFFF;'}
+    ${({grey}) => grey ? 'font-weight: 500;\n  font-size: 13px;\n  line-height: 15px;\n  color: #FFFFFF;\n  opacity: 0.5;' : 'font-weight: 400;\n  font-size: 13px;\n color: #FFFFFF;'}
   }
 `
 Container.EmailSection = styled.div`

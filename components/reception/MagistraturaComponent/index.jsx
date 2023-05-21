@@ -475,6 +475,7 @@ export const MagistraturaComponent = () => {
 							height={'43px'}
 							size={'21px'}
 							margin={'0 60px 0 0'}
+							padding={'0 20px'}
 							onclick={() => smsFunc()}>
 							Telefon raqamni tastiqlash
 						</Button>

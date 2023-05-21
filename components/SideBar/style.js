@@ -26,8 +26,7 @@ const Container = styled.div`
       justify-content: space-between;
       align-items: center;
       padding: 0 10px;
-      background: #241F69;
-      box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+      box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
       border-radius: 94px;
     }
   }
@@ -59,10 +58,11 @@ const SideNav = styled.div`
   align-items: center; 
   flex-direction:column;
   width: 100%;
-  background: #241F69;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: #241F69;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 94px;
-  padding: 10px 0px ;
+  padding: 10px 0;
   cursor: pointer;
   .icon{
     margin-bottom: 2.5px ;
@@ -98,24 +98,27 @@ const SideNav = styled.div`
     }
   }
   @media only screen and (max-width: 470px){
-    grid-gap: 0px;
+    grid-gap: 0;
   }
 
 `
 Container.Messanger = styled.div`
   width: 100%;
   padding: 5px 0;
-  background: #241F69;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: #241F69;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 250px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /
   justify-content: center;
   align-items: center;
-  .laptopIcon{
+
+  .laptopIcon {
     display: none;
   }
-  @media only screen and (max-width: 1000px){
+
+  @media only screen and (max-width: 1000px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 60px;
@@ -126,10 +129,11 @@ Container.Messanger = styled.div`
     box-shadow: none;
     background: none;
     margin: 5px 0 0 0;
-    .mobileIcon{
+    .mobileIcon {
       display: none;
     }
-    .laptopIcon{
+
+    .laptopIcon {
       display: block;
     }
   }

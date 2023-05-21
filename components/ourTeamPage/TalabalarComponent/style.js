@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 100%;
-  background: #221F51;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.81);
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.81);
   border-radius: 30px;
   display: grid;
   grid-template-rows: 49px 30px 1fr;
@@ -17,29 +18,32 @@ Container.Top = styled.div`
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  background: #221F51;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-  border-radius: 30px 30px 0px 0px;
+  //background: #221F51;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+  border-radius: 30px 30px 0 0;
   position: relative;
 
-  .closeIcon{
+  .closeIcon {
     position: absolute;
     top: 0px;
     right: 25px;
     cursor: pointer;
   }
-@media only screen and (max-width: 1000px) { 
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
 
-}
+  @media only screen and (max-width: 1000px) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+  }
 
 `
 Container.Bottom = styled.div`
   overflow-y: scroll;
   max-height: 400px;
+
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -78,7 +82,7 @@ Container.BottomInset = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 16px;
   grid-row-gap: 9px;
-  
+
 `
 
 Container.Section = styled.div`
@@ -90,21 +94,24 @@ Container.Section = styled.div`
   justify-content: center;
   color: #FFFFFF;
   cursor: pointer;
-  
+
   height: 48px;
-  background: #241F69;
-  box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
+  //background: #241F69;
+  background: var(--green);
+  box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
   border-radius: 15px;
   transition: .2s;
-  :hover{
+
+  :hover {
     letter-spacing: 1.2px;
   }
-  :active{
+
+  :active {
     transform: scale(1.1);
   }
+
   @media only screen and (max-width: 1000px) {
-   
-    background: #241F69;
+    background: var(--green);
     box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
     border-radius: 5px;
     font-family: 'Montserrat';
@@ -115,23 +122,25 @@ Container.Section = styled.div`
     display: flex;
     align-items: center;
     color: #FFFFFF;
-   }
+  }
 `
 
 Container.Center = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 0.7fr 1fr 1fr;
   padding: 0 40px;
-  >div{
+
+  > div {
     display: flex;
     justify-content: center;
   }
 `
 Container.Select = styled.select`
-  width: ${({width})=> width && width};
+  width: ${({width}) => width && width};
   height: 30.63px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%) !important;
+  background: var(--buttonColor);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   border: 0 !important;
   text-align: center;
 
@@ -141,30 +150,33 @@ Container.Select = styled.select`
   line-height: 105.9% !important;
   letter-spacing: -0.025em !important;
   color: #FFFFFF !important;
- @media only screen and (max-width: 1000px) {
-    font-size: 12px!important;
-    height: 13px!important;
+  @media only screen and (max-width: 1000px) {
+    font-size: 12px !important;
+    height: 13px !important;
     font-style: normal !important;
     font-weight: 400 !important;
-    font-size: 7px !important; 
-    width: ${({ mwidth }) => mwidth && mwidth};
+    font-size: 7px !important;
+    width: ${({mwidth}) => mwidth && mwidth};
 
- }
+  }
 
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  >option{
-    background-color: #1E3C72 !important;
+
+  > option {
+    //background-color: #1E3C72 !important;
+    background-color: var(--buttonColor) !important;
   }
 
 `
 Container.Input = styled.input`
   width: 240px;
   height: 30.75px;
-  background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.25);
+  //background: linear-gradient(90deg, #1E3C72 0%, #1E3C72 1%, #2A5298 100%);
+  background: var(--buttonColor);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
   padding: 0 10px;
   font-family: 'Montserrat';
@@ -174,15 +186,15 @@ Container.Input = styled.input`
   line-height: 105.9%;
   letter-spacing: -0.025em;
   color: #FFFFFF;
- @media only screen and (max-width: 1000px) {
-    font-size: 12px!important;
-    height: 13px!important;
+  @media only screen and (max-width: 1000px) {
+    font-size: 12px !important;
+    height: 13px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     font-size: 7px !important;
-    width: ${({ mwidth }) => mwidth && mwidth};
+    width: ${({mwidth}) => mwidth && mwidth};
     width: 65px !important;
- }
+  }
 `
 
 

@@ -33,11 +33,11 @@ const Container = styled.div`
       margin: 5px 0 0 0;
     }
   }
-
+  
   .viewTag{
     height: 2px;
   }
-
+  
   .filter {
     display: flex;
     align-items: center;
@@ -74,7 +74,7 @@ const Container = styled.div`
       }
     }
   }
-
+  
   .dataArea {
     overflow-y: scroll;
     overflow-x: scroll;
@@ -99,6 +99,7 @@ Container.DataAreaInset = styled.div`
   padding: 20px;
 `
 Container.Section = styled.div`
+  width: 1300px;
   background: #241F69;
   box-shadow: 0 1.52656px 12.9758px rgba(0, 0, 0, 0.54);
   border-radius: 6.10625px;

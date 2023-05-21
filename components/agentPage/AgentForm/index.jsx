@@ -30,16 +30,31 @@ const AgentFormComponent = () => {
     const [numPasSeriya, setNumPasSeriya] = useState('')
     const [pasSerLength, setPasSerLength] = useState(0)
 
-    const {fileId, by} = useSelector((store) => store.deployFile);
+    const {fileId, by, status, message} = useSelector((store) => store.deployFile);
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        changeAllDataFunc({type: by, value: fileId})
+        if(status === 'success') dispatch(startMessage({time: 2, message, type: 'success'}))
+        if(status === 'error') dispatch(startMessage({time: 2, message}))
+    }, [status])
 
     const findFileFunc = ({file, by}) => dispatch(deployFileFetch({file: file, by}));
     const receptionData = useSelector((store) => store.agentAuth);
 
     const reseptionCheckPhoneSlice = useSelector(
         (store) => store.reseptionCheckPhoneSlice,
-    );
+    )
+
+
+    useEffect(()=> {
+        if(receptionData.status === 'error'){
+            dispatch(
+                startMessage({time: 3, message: receptionData.message, type: 'warning'}),
+            )
+        }
+    }, [receptionData])
 
     useEffect(() => {
         changeAllDataFunc({type: by, value: fileId});
@@ -364,7 +379,9 @@ const AgentFormComponent = () => {
             <Modal
                 open={modelHidden}
                 onOk={() => setModalHidden(!modelHidden)}
-                onCancel={() => setModalHidden(!modelHidden)}>
+                onCancel={() => setModalHidden(!modelHidden)}
+                footer={false}
+            >
                 <Container.Model>
                     <p>Sms ni kiriting</p>
                     <Input
