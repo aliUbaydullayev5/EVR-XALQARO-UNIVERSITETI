@@ -69,9 +69,10 @@ const TextCon = styled.div`
 
   @media only screen and (max-width: 1000px) {
 
-    background: #221F51;
-    box-shadow: 0px 2px 17px rgba(0, 0, 0, 0.54);
-    border-radius: 30px 30px 0px 0px;
+    //background: #221F51;
+    background: var(--green);
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.54);
+    border-radius: 30px 30px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
